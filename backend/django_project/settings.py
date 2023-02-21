@@ -22,22 +22,14 @@ env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
+# SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.getenv("DEBUG", "False")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-
-# Deployment_Delta
-# DEBUG = True
-DEBUG = os.getenv("DEBUG", "False")
-
+DEBUG = True
+# DEBUG = os.getenv("DEBUG", "False")
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -103,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'session_auth',
         'USER': 'postgres',
-        'PASSWORD': 'nonja!',
+        'PASSWORD': 'I!',
         'HOST': 'localhost',
     }
 }
@@ -140,15 +132,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../frontend/static')
-]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -167,3 +150,13 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '../frontend/static')
+]
