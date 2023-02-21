@@ -12,15 +12,29 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Deployment_Delta
+from environs import Env
+
+env = Env()
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
+# SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.getenv("DEBUG", "False")
+
+# SECURITY WARNING: don't run with debug turned on in production!
+
+# Deployment_Delta
+# DEBUG = True
+DEBUG = os.getenv("DEBUG", "False")
+
 
 ALLOWED_HOSTS = []
 
@@ -89,7 +103,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'session_auth',
         'USER': 'postgres',
-        'PASSWORD': 'INFLUENCE4123!',
+        'PASSWORD': 'nonja!',
         'HOST': 'localhost',
     }
 }

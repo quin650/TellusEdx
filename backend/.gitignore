@@ -1,0 +1,7 @@
+.gitignore file:
+.venv 
+.env 
+*.pyc files 
+__pycache__/
+db.sqlite3
+.DS_Store
