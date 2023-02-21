@@ -22,12 +22,12 @@ env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
-# SECRET_KEY = env.str("SECRET_KEY")
+# SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.getenv("DEBUG", "False")
+# DEBUG = True
+DEBUG = os.getenv("DEBUG", "False")
 
 ALLOWED_HOSTS = []
 
@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'session_auth',
         'USER': 'postgres',
-        'PASSWORD': 'I!',
+        'PASSWORD': os.environ["pgpassword"],
         'HOST': 'localhost',
     }
 }
