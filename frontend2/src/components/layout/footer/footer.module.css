@@ -1,0 +1,133 @@
+/* ----------------------Footer----------------------*/
+/* https: //www.youtube.com/watch?v=YOb67OKw62s i.e. Responsive Footer Design using Html & Css by "The WebShala" */
+
+.footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--black);
+    padding: 130px 0;
+    width: 60%;
+    height: 100vh;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+/*========== Media Queries ==========*/
+
+/* Devices over 2400px */
+@media (min-width: 2400px) {
+    .footer {
+        max-width: 1445px;
+        margin: auto;
+    }
+}
+
+/* Devices over 2400px */
+@media (max-width: 997px) {
+    .footer {
+        padding-left: 5%;
+    }
+}
+
+/* Devices over 550px */
+@media (max-width: 550px) {
+    .footer {
+        padding-left: 15%;
+
+    }
+}
+
+/*====================================*/
+.container2 {
+    max-width: 100%;
+    margin: auto;
+    /* overflow: visible; */
+    margin-left: 5%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0px;
+    min-width: 20%;
+}
+
+.footer_col {
+    padding: 0 15px;
+    display: block;
+    width: 25%;
+    min-width: 140px;
+    text-align: left;
+}
+
+.footer_col h4 {
+    font-size: 18px;
+    /*Dark-Mode Difference*/
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.footer_col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #0066FF;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer_col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer_col ul li:last-child {
+    margin-bottom: 30px;
+}
+
+.footer_col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    /*Dark-Mode Difference*/
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.footer_col ul li a:hover {
+    color: #0066FF;
+    padding-left: 8px;
+}
+
+.social_links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    /*Dark-Mode Difference*/
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    /*Dark-Mode Difference*/
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.social_links a:hover {
+    color: black;
+    background-color: #0066FF;
+}

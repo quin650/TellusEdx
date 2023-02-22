@@ -1,0 +1,110 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+    padding: 130px 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    resize: both;
+}
+
+
+.main img {
+    position: relative;
+    top: 0;
+    align-items: center;
+
+}
+
+.caption {
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    top: 25%;
+    max-width: 1728px;
+    margin-left: 8%;
+    margin-right: 2%;
+    width:80%;
+
+}
+
+.caption h1 {
+    font-size: 6.5rem;
+    letter-spacing: .3rem;
+    animation: slideFromBotToPosition 1s cubic-bezier(0.42, 0, 0.68, 0.68)forwards;
+    /*Dark-Mode Difference*/
+    text-shadow: .2rem .2rem 1rem black;
+}
+
+.caption h3 {
+    font-size: 4rem;
+    letter-spacing: 1rem;
+    animation: slideFromBotToPosition 1s cubic-bezier(0.42, 0, 0.68, 0.68) forwards .05s;
+    /*Dark-Mode Difference*/
+    text-shadow: .2rem .2rem 1rem black;
+}
+
+/*========== Animations ==========*/
+
+@keyframes slideFromBotToPosition {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+/*========== Media Queries --WIDTH ==========*/
+
+/* Devices under 1550px */
+@media (max-width: 1550px) {
+    .main {
+        /* scroll-snap-align: start; */
+    }
+
+    /* makes it for a smoother transition because of caption moving expanding or squishing during window width change*/
+    .caption {
+        margin-left: 8%; 
+    }
+}
+
+/* Width under 1011px */
+@media (max-width: 1011px) {
+    .caption h1 {
+        font-size: 3.7rem;
+        letter-spacing: .15rem;
+        padding-bottom: .5rem;
+    }
+
+    .caption h3 {
+        font-size: 2.7rem;
+        letter-spacing: .2rem;
+        padding-bottom: 1.2rem;
+    }
+}
+
+/* Width under 1011px */
+@media (max-width: 1011px) {
+    .caption {
+        margin-top: 50px;
+    }
+}
+/* Width over 1011px */
+@media (min-width: 1011px) {
+    .caption {
+        margin-top: 10px;
+    }
+}
+
+/* Width over 1550px */
+@media (min-width: 1550px) {
+    .caption {
+        margin-top: 15px;
+    }
+}

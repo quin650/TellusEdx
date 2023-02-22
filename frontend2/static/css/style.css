@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--black);
+}
+
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --gray: #b3b3b3;
+    --black:  #020307;
+}

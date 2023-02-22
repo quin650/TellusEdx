@@ -1,0 +1,29 @@
+.hamburger {
+    display: none;
+}
+
+.hamburgerMaster {
+    display: none;
+}
+
+/*========== Media Queries ==========*/
+
+/* Devices under 1011px */
+@media (max-width: 1011px) {
+
+.hamburgerMaster {
+    display: block;
+    order: 3;
+    width: 80px;
+    margin: 0rem;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    margin: 5px 0px;
+}
+}

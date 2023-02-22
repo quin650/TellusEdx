@@ -1,0 +1,223 @@
+.nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 300;
+    height: 4rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 100%;
+    background-color: rgb(0, 0, 0, .4);
+    justify-content: center;
+}
+
+.nav_container {
+    display: flex;
+    flex-direction: row;
+    color: var(--white);
+    height: 3rem;
+    align-items: center;
+    padding: 0;
+    width: 80%;
+    max-width: 1740px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.Logo {
+    display: flex;
+    align-content: flex-start;
+    height: 3rem;
+    width: 3rem;
+    margin-right: .5rem;
+}
+
+.Logo:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
+    animation: around .18s ease-in forwards;
+}
+
+
+/*========== Animation ==========*/
+@keyframes around {
+    0% {
+        transform: rotate(22.5deg);
+    }
+
+    33% {
+        transform: rotate(45deg);
+    }
+
+    66% {
+        transform: rotate(67.5deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+.software {
+    display: flex;
+    align-content: flex-start;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.software:hover {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.software:active {
+    color: black;
+}
+
+.explore {
+    display: flex;
+    align-content: flex-start;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.explore:hover {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.explore:active {
+    color: black;
+}
+
+.spacer {
+    width: 50%;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.sign_in_out {
+    display: flex;
+    align-content: flex-end;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    min-width: 3.3rem;
+    text-decoration: none;
+    color: var(--white);
+
+}
+
+.sign_in_out:hover {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.sign_in_out:active {
+    color: black;
+}
+
+.sign_in_out:hover {
+    cursor: pointer;
+}
+
+.sign_up {
+    display: flex;
+    align-content: flex-end;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    border-radius: 6px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .65rem;
+    font-size: 1rem;
+    height: 2.2rem;
+    width: 5rem;
+    min-width: 5rem;
+    background: rgba(0, 0, 0, 0.04);
+    color: white;
+    border: .5px solid white;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.sign_up:hover {
+    color: var(--gray);
+    background-color:  var(--white);
+    outline: .5;
+    cursor: pointer;
+}
+
+.sign_up:active {
+    color: black;
+}
+
+.avatarDiv{
+    order: 3;
+    display: flex;
+}
+
+.avatar {
+    order: 3;
+    display: flex;
+    height: 2.2rem;
+    width: 2.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    align-items: center;
+}
+
+/*========== Media Queries ==========*/
+
+/* Devices under 1011px */
+@media (max-width: 1011px) {
+    .sign_up {
+        order: 1;
+        margin: 0rem;
+        padding-top: .3rem;
+        padding-bottom: .3rem;
+        padding-left: .55rem;
+        font-size: .8rem;
+        height: 1.76rem;
+        width: 4rem;
+        min-width: 4rem;
+    }
+
+    .Logo {
+        order: 2;
+        display: flex;
+        align-content: center;
+        margin: auto;
+    }
+    
+    /*========== Media Queries ===Not Used===*/
+    .software {
+        display: none;
+    }
+
+    .explore {
+        display: none;
+    }
+
+    .spacer {
+        display: none;
+    }
+
+    ::placeholder {
+        display: none;
+    }
+
+    .sign_in_out {
+        display: none;
+    }
+
+}
