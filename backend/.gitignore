@@ -1,4 +1,3 @@
-.gitignore file:
 .venv 
 .env 
 *.pyc files 
