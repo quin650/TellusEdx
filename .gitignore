@@ -4,6 +4,7 @@
 *.db.sqlite3
 *__pycache__/
 *.pyc
+*.vscode
 
 # misc
 *.DS_Store
