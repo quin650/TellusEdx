@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'frontend.apps.FrontendConfig',
-    'frnt.apps.FrntConfig',
+    'aa_frnt.apps.FrntConfig',
     'rest_framework',
     'corsheaders',
     'accounts',
@@ -94,7 +93,7 @@ WSGI_APPLICATION = 'aa_django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'session_auth',
+        'NAME': 'tellused',
         'USER': 'postgres',
         'PASSWORD': os.environ["pgpassword"],
         'HOST': 'localhost',

@@ -36,7 +36,6 @@ export const checkAuthenticated = () => {
         };
     };
 };
-
 export const register = (username, password, re_password) => {
     return async (dispatch) => {
         
@@ -57,7 +56,8 @@ export const register = (username, password, re_password) => {
 
         try {
             const res = await registerData();
-
+            console.log('res: ');
+            console.log(res);
             if (res.data.error) {
                 console.log('REGISTER_FAIL-1');
                 dispatch(userActions.registerFail());
@@ -71,7 +71,6 @@ export const register = (username, password, re_password) => {
         };
     };
 };
-
 export const login = (username, password) => {
     return async (dispatch) => {
 
@@ -108,7 +107,6 @@ export const login = (username, password) => {
         };
     };
 };
-
 export const logout = () => {
     return async (dispatch) => {
         const config = {
@@ -142,7 +140,6 @@ export const logout = () => {
         };  
     };
 };
-
 export const delete_account = () => {
     return async (dispatch) => {
         const config = {

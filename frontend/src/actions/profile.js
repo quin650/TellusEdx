@@ -92,11 +92,14 @@ export const update_note = (note_place_id, note_tags, note)  => {
 
         try {
             const res = await update_note();
-
-            if ( res.data.note && res.data.username){
+            console.log('notes res');
+            console.log(res.data.notes);
+            if ( res.data.notes && res.data.username){
                 console.log('UPDATE_USER_PROFILE_NOTES_SUCCESS');
                 dispatch(profActions.updateUserProfileNotesSuccess(res.data));
             } else {
+                console.log('notes res');
+                console.log(res.data);
                 console.log('UPDATE_USER_PROFILE_NOTES_FAIL-1');
                 dispatch(profActions.updateUserProfileNotesFail());
             }
