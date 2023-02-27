@@ -24,6 +24,7 @@ class CheckAuthenticatedView(APIView):
 
 @method_decorator(csrf_protect, name='dispatch')
 class SignupView(APIView):
+    print('1')
     permission_classes = (permissions.AllowAny, )
 
     def post(self, request, format=None):
