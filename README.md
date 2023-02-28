@@ -4,7 +4,7 @@
 
 ## 📚 Overview
 
-[TellusEd](https://tellused.com/) is a note taking app that allows you to also share how you think the teaching resource can be improved and taught. You tell us by sharing your "improved" version of the section of the teaching resource.
+[TellusEd](https://tellused.com/) is a note taking app that allows you to also share how you think some learning material can be improved and taught. You tell us by sharing your "improved" version of "that" section you believe you can improve.
 
 ## 📔 Project Wiki
 
@@ -40,6 +40,7 @@
 ```
 https://github.com/quin650/TellusEd.git
 ```
+
 2. Create python Virtual Environment and activate:
 
 ```
@@ -47,12 +48,14 @@ cd backend
 python -m venv .venv
 source .venv/bin/activate
 ```
+
 3. Install backend packages:
 
 ```
 pip install --requirements.txt
 
 ```
+
 4. Install frontend packages:
 
 ```
@@ -66,6 +69,7 @@ npm install
 cd ..
 touch .env
 ```
+
 6. and add:
 
 ```
@@ -93,6 +97,7 @@ to quit, run:
 ```
 python manage.py migrate
 ```
+
 8. Run the frontend server
 
 ```
@@ -100,6 +105,7 @@ npm start
 npm run build
 npm run dev
 ```
+
 9. Run the backend server
 
 ```
