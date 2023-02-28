@@ -53,7 +53,6 @@ source .venv/bin/activate
 
 ```
 pip install --requirements.txt
-
 ```
 
 4. Install frontend packages:
@@ -80,21 +79,23 @@ DATABASE_URL=sqlite:///dev.db
 7. create database
 
 ```
-open terminal
-run commands:
+open terminal & run commands:
    % psql postgres
    postgres=# CREATE DATABASE tellused OWNER postgres;
+
 set password (required in django settings setup)
    postgres=#\password
    postgres=# enter password
    postgres=# enter password again
+
 to quit, run:
    postgres=#\q
 ```
 
-7. cd backend and migrate seed files:
+7. migrate seed files:
 
 ```
+cd backend
 python manage.py migrate
 ```
 
