@@ -1,8 +1,12 @@
-[TellusEd](https://tellused.com/) is an educational platform the thrives on open education resources and your Telling Us, Teaching Us.
+# [TellusEd](https://tellused.com/)
 
 <br>
 
-## Project Wiki
+## 📚 Overview
+
+[TellusEd](https://tellused.com/) is a note taking app that allows you to also share how you think the teaching resource can be improved and taught. You tell us by sharing your "improved" version of the section of the teaching resource.
+
+## 📔 Project Wiki
 
 - [Design UI Desktop](https://github.com/quin650/TellusEd/wiki/Design-UI--Desktop)
 - [Design UI Mobile](https://github.com/quin650/TellusEd/wiki/Design-UI--Mobile)
@@ -11,45 +15,44 @@
 - [Database Schema](https://github.com/quin650/TellusEd/wiki/Database-Schema)
 - [Redux Store Shape](https://github.com/quin650/TellusEd/wiki/Redux-Toolkit-Store)
 
-## Built Using
+## 💾 Install
 
 ### Frontend
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?logo=react&style=flat&logoColor=%2361DAFB)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?logo=javascript&style=flat&logoColor=%23F7DF1E)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?logo=redux&style=flat&logoColor=white)
 
 ### Backend
 
-![Python](https://img.shields.io/badge/python⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀-376c99?style=for-the-badge&logo=python&logoColor=f7d34b)
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+[![Python](https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=flat)](https://www.djangoproject.com/)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?logo=postgresql&style=flat&logoColor=white)
 
 ### Host
 
-![Render](https://img.shields.io/badge/render-%4351e8.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Render](https://img.shields.io/badge/render-%4351e8.svg?logo=sqlite&style=flat&logoColor=white)
 
-# Getting Started
+## ⚒️ Getting Started
 
 1. Clone the repo:
 
 ```
 https://github.com/quin650/TellusEd.git
 ```
-
-2. Create python Virtual Environment:
+2. Create python Virtual Environment and activate:
 
 ```
 cd backend
 python -m venv .venv
+source .venv/bin/activate
 ```
-
 3. Install backend packages:
 
 ```
 pip install --requirements.txt
 
 ```
-
 4. Install frontend packages:
 
 ```
@@ -63,7 +66,6 @@ npm install
 cd ..
 touch .env
 ```
-
 6. and add:
 
 ```
@@ -71,26 +73,41 @@ SECRET_KEY=<<Password of your choosing>>
 DATABASE_URL=sqlite:///dev.db
 ```
 
-7. Enter the shell, then Migrate and seed files:
+7. create database
 
 ```
-pipenv shell
-flask db init
-flask db migrate
-flask db upgrade
-flask seed all
+open terminal
+run commands:
+   % psql postgres
+   postgres=# CREATE DATABASE tellused OWNER postgres;
+set password (required in django settings setup)
+   postgres=#\password
+   postgres=# enter password
+   postgres=# enter password again
+to quit, run:
+   postgres=#\q
 ```
 
-5. Run the server
+7. cd backend and migrate seed files:
 
 ```
-flask run
-cd react-app
+python manage.py migrate
+```
+8. Run the frontend server
+
+```
 npm start
+npm run build
+npm run dev
+```
+9. Run the backend server
+
+```
+python manage.py runserver
 ```
 
-6. Navigate to local site in browser
+10. Navigate to local site in browser
 
 ```
-http://localhost:3000/
+http://localhost:8000/
 ```
