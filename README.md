@@ -5,9 +5,10 @@
 ## 📚 Overview
 
 [TellusEd](https://tellused.com/) is not only a note taking app. <br />
-You can also teach!<br />
-While learning and taking notes, if you can improve how a section is taught, then please share!<br />
-Tell us/educate us by sharing your "improved" version of "that" learning section.<br />
+
+- You can also teach!<br />
+- While learning and taking notes, if you can improve how a section is taught, then please share!<br />
+- Tell us/educate us by sharing your "improved" version of "that" learning section.<br />
 
 ## 📔 Project Wiki
 
