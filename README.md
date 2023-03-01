@@ -4,8 +4,8 @@
 
 ## 📚 Overview
 
-[TellusEd](https://tellused.com/) is a note taking app. <br />
-The app also allows you to teach!<br />
+[TellusEd](https://tellused.com/) is not only a note taking app. <br />
+You can also teach!<br />
 While learning and taking notes, if you can improve how a section is taught, then please share!<br />
 Tell us/educate us by sharing your "improved" version of "that" learning section.<br />
 
