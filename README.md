@@ -4,7 +4,10 @@
 
 ## 📚 Overview
 
-[TellusEd](https://tellused.com/) is a note taking app that also allows you to share how you think certain learning material can be improved/taught. You tell us and educate us by sharing your "improved" version of "that" learning section.
+[TellusEd](https://tellused.com/) is a note taking app.
+The app also allows you to share learning material.
+While learning, if you can improve how a section is taught, then please share.
+Tell us/educate us by sharing your "improved" version of "that" learning section.
 
 ## 📔 Project Wiki
 
