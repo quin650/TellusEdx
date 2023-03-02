@@ -39,6 +39,8 @@
 
 ## ⚒️ Getting Started
 
+0. pre-requisites:
+   python 3.10.6
 1. Clone the repo:
 
 ```
