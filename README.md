@@ -39,8 +39,9 @@
 
 ## ⚒️ Getting Started
 
-0. pre-requisites:
+0. python version for this project:
    python 3.10.6
+
 1. Clone the repo:
 
 ```
@@ -58,7 +59,7 @@ source .venv/bin/activate
 3. Install backend packages:
 
 ```
-pip install --requirements.txt
+pip install -r requirements.txt
 ```
 
 4. Install frontend packages:
