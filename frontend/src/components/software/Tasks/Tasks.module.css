@@ -1,0 +1,18 @@
+.form_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+.form_containers {
+    width: 80%;
+    max-width: 590px;
+    margin: 1rem auto;
+    background-color: white;
+    border-radius: 9px;
+}
+
+.noContent {
+    text-align: center;
+}

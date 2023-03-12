@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import UserProfile, UserNotes
-from .serializers import UserProfileSerializer, UserNotesSerializer
+from .models import UserProfile, UserProfileTasks
+from .serializers import UserProfileSerializer, UserTasksSerializer
 
 class GetUserProfileView(APIView):
     def get(self, request, format=None):
@@ -37,35 +37,38 @@ class UpdateUserProfileView(APIView):
         except:
             return Response({ 'error': 'Something went wrong when updating profile' })
 
-class GetUserNotesView(APIView):
+class GetUserProfileTasksView(APIView):
     def get(self, request, format=None):
         try:
             user = self.request.user
             username = user.username
 
-            user_notes = UserNotes.objects.get(user=user)
-            user_notes = UserNotesSerializer(user_notes)
+            user_tasks = UserProfileTasks.objects.get(user=user)
+            user_tasks = UserTasksSerializer(user_tasks)
 
-            return Response({ 'notes': user_notes.data, 'username': str(username) })
+            return Response({ 'tasks': user_tasks.data, 'username': str(username) })
         except:
-            return Response({ 'error': 'Something went wrong when retrieving user notes' })
+            return Response({ 'error': 'Something went wrong when retrieving user tasks' })
 
-class UpdateUserProfileNotes(APIView):
+class UpdateUserProfileTasks(APIView):
     def put(self, request, format=None):
         try:
             user = self.request.user
             username = user.username
 
             data = self.request.data
-            note_place_id = data['note_place_id']
-            note_tags = data['note_tags']
-            note = data['note']
+            task_title = data['task_title']
+            task_description = data['task_description']
+            task_tags = data['task_tags']
+            task_order = data['task_order']
+            task_priority_level = data['task_priority_level']
+            task_links = data['task_links']
 
-            UserNotes.objects.filter(user=user).update(note_place_id=note_place_id, note_tags=note_tags, note=note)
+            UserProfileTasks.objects.filter(user=user).update(task_title=task_title, task_description=task_description, task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links)
 
-            user_notes = UserNotes.objects.get(user=user)
-            user_notes = UserNotesSerializer(user_notes)
+            user_tasks = UserProfileTasks.objects.get(user=user)
+            user_tasks = UserTasksSerializer(user_tasks)
 
-            return Response({ 'notes': user_notes.data, 'username': str(username) })
+            return Response({ 'tasks': user_tasks.data, 'username': str(username) })
         except:
-            return Response({ 'error': 'Something went wrong when updating user notes' })
+            return Response({ 'error': 'Something went wrong when updating user tasks' })

@@ -1,6 +1,6 @@
 import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { update_profile } from "../../actions/profile";
+import { update_user_profile } from "../../actions/profile";
 import { delete_account } from "../../actions/auth";
 
 import classes from './dashboard.module.css';
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(update_profile(first_name, last_name, phone, city));
+        dispatch(update_user_profile(first_name, last_name, phone, city));
     };
 
 

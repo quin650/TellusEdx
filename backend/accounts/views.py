@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import permissions
 from django.contrib import auth
 from rest_framework.response import Response
-from user_profile.models import UserProfile, UserNotes
+from user_profile.models import UserProfile, UserProfileTasks
 from .serializers import UserSerializer
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
@@ -23,8 +23,7 @@ class CheckAuthenticatedView(APIView):
             return Response({ 'error': 'Something went wrong when checking authentication status' })
 
 @method_decorator(csrf_protect, name='dispatch')
-class SignupView(APIView):
-    print('1')
+class RegisterView(APIView):
     permission_classes = (permissions.AllowAny, )
 
     def post(self, request, format=None):
@@ -35,19 +34,21 @@ class SignupView(APIView):
         re_password = data['re_password']
         try:
             if password == re_password:
-
                 if User.objects.filter(username=username).exists():
                     return Response({'error': 'Username already exists'})
                 else:
-                    if len(password) < 6:
-                        return Response({'error': 'Password must be at least 6 characters'})
+                    if len(password) < 1:
+                        return Response({'error': 'Password must be at least 1 characters'})
                     else: 
+                        print('0')
                         user = User.objects.create_user(username=username, password=password)
                         user = User.objects.get(id=user.id)
+                        print('1')
                         user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', city='')
-                        user_notes = UserNotes.objects.create(user=user, note_place_id='', note_tags='', note='')
+                        print('2')
+                        user_profile_tasks = UserProfileTasks.objects.create(user=user, task_title='', task_description='', task_tags='', task_order=0, task_priority_level='', task_links='')
+                        print('3')
                         return Response({'success': 'User created successfully'})
-            
             else:
                 return Response({'error': 'Passwords do not match'})
         except:
