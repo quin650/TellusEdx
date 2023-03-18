@@ -6,9 +6,6 @@ const initialState = {
     last_name: '',
     phone: '',
     city: '',
-    note_place_id: '',
-    note_tags: '',
-    note: '',
 };
 
 const profSlice = createSlice({
@@ -37,15 +34,6 @@ const profSlice = createSlice({
             state.city = '';
 		},
         updateUserProfileFail(state) {
-			state;
-		},
-        updateUserProfileNotesSuccess(state, action) {
-			state.username = action.payload.username;
-            state.note_place_id = action.payload.profile.note_place_id;
-            state.note_tags = action.payload.profile.note_tags;
-            state.note = action.payload.profile.note;
-		},
-        updateUserProfileNotesFail(state) {
 			state;
 		},
 	},

@@ -8,7 +8,8 @@ import Explore from './components/pages/explore/Explore';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import { checkAuthenticated } from './actions/auth';
-import { load_user } from './actions/profile';
+import { load_user_profile } from './actions/profile';
+import { load_user_profile_tasks } from './actions/profile';
 import { useDispatch } from 'react-redux';
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(checkAuthenticated());
-        load_user();
+        dispatch(load_user_profile());
+        dispatch(load_user_profile_tasks());
     }, []);
 
     return (

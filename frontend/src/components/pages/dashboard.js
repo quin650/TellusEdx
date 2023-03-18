@@ -17,7 +17,6 @@ const Dashboard = () => {
         last_name:'',
         phone:'',
         city:''
-        
     });
 
     const { first_name, last_name, phone, city } = formData;
@@ -37,7 +36,6 @@ const Dashboard = () => {
         e.preventDefault();
         dispatch(update_user_profile(first_name, last_name, phone, city));
     };
-
 
     return (
         <div className={classes.main}>

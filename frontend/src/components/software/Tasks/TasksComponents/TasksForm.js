@@ -1,65 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux"; 
+import { tasksActions } from "../../../../reducers/tasks";
 import AddTaskButton from "./TasksUI/AddTaskButton";
 import classes from './TasksForm.module.css';
 
-const TaskForm = props => {
-    const [enteredTask, setEnteredTask] = useState('');
-    const [enteredPriority, SetEnteredPriority] = useState('');
-    const [isValid, SetIsValid] = useState(true);
-    const taskInputChangeHandler = event => {setEnteredTask(event.target.value);};
-    const taskPriorityChangeHandler = event => {SetEnteredPriority(event.target.value);};
-    const Task = enteredTask;
-    const Priority = enteredPriority;
+const TaskForm = () => {
+    const isValid = useState(true)
+    const dispatch = useDispatch();
+    const task_title = useRef('');
+    const task_description = useRef('');
+    const task_tags = useRef('');
+    const task_order = useRef('');
+    const task_priority_level = useRef('');
+    const task_links = useRef('');
+    const task_due_date = useRef('');
 
-    //If any of this logic results in a false, the form does not submit 
-    // console.log('If any of this logic results in a false, the form does not submit')
-    // console.log((Task.length === 0) + '   [NAME is blank]');
-    // console.log((Priority.length === 0) + '    [AGE is  blank]');
-    // console.log((Math.sign(Priority) !== -1) + '   [AGE is not a negative number]');
-    // console.log((isNaN(Task[0]) === true) + '   [NAME does not start with a number]');
-    // console.log(!isNaN(Priority) + '   [AGE is a number]');
-    const formSubmitHandler = event => {
+    function submitHandler(event) {
         event.preventDefault();
-        if (
-            (Task.length !== 0)                     /* NAME is not blank */
-            && (Priority.length !== 0)              /* AGE is not blank */
-            && (Number(Priority) !== 0)             /* AGE is not zero */
-            && (Math.sign(Priority) !== -1)         /* AGE is not a negative number */
-            && (isNaN(Task[0]) === true)            /* NAME does not start with a number */
-            && (!isNaN(Priority))                   /* AGE is a number  */
-        ) {
-            SetIsValid(true);
-            props.onAddTask(Task, Priority);
-            props.onAddInfo(Task, Priority);
-            props.onErrorCheck('NoError');
-        } else {
-            SetIsValid(false);
-            props.onAddInfo(Task, Priority);
-            props.onErrorCheck('Error');
+        const tasks = {
+            task_title: task_title.current.value,
+            task_description: task_description.current.value,
+            task_tags: task_tags.current.value,
+            task_order: task_order.current.value,
+            task_priority_level: task_priority_level.current.value,
+            task_links: task_links.current.value,
+            task_due_date: task_due_date.current.value
         }
+        console.log('console.log');
+        console.log(tasks);
+
+        dispatch(tasksActions.addTask(tasks));
     };
 
     return (
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={submitHandler}>
             <div className={classes.inputForm_container}>
                 <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
-                    <label> TaskName </label>
+                    <label> Task Title </label>
                     <input
-                        type="text"
-                        onChange={taskInputChangeHandler}
+                        type='text'
+                        name='task_title'
+                        ref={task_title}
                     />
                 </section>
                 <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
-                    <label> Priority (1-5) </label>
+                    <label> Task Description </label>
                     <input
-                        type="text"
-                        max="100"
-                        onChange={taskPriorityChangeHandler}
+                        type='text'
+                        name='task_description'
+                        ref={task_description}
                     />
+                </section>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                    <label> Task Tags </label>
+                    <input
+                        type='text'
+                        name='task_tags'
+                        ref={task_tags}
+                    />
+                </section>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                    <label> Task Order </label>
+                    <input
+                        type='text'
+                        name='task_order'
+                        ref={task_order}
+                    />
+                </section>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                    <label> Task Priority Level </label>
+                    <input
+                        type='text'
+                        name='task_priority_level'
+                        ref={task_priority_level}
+                    />
+                </section>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                    <label> Task Links </label>
+                    <input
+                        type='text'
+                        name='task_links'
+                        ref={task_links}
+                    />
+                </section>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                    <label> Task Due Date </label>
+                    <input
+                        type='text'
+                        name='task_due_date'
+                        ref={task_due_date}
+                    />
+                </section>
                     <div className={classes["input_button__section"]}>
                         <AddTaskButton />
                     </div>
-                </section>
             </div>
         </form >
     );

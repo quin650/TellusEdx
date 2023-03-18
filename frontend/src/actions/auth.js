@@ -36,7 +36,7 @@ export const checkAuthenticated = () => {
         };
     };
 };
-export const register = (username, password, re_password) => {
+export const register = (username, password, re_password) => { 
     return async (dispatch) => {
         
         const config = {
