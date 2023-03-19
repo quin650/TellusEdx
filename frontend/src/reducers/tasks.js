@@ -4,7 +4,6 @@ const initialState = {
     count: 0,
     tasks: [],
 };
-
 const todoSlice = createSlice({
 	name: 'todo',
 	initialState,
@@ -18,14 +17,17 @@ reducers: {
             task_order: action.payload.task_order,
             task_priority_level: action.payload.task_priority_level,
             task_links: action.payload.task_links,
-            task_due_date: action.payload.task_due_date
-        };
+            // task_due_date: action.payload.task_due_date
+            };
         state.tasks.push(todo);
         state.count += 1;
-    },
+        },
     removeTask: (state, action) => {
         state.tasks = state.tasks.filter(task => task.id !== action.payload);
         state.count -= 1;
+        },
+    updateUserProfileTasksFail(state) {
+        state;
         },
     },
 });

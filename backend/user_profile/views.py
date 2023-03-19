@@ -19,7 +19,6 @@ class GetUserProfileView(APIView):
             return Response({ 'profile': user_profile.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving profile' })
-            
 class UpdateUserProfileView(APIView):
     def put(self, request, format=None):
         try:
@@ -40,7 +39,6 @@ class UpdateUserProfileView(APIView):
             return Response({ 'profile': user_profile.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when updating profile' })
-
 class GetUserProfileTasksView(APIView):
     def get(self, request, format=None):
         try:
@@ -53,7 +51,6 @@ class GetUserProfileTasksView(APIView):
             return Response({ 'tasks': user_tasks.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving user tasks' })
-
 class UpdateUserProfileTasks(APIView):
 
     def put(self, request, format=None):
@@ -77,7 +74,6 @@ class UpdateUserProfileTasks(APIView):
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when updating user tasks' })
-        
 @method_decorator(csrf_protect, name='dispatch')
 class CreateUserProfileTaskView(APIView):
     permission_classes = (permissions.AllowAny, )
@@ -92,15 +88,25 @@ class CreateUserProfileTaskView(APIView):
         task_order = data['task_order']
         task_priority_level = data['task_priority_level']
         task_links = data['task_links']
+        # task_due_date = data['task_due_date']
+        print('user: ', user)
+        print('username: ', username)
+        print('task_title: ', task_title)
+        print('task_description: ', task_description)
+        print('task_tags:', task_tags )
+        print('task_order:', task_order )
+        print('task_priority_level:', task_priority_level )
+        print('task_links:', task_links )
+        
+
 
         try:
-            if len(task_title) < 1:
-                return Response({'error': 'Task title cannot be empty'})
-            else: 
-                user_profile_tasks = UserProfileTasks.objects.create(user=user,task_title=task_title, task_description=task_description, task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links)
-                user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-                return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
-
+            print('1')
+            user_profile_tasks = UserProfileTasks.objects.create(user=user,task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links)
+            print('2')
+            user_profile_tasks = UserTasksSerializer(user_profile_tasks)
+            print('user_profile_tasks.data: ', user_profile_tasks)
+            print('user_profile_tasks.data: ', user_profile_tasks.data)
+            return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
                 return Response({'error': 'Something went wrong when creating task'})
-    

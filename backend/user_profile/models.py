@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.first_name
 class UserProfileTasks(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,  blank=True, null=True, on_delete=models.SET_NULL)
     task_title = models.CharField(max_length=255, default='')
     task_description = models.CharField(max_length=255, default='')
     task_tags = models.CharField(max_length=255, default='')
