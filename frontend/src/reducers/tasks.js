@@ -5,21 +5,23 @@ const initialState = {
     tasks: [],
 };
 const todoSlice = createSlice({
-	name: 'todo',
+	name: 'task',
 	initialState,
 reducers: {
     addTask: (state, action) => {
-        const todo = {
+        const task = {
             id: Math.random().toString(),
-            task_title: action.payload.task_title,
-            task_description: action.payload.task_description,
-            task_tags: action.payload.task_tags,
-            task_order: action.payload.task_order,
-            task_priority_level: action.payload.task_priority_level,
-            task_links: action.payload.task_links,
+            task_title: action.payload.tasks.task_title,
+            task_description: action.payload.tasks.task_description,
+            task_tags: action.payload.tasks.task_tags,
+            task_order: action.payload.tasks.task_order,
+            task_priority_level: action.payload.tasks.task_priority_level,
+            task_links: action.payload.tasks.task_links,
             // task_due_date: action.payload.task_due_date
             };
-        state.tasks.push(todo);
+        console.log('action.payload: ', action.payload.tasks)
+        console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+        state.tasks.push(task);
         state.count += 1;
         },
     removeTask: (state, action) => {

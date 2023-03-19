@@ -172,9 +172,6 @@ export const create_user_profile_tasks = (data) => {
         try {
             const res = await createTask();
             console.log('res: ', res);
-
-
-            
             console.log('res tasks: ', res.data.tasks);
             if ( res.data.tasks && res.data.username){
                 console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS');
