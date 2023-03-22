@@ -10,7 +10,7 @@ const Tasks = () =>{
             < TaskForm />
         </div>
         <div className={classes.form_containers}>
-            <TasksList/>
+            {/* <TasksList/> */}
         </div>
     </div>
     );

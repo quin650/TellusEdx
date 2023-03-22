@@ -8,7 +8,6 @@ const TasksListItem = props => {
     const remove = (id) => {
         dispatch(tasksActions.removeTask(props.id))
     }
-    
 
     return (
         <div className={classes.task_container} onClick={e => remove(e)}>

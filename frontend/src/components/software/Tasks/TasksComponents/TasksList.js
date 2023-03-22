@@ -5,8 +5,8 @@ import classes from './TasksList.module.css';
 
 const TasksList = () => {
 
-const tasks = useSelector(state => state.todo.tasks);
-const count = useSelector(state => state.todo.count);
+const tasks = useSelector(state => state.task.tasks);
+const count = useSelector(state => state.task.count);
 
     return (
         <ul className={classes.tasks_container}>

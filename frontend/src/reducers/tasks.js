@@ -10,17 +10,17 @@ const todoSlice = createSlice({
 reducers: {
     addTask: (state, action) => {
         const task = {
-            id: Math.random().toString(),
+            task_id: action.payload.tasks.task_id,
             task_title: action.payload.tasks.task_title,
             task_description: action.payload.tasks.task_description,
             task_tags: action.payload.tasks.task_tags,
             task_order: action.payload.tasks.task_order,
             task_priority_level: action.payload.tasks.task_priority_level,
             task_links: action.payload.tasks.task_links,
-            // task_due_date: action.payload.task_due_date
+            task_due_date: action.payload.tasks.task_due_date
             };
-        console.log('action.payload: ', action.payload.tasks)
-        console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+        // console.log('action.payload: ', action.payload.tasks)
+        // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
         state.tasks.push(task);
         state.count += 1;
         },

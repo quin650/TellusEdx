@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .utils import custom_id
 import datetime
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -12,6 +13,7 @@ class UserProfile(models.Model):
         return self.first_name
 class UserProfileTasks(models.Model):
     user = models.ForeignKey(User,  blank=True, null=True, on_delete=models.SET_NULL)
+    task_id = models.CharField(primary_key=True, max_length=11, unique=True, default=custom_id)
     task_title = models.CharField(max_length=255, default='')
     task_description = models.CharField(max_length=255, default='')
     task_tags = models.CharField(max_length=255, default='')

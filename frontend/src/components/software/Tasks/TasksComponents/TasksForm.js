@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux"; 
-// import { tasksActions } from "../../../../reducers/tasks";
 import { create_user_profile_tasks } from "../../../../actions/profile";
 import AddTaskButton from "./TasksUI/AddTaskButton";
 import classes from './TasksForm.module.css';
@@ -8,31 +7,35 @@ import classes from './TasksForm.module.css';
 const TaskForm = () => {
     const isValid = useState(true)
     const dispatch = useDispatch();
+    let task_id = Math.random().toString().slice(2,11);
     const task_title = useRef('');
     const task_description = useRef('');
     const task_tags = useRef('');
     const task_order = useRef('');
     const task_priority_level = useRef('');
     const task_links = useRef('');
-    // const task_due_date = useRef('');
+    const task_due_date = useRef('');
 
     function submitHandler(event) {
         event.preventDefault();
+        // console.log('task_id: ', task_id)
+        
         const tasks = {
+            task_id: task_id,
             task_title: task_title.current.value,
             task_description: task_description.current.value,
             task_tags: task_tags.current.value,
             task_order: task_order.current.value,
             task_priority_level: task_priority_level.current.value,
             task_links: task_links.current.value,
-            // task_due_date: task_due_date.current.value
+            task_due_date: task_due_date.current.value
         }
-        console.log('tasks submitted via action', tasks);
-
-
-        // dispatch(tasksActions.addTask(tasks));
+        // console.log('tasks submitted via action', tasks);
         dispatch(create_user_profile_tasks(tasks));
     };
+
+    //Task Due Date: YYYY-MM-DD (Only accepted format)
+
 
     return (
         <form onSubmit={submitHandler}>
@@ -85,14 +88,14 @@ const TaskForm = () => {
                         ref={task_links}
                     />
                 </section>
-                {/* <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
+                <section className={`${classes['input_section']} ${!isValid && classes.invalid}`}>
                     <label> Task Due Date </label>
                     <input
                         type='text'
                         name='task_due_date'
                         ref={task_due_date}
                     />
-                </section> */}
+                </section>
                     <div className={classes["input_button__section"]}>
                         <AddTaskButton />
                     </div>

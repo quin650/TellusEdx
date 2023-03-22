@@ -6,7 +6,6 @@ from .models import UserProfile, UserProfileTasks
 from .serializers import UserProfileSerializer, UserTasksSerializer
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
-
 class GetUserProfileView(APIView):
     def get(self, request, format=None):
         try:
@@ -82,31 +81,31 @@ class CreateUserProfileTaskView(APIView):
         user = self.request.user
         username = user.username
         data = self.request.data
+        task_id = data['task_id']
         task_title = data['task_title']
         task_description = data['task_description']
         task_tags = data['task_tags']
         task_order = data['task_order']
         task_priority_level = data['task_priority_level']
         task_links = data['task_links']
-        # task_due_date = data['task_due_date']
-        print('user: ', user)
-        print('username: ', username)
-        print('task_title: ', task_title)
-        print('task_description: ', task_description)
-        print('task_tags:', task_tags )
-        print('task_order:', task_order )
-        print('task_priority_level:', task_priority_level )
-        print('task_links:', task_links )
-        
+        task_due_date = data['task_due_date']
 
+        # print('user: ', user)
+        # print('username: ', username)
+        # print('task_id: ', task_id)
+        # print('task_title: ', task_title)
+        # print('task_description: ', task_description)
+        # print('task_tags:', task_tags )
+        # print('task_order:', task_order )
+        # print('task_priority_level:', task_priority_level )
+        # print('task_links:', task_links )
+        # print('task_due_date: ', task_due_date)
 
         try:
-            print('1')
-            user_profile_tasks = UserProfileTasks.objects.create(user=user,task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links)
-            print('2')
+            user_profile_tasks = UserProfileTasks.objects.create(user=user, task_id=task_id, task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links, task_due_date=task_due_date)
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            print('user_profile_tasks.data: ', user_profile_tasks)
-            print('user_profile_tasks.data: ', user_profile_tasks.data)
+            # print('user_profile_tasks.data: ', user_profile_tasks)
+            # print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
                 return Response({'error': 'Something went wrong when creating task'})

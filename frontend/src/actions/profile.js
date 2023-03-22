@@ -102,7 +102,7 @@ export const load_user_profile_tasks = () => {
 
     };
 };
-export const update_user_profile_tasks = (task_title, task_description, task_tags, task_order, task_priority_level, task_links)  => {
+export const update_user_profile_tasks = (task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date)  => {
     return async (dispatch) => {
 
         const config = {
@@ -151,34 +151,39 @@ export const create_user_profile_tasks = (data) => {
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
+        let task_id = data['task_id']
         let task_title = data['task_title']
         let task_description = data['task_description']
         let task_tags = data['task_tags']
         let task_order = data['task_order']
         let task_priority_level = data['task_priority_level']
         let task_links = data['task_links']
-        console.log('task_title: ', task_title)
-        console.log('task_description: ', task_description)
-        console.log('task_tags:', task_tags )
-        console.log('task_order:', task_order )
-        console.log('task_priority_level:', task_priority_level )
-        console.log('task_links:', task_links )
+        let task_due_date = data['task_due_date']
 
-        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links});
+        // console.log('task_id: ', task_id)
+        // console.log('task_title: ', task_title)
+        // console.log('task_description: ', task_description)
+        // console.log('task_tags:', task_tags )
+        // console.log('task_order:', task_order )
+        // console.log('task_priority_level:', task_priority_level )
+        // console.log('task_links:', task_links )
+        // console.log('task_due_date:', task_due_date)
+
+        const body = JSON.stringify({ 'withCredentials': true, task_id, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date});
         const createTask = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/profile/create_user_profile_tasks`, body, config);
             return res;
         };
         try {
             const res = await createTask();
-            console.log('res: ', res);
-            console.log('res tasks: ', res.data.tasks);
+            // console.log('res: ', res);
+            // console.log('res tasks: ', res.data.tasks);
             if ( res.data.tasks && res.data.username){
                 console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS');
                 dispatch(tasksActions.addTask(res.data));
             } else {
-                console.log('tasks res');
-                console.log(res.data);
+                // console.log('tasks res.data');
+                // console.log(res.data);
                 console.log('UPDATE_USER_PROFILE_TASKS_FAIL-1');
                 dispatch(tasksActions.updateUserProfileTasksFail());
             }
@@ -189,3 +194,4 @@ export const create_user_profile_tasks = (data) => {
         };
     };
 };
+
