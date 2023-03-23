@@ -4,7 +4,7 @@ from .views import GetUserProfileView, UpdateUserProfileView, UpdateUserProfileT
 urlpatterns = [
     path('user_profile', GetUserProfileView.as_view()),
     path('update_user_profile', UpdateUserProfileView.as_view()),
-    path('user_profile_tasks', GetUserProfileTasksView.as_view()),
+    path('load_user_profile_tasks', GetUserProfileTasksView.as_view()),
     path('update_user_profile_tasks', UpdateUserProfileTasks.as_view()),
     path('create_user_profile_tasks', CreateUserProfileTaskView.as_view()),
 ]
