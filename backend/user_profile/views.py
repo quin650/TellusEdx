@@ -82,8 +82,8 @@ class GetUserProfileTasksView(APIView):
 
             user_profile_tasks = UserProfileTasks.objects.get(user=user)
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            print('user_profile_tasks: ', user_profile_tasks)
-            print('user_profile_tasks.data: ', user_profile_tasks.data)
+            # print('user_profile_tasks: ', user_profile_tasks)
+            # print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving user tasks' })

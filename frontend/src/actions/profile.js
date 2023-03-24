@@ -11,22 +11,18 @@ export const load_user_profile = () => {
                 'Content-Type': 'application/json',
             }
         };
-
         const loadUser = async () => {
             const res = await axios.get(`http://127.0.0.1:8000/profile/user_profile`, config);
             return res;
         };
-
         try {
             const res = await loadUser();
-
             if (res.data.error) {
                 console.log('LOAD_USER_PROFILE_FAIL');
                 dispatch(profActions.loadUserProfileFail());
             } else {
                 console.log('LOAD_USER_PROFILE_SUCCESS');
                 dispatch(profActions.loadUserProfileSuccess(res.data));
-                
             }
         } catch (err) {
             console.log('LOAD_USER_PROFILE_FAIL');
@@ -136,8 +132,8 @@ export const load_user_profile_tasks = () => {
         };
         try {
             const res = await loadUser();
-            console.log('res: ', res);
-            console.log('res.data: ', res.data);
+            // console.log('res: ', res);
+            // console.log('res.data: ', res.data);
             console.log('res.data.tasks: ', res.data.tasks)
             if (res.data.error) {
                 console.log('LOAD_USER_PROFILE_TASKS_FAIL');
@@ -175,8 +171,8 @@ export const update_user_profile_tasks = (task_title, task_description, task_tag
 
         try {
             const res = await updateTasks();
-            console.log('tasks res');
-            console.log(res.data.tasks);
+            // console.log('tasks res');
+            // console.log(res.data.tasks);
             if ( res.data.tasks && res.data.username){
                 console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS');
                 dispatch(profTasksActions.updateUserProfileTasksSuccess(res.data));

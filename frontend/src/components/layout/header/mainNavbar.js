@@ -24,7 +24,8 @@ const MainNavbar = () => {
 
     const authLinks = (
         <Fragment>
-                <a onClick={LogoutHandler} href='#!' className={classes.sign_in_out}>Log-Out</a>
+                {/* <a onClick={LogoutHandler} href='#!' className={classes.sign_in_out}>Log-Out</a> */}
+                <a onClick={LogoutHandler} className={classes.sign_in_out}>Log-Out</a>
                 <div className={classes.avatarDiv}><img src={defaultPNG} className={classes.avatar} alt='Avatar'></img></div>
         </Fragment>
     )
