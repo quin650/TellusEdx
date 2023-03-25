@@ -10,17 +10,14 @@ import Login from './components/pages/login';
 import { checkAuthenticated } from './actions/auth';
 import { load_user_profile } from './actions/profile';
 import { load_user_profile_tasks } from './actions/profile';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useDispatch} from 'react-redux';
 function App() {
-    const { isAuthenticated } = useSelector(state => state.user);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(checkAuthenticated());
         dispatch(load_user_profile());
         dispatch(load_user_profile_tasks());
-    }, [isAuthenticated]);
-
+    }, []);
     return (
         <Fragment>
             <header>
@@ -42,5 +39,4 @@ function App() {
         </Fragment>
     );
 };
-
 export default App;

@@ -126,32 +126,31 @@ export const load_user_profile_tasks = () => {
                 'Content-Type': 'application/json',
             }
         };
-        const loadUser = async () => {
+        const loadTasks = async () => {
             const res = await axios.get(`http://127.0.0.1:8000/profile/load_user_profile_tasks`, config);
             return res;
         };
         try {
-            const res = await loadUser();
-            // console.log('res: ', res);
-            // console.log('res.data: ', res.data);
+            const res = await loadTasks();
+            console.log('res: ', res);
+            console.log('res.data: ', res.data);
             console.log('res.data.tasks: ', res.data.tasks)
             if (res.data.error) {
                 console.log('LOAD_USER_PROFILE_TASKS_FAIL');
-                dispatch(tasksActions.loadUserProfileTasksFail());
+                dispatch(tasksActions.loadTasksFail());
             } else {
                 console.log('LOAD_USER_PROFILE_TASKS_SUCCESS');
-                dispatch(tasksActions.loadUserProfileTasksSuccess(res.data));
+                dispatch(tasksActions.loadTasks(res.data));
                 
             }
         } catch (err) {
             console.log('LOAD_USER_PROFILE_TASKS_FAIL');
-            dispatch(tasksActions.loadUserProfileTasksFail());
+            dispatch(tasksActions.loadTasksFail());
         };
     };
 };
 export const update_user_profile_tasks = (task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date)  => {
     return async (dispatch) => {
-
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -159,33 +158,30 @@ export const update_user_profile_tasks = (task_title, task_description, task_tag
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-
         const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links});
-
         const updateTasks = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile_tasks`, body, config)
             // console.log('res data: ', res.data);
             // console.log('res data tasks: ', res.data.tasks);
             return res;
         };
-
         try {
             const res = await updateTasks();
             // console.log('tasks res');
             // console.log(res.data.tasks);
             if ( res.data.tasks && res.data.username){
                 console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS');
-                dispatch(profTasksActions.updateUserProfileTasksSuccess(res.data));
+                dispatch(profTasksActions.updateTasksSuccess(res.data));
             } else {
                 console.log('tasks res');
                 console.log(res.data);
                 console.log('UPDATE_USER_PROFILE_TASKS_FAIL-1');
-                dispatch(profTasksActions.updateUserProfileTasksFail());
+                dispatch(profTasksActions.loadTasksFail());
             }
         } catch (err) {
             console.log(err);
             console.log('UPDATE_USER_PROFILE_TASKS_FAIL-2');
-            dispatch(profTasksActions.updateUserProfileTasksFail());
+            dispatch(profTasksActions.loadTasksFail());
         };
     };
 };

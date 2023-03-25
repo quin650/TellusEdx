@@ -79,16 +79,16 @@ class GetUserProfileTasksView(APIView):
         try:
             user = self.request.user
             username = user.username
-
-            user_profile_tasks = UserProfileTasks.objects.get(user=user)
-            user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            # print('user_profile_tasks: ', user_profile_tasks)
-            # print('user_profile_tasks.data: ', user_profile_tasks.data)
+            # user_profile_tasks = UserProfileTasks.objects.get(user=user) ---> The code is currently using the get() method, which returns a single object matching the query parameters. Instead use .filter()
+            user_profile_tasks = UserProfileTasks.objects.filter(user=user)
+            # Adding the many=True parameter to the serializer to indicate that we are serializing multiple objects, not just one.
+            user_profile_tasks = UserTasksSerializer(user_profile_tasks, many=True)
+            print('user_profile_tasks: ', user_profile_tasks)
+            print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving user tasks' })
 class UpdateUserProfileTasks(APIView):
-
     def put(self, request, format=None):
         try:
             user = self.request.user

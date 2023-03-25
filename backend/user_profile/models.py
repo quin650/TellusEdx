@@ -8,7 +8,6 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=255, default='')
     phone = models.CharField(max_length=20, default='')
     city = models.CharField(max_length=20, default='')
-
     def __str__(self):
         return self.first_name
 class UserProfileTasks(models.Model):
@@ -23,6 +22,5 @@ class UserProfileTasks(models.Model):
     task_created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=True)
     task_updated_at = models.DateTimeField(auto_now_add=False, auto_now=True, blank=True)
     task_due_date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
-
     def __str__(self):
         return self.task_title

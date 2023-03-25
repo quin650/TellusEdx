@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 const initialState = {
     count: 0,
     tasks: [],
@@ -24,20 +23,22 @@ const taskSlice = createSlice({
             state.tasks.push(task);
             state.count += 1;
         },
+        loadTasks(state, action) {
+            console.log('action.payload: ', action.payload.tasks)
+            console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+            state.tasks.push(action.payload.tasks);
+        },
         removeTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
             state.count -= 1;
         },
-        loadUserProfileTasksSuccess(state, action) {
-            state.tasks.push(action.payload.tasks);
-        },
-        updateUserProfileTasksSuccess(state, action) {
+        loadTasksFail(state) {
             state;
         },
-        loadUserProfileTasksFail(state) {
+        updateTasksSuccess(state) {
             state;
         },
-        updateUserProfileTasksFail(state) {
+        updateTasksFail(state) {
             state;
         },
     },
