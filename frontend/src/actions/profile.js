@@ -132,9 +132,9 @@ export const load_user_profile_tasks = () => {
         };
         try {
             const res = await loadTasks();
-            console.log('res: ', res);
+            // console.log('res: ', res);
             console.log('res.data: ', res.data);
-            console.log('res.data.tasks: ', res.data.tasks)
+            // console.log('res.data.tasks: ', res.data.tasks)
             if (res.data.error) {
                 console.log('LOAD_USER_PROFILE_TASKS_FAIL');
                 dispatch(tasksActions.loadTasksFail());

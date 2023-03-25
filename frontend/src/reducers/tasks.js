@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-    count: 0,
+    // count: 0,
     tasks: [],
 };
 const taskSlice = createSlice({
@@ -21,16 +21,16 @@ const taskSlice = createSlice({
             // console.log('action.payload: ', action.payload.tasks)
             // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
             state.tasks.push(task);
-            state.count += 1;
+            // state.count += 1;
         },
         loadTasks(state, action) {
-            console.log('action.payload: ', action.payload.tasks)
-            console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+            // console.log('action.payload: ', action.payload.tasks)
+            // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
             state.tasks.push(action.payload.tasks);
         },
         removeTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
-            state.count -= 1;
+            // state.count -= 1;
         },
         loadTasksFail(state) {
             state;
