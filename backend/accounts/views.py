@@ -89,7 +89,6 @@ class DeleteAccountView(APIView):
 
         try:
             User.objects.filter(id = user.id).delete()
-
             return Response({ 'success': 'User delete successfully'})
         except:
             return Response({ 'error': 'Something went wrong when trying to delete user'})

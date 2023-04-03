@@ -6,9 +6,9 @@ import classes from './TasksList.module.css';
 const TasksList = () => {
 
 const tasks = useSelector(state => state.task.tasks);
-console.log('tasks: ', tasks)
+// console.log('tasks: ', tasks)
 const tasksListIsEmpty = tasks.length == 0;
-console.log('tasksListIsEmpty: ', tasksListIsEmpty)
+// console.log('tasksListIsEmpty: ', tasksListIsEmpty)
 
     return (
         <ul className={classes.tasks_container}>
@@ -18,6 +18,7 @@ console.log('tasksListIsEmpty: ', tasksListIsEmpty)
                     key={task.task_id}
                     id={task.task_id}
                     task_title={task.task_title}
+                    user={task.user}
                 >
                     <div>
                         <div className={classes.task_name__section}>

@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux"; 
-import { tasksActions } from "../../../../reducers/tasks";
+import { delete_user_profile_task } from "../../../../actions/profile";
 import classes from './TasksListItem.module.css';
 
 const TasksListItem = props => {
     const dispatch = useDispatch();
-    const remove = (id) => {
-        dispatch(tasksActions.removeTask(props.id))
+    const remove = () => {
+        dispatch(delete_user_profile_task(props.id))
     }
 
     return (

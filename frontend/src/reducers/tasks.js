@@ -28,9 +28,12 @@ const taskSlice = createSlice({
             // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
             state.tasks.push(action.payload.tasks);
         },
-        removeTask: (state, action) => {
+        deleteTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
             // state.count -= 1;
+        },
+        deleteTaskFail(state) {
+            state;
         },
         loadTasksFail(state) {
             state;

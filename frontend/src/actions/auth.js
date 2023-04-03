@@ -85,7 +85,9 @@ export const login = (username, password) => {
         const body = JSON.stringify({ username, password });
 
         const loginData = async () => {
+            console.log('config.headers', config.headers);
             const res = await axios.post(`http://127.0.0.1:8000/accounts/login`, body, config);
+            console.log('res: ', res)
             return res;
         };
 

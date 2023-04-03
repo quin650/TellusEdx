@@ -103,7 +103,7 @@ export const create_user_profile_tasks = (data) => {
             // console.log('res: ', res);
             // console.log('res tasks: ', res.data.tasks);
             if ( res.data.tasks && res.data.username){
-                console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS');
+                console.log('UPDATE_USER_PROFILE_TASKS_SUCCESS', res.data);
                 dispatch(tasksActions.addTask(res.data));
             } else {
                 // console.log('tasks res.data');
@@ -133,7 +133,9 @@ export const load_user_profile_tasks = () => {
         try {
             const res = await loadTasks();
             // console.log('res: ', res);
-            console.log('res.data: ', res.data);
+            // console.log('res.data: ', res.data);
+            // console.log('res.data.tasks[0]: ', res.data.tasks[0].task_id)
+            // console.log('res.data.tasks[0].task_id: ', typeof res.data.tasks[0].task_id)
             // console.log('res.data.tasks: ', res.data.tasks)
             if (res.data.error) {
                 console.log('LOAD_USER_PROFILE_TASKS_FAIL');
@@ -158,7 +160,7 @@ export const update_user_profile_tasks = (task_title, task_description, task_tag
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links});
+        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date});
         const updateTasks = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile_tasks`, body, config)
             // console.log('res data: ', res.data);
@@ -182,6 +184,30 @@ export const update_user_profile_tasks = (task_title, task_description, task_tag
             console.log(err);
             console.log('UPDATE_USER_PROFILE_TASKS_FAIL-2');
             dispatch(profTasksActions.loadTasksFail());
+        };
+    };
+};
+export const delete_user_profile_task = (task_id) => {
+    return async (dispatch) => {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({'withCredentials': true, task_id});
+        const deleteTasks = async () => {
+            const res = await axios.delete(`http://127.0.0.1:8000/profile/delete_user_profile_task`, { data: body, headers: config.headers })
+            return res;
+        };
+
+        try {
+            const res = await deleteTasks();
+            console.log("res: ", res)
+            dispatch(profTasksActions.loadUserProfileTasksFail());
+        } catch (err) {
+            console.log(err);
         };
     };
 };
