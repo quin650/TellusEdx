@@ -39,13 +39,7 @@ class RegisterView(APIView):
                         return Response({'error': 'Password must be at least 1 characters'})
                     else: 
                         print('0')
-                        user = User.objects.create_user(username=username, password=password)
-                        user = User.objects.get(id=user.id)
-                        print('1')
-                        user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', city='')
-                        print('2')
-                        user_profile_tasks = UserProfileTasks.objects.create(user=user, task_title='', task_description='', task_tags='', task_order=0, task_priority_level='', task_links='')
-                        print('3')
+                        User.objects.create_user(username=username, password=password)
                         return Response({'success': 'User created successfully'})
             else:
                 return Response({'error': 'Passwords do not match'})

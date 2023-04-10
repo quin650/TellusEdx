@@ -21,17 +21,17 @@ export const checkAuthenticated = () => {
             const res = await checkAuth();
 
             if (res.data.error || res.data.isAuthenticated === 'error') {
-                console.log('AUTHENTICATED_FAIL-1');
+                // console.log('AUTHENTICATED_FAIL-1');
                 dispatch(userActions.authFail());
             } else if (res.data.isAuthenticated === 'success') {
-                console.log('AUTHENTICATED_SUCCESS');
+                // console.log('AUTHENTICATED_SUCCESS');
                 dispatch(userActions.authSuccess());
             } else {
-                console.log('AUTHENTICATED_FAIL-2');
+                // console.log('AUTHENTICATED_FAIL-2');
                 dispatch(userActions.authFail());
             }
         } catch (err) {
-            console.log('AUTHENTICATED_FAIL-3');
+            // console.log('AUTHENTICATED_FAIL-3');
             dispatch(userActions.authFail());
         };
     };
@@ -56,13 +56,13 @@ export const register = (username, password, re_password) => {
 
         try {
             const res = await registerData();
-            console.log('res: ');
-            console.log(res);
+            // console.log('res: ');
+            // console.log(res);
             if (res.data.error) {
                 console.log('REGISTER_FAIL-1');
                 dispatch(userActions.registerFail());
             } else {
-                console.log('REGISTER_SUCCESS');
+                // console.log('REGISTER_SUCCESS');
                 dispatch(userActions.registerSuccess());
             }
         } catch (err) {
@@ -85,9 +85,9 @@ export const login = (username, password) => {
         const body = JSON.stringify({ username, password });
 
         const loginData = async () => {
-            console.log('config.headers', config.headers);
+            // console.log('config.headers', config.headers);
             const res = await axios.post(`http://127.0.0.1:8000/accounts/login`, body, config);
-            console.log('res: ', res)
+            // console.log('res: ', res)
             return res;
         };
 
@@ -95,16 +95,16 @@ export const login = (username, password) => {
             const res = await loginData();
 
             if (res.data.success) {
-                console.log('LOGIN_SUCCESS')
+                // console.log('LOGIN_SUCCESS')
                 dispatch(userActions.loginSuccess());
                 // console.log('dispatch(load_user());')
                 // dispatch(load_user());
             } else {
-                console.log('LOGIN_FAIL-1')
+                // console.log('LOGIN_FAIL-1')
                 dispatch(userActions.loginFail());
             }
         } catch (err) {
-            console.log('LOGIN_FAIL-2')
+            // console.log('LOGIN_FAIL-2')
             dispatch(userActions.loginFail());
         };
     };

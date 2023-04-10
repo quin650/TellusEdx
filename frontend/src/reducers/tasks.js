@@ -23,10 +23,16 @@ const taskSlice = createSlice({
             state.tasks.push(task);
             // state.count += 1;
         },
+        addTasksFail(state) {
+            state;
+        },
         loadTasks(state, action) {
             // console.log('action.payload: ', action.payload.tasks)
             // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
             state.tasks.push(action.payload.tasks);
+        },
+        loadTasksFail(state) {
+            state;
         },
         deleteTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
@@ -35,11 +41,10 @@ const taskSlice = createSlice({
         deleteTaskFail(state) {
             state;
         },
-        loadTasksFail(state) {
-            state;
-        },
-        updateTasksSuccess(state) {
-            state;
+        updateTasksSuccess(state, action) {
+            // console.log('action.payload: ', action.payload.tasks)
+            // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+            state.tasks.push(action.payload.tasks);
         },
         updateTasksFail(state) {
             state;

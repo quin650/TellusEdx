@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .utils import custom_id
-import datetime
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, default='')
@@ -11,6 +11,12 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.first_name
 class UserProfileTasks(models.Model):
+    STATUS_CHOICES = (
+        ('not-started', 'Not-Started'),
+        ('past-due', 'Past-Due'),
+        ('started', 'Started'),
+        ('complete', 'Complete')
+    )
     user = models.ForeignKey(User,  blank=True, null=True, on_delete=models.SET_NULL)
     task_id = models.CharField(primary_key=True, max_length=11, unique=True, default=custom_id)
     task_title = models.CharField(max_length=255, default='')
@@ -22,5 +28,11 @@ class UserProfileTasks(models.Model):
     task_created_at = models.DateTimeField(auto_now_add=True, auto_now=False, blank=True)
     task_updated_at = models.DateTimeField(auto_now_add=False, auto_now=True, blank=True)
     task_due_date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
+    task_completed_at = models.DateTimeField(auto_now_add=False, auto_now=False, blank=True, null=True)
+    status = models.CharField(max_length=11, choices=STATUS_CHOICES, default='not-started')
+
+    class Meta:
+        ordering = ('task_due_date', 'user')
+
     def __str__(self):
         return self.task_title

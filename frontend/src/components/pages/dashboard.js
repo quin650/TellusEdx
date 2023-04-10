@@ -1,11 +1,13 @@
 import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { update_user_profile } from "../../actions/profile";
+import { create_user_profile } from "../../actions/profile";
 import { delete_account } from "../../actions/auth";
 
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {
+    const profile_id = useSelector(state => state.prof.profile_id);
     const first_name_global = useSelector(state => state.prof.first_name);
     const last_name_global = useSelector(state => state.prof.last_name);
     const phone_global = useSelector(state => state.prof.phone);
@@ -33,8 +35,15 @@ const Dashboard = () => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
+        console.log('onsubmit')
         e.preventDefault();
-        dispatch(update_user_profile(first_name, last_name, phone, city));
+        if (profile_id) {
+            console.log('dispatch(update_user_profile(first_name, last_name, phone, city));')
+            dispatch(update_user_profile(first_name, last_name, phone, city));
+        } else {
+            console.log('dispatch(create_user_profile(first_name, last_name, phone, city));')
+            dispatch(create_user_profile(first_name, last_name, phone, city));
+        }
     };
 
     return (
