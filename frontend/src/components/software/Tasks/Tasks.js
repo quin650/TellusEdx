@@ -4,6 +4,7 @@ import TasksList from "./TasksComponents/TasksList";
 import classes from "./Tasks.module.css";
 
 const Tasks = () =>{
+    // console.log('Tasks.js')
     return (
     <div className={classes.form_container}>
         <div className={classes.form_containers}>

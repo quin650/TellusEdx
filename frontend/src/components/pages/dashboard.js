@@ -7,13 +7,14 @@ import { delete_account } from "../../actions/auth";
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {
+    const dispatch = useDispatch();
+
     const profile_id = useSelector(state => state.prof.profile_id);
     const first_name_global = useSelector(state => state.prof.first_name);
     const last_name_global = useSelector(state => state.prof.last_name);
     const phone_global = useSelector(state => state.prof.phone);
     const city_global = useSelector(state => state.prof.city);
 
-    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         first_name:'',
         last_name:'',
@@ -22,7 +23,6 @@ const Dashboard = () => {
     });
 
     const { first_name, last_name, phone, city } = formData;
-
     useEffect(() =>{
         setFormData({
             first_name: first_name_global,
@@ -32,16 +32,24 @@ const Dashboard = () => {
         })
     },[first_name_global])
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    var SubmitButtonText = "Create"
+    const checkProfStatus = () => {
+        if (profile_id){
+            SubmitButtonText = "Submit";
+        } else {
+            SubmitButtonText = "Create";
+        }
+    }
+
+    checkProfStatus();
+
+    const onChange = e  => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
-        console.log('onsubmit')
         e.preventDefault();
         if (profile_id) {
-            console.log('dispatch(update_user_profile(first_name, last_name, phone, city));')
             dispatch(update_user_profile(first_name, last_name, phone, city));
         } else {
-            console.log('dispatch(create_user_profile(first_name, last_name, phone, city));')
             dispatch(create_user_profile(first_name, last_name, phone, city));
         }
     };
@@ -93,7 +101,7 @@ const Dashboard = () => {
                             value={city}
                         />
                     </div>
-                    <button type='submit'>Update</button>
+                    <button type='submit'>{SubmitButtonText}</button>
                 </form>
                 <p>
                     Click the button below to delete your account:

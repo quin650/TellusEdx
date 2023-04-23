@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux"; 
-import { create_user_profile_tasks } from "../../../../actions/profile";
+import { create_user_profile_tasks} from "../../../../actions/profile";
 import AddTaskButton from "./TasksUI/AddTaskButton";
 import classes from './TasksForm.module.css';
 
 const TaskForm = () => {
+    // console.log('TasksForm.js')
     const isValid = useState(true)
     const dispatch = useDispatch();
     // let task_id = Math.random().toString().slice(2,11);
@@ -16,14 +17,10 @@ const TaskForm = () => {
     const task_links = useRef('');
     const task_due_date = useRef('');
 
-    console.log('task page load...');
-    
     function submitHandler(e) {
         e.preventDefault();
-        // console.log('task_id: ', task_id)
-        
+
         const tasks = {
-            // task_id: task_id,
             task_title: task_title.current.value,
             task_description: task_description.current.value,
             task_tags: task_tags.current.value,
@@ -32,13 +29,10 @@ const TaskForm = () => {
             task_links: task_links.current.value,
             task_due_date: task_due_date.current.value
         }
-        console.log('tasks submitted via action', tasks);
         dispatch(create_user_profile_tasks(tasks));
-    };
+    }
 
     //Task Due Date: YYYY-MM-DD (Only accepted format)
-
-
     return (
         <form onSubmit={submitHandler}>
             <div className={classes.inputForm_container}>

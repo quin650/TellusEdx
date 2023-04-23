@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-    // count: 0,
     tasks: [],
 };
 const taskSlice = createSlice({
 	name: 'task',
 	initialState,
     reducers: {
-        addTask: (state, action) => {
+        addTaskSuccess: (state, action) => {
             const task = {
                 task_id: action.payload.tasks.task_id,
                 task_title: action.payload.tasks.task_title,
@@ -18,32 +17,24 @@ const taskSlice = createSlice({
                 task_links: action.payload.tasks.task_links,
                 task_due_date: action.payload.tasks.task_due_date
                 };
-            // console.log('action.payload: ', action.payload.tasks)
-            // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
-            state.tasks.push(task);
-            // state.count += 1;
+            state.tasks[0].push(task);
         },
         addTasksFail(state) {
             state;
         },
-        loadTasks(state, action) {
-            // console.log('action.payload: ', action.payload.tasks)
-            // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
+        loadTasksSuccess(state, action) {
             state.tasks.push(action.payload.tasks);
         },
         loadTasksFail(state) {
             state;
         },
-        deleteTask: (state, action) => {
-            state.tasks = state.tasks.filter(task => task.id !== action.payload);
-            // state.count -= 1;
+        deleteTaskSuccess: (state, action) => {
+            state.tasks = state.tasks[0].filter(task => task.id !== action.payload);
         },
         deleteTaskFail(state) {
             state;
         },
         updateTasksSuccess(state, action) {
-            // console.log('action.payload: ', action.payload.tasks)
-            // console.log('action.payload.task_title: ', action.payload.tasks.task_title)
             state.tasks.push(action.payload.tasks);
         },
         updateTasksFail(state) {

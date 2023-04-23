@@ -18,6 +18,7 @@ function App() {
         dispatch(load_user_profile());
         dispatch(load_user_profile_tasks());
     }, []);
+    // console.log('App.js')
     return (
         <Fragment>
             <header>

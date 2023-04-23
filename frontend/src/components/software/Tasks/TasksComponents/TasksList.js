@@ -4,15 +4,25 @@ import TasksListItem from "./TasksListItem";
 import classes from './TasksList.module.css';
 
 const TasksList = () => {
-
-const tasks = useSelector(state => state.task.tasks);
-// console.log('tasks: ', tasks)
-const tasksListIsEmpty = tasks.length == 0;
-// console.log('tasksListIsEmpty: ', tasksListIsEmpty)
+    const tasks = useSelector(state => state.task.tasks);
+    let tasksListIsEmpty = true;
+    try{
+        if (typeof tasks[0] === 'undefined' || !Array.isArray(tasks[0]) || tasks[0].length === 0) {
+            tasksListIsEmpty = true;
+        } else {
+            tasksListIsEmpty = false;
+        }
+    } catch(error){
+        if (typeof tasks[0] === 'undefined') {
+            tasksListIsEmpty = true;
+        }
+    }
 
     return (
         <ul className={classes.tasks_container}>
-            {!tasksListIsEmpty && 
+        {tasksListIsEmpty ? (
+            <p>No todos</p>
+        ) : (
             tasks[0].map(task => (
                 <TasksListItem
                     key={task.task_id}
@@ -28,6 +38,7 @@ const tasksListIsEmpty = tasks.length == 0;
                             <div className={classes.task_name}>
                                 {task.task_title}
                             </div>
+                        </div>
                         <div className={classes.task_name__section}>
                             <div className={classes.task_name__header}>
                                 Task Description
@@ -44,42 +55,36 @@ const tasksListIsEmpty = tasks.length == 0;
                                 {task.task_tags}
                             </div>
                         </div>
-                        
                             <div className={classes.task_name__header}>
                                 Task Order
                             </div>
                             <div className={classes.task_name}>
                                 {task.task_order}
                             </div>
-
                             <div className={classes.task_name__header}>
                                 Task Priority Level
                             </div>
                             <div className={classes.task_name}>
                                 {task.task_priority_level}
                             </div>
-
                             <div className={classes.task_name__header}>
                                 Task Links
                             </div>
                             <div className={classes.task_name}>
                                 {task.task_links}
                             </div>
-
                             <div className={classes.task_name__header}>
                                 Task Due Date
                             </div>
                             <div className={classes.task_name}>
                                 {task.task_due_date}
                             </div>
-
                         </div>
-                    </div>
                 </TasksListItem>
-            ))}
-            {tasksListIsEmpty === 0 && <p>No todos</p>}
-        </ul>
-    );
+            ))
+        )}
+    </ul>
+    )
 };  
 
 export default TasksList;

@@ -4,9 +4,11 @@ import { delete_user_profile_task } from "../../../../actions/profile";
 import classes from './TasksListItem.module.css';
 
 const TasksListItem = props => {
+    
     const dispatch = useDispatch();
     const remove = () => {
-        dispatch(delete_user_profile_task(props.id))
+        console.log('dispatching to delete task_id: ', props.id);
+        dispatch(delete_user_profile_task(props.id));
     }
 
     return (
