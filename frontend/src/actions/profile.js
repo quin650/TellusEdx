@@ -105,13 +105,14 @@ export const create_user_profile_tasks = (data) => {
         try {
             const res = await createTask();
             if ( res.data.tasks && res.data.username){
+                console.log('create_user_profile_tasks --- res.data: ', res.data)
                 dispatch(tasksActions.addTaskSuccess(res.data));
             } else {
-                dispatch(tasksActions.updateTasksFail());
+                dispatch(tasksActions.addTaskFail());
             }
         } catch (err) {
             console.log(err);
-            dispatch(tasksActions.updateTasksFail());
+            dispatch(tasksActions.addTaskFail());
         };
     };
 };
@@ -130,13 +131,14 @@ export const load_user_profile_tasks = () => {
         try {
             const res = await loadTasks();
             if (res.data.error) {
-                dispatch(tasksActions.loadTasksFail());
+                dispatch(tasksActions.loadTaskFail());
             } else {
-                dispatch(tasksActions.loadTasksSuccess(res.data));
+                console.log('action: load_user_profile_tasks --- res.data.tasks: ', res.data.tasks);
+                dispatch(tasksActions.loadTaskSuccess(res.data));
                 
             }
         } catch (err) {
-            dispatch(tasksActions.loadTasksFail());
+            dispatch(tasksActions.loadTaskFail());
         };
     };
 };
@@ -157,12 +159,13 @@ export const update_user_profile_tasks = (task_id, task_title, task_description,
         try {
             const res = await updateTasks();
             if ( res.data.tasks && res.data.username){
-                dispatch(tasksActions.updateTasksSuccess(res.data));
+                console.log('update_user_profile_tasks --- res.data.tasks: ', res.data);
+                dispatch(tasksActions.updateTaskSuccess(res.data));
             } else {
-                dispatch(tasksActions.updateTasksFail());
+                dispatch(tasksActions.updateTaskFail());
             }
         } catch (err) {
-            dispatch(tasksActions.updateTasksFail());
+            dispatch(tasksActions.updateTaskFail());
         };
     };
 };
@@ -182,12 +185,18 @@ export const delete_user_profile_task = (task_id) => {
         };
         try {
             const res = await deleteTasks();
-            if (res.data.success){
-                dispatch(tasksActions.deleteTaskSuccess(res.data));
-            } else {
+            if (res.data.error){
+                console.log('res.data: ', res.data)
+                console.log('delete action failed, task_id: ', task_id)
                 dispatch(tasksActions.deleteTaskFail());
+            } else {
+                console.log('res.data: ', res.data)
+                console.log('deleteTaskSuccess, task_id: ', task_id);
+                dispatch(tasksActions.deleteTaskSuccess(task_id));
             }
         } catch (err) {
+            console.log('err: ', err)
+            console.log('delete action errored out, task_id: ', task_id)
             dispatch(tasksActions.deleteTaskFail());
         };
     };

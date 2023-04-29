@@ -1,22 +1,23 @@
-import React from "react";
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { load_user_profile_tasks } from "../../../../actions/profile";
 import TasksListItem from "./TasksListItem";
 import classes from './TasksList.module.css';
 
 const TasksList = () => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        console.log('useEffect(load_user_profile_tasks)');
+        dispatch(load_user_profile_tasks());
+    }, []);
+
     const tasks = useSelector(state => state.task.tasks);
+
     let tasksListIsEmpty = true;
-    try{
-        if (typeof tasks[0] === 'undefined' || !Array.isArray(tasks[0]) || tasks[0].length === 0) {
-            tasksListIsEmpty = true;
-        } else {
-            tasksListIsEmpty = false;
-        }
-    } catch(error){
-        if (typeof tasks[0] === 'undefined') {
-            tasksListIsEmpty = true;
-        }
-    }
+    tasksListIsEmpty = !tasks[0]?.length; //Optional Chaining: The syntax for optional chaining is the question mark (?) followed by a dot (.) after the property name or method call. If the property or method exists, it will be accessed normally. However, if the property or method does not exist, the code will not throw an error and instead return undefined.
+    console.log('tasks: ', tasks);
+    console.log('tasks[0]: ', tasks[0]);
 
     return (
         <ul className={classes.tasks_container}>
@@ -88,4 +89,3 @@ const TasksList = () => {
 };  
 
 export default TasksList;
-

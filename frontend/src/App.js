@@ -9,14 +9,12 @@ import Register from './components/pages/register';
 import Login from './components/pages/login';
 import { checkAuthenticated } from './actions/auth';
 import { load_user_profile } from './actions/profile';
-import { load_user_profile_tasks } from './actions/profile';
 import { useDispatch} from 'react-redux';
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(checkAuthenticated());
         dispatch(load_user_profile());
-        dispatch(load_user_profile_tasks());
     }, []);
     // console.log('App.js')
     return (

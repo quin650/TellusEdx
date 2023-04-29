@@ -79,11 +79,11 @@ class CreateUserProfileTaskView(APIView):
         try:
             user_profile_tasks = UserProfileTasks.objects.create(user=user, task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links, task_due_date=task_due_date)
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            print('user_profile_tasks: ', user_profile_tasks)
+            # print('user_profile_tasks: ', user_profile_tasks)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
                 return Response({'error': 'Something went wrong when creating task'})
-class GetUserProfileTasksView(APIView):
+class LoadUserProfileTasksView(APIView):
     def get(self, request, format=None):
         try:
             user = self.request.user
@@ -124,9 +124,10 @@ class DeleteUserProfileTask(APIView):
         task_id = data['task_id']
         # print('username', username)
         # print('data: ', data)
-        # print('task_id: ', task_id)
+        print('task_id: ', task_id)
         try:
-            UserProfileTasks.objects.filter(task_id = task_id).delete()
-            return Response({ 'success': 'User delete successfully'})
+            user_profile_tasks = UserProfileTasks.objects.filter(task_id = task_id).delete()
+            user_profile_tasks = UserTasksSerializer(user_profile_tasks, many=True)
+            return Response({ 'success': 'The delete request went through'})
         except:
             return Response({ 'error': 'Something went wrong when trying to delete user'})

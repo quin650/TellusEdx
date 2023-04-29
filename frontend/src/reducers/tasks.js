@@ -17,27 +17,31 @@ const taskSlice = createSlice({
                 task_links: action.payload.tasks.task_links,
                 task_due_date: action.payload.tasks.task_due_date
                 };
+        //This push from the ~frontend~, adds the tasks to tasks[0]
             state.tasks[0].push(task);
         },
-        addTasksFail(state) {
+        addTaskFail(state) {
             state;
         },
-        loadTasksSuccess(state, action) {
+        loadTaskSuccess(state, action) {
+        //This push from the ~backend~, loads the tasks to tasks[0]
             state.tasks.push(action.payload.tasks);
         },
-        loadTasksFail(state) {
+        loadTaskFail(state) {
             state;
         },
         deleteTaskSuccess: (state, action) => {
-            state.tasks = state.tasks[0].filter(task => task.id !== action.payload);
+        //This delete is somehow replicating the tasks array at tasks[1]
+        //The resulting array from .filter() is assigned back to state.tasks, effectively removing the task with the specified ID from the Redux state.
+            state.tasks[0] = state.tasks[0].filter(task => task.task_id !== action.payload);
         },
         deleteTaskFail(state) {
             state;
         },
-        updateTasksSuccess(state, action) {
+        updateTaskSuccess(state, action) {
             state.tasks.push(action.payload.tasks);
         },
-        updateTasksFail(state) {
+        updateTaskFail(state) {
             state;
         },
     },
