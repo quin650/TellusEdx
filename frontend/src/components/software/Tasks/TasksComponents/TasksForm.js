@@ -29,7 +29,6 @@ const TaskForm = () => {
             task_links: task_links.current.value,
             task_due_date: task_due_date.current.value
         }
-        console.log('--create_user_profile_tasks')
         dispatch(create_user_profile_tasks(tasks));
     }
 

@@ -8,7 +8,6 @@ const TasksList = () => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        console.log('useEffect(load_user_profile_tasks)');
         dispatch(load_user_profile_tasks());
     }, []);
 
@@ -16,8 +15,6 @@ const TasksList = () => {
 
     let tasksListIsEmpty = true;
     tasksListIsEmpty = !tasks[0]?.length; //Optional Chaining: The syntax for optional chaining is the question mark (?) followed by a dot (.) after the property name or method call. If the property or method exists, it will be accessed normally. However, if the property or method does not exist, the code will not throw an error and instead return undefined.
-    console.log('tasks: ', tasks);
-    console.log('tasks[0]: ', tasks[0]);
 
     return (
         <ul className={classes.tasks_container}>

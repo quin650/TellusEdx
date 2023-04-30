@@ -35,10 +35,8 @@ class LoadUserProfileView(APIView):
         try:
             user = self.request.user
             username = user.username
-
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
-
             return Response({ 'profile': user_profile.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving profile' })
@@ -47,18 +45,14 @@ class UpdateUserProfileView(APIView):
         try:
             user = self.request.user
             username = user.username
-
             data = self.request.data
             first_name = data['first_name']
             last_name = data['last_name']
             phone = data['phone']
             city = data['city']
-
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, phone=phone, city=city)
-
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
-
             return Response({ 'profile': user_profile.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when updating profile' })
@@ -79,7 +73,6 @@ class CreateUserProfileTaskView(APIView):
         try:
             user_profile_tasks = UserProfileTasks.objects.create(user=user, task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links, task_due_date=task_due_date)
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            # print('user_profile_tasks: ', user_profile_tasks)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
                 return Response({'error': 'Something went wrong when creating task'})
@@ -88,12 +81,8 @@ class LoadUserProfileTasksView(APIView):
         try:
             user = self.request.user
             username = user.username
-            # user_profile_tasks = UserProfileTasks.objects.get(user=user) ---> The code is currently using the get() method, which returns a single object matching the query parameters. Instead use .filter()
             user_profile_tasks = UserProfileTasks.objects.filter(user=user)
-            # Adding the many=True parameter to the serializer to indicate that we are serializing multiple objects, not just one.
             user_profile_tasks = UserTasksSerializer(user_profile_tasks, many=True)
-            # print('user_profile_tasks: ', user_profile_tasks)
-            # print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving user tasks' })
@@ -122,8 +111,6 @@ class DeleteUserProfileTask(APIView):
         username = user.username
         data = self.request.data
         task_id = data['task_id']
-        # print('username', username)
-        # print('data: ', data)
         print('task_id: ', task_id)
         try:
             user_profile_tasks = UserProfileTasks.objects.filter(task_id = task_id).delete()

@@ -18,7 +18,6 @@ export const create_user_profile = (first_name, last_name, phone, city)  => {
         };
         try {
             const res = await createProfile();
-            console.log('res.data: ', res.data);
             if ( res.data.profile && res.data.username){
                 dispatch(profActions.createUserProfileSuccess(res.data));
             } else {
@@ -105,7 +104,6 @@ export const create_user_profile_tasks = (data) => {
         try {
             const res = await createTask();
             if ( res.data.tasks && res.data.username){
-                console.log('create_user_profile_tasks --- res.data: ', res.data)
                 dispatch(tasksActions.addTaskSuccess(res.data));
             } else {
                 dispatch(tasksActions.addTaskFail());
@@ -133,7 +131,6 @@ export const load_user_profile_tasks = () => {
             if (res.data.error) {
                 dispatch(tasksActions.loadTaskFail());
             } else {
-                console.log('action: load_user_profile_tasks --- res.data.tasks: ', res.data.tasks);
                 dispatch(tasksActions.loadTaskSuccess(res.data));
                 
             }
@@ -159,7 +156,6 @@ export const update_user_profile_tasks = (task_id, task_title, task_description,
         try {
             const res = await updateTasks();
             if ( res.data.tasks && res.data.username){
-                console.log('update_user_profile_tasks --- res.data.tasks: ', res.data);
                 dispatch(tasksActions.updateTaskSuccess(res.data));
             } else {
                 dispatch(tasksActions.updateTaskFail());
@@ -186,17 +182,11 @@ export const delete_user_profile_task = (task_id) => {
         try {
             const res = await deleteTasks();
             if (res.data.error){
-                console.log('res.data: ', res.data)
-                console.log('delete action failed, task_id: ', task_id)
                 dispatch(tasksActions.deleteTaskFail());
             } else {
-                console.log('res.data: ', res.data)
-                console.log('deleteTaskSuccess, task_id: ', task_id);
                 dispatch(tasksActions.deleteTaskSuccess(task_id));
             }
         } catch (err) {
-            console.log('err: ', err)
-            console.log('delete action errored out, task_id: ', task_id)
             dispatch(tasksActions.deleteTaskFail());
         };
     };
