@@ -1,12 +1,13 @@
 import React from "react";
 import classes from  './AddTaskButton.module.css';
 
-const AddTaskButton = () => {
+const AddTaskButton = (props) => {
+
     return (
         <div className={classes.button_format}>
             <button
                 type="submit">
-                Add Task
+                {props.buttonText}
             </button>
         </div>
     );

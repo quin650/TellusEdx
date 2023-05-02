@@ -139,7 +139,7 @@ export const load_user_profile_tasks = () => {
         };
     };
 };
-export const update_user_profile_tasks = (task_id, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date)  => {
+export const update_user_profile_tasks = (data)  => {
     return async (dispatch) => {
         const config = {
             headers: {
@@ -148,14 +148,23 @@ export const update_user_profile_tasks = (task_id, task_title, task_description,
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-        const body = JSON.stringify({ 'withCredentials': true, task_id, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date});
+        let task_title = data['task_title']
+        let task_description = data['task_description']
+        let task_tags = data['task_tags']
+        let task_order = data['task_order']
+        let task_priority_level = data['task_priority_level']
+        let task_links = data['task_links']
+        let task_due_date = data['task_due_date']
+        let task_id = data['task_id']
+
+        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date, task_id});
         const updateTasks = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile_tasks`, body, config)
             return res;
         };
         try {
             const res = await updateTasks();
-            if ( res.data.tasks && res.data.username){
+            if (res.data.tasks){
                 dispatch(tasksActions.updateTaskSuccess(res.data));
             } else {
                 dispatch(tasksActions.updateTaskFail());

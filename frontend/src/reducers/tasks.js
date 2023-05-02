@@ -35,8 +35,21 @@ const taskSlice = createSlice({
         deleteTaskFail(state) {
             state;
         },
-        updateTaskSuccess(state, action) {
-            state.tasks.push(action.payload.tasks);
+        updateTaskSuccess: (state, action) => {
+            const task = {
+                task_id: action.payload.tasks.task_id,
+                task_title: action.payload.tasks.task_title,
+                task_description: action.payload.tasks.task_description,
+                task_tags: action.payload.tasks.task_tags,
+                task_order: action.payload.tasks.task_order,
+                task_priority_level: action.payload.tasks.task_priority_level,
+                task_links: action.payload.tasks.task_links,
+                task_due_date: action.payload.tasks.task_due_date
+                };
+
+            // The issue is here...
+            const taskIndex = state.tasks[0].findIndex(task => task.task_id == action.payload.tasks.task_id)
+            state.tasks[0][taskIndex] = task;
         },
         updateTaskFail(state) {
             state;

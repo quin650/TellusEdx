@@ -1,17 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import TaskForm from "./TasksComponents/TasksForm";
 import TasksList from "./TasksComponents/TasksList";
 import classes from "./Tasks.module.css";
 
 const Tasks = () =>{
-    // console.log('Tasks.js')
+    const [updateID, setUpdateID] = useState("");
+    const [ buttonText, SetButtonText ] = useState('Add Task');
+    const StoreIdToUpdate = (taskID) => {
+        setUpdateID(taskID);
+        SetButtonText('Update');
+    }
+
     return (
     <div className={classes.form_container}>
         <div className={classes.form_containers}>
-            < TaskForm />
+            < TaskForm updateID={updateID} buttonText={buttonText}/>
         </div>
         <div className={classes.form_containers}>
-            <TasksList/>
+            <TasksList StoreIdToUpdate={StoreIdToUpdate}/>
         </div>
     </div>
     );

@@ -4,7 +4,7 @@ import { load_user_profile_tasks } from "../../../../actions/profile";
 import TasksListItem from "./TasksListItem";
 import classes from './TasksList.module.css';
 
-const TasksList = () => {
+const TasksList = (props) => {
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -27,6 +27,7 @@ const TasksList = () => {
                     id={task.task_id}
                     task_title={task.task_title}
                     user={task.user}
+                    StoreIdToUpdate={props.StoreIdToUpdate}
                 >
                     <div>
                         <div className={classes.task_name__section}>
