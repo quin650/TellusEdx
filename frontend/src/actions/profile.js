@@ -165,6 +165,8 @@ export const update_user_profile_tasks = (data)  => {
         try {
             const res = await updateTasks();
             if (res.data.tasks){
+                console.log('res.data.tasks[0]: ', res.data.tasks[0]);
+                // console.log('res.data.tasks[0].task_id: ', res.data.tasks[0].task_id);
                 dispatch(tasksActions.updateTaskSuccess(res.data));
             } else {
                 dispatch(tasksActions.updateTaskFail());

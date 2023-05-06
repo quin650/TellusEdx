@@ -73,6 +73,7 @@ class CreateUserProfileTaskView(APIView):
         try:
             user_profile_tasks = UserProfileTasks.objects.create(user=user, task_title=task_title,task_description=task_description,task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links, task_due_date=task_due_date)
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
+            print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response({ 'tasks': user_profile_tasks.data, 'username': str(username) })
         except:
                 return Response({'error': 'Something went wrong when creating task'})
@@ -104,6 +105,7 @@ class UpdateUserProfileTasks(APIView):
             UserProfileTasks.objects.filter(task_id = task_id).update(task_title=task_title, task_description=task_description, task_tags=task_tags, task_order=task_order, task_priority_level=task_priority_level, task_links=task_links, task_due_date=task_due_date)
             user_profile_tasks_by_task_id = UserProfileTasks.objects.filter(user=user, task_id=task_id)
             user_profile_tasks_by_task_id = UserTasksSerializer(user_profile_tasks_by_task_id, many=True)
+            print('user_profile_tasks_by_task_id.data: ', user_profile_tasks_by_task_id.data)
             return Response({ 'tasks': user_profile_tasks_by_task_id.data})
         except:
             return Response({ 'error': 'Something went wrong when updating user tasks' })

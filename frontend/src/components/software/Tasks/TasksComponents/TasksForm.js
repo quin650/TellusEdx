@@ -44,8 +44,10 @@ const TaskForm = (props) => {
         }
         if (!updateID){
             dispatch(create_user_profile_tasks(tasks));
+            // console.log('clicked');
         } else {
             dispatch(update_user_profile_tasks(tasks));
+            // console.log('clicked');
         }
     }
 
