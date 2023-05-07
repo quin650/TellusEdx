@@ -50,5 +50,7 @@
 }
 
 .input_button__section {
+    display: flex;
+    flex-direction: row;
     margin-left: 3%;
 }

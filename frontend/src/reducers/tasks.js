@@ -52,10 +52,10 @@ const taskSlice = createSlice({
             // The issue is here...
             // console.log('JSON.parse(JSON.stringify(state.tasks[0]))', JSON.parse(JSON.stringify(state.tasks[0])));
             const taskIndex = state.tasks[0].findIndex(task => task.task_id === action.payload.tasks[0].task_id)
-            console.log('taskIndex: ', taskIndex);
-            console.log('action.payload.tasks[0].task_id: ', action.payload.tasks[0].task_id);
-            console.log('Task, pre-change: ', JSON.parse(JSON.stringify(state.tasks[0][taskIndex])));
-            console.log('task: ', task);
+            // console.log('taskIndex: ', taskIndex);
+            // console.log('action.payload.tasks[0].task_id: ', action.payload.tasks[0].task_id);
+            // console.log('Task, pre-change: ', JSON.parse(JSON.stringify(state.tasks[0][taskIndex])));
+            // console.log('task: ', task);
             state.tasks[0][taskIndex] = task;
         },
         updateTaskFail(state) {

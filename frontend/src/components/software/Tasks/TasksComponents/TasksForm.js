@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { create_user_profile_tasks } from "../../../../actions/profile";
 import { update_user_profile_tasks } from "../../../../actions/profile";
 import AddTaskButton from "./TasksUI/AddTaskButton";
+import DeleteTaskButton from "./TasksUI/DeleteTaskButton";
 import classes from './TasksForm.module.css';
 
 const TaskForm = (props) => {
@@ -11,6 +12,16 @@ const TaskForm = (props) => {
 
     const updateID = props.updateID;
     const buttonText = props.buttonText;
+    const deleteButton= props.deleteButton;
+    // console.log('deleteButton: ', deleteButton)
+    let buttonContent = "";
+    if (deleteButton){
+        buttonContent = <DeleteTaskButton updateID={props.updateID}/>
+    } else {
+        buttonContent ="";
+    }
+
+
     const tasks_global_all = useSelector(state => state.task.tasks[0]);
     const tasks_global_by_ID = tasks_global_all?.filter(task => task.task_id == updateID);                                      //Optional Chaining: The syntax for optional chaining is the question mark (?) followed by a dot (.) after the property name or method call. If the property or method exists, it will be accessed normally. However, if the property or method does not exist, the code will not throw an error and instead return undefined.
 
@@ -126,6 +137,7 @@ const TaskForm = (props) => {
                 </section>
                     <div className={classes["input_button__section"]}>
                         <AddTaskButton buttonText={buttonText}/>
+                        {buttonContent}
                     </div>
             </div>
         </form >

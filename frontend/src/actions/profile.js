@@ -165,7 +165,7 @@ export const update_user_profile_tasks = (data)  => {
         try {
             const res = await updateTasks();
             if (res.data.tasks){
-                console.log('res.data.tasks[0]: ', res.data.tasks[0]);
+                // console.log('res.data.tasks[0]: ', res.data.tasks[0]);
                 // console.log('res.data.tasks[0].task_id: ', res.data.tasks[0].task_id);
                 dispatch(tasksActions.updateTaskSuccess(res.data));
             } else {
@@ -190,6 +190,7 @@ export const delete_user_profile_task = (task_id) => {
             const res = await axios.delete(`http://127.0.0.1:8000/profile/delete_user_profile_task`, { data: body, headers: config.headers })
             return res;
         };
+
         try {
             const res = await deleteTasks();
             if (res.data.error){
@@ -198,6 +199,7 @@ export const delete_user_profile_task = (task_id) => {
                 dispatch(tasksActions.deleteTaskSuccess(task_id));
             }
         } catch (err) {
+            console.log('err', err)
             dispatch(tasksActions.deleteTaskFail());
         };
     };

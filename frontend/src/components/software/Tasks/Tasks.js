@@ -6,18 +6,20 @@ import classes from "./Tasks.module.css";
 const Tasks = () =>{
     const [updateID, setUpdateID] = useState("");
     const [ buttonText, SetButtonText ] = useState('Add Task');
+    const [ deleteButton, SetDeleteButton ] = useState(false);
     const StoreIdToUpdate = (taskID) => {
         setUpdateID(taskID);
         SetButtonText('Update');
+        SetDeleteButton(true);
     }
 
     return (
     <div className={classes.form_container}>
         <div className={classes.form_containers}>
-            < TaskForm updateID={updateID} buttonText={buttonText}/>
+            < TaskForm updateID={updateID} buttonText={buttonText} deleteButton={deleteButton}/>
         </div>
         <div className={classes.form_containers}>
-            <TasksList StoreIdToUpdate={StoreIdToUpdate}/>
+            <TasksList StoreIdToUpdate={StoreIdToUpdate} />
         </div>
     </div>
     );

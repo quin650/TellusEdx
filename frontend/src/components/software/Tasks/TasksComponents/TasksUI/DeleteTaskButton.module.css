@@ -5,7 +5,6 @@
     width: 6rem;
     cursor: pointer;
     border: solid 1px #550155;
-    margin-right: .5rem;
 }
 
 .button_format button:hover {
