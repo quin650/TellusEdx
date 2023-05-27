@@ -13,8 +13,8 @@ class UserProfile(models.Model):
 class UserProfileTasks(models.Model):
     STATUS_CHOICES = (
         ('not-started', 'Not-Started'),
-        ('past-due', 'Past-Due'),
         ('started', 'Started'),
+        ('pending', 'Pending'),
         ('complete', 'Complete')
     )
     user = models.ForeignKey(User,  blank=True, null=True, on_delete=models.SET_NULL)
