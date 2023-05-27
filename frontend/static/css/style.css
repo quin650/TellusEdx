@@ -5,7 +5,8 @@
 }
 
 html {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
+
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 }
 
 :root {
-    --blue: #1e90ff;
+    --blue: #2755C4;
     --white: #ffffff;
     --gray: #b3b3b3;
     --black:  #020307;

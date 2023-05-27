@@ -7,8 +7,6 @@
     padding-top: .5rem;
     padding-bottom: .5rem;
     width: 100%;
-    background-color: rgb(0, 0, 0, .4);
-    justify-content: center;
 }
 
 .nav_container {
@@ -17,20 +15,19 @@
     color: var(--white);
     height: 3rem;
     align-items: center;
+    justify-content: space-between;
     padding: 0;
-    width: 80%;
+    width: 90%;
     max-width: 1740px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
-
 
 .Logo {
     display: flex;
     align-content: flex-start;
     height: 3rem;
     width: 3rem;
-    margin-right: .5rem;
 }
 
 .Logo:hover {
@@ -38,7 +35,6 @@
     transform: rotate(90deg);
     animation: around .18s ease-in forwards;
 }
-
 
 /*========== Animation ==========*/
 @keyframes around {
@@ -59,104 +55,10 @@
     }
 }
 
-.software {
-    display: flex;
-    align-content: flex-start;
-    margin-left: .5rem;
-    margin-right: .5rem;
-    text-decoration: none;
-    color: var(--white);
-}
-
-.software:hover {
-    color: var(--gray);
-    cursor: pointer;
-}
-
-.software:active {
-    color: black;
-}
-
-.explore {
-    display: flex;
-    align-content: flex-start;
-    margin-left: .5rem;
-    margin-right: .5rem;
-    text-decoration: none;
-    color: var(--white);
-}
-
-.explore:hover {
-    color: var(--gray);
-    cursor: pointer;
-}
-
-.explore:active {
-    color: black;
-}
-
-.spacer {
-    width: 50%;
-}
 
 ::placeholder {
     color: white;
     opacity: 1;
-}
-
-.sign_in_out {
-    display: flex;
-    align-content: flex-end;
-    margin-left: .5rem;
-    margin-right: .5rem;
-    min-width: 3.3rem;
-    text-decoration: none;
-    color: var(--white);
-
-}
-
-.sign_in_out:hover {
-    color: var(--gray);
-    cursor: pointer;
-}
-
-.sign_in_out:active {
-    color: black;
-}
-
-.sign_in_out:hover {
-    cursor: pointer;
-}
-
-.sign_up {
-    display: flex;
-    align-content: flex-end;
-    margin-left: .5rem;
-    margin-right: .5rem;
-    border-radius: 6px;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: .65rem;
-    font-size: 1rem;
-    height: 2.2rem;
-    width: 5rem;
-    min-width: 5rem;
-    background: rgba(0, 0, 0, 0.04);
-    color: white;
-    border: .5px solid white;
-    text-decoration: none;
-    color: var(--white);
-}
-
-.sign_up:hover {
-    color: var(--gray);
-    background-color:  var(--white);
-    outline: .5;
-    cursor: pointer;
-}
-
-.sign_up:active {
-    color: black;
 }
 
 .avatarDiv{
@@ -180,17 +82,6 @@
 
 /* Devices under 1011px */
 @media (max-width: 1011px) {
-    .sign_up {
-        order: 1;
-        margin: 0rem;
-        padding-top: .3rem;
-        padding-bottom: .3rem;
-        padding-left: .55rem;
-        font-size: .8rem;
-        height: 1.76rem;
-        width: 4rem;
-        min-width: 4rem;
-    }
 
     .Logo {
         order: 2;
@@ -200,23 +91,11 @@
     }
     
     /*========== Media Queries ===Not Used===*/
-    .software {
-        display: none;
-    }
-
-    .explore {
-        display: none;
-    }
-
     .spacer {
         display: none;
     }
 
     ::placeholder {
-        display: none;
-    }
-
-    .sign_in_out {
         display: none;
     }
 
