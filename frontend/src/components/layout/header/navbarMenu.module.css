@@ -1,13 +1,11 @@
 .hamburgerMaster {
-    display: block;
     order: 3;
-    width: 80px;
+    width: 30px;
     margin: 0rem;
     cursor: pointer;
 }
 
 .hamburger {
-    display: block;
     width: 30px;
     height: 3.5px;
     background-color: black;

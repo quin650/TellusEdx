@@ -25,9 +25,15 @@ const MainNavbar = () => {
 
     const authGuest = (
         <Fragment>
-                <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
-                <GetStartedButton />
-                <NavbarMenu />
+                <div className={classes.NavItem1}>
+                    <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                </div>
+                <div className={classes.NavItem2}>
+                    <GetStartedButton />
+                </div>
+                <div className={classes.NavItem3}>
+                    <NavbarMenu />
+                </div>
         </Fragment>
     )
 

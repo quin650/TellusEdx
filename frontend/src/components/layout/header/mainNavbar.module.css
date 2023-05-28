@@ -1,8 +1,9 @@
+
 .nav {
+    position: absolute;
+    z-index: 1001;
     display: flex;
-    position: fixed;
     top: 0;
-    z-index: 300;
     height: 4rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -15,7 +16,6 @@
     color: var(--white);
     height: 3rem;
     align-items: center;
-    justify-content: space-between;
     padding: 0;
     width: 90%;
     max-width: 1740px;
@@ -25,9 +25,8 @@
 
 .Logo {
     display: flex;
-    align-content: flex-start;
-    height: 3rem;
-    width: 3rem;
+    height: 3.7rem;
+    width: 3.57rem;
 }
 
 .Logo:hover {
@@ -36,6 +35,23 @@
     animation: around .18s ease-in forwards;
 }
 
+.NavItem1 {
+    display: flex;
+    margin-right: auto;
+    justify-content: flex-start;
+}
+
+.NavItem2 {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.NavItem3 {
+    display: flex;
+    margin-left: 60px;
+    justify-content: flex-end;
+}
 /*========== Animation ==========*/
 @keyframes around {
     0% {
