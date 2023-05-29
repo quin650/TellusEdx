@@ -12,9 +12,9 @@ const LandingPage0 = () => {
             <div className={classes.caption} >
                 <h1> LEARNING NEVER EXHAUSTS THE MIND</h1>
                 <h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
-                <div className={classes.but}>
+            </div>
+            <div className={classes.but}>
                     <GetStartedButton />
-                </div>
             </div>
         </div>
     );
