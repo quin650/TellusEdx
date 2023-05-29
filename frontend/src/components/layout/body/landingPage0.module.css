@@ -1,32 +1,29 @@
-    .main {
-        z-index: 1000;
-        position: relative;
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        background-color: white;
-        padding: 20% 0;
-        height: 100vh;
-        width: 100vw;
-        background-size: contain; /* Adjust the background size to contain within the container */
-        background-repeat: no-repeat; /* Prevent the background image from repeating */
-        resize: both;
-    }
+.main {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    background-size: contain; /* Adjust the background size to contain within the container */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    resize: both;
+}
 
 .main img {
     z-index: -1; /* Set a negative z-index to place the image behind the main div */
     position: absolute;
-    left: 1%;
+    left: 0%;
     object-fit:none;
-    padding: 0%;
     top: -10%;
 }
 
 .caption {
-    
-    margin-top: 500px;
+    padding-top: 15%;
     max-width: 1728px;
     margin-left: 8%;
     margin-right: 4%;
@@ -35,7 +32,6 @@
 }
 
 .caption h1 {
-
     font-size: 6rem;
     letter-spacing: -.3rem;
     margin-bottom: 0%;
@@ -43,25 +39,20 @@
 }
 
 .caption h3 {
-
     font-size: 1.6rem;
     font-family: roboto;
     font-weight: 400;
     margin-top: 0%;
+    margin-bottom: 5rem;
 }
 
-
 .but {
-    margin-top: 500px;
-    max-width: 1728px;
-    width:100%;
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 1728px;
+    padding-right: 6%;
     width: 100%;
-    margin: 0%;
-    padding:3rem 0%;
 }
 
 /*========== Animations ==========*/
@@ -120,13 +111,13 @@
 /* Width over 1011px */
 @media (min-width: 1011px) {
     .caption {
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
 }
 
 /* Width over 1550px */
 @media (min-width: 1550px) {
     .caption {
-        margin-top: 15px;
+        /* margin-top: 15px; */
     }
 }

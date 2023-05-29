@@ -1,13 +1,72 @@
 .main {
     display: flex;
+    z-index: 2;
+    flex-direction: column;
     position: relative;
-    z-index: 1;
     height: 100vh;
     width: 100%;
+    padding-top: 5%;
     background-color: white;
     color: black;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.left{
+    width: 35%;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.title{
+    font-family: Montserrat;
+    font-size: 5rem;
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-family: Roboto;
+}
+
+
+.line_1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.sub_title{
+    width: 35%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.sub_content{
+    width: 65%;
+}
+
+
+
+
+.container2 {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10%;
+}
+.toggle{
+    display: flex;
+    width: 100%;
     align-items: center;
-    text-align: center;
     justify-content: center;
-    font-size: 8rem;
 }
