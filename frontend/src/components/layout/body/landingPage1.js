@@ -1,4 +1,5 @@
 import React from "react";
+import ToggleButton from "./ToggleButton/ToggleButton";
 import classes from './landingPage1.module.css';
 
 const LandingPage1 = () => {
@@ -20,26 +21,29 @@ const LandingPage1 = () => {
                                 Use TellusEd whenever you get stuck learning something, need direction, or want to deep-dive on a subject.
                             </div>
                         </div>
-                        <hr className={classes.break}></hr>
+                        <div className={classes.break}></div>
                         <div className={classes.line}>
                             <div className={classes.sub_title}>
+                                SYNCED
                             </div>
                             <div className={classes.sub_content}>
+                            Always find where you left off, never losing pace, always moving forward.
                             </div>
                         </div>
+                        <div className={classes.break}></div>
                         <div className={classes.line}>
                             <div className={classes.sub_title}>
+                                AUTO
                             </div>
                             <div className={classes.sub_content}>
+                                Turn on autopilot, and enjoy a catered learning experienced built on our communities’ hard work.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className={classes.container2}>
-                    <div className={classes.toggle}>
-                        Toggle Button
-                    </div>
+                <ToggleButton />
             </div>
         </div>
     );
