@@ -20,6 +20,7 @@ const LandingPage1 = () => {
                                 Use TellusEd whenever you get stuck learning something, need direction, or want to deep-dive on a subject.
                             </div>
                         </div>
+                        <hr className={classes.break}></hr>
                         <div className={classes.line}>
                             <div className={classes.sub_title}>
                             </div>
