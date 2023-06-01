@@ -1,8 +1,9 @@
 
 .nav {
+    display: flex;
     position: absolute;
     z-index: 1001;
-    display: flex;
+    align-items: center;
     top: 0;
     height: 4rem;
     padding-top: .5rem;
@@ -19,8 +20,7 @@
     padding: 0;
     width: 90%;
     max-width: 1740px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: auto;
 }
 
 .Logo {

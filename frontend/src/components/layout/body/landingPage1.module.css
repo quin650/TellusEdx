@@ -58,6 +58,7 @@
     border-bottom: .5px solid #666666;
     margin-top: 3rem;
     margin-bottom: 3rem;
+    width: 90%;
 }
 .container2 {
     display: flex;
