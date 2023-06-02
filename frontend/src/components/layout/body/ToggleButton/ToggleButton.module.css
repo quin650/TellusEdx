@@ -1,9 +1,9 @@
 .toggleSection{
     display: flex;
+    height: 20vh;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5rem;
+    align-items: flex-start;
+    justify-content:center;
     margin: auto;
 }
 
@@ -12,7 +12,9 @@
     position: relative;
     display: inline-block;
     height: 60px;
+    min-height: 60px;
     width: 330px;
+    min-width: 330px;
 }
 
   /* Hide default HTML checkbox */
@@ -87,7 +89,7 @@ input:checked + .slider:before {
     color: white;
 }
 
-.left.invalid{
+.left.rightSide{
     display: flex;
     text-align: center;
     align-items: baseline;
@@ -97,7 +99,7 @@ input:checked + .slider:before {
     color: white;
 }
 
-.right.invalid{
+.right.rightSide{
     display: flex;
     text-align: center;
     align-items: baseline;
