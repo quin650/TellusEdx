@@ -31,27 +31,10 @@
 
 .Logo:hover {
     cursor: pointer;
-    transform: rotate(90deg);
+    transform: rotate(180deg);
     animation: around .18s ease-in forwards;
 }
 
-.NavItem1 {
-    display: flex;
-    margin-right: auto;
-    justify-content: flex-start;
-}
-
-.NavItem2 {
-    display: flex;
-    margin-left: auto;
-    justify-content: flex-end;
-}
-
-.NavItem3 {
-    display: flex;
-    margin-left: 60px;
-    justify-content: flex-end;
-}
 /*========== Animation ==========*/
 @keyframes around {
     0% {
@@ -71,6 +54,23 @@
     }
 }
 
+.NavItem1 {
+    display: flex;
+    margin-right: auto;
+    justify-content: flex-start;
+}
+
+.NavItem2 {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.NavItem3 {
+    display: flex;
+    margin-left: 60px;
+    justify-content: flex-end;
+}
 
 ::placeholder {
     color: white;

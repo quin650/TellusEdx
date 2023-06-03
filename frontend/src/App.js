@@ -10,6 +10,7 @@ import Login from './components/pages/login';
 import { checkAuthenticated } from './actions/auth';
 import { load_user_profile } from './actions/profile';
 import { useDispatch} from 'react-redux';
+
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
