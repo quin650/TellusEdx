@@ -94,7 +94,7 @@
     flex-direction: column;
     max-width: 100%;
     margin: auto;
-    height: 65vh;
+    height: 60vh;
     font-family: Roboto;
 }
 .linksRow {
@@ -173,6 +173,8 @@
     align-items: center;
     border-radius: 50%;
     transition: all 0.5s ease;
+    margin-left: 1.35rem;
+    margin-right: 1.35rem;
 }
 
 .social_links a:hover {
@@ -183,4 +185,19 @@
     line-height: 40px;
     font-size: 32px;
     border-radius: 50%;
+}
+
+.copyright{
+    display: flex;
+    font-family: Montserrat;
+    font-size: .6rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 1vh;
+    min-height: 12px;
+    padding-top: 16px;
+    padding-bottom: 20px;
 }

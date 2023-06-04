@@ -54,6 +54,7 @@ const Footer = () => {
                         <a href='www.tellused.com'><i className={['fab fa-facebook fa-lg']}></i></a>
                     </div>
                 </div>
+                <div className={classes.copyright}>Copyright © 2023 TellusEd. All Rights Reserved</div>
             </div>
         </footer >
     );
