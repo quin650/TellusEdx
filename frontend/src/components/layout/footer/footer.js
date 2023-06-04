@@ -8,15 +8,14 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
     return (
-        <div className={classes.container1}>
+        <footer className={classes.footer}>
             <div className={classes.logoLine}>
-                <div className={classes.logoContainer}>
-                    <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
-                    <div className={classes.companyName}>TellusEd</div>
+                    <div className={classes.logoContainer}>
+                        <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                        <div className={classes.companyName}>TellusEd</div>
+                    </div>
                 </div>
-            </div>
-            <div className={classes.spacer1}>test1</div>
-            <footer className={classes.footer}>
+            <div className={classes.container1}>
                 <div className={classes.container2}>
                     <div className={classes.linksRow} >
                         <div className={classes.footer_col}>
@@ -46,20 +45,17 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className={classes.spacer2}>test2</div>
-                    <div className={classes.socialRow}>
-                        <div className={classes.social_col}>
-                            <div className={classes.social_links}>
-                                <a href='www.tellused.com'><i className={["fab fa-facebook-f"]}></i></a>
-                                <a href='www.tellused.com'><i className={['fab fa-twitter']}></i></a>
-                                <a href='www.tellused.com'><i className={['fab fa-instagram']}></i></a>
-                                <a href='www.tellused.com'><i className={['fab fa-linkedin-in']}></i></a>
-                            </div>
-                        </div>
+                </div>
+                <div className={classes.socialRow}>
+                    <div className={classes.social_links}>
+                        <a href='www.tellused.com'><i className={['fab fa-twitter']}></i></a>
+                        <a href='www.tellused.com'><i className={["fab fa-github fa-lg"]}></i></a>
+                        <a href='www.tellused.com'><i className={['fab fa-discord']}></i></a>
+                        <a href='www.tellused.com'><i className={['fab fa-facebook fa-lg']}></i></a>
                     </div>
                 </div>
-            </footer >
-        </div>
+            </div>
+        </footer >
     );
 }
 
