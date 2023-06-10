@@ -5,6 +5,10 @@ import Landing_Image from '../../../../static/images/Background_Main.png';
 import classes from './landingPage0.module.css';
 
 const LandingPage0 = () => {
+    const handleScrollSnap = () => {
+        const element = document.getElementById('main');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
         <div className={classes.main} >

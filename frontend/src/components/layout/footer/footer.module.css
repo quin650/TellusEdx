@@ -34,6 +34,7 @@
     letter-spacing: -1.3px;
     margin-left: 45px;
     font-weight: 100;
+    cursor: pointer;
 }
 .Logo {
     display: flex;

@@ -1,25 +1,39 @@
+
 .main {
+    scroll-snap-align: center; 
     z-index: 1;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:flex-start;
     margin: 0;
     padding: 0;
     background-color: white;
     height: 100vh;
     width: 100vw;
-    background-size: contain; /* Adjust the background size to contain within the container */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    /* Use 'cover' to scale the background image to cover the entire container */
+    background-size: cover; 
+     /* Prevent the background image from repeating */
+    background-repeat: no-repeat;
     resize: both;
+    /* Prevent the background image from overflowing */
+    overflow:visible;
 }
 
 .main img {
-    z-index: -1; /* Set a negative z-index to place the image behind the main div */
+    
+    /* Set a negative z-index to place the image behind the main div */
+    z-index: -1; 
     position: absolute;
-    left: 0%;
     object-fit:none;
+    /* margin-left: 10%; */
     top: -10%;
+    max-width: calc(100vw - 10%);
+    min-width: 612px;
+    /* Ensure the image is positioned at the left top corner */
+    object-position: left top; 
+    height: 100vh;
+    min-height: 1280px;
 }
 
 .caption {

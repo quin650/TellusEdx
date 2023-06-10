@@ -12,7 +12,7 @@ const Footer = () => {
             <div className={classes.logoLine}>
                     <div className={classes.logoContainer}>
                         <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
-                        <div className={classes.companyName}>TellusEd</div>
+                        <div className={classes.companyName} onClick={handleClickScroll} >TellusEd</div>
                     </div>
                 </div>
             <div className={classes.container1}>
