@@ -1,6 +1,6 @@
 
 .main {
-    scroll-snap-align: center; 
+    scroll-snap-align: start;
     z-index: 1;
     position: relative;
     display: flex;
@@ -9,34 +9,30 @@
     margin: 0;
     padding: 0;
     background-color: white;
-    height: 100vh;
+    height: 94vh;
     width: 100vw;
+    min-width: 400px;
     /* Use 'cover' to scale the background image to cover the entire container */
-    background-size: cover; 
+    background-size: contain;
      /* Prevent the background image from repeating */
     background-repeat: no-repeat;
-    resize: both;
     /* Prevent the background image from overflowing */
-    overflow:visible;
+    overflow: auto;
 }
 
 .main img {
-    
+    /* clip: rect(0, 0, 25vh, 0);  */
     /* Set a negative z-index to place the image behind the main div */
     z-index: -1; 
-    position: absolute;
-    object-fit:none;
-    /* margin-left: 10%; */
-    top: -10%;
-    max-width: calc(100vw - 10%);
-    min-width: 612px;
-    /* Ensure the image is positioned at the left top corner */
-    object-position: left top; 
-    height: 100vh;
-    min-height: 1280px;
+    position: relative;
+    /* max-width: calc(100vw - 10%); */
+    height: 90vh;
+    width: 90vw;
+    object-position: left top;
 }
 
 .caption {
+    position: absolute;
     padding-top: 18%;
     max-width: 1728px;
     margin-left: 8%;
@@ -61,11 +57,15 @@
 }
 
 .but {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 4vh;
+    min-height: 45px;
     max-width: 1728px;
     width: 100%;
+    bottom: 0;
 }
 
 /*========== Animations ==========*/
@@ -85,7 +85,7 @@
 /* Devices under 1550px */
 @media (max-width: 1550px) {
     .main {
-        /* scroll-snap-align: start; */
+        scroll-snap-align: start;
     }
 
     /* makes it for a smoother transition because of caption moving expanding or squishing during window width change*/

@@ -1,14 +1,14 @@
 
 .nav {
     display: flex;
-    position: absolute;
-    z-index: 1001;
+    position: static;
     align-items: center;
-    top: 0;
-    height: 4rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    height: 6vh;
+    min-height: 16px;
     width: 100%;
+    min-width: 400px;
 }
 
 .nav_container {

@@ -21,7 +21,7 @@ const LandingPage1 = () => {
     }
 
     return (
-        <div>
+        <div className={classes.section2}>
             {content}
             <div className={classes.container2}>
                 <ToggleButton ToggleFunction={ToggleFunction}/>
