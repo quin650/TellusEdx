@@ -59,9 +59,10 @@
 .but {
     position: absolute;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    height: 4vh;
+    height: 17vh;
+    margin-top: 0%;
     min-height: 45px;
     max-width: 1728px;
     width: 100%;

@@ -12,18 +12,18 @@ const ToggleButton = (props) =>{
     };
 
     return(
-        <div className={classes.toggleSection}>
+        <section className={classes.toggleSection}>
             <label className={classes.switch}>
-                <div className={classes.sliderText}>
+                <section className={classes.sliderText}>
                     {/* The expression starts with a template literal string using backticks (), which allows for embedded expressions inside ${}`. */}
                     {/*  It checks if the value of isValid is false or a falsy value. If it is, then it appends the value of classes.rightSide to the className string*/}
                     <div className={`${classes['left']} ${!isValid && classes.rightSide}`}>Learn</div>
                     <div className={`${classes['right']} ${!isValid && classes.rightSide}`}>Contribute</div>
-                </div>
+                </section>
                 <input type="checkbox" checked={isValid} onChange={handleToggle}/>
                 <span className={classes.slider}></span>
             </label>
-        </div>
+        </section>
     )
 }
 

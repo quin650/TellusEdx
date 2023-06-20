@@ -1,10 +1,11 @@
 .toggleSection{
     display: flex;
-    height: 20vh;
+    position: relative;
+    height: 10vh;
     width: 100%;
-    align-items: flex-start;
     justify-content:center;
     margin: auto;
+    background-color: white;
 }
 
 /* The switch - the box around the slider */

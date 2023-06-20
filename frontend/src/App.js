@@ -11,7 +11,6 @@ import { checkAuthenticated } from './actions/auth';
 import { load_user_profile } from './actions/profile';
 import { useDispatch} from 'react-redux';
 
-import classes from './App.module.css';
 
 function App() {
     const dispatch = useDispatch();
@@ -24,7 +23,7 @@ function App() {
             <header>
                 <MainNavbar />
             </header>
-            <main className={classes.main}>
+            <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />

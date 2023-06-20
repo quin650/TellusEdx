@@ -17,23 +17,27 @@ const MainNavbar = () => {
     
     const authUser = (
         <Fragment>
-                <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                <Link to="/home" onClick={handleClickScroll} className={classes.Logo}>
+                    <img src={Logo} alt='Logo' className={classes.Logo}></img>
+                </Link>
                 <SearchBar />
-                <div className={classes.avatarDiv}><img src={defaultPNG} className={classes.avatar} alt='Avatar'></img></div>
+                <li className={classes.avatarDiv}>
+                    <img src={defaultPNG} className={classes.avatar} alt='Avatar'></img>
+                </li>
         </Fragment>
     )
 
     const authGuest = (
         <Fragment>
-                <div className={classes.NavItem1}>
+                <li className={classes.NavItem1}>
                     <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
-                </div>
-                <div className={classes.NavItem2}>
+                </li>
+                <li className={classes.NavItem2}>
                     <GetStartedButton />
-                </div>
-                <div className={classes.NavItem3}>
+                </li>
+                <li className={classes.NavItem3}>
                     <NavbarMenu />
-                </div>
+                </li>
         </Fragment>
     )
 
@@ -42,9 +46,9 @@ const MainNavbar = () => {
 
     return (
         <nav className={classes.nav}>
-            <div className={classes.nav_container}>
+            <ul className={classes.nav_container}>
                 {content}
-            </div>
+            </ul>
         </nav>
     );
 };

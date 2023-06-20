@@ -1,4 +1,4 @@
-.button_format button {
+.button_format {
     font-size: 1.1rem;
     font-weight: 600;
     color: white;
@@ -11,13 +11,13 @@
     border: solid 1px var(--blue);
 }
 
-.button_format button:hover {
+.button_format:hover {
     color: white;
     background-color: #3e67c6;
     border: solid 1px white;
 }
 
-.button_format button:active {
+.button_format:active {
     font-weight: bold;
     /* color: white; */
     background-color: var(--blue);
