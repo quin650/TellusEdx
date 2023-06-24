@@ -6,27 +6,27 @@ import HomeMiddleContribute from "./2b_HomeMiddleContribute";
 
 import classes from './2c_HomeMiddle.module.css';
 
-const HomeSection2 = () => {
+const HomeMiddle = () => {
 
-    const[side, SetSide] = useState(true)
+    const[ifToggleIsLearn, SetIfToggleIsLearn] = useState(true)
 
     const ToggleFunction = (x) =>{
-        SetSide(x);
+        SetIfToggleIsLearn(x);
     }
 
     let content = "";
-    if (side){
+    if (ifToggleIsLearn){
         content = <HomeMiddleLearn />
     } else {
         content = <HomeMiddleContribute />
     }
 
     return (
-        <section className={classes.main}>
+        <section className={classes.middleMainSection}>
             {content}
             <ToggleButton ToggleFunction={ToggleFunction}/>
         </section>
     );
 }
 
-export default HomeSection2;
+export default HomeMiddle;

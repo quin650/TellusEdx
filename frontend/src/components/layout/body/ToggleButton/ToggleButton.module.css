@@ -40,6 +40,7 @@
     border-radius: 4px;
 }
 
+/* Allows for the slider css element to be animated. as described, it gets animated at the point the "input" is checked*/
 .slider:before {
     position: absolute;
     cursor: pointer;
@@ -54,11 +55,17 @@
     border-radius: 4px;
 }
 
+/* This turns the original slider into the "slider:before" element and by doing so, moving the element to the right 172px*/
 input:checked + .slider:before {
-    -webkit-transform: translateX(172x);
+    -webkit-transform: translateX(172px);
     -ms-transform: translateX(172px);
     transform: translateX(172px);
 }
+/*
+    In summary, when the <input> element is checked and it has an adjacent sibling 
+    with the class "slider," the pseudo-element ::before of that sibling element will 
+    be transformed by moving it 172 pixels to the right.
+*/
 
 .sliderText{
     position: relative;
@@ -70,7 +77,7 @@ input:checked + .slider:before {
     color: black;
 }
 
-.left{
+.leftSideWhenToggleOnLeft{
     display: flex;
     text-align: center;
     align-items: baseline;
@@ -80,7 +87,7 @@ input:checked + .slider:before {
     color: var(--blue);
 }
 
-.right{
+.rightSideWhenToggleOnLeft{
     display: flex;
     text-align: center;
     align-items: baseline;
@@ -90,7 +97,7 @@ input:checked + .slider:before {
     color: white;
 }
 
-.left.rightSide{
+.leftSideWhenToggleOnLeft.toggleMovedRight{
     display: flex;
     text-align: center;
     align-items: baseline;
@@ -100,7 +107,7 @@ input:checked + .slider:before {
     color: white;
 }
 
-.right.rightSide{
+.rightSideWhenToggleOnLeft.toggleMovedRight{
     display: flex;
     text-align: center;
     align-items: baseline;

@@ -81,7 +81,7 @@
     }
 }
 /*====================================*/
-.container1 {
+.outerFooterContainer {
     box-sizing: border-box;
     background-color: var(--black);
     width: 64%;
@@ -89,7 +89,7 @@
     margin-left: 18%;
     margin-right: 18%;
 }
-.container2 {
+.innerFooterContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -98,7 +98,7 @@
     height: 60vh;
     font-family: Roboto;
 }
-.linksRow {
+.contentsSection {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
