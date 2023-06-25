@@ -4,7 +4,7 @@ import classes from './2c_HomeMiddle.module.css';
 
 const HomeMiddleLearn = () => {
     return (
-        <section className={classes.middleMainContainer}>
+        <div className={classes.middleMainContainer}>
             <div className={classes.left}>
             </div>
             <article className={classes.right}>
@@ -40,7 +40,7 @@ const HomeMiddleLearn = () => {
                     </dl>
                 </ol>
             </article>
-        </section>
+        </div>
     );
 }
 

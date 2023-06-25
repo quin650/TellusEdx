@@ -6,12 +6,25 @@
 
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
+    scroll-snap-type: y mandatory;
+}
 
+section{
+    scroll-snap-align: start;
+}
+
+nav{
+    scroll-snap-align: start;
 }
 
 body {
     margin: 0;
     background-color: white;
+    
+}
+
+footer{
+    
 }
 
 :root {

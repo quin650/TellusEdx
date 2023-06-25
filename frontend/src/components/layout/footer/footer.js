@@ -9,15 +9,15 @@ const Footer = () => {
     };
     return (
         <section className={classes.footer}>
-            <section className={classes.logoLine}>
+            <div className={classes.logoLine}>
                     <div className={classes.logoContainer}>
                         <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                         <span className={classes.companyName} onClick={handleClickScroll} >TellusEd</span>
                     </div>
-            </section>
-            <section className={classes.outerFooterContainer}>
-                <section className={classes.innerFooterContainer}>
-                    <section className={classes.contentsSection} >
+            </div>
+            <div className={classes.outerFooterContainer}>
+                <div className={classes.innerFooterContainer}>
+                    <div className={classes.contentsSection} >
                         <div className={classes.footer_col}>
                             <h4>Company</h4>
                             <ul>
@@ -44,18 +44,18 @@ const Footer = () => {
                                 <li><a href='10fcontactUs.html'>Contact Us</a></li>
                             </ul>
                         </div>
-                    </section>
-                </section>
-                <section className={classes.socialRow}>
+                    </div>
+                </div>
+                <div className={classes.socialRow}>
                     <span className={classes.social_links}>
                         <a href='www.tellused.com'><i className={['fab fa-twitter']}></i></a>
                         <a href='www.tellused.com'><i className={["fab fa-github fa-lg"]}></i></a>
                         <a href='www.tellused.com'><i className={['fab fa-discord']}></i></a>
                         <a href='www.tellused.com'><i className={['fab fa-facebook fa-lg']}></i></a>
                     </span>
-                </section>
+                </div>
                 <span className={classes.copyright}>Copyright © 2023 TellusEd. All Rights Reserved</span>
-            </section>
+            </div>
         </section >
     );
 }

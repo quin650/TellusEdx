@@ -3,7 +3,7 @@ import classes from './2c_HomeMiddle.module.css';
 
 const HomeMiddleContribute = () => {
     return (
-        <section className={classes.middleMainContainer}>
+        <div className={classes.middleMainContainer}>
             <div className={classes.left}>
             </div>
             <article className={classes.right}>
@@ -39,7 +39,7 @@ const HomeMiddleContribute = () => {
                     </dl>
                 </ol>
             </article>
-        </section>
+        </div>
     );
 }
 

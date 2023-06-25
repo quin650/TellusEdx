@@ -45,6 +45,7 @@ const MainNavbar = () => {
     !isAuthenticated ? content = authGuest : content = authUser
 
     return (
+        
         <nav className={classes.nav}>
             <ul className={classes.nav_container}>
                 {content}

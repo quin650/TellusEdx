@@ -12,7 +12,7 @@ const ToggleButton = (props) =>{
     };
 
     return(
-        <section className={classes.toggleSection}>
+        <div className={classes.toggleSection}>
             <label className={classes.switch}>
                 <section className={classes.sliderText}>
                     {/* The expression starts with a template literal string using backticks (), which allows for embedded expressions inside ${}`. */}
@@ -23,7 +23,7 @@ const ToggleButton = (props) =>{
                 <input type="checkbox" checked={ToggleIsContribute} onChange={handleToggle}/>
                 <span className={classes.slider}></span>
             </label>
-        </section>
+        </div>
     )
 }
 

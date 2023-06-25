@@ -6,15 +6,15 @@ import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
     return (
-        <section className={classes.main} >
+        <section className={classes.topMainSection} >
             <img src={BackgroundImage} alt='subjects' /> 
             <blockquote className={classes.caption} >
                 <h1> LEARNING NEVER EXHAUSTS THE MIND</h1>
                 <h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
             </blockquote>
-            <section className={classes.buttonSection}>
+            <div className={classes.buttonSection}>
                 <GetStartedButton />
-            </section>
+            </div>
         </section>
     );
 };
