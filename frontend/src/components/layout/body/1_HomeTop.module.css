@@ -1,69 +1,85 @@
-
-.topMainSection {
+.outer_container_top {
     z-index: 1;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     padding: 0;
     background-color: white;
-    height: 94vh;
+    height: 92vh;
     width: 100vw;
     min-width: 400px;
     /* Use 'cover' to scale the background image to cover the entire container */
     background-size: contain;
      /* Prevent the background image from repeating */
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
-.topMainSection img {
-    clip: rect(0, 0, 25vh, 0); 
-    /* Set a negative z-index to place the image behind the main div */
-    z-index: -1; 
+.inner_container_top{
+    z-index: 1;
     position: relative;
-    /* max-width: calc(100vw - 10%); */
-    max-height: 90vh;
-    max-width: 90vw;
+    flex-direction: column;
+    display: flex;
+    margin: auto;
+    max-width: 1728px;
+    min-height: 92vh;
+    width:80%;
+
+}
+
+.inner_container_top img {
+    z-index: -1;                 /* Set a negative z-index to place the image behind the main div */
+    position: absolute;
     object-position: left top;
+    left: -20px;
+    margin-top: 10vh;
+    margin-left: 0px;
+    margin-right: auto;
+    overflow: hidden;
 }
 
 .caption {
-    position: absolute;
-    padding-top: 18%;
-    max-width: 1728px;
-    margin-left: 8%;
-    margin-right: 4%;
-    padding-right: 2%;
-    width:80%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 35vh;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: auto;
+    align-items: center;
+    height: 80vh;
 }
 
 .caption h1 {
     font-size: 6rem;
     letter-spacing: -.3rem;
-    margin-bottom: 0%;
+    margin: 0px;
     text-shadow: 0rem .2rem .2rem black;
+    margin-left: 0px;
+    margin-right: auto;
 }
 
 .caption h3 {
     font-size: 1.6rem;
     font-family: roboto;
     font-weight: 400;
-    margin-top: 0%;
-    margin-bottom: 5rem;
+    margin-left: 0px;
+    margin-right: auto;
 }
 
 .buttonSection {
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    height: 17vh;
-    margin-top: 0%;
-    min-height: 45px;
-    max-width: 1728px;
+    height: 2.5rem;
+    min-height: 2.5rem;
     width: 100%;
-    bottom: 0;
+    margin-bottom: 17vh;
 }
 
 /*========== Animations ==========*/
@@ -82,53 +98,21 @@
 
 /* Devices under 1550px */
 @media (max-width: 1550px) {
-    .topMainSection {
+    .outer_container_top {
         scroll-snap-align: start;
-    }
-
-    /* makes it for a smoother transition because of caption moving expanding or squishing during window width change*/
-    .caption {
-        margin-left: 8%; 
     }
 }
 
 /* Width under 1011px */
 @media (max-width: 1011px) {
-    .caption {
-        margin-top: 50px;
-    }
 
     .caption h1 {
         font-size: 3.7rem;
         letter-spacing: .15rem;
-        padding-bottom: .5rem;
     }
 
     .caption h3 {
         font-size: 1.3rem;
         letter-spacing: 0rem;
-        padding-bottom: 1.2rem;
-    }
-}
-
-@media (max-width: 1500) {
-    .topMainSection img {
-
-        height: 1285px;
-        width: 1285px;
-    }
-}
-
-/* Width over 1011px */
-@media (min-width: 1011px) {
-    .caption {
-        /* margin-top: 10px; */
-    }
-}
-
-/* Width over 1550px */
-@media (min-width: 1550px) {
-    .caption {
-        /* margin-top: 15px; */
     }
 }

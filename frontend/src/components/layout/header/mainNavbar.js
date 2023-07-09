@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import NavbarMenu from './navbarMenu';
 import SearchBar from './searchBar';
 import GetStartedButton from './headerUI/GetStartedButton';
-
 import classes from './mainNavbar.module.css';
 import Logo from '../../../../static/images/Logo_arrows.png';
 import defaultPNG from '../../../../static/images/1Avatar.png';
@@ -46,8 +45,8 @@ const MainNavbar = () => {
 
     return (
         
-        <nav className={classes.nav}>
-            <ul className={classes.nav_container}>
+        <nav className={classes.outer_container_nav}>
+            <ul className={classes.inner_container_nav}>
                 {content}
             </ul>
         </nav>

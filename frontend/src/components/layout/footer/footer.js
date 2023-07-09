@@ -17,7 +17,7 @@ const Footer = () => {
             </div>
             <div className={classes.outerFooterContainer}>
                 <div className={classes.innerFooterContainer}>
-                    <div className={classes.contentsSection} >
+                    <div className={classes.contentsSection}>
                         <div className={classes.footer_col}>
                             <h4>Company</h4>
                             <ul>

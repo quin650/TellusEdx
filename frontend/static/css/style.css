@@ -20,7 +20,7 @@ nav{
 body {
     margin: 0;
     background-color: white;
-    
+    min-width: 400px;
 }
 
 footer{
@@ -32,6 +32,6 @@ footer{
     --white: #ffffff;
     --gray: #b3b3b3;
     --darkGray: #ffffff33;
-    --black:  #020307;
+    --black: black;
     --darkgray: #1d1d1d;
 }

@@ -1,26 +1,100 @@
-
-.nav {
+.outer_container_nav {                   /*Desktop 1st workflow. Starting at 3440 ultra wide screen*/
     display: flex;
     position: static;
+    justify-content: center;
     align-items: center;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    height: 6vh;
-    min-height: 16px;
+    height: 56px;
     width: 100%;
-    min-width: 400px;
+    max-width: 3840px;
+    margin: 0px auto 8px auto;
+    padding-top: 8px;
 }
 
-.nav_container {
+.inner_container_nav {
     display: flex;
     flex-direction: row;
-    color: var(--white);
-    height: 3rem;
+    justify-content: center;
     align-items: center;
+    height: 48px;
+    width: 95%;
     padding: 0;
-    width: 90%;
-    max-width: 1740px;
     margin: auto;
+    color: var(--white);
+}
+
+/* Media Queries
+
+@media(max-width: 2560px){ 
+    .outer_container_nav{
+        max-width: 1920px; 
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 1920px){
+    .outer_container_nav{
+        max-width: 1536px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 1440px){
+    .outer_container_nav{
+        max-width: 1366px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 1366px){
+    .outer_container_nav{
+        max-width: 1280px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 1280px){
+    .outer_container_nav{
+        max-width: 1024px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 1024px){
+    .outer_container_nav{
+        max-width: 1024px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 768px){
+    .outer_container_nav{
+        max-width: 640px;
+    }
+    .inner_container_nav{
+
+    }
+}
+@media(max-width: 640px){
+    .outer_container_nav{
+        width: 100%;
+    }
+    .inner_container_nav{
+    }
+} */
+@media(max-width: 475px){
+    .outer_container_nav{
+        width: 100%;
+        min-width: 375px;
+    }
+    .inner_container_nav .NavItem2{
+        display: none;
+    }
 }
 
 .Logo {
@@ -35,20 +109,16 @@
     animation: around .18s ease-in forwards;
 }
 
-/*========== Animation ==========*/
-@keyframes around {
+@keyframes around {                         /*========== Animation ==========*/
     0% {
         transform: rotate(22.5deg);
     }
-
     33% {
         transform: rotate(45deg);
     }
-
     66% {
         transform: rotate(67.5deg);
     }
-
     100% {
         transform: rotate(90deg);
     }
@@ -61,7 +131,7 @@
 }
 
 .NavItem2 {
-    display: flex;
+    display: block;
     margin-left: auto;
     justify-content: flex-end;
 }
@@ -72,18 +142,7 @@
     justify-content: flex-end;
 }
 
-::placeholder {
-    color: white;
-    opacity: 1;
-}
-
-.avatarDiv{
-    order: 3;
-    display: flex;
-}
-
 .avatar {
-    order: 3;
     display: flex;
     height: 2.2rem;
     width: 2.2rem;
@@ -92,27 +151,4 @@
     margin-left: .5rem;
     margin-right: .5rem;
     align-items: center;
-}
-
-/*========== Media Queries ==========*/
-
-/* Devices under 1011px */
-@media (max-width: 1011px) {
-
-    .Logo {
-        order: 2;
-        display: flex;
-        align-content: center;
-        margin: auto;
-    }
-    
-    /*========== Media Queries ===Not Used===*/
-    .spacer {
-        display: none;
-    }
-
-    ::placeholder {
-        display: none;
-    }
-
 }

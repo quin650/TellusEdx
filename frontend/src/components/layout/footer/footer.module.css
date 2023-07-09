@@ -13,6 +13,15 @@
     flex-direction: column;
     justify-content: center;
 }
+/* xs */
+@media (min-width: 475px){
+    .container {max-width: 475px;}}
+
+/* sm */
+@media (min-width: 475px){
+    .container {max-width: 475px;}
+}
+
 .logoLine {
     display: flex;
     justify-content: center;
