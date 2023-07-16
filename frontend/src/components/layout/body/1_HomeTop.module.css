@@ -94,18 +94,8 @@
     }
 }
 
-/*========== Media Queries --WIDTH ==========*/
 
-/* Devices under 1550px */
-@media (max-width: 1550px) {
-    .outer_container_top {
-        scroll-snap-align: start;
-    }
-}
-
-/* Width under 1011px */
-@media (max-width: 1011px) {
-
+@media (max-width: 1011px) {            /* Width under 1011px */
     .caption h1 {
         font-size: 3.7rem;
         letter-spacing: .15rem;

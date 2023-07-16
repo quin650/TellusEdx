@@ -52,10 +52,44 @@
     font-size: 1.3rem;
     line-height: 1.3;
     width: 73%;
+    min-width: 175px;
 }
+
+@media (max-width: 1011px) {            /* Width under 1011px */
+
+    .left{
+        width: calc(75% - 50vw);
+    }
+    .title{
+        font-size: 4.5rem;
+    }
+
+    .sub_title {
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .sub_content {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+}
+
 .break{
     border-bottom: .5px solid #666666;
     margin-top: 3rem;
     margin-bottom: 3rem;
-    width: 90%;
+    width: 89%;
+}
+
+@media (min-width: 2400px) {
+    .break {min-width: 1530px};
+
+}
+
+@media (min-width: 3024px) {
+    .break {
+        min-width: 1720px;
+        max-width: 1680px
+    }
 }

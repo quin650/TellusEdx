@@ -4,8 +4,10 @@
     height: 10vh;
     width: 100%;
     justify-content:center;
-    margin: auto;
+    align-items: flex-end;
+    margin-top: auto;
     background-color: white;
+    bottom: 10%;
 }
 
 /* The switch - the box around the slider */
@@ -115,4 +117,28 @@ input:checked + .slider:before {
     width: 50%;
     margin: auto;
     color: var(--blue);
+}
+
+
+@media (max-width: 1011px) {            /* Width under 1011px */
+    .toggleSection{
+        height: 8vh;
+    }
+    .switch {
+        height: 48px;
+        min-height: 48px;
+        width: 264px;
+        min-width: 264px;
+    }
+    .slider:before {
+        height: 42px;
+        width: 120px;
+        left: 3.2px;
+        bottom: 3.2px;
+        border-radius: 3.2px;
+    }
+    .sliderText{
+        height: 42px;
+        width: 264px;
+    }
 }

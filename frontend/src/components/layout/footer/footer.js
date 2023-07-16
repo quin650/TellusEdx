@@ -9,11 +9,15 @@ const Footer = () => {
     };
     return (
         <section className={classes.footer}>
-            <div className={classes.logoLine}>
-                    <div className={classes.logoContainer}>
-                        <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
-                        <span className={classes.companyName} onClick={handleClickScroll} >TellusEd</span>
-                    </div>
+            <div className={classes.outerLogoContainer}>
+                    <ul className={classes.innerLogoContainer}>
+                        <li>
+                            <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                        </li>
+                        <li>
+                            <span className={classes.companyName} onClick={handleClickScroll} >TellusEd</span>
+                        </li>
+                    </ul>
             </div>
             <div className={classes.outerFooterContainer}>
                 <div className={classes.innerFooterContainer}>
