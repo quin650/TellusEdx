@@ -17,6 +17,7 @@
 .left{
     width: 35%;
 }
+
 .right{
     display: flex;
     flex-direction: column;

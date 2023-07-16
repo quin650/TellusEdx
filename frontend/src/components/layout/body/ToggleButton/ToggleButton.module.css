@@ -141,4 +141,10 @@ input:checked + .slider:before {
         height: 42px;
         width: 264px;
     }
+
+    input:checked + .slider:before {
+    -webkit-transform: translateX(138px);
+    -ms-transform: translateX(138px);
+    transform: translateX(138px);
+}
 }
