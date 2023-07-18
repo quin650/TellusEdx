@@ -2,12 +2,12 @@
     display: flex;
     position: relative;
     height: 10vh;
-    width: 100%;
+    width: 100vw;
     justify-content:center;
     align-items: flex-end;
     margin-top: auto;
     background-color: white;
-    bottom: 10%;
+    bottom: 10vh    ;
 }
 
 /* The switch - the box around the slider */

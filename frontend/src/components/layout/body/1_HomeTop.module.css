@@ -8,13 +8,11 @@
     margin: 0;
     padding: 0;
     background-color: white;
-    height: 92vh;
+    height: Calc(100vh - 64px);
     width: 100vw;
     min-width: 400px;
-    /* Use 'cover' to scale the background image to cover the entire container */
-    background-size: contain;
-     /* Prevent the background image from repeating */
-    background-repeat: no-repeat;
+    background-size: contain;           /* Use 'cover' to scale the background image to cover the entire container */
+    background-repeat: no-repeat;       /* Prevent the background image from repeating */
     overflow: hidden;
 }
 
@@ -25,8 +23,8 @@
     display: flex;
     margin: auto;
     max-width: 1728px;
-    min-height: 92vh;
-    width:80%;
+    height: Calc(100vh - 64px);
+    width:80vw;
 }
 
 .inner_container_top img {
@@ -103,5 +101,11 @@
     .caption h3 {
         font-size: 1.3rem;
         letter-spacing: 0rem;
+    }
+}
+
+@media (max-width: 550px) {            /* Width under 1011px */
+    .caption {
+        margin-top: 35vw;
     }
 }
