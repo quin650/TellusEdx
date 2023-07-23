@@ -3,6 +3,7 @@
     position: relative;
     height: 10vh;
     width: 100vw;
+    min-width: 400px;
     justify-content:center;
     align-items: flex-end;
     margin-top: auto;
@@ -132,7 +133,7 @@ input:checked + .slider:before {
     }
     .slider:before {
         height: 42px;
-        width: 120px;
+        width: 130px;
         left: 3.2px;
         bottom: 3.2px;
         border-radius: 3.2px;
@@ -143,8 +144,8 @@ input:checked + .slider:before {
     }
 
     input:checked + .slider:before {
-    -webkit-transform: translateX(138px);
-    -ms-transform: translateX(138px);
-    transform: translateX(138px);
+    -webkit-transform: translateX(130px);
+    -ms-transform: translateX(130px);
+    transform: translateX(130px);
 }
 }

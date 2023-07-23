@@ -15,16 +15,12 @@
     width: 100vw;
 }
 
-.left{
-    width: 35vw;
-    height: 100vh;
-}
-
 .right{
     display: flex;
     flex-direction: column;
-    width: 75vw;
-    height: 100vh;
+    width: 100vw;
+    height: 90vh;
+    margin-left: calc(100vw - 65%);
 }
 .title{
     font-size: 6rem;
@@ -63,8 +59,9 @@
 
 @media (max-width: 1011px) {            /* Width under 1011px */
 
-    .left{
-        width: calc(75vw - 50vw);
+    .right{
+        height: 92vh;
+        margin-left: calc(100vw - 85%);
     }
     .title{
         font-size: 4.5rem;
@@ -90,12 +87,32 @@
 
 @media (min-width: 2400px) {
     .break {min-width: 1530px};
-
 }
 
 @media (min-width: 3024px) {
     .break {
         min-width: 1720px;
         max-width: 1680px
+    }
+}
+
+@media (max-height: 800px) {
+    .break {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+    .title{
+        margin-top: 2.5vh;
+        margin-bottom: 1vh;
+    }
+    .content{
+        padding-top: 0vh;
+        padding-bottom: 0vh;
+    }
+}
+
+@media (max-width: 400px) {            /* Width under 1011px */
+    .right{
+        margin-left: 40px;
     }
 }

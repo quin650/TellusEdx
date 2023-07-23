@@ -109,3 +109,15 @@
         margin-top: 35vw;
     }
 }
+
+@media (max-height: 700px) {            /* Height under 700px */
+    .caption {
+        margin-top: calc(35vh - 200px);
+    }
+}
+
+@media (max-height: 550px) {            /* Height under 700px */
+    .caption {
+        margin-top: 0px;
+    }
+}

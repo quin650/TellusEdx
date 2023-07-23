@@ -5,8 +5,6 @@ import classes from './2c_HomeMiddle.module.css';
 const HomeMiddleLearn = () => {
     return (
         <div className={classes.middleMainContainer}>
-            <div className={classes.left}>
-            </div>
             <article className={classes.right}>
                 <h2 className={classes.title}>
                     Learn
