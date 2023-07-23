@@ -1,12 +1,13 @@
 import React from "react";
-import GetStartedButton from "../header/headerUI/GetStartedButton";
+import GetStartedButton from "../getStarted/button/GetStartedButton";
 import BackgroundImage from '../../../../static/images/Background_Limited.png';
-
+import GetStartedModal from "../getStarted/modal/GetStartedModal";
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
     return (
         <div className={classes.outer_container_top}>
+            <GetStartedModal />
             <div className={classes.inner_container_top} >
                 <img src={BackgroundImage} alt='subjects' /> 
                 <blockquote className={classes.caption} >

@@ -1,0 +1,30 @@
+.modalOuterContainer{
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    top: -56px;
+    height: calc(100vh + 56px);
+    width: 100vw;
+    background-color: rgb(175, 175, 175, 40%);
+    justify-content: center;
+    align-items: center;
+}
+
+.modalInnerContainer{
+    display: flex;
+    z-index: 2000;
+    position: fixed;
+    background-color: white;
+    border-radius: 14px;
+    height: 475px;
+    width: 475px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.modalContentContainer{
+    margin: 20px 10px 10px 10px;
+}
