@@ -245,12 +245,13 @@
     }
     .contentsSection {
         justify-content: center;
+        margin-bottom: 20vh;
     }
     .footer_col {
         padding-left: 25px;
     }
     .outerFooterContainer{
-        margin-top: 20%;
+        margin-top: 0%;
         margin-bottom: 0%;
         padding-top: 0px;
     }

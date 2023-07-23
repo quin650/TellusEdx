@@ -8,7 +8,7 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
     return (
-        <section className={classes.footer}>
+        <footer className={classes.footer}>
             <div className={classes.outerLogoContainer}>
                     <ul className={classes.innerLogoContainer}>
                         <li>
@@ -60,7 +60,7 @@ const Footer = () => {
                     <span className={classes.copyright}>Copyright © 2023 TellusEd. All Rights Reserved</span>
                 </div>
             </div>
-        </section >
+        </footer >
     );
 }
 

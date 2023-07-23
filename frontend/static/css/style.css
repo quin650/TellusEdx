@@ -13,6 +13,10 @@ section{
     scroll-snap-align: start;
 }
 
+footer{
+    scroll-snap-align: end;
+}
+
 nav{
     scroll-snap-align: start;
 }
