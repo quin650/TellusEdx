@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import NavbarMenu from './navbarMenu';
+import NavbarMenuButton from './navbarMenuButton';
 import SearchBar from './searchBar';
 import GetStartedButton from '../getStarted/button/GetStartedButton';
 import classes from './mainNavbar.module.css';
@@ -35,7 +35,7 @@ const MainNavbar = () => {
                     <GetStartedButton />
                 </li>
                 <li className={classes.NavItem3}>
-                    <NavbarMenu />
+                    <NavbarMenuButton />
                 </li>
         </Fragment>
     )

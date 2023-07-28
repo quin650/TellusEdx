@@ -5,8 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store';
 import { Provider } from 'react-redux';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// const root = ReactDOM.createRoot(document.getElementById('root'));
 
+
+// Find or create a container element for your React app
+const appContainer = document.getElementById('root');
+
+// Create the React root using the container element
+const root = ReactDOM.createRoot(appContainer);
 
     if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';

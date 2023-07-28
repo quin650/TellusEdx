@@ -3,7 +3,6 @@ import { Navigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from "../../actions/auth";
 import CSRFToken from "../csrftoken";
-
 import classes from './login.module.css';
 
 const Login = () => {

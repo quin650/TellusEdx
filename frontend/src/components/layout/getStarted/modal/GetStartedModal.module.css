@@ -1,4 +1,4 @@
-.modalOuterContainer{
+.blurredBackgroundContainer{
     display: flex;
     position: fixed;
     z-index: 1000;
@@ -9,22 +9,130 @@
     background-color: rgb(175, 175, 175, 40%);
     justify-content: center;
     align-items: center;
+    font-family: Roboto;
 }
 
-.modalInnerContainer{
+.modalContainer{
     display: flex;
     z-index: 2000;
     position: fixed;
     background-color: white;
+    justify-content: center;
     border-radius: 14px;
-    height: 475px;
-    width: 475px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    margin-right: auto;
-    margin-left: auto;
+    width: 410px;
+    height: 450px;
+}
+
+.exitButtonContainer{
+    cursor: pointer;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-left: calc(100% - 40px);
+}
+
+.exitButton{
+    margin: auto;
 }
 
 .modalContentContainer{
-    margin: 20px 10px 10px 10px;
+    box-sizing: border-box; 
+    position: absolute;
+    padding: 50px 10px 36px 10px;
+    border-radius: 8px;
+    max-height: 100%;
+    width: 380px;
+    background: white;
+    
+}
+
+.modalFormContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.continueWithGoogleButton{
+    display: flex;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 13px auto;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 550;
+    color: black;
+}
+
+.googleIcon{
+    display: inline-block;
+    margin-right: 12px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.or{
+    color: #989797;
+    font-size: 16px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 175%;
+    font-weight: 500;
+}
+
+.formInputs{
+    display: flex;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 13px auto;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+.formInputs::placeholder {
+    padding-left: 10px;
+    color: #989797;
+}
+
+.createAccountButton{
+    display: flex;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 13px auto;
+    background-color: black;
+    color: white;
+    border: 2px black solid;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 550;
+    
+}
+
+.haveAnAccount{
+    color: gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logIn{
+    color: blue;
 }

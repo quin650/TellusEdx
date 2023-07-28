@@ -1,6 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+	import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+	navbarModalStatus: false,
+	registrationModalStatus: false,
 	isAuthenticated: false,
 	user: null,
 	loading: false,
@@ -11,6 +13,18 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
+		navBarAsGuestOpen(state) {
+			state.navbarModalStatus = !state.navbarModalStatus;
+		},
+		navBarAsGuestClose(state) {
+			state.navbarModalStatus = !state.navbarModalStatus;
+		},
+		registerModalOpen(state) {
+			state.registrationModalStatus = !state.registrationModalStatus;
+		},
+		registerModalClose(state) {
+			state.registrationModalStatus = !state.registrationModalStatus;
+		},
 		registerFail(state) {
 			state.registered = false;
 			state.isAuthenticated = false;

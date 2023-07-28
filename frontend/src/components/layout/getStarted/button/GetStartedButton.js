@@ -1,18 +1,18 @@
-import React, {useState} from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../../../reducers/auth";
 import classes from  './GetStartedButton.module.css';
 
 const GetStartedButton = () => {
-
-    // const[getStartedModalOpen, setGetStartedModalOpen] = useState(false);
-
-    // const getStarted = {
-    //     setGetStartedModalOpen(true);
-    // }
+    const dispatch = useDispatch();
+    const modalButtonAction = () => {
+        dispatch(userActions.registerModalOpen());
+    }
 
     return (
         <button
             className={classes.button_format}
-            // onClick={getStarted}
+            onClick={modalButtonAction}
             type="submit">
                 Get Started
         </button>
