@@ -11,3 +11,18 @@
     background-color: black;
     margin: 5px 1px;
 }
+
+
+.exitButtonContainer{
+    cursor: pointer;
+    position: relative;
+    z-index: 3000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30px;
+}
+
+.exitButton{
+    margin: auto;
+}

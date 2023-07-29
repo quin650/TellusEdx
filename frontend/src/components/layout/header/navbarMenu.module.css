@@ -36,21 +36,11 @@
     height: calc(100vh - 40px);
 }
 
-.exitButtonContainer{
-    cursor: pointer;
-    position: absolute;
-    z-index: 1000;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 40px;
-    width: 40px;
-    margin-left: calc(100% - 40px);
+.exitButtonPlaceholder {
+    position: relative;
+    height: 56px;
 }
 
-.exitButton{
-    margin: auto;
-}
 
 .orderedList{
     width: 350px;

@@ -13,10 +13,7 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		navBarAsGuestOpen(state) {
-			state.navbarModalStatus = !state.navbarModalStatus;
-		},
-		navBarAsGuestClose(state) {
+		navBarAsGuestOpenClose(state) {
 			state.navbarModalStatus = !state.navbarModalStatus;
 		},
 		registerModalOpen(state) {
