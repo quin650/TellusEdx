@@ -45,7 +45,6 @@
     display: flex;
     height: 3.7rem;
     width: 3.57rem;
-    margin-top: 5px;
 }
 .Logo:hover {
     cursor: pointer;
