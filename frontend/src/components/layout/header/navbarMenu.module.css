@@ -26,6 +26,11 @@
     padding: 0px;
 }
 
+.exitButtonPlaceholder {
+    position: relative;
+    height: 56px;
+}
+
 .menuContentContainer {
     display: flex;
     position: relative;
@@ -36,12 +41,10 @@
     height: calc(100vh - 40px);
 }
 
-.exitButtonPlaceholder {
-    position: relative;
-    height: 56px;
-}
-
-
 .orderedList{
     width: 350px;
+}
+
+.orderedList li {
+    list-style: none;
 }
