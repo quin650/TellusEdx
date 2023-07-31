@@ -56,7 +56,7 @@
     flex-direction: column;
 }
 
-.continueWithGoogleButton{
+.continueWithXButton{
     display: flex;
     width: 352px;
     height: 50px;
@@ -71,12 +71,17 @@
     color: black;
 }
 
-.googleIcon{
-    display: inline-block;
-    margin-right: 12px;
+.continueWithXButton a {
+    /* line-height: 20px; */
     align-items: center;
-    justify-content: center;
-    padding-top: 4px;
+
+}
+
+.XIcon{
+    display: inline-block;
+    height: 24px;
+    width: 30px;
+    padding-left: 10px;
 }
 
 .or{

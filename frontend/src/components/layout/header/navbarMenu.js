@@ -15,13 +15,18 @@ const NavbarMenu = () => {
                         <div className={classes.searchContainer}>            {/* 350px */}
                             <SearchBar />                                   {/* 320rem */}
                         </div>
-                        <li>Platform</li>                                   {/* 320rem */}
-                        <li>Explore</li>
+                        <li><a>Platform</a></li>                                   {/* 320rem */}
+                        <li><a>Explore</a></li>
+
                         <div className={classes.break}></div>
-                        <li>Theme</li>
-                        <li>English</li>
+
+                        <li><a>Theme</a></li>
+                        <li><a>English</a></li>
+
                         <div className={classes.break}></div>
-                        <li>Log in</li>
+
+                        <li><a>Log in</a></li>
+
                         <li>
                             <GetStartedButton />
                         </li>
