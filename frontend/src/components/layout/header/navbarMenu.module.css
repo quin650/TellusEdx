@@ -43,8 +43,33 @@
 
 .orderedList{
     width: 350px;
+    padding: 0px;
 }
 
 .orderedList li {
+    display: flex;
     list-style: none;
+    height: 51.2px;
+    width: 350px;
+    font-size: 14px;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.searchContainer{
+    display: flex;
+    margin: auto;
+    list-style: none;
+
+}
+
+.orderedList li:first-of-type {
+    margin-top: 51.2px;
+}
+
+.break{
+    border-bottom: .5px solid #666666;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    width: 89%;
 }
