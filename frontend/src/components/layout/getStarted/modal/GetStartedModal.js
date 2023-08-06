@@ -1,138 +1,35 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Navigate, Link } from 'react-router-dom';
-import { register } from "../../../../actions/auth";
-import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "../../../../reducers/auth";
-import CSRFToken from "../../../csrftoken";
-
-import classes from './GetStartedModal.module.css';
+import GetStartedModalLogIn from "./GetStartedModalLogIn";
+import GetStartedModalCreateAccount from "./GetStartedModalCreateAccount";
 
 const GetStartedModal = () => {
-    const dispatch = useDispatch();
     const { isAuthenticated } = useSelector(state => state.user);
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        re_password: ''
-    });
-
-    const [accountCreated, setAccountCreated] = useState(false);
-
-    const { username, password, re_password } = formData;
-
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    const onSubmit = e => {
-        e.preventDefault();
-
-        logInOption 
-            ? (dispatch(register(username, password, re_password)), setAccountCreated(true))
-            : dispatch(login(username, password));
+    const { registered } = useSelector(state => state.user);
+    const [logIn_True_CreateAccount_False, SetLogIn_True_CreateAccount_False] = useState(false);
+    
+    const LogInToggle = () => {
+        SetLogIn_True_CreateAccount_False(!logIn_True_CreateAccount_False);
     };
+
+    useEffect(() => {
+        if (registered) {
+            SetLogIn_True_CreateAccount_False(true);
+        }
+    }, [registered]);
 
     if (isAuthenticated)
         return <Navigate to='/home' />;
-    else if (accountCreated)
-        return <Navigate to='/login' />;
-
-    const exitAction = () => {
-        dispatch(userActions.registerModalClose());
-    }
-
-    const [logInOption, SetLogInOption] = useState(true);
-
-    let submitButtonText = "Create account";
-    let alternateMessage = "Have an account? "
-    let linkOptionText = "Log In"
-    let rePasswordInput = (
-            <input
-                type='password'
-                placeholder='Repeat Password*'
-                name='re_password'
-                onChange={e => onChange(e)}
-                value={re_password}
-                minLength='6'
-                required
-                className={classes.formInputs}
-            />
-    );
-
-    const LogInToggle = () => {
-        SetLogInOption(!logInOption);
-    }
-
-    logInOption ? submitButtonText = "Create account": submitButtonText = "Log In";
-    logInOption ? alternateMessage = "Don't have an Account? ": alternateMessage = "Have an account? ";
-    logInOption ? linkOptionText = "Log In": linkOptionText = "Create account";
-    logInOption 
-    ? rePasswordInput = (
-        <input
-            type='password'
-            placeholder='Repeat Password*'
-            name='re_password'
-            onChange={e => onChange(e)}
-            value={re_password}
-            minLength='6'
-            required
-            className={classes.formInputs}
-        />
-    )
-    : rePasswordInput = null;
-
-    // Based on LogInToggle, must change three things: 
-    // The "Create Account " button  ---> Log-in
-    // re_password field must disappear
-    // onSubmit action "dispatch(register(..)" ---> "dispatch(login(..))"
 
     return (
-        <div className={classes.blurredBackgroundContainer}>
-            <div className={classes.modalContainer}>
-                <div onClick={exitAction} className={classes.exitButtonContainer}>
-                    <div className={classes.exitButton}>
-                        <svg className={classes.svg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
-                    </div>
-                </div>
-                <div className={classes.modalContentContainer}>
-                    <form className={classes.modalFormContainer} onSubmit={e => onSubmit(e)}>
-                        <CSRFToken />
-                        <button className={classes.continueWithXButton}>
-                            <a>
-                                Continue with
-                                <i className={classes.XIcon}>
-                                    <svg viewBox="0 0 24 24" aria-hidden="true" ><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
-                                </i>
-                            </a>
-                        </button>
-                        <p className={classes.or}> or</p>
-
-                        <input
-                            type='text'
-                            placeholder='Username*'
-                            name='username'
-                            onChange={e => onChange(e)}
-                            value={username}
-                            required
-                            className={classes.formInputs}
-                        />
-                        <input
-                            type='password'
-                            placeholder='Password*'
-                            name='password'
-                            onChange={e => onChange(e)}
-                            value={password}
-                            minLength='6'
-                            required
-                            className={classes.formInputs}
-                        />
-                        {rePasswordInput}
-                        <button className={classes.createAccountButton} type='submit'>
-                            {submitButtonText}
-                        </button>
-                        <p className={classes.haveAnAccount}>{alternateMessage}<a className={classes.logIn} onClick={LogInToggle}>{linkOptionText}</a></p>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <Fragment>
+            {logIn_True_CreateAccount_False ? (
+                <GetStartedModalLogIn LogInToggle={LogInToggle} />
+            ) : (
+                <GetStartedModalCreateAccount LogInToggle={LogInToggle} />
+            )}
+        </Fragment>
     )
 }
 
