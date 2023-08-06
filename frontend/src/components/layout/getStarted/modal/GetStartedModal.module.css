@@ -1,4 +1,4 @@
-.blurredBackgroundContainer{
+.blurredBackgroundContainer {
     display: flex;
     position: fixed;
     z-index: 1000;
@@ -12,18 +12,18 @@
     font-family: Roboto;
 }
 
-.modalContainer{
+.modalContainer {
     display: flex;
     z-index: 2000;
     position: fixed;
     background-color: white;
     justify-content: center;
     border-radius: 14px;
+    height: 515px;
     width: 410px;
-    height: 450px;
 }
 
-.exitButtonContainer{
+.exitButtonContainer {
     cursor: pointer;
     position: absolute;
     z-index: 1000;
@@ -35,56 +35,76 @@
     margin-left: calc(100% - 40px);
 }
 
-.exitButton{
+.exitButton {
     margin: auto;
 }
 
-.modalContentContainer{
-    box-sizing: border-box; 
+.modalContentContainer {
+    box-sizing: border-box;
     position: absolute;
     padding: 50px 10px 36px 10px;
     border-radius: 8px;
     max-height: 100%;
     width: 380px;
     background: white;
-    
+
 }
 
-.modalFormContainer{
+.modalFormContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-.continueWithXButton{
+.continueWithXButton {
     display: flex;
     width: 352px;
     height: 50px;
     align-items: center;
     justify-content: center;
     margin: 13px auto;
-    background-color: white;
-    border: 2px black solid;
+    color: white;
+    background-color: var(--blue);
+    border: solid 1px var(--blue);
     border-radius: 6px;
     font-size: 20px;
     font-weight: 550;
-    color: black;
+    cursor: pointer;
 }
 
 .continueWithXButton a {
-    /* line-height: 20px; */
     align-items: center;
-
 }
 
-.XIcon{
+.continueWithXButton:hover {
+    color: white;
+    background-color: #3e67c6;
+    border: solid 1px white;
+}
+
+.continueWithXButton:active {
+    font-weight: bold;
+    background-color: var(--blue);
+    border: solid 0px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.26);
+    border-radius: 7px;
+}
+
+
+.XIcon {
     display: inline-block;
     height: 24px;
     width: 30px;
     padding-left: 10px;
 }
 
-.or{
+.svg {
+    width: 12px;
+    height: 12px;
+    /* class: r-1nao33i r-4qtqp9 r-yyyyoo r-16y2uox r-8kz0gk r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp; */
+}
+
+.or {
     color: #989797;
     font-size: 16px;
     justify-content: center;
@@ -96,7 +116,7 @@
     font-weight: 500;
 }
 
-.formInputs{
+.formInputs {
     display: flex;
     width: 352px;
     height: 50px;
@@ -116,7 +136,7 @@
     color: #989797;
 }
 
-.createAccountButton{
+.createAccountButton {
     display: flex;
     width: 352px;
     height: 50px;
@@ -129,15 +149,37 @@
     border-radius: 6px;
     font-size: 20px;
     font-weight: 550;
-    
 }
 
-.haveAnAccount{
+.createAccountButton:hover {
+    color: white;
+    background-color: rgb(36, 36, 36);
+    border: solid 1px white;
+}
+
+.createAccountButton:active {
+    font-weight: bold;
+    background-color: black;
+    border: solid 0px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.26);
+    border-radius: 7px;
+}
+
+.haveAnAccount {
     color: gray;
     margin-left: auto;
     margin-right: auto;
 }
 
-.logIn{
+.logIn {
     color: blue;
+    cursor: pointer;
+}
+
+.logIn:hover {
+    text-decoration: underline;
+}
+
+.logIn:active {
+    font-weight: 500;
 }

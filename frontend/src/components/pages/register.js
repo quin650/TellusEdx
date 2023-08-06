@@ -1,7 +1,7 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import { Navigate, Link } from 'react-router-dom';
 import { register } from "../../actions/auth";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CSRFToken from "../csrftoken";
 
 import classes from './register.module.css';
@@ -9,10 +9,10 @@ import classes from './register.module.css';
 const Register = () => {
     const dispatch = useDispatch();
     const { isAuthenticated } = useSelector(state => state.user);
-    const [formData, setFormData] = useState({ 
-        username:'',
-        password:'',
-        re_password:''
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        re_password: ''
     });
 
     const [accountCreated, setAccountCreated] = useState(false);
@@ -43,43 +43,43 @@ const Register = () => {
                     <CSRFToken />
 
                     <div className={classes.input_section}>
-                    <label>Username: </label>
-                    <input
-                        type='text'
-                        placeholder='Username*'
-                        name='username'
-                        onChange={e => onChange(e)}
-                        value={username}
-                        required
-                    />
+                        <label>Username: </label>
+                        <input
+                            type='text'
+                            placeholder='Username*'
+                            name='username'
+                            onChange={e => onChange(e)}
+                            value={username}
+                            required
+                        />
                     </div>
 
                     <div className={classes.input_section}>
-                    <label>Password: </label>
-                    <input
-                        type='password'
-                        placeholder='Password*'
-                        name='password'
-                        onChange={e => onChange(e)}
-                        value={password}
-                        minLength='6'
-                        required
-                    />
+                        <label>Password: </label>
+                        <input
+                            type='password'
+                            placeholder='Password*'
+                            name='password'
+                            onChange={e => onChange(e)}
+                            value={password}
+                            minLength='6'
+                            required
+                        />
                     </div>
 
                     <div className={classes.input_section}>
-                    <label>Confirm Password: </label>
-                    <input
-                        type='password'
-                        placeholder='Confirm Password*'
-                        name='re_password'
-                        onChange={e => onChange(e)}
-                        value={re_password}
-                        minLength='6'
-                        required
-                    />
+                        <label>Confirm Password: </label>
+                        <input
+                            type='password'
+                            placeholder='Confirm Password*'
+                            name='re_password'
+                            onChange={e => onChange(e)}
+                            value={re_password}
+                            minLength='6'
+                            required
+                        />
                     </div>
-                    
+
                     <button type='submit'>Register</button>
                 </form>
                 <p>
