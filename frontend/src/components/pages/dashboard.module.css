@@ -1,29 +1,19 @@
 
 .main {
     margin: 0;
+    position: relative;
+    z-index: 100;
     padding: 0;
     box-sizing: border-box;
-    /*Dark-Mode Difference */
-    background-color: var(--black);
-    color: white;
+    background-color: white;
+    color: black;
     padding: 130px 0;
     width: 80%;
     height: 100vh;
-    /* scroll-snap-align: center; */
     margin-left: 10%;
     margin-right: 10%;
 }
 
-/*========== Media Queries ==========*/
-
-/* Devices over 2400px */
-@media (min-width: 1690px) {
-    .container2 {
-        width: 1400px;
-    }
-}
-
-/*====================================*/
 .container2 {
     max-width: 100%;
     margin: auto;
@@ -70,11 +60,18 @@
     width: 100%;
     border-radius: 6px;
     height: 2.2rem;
-    border: 1px solid white;
+    border: 1px solid black;
     padding-left: .7rem;
 }
 
 ::placeholder { 
     color: var(--gray);
     opacity: 1;
+}
+
+/* Devices over 2400px */
+@media (min-width: 1690px) {
+    .container2 {
+        width: 1400px;
+    }
 }

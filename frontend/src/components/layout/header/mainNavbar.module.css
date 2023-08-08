@@ -71,6 +71,13 @@
     justify-content: flex-end;
 }
 
+.searchContainer{
+    display: flex;
+    margin-left: auto;
+    list-style: none;
+    justify-content: flex-end;
+}
+
 .NavItem3 {
     display: flex;
     margin-left: 60px;

@@ -13,15 +13,17 @@ const MainNavbar = () => {
     const handleClickScroll = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
-    
+
     const authUser = (
         <Fragment>
-                <Link to="/home" onClick={handleClickScroll} className={classes.Logo}>
-                    <img src={Logo} alt='Logo' className={classes.Logo}></img>
-                </Link>
-                <SearchBar />
-                <li className={classes.avatarDiv}>
-                    <img src={defaultPNG} className={classes.avatar} alt='Avatar'></img>
+                <li className={classes.NavItem1}>
+                    <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                </li>
+                <li className={classes.searchContainer}>
+                    <SearchBar />
+                </li>
+                <li className={classes.NavItem3}>
+                    <NavbarMenuButton />
                 </li>
         </Fragment>
     )
