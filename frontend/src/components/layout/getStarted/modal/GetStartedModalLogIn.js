@@ -24,6 +24,8 @@ const GetStartedModalLogIn = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         dispatch(login(username, password));
+        dispatch(userActions.registerModalClose());
+        dispatch(userActions.navBarAsGuestOpenClose());
     }
 
 

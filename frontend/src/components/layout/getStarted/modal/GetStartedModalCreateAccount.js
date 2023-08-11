@@ -24,6 +24,8 @@ const GetStartedModalCreateAccount = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         dispatch(register(username, password, re_password));
+        dispatch(userActions.registerModalClose());
+        dispatch(userActions.navBarAsGuestOpenClose());
     }
 
     return (

@@ -1,26 +1,19 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import GetStartedModalLogIn from "./GetStartedModalLogIn";
 import GetStartedModalCreateAccount from "./GetStartedModalCreateAccount";
+import { userActions } from "../../../../reducers/auth";
 
 const GetStartedModal = () => {
+    const dispatch = useDispatch();
     const { isAuthenticated } = useSelector(state => state.user);
     const { registered } = useSelector(state => state.user);
-    const [logIn_True_CreateAccount_False, SetLogIn_True_CreateAccount_False] = useState(false);
-    
+    const { logIn_True_CreateAccount_False } = useSelector(state => state.user);
     const LogInToggle = () => {
-        SetLogIn_True_CreateAccount_False(!logIn_True_CreateAccount_False);
+        dispatch(userActions.logIn_True_CreateAccount_FalseToggle());
     };
-
-    useEffect(() => {
-        if (registered) {
-            SetLogIn_True_CreateAccount_False(true);
-        }
-    }, [registered]);
-
-    if (isAuthenticated)
-        return <Navigate to='/home' />;
 
     return (
         <Fragment>

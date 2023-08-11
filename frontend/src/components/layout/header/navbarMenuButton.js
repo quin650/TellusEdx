@@ -28,7 +28,6 @@ const NavbarMenuButton = () => {
     );
 
     const { navbarModalStatus } = useSelector(state => state.user);
-    // navbarModalStatus ? content = {navbarButton} : content = {exitButton};
     const content = navbarModalStatus ? exitButton : navbarButton;
 
     return (
