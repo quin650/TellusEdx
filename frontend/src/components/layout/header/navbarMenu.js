@@ -20,6 +20,7 @@ const NavbarMenu = () => {
     const LogOut = () => {
         dispatch(logout());
         dispatch(checkAuthenticated());
+        dispatch(userActions.navBarAsGuestOpenClose());
     }
 
     const LogIn = () => {

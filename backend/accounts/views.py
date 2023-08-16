@@ -27,19 +27,20 @@ class RegisterView(APIView):
     def post(self, request, format=None):
         data = self.request.data
 
-        username = data['username']
+        username = data['email']
+        email = data['email']
         password = data['password']
         re_password = data['re_password']
         try:
             if password == re_password:
-                if User.objects.filter(username=username).exists():
-                    return Response({'error': 'Username already exists'})
+                if User.objects.filter(email=email).exists():
+                    return Response({'error': 'Email already exists'})
                 else:
                     if len(password) < 1:
                         return Response({'error': 'Password must be at least 1 characters'})
                     else: 
                         print('0')
-                        User.objects.create_user(username=username, password=password)
+                        User.objects.create_user(username=username,email=email, password=password)
                         return Response({'success': 'User created successfully'})
             else:
                 return Response({'error': 'Passwords do not match'})

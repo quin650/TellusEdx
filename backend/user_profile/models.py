@@ -17,7 +17,7 @@ class UserProfileTasks(models.Model):
         ('pending', 'Pending'),
         ('complete', 'Complete')
     )
-    user = models.ForeignKey(User,  blank=True, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     task_id = models.CharField(primary_key=True, max_length=11, unique=True, default=custom_id)
     task_title = models.CharField(max_length=255, default='')
     task_description = models.CharField(max_length=255, default='')

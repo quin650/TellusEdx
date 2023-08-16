@@ -8,92 +8,39 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModalCreateAccount = (props) => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
         re_password: ''
     });
-    const { email, password, re_password } = formData;
-    
+    const { username, password, re_password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const [formIsValid, setFormIsValid] = useState(false);
-    const [userEmailIsValid, setUserEmailIsValid] = useState(false);
-    const [passwordIsValid, setPasswordIsValid] = useState(false);
-    const [userEmailFeedback, setUserEmailFeedback] = useState('userNameFeedback');
-    const [passwordFeedback, setPasswordFeedback] = useState('passwordFeedback');
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
-    const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
-
-    const UserEmailValidity = (email) => {
-        if (!emailPattern.test(email)){
-            setUserEmailIsValid(false);
-            setUserEmailFeedback('An email is required');
-            console.log('email:', email);
-            console.log('bad email pattern ')
-        }
-        else {
-            setUserEmailIsValid(true);
-            setUserEmailFeedback('');
-            console.log('good email pattern ')
-        }
-    }
-
-    // const handleEmailBlur = (email) => {
-    //     console.log('email blur - check Email Validity');
-    //     UserEmailValidity(email);
-    // };
-
-//     Lesson 145 at 1:08
-    useEffect ( ( ) => {
-        const identifier = setTimeout( () => { 
-            console.log('testing UserEmailValidity')
-            UserEmailValidity(email);
-        },  500); 
-
-        return ( )  => {
-            clearTimeout(identifier)
-        };
-    }, [email, userEmailIsValid]);
-
-
-    const PasswordValidity = (password) => {
-        if (!password || !passwordValue.trim().length > 8) {
-            setPasswordIsValid(false);
-            setPasswordFeedback('Make password > 8 characters');
-        } else if (!passwordPattern.test(password)){
-            setPasswordIsValid(false);
-            setPasswordFeedback('Password must contain 1 uppercase, 1 special character, and contain at least 8 characters');
-        } else if (passwordPattern.test(password)){
-            setPasswordIsValid(true);
-            setPasswordFeedback('');
-        }
-    }
-    useEffect ( (password) => {
-        const identifier = setTimeout( () => { 
-            console.log('testing PasswordValidity')
-            PasswordValidity(password);
-        },  500); 
-
-        return ( )  => {
-            clearTimeout(identifier)
-        };
-    }, [password, passwordIsValid]);
+    const [passwordValid, SetPasswordValid] = useState(true);
 
     useEffect(() => {
-        setFormIsValid(
-            userEmailIsValid && passwordIsValid
-        );
-    }, [formIsValid, userEmailIsValid, passwordIsValid])
+        if (
+            (password.length > 0
+            && password === re_password) 
+        ) {
+            SetPasswordValid(true);
+        } else {
+            SetPasswordValid(false);
+        }
+    }, []);
 
+    let passwordFeedback = (<p></p>);
 
-
+    if (passwordValid) {
+        passwordFeedback = (<p className={classes.passwordFeedback}>Password Matches</p>)
+    }
 
     function exitAction() {   
         dispatch(userActions.registerModalClose());
     };
+
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(register(email, password, re_password));
+        dispatch(register(username, password, re_password));
         dispatch(userActions.registerModalClose());
         dispatch(userActions.navBarAsGuestOpenClose());
     };
@@ -119,16 +66,14 @@ const GetStartedModalCreateAccount = (props) => {
                         </button>
                         <p className={classes.or}> or</p>
                         <input
-                            type='email'
-                            placeholder='Email'
-                            name='email'
+                            type='text'
+                            placeholder='Username*'
+                            name='username'
                             onChange={e => onChange(e)}
-                            value={email}
+                            value={username}
                             required
                             className={classes.formInputs}
-                            // onBlur={handleEmailBlur}
                         />
-                        {userEmailFeedback}
                         <input
                             type='password'
                             placeholder='Password*'
