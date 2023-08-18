@@ -21,39 +21,55 @@ const GetStartedModalCreateAccount = (props) => {
     const [passwordIsValid, setPasswordIsValid] = useState(false);
     const [userEmailFeedback, setUserEmailFeedback] = useState('userNameFeedback');
     const [passwordFeedback, setPasswordFeedback] = useState('passwordFeedback');
+    const [isValid, SetIsValid] = useState(true);
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
+    
 
     const UserEmailValidity = (email) => {
         if (!emailPattern.test(email)){
             setUserEmailIsValid(false);
             setUserEmailFeedback('An email is required');
-            console.log('email:', email);
-            console.log('bad email pattern ')
+            console.log('bad email pattern: ', email)
         }
         else {
             setUserEmailIsValid(true);
             setUserEmailFeedback('');
-            console.log('good email pattern ')
+            console.log('good email pattern: ', email)
         }
     }
 
-    // const handleEmailBlur = (email) => {
-    //     console.log('email blur - check Email Validity');
-    //     UserEmailValidity(email);
-    // };
-
 //     Lesson 145 at 1:08
+// The useEffect runs initially when the component mounts
+//      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
+//      Concurrently, the setTimeout is set at the same time, but needs .5 seconds to run
+// If the email field changes before the .5 seconds are up, then the timeout is cleared and the
+// function inside the setTimeout never runs
+// In summary, the email is checked for validation only when the user does not key anything new into
+// this input field for the whole duration of .5 seconds. 
     useEffect ( ( ) => {
         const identifier = setTimeout( () => { 
-            console.log('testing UserEmailValidity')
+            console.log('setTimeout: UserEmailValidity')
             UserEmailValidity(email);
         },  500); 
 
         return ( )  => {
+            console.log('timeout cleared')
             clearTimeout(identifier)
         };
     }, [email, userEmailIsValid]);
+
+    const handleEmailBlur = (email) => {
+        console.log('email blur - check Email Validity');
+        if(!UserEmailValidity(email)){
+            SetIsValid(false);
+        }
+    };
+
+
+
+
+
 
 
     const PasswordValidity = (password) => {
@@ -85,9 +101,6 @@ const GetStartedModalCreateAccount = (props) => {
         );
     }, [formIsValid, userEmailIsValid, passwordIsValid])
 
-
-
-
     function exitAction() {   
         dispatch(userActions.registerModalClose());
     };
@@ -97,6 +110,8 @@ const GetStartedModalCreateAccount = (props) => {
         dispatch(userActions.registerModalClose());
         dispatch(userActions.navBarAsGuestOpenClose());
     };
+
+
 
     return (
         <div className={classes.blurredBackgroundContainer}>
@@ -125,10 +140,10 @@ const GetStartedModalCreateAccount = (props) => {
                             onChange={e => onChange(e)}
                             value={email}
                             required
-                            className={classes.formInputs}
-                            // onBlur={handleEmailBlur}
+                            className={`${classes['formInputEmail']} ${!isValid && classes.invalid}`}
+                            onBlur={handleEmailBlur}
                         />
-                        {userEmailFeedback}
+                        <div className={`${classes['emailFeedbackLabel']} ${!isValid && classes.invalid}`}>{userEmailFeedback}</div>
                         <input
                             type='password'
                             placeholder='Password*'
