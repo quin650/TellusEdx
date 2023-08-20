@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { userActions } from "../../../../reducers/auth";
 import CSRFToken from "../../../csrftoken";
 import classes from './GetStartedModal.module.css';
-
 const GetStartedModalCreateAccount = (props) => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
@@ -13,33 +12,38 @@ const GetStartedModalCreateAccount = (props) => {
         re_password: ''
     });
     const { email, password, re_password } = formData;
-    
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const [formIsValid, setFormIsValid] = useState(false);
-    const [userEmailIsValid, setUserEmailIsValid] = useState(false);
+    const [isValidEmail, SetIsValidEmail] = useState(true);
+    const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordIsValid, setPasswordIsValid] = useState(false);
-    const [userEmailFeedback, setUserEmailFeedback] = useState('userNameFeedback');
-    const [passwordFeedback, setPasswordFeedback] = useState('passwordFeedback');
-    const [isValid, SetIsValid] = useState(true);
+    const [isValidPassword, SetIsValidPassword] = useState(true);
+    const [passwordFeedback, setPasswordFeedback] = useState('');
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
-    
+     // const [formIsValid, setFormIsValid] = useState(false);
 
     const UserEmailValidity = (email) => {
-        if (!emailPattern.test(email)){
-            setUserEmailIsValid(false);
-            setUserEmailFeedback('An email is required');
-            console.log('bad email pattern: ', email)
+        if (!email === null && emailPattern.test(email)){
+            SetIsValidEmail(true);
+            setUserEmailFeedback('');
+        }
+        else if (!email || email === null ){
+        }
+        else if (!emailPattern.test(email)){
+            SetIsValidEmail(false);
+            setUserEmailFeedback('Invalid Email');
+        }
+        else if (emailPattern.test(email)){
+            SetIsValidEmail(true);
+            setUserEmailFeedback('');
         }
         else {
-            setUserEmailIsValid(true);
-            setUserEmailFeedback('');
-            console.log('good email pattern: ', email)
+            setUserEmailFeedback('Email is required???');
         }
     }
 
-//     Lesson 145 at 1:08
+//     Lesson 145 at 1:08 Explanation of code flow
 // The useEffect runs initially when the component mounts
 //      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
 //      Concurrently, the setTimeout is set at the same time, but needs .5 seconds to run
@@ -49,58 +53,67 @@ const GetStartedModalCreateAccount = (props) => {
 // this input field for the whole duration of .5 seconds. 
     useEffect ( ( ) => {
         const identifier = setTimeout( () => { 
-            console.log('setTimeout: UserEmailValidity')
             UserEmailValidity(email);
         },  500); 
-
         return ( )  => {
-            console.log('timeout cleared')
             clearTimeout(identifier)
         };
-    }, [email, userEmailIsValid]);
-
-    const handleEmailBlur = (email) => {
-        console.log('email blur - check Email Validity');
-        if(!UserEmailValidity(email)){
-            SetIsValid(false);
-        }
-    };
+    }, [email, isValidEmail]);
 
 
 
-
-
-
-
-    const PasswordValidity = (password) => {
-        if (!password || !passwordValue.trim().length > 8) {
-            setPasswordIsValid(false);
-            setPasswordFeedback('Make password > 8 characters');
-        } else if (!passwordPattern.test(password)){
-            setPasswordIsValid(false);
-            setPasswordFeedback('Password must contain 1 uppercase, 1 special character, and contain at least 8 characters');
-        } else if (passwordPattern.test(password)){
-            setPasswordIsValid(true);
-            setPasswordFeedback('');
+    const handleEmailBlur = () => {
+        if (!email || email === null){
+        SetIsValidEmail(false);
+        setUserEmailFeedback('Email is required');
         }
     }
-    useEffect ( (password) => {
-        const identifier = setTimeout( () => { 
-            console.log('testing PasswordValidity')
-            PasswordValidity(password);
-        },  500); 
 
-        return ( )  => {
-            clearTimeout(identifier)
-        };
-    }, [password, passwordIsValid]);
 
-    useEffect(() => {
-        setFormIsValid(
-            userEmailIsValid && passwordIsValid
-        );
-    }, [formIsValid, userEmailIsValid, passwordIsValid])
 
+
+    // const PasswordValidity = (password) => {
+    //     if (!password || password === null) {} 
+    //     else if (!password || !password.trim().length > 8) {
+    //         setPasswordIsValid(false);
+    //         // setPasswordFeedback('Make password > 8');
+    //     } else if (!passwordPattern.test(password)){
+    //         setPasswordIsValid(false);
+    //         // setPasswordFeedback('Password must contain 1 uppercase, 1 special character, and contain at least 8 characters');
+    //     } else if (passwordPattern.test(password)){
+    //         setPasswordIsValid(true);
+    //         // setPasswordFeedback('');
+    //     }
+    // }
+    // useEffect ( (password) => {
+    //     const identifier = setTimeout( () => { 
+    //         // console.log('PasswordValidity | testing PasswordValidity')
+    //         PasswordValidity(password);
+    //     },  500); 
+    //     return ( )  => {
+    //         // console.log('PasswordValidity | timeout cleared')
+    //         clearTimeout(identifier)
+    //     };
+    // }, [password, isValidPassword]);
+
+    // const handlePasswordBlur1 = () => {
+    //     console.log('PasswordValidity | password_1 blur - check Password Validity');
+    //     if(!PasswordValidity(email)){
+    //         setPasswordIsValid(false);
+    //     }
+    // };
+    // const handlePasswordBlur2 = () => {
+    //     console.log('PasswordValidity | password_2 blur - check Password Validity');
+    //     if(!PasswordValidity(email)){
+    //         setPasswordIsValid(false);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     setFormIsValid(
+    //         userEmailIsValid && passwordIsValid
+    //     );
+    // }, [formIsValid, userEmailIsValid, isValidPassword])
     function exitAction() {   
         dispatch(userActions.registerModalClose());
     };
@@ -110,9 +123,6 @@ const GetStartedModalCreateAccount = (props) => {
         dispatch(userActions.registerModalClose());
         dispatch(userActions.navBarAsGuestOpenClose());
     };
-
-
-
     return (
         <div className={classes.blurredBackgroundContainer}>
             <div className={classes.modalContainer}>
@@ -140,10 +150,13 @@ const GetStartedModalCreateAccount = (props) => {
                             onChange={e => onChange(e)}
                             value={email}
                             required
-                            className={`${classes['formInputEmail']} ${!isValid && classes.invalid}`}
+                            className={`${classes['formInputEmail']} ${!isValidEmail && classes.isValidEmail}`}
                             onBlur={handleEmailBlur}
                         />
-                        <div className={`${classes['emailFeedbackLabel']} ${!isValid && classes.invalid}`}>{userEmailFeedback}</div>
+                        <div className={`${classes['emailFeedbackLabel']} ${!isValidEmail && classes.isValidEmail}`}>{userEmailFeedback}</div>
+
+
+
                         <input
                             type='password'
                             placeholder='Password*'
@@ -152,7 +165,8 @@ const GetStartedModalCreateAccount = (props) => {
                             value={password}
                             minLength='6'
                             required
-                            className={classes.formInputs}
+                            className={`${classes['formInputPassword']} ${!isValidPassword && classes.isValidPassword}`}
+                            // onBlur={handlePasswordBlur1}
                         />
                         <input
                             type='password'
@@ -162,9 +176,13 @@ const GetStartedModalCreateAccount = (props) => {
                             value={re_password}
                             minLength='6'
                             required
-                            className={classes.formInputs}
+                            className={`${classes['formInputPassword']} ${!isValidPassword && classes.isValidPassword}`}
+                            // onBlur={handlePasswordBlur2}
                         />
-                        {passwordFeedback}
+                        <div className={`${classes['passwordFeedbackLabel']} ${!isValidPassword && classes.isValidPassword}`}>{passwordFeedback}</div>
+
+
+
                         <button className={classes.createAccountButton} type='submit'>
                             Create account
                         </button>

@@ -105,31 +105,15 @@
     line-height: 175%;
     font-weight: 500;
 }
-.formInputs {
-    display: flex;
-    width: 352px;
-    height: 50px;
-    align-items: center;
-    justify-content: center;
-    margin: 13px auto;
-    background-color: white;
-    border: 2px black solid;
-    border-radius: 6px;
-    font-size: 20px;
-    font-weight: 600;
-    color: black;
-}
-.formInputs::placeholder {
-    padding-left: 10px;
-    color: #989797;
-}
+/* *************************************************************  Email -- */
 .formInputEmail {
     display: flex;
     width: 352px;
     height: 50px;
     align-items: center;
     justify-content: center;
-    margin: 13px auto;
+    margin: 13px auto 13px 10px;
+    padding-left: 10px;
     background-color: white;
     border: 2px black solid;
     border-radius: 6px;
@@ -137,31 +121,76 @@
     font-weight: 600;
     color: black;
 }
+.formInputEmail::placeholder {
+    color: #989797;
+}
 .emailFeedbackLabel {
     font-weight: 100;
     color: black;
 }
-/* ****************************************** Invalid properties -- */
-.formInputEmail.invalid {
+.formInputEmail:focus {
+    background: #e8e8fe;
+    border: 2px solid var(--blue);
+    outline: 2px solid var(--blue);
+}
+.formInputEmail:hover {
+    border: 2px solid var(--blue);
+    outline: 2px solid var(--blue);
+}
+/* ****************************************** Invalid properties --*/
+.formInputEmail.isValidEmail {
     outline: solid 2px red;
     border: solid 2px red;
     background-color: rgb(252, 229, 233);
 }
-.formInputEmail input:focus {
-    background: #e0d1e2;
-    border: 2px solid #550155;
-    outline: 2px solid #550155;
-}
-
-.formInputEmail input:hover {
-    border: 2px solid #550155;
-    outline: 2px solid #550155;
-}
-
-.emailFeedbackLabel.invalid {
+.emailFeedbackLabel.isValidEmail {
     font-weight: bold;
     color: red;
 }
+/* **********************************************************  Password -- */
+.formInputPassword {
+    display: flex;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 13px auto 13px 10px;
+    padding-left: 10px;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+.formInputPassword::placeholder {
+    color: #989797;
+}
+.passwordFeedbackLabel {
+    font-weight: 100;
+    color: black;
+}
+/* Invalid properties */
+.formInputPassword.isValidPassword {
+    outline: solid 2px red;
+    border: solid 2px red;
+    background-color: rgb(252, 229, 233);
+}
+.passwordFeedbackLabel.isValidPassword {
+    font-weight: bold;
+    color: red;
+}
+.formInputPassword:focus {
+    background: #e8e8fe;
+    border: 2px solid var(--blue);
+    outline: 2px solid var(--blue);
+}
+.formInputPassword:hover {
+    border: 2px solid var(--blue);
+    outline: 2px solid var(--blue);
+}
+
+
 
 .createAccountButton {
     display: flex;
@@ -193,7 +222,7 @@
 }
 
 .passwordFeedback{
-    color: 
+    color: red;
 }
 
 .haveAnAccount {
