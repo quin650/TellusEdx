@@ -170,6 +170,12 @@
     font-weight: 100;
     color: black;
 }
+/* Disabled properties */
+.formInputPassword.isDisabledPassword{
+    background-color: black;
+}
+
+
 /* Invalid properties */
 .formInputPassword.isValidPassword {
     outline: solid 2px red;
