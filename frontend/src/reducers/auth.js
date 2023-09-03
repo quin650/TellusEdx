@@ -15,7 +15,7 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		navBarAsGuestOpenClose(state) {
-			state.navbarModalStatus = !state.navbarModalStatus;
+			state.navbarModalStatus = false;
 		},
 		logIn_True_CreateAccount_FalseToggle(state) {
 			state.logIn_True_CreateAccount_False = !state.logIn_True_CreateAccount_False;

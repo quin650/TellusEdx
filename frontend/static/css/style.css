@@ -29,7 +29,7 @@ body {
 }
 
 :root {
-    --blue: #2755C4;
+    --blue: rgb(39, 85, 196);
     --white: #ffffff;
     --gray: #b3b3b3;
     --darkGray: #ffffff33;

@@ -30,20 +30,15 @@ class RegisterView(APIView):
         username = data['email']
         email = data['email']
         password = data['password']
-        re_password = data['re_password']
         try:
-            if password == re_password:
-                if User.objects.filter(email=email).exists():
-                    return Response({'error': 'Email already exists'})
-                else:
-                    if len(password) < 1:
-                        return Response({'error': 'Password must be at least 1 characters'})
-                    else: 
-                        print('0')
-                        User.objects.create_user(username=username,email=email, password=password)
-                        return Response({'success': 'User created successfully'})
+            if User.objects.filter(email=email).exists():
+                return Response({'error': 'Email already exists'})
             else:
-                return Response({'error': 'Passwords do not match'})
+                if len(password) < 8:
+                    return Response({'error': 'Password must be at least 8 characters'})
+                else: 
+                    User.objects.create_user(username=username,email=email, password=password)
+                    return Response({'success': 'User created successfully'})
         except:
                 return Response({'error': 'Something went wrong when registering account'})
 @method_decorator(csrf_protect, name='dispatch')

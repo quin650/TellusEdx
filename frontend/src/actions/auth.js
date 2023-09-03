@@ -36,7 +36,7 @@ export const checkAuthenticated = () => {
         };
     };
 };
-export const register = (username, password, re_password) => { 
+export const register = (email, password) => { 
     return async (dispatch) => {
         
         const config = {
@@ -47,7 +47,7 @@ export const register = (username, password, re_password) => {
             }
         };
     
-        const body = JSON.stringify({ username, password, re_password });
+        const body = JSON.stringify({ email, password });
 
         const registerData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/register`, body, config);
