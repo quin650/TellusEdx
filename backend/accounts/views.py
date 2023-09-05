@@ -37,7 +37,8 @@ class RegisterView(APIView):
                 if len(password) < 8:
                     return Response({'error': 'Password must be at least 8 characters'})
                 else: 
-                    User.objects.create_user(username=username,email=email, password=password)
+                    User.objects.create_user(username=username,email=email,password=password)
+                    # User.objects.create_user(username=username,email=email,password=password, is_active=False)
                     return Response({'success': 'User created successfully'})
         except:
                 return Response({'error': 'Something went wrong when registering account'})

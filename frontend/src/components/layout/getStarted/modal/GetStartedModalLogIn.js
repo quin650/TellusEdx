@@ -9,12 +9,15 @@ const GetStartedModalLogIn = (props) => {
     const [formData, setFormData] = useState({email: '', password: '',});
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const exitAction = () => {dispatch(userActions.registerModalClose());};
+    const exitAction = () => {
+        dispatch(userActions.getStartedModalClose());
+        dispatch(userActions.getStartedModalCreateAccount());
+    };
     const onSubmit = e => {
         e.preventDefault();
         dispatch(login(email, password));
-        dispatch(userActions.registerModalClose());
-        dispatch(userActions.navBarAsGuestOpenClose());
+        dispatch(userActions.getStartedModalClose());
+        dispatch(userActions.navBarMenuClose());
     }
 
     return (
@@ -72,7 +75,8 @@ const GetStartedModalLogIn = (props) => {
                         <button className={`${classes['createAccountButton']}`}type='submit'>
                             Log In
                         </button>
-                        <p className={classes.haveAnAccount}>Don't have an Account? <a className={classes.logIn} onClick={props.LogInToggle}> Create account</a></p>
+                        <p className={classes.option_1}><a className={classes.link} onClick={props.ResetPassword}> Reset Password</a></p>
+                        <p className={classes.option_2}>No Account? <a className={classes.link} onClick={props.CreateAccount}> Create One</a></p>
                     </form>
                 </div>
             </div>

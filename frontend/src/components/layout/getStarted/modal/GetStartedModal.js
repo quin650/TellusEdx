@@ -1,29 +1,65 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import GetStartedModalLogIn from "./GetStartedModalLogIn";
 import GetStartedModalCreateAccount from "./GetStartedModalCreateAccount";
+import GetStartedModalRegistrationSuccess from "./GetStartedModalRegistrationSuccess";
+import GetStartedModalResetPassword from "./GetStartedModalResetPassword";
 import { userActions } from "../../../../reducers/auth";
 
 const GetStartedModal = () => {
     const dispatch = useDispatch();
-    const { isAuthenticated } = useSelector(state => state.user);
-    const { registered } = useSelector(state => state.user);
-    const { logIn_True_CreateAccount_False } = useSelector(state => state.user);
-    const LogInToggle = () => {
-        dispatch(userActions.logIn_True_CreateAccount_FalseToggle());
+    const { getStartedView } = useSelector(state => state.user);
+    const LogIn = () => {
+        dispatch(userActions.getStartedModalLogIn());
+        console.log('getStartedModalLogIn')
+    };
+    const CreateAccount = () => {
+        dispatch(userActions.getStartedModalCreateAccount());
+        console.log('getStartedView')
+    };
+    const RegistrationSuccess = () => {
+        dispatch(userActions.getStartedModalRegistrationSuccess());
+        console.log('getStartedModalRegistrationSuccess')
+    };
+    const ResetPassword = () => {
+        dispatch(userActions.getStartedModalResetPassword());
+        console.log('ResetPassword')
     };
 
     return (
         <Fragment>
-            {logIn_True_CreateAccount_False ? (
-                <GetStartedModalLogIn LogInToggle={LogInToggle} />
-            ) : (
-                <GetStartedModalCreateAccount LogInToggle={LogInToggle} />
-            )}
+            {getStartedView === "LogIn" ? (
+                <GetStartedModalLogIn 
+                    LogIn={LogIn}
+                    CreateAccount={CreateAccount}
+                    RegistrationSuccess={RegistrationSuccess}
+                    ResetPassword={ResetPassword}
+                />
+            ) : getStartedView == "CreateAccount" ? (
+                <GetStartedModalCreateAccount 
+                    LogIn={LogIn}
+                    CreateAccount={CreateAccount}
+                    RegistrationSuccess={RegistrationSuccess}
+                    ResetPassword={ResetPassword}
+                />
+            ) : getStartedView == "RegistrationSuccess" ? (
+                <GetStartedModalRegistrationSuccess 
+                    LogIn={LogIn}
+                    CreateAccount={CreateAccount}
+                    RegistrationSuccess={RegistrationSuccess}
+                    ResetPassword={ResetPassword}
+                />
+            ) : getStartedView == "ResetPassword" ? (
+                <GetStartedModalResetPassword 
+                    LogIn={LogIn}
+                    CreateAccount={CreateAccount}
+                    RegistrationSuccess={RegistrationSuccess}
+                    ResetPassword={ResetPassword}
+                />
+            ) : null }
         </Fragment>
-    )
+    );
 }
 
 export default GetStartedModal;

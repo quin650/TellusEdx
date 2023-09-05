@@ -1,30 +1,53 @@
 	import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	navbarModalStatus: false,
-	registrationModalStatus: false,
-	logIn_True_CreateAccount_False: false,
+	navbarMenuStatus: false,
+	getStartedModalStatus: false,
+	//logIn_True_CreateAccount_False: false,
+	getStartedView: 'CreateAccount',
 	isAuthenticated: false,
 	user: null,
 	loading: false,
 	registered: false,
+	registrationFeedback: '',
 };
 
 const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		navBarAsGuestOpenClose(state) {
-			state.navbarModalStatus = false;
+		// navBarAsGuestOpenClose(state) {
+		// 	state.navbarModalStatus = !state.navbarModalStatus;
+		// },
+		navBarMenuOpen(state) {
+			state.navbarMenuStatus = true;
 		},
-		logIn_True_CreateAccount_FalseToggle(state) {
-			state.logIn_True_CreateAccount_False = !state.logIn_True_CreateAccount_False;
+		navBarMenuClose(state) {
+			state.navbarMenuStatus = false;
 		},
-		registerModalOpen(state) {
-			state.registrationModalStatus = !state.registrationModalStatus;
+		//getStartedModalInnerToggle_logInTrue_CreateAccountFalse
+		getStartedModalCreateAccount(state) {
+			state.getStartedView = 'CreateAccount';
+		},
+		getStartedModalLogIn(state) {
+			state.getStartedView = 'LogIn';
+		},
+		getStartedModalRegistrationSuccess(state) {
+			state.getStartedView = 'RegistrationSuccess'
+		},
+		getStartedModalResetPassword(state) {
+			state.getStartedView = 'ResetPassword'
+		},
+
+
+		getStartedModalOpen(state) {
+			state.getStartedModalStatus = true;
+		},
+		getStartedModalClose(state) {
+			state.getStartedModalStatus = false;
 		},
 		registerModalClose(state) {
-			state.registrationModalStatus = !state.registrationModalStatus;
+			state.getStartedModalStatus = false;
 		},
 		registerFail(state) {
 			state.registered = false;
@@ -33,6 +56,11 @@ const userSlice = createSlice({
 		registerSuccess(state){
 			state.registered = true;
 			state.isAuthenticated = false;
+			state.getStartedView = 'RegistrationSuccess'
+		},
+		registerFeedback(state){
+			state.registrationFeedback = payload.success;
+			console.log(payload.success);
 		},
 		authSuccess(state){
 			state.isAuthenticated = true;

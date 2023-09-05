@@ -6,7 +6,7 @@ import classes from  './GetStartedButton.module.css';
 const GetStartedButton = () => {
     const dispatch = useDispatch();
     const modalButtonAction = () => {
-        dispatch(userActions.registerModalOpen());
+        dispatch(userActions.getStartedModalOpen());
     }
 
     return (

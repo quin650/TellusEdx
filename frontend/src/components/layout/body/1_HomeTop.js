@@ -9,13 +9,13 @@ import BackgroundImage from '../../../../static/images/Background_Limited.png';
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
-    const { navbarModalStatus } = useSelector(state => state.user);
+    const { navbarMenuStatus } = useSelector(state => state.user);
     let navbarMenu = <NavbarMenu />;
-    navbarModalStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
+    navbarMenuStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
 
-    const { registrationModalStatus } = useSelector(state => state.user);
+    const { getStartedModalStatus } = useSelector(state => state.user);
     let modal = <GetStartedModal />;
-    registrationModalStatus ? modal = <GetStartedModal /> : modal = "";
+    getStartedModalStatus ? modal = <GetStartedModal /> : modal = "";
 
     return (
         <div className={classes.outer_container_top}>

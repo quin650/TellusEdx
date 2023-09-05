@@ -34,11 +34,15 @@
     margin-left: calc(100% - 40px);
 }
 .exitButton {
-    margin: auto;
+    padding: 10.5px 13px 10.5px 13px
+}
+.exitButton:hover {
+    background-color: #c3c3c3;
 }
 .exitSvg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
+    
 }
 .modalContentContainer {
     box-sizing: border-box;
@@ -49,6 +53,7 @@
     width: 380px;
     background: white;
 }
+
 .modalFormContainer {
     display: flex;
     justify-content: center;
@@ -68,7 +73,7 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    margin: 32px auto 13px auto;
+    margin: 13px auto 13px auto;
     
 }
 
@@ -178,17 +183,22 @@
     box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
 /* **************************************************** Have an account? Log In -- */
-.haveAnAccount {
+.option_1 {
     color: gray;
     margin: 13px auto;
 }
-.logIn {
+.option_2 {
+    color: gray;
+    margin: 0px auto;
+}
+
+.link {
     color: blue;
     cursor: pointer;
 }
-.logIn:hover {
+.link:hover {
     text-decoration: underline;
 }
-.logIn:active {
+.link:active {
     font-weight: 500;
 }

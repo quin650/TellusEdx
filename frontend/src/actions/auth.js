@@ -60,6 +60,7 @@ export const register = (email, password) => {
                 dispatch(userActions.registerFail());
             } else {
                 dispatch(userActions.registerSuccess());
+                dispatch(userActions.registerFeedback(res.data.success));
             }
         } catch (err) {
             dispatch(userActions.registerFail());
