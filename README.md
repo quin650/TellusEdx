@@ -33,6 +33,9 @@
 [![Django](https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=flat)](https://www.djangoproject.com/)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?logo=postgresql&style=flat&logoColor=white)
 
+### Authentication
+[![JSON Web Tokens](https://img.shields.io/badge/-JSON Web Tokens-#000000.svg?logo=jsonwebtokens&style=flat)](https://www.djangoproject.com/)
+
 ### Host
 
 ![Render](https://img.shields.io/badge/render-%4351e8.svg?logo=sqlite&style=flat&logoColor=white)
