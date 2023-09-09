@@ -23,9 +23,9 @@
 
 ### Frontend
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?logo=react&style=flat&logoColor=%2361DAFB)
+![ReactJS](https://img.shields.io/badge/react-%2320232a.svg?logo=react&style=flat&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?logo=javascript&style=flat&logoColor=%23F7DF1E)
-![ReduxToolkit](https://img.shields.io/badge/redux-%23593d88.svg?logo=redux&style=flat&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?logo=redux&style=flat&logoColor=white)
 
 ### Backend
 
