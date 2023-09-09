@@ -35,7 +35,7 @@
 
 ### Authentication
 [![JSON Web Tokens](https://img.shields.io/badge/JSON%20Web%20Tokens-000?logo=jsonwebtokens&logoColor=fff&style=flat)
-[![JSON Web Tokens](https://img.shields.io/badge/JetBrains-000?logo=jetbrains&logoColor=fff&style=flat-square)
+[![JSON Web Tokens](https://img.shields.io/badge/JSON%20Web%20Tokens-000?logo=jsonwebtokens&logoColor=fff&style=flat-square)
 ### Host
 
 ![Render](https://img.shields.io/badge/render-%4351e8.svg?logo=sqlite&style=flat&logoColor=white)
