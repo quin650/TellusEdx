@@ -24,7 +24,9 @@ const NavbarMenu = () => {
     }
 
     const LogIn = () => {
-        dispatch(userActions.registerModalOpen());
+        dispatch(userActions.navBarMenuClose());
+        dispatch(userActions.getStartedModalOpen());
+        dispatch(userActions.getStartedModalLogIn());
         dispatch(userActions.logIn_True_CreateAccount_FalseToggle());
     }
 
@@ -34,11 +36,20 @@ const NavbarMenu = () => {
     ? option = (<li><a onClick={LogOut}>Log out</a></li>)
     : option = (<li><a onClick={LogIn}>Log in</a></li>)
 
+    const exitAction = () => {
+        dispatch(userActions.getStartedModalClose());
+        dispatch(userActions.navBarMenuClose());
+    };
 
     return (
         <div className={classes.blurredBackgroundContainer}>
             <menu className={classes.menuContainer}>                        {/* 420px */}
-                <div className={classes.exitButtonPlaceholder}></div>
+                <div onClick={exitAction} className={classes.exitButtonContainer}>
+                    <div className={classes.exitButton}>
+                        {/* THIS IS JUST A SPACER FOR THE EXIT BUTTON THAT is absolute and coming from the
+                        navbar */}
+                    </div>
+                </div>
                 <div className={classes.menuContentContainer}>              {/* 350px left and right 30px margin  */}
                     <ul className={classes.orderedList}>
                         <div className={classes.searchContainer}>            {/* 350px */}

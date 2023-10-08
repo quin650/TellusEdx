@@ -13,24 +13,40 @@
 }
 
 .menuContainer {
-    top: 40px;
     display: flex;
-    position: fixed;
-    flex-direction: column;
     z-index: 2000;
+    position: fixed;
     background-color: white;
+    flex-direction: column;
     justify-content: flex-start;
     border-radius: 14px;
     height: 100vh;
     width: 410px;
+    top: 40px;
     padding: 0px;
 }
-
-.exitButtonPlaceholder {
-    position: relative;
-    height: 56px;
+/* *******************************************************************  Exit -- */
+.exitButtonContainer {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-left: calc(100% - 40px);
 }
-
+.exitButton {
+    padding: 10.5px 13px 10.5px 13px
+}
+.exitButton:hover {
+    background-color: #c3c3c3;
+}
+.exitSvg {
+    width: 14px;
+    height: 14px;
+}
 .menuContentContainer {
     display: flex;
     position: relative;

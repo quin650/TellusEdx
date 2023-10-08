@@ -7,6 +7,7 @@ const GetStartedButton = () => {
     const dispatch = useDispatch();
     const modalButtonAction = () => {
         dispatch(userActions.getStartedModalOpen());
+        dispatch(userActions.navBarMenuClose());
     }
 
     return (
