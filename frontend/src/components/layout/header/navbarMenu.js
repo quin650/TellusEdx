@@ -44,12 +44,6 @@ const NavbarMenu = () => {
     return (
         <div className={classes.blurredBackgroundContainer}>
             <menu className={classes.menuContainer}>                        {/* 420px */}
-                <div onClick={exitAction} className={classes.exitButtonContainer}>
-                    <div className={classes.exitButton}>
-                        {/* THIS IS JUST A SPACER FOR THE EXIT BUTTON THAT is absolute and coming from the
-                        navbar */}
-                    </div>
-                </div>
                 <div className={classes.menuContentContainer}>              {/* 350px left and right 30px margin  */}
                     <ul className={classes.orderedList}>
                         <div className={classes.searchContainer}>            {/* 350px */}

@@ -25,28 +25,7 @@
     top: 40px;
     padding: 0px;
 }
-/* *******************************************************************  Exit -- */
-.exitButtonContainer {
-    cursor: pointer;
-    position: absolute;
-    z-index: 1000;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 40px;
-    width: 40px;
-    margin-left: calc(100% - 40px);
-}
-.exitButton {
-    padding: 10.5px 13px 10.5px 13px
-}
-.exitButton:hover {
-    background-color: #c3c3c3;
-}
-.exitSvg {
-    width: 14px;
-    height: 14px;
-}
+
 .menuContentContainer {
     display: flex;
     position: relative;
@@ -74,7 +53,8 @@
 
 .searchContainer{
     display: flex;
-    margin: auto;
+    position: relative;
+    margin-top: 20px;
     list-style: none;
 }
 

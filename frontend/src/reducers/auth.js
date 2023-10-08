@@ -38,8 +38,6 @@ const userSlice = createSlice({
 		getStartedModalResetPassword(state) {
 			state.getStartedView = 'ResetPassword'
 		},
-
-
 		getStartedModalOpen(state) {
 			state.getStartedModalStatus = true;
 		},
