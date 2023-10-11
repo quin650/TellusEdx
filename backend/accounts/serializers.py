@@ -5,7 +5,6 @@ class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     _id = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
-
     class Meta:
         model = User
         fields = ["id", "_id", "username", "email", "name", "isAdmin"]
@@ -21,7 +20,6 @@ class UserSerializer(serializers.ModelSerializer):
         if name == "":
             name = obj.email
         return name
-
 
 class UserSerializerWithToken(UserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
