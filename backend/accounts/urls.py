@@ -9,7 +9,7 @@ urlpatterns = [
     # path('logout', LogoutView.as_view()),
     # path('delete', DeleteAccountView.as_view()),
     path('csrf_cookie', GetCSRFToken.as_view()),
-    path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path('login/', MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("", getUsers.as_view(), name="users"),
     path("profile", getUserProfile.as_view(), name="users-profile"),
 ]

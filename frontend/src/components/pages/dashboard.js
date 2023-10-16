@@ -2,7 +2,7 @@ import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { update_user_profile } from "../../actions/profile";
 import { create_user_profile } from "../../actions/profile";
-import { delete_account } from "../../actions/auth";
+// import { delete_account } from "../../actions/auth";
 import NavbarMenu from "../layout/header/navbarMenu";
 import GetStartedModal from "../layout/getStarted/modal/GetStartedModal";
 
@@ -121,7 +121,7 @@ const Dashboard = () => {
                     </p>
                     <button 
                     href='#!'
-                    onClick={() => dispatch(delete_account())}
+                    // onClick={() => dispatch(delete_account())}
                     >
                         Delete
                     </button>

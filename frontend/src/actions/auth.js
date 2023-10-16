@@ -1,7 +1,37 @@
-// import Cookies from 'js-cookie'
-// import axios from 'axios';
+import Cookies from 'js-cookie'
+import axios from 'axios';
+import { userActions } from '../reducers/auth';
 // import { load_user } from './profile';
-// import { userActions } from '../reducers/auth';
+
+export const login = (username, password) => {
+    return async (dispatch) => {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({ username, password });
+        const loginData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/login/`, body, config);
+            return res;
+        };
+        try {
+            dispatch(userActions.loginRequest());
+            const res = await loginData();
+            dispatch(userActions.loginSuccess(res.data));
+            localStorage.setItem('userInfo', JSON.stringify(res.data))
+        } catch (error) {
+            dispatch(userActions.loginFail(error.message));
+        };
+    };
+};
+
+
+
+
+
 
 // export const checkAuthenticated = () => {
 //     return async (dispatch) => {
@@ -68,37 +98,7 @@
 //         };
 //     };
 // };
-// export const login = (username, password) => {
-//     return async (dispatch) => {
 
-//         const config = {
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 'X-CSRFToken': Cookies.get('csrftoken')
-//             }
-//         };
-    
-//         const body = JSON.stringify({ username, password });
-
-//         const loginData = async () => {
-//             const res = await axios.post(`http://127.0.0.1:8000/accounts/login`, body, config);
-//             return res;
-//         };
-
-//         try {
-//             const res = await loginData();
-
-//             if (res.data.success) {
-//                 dispatch(userActions.loginSuccess());
-//             } else {
-//                 dispatch(userActions.loginFail());
-//             }
-//         } catch (err) {
-//             dispatch(userActions.loginFail());
-//         };
-//     };
-// };
 // export const logout = () => {
 //     return async (dispatch) => {
 //         const config = {

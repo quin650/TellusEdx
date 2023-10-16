@@ -6,6 +6,6 @@ urlpatterns = [
     path('home', indexView), 
     path('software', indexView),
     path('explore', indexView),
-    path('login', indexView),
-    path('register', indexView), 
+    # path('login', indexView),
+    # path('register', indexView), 
 ]

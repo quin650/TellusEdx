@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../../actions/auth';
+// import { logout } from '../../../actions/auth';
 import { userActions } from '../../../reducers/auth';
-import { checkAuthenticated } from '../../../actions/auth';
+// import { checkAuthenticated } from '../../../actions/auth';
 import SearchBar from './searchBar';
 import GetStartedButton from '../getStarted/button/GetStartedButton';
 import classes from './NavbarMenu.module.css';
@@ -18,8 +18,8 @@ const NavbarMenu = () => {
     : content = (<li><GetStartedButton /></li>)
 
     const LogOut = () => {
-        dispatch(logout());
-        dispatch(checkAuthenticated());
+        // dispatch(logout());
+        // dispatch(checkAuthenticated());
         dispatch(userActions.navBarAsGuestOpenClose());
     }
 
@@ -27,7 +27,6 @@ const NavbarMenu = () => {
         dispatch(userActions.navBarMenuClose());
         dispatch(userActions.getStartedModalOpen());
         dispatch(userActions.getStartedModalLogIn());
-        dispatch(userActions.logIn_True_CreateAccount_FalseToggle());
     }
 
     let option = (<li><a onClick={LogIn}>Log in</a></li>)

@@ -1,31 +1,31 @@
-	import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
+const userInfoFromStorage = localStorage.getItem('userInfo') ?
+	JSON.parse(localStorage.getItem('userInfo')) : null
 
 const initialState = {
 	navbarMenuStatus: false,
 	getStartedModalStatus: false,
-	//logIn_True_CreateAccount_False: false,
 	getStartedView: 'CreateAccount',
 	isAuthenticated: false,
-	user: null,
-	loading: false,
 	registered: false,
 	registrationFeedback: '',
+	loading: false,
+    userInfo: userInfoFromStorage,
+    error:'',
 };
 
 const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		// navBarAsGuestOpenClose(state) {
-		// 	state.navbarModalStatus = !state.navbarModalStatus;
-		// },
+
 		navBarMenuOpen(state) {
 			state.navbarMenuStatus = true;
 		},
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
-		//getStartedModalInnerToggle_logInTrue_CreateAccountFalse
 		getStartedModalCreateAccount(state) {
 			state.getStartedView = 'CreateAccount';
 		},
@@ -66,12 +66,31 @@ const userSlice = createSlice({
 		authFail(state){
 			state.isAuthenticated = false;
 		},
+
+
 		loginSuccess(state){
 			state.isAuthenticated = true;
 		},
 		loginFail(state){
 			state.isAuthenticated = false;
 		},
+
+        loginRequest(state){
+            state.loading = true;
+        },
+        loginSuccess(state, action){
+			state.isAuthenticated = true;
+            state.loading = false;
+            state.userInfo = action.payload
+        },
+        loginFail(state, action){
+            state.loading = false;
+            state.error = action.payload;
+        },
+        // logoutSuccess(state){
+        //     state;
+        // }, 
+
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 			state.registered = false;

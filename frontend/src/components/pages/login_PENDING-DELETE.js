@@ -1,47 +1,39 @@
-import React, { useState } from "react";
+import React , { useState } from "react";
 import { Navigate, Link } from 'react-router-dom';
-import { register } from "../../actions/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from "../../actions/auth";
 import CSRFToken from "../csrftoken";
+import classes from './login.module.css';
 
-import classes from './register.module.css';
-
-const Register = () => {
-    const dispatch = useDispatch();
+const Login = () => {
     const { isAuthenticated } = useSelector(state => state.user);
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        re_password: ''
+        username:'',
+        password:'',
     });
 
-    const [accountCreated, setAccountCreated] = useState(false);
-
-    const { username, password, re_password } = formData;
+    const { username, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    const userLogin = useSelector(state => state.user)
+    const { error, loading, userInfo } =  userLogin
+
     const onSubmit = e => {
         e.preventDefault();
-
-        if (password === re_password) {
-            dispatch(register(username, password, re_password));
-            setAccountCreated(true);
-        }
+        dispatch(login(username, password));
     };
 
     if (isAuthenticated)
-        return <Navigate to='/home' />;
-    else if (accountCreated)
-        return <Navigate to='/login' />;
+        return <Navigate to="/home" />;
 
     return (
         <div className={classes.main}>
             <div className={classes.container2}>
-                <h1>Register for an Account</h1>
+                <h1>Sign In</h1>
                 <form onSubmit={e => onSubmit(e)}>
                     <CSRFToken />
-
                     <div className={classes.input_section}>
                         <label>Username: </label>
                         <input
@@ -53,7 +45,6 @@ const Register = () => {
                             required
                         />
                     </div>
-
                     <div className={classes.input_section}>
                         <label>Password: </label>
                         <input
@@ -66,28 +57,14 @@ const Register = () => {
                             required
                         />
                     </div>
-
-                    <div className={classes.input_section}>
-                        <label>Confirm Password: </label>
-                        <input
-                            type='password'
-                            placeholder='Confirm Password*'
-                            name='re_password'
-                            onChange={e => onChange(e)}
-                            value={re_password}
-                            minLength='6'
-                            required
-                        />
-                    </div>
-
-                    <button type='submit'>Register</button>
+                    <button type='submit'>Login</button>
                 </form>
                 <p>
-                    Already have an Account? <Link to='/login'>Log In</Link>
+                    Don't have an Account? <Link to='/register'>Register</Link>
                 </p>
             </div>
         </div>
     );
 };
 
-export default Register;
+export default Login;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../../../actions/auth";
+// import { register } from "../../../../actions/auth";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../../../reducers/auth";
 import CSRFToken from "../../../csrftoken";
@@ -15,7 +15,7 @@ const GetStartedModalCreateAccount = (props) => {
     };
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(register(email, password));
+        // dispatch(register(email, password));
         dispatch(userActions.navBarMenuClose());
     };
 

@@ -12,19 +12,16 @@ const GetStartedModal = () => {
     const { getStartedView } = useSelector(state => state.user);
     const LogIn = () => {
         dispatch(userActions.getStartedModalLogIn());
-        console.log('getStartedModalLogIn')
     };
     const CreateAccount = () => {
         dispatch(userActions.getStartedModalCreateAccount());
-        console.log('getStartedView')
+
     };
     const RegistrationSuccess = () => {
         dispatch(userActions.getStartedModalRegistrationSuccess());
-        console.log('getStartedModalRegistrationSuccess')
     };
     const ResetPassword = () => {
         dispatch(userActions.getStartedModalResetPassword());
-        console.log('ResetPassword')
     };
 
     return (

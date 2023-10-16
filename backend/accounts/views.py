@@ -49,21 +49,18 @@ class RegisterView(APIView):
         except:
                 message = {'error': 'Something went wrong when registering account?'}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
 class getUsers(APIView):
     permission_classes = (permissions.IsAdminUser, )
     def get(self, request, format=None):
         users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
-
+        users = UserSerializer(users, many=True)
+        return Response(users.data)
 class getUserProfile(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     def get(self, request, format=None):
         user = request.user
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
-
 
 # from django.contrib.auth.models import User
 # from rest_framework.views import APIView
@@ -125,11 +122,3 @@ class getUserProfile(APIView):
 #             return Response({ 'success': 'User delete successfully'})
 #         except:
 #             return Response({ 'error': 'Something went wrong when trying to delete user'})
-# class GetUsersView(APIView):
-    # permission_classes = (permissions.AllowAny, )
-
-    # def get(self, request, format=None):
-    #     users = User.objects.all()
-
-    #     users = UserSerializer(users, many=True)
-    #     return Response(users.data)
