@@ -1,8 +1,8 @@
 import React , { useState } from "react";
 import { Navigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { login } from "../../actions/auth";
-import CSRFToken from "../csrftoken";
+import { login } from "../src/actions/auth";
+import CSRFToken from "../src/components/csrftoken";
 import classes from './login.module.css';
 
 const Login = () => {

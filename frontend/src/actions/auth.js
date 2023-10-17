@@ -29,10 +29,6 @@ export const login = (username, password) => {
 };
 
 
-
-
-
-
 // export const checkAuthenticated = () => {
 //     return async (dispatch) => {
 //         const config = {
@@ -41,27 +37,20 @@ export const login = (username, password) => {
 //                 'Content-Type': 'application/json',
 //             }
 //         };
-    
 //         const checkAuth = async () => {
 //             const res = await axios.get(`http://127.0.0.1:8000/accounts/authenticated`, config);
 //             return res;
 //         };
-
 //         try {
 //             const res = await checkAuth();
-
 //             if (res.data.error || res.data.isAuthenticated === 'error') {
-//                 // console.log('AUTHENTICATED_FAIL-1');
 //                 dispatch(userActions.authFail());
 //             } else if (res.data.isAuthenticated === 'success') {
-//                 // console.log('AUTHENTICATED_SUCCESS');
 //                 dispatch(userActions.authSuccess());
 //             } else {
-//                 // console.log('AUTHENTICATED_FAIL-2');
 //                 dispatch(userActions.authFail());
 //             }
 //         } catch (err) {
-//             // console.log('AUTHENTICATED_FAIL-3');
 //             dispatch(userActions.authFail());
 //         };
 //     };

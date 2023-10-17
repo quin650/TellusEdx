@@ -6,11 +6,8 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
     const { isAuthenticated } = useSelector(state => state.user);
-
-
     const homepage = (<Fragment><HomeTop /><HomeMiddle /></Fragment>);
     const dashboard = (<Fragment><Dashboard /></Fragment>);
-    
     return(<Fragment>{ !isAuthenticated ? homepage : dashboard }</Fragment>);
 };
 

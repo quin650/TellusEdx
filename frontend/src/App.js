@@ -5,18 +5,20 @@ import Footer from './components/layout/footer/footer';
 import Home from './components/pages/home';
 import Software from './components/software/Software';
 import Explore from './components/pages/explore/Explore';
-// import Register from './components/pages/register';
-// import Login from './components/pages/login';
 // import { checkAuthenticated } from './actions/auth';
 // import { load_user_profile } from './actions/profile';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { userActions } from './reducers/auth';
 
 function App() {
     const dispatch = useDispatch();
+    const { userInfo } = useSelector(state => state.user);
     useEffect(() => {
+        userInfo && dispatch(userActions.authSuccess())
         // dispatch(checkAuthenticated());
         // dispatch(load_user_profile());
     }, []);
+
     return (
         <Fragment>
             <header>
@@ -28,8 +30,6 @@ function App() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/software" element={<Software />} />
                     <Route path="/explore" element={<Explore />} />
-                    {/* <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} /> */}
                 </Routes>
             </main>
             <footer>

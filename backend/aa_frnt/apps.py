@@ -1,6 +1,0 @@
-from django.apps import AppConfig
-
-
-class FrntConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'aa_frnt'

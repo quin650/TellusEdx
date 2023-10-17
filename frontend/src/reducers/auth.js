@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
-	JSON.parse(localStorage.getItem('userInfo')) : null
+	JSON.parse(localStorage.getItem('userInfo')) : null	
 
 const initialState = {
 	navbarMenuStatus: false,
@@ -60,6 +60,8 @@ const userSlice = createSlice({
 			state.registrationFeedback = payload.success;
 			console.log(payload.success);
 		},
+
+
 		authSuccess(state){
 			state.isAuthenticated = true;
 		},
@@ -67,6 +69,9 @@ const userSlice = createSlice({
 			state.isAuthenticated = false;
 		},
 
+
+
+		
 
 		loginSuccess(state){
 			state.isAuthenticated = true;

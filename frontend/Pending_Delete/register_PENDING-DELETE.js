@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, Link } from 'react-router-dom';
 // import { register } from "../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
-import CSRFToken from "../csrftoken";
+import CSRFToken from "../src/components/csrftoken";
 import classes from './register.module.css';
 
 const Register = () => {
