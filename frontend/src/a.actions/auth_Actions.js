@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
 import axios from 'axios';
-import { userActions } from '../reducers/auth';
+import { userReducerActions } from '../a.reducers/auth_Reducers';
 // import { load_user } from './profile';
 
-export const login = (username, password) => {
+export const login_APIAction = (username, password) => {
     return async (dispatch) => {
         const config = {
             headers: {
@@ -18,16 +18,25 @@ export const login = (username, password) => {
             return res;
         };
         try {
-            dispatch(userActions.loginRequest());
+            dispatch(userReducerActions.loginRequest());
             const res = await loginData();
-            dispatch(userActions.loginSuccess(res.data));
+            dispatch(userReducerActions.loginSuccess(res.data));
             localStorage.setItem('userInfo', JSON.stringify(res.data))
         } catch (error) {
-            dispatch(userActions.loginFail(error.message));
+            dispatch(userReducerActions.loginFail(error.message));
         };
     };
 };
-
+export const logout = () => {
+    return async (dispatch) => {
+    try {
+        localStorage.removeItem('userInfo');
+        dispatch(userReducerActions.logoutSuccess());
+    } catch(err) {
+        dispatch(userReducerActions.logoutFail());
+    };  
+    };
+};
 
 // export const checkAuthenticated = () => {
 //     return async (dispatch) => {
@@ -44,14 +53,14 @@ export const login = (username, password) => {
 //         try {
 //             const res = await checkAuth();
 //             if (res.data.error || res.data.isAuthenticated === 'error') {
-//                 dispatch(userActions.authFail());
+//                 dispatch(userReducerActions.authFail());
 //             } else if (res.data.isAuthenticated === 'success') {
-//                 dispatch(userActions.authSuccess());
+//                 dispatch(userReducerActions.authSuccess());
 //             } else {
-//                 dispatch(userActions.authFail());
+//                 dispatch(userReducerActions.authFail());
 //             }
 //         } catch (err) {
-//             dispatch(userActions.authFail());
+//             dispatch(userReducerActions.authFail());
 //         };
 //     };
 // };
@@ -77,50 +86,18 @@ export const login = (username, password) => {
 //         try {
 //             const res = await registerData();
 //             if (res.data.error) {
-//                 dispatch(userActions.registerFail());
+//                 dispatch(userReducerActions.registerFail());
 //             } else {
-//                 dispatch(userActions.registerSuccess());
-//                 dispatch(userActions.registerFeedback(res.data.success));
+//                 dispatch(userReducerActions.registerSuccess());
+//                 dispatch(userReducerActions.registerFeedback(res.data.success));
 //             }
 //         } catch (err) {
-//             dispatch(userActions.registerFail());
+//             dispatch(userReducerActions.registerFail());
 //         };
 //     };
 // };
 
-// export const logout = () => {
-//     return async (dispatch) => {
-//         const config = {
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 'X-CSRFToken': Cookies.get('csrftoken')
-//             }
-//         };
 
-//     const body = JSON.stringify({'withCredentials': true});
-
-//         const logoutUser = async () => {
-//             const res = await axios.post(`http://127.0.0.1:8000/accounts/logout`, body, config);
-//             return res;
-//         };
-
-//         try {
-//             const res = await logoutUser();
-
-//             if(res.data.success){
-//             console.log('LOGOUT_SUCCESS');
-//             dispatch(userActions.logoutSuccess());
-//             } else {
-//                 console.log('LOGOUT_FAIL-1');
-//                 dispatch(userActions.logoutFail());
-//             }
-//         } catch(err) {
-//             console.log('LOGOUT_FAIL-2');
-//             dispatch(userActions.logoutFail());
-//         };  
-//     };
-// };
 // export const delete_account = () => {
 //     return async (dispatch) => {
 //         const config = {
@@ -143,14 +120,14 @@ export const login = (username, password) => {
 
 //             if(res.data.success){
 //                 console.log('DELETE_USER_SUCCESS')
-//             dispatch(userActions.deleteUserSuccess());
+//             dispatch(userReducerActions.deleteUserSuccess());
 //             } else {
 //                 console.log('DELETE_USER_FAIL-1')
-//                 dispatch(userActions.deleteUserFail());
+//                 dispatch(userReducerActions.deleteUserFail());
 //             }
 //         } catch(err) {
 //             console.log('DELETE_USER_FAIL-2');
-//             dispatch(userActions.deleteUserFail());
+//             dispatch(userReducerActions.deleteUserFail());
 //         };  
 //     };
 // };

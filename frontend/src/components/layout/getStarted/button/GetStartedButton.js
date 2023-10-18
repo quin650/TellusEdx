@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { userActions } from "../../../../reducers/auth";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from  './GetStartedButton.module.css';
 
 const GetStartedButton = () => {
     const dispatch = useDispatch();
     const modalButtonAction = () => {
-        dispatch(userActions.getStartedModalOpen());
-        dispatch(userActions.navBarMenuClose());
+        dispatch(userReducerActions.getStartedModalOpen());
+        dispatch(userReducerActions.navBarMenuClose());
     }
 
     return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { load_user_profile_tasks } from "../../../../actions/profile";
 import TasksListItem from "./TasksListItem";
+import { load_user_profile_tasks } from "../../../../a.actions/profile_Actions";
 import classes from './TasksList.module.css';
 
 const TasksList = (props) => {

@@ -1,7 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from "react-redux";
-import { userActions } from '../../../reducers/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenuButton.module.css';
 
 const NavbarMenuButton = () => {
@@ -9,10 +8,10 @@ const NavbarMenuButton = () => {
     const dispatch = useDispatch();
 
     const OpenAction = () => {
-        dispatch(userActions.navBarMenuOpen());
+        dispatch(userReducerActions.navBarMenuOpen());
     }
     const CloseAction = () => {
-        dispatch(userActions.navBarMenuClose());
+        dispatch(userReducerActions.navBarMenuClose());
     }
 
     let navbarButton = (

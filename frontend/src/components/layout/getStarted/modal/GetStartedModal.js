@@ -5,23 +5,23 @@ import GetStartedModalLogIn from "./GetStartedModalLogIn";
 import GetStartedModalCreateAccount from "./GetStartedModalCreateAccount";
 import GetStartedModalRegistrationSuccess from "./GetStartedModalRegistrationSuccess";
 import GetStartedModalResetPassword from "./GetStartedModalResetPassword";
-import { userActions } from "../../../../reducers/auth";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
 const GetStartedModal = () => {
     const dispatch = useDispatch();
     const { getStartedView } = useSelector(state => state.user);
     const LogIn = () => {
-        dispatch(userActions.getStartedModalLogIn());
+        dispatch(userReducerActions.getStartedModalLogIn());
     };
     const CreateAccount = () => {
-        dispatch(userActions.getStartedModalCreateAccount());
+        dispatch(userReducerActions.getStartedModalCreateAccount());
 
     };
     const RegistrationSuccess = () => {
-        dispatch(userActions.getStartedModalRegistrationSuccess());
+        dispatch(userReducerActions.getStartedModalRegistrationSuccess());
     };
     const ResetPassword = () => {
-        dispatch(userActions.getStartedModalResetPassword());
+        dispatch(userReducerActions.getStartedModalResetPassword());
     };
 
     return (

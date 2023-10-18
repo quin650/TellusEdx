@@ -1,11 +1,10 @@
 import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { update_user_profile } from "../../actions/profile";
-import { create_user_profile } from "../../actions/profile";
-// import { delete_account } from "../../actions/auth";
 import NavbarMenu from "../layout/header/navbarMenu";
 import GetStartedModal from "../layout/getStarted/modal/GetStartedModal";
-
+// import { delete_account } from "../../a.actions/auth_Actions";
+import { update_user_profile } from "../../a.actions/profile_Actions";
+import { create_user_profile } from "../../a.actions/profile_Actions";
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {

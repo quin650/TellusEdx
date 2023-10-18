@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { logout } from '../../../actions/auth';
-import { userActions } from '../../../reducers/auth';
-// import { checkAuthenticated } from '../../../actions/auth';
 import SearchBar from './searchBar';
 import GetStartedButton from '../getStarted/button/GetStartedButton';
+// import { checkAuthenticated } from '../../../a.actions/auth_Actions';
+import { logout } from '../../../a.actions/auth_Actions';
+import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
@@ -17,27 +17,26 @@ const NavbarMenu = () => {
     ? content = null 
     : content = (<li><GetStartedButton /></li>)
 
-    const LogOut = () => {
-        // dispatch(logout());
-        // dispatch(checkAuthenticated());
-        dispatch(userActions.navBarAsGuestOpenClose());
+    const LogOutHandler = () => {
+        dispatch(logout());
+        dispatch(userReducerActions.navBarMenuClose());
     }
 
-    const LogIn = () => {
-        dispatch(userActions.navBarMenuClose());
-        dispatch(userActions.getStartedModalOpen());
-        dispatch(userActions.getStartedModalLogIn());
+    const LogInHandler = () => {
+        dispatch(userReducerActions.navBarMenuClose());
+        dispatch(userReducerActions.getStartedModalOpen());
+        dispatch(userReducerActions.getStartedModalLogIn());
     }
 
-    let option = (<li><a onClick={LogIn}>Log in</a></li>)
+    let option = (<li><a onClick={LogInHandler}>Log in</a></li>)
 
     isAuthenticated
-    ? option = (<li><a onClick={LogOut}>Log out</a></li>)
-    : option = (<li><a onClick={LogIn}>Log in</a></li>)
+    ? option = (<li><a onClick={LogOutHandler}>Log out</a></li>)
+    : option = (<li><a onClick={LogInHandler}>Log in</a></li>)
 
     const exitAction = () => {
-        dispatch(userActions.getStartedModalClose());
-        dispatch(userActions.navBarMenuClose());
+        dispatch(userReducerActions.getStartedModalClose());
+        dispatch(userReducerActions.navBarMenuClose());
     };
 
     return (

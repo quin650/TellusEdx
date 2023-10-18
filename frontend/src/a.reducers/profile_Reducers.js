@@ -59,5 +59,5 @@ const profSlice = createSlice({
 	},
 });
 
-export const profActions  = profSlice.actions;
+export const profReducerActions  = profSlice.actions;
 export default profSlice;

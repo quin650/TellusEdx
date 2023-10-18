@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { login } from "../../../../actions/auth";
 import { useDispatch } from "react-redux";
-import { userActions } from "../../../../reducers/auth";
+import { login_APIAction } from "../../../../a.actions/auth_Actions";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
 const GetStartedModalRegistrationSuccess = (props) => {
     const dispatch = useDispatch();
@@ -9,14 +9,14 @@ const GetStartedModalRegistrationSuccess = (props) => {
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const exitAction = () => {
-        dispatch(userActions.getStartedModalClose());
-        dispatch(userActions.getStartedModalCreateAccount());
+        dispatch(userReducerActions.getStartedModalClose());
+        dispatch(userReducerActions.getStartedModalCreateAccount());
     };
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(login(email, password));
-        dispatch(userActions.getStartedModalClose());
-        dispatch(userActions.navBarMenuClose());
+        dispatch(login_APIAction(email, password));
+        dispatch(userReducerActions.getStartedModalClose());
+        dispatch(userReducerActions.navBarMenuClose());
     }
 
     return (

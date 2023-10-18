@@ -5,16 +5,16 @@ import Footer from './components/layout/footer/footer';
 import Home from './components/pages/home';
 import Software from './components/software/Software';
 import Explore from './components/pages/explore/Explore';
-// import { checkAuthenticated } from './actions/auth';
-// import { load_user_profile } from './actions/profile';
+// import { checkAuthenticated } from './actions/auth_Actions';
+// import { load_user_profile } from './actions/profile_Actions';
 import { useDispatch, useSelector} from 'react-redux';
-import { userActions } from './reducers/auth';
+import { userReducerActions } from './a.reducers/auth_Reducers';
 
 function App() {
     const dispatch = useDispatch();
     const { userInfo } = useSelector(state => state.user);
     useEffect(() => {
-        userInfo && dispatch(userActions.authSuccess())
+        userInfo && dispatch(userReducerActions.authSuccess())
         // dispatch(checkAuthenticated());
         // dispatch(load_user_profile());
     }, []);

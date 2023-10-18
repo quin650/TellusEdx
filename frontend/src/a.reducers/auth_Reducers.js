@@ -96,6 +96,8 @@ const userSlice = createSlice({
         //     state;
         // }, 
 
+
+
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 			state.registered = false;
@@ -103,6 +105,9 @@ const userSlice = createSlice({
 		logoutFail(state){
 			state;
 		},
+
+		
+
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;
 		},
@@ -112,5 +117,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const userActions = userSlice.actions;
+export const userReducerActions = userSlice.actions;
 export default userSlice;

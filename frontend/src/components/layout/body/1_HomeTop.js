@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import NavbarMenu from "../header/navbarMenu";
-
 import GetStartedButton from "../getStarted/button/GetStartedButton";
 import GetStartedModal from "../getStarted/modal/GetStartedModal";
-
 import BackgroundImage from '../../../../static/images/Background_Limited.png';
 import classes from './1_HomeTop.module.css';
 

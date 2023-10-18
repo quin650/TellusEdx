@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-// import { register } from "../../../../actions/auth";
 import { useDispatch } from "react-redux";
-import { userActions } from "../../../../reducers/auth";
 import CSRFToken from "../../../csrftoken";
+// import { register } from "../../../../actions/auth_Actions";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
+
 const GetStartedModalCreateAccount = (props) => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({email: '',password: ''});
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const exitAction = () => {
-        dispatch(userActions.getStartedModalClose());
-        dispatch(userActions.getStartedModalCreateAccount());
+        dispatch(userReducerActions.getStartedModalClose());
+        dispatch(userReducerActions.getStartedModalCreateAccount());
     };
     const onSubmit = e => {
         e.preventDefault();
         // dispatch(register(email, password));
-        dispatch(userActions.navBarMenuClose());
+        dispatch(userReducerActions.navBarMenuClose());
     };
 
     return (
