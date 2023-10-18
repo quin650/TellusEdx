@@ -19,9 +19,7 @@ const MainNavbar = () => {
                 <li className={classes.NavItem1}>
                     <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                 </li>
-                <li className={classes.searchContainer}>
-                    <SearchBar />
-                </li>
+
                 <li className={classes.NavItem3}>
                     <NavbarMenuButton />
                 </li>

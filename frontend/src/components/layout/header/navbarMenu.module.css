@@ -28,7 +28,7 @@
 
 .menuContentContainer {
     display: flex;
-    position: relative;
+    position: absolute;
     justify-content: flex-start;
     align-items: flex-start;
     margin: auto;

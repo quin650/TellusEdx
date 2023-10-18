@@ -5,15 +5,14 @@ import { create_user_profile } from "../../actions/profile";
 // import { delete_account } from "../../actions/auth";
 import NavbarMenu from "../layout/header/navbarMenu";
 import GetStartedModal from "../layout/getStarted/modal/GetStartedModal";
-
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
 
-    const { navbarMenuStatus } = useSelector(state => state.user);
+    const { navbarModalStatus } = useSelector(state => state.user);
     let navbarMenu = <NavbarMenu />;
-    navbarMenuStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
+    navbarModalStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
 
     const { getStartedModalStatus } = useSelector(state => state.user);
     let modal = <GetStartedModal />;
@@ -42,26 +41,11 @@ const Dashboard = () => {
         })
     },[first_name_global])
 
-    var SubmitButtonText = "Create"
-    const checkProfStatus = () => {
-        if (profile_id){
-            SubmitButtonText = "Submit";
-        } else {
-            SubmitButtonText = "Create";
-        }
-    }
-
-    checkProfStatus();
-
     const onChange = e  => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
-        if (profile_id) {
-            dispatch(update_user_profile(first_name, last_name, phone, city));
-        } else {
-            dispatch(create_user_profile(first_name, last_name, phone, city));
-        }
+        dispatch(update_user_profile(first_name, last_name, phone, city));
     };
 
     return (
