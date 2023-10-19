@@ -7,6 +7,7 @@ import { update_user_profile_tasks } from "../../../../a.actions/profile_Actions
 import classes from './TasksForm.module.css';
 
 const TaskForm = (props) => {
+    console.log('TaskForm')
     const isValid = useState(true);
     const dispatch = useDispatch();
 
@@ -16,6 +17,7 @@ const TaskForm = (props) => {
     // console.log('deleteButton: ', deleteButton)
     let buttonContent = "";
     if (deleteButton){
+        console.log('TaskForm.if')
         buttonContent = <DeleteTaskButton updateID={props.updateID}/>
     } else {
         buttonContent ="";
@@ -54,6 +56,7 @@ const TaskForm = (props) => {
             task_id: updateID                                                                                   //Task Due Date: YYYY-MM-DD (Only accepted format)
         }
         if (!updateID){
+            console.log('TaskForm.if2')
             dispatch(create_user_profile_tasks(tasks));
             // console.log('clicked');
         } else {

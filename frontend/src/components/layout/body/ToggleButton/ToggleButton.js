@@ -2,6 +2,7 @@ import React,{ useState } from "react";
 import classes from './ToggleButton.module.css';
 
 const ToggleButton = (props) =>{
+    console.log('ToggleButton')
     // true is toggle on Right (aka Contribute)
     // false is toggle on Left (aka Learn)
     const [ToggleIsContribute, setToggleIsContribute] = useState(false);
@@ -9,6 +10,7 @@ const ToggleButton = (props) =>{
     const handleToggle = () => {
         setToggleIsContribute(!ToggleIsContribute);
         props.ToggleFunction(ToggleIsContribute);
+        console.log('ToggleButton.handleToggle')
     };
 
     return(

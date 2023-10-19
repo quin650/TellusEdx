@@ -4,13 +4,15 @@ import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenuButton.module.css';
 
 const NavbarMenuButton = () => {
-
+    console.log('NavbarMenuButton')
     const dispatch = useDispatch();
 
     const OpenAction = () => {
+        console.log('NavbarMenuButton.OpenAction')
         dispatch(userReducerActions.navBarMenuOpen());
     }
     const CloseAction = () => {
+        console.log('NavbarMenuButton.CloseAction')
         dispatch(userReducerActions.navBarMenuClose());
     }
 

@@ -11,10 +11,12 @@ import { useDispatch, useSelector} from 'react-redux';
 import { userReducerActions } from './a.reducers/auth_Reducers';
 
 function App() {
+    console.log('App')
     const dispatch = useDispatch();
     const { userInfo } = useSelector(state => state.user);
     useEffect(() => {
         userInfo && dispatch(userReducerActions.authSuccess())
+        console.log('App.UseEffect')
         // dispatch(checkAuthenticated());
         // dispatch(load_user_profile());
     }, []);

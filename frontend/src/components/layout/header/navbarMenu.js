@@ -8,6 +8,7 @@ import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
+    console.log('NavbarMenu')
     const { isAuthenticated } = useSelector(state => state.user);
     const dispatch = useDispatch();
 
@@ -18,11 +19,13 @@ const NavbarMenu = () => {
     : content = (<li><GetStartedButton /></li>)
 
     const LogOutHandler = () => {
+        console.log('NavbarMenu.LogOutHandler')
         dispatch(logout());
         dispatch(userReducerActions.navBarMenuClose());
     }
 
     const LogInHandler = () => {
+        console.log('NavbarMenu.LogInHandler')
         dispatch(userReducerActions.navBarMenuClose());
         dispatch(userReducerActions.getStartedModalOpen());
         dispatch(userReducerActions.getStartedModalLogIn());
@@ -35,6 +38,7 @@ const NavbarMenu = () => {
     : option = (<li><a onClick={LogInHandler}>Log in</a></li>)
 
     const exitAction = () => {
+        console.log('NavbarMenu.exitAction')
         dispatch(userReducerActions.getStartedModalClose());
         dispatch(userReducerActions.navBarMenuClose());
     };

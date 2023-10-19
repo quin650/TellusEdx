@@ -5,9 +5,11 @@ import { load_user_profile_tasks } from "../../../../a.actions/profile_Actions";
 import classes from './TasksList.module.css';
 
 const TasksList = (props) => {
+    console.log('TasksList')
     const dispatch = useDispatch();
     
     useEffect(() => {
+        console.log('TasksList.useEffect')
         dispatch(load_user_profile_tasks());
     }, []);
 

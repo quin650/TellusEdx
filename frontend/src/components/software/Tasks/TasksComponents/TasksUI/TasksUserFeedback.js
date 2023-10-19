@@ -2,6 +2,7 @@ import React from "react";
 import classes from './TasksUserFeedback.module.css';
 
 const TasksUserFeedback = (props) => {
+    console.log('TasksUserFeedback')
     let errorMessage = ''
     if ((props.TaskName.length === 0) && (props.TaskPriority.length === 0)) {
         errorMessage = 'Please Enter a TaskName and TaskPriority.';                 /* if NAME is blank & if AGE is blank */
@@ -18,7 +19,10 @@ const TasksUserFeedback = (props) => {
     } else {
         errorMessage = '';                                                          /*  NAME does not start with a letter*/
     };
-    const onButtonClick = () => { props.onErrorCheck2('NoError');}
+    const onButtonClick = () => { 
+        console.log('TasksUserFeedback.onButtonClick')
+        props.onErrorCheck2('NoError');
+    }
 
     return (
         <div className={classes.error_msg}>

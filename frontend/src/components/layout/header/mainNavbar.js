@@ -8,8 +8,10 @@ import Logo from '../../../../static/images/Logo_arrows.png';
 import classes from './mainNavbar.module.css';
 
 const MainNavbar = () => {
+    console.log('MainNavbar')
     const { isAuthenticated } = useSelector(state => state.user);
     const handleClickScroll = () => {
+        console.log('MainNavbar.handleClickScroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 

@@ -2,6 +2,7 @@ import React from "react";
 import classes from './2c_HomeMiddle.module.css';
 
 const HomeMiddleContribute = () => {
+    console.log('HomeMiddleContribute')
     return (
         <div className={classes.middleMainContainer}>
             <div className={classes.left}>

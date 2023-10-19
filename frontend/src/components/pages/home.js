@@ -5,6 +5,7 @@ import HomeMiddle from "../layout/body/2_HomeMiddle";
 import Dashboard from "./dashboard";
 
 const Home = () => {
+    console.log('Home')
     const { isAuthenticated } = useSelector(state => state.user);
     const homepage = (<Fragment><HomeTop /><HomeMiddle /></Fragment>);
     const dashboard = (<Fragment><Dashboard /></Fragment>);

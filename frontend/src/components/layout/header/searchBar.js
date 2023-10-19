@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './searchBar.module.css';
 
 const SearchBar = () => {
-
+    console.log('SearchBar')
     return (
         <div className={classes.search}>
             <input 

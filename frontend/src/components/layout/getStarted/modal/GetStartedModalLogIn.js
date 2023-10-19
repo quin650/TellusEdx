@@ -5,15 +5,18 @@ import { login_APIAction } from "../../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
 const GetStartedModalLogIn = (props) => {
+    console.log('GetStartedModalLogIn')
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({email: '', password: '',});
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const exitAction = () => {
+        console.log('GetStartedModalLogIn.exitAction')
         dispatch(userReducerActions.getStartedModalClose());
         dispatch(userReducerActions.getStartedModalCreateAccount());
     };
     const onSubmit = e => {
+        console.log('GetStartedModalLogIn.onSubmit')
         e.preventDefault();
         dispatch(login_APIAction(email, password));
         dispatch(userReducerActions.getStartedModalClose());

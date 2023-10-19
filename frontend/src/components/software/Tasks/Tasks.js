@@ -4,10 +4,12 @@ import TasksList from "./TasksComponents/TasksList";
 import classes from "./Tasks.module.css";
 
 const Tasks = () =>{
+    console.log('Tasks')
     const [updateID, setUpdateID] = useState("");
     const [ buttonText, SetButtonText ] = useState('Add Task');
     const [ deleteButton, SetDeleteButton ] = useState(false);
     const StoreIdToUpdate = (taskID) => {
+        console.log('Tasks.StoreIdToUpdate')
         setUpdateID(taskID);
         SetButtonText('Update');
         SetDeleteButton(true);

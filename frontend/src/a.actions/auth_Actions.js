@@ -18,11 +18,13 @@ export const login_APIAction = (username, password) => {
             return res;
         };
         try {
+            console.log('auth_Actions.login_apiaction')
             dispatch(userReducerActions.loginRequest());
             const res = await loginData();
             dispatch(userReducerActions.loginSuccess(res.data));
             localStorage.setItem('userInfo', JSON.stringify(res.data))
         } catch (error) {
+            console.log('auth_Actions.login_apiaction')
             dispatch(userReducerActions.loginFail(error.message));
         };
     };
@@ -30,9 +32,11 @@ export const login_APIAction = (username, password) => {
 export const logout = () => {
     return async (dispatch) => {
     try {
+        console.log('auth_Actions.logout')
         localStorage.removeItem('userInfo');
         dispatch(userReducerActions.logoutSuccess());
     } catch(err) {
+        console.log('auth_Actions.logout')
         dispatch(userReducerActions.logoutFail());
     };  
     };

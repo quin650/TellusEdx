@@ -4,8 +4,10 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from  './GetStartedButton.module.css';
 
 const GetStartedButton = () => {
+    console.log('GetStartedButton')
     const dispatch = useDispatch();
     const modalButtonAction = () => {
+        console.log('GetStartedButton.modalButtonAction')
         dispatch(userReducerActions.getStartedModalOpen());
         dispatch(userReducerActions.navBarMenuClose());
     }

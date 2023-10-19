@@ -8,6 +8,7 @@ import { create_user_profile } from "../../a.actions/profile_Actions";
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {
+    console.log('Dashboard')
     const dispatch = useDispatch();
 
     const { navbarMenuStatus } = useSelector(state => state.user);
@@ -33,6 +34,7 @@ const Dashboard = () => {
 
     const { first_name, last_name, phone, city } = formData;
     useEffect(() =>{
+        console.log('Dashboard.useEffect')
         setFormData({
             first_name: first_name_global,
             last_name: last_name_global,
@@ -43,6 +45,7 @@ const Dashboard = () => {
 
     var SubmitButtonText = "Create"
     const checkProfStatus = () => {
+        console.log('Dashboard.checkProfStatus')
         if (profile_id){
             SubmitButtonText = "Submit";
         } else {
@@ -55,6 +58,7 @@ const Dashboard = () => {
     const onChange = e  => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
+        console.log('Dashboard.onSubmit')
         e.preventDefault();
         if (profile_id) {
             dispatch(update_user_profile(first_name, last_name, phone, city));

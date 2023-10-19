@@ -8,19 +8,23 @@ import GetStartedModalResetPassword from "./GetStartedModalResetPassword";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
 const GetStartedModal = () => {
+    console.log('GetStartedModal')
     const dispatch = useDispatch();
     const { getStartedView } = useSelector(state => state.user);
     const LogIn = () => {
+        console.log('GetStartedModal.LogIn')
         dispatch(userReducerActions.getStartedModalLogIn());
     };
     const CreateAccount = () => {
+        console.log('GetStartedModal.CreateAccount')
         dispatch(userReducerActions.getStartedModalCreateAccount());
-
     };
     const RegistrationSuccess = () => {
+        console.log('GetStartedModal.RegistrationSuccess')
         dispatch(userReducerActions.getStartedModalRegistrationSuccess());
     };
     const ResetPassword = () => {
+        console.log('GetStartedModal.ResetPassword')
         dispatch(userReducerActions.getStartedModalResetPassword());
     };
 

@@ -7,6 +7,7 @@ import BackgroundImage from '../../../../static/images/Background_Limited.png';
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
+    console.log('1_HomeTop')
     const { navbarMenuStatus } = useSelector(state => state.user);
     let navbarMenu = <NavbarMenu />;
     navbarMenuStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";

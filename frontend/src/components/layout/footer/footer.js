@@ -4,9 +4,12 @@ import Logo from '../../../../static/images/1Logo.png';
 import classes from './footer.module.css';
 
 const Footer = () => {
+    console.log('footer')
     const handleClickScroll = () => {
+        console.log('footer.handlescroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
+
     return (
         <footer className={classes.footer}>
             <div className={classes.outerLogoContainer}>

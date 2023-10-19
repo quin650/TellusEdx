@@ -6,15 +6,18 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
 
 const GetStartedModalCreateAccount = (props) => {
+    console.log('GetStartedModalCreateAccount')
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({email: '',password: ''});
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const exitAction = () => {
+        console.log('GetStartedModalCreateAccount.exitAction')
         dispatch(userReducerActions.getStartedModalClose());
         dispatch(userReducerActions.getStartedModalCreateAccount());
     };
     const onSubmit = e => {
+        console.log('GetStartedModalCreateAccount.onSubmit')
         e.preventDefault();
         // dispatch(register(email, password));
         dispatch(userReducerActions.navBarMenuClose());

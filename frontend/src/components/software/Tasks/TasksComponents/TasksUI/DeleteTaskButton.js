@@ -5,12 +5,14 @@ import classes from  './DeleteTaskButton.module.css';
 
 
 const DeleteTaskButton = (props) => {
+    console.log('DeleteTaskButton')
     const dispatch = useDispatch();
     const updateID = props.updateID;
 
     const deleteTask = () => {
-        console.log('Clicked delete button for taskID:', updateID);
-        console.log('id datatype: ', typeof(updateID))
+        console.log('DeleteTaskButton.deleteTask')
+        // console.log('Clicked delete button for taskID:', updateID);
+        // console.log('id datatype: ', typeof(updateID))
         dispatch(delete_user_profile_task(updateID));
     }
 
