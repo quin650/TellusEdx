@@ -83,7 +83,3 @@
     font-family: Roboto;
     cursor: pointer;
 }
-.menuContentContainer ul li a:hover {
-    color: #0066FF;
-    padding-left: 8px;
-}

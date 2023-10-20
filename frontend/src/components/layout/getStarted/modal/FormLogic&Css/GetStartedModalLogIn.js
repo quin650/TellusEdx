@@ -33,7 +33,7 @@ const GetStartedModalLogIn = (props) => {
                 </div>
                 <div className={classes.modalContentContainer}>
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
-                    <CSRFToken />
+                    {/* <CSRFToken /> */}
                         <button className={classes.continueWithXButton}>
                             <span>Continue with</span>
                             <i className={classes.XIconContainer}>

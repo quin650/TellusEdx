@@ -43,4 +43,3 @@ const NavbarMenuButton = () => {
 };
 
 export default NavbarMenuButton;
-

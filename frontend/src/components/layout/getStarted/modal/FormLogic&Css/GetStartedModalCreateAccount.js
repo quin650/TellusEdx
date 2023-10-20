@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import CSRFToken from "../../../csrftoken";
 // import { register } from "../../../../actions/auth_Actions";
@@ -8,9 +8,17 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModalCreateAccount = (props) => {
     console.log('GetStartedModalCreateAccount')
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState({email: '',password: ''});
-    const { email, password } = formData;
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const emailChangeHandler = (event) =>{
+        setEmail(event.target.value)
+    }
+
+    const passwordChangeHandler = (event) =>{
+        setPassword(event.target.value)
+    }
+
     const exitAction = () => {
         console.log('GetStartedModalCreateAccount.exitAction')
         dispatch(userReducerActions.getStartedModalClose());
@@ -33,7 +41,7 @@ const GetStartedModalCreateAccount = (props) => {
                 </div>
                 <div className={classes.modalContentContainer}>
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
-                        <CSRFToken />
+                        {/* <CSRFToken /> */}
                         <button className={classes.continueWithXButton}>
                             <span>Continue with</span>
                             <i className={classes.XIconContainer}>
@@ -50,8 +58,8 @@ const GetStartedModalCreateAccount = (props) => {
                                 id='email'
                                 placeholder='Email'
                                 name='email'
-                                onChange={e => onChange(e)}
                                 value={email}
+                                onChange={emailChangeHandler}
                                 required
                                 className={`${classes['formInputEmail']}`}
                                 autoComplete='email'
@@ -63,16 +71,14 @@ const GetStartedModalCreateAccount = (props) => {
                                 id='password'
                                 placeholder='Password'
                                 name='password'
-                                onChange={e => onChange(e)}
                                 value={password}
+                                onChange={passwordChangeHandler}
                                 minLength='8'
                                 required
                                 className={`${classes['formInputPassword']}`}
                                 autoComplete='current-password'
                             />
                         </div>
-
-
                         <button className={`${classes['createAccountButton']}`}type='submit'>
                             Create Account
                         </button>

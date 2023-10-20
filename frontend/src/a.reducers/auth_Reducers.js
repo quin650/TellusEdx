@@ -26,6 +26,9 @@ const userSlice = createSlice({
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
+
+
+
 		getStartedModalCreateAccount(state) {
 			state.getStartedView = 'CreateAccount';
 		},
@@ -44,6 +47,9 @@ const userSlice = createSlice({
 		getStartedModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
+
+
+
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
@@ -62,6 +68,7 @@ const userSlice = createSlice({
 		},
 
 
+
 		authSuccess(state){
 			state.isAuthenticated = true;
 		},
@@ -71,15 +78,12 @@ const userSlice = createSlice({
 
 
 
-		
-
 		loginSuccess(state){
 			state.isAuthenticated = true;
 		},
 		loginFail(state){
 			state.isAuthenticated = false;
 		},
-
         loginRequest(state){
             state.loading = true;
         },
@@ -92,10 +96,6 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        // logoutSuccess(state){
-        //     state;
-        // }, 
-
 
 
 		logoutSuccess(state){
@@ -106,7 +106,7 @@ const userSlice = createSlice({
 			state;
 		},
 
-		
+
 
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;

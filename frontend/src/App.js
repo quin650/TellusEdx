@@ -3,10 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import MainNavbar from './components/layout/header/mainNavbar';
 import Footer from './components/layout/footer/footer';
 import Home from './components/pages/home';
-import Software from './components/software/Software';
-import Explore from './components/pages/explore/Explore';
-// import { checkAuthenticated } from './actions/auth_Actions';
-// import { load_user_profile } from './actions/profile_Actions';
 import { useDispatch, useSelector} from 'react-redux';
 import { userReducerActions } from './a.reducers/auth_Reducers';
 
@@ -17,9 +13,7 @@ function App() {
     useEffect(() => {
         userInfo && dispatch(userReducerActions.authSuccess())
         console.log('App.UseEffect')
-        // dispatch(checkAuthenticated());
-        // dispatch(load_user_profile());
-    }, []);
+    }, [userInfo]);
 
     return (
         <Fragment>
@@ -30,8 +24,6 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/software" element={<Software />} />
-                    <Route path="/explore" element={<Explore />} />
                 </Routes>
             </main>
             <footer>

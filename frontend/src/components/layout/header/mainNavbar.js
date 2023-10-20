@@ -20,7 +20,6 @@ const MainNavbar = () => {
                 <li className={classes.NavItem1}>
                     <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                 </li>
-
                 <li className={classes.NavItem3}>
                     <NavbarMenuButton />
                 </li>
@@ -45,7 +44,6 @@ const MainNavbar = () => {
     !isAuthenticated ? content = authGuest : content = authUser
 
     return (
-        
         <nav className={classes.outer_container_nav}>
             <ul className={classes.inner_container_nav}>
                 {content}
