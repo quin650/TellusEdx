@@ -9,7 +9,7 @@ import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
     console.log('NavbarMenu')
-    const { isAuthenticated } = useSelector(state => state.user);
+    const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
     const dispatch = useDispatch();
 
     let content = (<li><GetStartedButton /></li>)
@@ -26,8 +26,6 @@ const NavbarMenu = () => {
 
     const LogInHandler = () => {
         console.log('NavbarMenu.LogInHandler')
-        dispatch(userReducerActions.navBarMenuClose());
-        dispatch(userReducerActions.getStartedModalOpen());
         dispatch(userReducerActions.getStartedModalLogIn());
     }
 
@@ -36,12 +34,6 @@ const NavbarMenu = () => {
     isAuthenticated
     ? option = (<li><a onClick={LogOutHandler}>Log out</a></li>)
     : option = (<li><a onClick={LogInHandler}>Log in</a></li>)
-
-    const exitAction = () => {
-        console.log('NavbarMenu.exitAction')
-        dispatch(userReducerActions.getStartedModalClose());
-        dispatch(userReducerActions.navBarMenuClose());
-    };
 
     return (
         <div className={classes.blurredBackgroundContainer}>

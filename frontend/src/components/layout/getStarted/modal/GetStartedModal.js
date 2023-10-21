@@ -1,26 +1,60 @@
 import React, { useState, Fragment, useEffect, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
 
 const GetStartedModal = () => {
     const dispatch = useDispatch();
-    const { getStartedView } = useSelector(state => state.user);
+    const modalStatus2 = useSelector(({ user }) => user.getStartedView)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [buttonText, setButtonText] = useState("CreateAccount")
     const [modalStatus, setModalStatus] = useState("CreateAccount")
-    
-    
-    const LogIn = () => {setModalStatus("LogIn")};   
-    const [formOptions, setFormOptions] = useState(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
-    const exitAction = () => {dispatch(userReducerActions.getStartedModalClose())};
-    const CreateAccount = () => {setModalStatus("CreateAccount")};
-    const RegistrationSuccess = () => {setModalStatus("RegistrationSuccess")};
-    const ResetPassword = () => {setModalStatus("ResetPassword")};
     const emailChangeHandler = useCallback((event) => {setEmail(event.target.value)},[])
     const passwordChangeHandler = useCallback((event) =>{setPassword(event.target.value)}, [])
+    const [emailInputField, setEmailInputField] = useState(
+        <div className={classes.inputContainer}>
+            <input
+                type='email'
+                id='email'
+                placeholder='Email'
+                name='email'
+                onChange={emailChangeHandler}
+                value={email}
+                required
+                className={`${classes['formInputEmail']}`}
+                autoComplete='email'
+            />
+        </div>
+    )
+    const [passwordInputField, setPasswordInputField] = useState(  
+        <div className={classes.inputContainer}>
+            <input
+                type='password'
+                id='password'
+                placeholder='Password'
+                name='password'
+                onChange={passwordChangeHandler}
+                value={password}
+                minLength='8'
+                required
+                className={`${classes['formInputPassword']}`}
+                autoComplete='current-password'
+            />
+        </div>
+    )
+    const LogIn = () => {setModalStatus("LogIn")};   
+    const [formOptions, setFormOptions] = useState(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
+    const exitAction = () => {
+        dispatch(userReducerActions.getStartedModalClose())
+        dispatch(userReducerActions.getStartedModalReset())
+    };
+    const CreateAccount = () => {setModalStatus("CreateAccount")};
+    const RegistrationSuccess = () => {setModalStatus("RegistrationSuccess")};
+    const ResetPassword = () => {
+        setModalStatus("ResetPassword")
+        console.log('reset pw clicked')
+    } ;
 
     const ExitButton = (
         <div onClick={exitAction} className={classes.exitButtonContainer}>
@@ -59,39 +93,6 @@ const GetStartedModal = () => {
         </Fragment>
     )
 
-    const emailInput_CreateAccount_and_LogIn_and_Reset = (
-        <div className={classes.inputContainer}>
-            <input
-                type='email'
-                id='email'
-                placeholder='Email'
-                name='email'
-                onChange={emailChangeHandler}
-                value={email}
-                required
-                className={`${classes['formInputEmail']}`}
-                autoComplete='email'
-            />
-        </div>
-    )
-
-    const passwordInput_CreateAccount_and_LogIn = (
-        <div className={classes.inputContainer}>
-            <input
-                type='password'
-                id='password'
-                placeholder='Password'
-                name='password'
-                onChange={passwordChangeHandler}
-                value={password}
-                minLength='8'
-                required
-                className={`${classes['formInputPassword']}`}
-                autoComplete='current-password'
-            />
-        </div>
-    )
-
     const GetStartedModal_InnerButton = (
         <button className={`${classes['createAccountButton']}`}type='submit'>
             {buttonText}
@@ -100,51 +101,100 @@ const GetStartedModal = () => {
 
     let SubmitAction = 'test1'
     let xButton = CreateAccount_and_LogIn
-    let emailInputField = emailInput_CreateAccount_and_LogIn_and_Reset
-    let passwordInputField = passwordInput_CreateAccount_and_LogIn
 
     const onSubmit = e => {
         e.preventDefault();
         SubmitAction();
     };
 
+    useEffect(() => {
+        ( modalStatus2 !== '') && 
+        setButtonText("Log In")
+                setFormOptions(<Fragment>
+                                    <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
+                                    <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
+                                </Fragment>);
+                setPasswordInputField(<div className={classes.inputContainer}>
+                    <input
+                        type='password'
+                        id='password'
+                        placeholder='Password'
+                        name='password'
+                        onChange={passwordChangeHandler}
+                        value={password}
+                        minLength='8'
+                        required
+                        className={`${classes['formInputPassword']}`}
+                        autoComplete='current-password'
+                    />
+                </div>)
+    },[modalStatus2])
+
     useEffect(() =>{
         switch(modalStatus) {
-            case "CreateAccount":
-                setButtonText("CreateAccount")
-                // SubmitAction = () => {console.log('dispatch(register(email, password))')}
-                setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
-                break;
             case "LogIn":
                 setButtonText("Log In")
                 setFormOptions(<Fragment>
                                     <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
                                     <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
                                 </Fragment>);
+                setPasswordInputField(<div className={classes.inputContainer}>
+                    <input
+                        type='password'
+                        id='password'
+                        placeholder='Password'
+                        name='password'
+                        onChange={passwordChangeHandler}
+                        value={password}
+                        minLength='8'
+                        required
+                        className={`${classes['formInputPassword']}`}
+                        autoComplete='current-password'
+                    />
+                </div>)
                 // SubmitAction = () => {
                 //     dispatch(login_APIAction(email, password));
                 //     dispatch(userReducerActions.getStartedModalClose());
                 // }
                 break;
             case "ResetPassword":
-                setButtonText("ResetPassword")
+                setButtonText("Reset Password")
                 setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogIn}>Cancel</a></p></span>);
+                console.log('test-------------------')
+                xButton = ''
+                setPasswordInputField('')
                 // SubmitAction = () => {
                 //     console.log('dispatch(resetPassword(email, password))')
                 // }
-                xButton = ''
-                passwordInputField=''
             break;
+            case "CreateAccount":
+                setButtonText("CreateAccount")
+                // SubmitAction = () => {console.log('dispatch(register(email, password))')}
+                setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
+                setPasswordInputField(<div className={classes.inputContainer}>
+                    <input
+                        type='password'
+                        id='password'
+                        placeholder='Password'
+                        name='password'
+                        onChange={passwordChangeHandler}
+                        value={password}
+                        minLength='8'
+                        required
+                        className={`${classes['formInputPassword']}`}
+                        autoComplete='current-password'
+                    />
+                </div>)
+                break;
             case "RegistrationSuccess":
-                
             setFormOptions(<Fragment><span className={classes.optionSpan}><p> Account Created Successfully</p>
                 <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={LogIn}> Log In</a></p></span></Fragment>);
                 // SubmitAction = () => {
                 //     console.log('success')
                 // }
                 xButton = ''
-                emailInputField =''
-                passwordInputField=''
+                setEmailInputField('')
+                setPasswordInputField('')
                 break;
         }
     }, [modalStatus])

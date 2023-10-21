@@ -9,7 +9,7 @@ import classes from './mainNavbar.module.css';
 
 const MainNavbar = () => {
     console.log('MainNavbar')
-    const { isAuthenticated } = useSelector(state => state.user);
+    const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     const handleClickScroll = () => {
         console.log('MainNavbar.handleClickScroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })

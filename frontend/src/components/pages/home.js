@@ -6,7 +6,7 @@ import Dashboard from "./dashboard";
 
 const Home = () => {
     console.log('Home')
-    const { isAuthenticated } = useSelector(state => state.user);
+    const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     const homepage = (<Fragment><HomeTop /><HomeMiddle /></Fragment>);
     const dashboard = (<Fragment><Dashboard /></Fragment>);
     return(<Fragment>{ !isAuthenticated ? homepage : dashboard }</Fragment>);

@@ -8,18 +8,13 @@ import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
     console.log('1_HomeTop')
-    const { navbarMenuStatus } = useSelector(state => state.user);
-    let navbarMenu = <NavbarMenu />;
-    navbarMenuStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
-
-    const { getStartedModalStatus } = useSelector(state => state.user);
-    let modal = <GetStartedModal />;
-    getStartedModalStatus ? modal = <GetStartedModal /> : modal = "";
+    const navbarMenuStatus = useSelector(({ user }) => user.navbarMenuStatus);
+    const getStartedModalStatus = useSelector(({ user }) => user.getStartedModalStatus);
 
     return (
         <div className={classes.outer_container_top}>
-            {navbarMenu}
-            {modal}
+            {navbarMenuStatus && <NavbarMenu />}
+            {getStartedModalStatus && <GetStartedModal />}
             <div className={classes.inner_container_top} >
                 <img src={BackgroundImage} alt='subjects' /> 
                 <blockquote className={classes.caption} >

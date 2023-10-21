@@ -6,7 +6,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo') ?
 const initialState = {
 	navbarMenuStatus: false,
 	getStartedModalStatus: false,
-	getStartedView: 'CreateAccount',
+	getStartedView: '',
 	isAuthenticated: false,
 	registered: false,
 	registrationFeedback: '',
@@ -28,24 +28,22 @@ const userSlice = createSlice({
 		},
 
 
-
-		getStartedModalCreateAccount(state) {
-			state.getStartedView = 'CreateAccount';
-		},
 		getStartedModalLogIn(state) {
+			state.getStartedModalStatus = true;
+			state.navbarMenuStatus = false;
 			state.getStartedView = 'LogIn';
 		},
-		getStartedModalRegistrationSuccess(state) {
-			state.getStartedView = 'RegistrationSuccess'
+		getStartedModalReset(state) {
+			state.getStartedView = '';
 		},
-		getStartedModalResetPassword(state) {
-			state.getStartedView = 'ResetPassword'
-		},
+
 		getStartedModalOpen(state) {
 			state.getStartedModalStatus = true;
+			state.navbarMenuStatus = false;
 		},
 		getStartedModalClose(state) {
 			state.getStartedModalStatus = false;
+			state.navbarMenuStatus = false;
 		},
 
 
