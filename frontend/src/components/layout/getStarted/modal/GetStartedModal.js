@@ -1,7 +1,6 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import GetStartedModal_InnerButton from "./GetStartedModal_InnerButton";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
 
@@ -11,13 +10,17 @@ const GetStartedModal = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [buttonText, setButtonText] = useState("CreateAccount")
-    const emailChangeHandler = (event) =>{setEmail(event.target.value)}
-    const passwordChangeHandler = (event) =>{setPassword(event.target.value)}
+    const [modalStatus, setModalStatus] = useState("CreateAccount")
+    
+    
+    const LogIn = () => {setModalStatus("LogIn")};   
+    const [formOptions, setFormOptions] = useState(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
     const exitAction = () => {dispatch(userReducerActions.getStartedModalClose())};
-    const LogIn = () => {dispatch(userReducerActions.getStartedModalLogIn())};
-    const CreateAccount = () => {dispatch(userReducerActions.getStartedModalCreateAccount())};
-    const RegistrationSuccess = () => {dispatch(userReducerActions.getStartedModalRegistrationSuccess())};
-    const ResetPassword = () => {dispatch(userReducerActions.getStartedModalResetPassword())};
+    const CreateAccount = () => {setModalStatus("CreateAccount")};
+    const RegistrationSuccess = () => {setModalStatus("RegistrationSuccess")};
+    const ResetPassword = () => {setModalStatus("ResetPassword")};
+    const emailChangeHandler = useCallback((event) => {setEmail(event.target.value)},[])
+    const passwordChangeHandler = useCallback((event) =>{setPassword(event.target.value)}, [])
 
     const ExitButton = (
         <div onClick={exitAction} className={classes.exitButtonContainer}>
@@ -89,7 +92,12 @@ const GetStartedModal = () => {
         </div>
     )
 
-    let FormOptions = (<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
+    const GetStartedModal_InnerButton = (
+        <button className={`${classes['createAccountButton']}`}type='submit'>
+            {buttonText}
+        </button>
+    )
+
     let SubmitAction = 'test1'
     let xButton = CreateAccount_and_LogIn
     let emailInputField = emailInput_CreateAccount_and_LogIn_and_Reset
@@ -101,18 +109,18 @@ const GetStartedModal = () => {
     };
 
     useEffect(() =>{
-        switch(getStartedView) {
+        switch(modalStatus) {
             case "CreateAccount":
                 setButtonText("CreateAccount")
                 // SubmitAction = () => {console.log('dispatch(register(email, password))')}
+                setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
                 break;
             case "LogIn":
                 setButtonText("Log In")
-                console.log('test--------------')
-                FormOptions = (<Fragment>
-                        <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
-                        <span className={classes.optionSpan}><p className={classes.option_2}>No Account?<a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
-                    </Fragment>)
+                setFormOptions(<Fragment>
+                                    <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
+                                    <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
+                                </Fragment>);
                 // SubmitAction = () => {
                 //     dispatch(login_APIAction(email, password));
                 //     dispatch(userReducerActions.getStartedModalClose());
@@ -120,7 +128,7 @@ const GetStartedModal = () => {
                 break;
             case "ResetPassword":
                 setButtonText("ResetPassword")
-                FormOptions = (<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogIn}>Cancel</a></p></span>)
+                setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogIn}>Cancel</a></p></span>);
                 // SubmitAction = () => {
                 //     console.log('dispatch(resetPassword(email, password))')
                 // }
@@ -129,8 +137,8 @@ const GetStartedModal = () => {
             break;
             case "RegistrationSuccess":
                 
-                FormOptions = (<Fragment><span className={classes.optionSpan}><p> Account Created Successfully</p>
-                <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={LogIn}> Log In</a></p></span></Fragment>)
+            setFormOptions(<Fragment><span className={classes.optionSpan}><p> Account Created Successfully</p>
+                <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={LogIn}> Log In</a></p></span></Fragment>);
                 // SubmitAction = () => {
                 //     console.log('success')
                 // }
@@ -139,25 +147,25 @@ const GetStartedModal = () => {
                 passwordInputField=''
                 break;
         }
-    }, [getStartedView])
+    }, [modalStatus])
 
     return (
         <div className={classes.blurredBackgroundContainer}>
             <div className={classes.modalContainer}>
                 {ExitButton}
                 <div className={classes.modalContentContainer}>
-                {getStartedView == "RegistrationSuccess" && (regSuccess)}
-                <form className={classes.modalFormContainer} onSubmit={onSubmit}>
-                    {xButton}
-                    {emailInputField}
-                    {passwordInputField}
-                    <GetStartedModal_InnerButton buttonText={buttonText} />
-                </form>
-                {FormOptions}
+                    {modalStatus == "RegistrationSuccess" && (regSuccess)}
+                    <form className={classes.modalFormContainer} onSubmit={onSubmit}>
+                        {xButton}
+                        {emailInputField}
+                        {passwordInputField}
+                        {GetStartedModal_InnerButton}
+                    </form>
+                    {formOptions}
                 </div>
             </div>
         </div>
     )
 }
 
-export default GetStartedModal;
+export default React.memo(GetStartedModal);
