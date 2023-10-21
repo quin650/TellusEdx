@@ -1,12 +1,11 @@
 
 import React from "react";
 import classes from './GetStartedModal.module.css';
-const GetStartedModal_InnerButton = (props) => {
+const GetStartedModal_InnerButton = ({buttonText}) => {
 
-    const InnerButtonText = 'Test'
 return(
     <button className={`${classes['createAccountButton']}`}type='submit'>
-        {InnerButtonText}
+        {buttonText}
     </button>
 )
 }

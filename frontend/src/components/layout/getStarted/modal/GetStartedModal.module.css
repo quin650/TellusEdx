@@ -182,6 +182,13 @@
     box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
 /* **************************************************** Have an account? Log In -- */
+.optionSpan{
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .option_1 {
     color: gray;
     margin: 13px auto;
