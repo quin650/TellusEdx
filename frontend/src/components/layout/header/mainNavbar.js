@@ -14,7 +14,6 @@ const MainNavbar = () => {
         console.log('MainNavbar.handleClickScroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
-
     const authUser = (
         <Fragment>
                 <li className={classes.NavItem1}>
@@ -25,7 +24,6 @@ const MainNavbar = () => {
                 </li>
         </Fragment>
     )
-
     const authGuest = (
         <Fragment>
                 <li className={classes.NavItem1}>
@@ -39,7 +37,6 @@ const MainNavbar = () => {
                 </li>
         </Fragment>
     )
-
     let content = {authGuest} 
     !isAuthenticated ? content = authGuest : content = authUser
 

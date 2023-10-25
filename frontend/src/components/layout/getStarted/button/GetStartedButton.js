@@ -4,7 +4,7 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from  './GetStartedButton.module.css';
 
 const GetStartedButton = () => {
-    console.log('GetStartedButton')
+    console.log('GetStartedButton1')
     const dispatch = useDispatch();
     const modalButtonAction = () => {
         console.log('GetStartedButton.modalButtonAction')

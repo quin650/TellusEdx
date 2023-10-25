@@ -31,6 +31,9 @@ const GetStartedModalRegistrationSuccess = (props) => {
                     </div>
                 </div>
                 <div className={classes.modalContentContainer}>
+
+
+
                     <p> Account Created Successfully</p>
                     <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={props.LogIn}> Log In</a></p>
                 </div>

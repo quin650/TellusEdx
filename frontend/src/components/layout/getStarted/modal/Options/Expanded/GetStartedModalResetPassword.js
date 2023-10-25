@@ -32,10 +32,11 @@ const GetStartedModalResetPassword = (props) => {
                     </div>
                 </div>
                 <div className={classes.modalContentContainer}>
+
+
+
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
                     {/* <CSRFToken /> */}
-
-
                         <div className={classes.inputContainer}>
                             <input
                                 type='email'

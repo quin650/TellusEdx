@@ -67,29 +67,14 @@ const GetStartedModal = () => {
                             <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
                         </Fragment>);
         setRegSuccess("")
-        setPasswordInputField(
-            <div className={classes.inputContainer}>
-                <input
-                    type='password'
-                    id='password'
-                    placeholder='Password111'
-                    name='password'
-                    ref={passwordInputRef}
-                    minLength='8'
-                    required
-                    className={`${classes['formInputPassword']}`}
-                    autoComplete='current-password'
-                />
-            </div>
-        )
         console.log('LogIn Clicked')
-    };
+    };   
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>
+    <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>
     )
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
-        setModalStatus("CreateAccount")
+        dispatch(userReducerActions.getStartedModalReset())
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
         console.log('exitAction clicked')
     };
@@ -101,9 +86,8 @@ const GetStartedModal = () => {
     };
     const ResetPassword = () => {
         setButtonText("Reset Password")
-        setPasswordInputField("")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogIn}>Cancel</a></p></span>);
-        console.log('ResetPassword clicked')
+        console.log('GetStartedModal4')
     } ;
     const ExitButton = (
         <div onClick={exitAction} className={classes.exitButtonContainer}>
@@ -127,14 +111,14 @@ const GetStartedModal = () => {
             case "CreateAccount":
                 setButtonText("CreateAccount")
                 setRegSuccess("")
-                console.log('case CreateAccount')
+                console.log('GetStartedModal2')
                 break;
             case "ResetPassword":
                 setXButton('')
                 setEmailInputField("")
                 setPasswordInputField("")
                 setRegSuccess("")
-                console.log('case ResetPassword')
+                console.log('GetStartedModal4')
             break;
             case "RegistrationSuccess":
                 setFormOptions(<Fragment><span className={classes.optionSpan}><p> Account Created Successfully</p>
@@ -155,7 +139,7 @@ const GetStartedModal = () => {
                         </div>
                     </Fragment>
                 )
-                console.log('case RegistrationSuccess')
+                console.log('GetStartedModal5')
                 break;
         }
     }, [modalStatus])

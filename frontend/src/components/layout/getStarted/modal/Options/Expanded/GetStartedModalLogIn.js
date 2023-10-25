@@ -1,35 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import CSRFToken from "../../../csrftoken";
-// import { register } from "../../../../actions/auth_Actions";
+import { login_APIAction } from "../../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from './GetStartedModal.module.css';
-
-const GetStartedModalCreateAccount = (props) => {
-    console.log('GetStartedModalCreateAccount')
+const GetStartedModalLogIn = (props) => {
+    console.log('GetStartedModalLogIn')
     const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const emailChangeHandler = (event) =>{
-        setEmail(event.target.value)
-    }
-
-    const passwordChangeHandler = (event) =>{
-        setPassword(event.target.value)
-    }
-
+    const [formData, setFormData] = useState({email: '', password: '',});
+    const { email, password } = formData;
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const exitAction = () => {
-        console.log('GetStartedModalCreateAccount.exitAction')
+        console.log('GetStartedModalLogIn.exitAction')
         dispatch(userReducerActions.getStartedModalClose());
         dispatch(userReducerActions.getStartedModalCreateAccount());
     };
     const onSubmit = e => {
-        console.log('GetStartedModalCreateAccount.onSubmit')
+        console.log('GetStartedModalLogIn.onSubmit')
         e.preventDefault();
-        // dispatch(register(email, password));
+        dispatch(login_APIAction(email, password));
+        dispatch(userReducerActions.getStartedModalClose());
         dispatch(userReducerActions.navBarMenuClose());
-    };
+    }
 
     return (
         <div className={classes.blurredBackgroundContainer}>
@@ -40,8 +32,11 @@ const GetStartedModalCreateAccount = (props) => {
                     </div>
                 </div>
                 <div className={classes.modalContentContainer}>
+
+
+
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
-                        {/* <CSRFToken /> */}
+                    {/* <CSRFToken /> */}
                         <button className={classes.continueWithXButton}>
                             <span>Continue with</span>
                             <i className={classes.XIconContainer}>
@@ -58,8 +53,8 @@ const GetStartedModalCreateAccount = (props) => {
                                 id='email'
                                 placeholder='Email'
                                 name='email'
+                                onChange={e => onChange(e)}
                                 value={email}
-                                onChange={emailChangeHandler}
                                 required
                                 className={`${classes['formInputEmail']}`}
                                 autoComplete='email'
@@ -71,18 +66,21 @@ const GetStartedModalCreateAccount = (props) => {
                                 id='password'
                                 placeholder='Password'
                                 name='password'
+                                onChange={e => onChange(e)}
                                 value={password}
-                                onChange={passwordChangeHandler}
                                 minLength='8'
                                 required
                                 className={`${classes['formInputPassword']}`}
                                 autoComplete='current-password'
                             />
                         </div>
+
+
                         <button className={`${classes['createAccountButton']}`}type='submit'>
-                            Create Account
+                            Log In
                         </button>
-                        <p className={classes.option_1}>Have an account? <a className={classes.link} onClick={props.LogIn}> Log In</a></p>
+                        <p className={classes.option_1}><a className={classes.link} onClick={props.ResetPassword}> Reset Password</a></p>
+                        <p className={classes.option_2}>No Account? <a className={classes.link} onClick={props.CreateAccount}> Create One</a></p>
                     </form>
                 </div>
             </div>
@@ -90,4 +88,4 @@ const GetStartedModalCreateAccount = (props) => {
     )
 }
 
-export default GetStartedModalCreateAccount;
+export default GetStartedModalLogIn;

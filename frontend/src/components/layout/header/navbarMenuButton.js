@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
+import GetStartedModal from '../getStarted/modal/GetStartedModal';
+import NavbarMenu from './navbarMenu';
 import classes from './NavbarMenuButton.module.css';
 
 const NavbarMenuButton = () => {
     console.log('NavbarMenuButton')
     const dispatch = useDispatch();
-
+    const {navbarMenuStatus, getStartedModalStatus} = useSelector(({ user }) => user);
     const OpenAction = () => {
         console.log('NavbarMenuButton.OpenAction')
         dispatch(userReducerActions.navBarMenuOpen());
@@ -32,13 +34,14 @@ const NavbarMenuButton = () => {
     </div>
     );
 
-    const navbarMenuStatus = useSelector( ({ user }) => user.navbarMenuStatus)
     const content = navbarMenuStatus ? exitButton : navbarButton;
 
     return (
-        <React.Fragment>
+        <Fragment>
+            {navbarMenuStatus && <NavbarMenu />}
+            {getStartedModalStatus && <GetStartedModal />}
             {content}
-        </React.Fragment>
+        </Fragment>
     );
 };
 
