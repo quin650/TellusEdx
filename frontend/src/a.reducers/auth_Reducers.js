@@ -58,8 +58,8 @@ const userSlice = createSlice({
 			state.getStartedView = 'RegistrationSuccess'
 		},
 		registerFeedback(state){
-			state.registrationFeedback = payload.success;
-			console.log(payload.success);
+			state.registrationFeedback = payload;
+			console.log(payload);
 		},
 
 

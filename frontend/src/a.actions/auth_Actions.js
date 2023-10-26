@@ -13,23 +13,25 @@ export const login_APIAction = (username, password) => {
             }
         };
         const body = JSON.stringify({ username, password });
+        console.log('got this far')
         const loginData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/login/`, body, config);
             return res;
         };
         try {
-            console.log('auth_Actions.login_apiaction')
+            console.log('auth_Actions.login_apiAction')
             dispatch(userReducerActions.loginRequest());
             const res = await loginData();
             dispatch(userReducerActions.loginSuccess(res.data));
+            dispatch(userReducerActions.getStartedModalClose());
             localStorage.setItem('userInfo', JSON.stringify(res.data))
         } catch (error) {
-            console.log('auth_Actions.login_apiaction')
+            console.log('auth_Actions.login_apiAction')
             dispatch(userReducerActions.loginFail(error.message));
         };
     };
 };
-export const logout = () => {
+export const logout_APIAction = () => {
     return async (dispatch) => {
     try {
         console.log('auth_Actions.logout')
@@ -39,6 +41,41 @@ export const logout = () => {
         console.log('auth_Actions.logout')
         dispatch(userReducerActions.logoutFail());
     };  
+    };
+};
+
+export const register_APIAction = (username, password) => { 
+    return async (dispatch) => {
+        
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+    
+        const body = JSON.stringify({ username, password });
+
+        const registerData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/register`, body, config);
+            return res;
+        };
+
+        try {
+            const res = await registerData();
+            if (res.data.error) {
+                console.log('res.data.error: ', res.data.error)
+                dispatch(userReducerActions.registerFail());
+            } else {
+                console.log('register action success')
+                dispatch(userReducerActions.registerSuccess());
+                console.log('res.data.success: ', res.data)
+                dispatch(userReducerActions.registerFeedback(res.data));
+            }
+        } catch (err) {
+            dispatch(userReducerActions.registerFail());
+        };
     };
 };
 
@@ -68,40 +105,6 @@ export const logout = () => {
 //         };
 //     };
 // };
-
-// export const register = (email, password) => { 
-//     return async (dispatch) => {
-        
-//         const config = {
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 'X-CSRFToken': Cookies.get('csrftoken')
-//             }
-//         };
-    
-//         const body = JSON.stringify({ email, password });
-
-//         const registerData = async () => {
-//             const res = await axios.post(`http://127.0.0.1:8000/accounts/register`, body, config);
-//             return res;
-//         };
-
-//         try {
-//             const res = await registerData();
-//             if (res.data.error) {
-//                 dispatch(userReducerActions.registerFail());
-//             } else {
-//                 dispatch(userReducerActions.registerSuccess());
-//                 dispatch(userReducerActions.registerFeedback(res.data.success));
-//             }
-//         } catch (err) {
-//             dispatch(userReducerActions.registerFail());
-//         };
-//     };
-// };
-
-
 // export const delete_account = () => {
 //     return async (dispatch) => {
 //         const config = {

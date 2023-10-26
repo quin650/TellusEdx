@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from './searchBar';
 import GetStartedButton from '../getStarted/button/GetStartedButton';
 // import { checkAuthenticated } from '../../../a.actions/auth_Actions';
-import { logout } from '../../../a.actions/auth_Actions';
+import { logout_APIAction } from '../../../a.actions/auth_Actions';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenu.module.css';
 
@@ -20,7 +20,7 @@ const NavbarMenu = () => {
 
     const LogOutHandler = () => {
         console.log('NavbarMenu.LogOutHandler')
-        dispatch(logout());
+        dispatch(logout_APIAction());
         dispatch(userReducerActions.navBarMenuClose());
     }
 

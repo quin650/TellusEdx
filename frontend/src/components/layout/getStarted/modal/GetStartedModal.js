@@ -1,6 +1,8 @@
 import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { login_APIAction, register_APIAction } from "../../../../a.actions/auth_Actions";
+import CSRFToken from "../../../CSRFToken";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
@@ -18,7 +20,7 @@ const GetStartedModal = () => {
             <input
                 type='email'
                 id='email'
-                placeholder='Email111'
+                placeholder='Email'
                 name='email'
                 ref={emailInputRef}
                 required
@@ -32,7 +34,7 @@ const GetStartedModal = () => {
             <input
                 type='password'
                 id='password'
-                placeholder='Password111'
+                placeholder='Password'
                 name='password'
                 ref={passwordInputRef}
                 minLength='8'
@@ -53,14 +55,29 @@ const GetStartedModal = () => {
                         </svg>
                     </i>
             </button>
-            <p className={classes.or}> or</p>
+            <span className={classes.orContainer}><p className={classes.or}> or</p></span>
         </Fragment>
     )
     const [regSuccess, setRegSuccess] = useState(
         ""
     )
-    const LogIn = () => {
+    const LogInLink = () => {
+        console.log('LogIn Clicked')
         setModalStatus("LogIn")
+        setXButton(
+            <Fragment>
+                <button className={classes.continueWithXButton}>
+                        <span>Continue with</span>
+                        <i className={classes.XIconContainer}>
+                            <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
+                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                                </path>
+                            </svg>
+                        </i>
+                </button>
+                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
+            </Fragment>
+        )
         setButtonText("Log In")
         setFormOptions(<Fragment>
                             <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
@@ -72,7 +89,7 @@ const GetStartedModal = () => {
                 <input
                     type='password'
                     id='password'
-                    placeholder='Password111'
+                    placeholder='Password'
                     name='password'
                     ref={passwordInputRef}
                     minLength='8'
@@ -82,29 +99,48 @@ const GetStartedModal = () => {
                 />
             </div>
         )
-        console.log('LogIn Clicked')
     };
+    const CreateAccount = () => {
+        console.log('CreateAccount Clicked')
+        setModalStatus("CreateAccount")
+        setXButton(
+            <Fragment>
+                <button className={classes.continueWithXButton}>
+                        <span>Continue with</span>
+                        <i className={classes.XIconContainer}>
+                            <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
+                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                                </path>
+                            </svg>
+                        </i>
+                </button>
+                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
+            </Fragment>
+        )
+        setButtonText("Create Account")
+        setRegSuccess("")
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
+    };
+    const ResetPassword = () => {
+        console.log('ResetPassword clicked')
+        setXButton('')
+        setPasswordInputField("")
+        setButtonText("Reset Password")
+        setRegSuccess("")
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogInLink}>Cancel</a></p></span>);
+    } ;
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>
+        <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
     )
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
         setModalStatus("CreateAccount")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogIn}> Log In</a></p></span>)
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
         console.log('exitAction clicked')
-    };
-    const CreateAccount = () => {
-        setModalStatus("CreateAccount")
     };
     const RegistrationSuccess = () => {
         setModalStatus("RegistrationSuccess")
     };
-    const ResetPassword = () => {
-        setButtonText("Reset Password")
-        setPasswordInputField("")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogIn}>Cancel</a></p></span>);
-        console.log('ResetPassword clicked')
-    } ;
     const ExitButton = (
         <div onClick={exitAction} className={classes.exitButtonContainer}>
             <div className={classes.exitButton}>
@@ -113,52 +149,26 @@ const GetStartedModal = () => {
         </div>
     )
     const GetStartedModal_InnerButton = (
-        <button className={`${classes['createAccountButton']}`}type='submit'>
+        <button className={`${classes['createAccountButton']}`} type='submit'>
             {buttonText}
         </button>
     )
     const onSubmit = e => {
         e.preventDefault();
-        console.log('emailInputRef', emailInputRef)
-        console.log('passwordInputRef', passwordInputRef)
-    };
-    useEffect(() =>{
-        switch(modalStatus) {
+        const email = emailInputRef.current.value;
+        const password = passwordInputRef.current.value;
+        switch(modalStatus){
             case "CreateAccount":
-                setButtonText("CreateAccount")
-                setRegSuccess("")
-                console.log('case CreateAccount')
+                dispatch(register_APIAction(email, password));
                 break;
-            case "ResetPassword":
-                setXButton('')
-                setEmailInputField("")
-                setPasswordInputField("")
-                setRegSuccess("")
-                console.log('case ResetPassword')
-            break;
-            case "RegistrationSuccess":
-                setFormOptions(<Fragment><span className={classes.optionSpan}><p> Account Created Successfully</p>
-                <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={LogIn}> Log In</a></p></span></Fragment>);
-                setXButton('')
-                setEmailInputField("")
-                setPasswordInputField("")
-                setRegSuccess(
-                    <Fragment>
-                        <div onClick={exitAction} className={classes.exitButtonContainer}>
-                            <div className={classes.exitButton}>
-                                <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
-                            </div>
-                        </div>
-                        <div className={classes.modalContentContainer}>
-                            <p> Account Created Successfully</p>
-                            <p className={classes.option_1}>Click here to continue? <a className={classes.link} onClick={LogIn}> Log In</a></p>
-                        </div>
-                    </Fragment>
-                )
-                console.log('case RegistrationSuccess')
+            case "LogIn":
+                dispatch(login_APIAction(email, password));
                 break;
-        }
-    }, [modalStatus])
+            case "Reset Password":
+                console.log("Reset Password Clicked")
+                break;
+            } 
+        };
 
     return (
         <div className={classes.blurredBackgroundContainer}>
@@ -167,6 +177,7 @@ const GetStartedModal = () => {
                 <div className={classes.modalContentContainer}>
                     {regSuccess}
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
+                        <CSRFToken />
                         {xButton}
                         {emailInputField}
                         {passwordInputField}

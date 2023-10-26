@@ -23,10 +23,10 @@
 }
 /* *******************************************************************  Exit -- */
 .exitButtonContainer {
+    display: block;
     cursor: pointer;
     position: absolute;
     z-index: 1000;
-    display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 40px;
@@ -34,6 +34,7 @@
     margin-left: calc(100% - 40px);
 }
 .exitButton {
+
     padding: 10.5px 13px 10.5px 13px
 }
 .exitButton:hover {
@@ -87,17 +88,19 @@
 }
 
 /* **********************************************************************  or -- */
+.orContainer{
+    width: 380px;
+}
 .or {
+    display: flex;
+    justify-content: center;
     color: #989797;
     font-size: 16px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 0px;
     margin-bottom: 0px;
     line-height: 175%;
     font-weight: 500;
-
+    width: 360px;
 }
 /* **********************************************************************  Email -- */
 .inputContainer{
@@ -161,7 +164,7 @@
 
 /* **********************************************************************  Create Account -- */
 .createAccountButton {
-    display: flex;
+    display: block;
     width: 352px;
     height: 50px;
     align-items: center;

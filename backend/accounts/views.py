@@ -31,8 +31,8 @@ class RegisterView(APIView):
     permission_classes = (permissions.AllowAny, )
     def post(self, request, format=None):
         data = self.request.data
-        username=data['email']
-        email=data['email']
+        username=data['username']
+        email=data['username']
         password = data['password']
         try:
             if User.objects.filter(email=email).exists():
