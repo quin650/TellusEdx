@@ -26,7 +26,7 @@ export const login_APIAction = (username, password) => {
             dispatch(userReducerActions.getStartedModalClose());
             localStorage.setItem('userInfo', JSON.stringify(res.data))
         } catch (error) {
-            console.log('auth_Actions.login_apiAction')
+            console.log('auth_Actions.login_apiAction Error')
             dispatch(userReducerActions.loginFail(error.message));
         };
     };

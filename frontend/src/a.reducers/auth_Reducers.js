@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
 	JSON.parse(localStorage.getItem('userInfo')) : null	
 
+console.log('reducer was called, and UserInfo data refreshed?')
+
 const initialState = {
 	navbarMenuStatus: false,
 	getStartedModalStatus: false,
@@ -73,12 +75,6 @@ const userSlice = createSlice({
 
 
 
-		loginSuccess(state){
-			state.isAuthenticated = true;
-		},
-		loginFail(state){
-			state.isAuthenticated = false;
-		},
         loginRequest(state){
             state.loading = true;
         },
@@ -95,7 +91,6 @@ const userSlice = createSlice({
 
 		logoutSuccess(state){
 			state.isAuthenticated = false;
-			state.registered = false;
 		},
 		logoutFail(state){
 			state;
