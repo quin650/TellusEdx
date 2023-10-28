@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'accounts.apps.AccountsConfig',
-    # 'user_profile'
+    'user_profile.apps.UserProfileConfig'
 ]
 
 REST_FRAMEWORK = {

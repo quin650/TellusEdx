@@ -2,7 +2,7 @@ import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavbarMenu from "../layout/header/navbarMenu";
 import GetStartedModal from "../layout/getStarted/modal/GetStartedModal";
-// import { delete_account } from "../../a.actions/auth_Actions";
+import { delete_account } from "../../a.actions/auth_Actions";
 import { update_user_profile } from "../../a.actions/profile_Actions";
 import { create_user_profile } from "../../a.actions/profile_Actions";
 import classes from './dashboard.module.css';
@@ -63,6 +63,7 @@ const Dashboard = () => {
         if (profile_id) {
             dispatch(update_user_profile(first_name, last_name, phone, city));
         } else {
+            console.log('create_user_profile')
             dispatch(create_user_profile(first_name, last_name, phone, city));
         }
     };

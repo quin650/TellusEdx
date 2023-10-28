@@ -3,32 +3,47 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from .models import UserProfile, UserProfileTasks
-from .serializers import UserProfileSerializerWithToken, UserTasksSerializer
+from .serializers import UserProfileSerializer, UserTasksSerializer
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 @method_decorator(csrf_protect, name='dispatch')
 class CreateUserProfileView(APIView):
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.AllowAny, )
     def post(self, request, format=None):
+        print('1')
         user = self.request.user
+        print('user', user)
         username = user.username
+        print('username', username)
         data = self.request.data
+        print('data', data)
         first_name = data['first_name']
+        print('first_name', first_name)
         last_name = data['last_name']
         phone = data['phone']
         city = data['city']
+        print('2')
         try:
+            print('3')
             if len(first_name) != 0:
+                print('4')
                 if UserProfile.objects.filter(user=user).exists():
+                    print('5')
                     return Response({'error': 'User already has profile'})
                 else:
+                    print('6')
                     UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, phone=phone, city=city)
+                    print('7')
                     user_profile = UserProfile.objects.get(user=user)
-                    user_profile = UserProfileSerializerWithToken(user_profile)
+                    print('8')
+                    user_profile = UserProfileSerializer(user_profile)
+                    print('9')
                     return Response({ 'profile': user_profile.data, 'username': str(username) })
             else:
+                print('10')
                 return Response({'error': "first name can't be blank"})
         except:
+                print('11')
                 return Response({'error': 'Something went wrong when creating the user profile'})
 class LoadUserProfileView(APIView):
     def get(self, request, format=None):
