@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from .models import UserProfile, UserProfileTasks
-from .serializers import UserProfileSerializerWithToken, UserTasksSerializer
+from .serializers import UserProfileSerializer, UserProfileSerializerWithToken, UserTasksSerializer
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 @method_decorator(csrf_protect, name='dispatch')
@@ -22,9 +22,13 @@ class CreateUserProfileView(APIView):
                 if UserProfile.objects.filter(user=user).exists():
                     return Response({'error': 'User already has profile'})
                 else:
+                    print("1")
                     UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, phone=phone, city=city)
+                    print("2")
                     user_profile = UserProfile.objects.get(user=user)
+                    print("3")
                     user_profile = UserProfileSerializerWithToken(user_profile)
+                    print('user_profile data2', user_profile.data)
                     return Response({ 'profile': user_profile.data, 'username': str(username) })
             else:
                 return Response({'error': "first name can't be blank"})
