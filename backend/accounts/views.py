@@ -23,6 +23,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         serializer = UserSerializerWithToken(self.user).data
         for k, v in serializer.items():
             data[k] = v
+        #   username = data["username"]
+        #   token = data["token"]
+        # return {'data': data, 'username': username, 'token': token}
         return data
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -48,15 +51,12 @@ class RegisterView(APIView):
         except:
                 message = {'error': 'Something went wrong when registering account?'}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-
 class getUsers(APIView):
     permission_classes = (permissions.IsAdminUser, )
     def get(self, request, format=None):
         users = User.objects.all()
         users = UserSerializer(users, many=True)
         return Response(users.data)
-
 class getUserProfile(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     def get(self, request, format=None):

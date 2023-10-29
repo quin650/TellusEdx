@@ -22,7 +22,9 @@ export const login_APIAction = (username, password) => {
             console.log('auth_Actions.login_apiAction')
             dispatch(userReducerActions.loginRequest());
             const res = await loginData();
+            console.log('res data: ', res.data)
             dispatch(userReducerActions.loginSuccess(res.data));
+            
             dispatch(userReducerActions.getStartedModalClose());
             localStorage.setItem('userInfo', JSON.stringify(res.data))
         } catch (error) {

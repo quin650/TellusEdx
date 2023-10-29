@@ -3,8 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
 	JSON.parse(localStorage.getItem('userInfo')) : null	
 
-console.log('reducer was called, and UserInfo data refreshed?')
-
 const initialState = {
 	navbarMenuStatus: false,
 	getStartedModalStatus: false,

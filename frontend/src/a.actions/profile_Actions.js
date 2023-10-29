@@ -1,17 +1,25 @@
 import Cookies from 'js-cookie';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { profReducerActions } from '../a.reducers/profile_Reducers';
 import { tasksReducerActions } from '../a.reducers/tasks_Reducers';
+
+
 export const create_user_profile = (first_name, last_name, phone, city)  => {
     return async (dispatch) => {
+        const userInfoString = localStorage.getItem('userInfo');
+        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+        const accessToken = userInfo ? userInfo.access : null;
         const config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-CSRFToken': Cookies.get('csrftoken'),
+                'Authorization': `Bearer ${accessToken}`,
             }
         };
-        const body = JSON.stringify({ 'withCredentials': true, first_name, last_name, phone, city});
+        const body = JSON.stringify({first_name, last_name, phone, city});
         console.log('create_user_profile_1')
         const createProfile = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/profile/create_user_profile/`, body, config);
@@ -36,10 +44,14 @@ export const create_user_profile = (first_name, last_name, phone, city)  => {
 };
 export const load_user_profile = () => {
     return async (dispatch) => {
+        const userInfoString = localStorage.getItem('userInfo');
+        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+        const accessToken = userInfo ? userInfo.access : null;
         const config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
             }
         };
         const loadUser = async () => {
@@ -52,6 +64,7 @@ export const load_user_profile = () => {
                 dispatch(profReducerActions.loadUserProfileFail());
             } else {
                 dispatch(profReducerActions.loadUserProfileSuccess(res.data));
+                localStorage.setItem('profInfo', JSON.stringify(res.data))
             }
         } catch (err) {
             dispatch(profReducerActions.loadUserProfileFail());
@@ -60,21 +73,25 @@ export const load_user_profile = () => {
 };
 export const update_user_profile = (first_name, last_name, phone, city)  => {
     return async (dispatch) => {
+        const userInfoString = localStorage.getItem('userInfo');
+        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+        const accessToken = userInfo ? userInfo.access : null;
         const config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
+                'X-CSRFToken': Cookies.get('csrftoken'),
+                'Authorization': `Bearer ${accessToken}`,
             }
         };
-        const body = JSON.stringify({ 'withCredentials': true, first_name, last_name, phone, city});
+        const body = JSON.stringify({first_name, last_name, phone, city});
         const updateProfile = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile/`, body, config)
             return res;
         };
         try {
             const res = await updateProfile();
-            if ( res.data.profile && res.data.username){
+            if (res.data.profile && res.data.username){
                 dispatch(profReducerActions.updateUserProfileSuccess(res.data));
             } else {
                 dispatch(profReducerActions.updateUserProfileFail());
@@ -101,7 +118,7 @@ export const create_user_profile_tasks = (data) => {
         let task_links = data['task_links']
         let task_due_date = data['task_due_date']
 
-        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date});
+        const body = JSON.stringify({task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date});
         const createTask = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/profile/create_user_profile_tasks/`, body, config);
             return res;
@@ -162,7 +179,7 @@ export const update_user_profile_tasks = (data)  => {
         let task_due_date = data['task_due_date']
         let task_id = data['task_id']
 
-        const body = JSON.stringify({ 'withCredentials': true, task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date, task_id});
+        const body = JSON.stringify({task_title, task_description, task_tags, task_order, task_priority_level, task_links, task_due_date, task_id});
         const updateTasks = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile_tasks/`, body, config)
             return res;
@@ -190,7 +207,7 @@ export const delete_user_profile_task = (task_id) => {
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-        const body = JSON.stringify({'withCredentials': true, task_id});
+        const body = JSON.stringify({task_id});
         const deleteTasks = async () => {
             const res = await axios.delete(`http://127.0.0.1:8000/profile/delete_user_profile_task/`, { data: body, headers: config.headers })
             return res;

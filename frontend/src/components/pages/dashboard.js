@@ -1,24 +1,18 @@
 import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import NavbarMenu from "../layout/header/navbarMenu";
-import GetStartedModal from "../layout/getStarted/modal/GetStartedModal";
 import { delete_account } from "../../a.actions/auth_Actions";
 import { update_user_profile } from "../../a.actions/profile_Actions";
 import { create_user_profile } from "../../a.actions/profile_Actions";
+import { load_user_profile } from "../../a.actions/profile_Actions";
 import classes from './dashboard.module.css';
 
 const Dashboard = () => {
     console.log('Dashboard')
     const dispatch = useDispatch();
 
-    const { navbarMenuStatus } = useSelector(state => state.user);
-    let navbarMenu = <NavbarMenu />;
-    navbarMenuStatus ? navbarMenu = <NavbarMenu /> : navbarMenu = "";
-
-    const { getStartedModalStatus } = useSelector(state => state.user);
-    let modal = <GetStartedModal />;
-    getStartedModalStatus ? modal = <GetStartedModal /> : modal = "";
-
+    useEffect(()=>{
+        dispatch(load_user_profile());
+    },[])
     const profile_id = useSelector(state => state.prof.profile_id);
     const first_name_global = useSelector(state => state.prof.first_name);
     const last_name_global = useSelector(state => state.prof.last_name);
@@ -70,8 +64,6 @@ const Dashboard = () => {
 
     return (
         <div className={classes.outer_container_top}>
-            {navbarMenu}
-            {modal}
             <div className={classes.main}>
                 <div className={classes.container2}>
                     <h1>Welcome to your User Dashboard</h1>

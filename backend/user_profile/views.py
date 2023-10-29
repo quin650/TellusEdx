@@ -28,23 +28,27 @@ class CreateUserProfileView(APIView):
                     user_profile = UserProfile.objects.get(user=user)
                     print("3")
                     user_profile = UserProfileSerializerWithToken(user_profile)
-                    print('user_profile data2', user_profile.data)
-                    return Response({ 'profile': user_profile.data, 'username': str(username) })
+                    token = user_profile.data.get('token')
+                    return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(token) })
             else:
                 return Response({'error': "first name can't be blank"})
         except:
                 return Response({'error': 'Something went wrong when creating the user profile'})
 class LoadUserProfileView(APIView):
+    permission_classes = (permissions.IsAuthenticated, )
     def get(self, request, format=None):
         try:
             user = self.request.user
             username = user.username
             user_profile = UserProfile.objects.get(user=user)
-            user_profile = UserProfileSerializer(user_profile)
-            return Response({ 'profile': user_profile.data, 'username': str(username) })
+            user_profile = UserProfileSerializerWithToken(user_profile)
+            token = user_profile.data.get('token')
+            return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(token) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving profile' })
+@method_decorator(csrf_protect, name='dispatch')
 class UpdateUserProfileView(APIView):
+    permission_classes = (permissions.IsAuthenticated, )
     def put(self, request, format=None):
         try:
             user = self.request.user
@@ -56,8 +60,9 @@ class UpdateUserProfileView(APIView):
             city = data['city']
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, phone=phone, city=city)
             user_profile = UserProfile.objects.get(user=user)
-            user_profile = UserProfileSerializer(user_profile)
-            return Response({ 'profile': user_profile.data, 'username': str(username) })
+            user_profile = UserProfileSerializerWithToken(user_profile)
+            token = user_profile.data.get('token')
+            return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(token) })
         except:
             return Response({ 'error': 'Something went wrong when updating profile' })
 @method_decorator(csrf_protect, name='dispatch')

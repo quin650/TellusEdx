@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const userProfInfoFromStorage = localStorage.getItem('profInfo') ?
+	JSON.parse(localStorage.getItem('profInfo')) : null	
+
 const initialState = {
     profile_id: '',
     username: '',
@@ -7,8 +10,8 @@ const initialState = {
     last_name: '',
     phone: '',
     city: '',
+    profInfo: userProfInfoFromStorage,
 };
-
 const profSlice = createSlice({
 	name: 'prof',
 	initialState,
@@ -30,12 +33,13 @@ const profSlice = createSlice({
             state.city = '';
 		},
 		loadUserProfileSuccess(state, action) {
-			state.username = action.payload.username;
-            state.profile_id = action.payload.profile.id;
+			state.profile_id = action.payload.profile.id;
+            state.username = action.payload.username;
             state.first_name = action.payload.profile.first_name;
             state.last_name = action.payload.profile.last_name;
             state.phone = action.payload.profile.phone;
             state.city = action.payload.profile.city;
+
 		},
         updateUserProfileSuccess(state, action) {
 			state.username = action.payload.username;
@@ -58,6 +62,5 @@ const profSlice = createSlice({
 		},
 	},
 });
-
 export const profReducerActions  = profSlice.actions;
 export default profSlice;
