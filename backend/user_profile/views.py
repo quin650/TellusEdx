@@ -34,6 +34,9 @@ class CreateUserProfileView(APIView):
                 return Response({'error': "first name can't be blank"})
         except:
                 return Response({'error': 'Something went wrong when creating the user profile'})
+
+
+
 class LoadUserProfileView(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     def get(self, request, format=None):
@@ -41,11 +44,13 @@ class LoadUserProfileView(APIView):
             user = self.request.user
             username = user.username
             user_profile = UserProfile.objects.get(user=user)
-            user_profile = UserProfileSerializerWithToken(user_profile)
-            token = user_profile.data.get('token')
-            return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(token) })
+            user_profile = UserProfileSerializer(user_profile)
+            return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(username) })
         except:
             return Response({ 'error': 'Something went wrong when retrieving profile' })
+
+
+
 @method_decorator(csrf_protect, name='dispatch')
 class UpdateUserProfileView(APIView):
     permission_classes = (permissions.IsAuthenticated, )
@@ -58,13 +63,29 @@ class UpdateUserProfileView(APIView):
             last_name = data['last_name']
             phone = data['phone']
             city = data['city']
+            print('update 1')
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, phone=phone, city=city)
+            print('update 2')
             user_profile = UserProfile.objects.get(user=user)
+            print('update 3')
             user_profile = UserProfileSerializerWithToken(user_profile)
+            print('update 4')
             token = user_profile.data.get('token')
+            print('update 5')
             return Response({ 'profile': user_profile.data, 'username': str(username), 'token': str(token) })
         except:
             return Response({ 'error': 'Something went wrong when updating profile' })
+@method_decorator(csrf_protect, name='dispatch')
+class DeleteUserProfileView(APIView):
+    permission_classes = (permissions.IsAuthenticated, )
+    def delete(self, request, format=None):
+        try:
+            user = self.request.user
+            UserProfile.objects.filter(user=user).delete()
+            return Response({ 'success': 'The delete request went through'})
+        except:
+            return Response({ 'error': 'Something went wrong when trying to delete user'})
+
 @method_decorator(csrf_protect, name='dispatch')
 class CreateUserProfileTaskView(APIView):
     permission_classes = (permissions.AllowAny, )

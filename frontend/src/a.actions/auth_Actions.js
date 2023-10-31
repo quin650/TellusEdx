@@ -22,11 +22,10 @@ export const login_APIAction = (username, password) => {
             console.log('auth_Actions.login_apiAction')
             dispatch(userReducerActions.loginRequest());
             const res = await loginData();
-            console.log('res data: ', res.data)
             dispatch(userReducerActions.loginSuccess(res.data));
-            
-            dispatch(userReducerActions.getStartedModalClose());
             localStorage.setItem('userInfo', JSON.stringify(res.data))
+            localStorage.setItem('token', JSON.stringify(res.data.userData.token))
+
         } catch (error) {
             console.log('auth_Actions.login_apiAction Error')
             dispatch(userReducerActions.loginFail(error.message));
@@ -37,7 +36,9 @@ export const logout_APIAction = () => {
     return async (dispatch) => {
     try {
         console.log('auth_Actions.logout')
+        localStorage.removeItem('token');
         localStorage.removeItem('userInfo');
+        localStorage.removeItem('profInfo');
         dispatch(userReducerActions.logoutSuccess());
     } catch(err) {
         console.log('auth_Actions.logout')

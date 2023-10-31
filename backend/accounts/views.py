@@ -23,10 +23,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         serializer = UserSerializerWithToken(self.user).data
         for k, v in serializer.items():
             data[k] = v
-        #   username = data["username"]
-        #   token = data["token"]
-        # return {'data': data, 'username': username, 'token': token}
-        return data
+        return ({ 'userData': data })
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 @method_decorator(csrf_protect, name='dispatch')

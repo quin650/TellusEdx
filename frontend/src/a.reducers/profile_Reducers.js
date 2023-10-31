@@ -11,6 +11,7 @@ const initialState = {
     phone: '',
     city: '',
     profInfo: userProfInfoFromStorage,
+    token: '',
 };
 const profSlice = createSlice({
 	name: 'prof',
@@ -39,7 +40,6 @@ const profSlice = createSlice({
             state.last_name = action.payload.profile.last_name;
             state.phone = action.payload.profile.phone;
             state.city = action.payload.profile.city;
-
 		},
         updateUserProfileSuccess(state, action) {
 			state.username = action.payload.username;
@@ -57,10 +57,25 @@ const profSlice = createSlice({
             state.phone = '';
             state.city = '';
 		},
+        deleteProfileSuccess(state){
+            state.profile_id = '';
+            state.username = '';
+            state.first_name = '';
+            state.last_name = '';
+            state.phone = '';
+            state.city = '';
+        },
+        deleteProfileFail(state){
+            state;
+        },
         updateUserProfileFail(state) {
 			state;
 		},
+        tokenSuccess(state, action){
+			state.token = action.payload;
+		},
 	},
 });
+
 export const profReducerActions  = profSlice.actions;
 export default profSlice;

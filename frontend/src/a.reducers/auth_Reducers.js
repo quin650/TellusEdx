@@ -12,6 +12,7 @@ const initialState = {
 	registrationFeedback: '',
 	loading: false,
     userInfo: userInfoFromStorage,
+	token: '',
     error:'',
 };
 
@@ -58,8 +59,7 @@ const userSlice = createSlice({
 			state.getStartedView = 'RegistrationSuccess'
 		},
 		registerFeedback(state){
-			state.registrationFeedback = payload;
-			console.log(payload);
+			state.registrationFeedback = payload
 		},
 
 
@@ -71,7 +71,9 @@ const userSlice = createSlice({
 			state.isAuthenticated = false;
 		},
 
-
+		tokenSuccess(state, action){
+			state.token = action.payload;
+		},
 
         loginRequest(state){
             state.loading = true;
@@ -79,7 +81,8 @@ const userSlice = createSlice({
         loginSuccess(state, action){
 			state.isAuthenticated = true;
             state.loading = false;
-            state.userInfo = action.payload
+            state.userInfo = action.payload;
+			state.getStartedModalStatus = false;
         },
         loginFail(state, action){
             state.loading = false;

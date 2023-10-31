@@ -21,6 +21,7 @@ const NavbarMenu = () => {
     const LogOutHandler = () => {
         console.log('NavbarMenu.LogOutHandler')
         dispatch(logout_APIAction());
+        
         dispatch(userReducerActions.navBarMenuClose());
     }
 

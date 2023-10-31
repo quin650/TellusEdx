@@ -1,6 +1,6 @@
 import React , { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { delete_account } from "../../a.actions/auth_Actions";
+import { delete_user_profile } from "../../a.actions/profile_Actions";
 import { update_user_profile } from "../../a.actions/profile_Actions";
 import { create_user_profile } from "../../a.actions/profile_Actions";
 import { load_user_profile } from "../../a.actions/profile_Actions";
@@ -10,7 +10,12 @@ const Dashboard = () => {
     console.log('Dashboard')
     const dispatch = useDispatch();
 
+    // const tokenString = localStorage.getItem('token');
+    // const accessToken = tokenString ? JSON.parse(tokenString) : null;
+    // console.log('accessToken: ', accessToken)
+
     useEffect(()=>{
+        console.log('Dashboard.UseEffect.Load_user_profile')
         dispatch(load_user_profile());
     },[])
     const profile_id = useSelector(state => state.prof.profile_id);
@@ -56,9 +61,10 @@ const Dashboard = () => {
         e.preventDefault();
         if (profile_id) {
             dispatch(update_user_profile(first_name, last_name, phone, city));
+            console.log('dispatch update_user_profile')
         } else {
-            console.log('create_user_profile')
             dispatch(create_user_profile(first_name, last_name, phone, city));
+            console.log('dispatch create_user_profile')
         }
     };
 
@@ -117,7 +123,7 @@ const Dashboard = () => {
                     </p>
                     <button 
                     href='#!'
-                    // onClick={() => dispatch(delete_account())}
+                    onClick={() => dispatch(delete_user_profile())}
                     >
                         Delete
                     </button>

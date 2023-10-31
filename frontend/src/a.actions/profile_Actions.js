@@ -3,14 +3,15 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { profReducerActions } from '../a.reducers/profile_Reducers';
+
 import { tasksReducerActions } from '../a.reducers/tasks_Reducers';
-
-
 export const create_user_profile = (first_name, last_name, phone, city)  => {
     return async (dispatch) => {
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const accessToken = userInfo ? userInfo.access : null;
+
+        const tokenString = localStorage.getItem('token');
+        const accessToken = tokenString ? JSON.parse(tokenString) : null;
+        console.log('accessToken: ', accessToken)
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -28,9 +29,13 @@ export const create_user_profile = (first_name, last_name, phone, city)  => {
         try {
             console.log('create_user_profile_2')
             const res = await createProfile();
+            console.log('res.data', res.data)
+            console.log('res.data.token', res.data.token)
             if ( res.data.profile && res.data.username){
                 console.log('create_user_profile_3')
                 dispatch(profReducerActions.createUserProfileSuccess(res.data));
+                localStorage.setItem('profInfo', JSON.stringify(res.data))
+                localStorage.setItem('token', JSON.stringify(res.data.token))
             } else {
                 console.log('create_user_profile_4')
                 dispatch(profReducerActions.createUserProfileFail());
@@ -43,10 +48,12 @@ export const create_user_profile = (first_name, last_name, phone, city)  => {
     };
 };
 export const load_user_profile = () => {
+    console.log('load user 1')
     return async (dispatch) => {
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const accessToken = userInfo ? userInfo.access : null;
+        const tokenString = localStorage.getItem('token');
+        const accessToken = tokenString ? JSON.parse(tokenString) : null;
+        console.log('accessToken works: ', accessToken)
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -54,12 +61,15 @@ export const load_user_profile = () => {
                 'Authorization': `Bearer ${accessToken}`
             }
         };
+        console.log('load user 2')
         const loadUser = async () => {
             const res = await axios.get(`http://127.0.0.1:8000/profile/load_user_profile/`, config);
             return res;
         };
         try {
+            console.log('load user 3')
             const res = await loadUser();
+            console.log('res.data------->', res.data)
             if (res.data.error) {
                 dispatch(profReducerActions.loadUserProfileFail());
             } else {
@@ -73,9 +83,10 @@ export const load_user_profile = () => {
 };
 export const update_user_profile = (first_name, last_name, phone, city)  => {
     return async (dispatch) => {
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const accessToken = userInfo ? userInfo.access : null;
+        const tokenString = localStorage.getItem('token');
+        const accessToken = tokenString ? JSON.parse(tokenString) : null;
+        console.log('accessToken: ', accessToken)
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -84,15 +95,19 @@ export const update_user_profile = (first_name, last_name, phone, city)  => {
                 'Authorization': `Bearer ${accessToken}`,
             }
         };
+
         const body = JSON.stringify({first_name, last_name, phone, city});
         const updateProfile = async () => {
             const res = await axios.put(`http://127.0.0.1:8000/profile/update_user_profile/`, body, config)
             return res;
         };
+
         try {
             const res = await updateProfile();
             if (res.data.profile && res.data.username){
                 dispatch(profReducerActions.updateUserProfileSuccess(res.data));
+                localStorage.setItem('profInfo', JSON.stringify(res.data))
+                localStorage.setItem('token', JSON.stringify(res.data.token))
             } else {
                 dispatch(profReducerActions.updateUserProfileFail());
             }
@@ -101,6 +116,45 @@ export const update_user_profile = (first_name, last_name, phone, city)  => {
         };
     };
 };
+export const delete_user_profile = () => {
+    return async (dispatch) => {
+
+        const tokenString = localStorage.getItem('token');
+        const accessToken = tokenString ? JSON.parse(tokenString) : null;
+        console.log('accessToken: ', accessToken)
+
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+                'Authorization': `Bearer ${accessToken}`,
+            }
+        };
+
+        const deleteProfile = async () => {
+            const res = await axios.delete(`http://127.0.0.1:8000/profile/delete_user_profile/`, config);
+            return res;
+        };
+
+        try {
+            const res = await deleteProfile();
+
+            if (res.data.error){
+                dispatch(tasksReducerActions.deleteProfileFail());
+            } else {
+                dispatch(tasksReducerActions.deleteProfileSuccess());
+                localStorage.removeItem('profInfo');
+            }
+        } catch (err) {
+            console.log('err', err)
+            dispatch(tasksReducerActions.deleteProfileFail());
+        };
+    };
+};
+
+
+
 export const create_user_profile_tasks = (data) => { 
     return async (dispatch) => {
         const config = {
