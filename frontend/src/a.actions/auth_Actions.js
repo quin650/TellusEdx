@@ -24,8 +24,10 @@ export const login_APIAction = (username, password) => {
             const res = await loginData();
             dispatch(userReducerActions.loginSuccess(res.data));
             localStorage.setItem('userInfo', JSON.stringify(res.data))
-            localStorage.setItem('token', JSON.stringify(res.data.userData.token))
-
+            localStorage.setItem('token', res.data.userData.token)
+            console.log('token saved(logIn): --->', res.data.userData.token)
+            // localStorage.setItem('token', JSON.stringify(res.data.userData.token))
+            // console.log('token saved: --->', JSON.stringify(res.data.userData.token))
         } catch (error) {
             console.log('auth_Actions.login_apiAction Error')
             dispatch(userReducerActions.loginFail(error.message));

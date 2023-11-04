@@ -11,7 +11,6 @@ const initialState = {
     phone: '',
     city: '',
     profInfo: userProfInfoFromStorage,
-    token: '',
 };
 const profSlice = createSlice({
 	name: 'prof',

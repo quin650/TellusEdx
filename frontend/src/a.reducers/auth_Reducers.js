@@ -12,7 +12,6 @@ const initialState = {
 	registrationFeedback: '',
 	loading: false,
     userInfo: userInfoFromStorage,
-	token: '',
     error:'',
 };
 
@@ -27,14 +26,11 @@ const userSlice = createSlice({
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
-
-
 		getStartedModalLogIn(state) {
 			state.getStartedModalStatus = true;
 			state.navbarMenuStatus = false;
 			state.getStartedView = 'LogIn';
 		},
-
 		getStartedModalOpen(state) {
 			state.getStartedModalStatus = true;
 			state.navbarMenuStatus = false;
@@ -43,9 +39,6 @@ const userSlice = createSlice({
 			state.getStartedModalStatus = false;
 			state.navbarMenuStatus = false;
 		},
-
-
-
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
@@ -61,20 +54,15 @@ const userSlice = createSlice({
 		registerFeedback(state){
 			state.registrationFeedback = payload
 		},
-
-
-
 		authSuccess(state){
 			state.isAuthenticated = true;
 		},
 		authFail(state){
 			state.isAuthenticated = false;
 		},
-
 		tokenSuccess(state, action){
 			state.token = action.payload;
 		},
-
         loginRequest(state){
             state.loading = true;
         },
@@ -88,17 +76,12 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-
-
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 		},
 		logoutFail(state){
 			state;
 		},
-
-
-
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;
 		},
