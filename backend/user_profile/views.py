@@ -28,7 +28,6 @@ class CreateUserProfileView(APIView):
                 if UserProfile.objects.filter(user=user).exists():
                     return Response({"error": "User already has profile"})
                 else:
-                    print("create 1")
                     UserProfile.objects.create(
                         user=user,
                         first_name=first_name,
@@ -36,9 +35,7 @@ class CreateUserProfileView(APIView):
                         phone=phone,
                         city=city,
                     )
-                    print("create 2")
                     user_profile = UserProfile.objects.get(user=user)
-                    print("create 3")
                     user_profile = UserProfileSerializer(user_profile)
                     return Response(
                         {
@@ -55,19 +52,14 @@ class CreateUserProfileView(APIView):
 
 
 class LoadUserProfileView(APIView):
-    print("Load 1")
     permission_classes = (permissions.IsAuthenticated,)
-    print("Load 2")
 
     def get(self, request, format=None):
         try:
-            print("Load 3")
             user = self.request.user
             username = user.username
             user_profile = UserProfile.objects.get(user=user)
-            print("Load 4")
             user_profile = UserProfileSerializer(user_profile)
-            print("Load 5")
             return Response(
                 {
                     "profile": user_profile.data,
@@ -95,11 +87,8 @@ class UpdateUserProfileView(APIView):
             UserProfile.objects.filter(user=user).update(
                 first_name=first_name, last_name=last_name, phone=phone, city=city
             )
-            print("update 2")
             user_profile = UserProfile.objects.get(user=user)
-            print("update 3")
             user_profile = UserProfileSerializer(user_profile)
-            print("update 4")
             return Response(
                 {
                     "profile": user_profile.data,
@@ -112,16 +101,12 @@ class UpdateUserProfileView(APIView):
 
 @method_decorator(csrf_protect, name="dispatch")
 class DeleteUserProfileView(APIView):
-    print("delete profile pre-auth")
     permission_classes = (permissions.IsAuthenticated,)
-    print("delete profile post-auth")
 
     def delete(self, request, format=None):
         try:
-            print("delete profile -try")
             user = self.request.user
             UserProfile.objects.filter(user=user).delete()
-            print("profile deleted")
             return Response({"success": "The delete request went through"})
         except:
             return Response(
@@ -156,7 +141,6 @@ class CreateUserProfileTaskView(APIView):
                 task_due_date=task_due_date,
             )
             user_profile_tasks = UserTasksSerializer(user_profile_tasks)
-            # print('user_profile_tasks.data: ', user_profile_tasks.data)
             return Response(
                 {"tasks": user_profile_tasks.data, "username": str(username)}
             )
