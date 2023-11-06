@@ -5,7 +5,8 @@
     backdrop-filter: blur(6px);
     top: -56px;
     height: calc(100vh + 56px);
-    width: 100vw;
+    width: 105%;
+    right: -5vw;
     background-color: rgb(175, 175, 175, 40%);
     justify-content: center;
     align-items: center;
