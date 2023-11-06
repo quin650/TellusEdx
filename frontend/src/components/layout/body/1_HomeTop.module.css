@@ -9,7 +9,7 @@
     padding: 0;
     background-color: white;
     height: Calc(100vh - 64px);
-    width: 100vw;
+    width: 100%;
     min-width: 400px;
     background-size: contain;           /* Use 'cover' to scale the background image to cover the entire container */
     background-repeat: no-repeat;       /* Prevent the background image from repeating */
@@ -24,7 +24,7 @@
     margin: auto;
     max-width: 1728px;
     height: Calc(100vh - 64px);
-    width:80vw;
+    width:80%;
 }
 
 .inner_container_top img {

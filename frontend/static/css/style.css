@@ -7,25 +7,44 @@
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
     scroll-snap-type: y mandatory;
-}
-
-section{
-    scroll-snap-align: start;
-}
-
-footer{
-    scroll-snap-align: end;
-}
-
-nav{
-    scroll-snap-align: start;
+    /* color-scheme: dark light; */
 }
 
 body {
     margin: 0;
+    padding: 0;
     background-color: white;
+
     min-width: 400px;
+    width: calc(100vw - 4px);
+    min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent;
+}
+::-webkit-scrollbar {
+    width: 6px; /* For Chrome, Safari, and Opera */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* For Chrome, Safari, and Opera */
+}
+
+
+section{
+    -webkit-scroll-snap-align: start;
+    scroll-snap-align: start;
+}
+
+footer{
+    -webkit-scroll-snap-align: end;
+    scroll-snap-align: end;
+}
+
+nav{
+    -webkit-scroll-snap-align: start;
+    scroll-snap-align: start;
 }
 
 :root {
