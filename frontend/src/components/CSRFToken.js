@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const CSRFToken = () => {
-    console.log('CSRFToken')
     const [csrftoken, setcsrftoken] = useState('');
 
     const getCookie = (name) => {
-        console.log('CSRFToken.getCookie')
         let cookieValue = '';
         if (document.cookie && document.cookie !== '') {
             let cookies = document.cookie.split(';');
@@ -22,7 +20,6 @@ const CSRFToken = () => {
     }
 
     useEffect(() => {
-        console.log('CSRFToken.useEffect')
         const fetchData = async () => {
             try {
                 axios.get('http://127.0.0.1:8000/accounts/csrf_cookie');
