@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const CSRFToken = () => {
-    const [csrftoken, setcsrftoken] = useState('');
+    const [csrftoken, setCsrfToken] = useState('');
 
     const getCookie = (name) => {
         let cookieValue = '';
@@ -24,12 +24,12 @@ const CSRFToken = () => {
             try {
                 axios.get('http://127.0.0.1:8000/accounts/csrf_cookie');
             } catch (err){
-
+                console.log('error grabbing csrf cookie')
             }
         };
 
         fetchData();
-        setcsrftoken(getCookie('csrftoken'));
+        setCsrfToken(getCookie('csrftoken'));
     }, [])
 
     return (
