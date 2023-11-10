@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 import axios from 'axios';
 import { userReducerActions } from '../a.reducers/auth_Reducers';
-// import { load_user } from './profile';
 
 export const login_APIAction = (username, password) => {
     return async (dispatch) => {
@@ -13,21 +12,18 @@ export const login_APIAction = (username, password) => {
             }
         };
         const body = JSON.stringify({ username, password });
-        console.log('got this far')
         const loginData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/login/`, body, config);
             return res;
         };
         try {
-            console.log('auth_Actions.login_apiAction')
             dispatch(userReducerActions.loginRequest());
             const res = await loginData();
             dispatch(userReducerActions.loginSuccess(res.data));
             localStorage.setItem('userInfo', JSON.stringify(res.data))
             localStorage.setItem('token', res.data.userData.token)
-            console.log('token saved(logIn): --->', res.data.userData.token)
+
         } catch (error) {
-            console.log('auth_Actions.login_apiAction Error')
             dispatch(userReducerActions.loginFail(error.message));
         };
     };
