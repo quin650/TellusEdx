@@ -12,6 +12,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
+from rest_framework import serializers
 
 
 @method_decorator(ensure_csrf_cookie, name="dispatch")
@@ -26,28 +27,25 @@ class GetCSRFToken(APIView):
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         input_password = attrs.get("password")
-        email = attrs.get("username")
-        user = User.objects.get(email=email)
-        print("input_password: ", input_password)
-        print("user: ", user)
-        is_valid_password = check_password(input_password, user.password)
-        print("is_valid_password: ", is_valid_password)
-        data = super().validate(attrs)
+        input_email = attrs.get("username")
 
-        is_valid_password = check_password(input_password, self.user.password)
-        print("3")
-        # data = super().validate(attrs)
-        if is_valid_password:
-            print("4")
+        try:
+            user = User.objects.get(email=input_email)
+        except User.DoesNotExist:
+            message = "User with this email does not exist."
+            raise serializers.ValidationError({"EmailError": message})
+
+        is_valid_password = check_password(input_password, user.password)
+        if not is_valid_password:
+            message = "Invalid Password"
+            raise serializers.ValidationError({"PasswordError": message})
+
+        if user is not bool and is_valid_password:
+            data = super().validate(attrs)
             serializer = UserSerializerWithToken(self.user).data
             for k, v in serializer.items():
                 data[k] = v
             return {"userData": data}
-        else:
-            print("5")
-            print("invalid password")
-            message = {"error": "Invalid Password"}
-            return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):

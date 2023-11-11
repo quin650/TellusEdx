@@ -12,7 +12,7 @@ const initialState = {
 	registrationFeedback: '',
 	loading: false,
     userInfo: userInfoFromStorage,
-    error:'',
+    error:[],
 };
 
 const userSlice = createSlice({
