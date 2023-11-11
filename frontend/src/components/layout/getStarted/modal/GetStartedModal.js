@@ -27,6 +27,9 @@ const GetStartedModal = () => {
                 className={`${classes['formInputEmail']}`}
                 autoComplete='email'
             />
+            <div className={classes.emailInputFeedbackContainer}>
+                <p className={classes.emailInputFeedback}>Invalid Email</p>
+            </div>
         </div>
     )
     const [passwordInputField, setPasswordInputField] = useState(

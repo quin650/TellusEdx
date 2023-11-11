@@ -151,6 +151,27 @@
     padding-left: 0px;
 
 }
+.formInputEmail{
+}
+.emailInputFeedbackContainer{
+}
+.emailInputFeedback{
+    color: rgb(41, 241, 101);
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .formInputPassword{
 
@@ -162,8 +183,6 @@
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 1px solid rgba(39, 85, 196, 1);
 }
-
-
 
 /* **********************************************************************  Create Account -- */
 .createAccountButton {
