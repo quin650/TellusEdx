@@ -7,14 +7,45 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const emailInputRef = useRef();
-    const passwordInputRef = useRef();
+
     const [modalStatus, setModalStatus] = useState(
         "CreateAccount"
     )
     const [buttonText, setButtonText] = useState(
         "CreateAccount"
     )
+
+    const [formData, setFormData] = useState({email: '', password: ''});
+    const { email, password } = formData;
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const emailInputRef = useRef();
+    const passwordInputRef = useRef();
+
+    const [userEmailFeedback, setUserEmailFeedback] = useState('');
+    const [passwordFeedback, setPasswordFeedback] = useState('');
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
+
+    const [isValidEmail, setIsValidEmail] = useState(true);
+    const [isValidPassword, setIsValidPassword] = useState(true);
+
+    console.log('isValidEmail: ', isValidEmail)
+    const handleEmailBlur = (e) => {
+        if (!emailPattern.test(e.target.value)){
+            setIsValidEmail(false);
+            // emailInputRef.current.focus();
+        } else if (emailPattern.test(e.target.value)){
+            setIsValidEmail(true);
+            passwordInputRef.current.focus();
+        }
+    }
+
+    useEffect(() => {
+        emailInputRef.current.focus();
+    }, []);
+
     const [emailInputField, setEmailInputField] = useState(
         <div className={classes.inputContainer}>
             <input
@@ -22,16 +53,22 @@ const GetStartedModal = () => {
                 id='email'
                 placeholder='Email'
                 name='email'
+                onChange={e => onChange(e)}
                 ref={emailInputRef}
                 required
-                className={`${classes['formInputEmail']}`}
+                className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                 autoComplete='email'
+                onBlur={e => handleEmailBlur(e)}
             />
-            <div className={classes.emailInputFeedbackContainer}>
-                <p className={classes.emailInputFeedback}>Invalid Email</p>
+            <div className={classes.InputFeedbackContainer}>
+                <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
+                    Invalid Email
+                </p>
             </div>
         </div>
     )
+
+
     const [passwordInputField, setPasswordInputField] = useState(
         <div className={classes.inputContainer}>
             <input
@@ -39,12 +76,18 @@ const GetStartedModal = () => {
                 id='password'
                 placeholder='Password'
                 name='password'
+                onChange={e => onChange(e)}
                 ref={passwordInputRef}
                 minLength='8'
                 required
-                className={`${classes['formInputPassword']}`}
+                className={`${classes['passwordInput']}`}
                 autoComplete='current-password'
             />
+            <div className={classes.InputFeedbackContainer}>
+                <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
+                    Invalid Password
+                </p>
+            </div>
         </div>
     )
     const [xButton, setXButton] = useState(
@@ -89,18 +132,24 @@ const GetStartedModal = () => {
         setRegSuccess("")
         setPasswordInputField(
             <div className={classes.inputContainer}>
-                <input
-                    type='password'
-                    id='password'
-                    placeholder='Password'
-                    name='password'
-                    ref={passwordInputRef}
-                    minLength='8'
-                    required
-                    className={`${classes['formInputPassword']}`}
-                    autoComplete='current-password'
-                />
+            <input
+                type='password'
+                id='password'
+                placeholder='Password'
+                name='password'
+                onChange={e => onChange(e)}
+                ref={passwordInputRef}
+                minLength='8'
+                required
+                className={`${classes['passwordInput']}`}
+                autoComplete='current-password'
+            />
+            <div className={classes.InputFeedbackContainer}>
+                <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
+                    Invalid Password
+                </p>
             </div>
+        </div>
         )
     };
     const CreateAccount = () => {
@@ -158,14 +207,12 @@ const GetStartedModal = () => {
     )
     const onSubmit = e => {
         e.preventDefault();
-        const email = emailInputRef.current.value;
-        const password = passwordInputRef.current.value;
         switch(modalStatus){
             case "CreateAccount":
-                dispatch(register_APIAction(email, password));
+                dispatch(register_APIAction(emailInput, passwordInput));
                 break;
             case "LogIn":
-                dispatch(login_APIAction(email, password));
+                dispatch(login_APIAction(emailInput, passwordInput));
                 break;
             case "Reset Password":
                 console.log("Reset Password Clicked")
