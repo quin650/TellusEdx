@@ -31,65 +31,25 @@ const GetStartedModal = () => {
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
 
-    console.log('isValidEmail: ', isValidEmail)
-    const handleEmailBlur = (e) => {
-        if (!emailPattern.test(e.target.value)){
-            setIsValidEmail(false);
-            // emailInputRef.current.focus();
-        } else if (emailPattern.test(e.target.value)){
-            setIsValidEmail(true);
+    const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
+
+    console.log('email: ', email)
+
+    const handleOnPasswordFocus = (e) => {
+        if (!emailPattern.test(email)){
+            setIsValidEmail(false)
+            emailInputRef.current.focus();
+        }
+        else if (emailPattern.test(email)){
+            setPasswordInputFieldStatus(true)
             passwordInputRef.current.focus();
         }
     }
 
     useEffect(() => {
-        emailInputRef.current.focus();
+        emailInputRef.current.focus();  
     }, []);
 
-    const [emailInputField, setEmailInputField] = useState(
-        <div className={classes.inputContainer}>
-            <input
-                type='email'
-                id='email'
-                placeholder='Email'
-                name='email'
-                onChange={e => onChange(e)}
-                ref={emailInputRef}
-                required
-                className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
-                autoComplete='email'
-                onBlur={e => handleEmailBlur(e)}
-            />
-            <div className={classes.InputFeedbackContainer}>
-                <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
-                    Invalid Email
-                </p>
-            </div>
-        </div>
-    )
-
-
-    const [passwordInputField, setPasswordInputField] = useState(
-        <div className={classes.inputContainer}>
-            <input
-                type='password'
-                id='password'
-                placeholder='Password'
-                name='password'
-                onChange={e => onChange(e)}
-                ref={passwordInputRef}
-                minLength='8'
-                required
-                className={`${classes['passwordInput']}`}
-                autoComplete='current-password'
-            />
-            <div className={classes.InputFeedbackContainer}>
-                <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                    Invalid Password
-                </p>
-            </div>
-        </div>
-    )
     const [xButton, setXButton] = useState(
         <Fragment>
             <button className={classes.continueWithXButton}>
@@ -130,27 +90,7 @@ const GetStartedModal = () => {
                             <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
                         </Fragment>);
         setRegSuccess("")
-        setPasswordInputField(
-            <div className={classes.inputContainer}>
-            <input
-                type='password'
-                id='password'
-                placeholder='Password'
-                name='password'
-                onChange={e => onChange(e)}
-                ref={passwordInputRef}
-                minLength='8'
-                required
-                className={`${classes['passwordInput']}`}
-                autoComplete='current-password'
-            />
-            <div className={classes.InputFeedbackContainer}>
-                <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                    Invalid Password
-                </p>
-            </div>
-        </div>
-        )
+        setPasswordInputFieldStatus(true)
     };
     const CreateAccount = () => {
         console.log('CreateAccount Clicked')
@@ -173,10 +113,12 @@ const GetStartedModal = () => {
         setRegSuccess("")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
+    
     const ResetPassword = () => {
         console.log('ResetPassword clicked')
         setXButton('')
-        setPasswordInputField("")
+        setPasswordInputFieldStatus(false)
+        console.log('passwordInputFieldStatus: ', passwordInputFieldStatus)
         setButtonText("Reset Password")
         setRegSuccess("")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogInLink}>Cancel</a></p></span>);
@@ -209,10 +151,10 @@ const GetStartedModal = () => {
         e.preventDefault();
         switch(modalStatus){
             case "CreateAccount":
-                dispatch(register_APIAction(emailInput, passwordInput));
+                dispatch(register_APIAction(email, password));
                 break;
             case "LogIn":
-                dispatch(login_APIAction(emailInput, passwordInput));
+                dispatch(login_APIAction(email, password));
                 break;
             case "Reset Password":
                 console.log("Reset Password Clicked")
@@ -229,8 +171,46 @@ const GetStartedModal = () => {
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
                         <CSRFToken />
                         {xButton}
-                        {emailInputField}
-                        {passwordInputField}
+                        <div className={classes.inputContainer}>
+                            <input
+                                type='email'
+                                id='email'
+                                placeholder='Email'
+                                name='email'
+                                onChange={e => onChange(e)}
+                                ref={emailInputRef}
+                                required
+                                className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
+                                autoComplete='email'
+                                
+                            />
+                            <div className={classes.InputFeedbackContainer}>
+                                <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
+                                    Invalid Email
+                                </p>
+                            </div>
+                        </div>
+                        {passwordInputFieldStatus && (
+                            <div className={classes.inputContainer}>
+                                <input
+                                    type='password'
+                                    id='password'
+                                    placeholder='Password'
+                                    name='password'
+                                    onChange={e => onChange(e)}
+                                    ref={passwordInputRef}
+                                    required
+                                    className={`${classes['passwordInput']} ${!isValidPassword && classes.isValidPassword}`}
+                                    autoComplete='current-password'
+                                    onFocus={handleOnPasswordFocus}
+                                />
+                                <div className={classes.InputFeedbackContainer}>
+                                    <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
+                                        Invalid Password
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                         {GetStartedModal_InnerButton}
                     </form>
                     {formOptions}
