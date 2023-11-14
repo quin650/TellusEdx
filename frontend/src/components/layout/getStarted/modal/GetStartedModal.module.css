@@ -37,7 +37,6 @@
     margin-left: calc(100% - 40px);
 }
 .exitButton {
-
     padding: 10.5px 13px 10.5px 13px
 }
 .exitButton:hover {
@@ -148,6 +147,18 @@
     margin-bottom: 0px;
     margin-left: auto;
 }
+/* This code below fixes an issue coming from chrome by which autoComplete makes the css wonky i.e. creates a background color based on the box-shadow*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+-webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
 .emailInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 1px solid rgba(39, 85, 196, 1);
@@ -235,11 +246,11 @@
 }
 
 /* ********************************************************** Invalid properties --*/
-.passwordInput.isValidEmail {
+.passwordInput.isValidPassword {
     border: solid 2px rgb(251, 83, 83);
     background-color: rgb(255, 246, 246);
 }
-.passwordInputFeedback.isValidEmail {
+.passwordInputFeedback.isValidPassword {
     display: block;
     font-size: .92rem;
     color: rgb(224, 2, 2);

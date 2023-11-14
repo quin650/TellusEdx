@@ -10,10 +10,11 @@ const GetStartedModal = () => {
 
     const [modalStatus, setModalStatus] = useState(
         "CreateAccount"
-    )
+    );
     const [buttonText, setButtonText] = useState(
         "CreateAccount"
-    )
+    );
+    const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
 
     const [formData, setFormData] = useState({email: '', password: ''});
     const { email, password } = formData;
@@ -31,25 +32,77 @@ const GetStartedModal = () => {
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
 
-    const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
+    const [checkEmailCommence, setCheckEmailCommence] = useState(false);
+    const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
 
-    console.log('email: ', email)
-
-    const handleOnPasswordFocus = (e) => {
-        if (!emailPattern.test(email)){
+    const handleOnPasswordFocus = () => {
+        setCheckEmailCommence(true);
+        if (email.length === 0 ){
             setIsValidEmail(false)
+            setUserEmailFeedback('Email Field Required')
+            emailInputRef.current.focus(); 
+        }
+        else if (!emailPattern.test(email)){
+            setIsValidEmail(false)
+            setUserEmailFeedback('Invalid Email Format')
             emailInputRef.current.focus();
         }
         else if (emailPattern.test(email)){
-            setPasswordInputFieldStatus(true)
+            setIsValidEmail(true)
+            setUserEmailFeedback('')
             passwordInputRef.current.focus();
         }
     }
 
-    useEffect(() => {
-        emailInputRef.current.focus();  
-    }, []);
+    //     Lesson 145 at 1:08 Explanation of code flow
+    // The useEffect runs initially when the component mounts
+    //      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
+    //      Concurrently, the setTimeout is set at the same time, but needs .5 seconds to run
+    // If the email field changes before the .5 seconds are up, then the timeout is cleared and the
+    // function inside the setTimeout never runs
+    // In summary, the email is checked for validation only when the user does not key anything new into
+    // this input field for the whole duration of .5 seconds. 
+    useEffect (() => {
+        if (checkEmailCommence) {
+            const identifier = setTimeout( () => { 
+                if (email.length === 0 ){
+                    console.log('3: ', checkEmailCommence);
+                    setIsValidEmail(false)
+                    setUserEmailFeedback('Email Field Required')
+                    emailInputRef.current.focus(); 
+                }
+                else if (!emailPattern.test(email)){
+                    setIsValidEmail(false)
+                    setUserEmailFeedback('Invalid Email Format')
+                    emailInputRef.current.focus();
+                }
+                else if (emailPattern.test(email)){
+                    setIsValidEmail(true)
+                    setUserEmailFeedback('')
+                    passwordInputRef.current.focus();
+                }
+            },  500); 
 
+            return ()  => {
+                clearTimeout(identifier)
+            };
+        }
+    }, [email]);
+
+    const handleOnBlurPassword = () => {
+        setCheckPasswordCommence(true);
+        if (password.length !== 8 && password.length < 8 ){
+            console.log('Invalid password length');
+            setIsValidPassword(false)
+            setUserEmailFeedback('8 characters required')
+            passwordInputRef.current.focus(); 
+            console.log()
+        } else {
+            console.log('Valid password length');
+            setIsValidPassword(true)
+            setUserEmailFeedback('')
+        }
+    };
     const [xButton, setXButton] = useState(
         <Fragment>
             <button className={classes.continueWithXButton}>
@@ -63,10 +116,10 @@ const GetStartedModal = () => {
             </button>
             <span className={classes.orContainer}><p className={classes.or}> or</p></span>
         </Fragment>
-    )
+    );
     const [regSuccess, setRegSuccess] = useState(
         ""
-    )
+    );
     const LogInLink = () => {
         console.log('LogIn Clicked')
         setModalStatus("LogIn")
@@ -113,19 +166,24 @@ const GetStartedModal = () => {
         setRegSuccess("")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
-    
     const ResetPassword = () => {
         console.log('ResetPassword clicked')
         setXButton('')
         setPasswordInputFieldStatus(false)
-        console.log('passwordInputFieldStatus: ', passwordInputFieldStatus)
         setButtonText("Reset Password")
         setRegSuccess("")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={LogInLink}>Cancel</a></p></span>);
-    } ;
+        setFormOptions(
+            <span className={classes.optionSpan}>
+                <p className={classes.option_1}>
+                    <a className={classes.link} onClick={LogInLink}>
+                        Cancel
+                    </a>
+                </p>
+            </span>);
+    };
     const [formOptions, setFormOptions] = useState(
         <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
-    )
+    );
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
         setModalStatus("CreateAccount")
@@ -141,26 +199,30 @@ const GetStartedModal = () => {
                 <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
             </div>
         </div>
-    )
+    );
     const GetStartedModal_InnerButton = (
         <button className={`${classes['createAccountButton']}`} type='submit'>
             {buttonText}
         </button>
-    )
-    const onSubmit = e => {
+    );
+    const onSubmit = (e) => {
         e.preventDefault();
-        switch(modalStatus){
-            case "CreateAccount":
-                dispatch(register_APIAction(email, password));
-                break;
-            case "LogIn":
-                dispatch(login_APIAction(email, password));
-                break;
-            case "Reset Password":
-                console.log("Reset Password Clicked")
-                break;
-            } 
-        };
+        handleOnBlurPassword();
+        setCheckPasswordCommence(true)
+        if (isValidEmail && isValidPassword){
+            switch(modalStatus){
+                case "CreateAccount":
+                    dispatch(register_APIAction(email, password));
+                    break;
+                case "LogIn":
+                    dispatch(login_APIAction(email, password));
+                    break;
+                case "Reset Password":
+                    console.log("Reset Password Clicked")
+                    break;
+                } 
+        }
+    };
 
     return (
         <div className={classes.blurredBackgroundContainer}>
@@ -182,11 +244,10 @@ const GetStartedModal = () => {
                                 required
                                 className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                 autoComplete='email'
-                                
                             />
                             <div className={classes.InputFeedbackContainer}>
                                 <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
-                                    Invalid Email
+                                    {userEmailFeedback} 
                                 </p>
                             </div>
                         </div>
@@ -206,7 +267,7 @@ const GetStartedModal = () => {
                                 />
                                 <div className={classes.InputFeedbackContainer}>
                                     <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                                        Invalid Password
+                                        {passwordFeedback} Invalid Password
                                     </p>
                                 </div>
                             </div>
