@@ -7,7 +7,6 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-
     const [modalStatus, setModalStatus] = useState(
         "CreateAccount"
     );
@@ -66,7 +65,6 @@ const GetStartedModal = () => {
         if (checkEmailCommence) {
             const identifier = setTimeout( () => { 
                 if (email.length === 0 ){
-                    console.log('3: ', checkEmailCommence);
                     setIsValidEmail(false)
                     setUserEmailFeedback('Email Field Required')
                     emailInputRef.current.focus(); 
@@ -89,20 +87,41 @@ const GetStartedModal = () => {
         }
     }, [email]);
 
+    useEffect (() => {
+        if (checkPasswordCommence) {
+            const identifier = setTimeout( () => { 
+                if (password.length === 0 ){
+                    setIsValidPassword(false)
+                    setPasswordFeedback('Password Field Required')
+                } else if (password.length < 8 ){
+                    setIsValidPassword(false)
+                    setPasswordFeedback('At least 8 Characters Required')
+                } else if (password.length > 7 ){
+                    setIsValidPassword(true)
+                    setPasswordFeedback('')
+                }
+            },  500); 
+
+            return ()  => {
+                clearTimeout(identifier)
+            };
+        }
+    }, [password]);
+
     const handleOnBlurPassword = () => {
         setCheckPasswordCommence(true);
-        if (password.length !== 8 && password.length < 8 ){
-            console.log('Invalid password length');
+        if (password.length < 8 ){
             setIsValidPassword(false)
-            setUserEmailFeedback('8 characters required')
+            setPasswordFeedback('At least 8 Characters Required')
             passwordInputRef.current.focus(); 
-            console.log()
+            return false
         } else {
-            console.log('Valid password length');
             setIsValidPassword(true)
-            setUserEmailFeedback('')
+            setPasswordFeedback('')
+            return true
         }
     };
+
     const [xButton, setXButton] = useState(
         <Fragment>
             <button className={classes.continueWithXButton}>
@@ -121,7 +140,6 @@ const GetStartedModal = () => {
         ""
     );
     const LogInLink = () => {
-        console.log('LogIn Clicked')
         setModalStatus("LogIn")
         setXButton(
             <Fragment>
@@ -146,7 +164,6 @@ const GetStartedModal = () => {
         setPasswordInputFieldStatus(true)
     };
     const CreateAccount = () => {
-        console.log('CreateAccount Clicked')
         setModalStatus("CreateAccount")
         setXButton(
             <Fragment>
@@ -167,7 +184,6 @@ const GetStartedModal = () => {
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
     const ResetPassword = () => {
-        console.log('ResetPassword clicked')
         setXButton('')
         setPasswordInputFieldStatus(false)
         setButtonText("Reset Password")
@@ -188,7 +204,6 @@ const GetStartedModal = () => {
         dispatch(userReducerActions.getStartedModalClose())
         setModalStatus("CreateAccount")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
-        console.log('exitAction clicked')
     };
     const RegistrationSuccess = () => {
         setModalStatus("RegistrationSuccess")
@@ -209,7 +224,7 @@ const GetStartedModal = () => {
         e.preventDefault();
         handleOnBlurPassword();
         setCheckPasswordCommence(true)
-        if (isValidEmail && isValidPassword){
+        if (handleOnBlurPassword == true && isValidEmail && isValidPassword){
             switch(modalStatus){
                 case "CreateAccount":
                     dispatch(register_APIAction(email, password));
@@ -218,7 +233,6 @@ const GetStartedModal = () => {
                     dispatch(login_APIAction(email, password));
                     break;
                 case "Reset Password":
-                    console.log("Reset Password Clicked")
                     break;
                 } 
         }
@@ -241,7 +255,6 @@ const GetStartedModal = () => {
                                 name='email'
                                 onChange={e => onChange(e)}
                                 ref={emailInputRef}
-                                required
                                 className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                 autoComplete='email'
                             />
@@ -260,14 +273,13 @@ const GetStartedModal = () => {
                                     name='password'
                                     onChange={e => onChange(e)}
                                     ref={passwordInputRef}
-                                    required
                                     className={`${classes['passwordInput']} ${!isValidPassword && classes.isValidPassword}`}
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordFocus}
                                 />
                                 <div className={classes.InputFeedbackContainer}>
                                     <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                                        {passwordFeedback} Invalid Password
+                                        {passwordFeedback}
                                     </p>
                                 </div>
                             </div>

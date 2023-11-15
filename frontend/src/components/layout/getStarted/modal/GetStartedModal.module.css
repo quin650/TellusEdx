@@ -89,6 +89,7 @@
     fill: black;
 }
 
+
 /* **********************************************************************  or -- */
 .orContainer{
     width: 380px;
@@ -103,6 +104,22 @@
     line-height: 175%;
     font-weight: 500;
     width: 360px;
+}
+/* **********************************************************************  Inputs (Override Chromes defaults)-- */
+/* This code below fixes an issue coming from chrome by which autoComplete makes the css wonky i.e. creates a background color based on the box-shadow*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+{
+    /* -webkit-text-fill-color: black !important; */
+    transition: background-color 5000s ease-in-out 0s;
+    /* is another trick to override the background color. It uses a large inset box shadow to cover the entire field, simulating a white background. */
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+input:-webkit-autofill:focus
+{
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1) !important; /* adds a blue glow effect around the element when it's focused, using RGBA color for semi-transparency. */
+    border: 1px solid rgba(39, 85, 196, 1) !important; /* changes the border color to a similar blue, providing a consistent focus style. */
 }
 /* **********************************************************************  Email -- */
 .inputContainer{
@@ -129,7 +146,6 @@
     height: 50px;
     align-items: center;
     justify-content: center;
-    /* padding-left: 10px; */
     background-color: white;
     border-radius: 6px;
     font-size: 18px;
@@ -147,18 +163,7 @@
     margin-bottom: 0px;
     margin-left: auto;
 }
-/* This code below fixes an issue coming from chrome by which autoComplete makes the css wonky i.e. creates a background color based on the box-shadow*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
--webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
-}
+
 .emailInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 1px solid rgba(39, 85, 196, 1);
@@ -168,15 +173,13 @@ select:-webkit-autofill:focus {
     margin: 0px;
 }
 
-
-
 .emailInputFeedback{
     display: none;    
 }
 /* ********************************************************** Invalid properties --*/
 .emailInput.isValidEmail {
     border: solid 2px rgb(251, 83, 83);
-    background-color: rgb(255, 246, 246);
+
 }
 .emailInputFeedback.isValidEmail {
     display: block;
@@ -229,7 +232,7 @@ select:-webkit-autofill:focus {
 /* ********************************************************** Invalid properties --*/
 .emailInput.isValidEmail {
     border: solid 2px rgb(251, 83, 83);
-    background-color: rgb(255, 246, 246);
+
 }
 .emailInputFeedback.isValidEmail {
     display: block;
@@ -248,7 +251,7 @@ select:-webkit-autofill:focus {
 /* ********************************************************** Invalid properties --*/
 .passwordInput.isValidPassword {
     border: solid 2px rgb(251, 83, 83);
-    background-color: rgb(255, 246, 246);
+
 }
 .passwordInputFeedback.isValidPassword {
     display: block;
