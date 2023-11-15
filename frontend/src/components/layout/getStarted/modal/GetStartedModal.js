@@ -80,7 +80,6 @@ const GetStartedModal = () => {
                     passwordInputRef.current.focus();
                 }
             },  500); 
-
             return ()  => {
                 clearTimeout(identifier)
             };
