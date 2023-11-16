@@ -7,12 +7,9 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState(
-        "CreateAccount"
-    );
-    const [buttonText, setButtonText] = useState(
-        "CreateAccount"
-    );
+    const [modalStatus, setModalStatus] = useState("CreateAccount");
+    const getStartedView = useSelector(({ user }) => user.getStartedView);
+    const [buttonText, setButtonText] = useState("CreateAccount");
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
 
     const [formData, setFormData] = useState({email: '', password: ''});
@@ -33,25 +30,6 @@ const GetStartedModal = () => {
 
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
-
-    const handleOnPasswordFocus = () => {
-        setCheckEmailCommence(true);
-        if (email.length === 0 ){
-            setIsValidEmail(false)
-            setUserEmailFeedback('Email Field Required')
-            emailInputRef.current.focus(); 
-        }
-        else if (!emailPattern.test(email)){
-            setIsValidEmail(false)
-            setUserEmailFeedback('Invalid Email Format')
-            emailInputRef.current.focus();
-        }
-        else if (emailPattern.test(email)){
-            setIsValidEmail(true)
-            setUserEmailFeedback('')
-            passwordInputRef.current.focus();
-        }
-    }
 
     //     Lesson 145 at 1:08 Explanation of code flow
     // The useEffect runs initially when the component mounts
@@ -85,7 +63,6 @@ const GetStartedModal = () => {
             };
         }
     }, [email]);
-
     useEffect (() => {
         if (checkPasswordCommence) {
             const identifier = setTimeout( () => { 
@@ -106,7 +83,24 @@ const GetStartedModal = () => {
             };
         }
     }, [password]);
-
+    const handleOnPasswordFocus = () => {
+        setCheckEmailCommence(true);
+        if (email.length === 0 ){
+            setIsValidEmail(false)
+            setUserEmailFeedback('Email Field Required')
+            emailInputRef.current.focus(); 
+        }
+        else if (!emailPattern.test(email)){
+            setIsValidEmail(false)
+            setUserEmailFeedback('Invalid Email Format')
+            emailInputRef.current.focus();
+        }
+        else if (emailPattern.test(email)){
+            setIsValidEmail(true)
+            setUserEmailFeedback('')
+            passwordInputRef.current.focus();
+        }
+    }
     const handleOnBlurPassword = () => {
         setCheckPasswordCommence(true);
         if (password.length < 8 ){
@@ -120,7 +114,6 @@ const GetStartedModal = () => {
             return true
         }
     };
-
     const [xButton, setXButton] = useState(
         <Fragment>
             <button className={classes.continueWithXButton}>
@@ -199,6 +192,12 @@ const GetStartedModal = () => {
     const [formOptions, setFormOptions] = useState(
         <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
     );
+    
+    useEffect(() => {
+        if (getStartedView === 'LogIn'){
+            LogInLink();
+        }
+    }, []);
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
         setModalStatus("CreateAccount")
