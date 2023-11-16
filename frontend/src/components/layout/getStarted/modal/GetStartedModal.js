@@ -192,14 +192,40 @@ const GetStartedModal = () => {
     const [formOptions, setFormOptions] = useState(
         <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
     );
-    
     useEffect(() => {
         if (getStartedView === 'LogIn'){
             LogInLink();
         }
+        disableScroll()
     }, []);
+    const disableScroll = () => {
+        // Add listeners to prevent scroll events
+        window.addEventListener('scroll', preventDefaultScroll, { passive: false });
+        window.addEventListener('wheel', preventDefaultScroll, { passive: false });
+        window.addEventListener('touchmove', preventDefaultScroll, { passive: false });
+        window.addEventListener('keydown', preventDefaultKeydown, { passive: false });
+    };
+    const enableScroll = () => {
+        // Remove listeners to allow scroll events
+        window.removeEventListener('scroll', preventDefaultScroll);
+        window.removeEventListener('wheel', preventDefaultScroll);
+        window.removeEventListener('touchmove', preventDefaultScroll);
+        window.removeEventListener('keydown', preventDefaultKeydown);
+    };
+    const preventDefaultScroll = (e) => {
+        e.preventDefault();
+    };
+    const preventDefaultKeydown = (e) => {
+        // List of keys that can cause scrolling
+        const keysThatScroll = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown', 'Home', 'End'];
+        
+        if (keysThatScroll.includes(e.key)) {
+            e.preventDefault();
+        }
+    };
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
+        enableScroll()
         setModalStatus("CreateAccount")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
