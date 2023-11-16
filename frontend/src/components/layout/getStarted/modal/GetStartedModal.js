@@ -270,7 +270,7 @@ const GetStartedModal = () => {
                     {regSuccess}
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
                         <CSRFToken />
-                        <h1 className={classes.modalTitle}>Log Into Account</h1>
+                        <h1 className={classes.modalTitle}>Login</h1>
                         {xButton}
                         <div className={classes.inputContainer}>
                             <input
