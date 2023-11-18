@@ -267,18 +267,25 @@ input:-webkit-autofill:focus{
     font-weight: 500;
 }
 .forgotPasswordLink {
-    display: block;
-    visibility: visible;
+    display: flex;
+    visibility: hidden;
     color: gray;
     cursor: pointer;
     margin: 2px auto 0px 2px;
     font-size: 13px;
     height: 24px;
+    align-items: flex-end;
 }
 /* ********************************************************************* Invalid */
 .forgotPasswordLink.isLogInVIew {
-    visibility: hidden;
+    visibility: visible;
+    align-items: flex-end;
 }
+.forgotPasswordLink.isLogInVIew_isValidPassword {
+    visibility: visible;
+    align-items: flex-start;
+}
+
 
 .passwordSection{
     min-height: 49px;

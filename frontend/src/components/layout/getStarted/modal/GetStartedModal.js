@@ -24,13 +24,13 @@ const GetStartedModal = () => {
     const [passwordFeedback, setPasswordFeedback] = useState('');
 
     const [isLogInVIew, setIsLogInVIew] = useState(false);
-
+    console.log('isLogInVIew: ', isLogInVIew);
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
 
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
-
+    console.log('isValidPassword: ', isValidPassword);
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
 
@@ -305,13 +305,13 @@ const GetStartedModal = () => {
                                             {passwordFeedback}
                                         </p>
                                     </div>
-                                    <a className={`${classes['forgotPasswordLink']} ${!isLogInVIew && classes.isLogInVIew}`}>Forgot Password?</a>
+                                    {/* <a className={`${classes['forgotPasswordLink']} ${!isLogInVIew && classes.isLogInVIew}`}>Forgot Password?</a> */}
+                                    <a className={`${classes['forgotPasswordLink']} ${isLogInVIew && !isValidPassword ? classes.isLogInVIew_isValidPassword : isLogInVIew ? classes.isLogInVIew : ''}`}>Forgot Password?</a>
                                 </section>
                             </div>
                         )}
                         {GetStartedModal_InnerButton}
                     </form>
-
                     {xButton}
                     {formOptions}
                 </div>
