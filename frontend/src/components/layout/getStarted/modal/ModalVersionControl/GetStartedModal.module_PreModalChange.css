@@ -1,0 +1,330 @@
+.blurredBackgroundContainer {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    top: -56px;
+    height: calc(100vh + 56px);
+    width: 100vw;
+    left: 0%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(175, 175, 175, 40%);
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
+}
+.modalContainer {
+    display: flex;
+    z-index: 2000;
+    position: fixed;
+    background-color: white;
+    justify-content: center;
+    border-radius: 14px;
+    height: 535px;
+    width: 410px;
+}
+/* *******************************************************************  Exit -- */
+.exitButtonContainer {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1000;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-left: calc(100% - 40px);
+}
+.exitButton {
+    padding: 10.5px 13px 10.5px 13px
+}
+.exitButton:hover {
+    background-color: #c3c3c3;
+}
+.exitSvg {
+    width: 14px;
+    height: 14px;
+}
+.modalContentContainer {
+    box-sizing: border-box;
+    position: absolute;
+    padding: 50px 10px 36px 10px;
+    border-radius: 8px;
+    max-height: 100%;
+    width: 380px;
+    background: white;
+}
+
+.modalFormContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.modalTitle {
+    color: black;
+    font-size: 2rem;
+    margin: 0;
+    padding-left: 6px;
+    position: relative;
+    top: -13px;
+}
+/* ********************************************************************  continueWithX -- */
+.continueWithXButton {
+    display: flex;
+    width: 352px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    border: solid 2px black;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 550;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 13px auto 13px auto;
+    
+}
+
+.continueWithXButton:active {
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+}
+.XIconContainer {
+    padding-left: 10px;
+}
+.XIcon{
+    fill: black;
+}
+
+
+/* **********************************************************************  or -- */
+.orContainer{
+    width: 380px;
+}
+.or {
+    display: flex;
+    justify-content: center;
+    color: #989797;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 175%;
+    font-weight: 500;
+    width: 360px;
+}
+/* **********************************************************************  Inputs (Override Chromes defaults)-- */
+/* This code below fixes an issue coming from chrome by which autoComplete makes the css wonky i.e. creates a background color based on the box-shadow*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+{
+    /* -webkit-text-fill-color: black !important; */
+    transition: background-color 5000s ease-in-out 0s;
+    /* is another trick to override the background color. It uses a large inset box shadow to cover the entire field, simulating a white background. */
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+input:-webkit-autofill:focus
+{
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1) !important; /* adds a blue glow effect around the element when it's focused, using RGBA color for semi-transparency. */
+    border: 1px solid rgba(39, 85, 196, 1) !important; /* changes the border color to a similar blue, providing a consistent focus style. */
+}
+/* **********************************************************************  Email -- */
+.inputContainer{
+    position: relative;
+}
+.inputContainer label{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 8px;
+    color: rgb(113, 112, 112);
+    font-size: 12;
+}
+
+.inputContainer input::placeholder{
+    padding-left: 0px;
+}
+
+.emailInput{
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 550;
+    color: black;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 13px;
+    border: 2px solid black;
+    margin-top: 13px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+.emailInput:focus {
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
+    border: 1px solid rgba(39, 85, 196, 1);
+}
+.InputFeedbackContainer{
+    min-height: 26px;
+    margin: 0px;
+}
+
+.emailInputFeedback{
+    display: none;    
+}
+/* ********************************************************** Invalid properties --*/
+.emailInput.isValidEmail {
+    border: solid 2px rgb(251, 83, 83);
+
+}
+.emailInputFeedback.isValidEmail {
+    display: block;
+    font-size: .92rem;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+}
+.passwordInput {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    /* padding-left: 10px; */
+    background-color: white;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 550;
+    color: black;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 13px;
+    border: 2px solid black;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+.passwordInput:focus {
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
+    border: 1px solid rgba(39, 85, 196, 1);
+}
+
+.passwordInputFeedback{
+    display: none;
+}
+/* ********************************************************** Invalid properties --*/
+.emailInput.isValidEmail {
+    border: solid 2px rgb(251, 83, 83);
+
+}
+.emailInputFeedback.isValidEmail {
+    display: block;
+    font-size: .92rem;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+}
+
+/* ********************************************************** Invalid properties --*/
+.passwordInput.isValidPassword {
+    border: solid 2px rgb(251, 83, 83);
+
+}
+.passwordInputFeedback.isValidPassword {
+    display: block;
+    font-size: .92rem;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+}
+
+/* **********************************************************************  Create Account -- */
+.createAccountButton {
+    display: block;
+    width: 352px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--blue);
+    border: solid 1px var(--blue);
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 550;
+    cursor: pointer;
+    margin: 13px auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.createAccountButton:active {
+    border: solid 1px black;
+    background-color: rgb(34, 77, 176);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+}
+/* **************************************************** Have an account? Log In -- */
+.optionSpan{
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.option_1 {
+    color: gray;
+    margin: 13px auto;
+}
+.option_2 {
+    color: gray;
+    margin: 0px auto;
+}
+
+.link {
+    color: blue;
+    cursor: pointer;
+}
+.link:hover {
+    text-decoration: underline;
+}
+.link:active {
+    font-weight: 500;
+}

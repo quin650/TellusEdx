@@ -9,8 +9,7 @@ const GetStartedModal = () => {
     const dispatch = useDispatch();
     const [modalStatus, setModalStatus] = useState("CreateAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
-    const [headerText, setHeaderText] = useState("Create Account");
-    const [buttonText, setButtonText] = useState("Create Account");
+    const [buttonText, setButtonText] = useState("CreateAccount");
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
 
     const [formData, setFormData] = useState({email: '', password: ''});
@@ -22,8 +21,6 @@ const GetStartedModal = () => {
 
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
-
-    const [isLogInVIew, setIsLogInVIew] = useState(false);
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
@@ -119,8 +116,8 @@ const GetStartedModal = () => {
     };
     const [xButton, setXButton] = useState(
         <Fragment>
-            <span className={classes.orContainer}><p className={classes.or}> or continue with </p></span>
             <button className={classes.continueWithXButton}>
+                    <span>Continue with</span>
                     <i className={classes.XIconContainer}>
                         <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
                             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
@@ -128,7 +125,7 @@ const GetStartedModal = () => {
                         </svg>
                     </i>
             </button>
-            
+            <span className={classes.orContainer}><p className={classes.or}> or</p></span>
         </Fragment>
     );
     const [regSuccess, setRegSuccess] = useState(
@@ -138,8 +135,8 @@ const GetStartedModal = () => {
         setModalStatus("LogIn")
         setXButton(
             <Fragment>
-                <span className={classes.orContainer}><p className={classes.or}> or continue with </p></span>
                 <button className={classes.continueWithXButton}>
+                        <span>Continue with</span>
                         <i className={classes.XIconContainer}>
                             <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
                                 <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
@@ -147,21 +144,23 @@ const GetStartedModal = () => {
                             </svg>
                         </i>
                 </button>
+                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
             </Fragment>
         )
-        setHeaderText("Login");
-        setIsLogInVIew(true);
-        setButtonText("Log In");
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.options}>No Account? <a className={classes.link} onClick={CreateAccount}>Register Here</a></p></span>);
-        setRegSuccess("");
-        setPasswordInputFieldStatus(true);
+        setButtonText("Log In")
+        setFormOptions(<Fragment>
+                            <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
+                            <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
+                        </Fragment>);
+        setRegSuccess("")
+        setPasswordInputFieldStatus(true)
     };
     const CreateAccount = () => {
         setModalStatus("CreateAccount")
         setXButton(
             <Fragment>
-                <span className={classes.orContainer}><p className={classes.or}>or continue with</p></span>
                 <button className={classes.continueWithXButton}>
+                        <span>Continue with</span>
                         <i className={classes.XIconContainer}>
                             <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
                                 <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
@@ -169,25 +168,29 @@ const GetStartedModal = () => {
                             </svg>
                         </i>
                 </button>
+                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
             </Fragment>
         )
-        setIsLogInVIew(false)
-        setHeaderText("Create Account")
         setButtonText("Create Account")
         setRegSuccess("")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.options}>Have an account? <a className={classes.link} onClick={LogInLink}> Sign In Here</a></p></span>)
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
     const ResetPassword = () => {
         setXButton('')
         setPasswordInputFieldStatus(false)
-        setHeaderText("Reset Password")
-        setButtonText("Send Reset Email")
+        setButtonText("Reset Password")
         setRegSuccess("")
         setFormOptions(
-            <span className={classes.optionSpan}><p className={classes.options}><a className={classes.link} onClick={LogInLink}>Cancel</a></p></span>);
+            <span className={classes.optionSpan}>
+                <p className={classes.option_1}>
+                    <a className={classes.link} onClick={LogInLink}>
+                        Cancel
+                    </a>
+                </p>
+            </span>);
     };
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.options}>Have an account? <a className={classes.link} onClick={LogInLink}> Sign In Here</a></p></span>
+        <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
     );
     useEffect(() => {
         if (getStartedView === 'LogIn'){
@@ -224,7 +227,7 @@ const GetStartedModal = () => {
         dispatch(userReducerActions.getStartedModalClose())
         enableScroll()
         setModalStatus("CreateAccount")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.options}>Have an account? <a className={classes.link} onClick={LogInLink}> Sign In Here</a></p></span>)
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
     };
     const RegistrationSuccess = () => {
         setModalStatus("RegistrationSuccess")
@@ -237,7 +240,7 @@ const GetStartedModal = () => {
         </div>
     );
     const GetStartedModal_InnerButton = (
-        <button className={classes.actionButton} type='submit'>
+        <button className={`${classes['createAccountButton']}`} type='submit'>
             {buttonText}
         </button>
     );
@@ -267,8 +270,8 @@ const GetStartedModal = () => {
                     {regSuccess}
                     <form className={classes.modalFormContainer} onSubmit={onSubmit}>
                         <CSRFToken />
-                        <h1 className={classes.modalTitle}>{headerText}</h1>
-                        
+                        <h1 className={classes.modalTitle}>Login</h1>
+                        {xButton}
                         <div className={classes.inputContainer}>
                             <input
                                 type='email'
@@ -280,7 +283,7 @@ const GetStartedModal = () => {
                                 className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                 autoComplete='email'
                             />
-                            <div className={classes.emailInputFeedbackContainer}>
+                            <div className={classes.InputFeedbackContainer}>
                                 <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
                                     {userEmailFeedback} 
                                 </p>
@@ -299,20 +302,15 @@ const GetStartedModal = () => {
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordFocus}
                                 />
-                                <section className={classes.passwordSection}>
-                                    <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
-                                        <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                                            {passwordFeedback}
-                                        </p>
-                                    </div>
-                                    <a className={`${classes['forgotPasswordLink']} ${!isLogInVIew && classes.isLogInVIew}`}>Forgot Password?</a>
-                                </section>
+                                <div className={classes.InputFeedbackContainer}>
+                                    <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
+                                        {passwordFeedback}
+                                    </p>
+                                </div>
                             </div>
                         )}
                         {GetStartedModal_InnerButton}
                     </form>
-
-                    {xButton}
                     {formOptions}
                 </div>
             </div>
