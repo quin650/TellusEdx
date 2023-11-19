@@ -14,7 +14,8 @@
     align-items: center;
     font-family: Roboto;
 }
-.modalContainer {
+/* ********************************************************************* Modal */
+.modal {
     display: flex;
     z-index: 2000;
     position: fixed;
@@ -46,6 +47,7 @@
     width: 14px;
     height: 14px;
 }
+/* ********************************************************************* Modal Content */
 .modalContentContainer {
     box-sizing: border-box;
     position: absolute;
@@ -55,7 +57,7 @@
     width: 530px;
     background: white;
 }
-.modalFormContainer {
+.modalForm {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -68,7 +70,7 @@
     align-items: flex-end;
     margin: 0px auto 36px 0px;
 }
-/* ********************************************************************* Inputs*/
+/* ********************************************************************* Inputs */
 .inputContainer{
     position: relative;
 }
@@ -100,7 +102,7 @@
     padding-left: 0px;
 
 }
-/* 
+/* ********************************************************************* Inputs Browser Defaults *
 This code below fixes an issue coming from chrome by which autoComplete makes 
 the css wonky i.e. creates a background color based on the box-shadow
 */
@@ -115,7 +117,7 @@ input:-webkit-autofill:focus{
     box-shadow: 0 0 5px rgba(39, 85, 196, 1) !important; /* adds a blue glow effect around the element when it's focused, using RGBA color for semi-transparency. */
     border: 2px solid rgba(39, 85, 196, 1) !important; /* changes the border color to a similar blue, providing a consistent focus style. */
 }
-/* ********************************************************************* Email */
+/* ********************************************************************* Email Input */
 .emailInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 2px solid rgba(39, 85, 196, 1);
@@ -127,7 +129,7 @@ input:-webkit-autofill:focus{
 .emailInputFeedback{
     display: none;    
 }
-/* ********************************************************************* Invalid */
+/* ********************************************************************* Email Input Invalid */
 .emailInput.isValidEmail {
     border: 2px solid  rgb(251, 83, 83);
 
@@ -145,10 +147,13 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
-/* ********************************************************************* Password */
+/* ********************************************************************* Password Input */
 .passwordInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 2px solid rgba(39, 85, 196, 1);
+}
+.passwordInputFeedbackAndResetPasswordSection{
+    min-height: 49px;
 }
 .passwordInputFeedbackContainer{
     display: none;
@@ -158,7 +163,18 @@ input:-webkit-autofill:focus{
 .passwordInputFeedback{
     display: none;
 }
-/* ********************************************************************* Invalid */
+/* ********************************************************************* Forgot Password */
+.forgotPasswordLink {
+    display: flex;
+    visibility: hidden;
+    color: gray;
+    cursor: pointer;
+    margin: 2px auto 0px 2px;
+    font-size: 13px;
+    height: 24px;
+    align-items: flex-end;
+}
+/* ********************************************************************* Password Input Invalid */
 .passwordInput.isValidPassword {
     border: 2px solid  rgb(251, 83, 83);
 }
@@ -181,7 +197,16 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
-/* ********************************************************************* Create Account */
+/* ********************************************************************* Forgot Password Invalid */
+.forgotPasswordLink.isLogInVIew {
+    visibility: visible;
+    align-items: flex-end;
+}
+.forgotPasswordLink.isLogInVIew_isValidPassword {
+    visibility: visible;
+    align-items: flex-start;
+}
+/* ********************************************************************* Action Button */
 .actionButton {
     display: block;
     width: 100%;
@@ -207,11 +232,11 @@ input:-webkit-autofill:focus{
     box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
 /* ********************************************************************* or continue with */
-.orContainer{
+.orContinueWithContainer{
     width: 100%;
     color: black;
 }
-.or {
+.orContinueWithTextFormat {
     display: flex;
     justify-content: center;
     margin-top: 0px;
@@ -219,8 +244,8 @@ input:-webkit-autofill:focus{
     width: 100%;
     font-size: 13px;
 }
-/* ********************************************************************* continueWithX */
-.continueWithXButton {
+/* ********************************************************************* twitterX */
+.twitterXButton {
     display: flex;
     width: 100%;
     height: 44px;
@@ -235,58 +260,31 @@ input:-webkit-autofill:focus{
     justify-content: center;
     margin-bottom: 20px;
 }
-.continueWithXButton:active {
+.twitterXButton:active {
     box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
-.XIconContainer {
-}
-.XIcon{
+.twitterXIcon{
     fill: black;
 }
-/* ********************************************************************** Have an account? Log In */
+/* ********************************************************************* Have an account? No Account? */
 .optionSpan{
     display: flex;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    
 }
-.options {
+.optionsText {
     color: black;
     margin: 0px auto;
     font-size: 13px;
 }
-.link {
+.PageLink {
     cursor: pointer;
     font-weight: bold;
 }
-.link:hover {
+.PageLink:hover {
     text-decoration: underline;
 }
-.link:active {
+.PageLink:active {
     font-weight: 500;
-}
-.forgotPasswordLink {
-    display: flex;
-    visibility: hidden;
-    color: gray;
-    cursor: pointer;
-    margin: 2px auto 0px 2px;
-    font-size: 13px;
-    height: 24px;
-    align-items: flex-end;
-}
-/* ********************************************************************* Invalid */
-.forgotPasswordLink.isLogInVIew {
-    visibility: visible;
-    align-items: flex-end;
-}
-.forgotPasswordLink.isLogInVIew_isValidPassword {
-    visibility: visible;
-    align-items: flex-start;
-}
-
-
-.passwordSection{
-    min-height: 49px;
 }
