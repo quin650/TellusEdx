@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import { login_APIAction, register_APIAction } from "../../../../a.actions/auth_Actions";
 import CSRFToken from "../../../CSRFToken";
+import XAuthButton from "./SocialAuthLogos/xAuthButton";
+import DiscordAuthButton from "./SocialAuthLogos/discordAuthButton";
+import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
@@ -150,13 +153,12 @@ const GetStartedModal = () => {
         setRegSuccess("")
         setSocialMediaSection(
             <Fragment>
-                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}>or continue with</p></span>
-                <button className={classes.twitterXButton}>
-                    <svg className={classes.twitterXIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                        </path>
-                    </svg>
-                </button>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
             </Fragment>
         )
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
@@ -166,12 +168,11 @@ const GetStartedModal = () => {
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
-                <button className={classes.twitterXButton}>
-                    <svg className={classes.twitterXIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                        </path>
-                    </svg>
-                </button>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
             </Fragment>
         )
         setHeaderText("Login");
@@ -217,14 +218,13 @@ const GetStartedModal = () => {
     );
     const [socialMediaSection, setSocialMediaSection] = useState(
         <Fragment>
-            <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
-            <button className={classes.twitterXButton}>
-                <svg className={classes.twitterXIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                    </path>
-                </svg>
-            </button>
-        </Fragment>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
+            </Fragment>
     );
     const disableScroll = () => {
         // Add listeners to prevent scroll events

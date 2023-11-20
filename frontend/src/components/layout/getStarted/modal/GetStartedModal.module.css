@@ -51,7 +51,7 @@
 .modalContentContainer {
     box-sizing: border-box;
     position: absolute;
-    padding: 75px 75px 36px 75px;
+    padding: 75px 72px 36px 72px;
     border-radius: 27px;
     height: 545px;
     width: 530px;
@@ -216,7 +216,7 @@ input:-webkit-autofill:focus{
     color: white;
     background-color: var(--blue);
     border: 2px solid var(--blue);
-    border-radius: 6px;
+    border-radius: 9px;
     font-size: 18px;
     font-weight: 550;
     cursor: pointer;
@@ -244,27 +244,13 @@ input:-webkit-autofill:focus{
     width: 100%;
     font-size: 13px;
 }
-/* ********************************************************************* twitterX */
-.twitterXButton {
+/* ********************************************************************* socialAuth */
+.socialAuthContainer{
     display: flex;
+    flex-direction: row;
     width: 100%;
-    height: 44px;
-    color: black;
-    background-color: white;
-    border: 2px solid black;
-    padding: 0px;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 20px;
-}
-.twitterXButton:active {
-    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-}
-.twitterXIcon{
-    fill: black;
 }
 /* ********************************************************************* Have an account? No Account? */
 .optionSpan{
