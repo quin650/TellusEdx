@@ -19,11 +19,11 @@
     display: flex;
     z-index: 2000;
     position: fixed;
+    background-color: white;
+    justify-content: center;
+    border-radius: 27px;
     height: 545px;
     width: 530px;
-    border-radius: 27px;
-    justify-content: center;
-    background-color: white;
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
@@ -51,11 +51,11 @@
 .modalContentContainer {
     box-sizing: border-box;
     position: absolute;
+    padding: 75px 72px 36px 72px;
+    border-radius: 27px;
     height: 545px;
     width: 530px;
-    border-radius: 27px;
-    padding: 75px 72px 36px 72px;
-    background-color: white;
+    background: white;
 }
 .modalForm {
     display: flex;
@@ -273,17 +273,4 @@ input:-webkit-autofill:focus{
 }
 .PageLink:active {
     font-weight: 500;
-}
-/* ********************************************************************* Width under 600px */
-@media (max-width: 600px) {
-    .modal{
-        width: 85%;
-        min-width: 400px;
-    }
-    .modalContentContainer {
-        width: 85%;
-        min-width: 400px;
-        padding-left: calc(8VW);
-        padding-right: calc(8VW);
-    }
 }

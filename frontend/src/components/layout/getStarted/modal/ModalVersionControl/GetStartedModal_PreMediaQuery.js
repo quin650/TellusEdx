@@ -3,14 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import { login_APIAction, register_APIAction } from "../../../../a.actions/auth_Actions";
 import CSRFToken from "../../../CSRFToken";
+import XAuthButton from "./SocialAuthLogos/xAuthButton";
+import DiscordAuthButton from "./SocialAuthLogos/discordAuthButton";
+import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
+
     const [modalStatus, setModalStatus] = useState("CreateAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
-    const [buttonText, setButtonText] = useState("CreateAccount");
+    const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
+    const [headerText, setHeaderText] = useState("Create Account");
+    const [buttonText, setButtonText] = useState("Create Account");
 
     const [formData, setFormData] = useState({email: '', password: ''});
     const { email, password } = formData;
@@ -27,11 +33,29 @@ const GetStartedModal = () => {
 
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
-
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
 
-    //     Lesson 145 at 1:08 Explanation of code flow
+    const exitAction = () => {
+        dispatch(userReducerActions.getStartedModalClose())
+        enableScroll()
+        setModalStatus("CreateAccount")
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
+    };
+    const ExitButton = (
+        <div onClick={exitAction} className={classes.exitButtonContainer}>
+            <div className={classes.exitButton}>
+                <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
+            </div>
+        </div>
+    );
+    useEffect(() => {
+        if (getStartedView === 'LogIn'){
+            LogInPage();
+        }
+        disableScroll()
+    }, []);
+    // useEffect Explanation
     // The useEffect runs initially when the component mounts
     //      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
     //      Concurrently, the setTimeout is set at the same time, but needs .5 seconds to run
@@ -39,6 +63,7 @@ const GetStartedModal = () => {
     // function inside the setTimeout never runs
     // In summary, the email is checked for validation only when the user does not key anything new into
     // this input field for the whole duration of .5 seconds. 
+        //     Lesson 145 at 1:08 Explanation of code flow
     useEffect (() => {
         if (checkEmailCommence) {
             const identifier = setTimeout( () => { 
@@ -114,90 +139,93 @@ const GetStartedModal = () => {
             return true
         }
     };
-    const [xButton, setXButton] = useState(
-        <Fragment>
-            <button className={classes.continueWithXButton}>
-                    <span>Continue with</span>
-                    <i className={classes.XIconContainer}>
-                        <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                            <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                            </path>
-                        </svg>
-                    </i>
-            </button>
-            <span className={classes.orContainer}><p className={classes.or}> or</p></span>
-        </Fragment>
-    );
     const [regSuccess, setRegSuccess] = useState(
         ""
     );
-    const LogInLink = () => {
-        setModalStatus("LogIn")
-        setXButton(
-            <Fragment>
-                <button className={classes.continueWithXButton}>
-                        <span>Continue with</span>
-                        <i className={classes.XIconContainer}>
-                            <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                                </path>
-                            </svg>
-                        </i>
-                </button>
-                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
-            </Fragment>
-        )
-        setButtonText("Log In")
-        setFormOptions(<Fragment>
-                            <span className={classes.optionSpan}><p className={classes.option_1}><a className={classes.link} onClick={ResetPassword}>Reset Password</a></p></span>
-                            <span className={classes.optionSpan}><p className={classes.option_2}>No Account? <a className={classes.link} onClick={CreateAccount}>Create One</a></p></span>
-                        </Fragment>);
-        setRegSuccess("")
-        setPasswordInputFieldStatus(true)
+    const RegistrationSuccess = () => {
+        setModalStatus("RegistrationSuccess")
     };
-    const CreateAccount = () => {
+    const CreateAccountPage = () => {
         setModalStatus("CreateAccount")
-        setXButton(
-            <Fragment>
-                <button className={classes.continueWithXButton}>
-                        <span>Continue with</span>
-                        <i className={classes.XIconContainer}>
-                            <svg className={classes.XIcon} xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512">
-                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
-                                </path>
-                            </svg>
-                        </i>
-                </button>
-                <span className={classes.orContainer}><p className={classes.or}> or</p></span>
-            </Fragment>
-        )
+        setIsLogInVIew(false)
+        setHeaderText("Create Account")
         setButtonText("Create Account")
         setRegSuccess("")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
+        setSocialMediaSection(
+            <Fragment>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
+            </Fragment>
+        )
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
     };
-    const ResetPassword = () => {
-        setXButton('')
+    const LogInPage = () => {
+        setModalStatus("LogIn")
+        setSocialMediaSection(
+            <Fragment>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
+            </Fragment>
+        )
+        setHeaderText("Login");
+        setIsLogInVIew(true);
+        setButtonText("Log In");
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
+        setRegSuccess("");
+        setPasswordInputFieldStatus(true);
+    };
+    const ResetPasswordPage = () => {
+        setSocialMediaSection('')
         setPasswordInputFieldStatus(false)
-        setButtonText("Reset Password")
+        setHeaderText("Reset Password")
+        setButtonText("Send Reset Email")
         setRegSuccess("")
         setFormOptions(
-            <span className={classes.optionSpan}>
-                <p className={classes.option_1}>
-                    <a className={classes.link} onClick={LogInLink}>
-                        Cancel
-                    </a>
-                </p>
-            </span>);
+            <span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
+    };
+    const ActionButton = (
+        <button className={classes.actionButton} type='submit'>
+            {buttonText}
+        </button>
+    );
+    const onSubmit = (e) => {
+        e.preventDefault();
+        handleOnBlurPassword();
+        setCheckPasswordCommence(true)
+        if (handleOnBlurPassword == true && isValidEmail && isValidPassword){
+            switch(modalStatus){
+                case "CreateAccount":
+                    dispatch(register_APIAction(email, password));
+                    break;
+                case "LogIn":
+                    dispatch(login_APIAction(email, password));
+                    break;
+                case "Reset Password":
+                    break;
+                } 
+        }
     };
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>
+        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>
     );
-    useEffect(() => {
-        if (getStartedView === 'LogIn'){
-            LogInLink();
-        }
-        disableScroll()
-    }, []);
+    const [socialMediaSection, setSocialMediaSection] = useState(
+        <Fragment>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
+            </Fragment>
+    );
     const disableScroll = () => {
         // Add listeners to prevent scroll events
         window.addEventListener('scroll', preventDefaultScroll, { passive: false });
@@ -223,55 +251,15 @@ const GetStartedModal = () => {
             e.preventDefault();
         }
     };
-    const exitAction = () => {
-        dispatch(userReducerActions.getStartedModalClose())
-        enableScroll()
-        setModalStatus("CreateAccount")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.option_1}>Have an account? <a className={classes.link} onClick={LogInLink}> Log In</a></p></span>)
-    };
-    const RegistrationSuccess = () => {
-        setModalStatus("RegistrationSuccess")
-    };
-    const ExitButton = (
-        <div onClick={exitAction} className={classes.exitButtonContainer}>
-            <div className={classes.exitButton}>
-                <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
-            </div>
-        </div>
-    );
-    const GetStartedModal_InnerButton = (
-        <button className={`${classes['createAccountButton']}`} type='submit'>
-            {buttonText}
-        </button>
-    );
-    const onSubmit = (e) => {
-        e.preventDefault();
-        handleOnBlurPassword();
-        setCheckPasswordCommence(true)
-        if (handleOnBlurPassword == true && isValidEmail && isValidPassword){
-            switch(modalStatus){
-                case "CreateAccount":
-                    dispatch(register_APIAction(email, password));
-                    break;
-                case "LogIn":
-                    dispatch(login_APIAction(email, password));
-                    break;
-                case "Reset Password":
-                    break;
-                } 
-        }
-    };
-
     return (
         <div className={classes.blurredBackgroundContainer}>
-            <div className={classes.modalContainer}>
+            <div className={classes.modal}>
                 {ExitButton}
                 <div className={classes.modalContentContainer}>
                     {regSuccess}
-                    <form className={classes.modalFormContainer} onSubmit={onSubmit}>
+                    <form className={classes.modalForm} onSubmit={onSubmit}>
                         <CSRFToken />
-                        <h1 className={classes.modalTitle}>Login</h1>
-                        {xButton}
+                        <h1 className={classes.modalTitle}>{headerText}</h1>
                         <div className={classes.inputContainer}>
                             <input
                                 type='email'
@@ -283,7 +271,7 @@ const GetStartedModal = () => {
                                 className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                 autoComplete='email'
                             />
-                            <div className={classes.InputFeedbackContainer}>
+                            <div className={classes.emailInputFeedbackContainer}>
                                 <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
                                     {userEmailFeedback} 
                                 </p>
@@ -302,15 +290,19 @@ const GetStartedModal = () => {
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordFocus}
                                 />
-                                <div className={classes.InputFeedbackContainer}>
-                                    <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
-                                        {passwordFeedback}
-                                    </p>
-                                </div>
+                                <section className={classes.passwordInputFeedbackAndResetPasswordSection}>
+                                    <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
+                                        <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
+                                            {passwordFeedback}
+                                        </p>
+                                    </div>
+                                    <p className={`${classes['forgotPasswordLink']} ${isLogInVIew && !isValidPassword ? classes.isLogInVIew_isValidPassword : isLogInVIew ? classes.isLogInVIew : ''}`}><a onClick={ResetPasswordPage} className={classes.PageLink}>Forgot Password?</a></p>
+                                </section>
                             </div>
                         )}
-                        {GetStartedModal_InnerButton}
+                        {ActionButton}
                     </form>
+                    {socialMediaSection}
                     {formOptions}
                 </div>
             </div>
