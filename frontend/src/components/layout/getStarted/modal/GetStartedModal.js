@@ -41,6 +41,7 @@ const GetStartedModal = () => {
         enableScroll()
         setModalStatus("CreateAccount")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
+        document.removeEventListener("mousedown", closeModal);
     };
     const ExitButton = (
         <div onClick={exitAction} className={classes.exitButtonContainer}>
@@ -251,9 +252,24 @@ const GetStartedModal = () => {
             e.preventDefault();
         }
     };
+    const onEscKey = (e) => {
+        if (e.key === 'Escape') {
+            exitAction();
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('keydown', onEscKey);
+        document.addEventListener("mousedown", closeModal);
+    }, [])
+    const modalRef = useRef();
+    const closeModal = (e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target)) {
+            exitAction();
+        }
+    };
     return (
-        <div className={classes.blurredBackgroundContainer}>
-            <div className={classes.modal}>
+        <div className={classes.blurredBackgroundContainer} >
+            <div className={classes.modal} ref={modalRef}>
                 {ExitButton}
                 <div className={classes.modalContentContainer}>
                     {regSuccess}
