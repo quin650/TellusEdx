@@ -108,8 +108,7 @@ the css wonky i.e. creates a background color based on the box-shadow
 */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{
-    transition: background-color 5000s ease-in-out 0s;
+input:-webkit-autofill:focus{    transition: background-color 5000s ease-in-out 0s;
     /* is another trick to override the background color. It uses a large inset box shadow to cover the entire field, simulating a white background. */
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
