@@ -6,12 +6,16 @@ import CSRFToken from "../../../CSRFToken";
 import XAuthButton from "./SocialAuthLogos/xAuthButton";
 import DiscordAuthButton from "./SocialAuthLogos/discordAuthButton";
 import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
+import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
 
     const [modalStatus, setModalStatus] = useState("CreateAccount");
+    const [subModalPasswordStatus, setSubModalPasswordStatus] = useState(true);
+
+
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
@@ -35,6 +39,7 @@ const GetStartedModal = () => {
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
+    const [checkBackendCredentialsCommence, setCheckBackendCredentialsCommence] = useState(false);
 
     const exitAction = () => {
         dispatch(userReducerActions.getStartedModalClose())
@@ -51,6 +56,8 @@ const GetStartedModal = () => {
         </div>
     );
     useEffect(() => {
+        window.addEventListener('keydown', onEscKey);
+        document.addEventListener("mousedown", closeModal);
         if (getStartedView === 'LogIn'){
             LogInPage();
         }
@@ -71,7 +78,7 @@ const GetStartedModal = () => {
                 if (email.length === 0 ){
                     setIsValidEmail(false)
                     setUserEmailFeedback('Email Field Required')
-                    emailInputRef.current.focus(); 
+                    emailInputRef.current.focus();
                 }
                 else if (!emailPattern.test(email)){
                     setIsValidEmail(false)
@@ -83,14 +90,28 @@ const GetStartedModal = () => {
                     setUserEmailFeedback('')
                     passwordInputRef.current.focus();
                 }
-            },  500); 
+            },  500);
             return ()  => {
                 clearTimeout(identifier)
             };
         }
-    }, [email]);
+    }, [email, checkPasswordCommence]);
     useEffect (() => {
-        if (checkPasswordCommence) {
+        if (headerText === "Create Account" && checkPasswordCommence) {
+            const identifier = setTimeout( () => { 
+                if (password.length === 0 ){
+                    setIsValidPassword(false)
+                    setPasswordFeedback('Password Field Required')
+                } else if (password.length > 0 ){
+                    setPasswordFeedback('')
+                    setSubModalPasswordStatus(true);
+                    console.log("open Password Sub-Modal")
+                }
+            },  500);
+            return ()  => {
+                clearTimeout(identifier)
+            };
+        } else if (checkPasswordCommence) {
             const identifier = setTimeout( () => { 
                 if (password.length === 0 ){
                     setIsValidPassword(false)
@@ -102,19 +123,35 @@ const GetStartedModal = () => {
                     setIsValidPassword(true)
                     setPasswordFeedback('')
                 }
-            },  500); 
-
+            },  500);
             return ()  => {
                 clearTimeout(identifier)
             };
         }
-    }, [password]);
+    }, [password, checkPasswordCommence]);
+    const backendError = useSelector(({ user }) => user.error);
+    useEffect (() => {
+        if (checkBackendCredentialsCommence) {
+            if (checkBackendCredentialsCommence & backendError != ''){
+                setIsValidEmail(false)
+                setIsValidPassword(false)
+                setPasswordFeedback(backendError)
+            } else if (backendError === '' ){
+                setIsValidEmail(true)
+                setIsValidPassword(true)
+                setPasswordFeedback('')
+            }
+    }}, [backendError, checkBackendCredentialsCommence]);
+    const handleOnEmailFocus = () => {
+        dispatch(userReducerActions.loginErrorReset());
+    };
     const handleOnPasswordFocus = () => {
+        dispatch(userReducerActions.loginErrorReset());
         setCheckEmailCommence(true);
         if (email.length === 0 ){
             setIsValidEmail(false)
             setUserEmailFeedback('Email Field Required')
-            emailInputRef.current.focus(); 
+            emailInputRef.current.focus();
         }
         else if (!emailPattern.test(email)){
             setIsValidEmail(false)
@@ -126,13 +163,12 @@ const GetStartedModal = () => {
             setUserEmailFeedback('')
             passwordInputRef.current.focus();
         }
-    }
+    };
     const handleOnBlurPassword = () => {
         setCheckPasswordCommence(true);
         if (password.length < 8 ){
             setIsValidPassword(false)
-            setPasswordFeedback('At least 8 Characters Required')
-            passwordInputRef.current.focus(); 
+            passwordInputRef.current.focus();
             return false
         } else {
             setIsValidPassword(true)
@@ -144,14 +180,15 @@ const GetStartedModal = () => {
         ""
     );
     const RegistrationSuccess = () => {
-        setModalStatus("RegistrationSuccess")
+        setModalStatus("RegistrationSuccess");
     };
     const CreateAccountPage = () => {
-        setModalStatus("CreateAccount")
-        setIsLogInVIew(false)
-        setHeaderText("Create Account")
-        setButtonText("Create Account")
-        setRegSuccess("")
+        dispatch(userReducerActions.loginErrorReset());
+        setModalStatus("CreateAccount");
+        setIsLogInVIew(false);
+        setHeaderText("Create Account");
+        setButtonText("Create Account");
+        setRegSuccess("");
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -162,7 +199,7 @@ const GetStartedModal = () => {
                 </div>
             </Fragment>
         )
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>);
     };
     const LogInPage = () => {
         setModalStatus("LogIn")
@@ -199,19 +236,20 @@ const GetStartedModal = () => {
     );
     const onSubmit = (e) => {
         e.preventDefault();
-        handleOnBlurPassword();
         setCheckPasswordCommence(true)
-        if (handleOnBlurPassword == true && isValidEmail && isValidPassword){
+        if (handleOnBlurPassword() === true && isValidEmail && isValidPassword){
             switch(modalStatus){
                 case "CreateAccount":
                     dispatch(register_APIAction(email, password));
+                    setCheckBackendCredentialsCommence(true);
                     break;
                 case "LogIn":
                     dispatch(login_APIAction(email, password));
+                    setCheckBackendCredentialsCommence(true);
                     break;
                 case "Reset Password":
                     break;
-                } 
+            } 
         }
     };
     const [formOptions, setFormOptions] = useState(
@@ -228,14 +266,12 @@ const GetStartedModal = () => {
             </Fragment>
     );
     const disableScroll = () => {
-        // Add listeners to prevent scroll events
         window.addEventListener('scroll', preventDefaultScroll, { passive: false });
         window.addEventListener('wheel', preventDefaultScroll, { passive: false });
         window.addEventListener('touchmove', preventDefaultScroll, { passive: false });
         window.addEventListener('keydown', preventDefaultKeydown, { passive: false });
     };
     const enableScroll = () => {
-        // Remove listeners to allow scroll events
         window.removeEventListener('scroll', preventDefaultScroll);
         window.removeEventListener('wheel', preventDefaultScroll);
         window.removeEventListener('touchmove', preventDefaultScroll);
@@ -257,10 +293,6 @@ const GetStartedModal = () => {
             exitAction();
         }
     };
-    useEffect(() => {
-        window.addEventListener('keydown', onEscKey);
-        document.addEventListener("mousedown", closeModal);
-    }, [])
     const modalRef = useRef();
     const closeModal = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -286,6 +318,7 @@ const GetStartedModal = () => {
                                 ref={emailInputRef}
                                 className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                 autoComplete='email'
+                                onFocus={handleOnEmailFocus}
                             />
                             <div className={classes.emailInputFeedbackContainer}>
                                 <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
@@ -306,6 +339,7 @@ const GetStartedModal = () => {
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordFocus}
                                 />
+                                {subModalPasswordStatus && <PasswordSubModal/> }
                                 <section className={classes.passwordInputFeedbackAndResetPasswordSection}>
                                     <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
                                         <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>

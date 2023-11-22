@@ -31,14 +31,17 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         try:
             user = User.objects.get(email=input_email)
+            print("user: ", user)
         except User.DoesNotExist:
-            message = "User with this email does not exist."
-            raise serializers.ValidationError({"EmailError": message})
+            message = "Access Denied"
+            print("message: ", message)
+            raise serializers.ValidationError({"Error": message})
 
         is_valid_password = check_password(input_password, user.password)
         if not is_valid_password:
-            message = "Invalid Password"
-            raise serializers.ValidationError({"PasswordError": message})
+            message = "Access Denied"
+            print("message: ", message)
+            raise serializers.ValidationError({"Error": message})
 
         if user is not bool and is_valid_password:
             data = super().validate(attrs)
@@ -46,15 +49,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             for k, v in serializer.items():
                 data[k] = v
             return {"userData": data}
-
-
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     def validate(self, attrs):
-#         data = super().validate(attrs)
-#         serializer = UserSerializerWithToken(self.user).data
-#         for k, v in serializer.items():
-#             data[k] = v
-#         return {"userData": data}
 
 
 @method_decorator(csrf_protect, name="dispatch")

@@ -24,9 +24,7 @@ export const login_APIAction = (username, password) => {
             localStorage.setItem('token', res.data.userData.token)
 
         } catch (error) {
-            console.log('error 1: ', error)
-            console.log('error 2:', error.response.data)
-            dispatch(userReducerActions.loginFail(error.response.data));
+            dispatch(userReducerActions.loginFail(error.response.data.Error[0]));
         };
     };
 };
