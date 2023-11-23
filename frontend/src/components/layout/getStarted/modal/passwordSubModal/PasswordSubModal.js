@@ -1,19 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './PasswordSubModal.module.css'
-const PasswordSubModal = () => {
+const PasswordSubModal = (props) => {
     const [isValidLower, setIsValidLower] = useState(false);
     const [isValidUpper, setIsValidUpper] = useState(false);
     const [isValidNumber, setIsValidNumber] = useState(false);
     const [isValidSpecial, setIsValidSpecial] = useState(false);
     const [isValidEight, setIsValidEight] = useState(false);
 
+    const lowerCasePattern = /[a-z]/;
+    const upperCasePattern = /[A-Z]/;
+    const numberPattern = /\d/;
+    const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    const minimumEightPattern = /.{8,}/
 
+    useEffect(() => {
+        setIsValidLower(lowerCasePattern.test(props.password));
+        setIsValidUpper(upperCasePattern.test(props.password));
+        setIsValidNumber(numberPattern.test(props.password));
+        setIsValidSpecial(specialCharacterPattern.test(props.password));
+        setIsValidEight(minimumEightPattern.test(props.password));
+    }, [props.password])
 
-    
+    useEffect(() =>{
+        if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
+            props.checkSubModalPasswordStatusTrue();
+            console.log('all password regex met')
+        } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
+            props.checkSubModalPasswordStatusFalse();
+            console.log('NOT....all password regex met')
+        }
+    }, [props.password, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
+
     return (
         <div className={classes.subModal}>
             <div className={classes.subModalContainer}>
-                <span>Should Contain: </span>
+                <span>Password Requirements: </span>
                     <ul className={classes.row}>
                         
                         <li className={`${classes['lower']} ${isValidLower && classes.isValidLower}`}>

@@ -9,13 +9,10 @@ import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
 import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
-    console.log('GetStartedModal1')
+    // console.log('GetStartedModal1')
     const dispatch = useDispatch();
-
     const [modalStatus, setModalStatus] = useState("CreateAccount");
-    const [subModalPasswordStatus, setSubModalPasswordStatus] = useState(true);
-
-
+    const [subModalPasswordStatus, setSubModalPasswordStatus] = useState("closed");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
@@ -25,7 +22,6 @@ const GetStartedModal = () => {
     const [formData, setFormData] = useState({email: '', password: ''});
     const { email, password } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
@@ -33,8 +29,7 @@ const GetStartedModal = () => {
     const [passwordFeedback, setPasswordFeedback] = useState('');
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
-    const passwordPattern = /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[a-z]).{8,}$/;
-
+    const [isValidPasswordRegex, setIsValidPasswordRegex] = useState(false);
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
@@ -73,7 +68,7 @@ const GetStartedModal = () => {
     // this input field for the whole duration of .5 seconds. 
         //     Lesson 145 at 1:08 Explanation of code flow
     useEffect (() => {
-        if (checkEmailCommence) {
+        if (headerText === "Login" && checkEmailCommence) {
             const identifier = setTimeout( () => { 
                 if (email.length === 0 ){
                     setIsValidEmail(false)
@@ -96,17 +91,30 @@ const GetStartedModal = () => {
             };
         }
     }, [email, checkPasswordCommence]);
+
+    const checkSubModalPasswordStatusTrue = () => {
+        setIsValidPasswordRegex(true);
+    };
+    const checkSubModalPasswordStatusFalse = () => {
+        setIsValidPasswordRegex(false);
+    };
+    console.log('0---isValidPasswordRegex: ', isValidPasswordRegex);
     useEffect (() => {
-        if (headerText === "Create Account" && checkPasswordCommence) {
+        if (headerText === "Create Account" && checkPasswordCommence && !isValidPasswordRegex) {
+            console.log('1---isValidPasswordRegex === false')
+            setSubModalPasswordStatus("opened");
+        } else if (headerText === "Create Account" && checkPasswordCommence && isValidPasswordRegex) {
+            console.log('2---isValidPasswordRegex === true')
+            setSubModalPasswordStatus("closed");
+        } else if (headerText === "Create Account" && checkPasswordCommence) {
             const identifier = setTimeout( () => { 
                 if (password.length === 0 ){
-                    setIsValidPassword(false)
-                    setPasswordFeedback('Password Field Required')
+                    setIsValidPassword(false);
+                    setPasswordFeedback('Password Field Required');
                 } else if (password.length > 0 ){
-                    setPasswordFeedback('')
-                    setSubModalPasswordStatus(true);
-                    console.log("open Password Sub-Modal")
-                }
+                    setPasswordFeedback('');
+                    setSubModalPasswordStatus("opened");
+                } 
             },  500);
             return ()  => {
                 clearTimeout(identifier)
@@ -127,6 +135,8 @@ const GetStartedModal = () => {
             return ()  => {
                 clearTimeout(identifier)
             };
+        } else{
+            setSubModalPasswordStatus(false);
         }
     }, [password, checkPasswordCommence]);
     const backendError = useSelector(({ user }) => user.error);
@@ -161,19 +171,8 @@ const GetStartedModal = () => {
         else if (emailPattern.test(email)){
             setIsValidEmail(true)
             setUserEmailFeedback('')
+            setCheckPasswordCommence(true)
             passwordInputRef.current.focus();
-        }
-    };
-    const handleOnBlurPassword = () => {
-        setCheckPasswordCommence(true);
-        if (password.length < 8 ){
-            setIsValidPassword(false)
-            passwordInputRef.current.focus();
-            return false
-        } else {
-            setIsValidPassword(true)
-            setPasswordFeedback('')
-            return true
         }
     };
     const [regSuccess, setRegSuccess] = useState(
@@ -219,6 +218,7 @@ const GetStartedModal = () => {
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
         setRegSuccess("");
         setPasswordInputFieldStatus(true);
+        setSubModalPasswordStatus(false);
     };
     const ResetPasswordPage = () => {
         setSocialMediaSection('')
@@ -226,8 +226,8 @@ const GetStartedModal = () => {
         setHeaderText("Reset Password")
         setButtonText("Send Reset Email")
         setRegSuccess("")
-        setFormOptions(
-            <span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
+        setSubModalPasswordStatus(false);
     };
     const ActionButton = (
         <button className={classes.actionButton} type='submit'>
@@ -237,7 +237,7 @@ const GetStartedModal = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         setCheckPasswordCommence(true)
-        if (handleOnBlurPassword() === true && isValidEmail && isValidPassword){
+        if (isValidEmail && isValidPassword){
             switch(modalStatus){
                 case "CreateAccount":
                     dispatch(register_APIAction(email, password));
@@ -339,7 +339,7 @@ const GetStartedModal = () => {
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordFocus}
                                 />
-                                {subModalPasswordStatus && <PasswordSubModal/> }
+                                {subModalPasswordStatus === "opened" && <PasswordSubModal password={password} checkSubModalPasswordStatusTrue={checkSubModalPasswordStatusTrue} checkSubModalPasswordStatusFalse={checkSubModalPasswordStatusFalse}/> }
                                 <section className={classes.passwordInputFeedbackAndResetPasswordSection}>
                                     <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
                                         <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
