@@ -136,7 +136,7 @@ const GetStartedModal = () => {
                 clearTimeout(identifier)
             };
         } else{
-            setSubModalPasswordStatus(false);
+            setSubModalPasswordStatus("closed");
         }
     }, [password, checkPasswordCommence]);
     const backendError = useSelector(({ user }) => user.error);
@@ -218,7 +218,7 @@ const GetStartedModal = () => {
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
         setRegSuccess("");
         setPasswordInputFieldStatus(true);
-        setSubModalPasswordStatus(false);
+        setSubModalPasswordStatus("closed");
     };
     const ResetPasswordPage = () => {
         setSocialMediaSection('')
@@ -227,7 +227,7 @@ const GetStartedModal = () => {
         setButtonText("Send Reset Email")
         setRegSuccess("")
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
-        setSubModalPasswordStatus(false);
+        setSubModalPasswordStatus("closed");
     };
     const ActionButton = (
         <button className={classes.actionButton} type='submit'>
