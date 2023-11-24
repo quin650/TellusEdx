@@ -13,6 +13,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
 from rest_framework import serializers
+import re
 
 
 @method_decorator(ensure_csrf_cookie, name="dispatch")
@@ -67,10 +68,21 @@ class RegisterView(APIView):
         password = data["password"]
         try:
             if User.objects.filter(email=email).exists():
-                return Response({"error": "Email already exists"})
+                return Response(
+                    {"error": "Email already exists"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
             else:
-                if len(password) < 8:
-                    return Response({"error": "Password must be at least 8 characters"})
+                if (
+                    len(password) > 7
+                    and any(char.islower() for char in password)
+                    and any(char.isupper() for char in password)
+                    and any(char.isdigit() for char in password)
+                    and re.search(
+                        r"[!@#$%^&*()_+\-=\\[\]{};" ':"\\|,.<>\/?]+', password
+                    )
+                ):
+                    return Response({"error": "Invalid Password"})
                 else:
                     user = User.objects.create_user(
                         username=username, email=email, password=password
