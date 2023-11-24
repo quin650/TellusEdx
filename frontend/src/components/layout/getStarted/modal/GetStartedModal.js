@@ -31,7 +31,8 @@ const GetStartedModal = () => {
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
-    const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
+    const [checkPasswordCommence1, setCheckPasswordCommence1] = useState(false);
+    const [checkPasswordCommence2, setCheckPasswordCommence2] = useState(false);
     const [checkBackendCredentialsCommence, setCheckBackendCredentialsCommence] = useState(false);
 
     const exitAction = () => {
@@ -65,7 +66,7 @@ const GetStartedModal = () => {
         if (emailPattern.test(email)){
                 setIsValidEmail(true)
                 setUserEmailFeedback('')
-                setCheckPasswordCommence(true)
+                setCheckPasswordCommence2(true)
                 passwordInputRef.current.focus();
             }
     };
@@ -104,9 +105,9 @@ const GetStartedModal = () => {
     }, [email, checkEmailCommence]);
 
     useEffect (() => {
-        if (headerText === "Create Account" && checkPasswordCommence) {
+        if (headerText === "Create Account" && checkPasswordCommence2) {
             setPasswordFeedback('');
-        } else if (headerText === "Login" && checkPasswordCommence) {
+        } else if (headerText === "Login" && checkPasswordCommence1) {
             const identifier = setTimeout( () => { 
                 if (password.length === 0 ){
                     setIsValidPassword(false)
@@ -124,7 +125,7 @@ const GetStartedModal = () => {
                 clearTimeout(identifier)
             };
         }
-    }, [password, checkPasswordCommence]);
+    }, [password, checkPasswordCommence1, checkPasswordCommence2]);
 
     const backendError = useSelector(({ user }) => user.error);
     useEffect (() => {
@@ -202,7 +203,7 @@ const GetStartedModal = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         setCheckEmailCommence(true)
-        setCheckPasswordCommence(true)
+        setCheckPasswordCommence1(true)
         if (isValidEmail && isValidPassword){
             switch(modalStatus){
                 case "CreateAccount":
@@ -306,7 +307,7 @@ const GetStartedModal = () => {
                                     onFocus={handleOnPasswordFocus}
                                     onBlur={handleOnPasswordBlur}
                                 />
-                                <PasswordSubModal password={password} checkPasswordCommence={checkPasswordCommence} isValidEmail={isValidEmail} headerText={headerText}/>
+                                <PasswordSubModal password={password} checkPasswordCommence2={checkPasswordCommence2} isValidEmail={isValidEmail} headerText={headerText}/>
                                 <section className={classes.passwordInputFeedbackAndResetPasswordSection}>
                                     <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
                                         <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>

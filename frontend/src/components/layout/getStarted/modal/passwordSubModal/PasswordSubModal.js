@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import classes from './PasswordSubModal.module.css'
 const PasswordSubModal = (props) => {
+    console.log('PasswordSubModal')
     const [isValidLower, setIsValidLower] = useState(false);
     const [isValidUpper, setIsValidUpper] = useState(false);
     const [isValidNumber, setIsValidNumber] = useState(false);
@@ -22,8 +23,10 @@ const PasswordSubModal = (props) => {
     }, [props.password])
 
     useEffect(() =>{
-        if (props.headerText == 'Create Account' && props.checkPasswordCommence && props.isValidEmail) {
-            if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
+        if (props.headerText == 'Create Account' && props.checkPasswordCommence2 && props.isValidEmail) {
+            if (props.password.length === 0){
+                setIsValidPassword(true)
+            } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
                 setIsValidPassword(true)
             } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
                 setIsValidPassword(false)
