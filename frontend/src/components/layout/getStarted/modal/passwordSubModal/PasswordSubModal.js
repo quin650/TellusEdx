@@ -6,12 +6,15 @@ const PasswordSubModal = (props) => {
     const [isValidNumber, setIsValidNumber] = useState(false);
     const [isValidSpecial, setIsValidSpecial] = useState(false);
     const [isValidEight, setIsValidEight] = useState(false);
-
+    const [isValidPassword, setIsValidPassword] = useState(true);
     const lowerCasePattern = /[a-z]/;
     const upperCasePattern = /[A-Z]/;
     const numberPattern = /\d/;
     const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     const minimumEightPattern = /.{8,}/
+    // console.log('headerText: ', props.headerText)
+    // console.log('checkPasswordCommence: ', props.checkPasswordCommence)
+    // console.log('isValidEmail: ', props.isValidEmail)
 
     useEffect(() => {
         setIsValidLower(lowerCasePattern.test(props.password));
@@ -22,17 +25,19 @@ const PasswordSubModal = (props) => {
     }, [props.password])
 
     useEffect(() =>{
-        if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
-            props.checkSubModalPasswordStatusTrue();
-            console.log('all password regex met')
-        } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
-            props.checkSubModalPasswordStatusFalse();
-            console.log('NOT....all password regex met')
+        if (props.headerText == 'Create Account' && props.checkPasswordCommence && props.isValidEmail) {
+            if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
+                setIsValidPassword(true)
+                console.log('all password regex met')
+            } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
+                setIsValidPassword(false)
+                console.log('NOT....all password regex met')
+            }
         }
     }, [props.password, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
 
     return (
-        <div className={classes.subModal}>
+        <div className={`${classes['subModal']} ${isValidPassword && classes.isValidPassword}`}>
             <div className={classes.subModalContainer}>
                 <span>Password Requirements: </span>
                     <ul className={classes.row}>
