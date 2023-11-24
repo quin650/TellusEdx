@@ -12,9 +12,6 @@ const PasswordSubModal = (props) => {
     const numberPattern = /\d/;
     const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     const minimumEightPattern = /.{8,}/
-    // console.log('headerText: ', props.headerText)
-    // console.log('checkPasswordCommence: ', props.checkPasswordCommence)
-    // console.log('isValidEmail: ', props.isValidEmail)
 
     useEffect(() => {
         setIsValidLower(lowerCasePattern.test(props.password));
@@ -28,10 +25,8 @@ const PasswordSubModal = (props) => {
         if (props.headerText == 'Create Account' && props.checkPasswordCommence && props.isValidEmail) {
             if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
                 setIsValidPassword(true)
-                console.log('all password regex met')
             } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
                 setIsValidPassword(false)
-                console.log('NOT....all password regex met')
             }
         }
     }, [props.password, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])

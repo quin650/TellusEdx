@@ -9,7 +9,7 @@ import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
 import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
-    // console.log('GetStartedModal1')
+    console.log('GetStartedModal1')
     const dispatch = useDispatch();
     const [modalStatus, setModalStatus] = useState("CreateAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
@@ -79,9 +79,7 @@ const GetStartedModal = () => {
     // this input field for the whole duration of .5 seconds. 
         //     Lesson 145 at 1:08 Explanation of code flow
     useEffect (() => {
-        console.log('checkEmailCommence --2: ', checkEmailCommence);
         if (checkEmailCommence) {
-            console.log('checkEmailCommence --1: ', checkEmailCommence);
             const identifier = setTimeout( () => { 
                 if (email.length === 0 ){
                     setIsValidEmail(false)
