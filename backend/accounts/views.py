@@ -69,7 +69,7 @@ class RegisterView(APIView):
         try:
             if User.objects.filter(email=email).exists():
                 return Response(
-                    {"error": "Email already exists"},
+                    {"error": "Email already exists. Sign In Instead"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
             else:
