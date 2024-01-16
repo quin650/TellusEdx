@@ -10,9 +10,10 @@ const initialState = {
 	isAuthenticated: false,
 	registered: false,
 	registrationFeedback: '',
+	registrationError: '',
 	loading: false,
     userInfo: userInfoFromStorage,
-    error:[],
+    loginError:'',
 };
 
 const userSlice = createSlice({
@@ -42,17 +43,18 @@ const userSlice = createSlice({
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
-		registerFail(state) {
-			state.registered = false;
-			state.isAuthenticated = false;
-		},
 		registerSuccess(state){
 			state.registered = true;
 			state.isAuthenticated = false;
 			state.getStartedView = 'RegistrationSuccess'
 		},
-		registerFeedback(state){
-			state.registrationFeedback = payload
+		registerFail(state, action){
+			state.registrationError = action.payload
+			state.registered = false;
+			state.isAuthenticated = false;
+		},
+		registerFeedback(state, action){
+			state.registrationFeedback = action.payload
 		},
 		authSuccess(state){
 			state.isAuthenticated = true;
@@ -74,10 +76,10 @@ const userSlice = createSlice({
         },
         loginFail(state, action){
             state.loading = false;
-            state.error = action.payload;
+            state.loginError = action.payload;
         },
 		loginErrorReset(state){
-			state.error = '';
+			state.loginError = '';
 		},
 		logoutSuccess(state){
 			state.isAuthenticated = false;

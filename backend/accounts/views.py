@@ -68,10 +68,8 @@ class RegisterView(APIView):
         password = data["password"]
         try:
             if User.objects.filter(email=email).exists():
-                return Response(
-                    {"error": "Email already exists. Sign In Instead"},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
+                message = ({"error": "Email already exists. Sign In Instead"},)
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
                 if (
                     len(password) > 7

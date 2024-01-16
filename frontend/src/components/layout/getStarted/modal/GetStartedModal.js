@@ -82,20 +82,23 @@ const GetStartedModal = () => {
     useEffect (() => {
         if (checkEmailCommence) {
             const identifier = setTimeout( () => { 
-                if (email.length === 0 ){
-                    setIsValidEmail(false)
-                    setUserEmailFeedback('Email Field Required')
+                if (email.length === 0){
+                    setIsValidEmail(false);
+                    setUserEmailFeedback('Email Field Required');
                     emailInputRef.current.focus();
                 }
                 else if (!emailPattern.test(email)){
-                    setIsValidEmail(false)
-                    setUserEmailFeedback('Invalid Email Format')
+                    setIsValidEmail(false);
+                    setUserEmailFeedback('Invalid Email Format');
                     emailInputRef.current.focus();
                 }
-                else if (emailPattern.test(email)){
-                    setIsValidEmail(true)
-                    setUserEmailFeedback('')
-                    setCheckEmailCommence(false)
+                else if (emailPattern.test(email) && registrationError != ''){
+                    return;
+                }
+                else if (emailPattern.test(email) && registrationError === ''){
+                    setIsValidEmail(true);
+                    setUserEmailFeedback('');
+                    setCheckEmailCommence(false);
                 }
             },  500);
             return ()  => {
@@ -127,19 +130,16 @@ const GetStartedModal = () => {
         }
     }, [password, checkPasswordCommence1, checkPasswordCommence2]);
 
-    const backendError = useSelector(({ user }) => user.error);
+    const loginError = useSelector(({ user }) => user.error);
+    const registrationError = useSelector(({ user }) => user.registrationError);
     useEffect (() => {
         if (checkBackendCredentialsCommence) {
-            if (checkBackendCredentialsCommence & backendError != ''){
+            if (registrationError != ''){
                 setIsValidEmail(false)
-                setIsValidPassword(false)
-                setPasswordFeedback(backendError)
-            } else if (backendError === '' ){
-                setIsValidEmail(true)
-                setIsValidPassword(true)
-                setPasswordFeedback('')
+                setUserEmailFeedback(registrationError)
             }
-    }}, [backendError, checkBackendCredentialsCommence]);
+    }}, [checkBackendCredentialsCommence, registrationError]);
+
     const handleOnPasswordBlur = () => {
         dispatch(userReducerActions.loginErrorReset());
     };
@@ -167,6 +167,7 @@ const GetStartedModal = () => {
             </Fragment>
         )
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>);
+        setCheckBackendCredentialsCommence(false)
     };
     const LogInPage = () => {
         setModalStatus("LogIn")
@@ -186,6 +187,7 @@ const GetStartedModal = () => {
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
         setRegSuccess("");
         setPasswordInputFieldStatus(true);
+        setCheckBackendCredentialsCommence(false)
     };
     const ResetPasswordPage = () => {
         setSocialMediaSection('')

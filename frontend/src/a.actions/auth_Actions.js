@@ -63,8 +63,8 @@ export const register_APIAction = (username, password) => {
         try {
             const res = await registerData();
             if (res.data.error) {
-                console.log('res.data.error: ', res.data.error)
                 dispatch(userReducerActions.registerFail());
+                
             } else {
                 console.log('register action success')
                 dispatch(userReducerActions.registerSuccess());
@@ -72,7 +72,8 @@ export const register_APIAction = (username, password) => {
                 dispatch(userReducerActions.registerFeedback(res.data));
             }
         } catch (err) {
-            dispatch(userReducerActions.registerFail());
+            console.log('err: ',err.response.data[0].error)
+            dispatch(userReducerActions.registerFail(err.response.data[0].error));
         };
     };
 };
