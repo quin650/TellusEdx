@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import classes from './PasswordSubModal.module.css'
 const PasswordSubModal = (props) => {
-    console.log('PasswordSubModal')
+    // console.log('PasswordSubModal')
     const [isValidLower, setIsValidLower] = useState(false);
     const [isValidUpper, setIsValidUpper] = useState(false);
     const [isValidNumber, setIsValidNumber] = useState(false);

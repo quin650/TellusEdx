@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import classes from './ToggleButton.module.css';
 
 const ToggleButton = (props) =>{
-    console.log('ToggleButton')
+    // console.log('ToggleButton')
     // true is toggle on Right (aka Contribute)
     // false is toggle on Left (aka Learn)
     const [ToggleIsContribute, setToggleIsContribute] = useState(false);

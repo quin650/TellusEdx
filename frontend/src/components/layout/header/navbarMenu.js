@@ -7,7 +7,7 @@ import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
-    console.log('NavbarMenu')
+    // console.log('NavbarMenu')
     const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
     const dispatch = useDispatch();
 

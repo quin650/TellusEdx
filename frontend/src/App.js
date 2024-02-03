@@ -7,7 +7,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { userReducerActions } from './a.reducers/auth_Reducers';
 
 function App() {
-    console.log('App')
+    // console.log('App')
     const dispatch = useDispatch();
     const userInfo = useSelector(({ user }) => user.userInfo);
     //Above call, is good  b/c it is specific to the state we want, and only pulls that one, so only rerendering happens when this specific state happens
@@ -15,7 +15,7 @@ function App() {
     //const { userInfo } = useSelector(state => state.user);
     useEffect(() => {
         userInfo && dispatch(userReducerActions.authSuccess())
-        console.log('App.UseEffect')
+        // console.log('App.UseEffect')
     }, [userInfo]);
 
     return (

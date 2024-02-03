@@ -4,7 +4,7 @@ import BackgroundImage from '../../../../static/images/Background_Limited.png';
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
-    console.log('1_HomeTop')
+    // console.log('1_HomeTop')
 
     return (
         <div className={classes.outer_container_top}>

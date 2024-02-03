@@ -6,7 +6,7 @@ import NavbarMenu from './navbarMenu';
 import classes from './NavbarMenuButton.module.css';
 
 const NavbarMenuButton = () => {
-    console.log('NavbarMenuButton')
+    // console.log('NavbarMenuButton')
     const dispatch = useDispatch();
     const {navbarMenuStatus, getStartedModalStatus} = useSelector(({ user }) => user);
     const OpenAction = () => {

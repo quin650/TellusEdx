@@ -8,7 +8,7 @@ import Logo from '../../../../static/images/Logo_arrows.png';
 import classes from './mainNavbar.module.css';
 
 const MainNavbar = () => {
-    console.log('MainNavbar')
+    // console.log('MainNavbar')
     const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     const handleClickScroll = () => {
         console.log('MainNavbar.handleClickScroll')
