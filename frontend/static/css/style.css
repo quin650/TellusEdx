@@ -14,12 +14,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
-
     min-width: 400px;
     width: calc(100vw - 4px);
-    min-height: 100vh;
+    height: 100vh;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     scrollbar-width: thin; /* For Firefox */
     scrollbar-color: transparent transparent;
 }
