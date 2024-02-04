@@ -80,14 +80,17 @@ class RegisterView(APIView):
                         r"[!@#$%^&*()_+\-=\\[\]{};" ':"\\|,.<>\/?]+', password
                     )
                 ):
-                    return Response({"error": "Invalid Password"})
-                else:
                     user = User.objects.create_user(
-                        username=username, email=email, password=password
+                        username=username,
+                        email=email,
+                        password=password,
+                        is_active=False,
                     )
                     serializer = UserSerializerWithToken(user, many=False)
                     print(serializer.data)
                     return Response(serializer.data)
+                else:
+                    return Response({"error": "Invalid Password"})
         except:
             message = {"error": "Something went wrong when registering account?"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)

@@ -18,7 +18,7 @@ body {
     width: calc(100vw - 4px);
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     scrollbar-width: thin; /* For Firefox */
     scrollbar-color: transparent transparent;
 }

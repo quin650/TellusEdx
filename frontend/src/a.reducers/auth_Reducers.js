@@ -53,6 +53,9 @@ const userSlice = createSlice({
 			state.registered = false;
 			state.isAuthenticated = false;
 		},
+		registerErrorReset(state){
+			state.registrationError = ""
+		},
 		registerFeedback(state, action){
 			state.registrationFeedback = action.payload
 		},

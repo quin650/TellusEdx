@@ -14,7 +14,9 @@ const GetStartedModal = () => {
     const [modalStatus, setModalStatus] = useState("CreateAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const [isLogInVIew, setIsLogInVIew] = useState(false);
+    const [emailInputFieldStatus, setEmailInputFieldStatus] = useState(true);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
+    const [passCodeInputFieldStatus, setPassCodeInputFieldStatus] = useState(false);
     const [headerText, setHeaderText] = useState("Create Account");
     const [buttonText, setButtonText] = useState("Create Account");
 
@@ -23,6 +25,8 @@ const GetStartedModal = () => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
+    const passCodeInputRef = useRef();
+    const modalRef = useRef();
 
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
@@ -35,41 +39,8 @@ const GetStartedModal = () => {
     const [checkPasswordCommence2, setCheckPasswordCommence2] = useState(false);
     const [checkBackendCredentialsCommence, setCheckBackendCredentialsCommence] = useState(false);
 
-    const exitAction = () => {
-        dispatch(userReducerActions.getStartedModalClose())
-        enableScroll()
-        setModalStatus("CreateAccount")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
-        document.removeEventListener("mousedown", closeModal);
-    };
-    const ExitButton = (
-        <div onClick={exitAction} className={classes.exitButtonContainer}>
-            <div className={classes.exitButton}>
-                <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
-            </div>
-        </div>
-    );
-    useEffect(() => {
-        window.addEventListener('keydown', onEscKey);
-        document.addEventListener("mousedown", closeModal);
-        if (getStartedView === 'LogIn'){
-            LogInPage();
-        }
-        disableScroll()
-    }, []);
-    const handleOnEmailFocus = () => {
-        dispatch(userReducerActions.loginErrorReset());
-    };
-    const handleOnPasswordFocus = () => {
-        dispatch(userReducerActions.loginErrorReset());
-        setCheckEmailCommence(true);
-        if (emailPattern.test(email)){
-                setIsValidEmail(true)
-                setUserEmailFeedback('')
-                setCheckPasswordCommence2(true)
-                passwordInputRef.current.focus();
-            }
-    };
+    const registrationError = useSelector(({ user }) => user.registrationError);
+
     // useEffect Explanation
     // The useEffect runs initially when the component mounts
     //      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
@@ -105,7 +76,7 @@ const GetStartedModal = () => {
                 clearTimeout(identifier)
             };
         }
-    }, [email, checkEmailCommence]);
+    }, [email, checkEmailCommence, registrationError]);
 
     useEffect (() => {
         if (headerText === "Create Account" && checkPasswordCommence2) {
@@ -121,7 +92,6 @@ const GetStartedModal = () => {
                 } else if (password.length > 7 ){
                     setIsValidPassword(true)
                     setPasswordFeedback('')
-                    
                 }
             },  500);
             return ()  => {
@@ -130,8 +100,6 @@ const GetStartedModal = () => {
         }
     }, [password, checkPasswordCommence1, checkPasswordCommence2]);
 
-    const loginError = useSelector(({ user }) => user.error);
-    const registrationError = useSelector(({ user }) => user.registrationError);
     useEffect (() => {
         if (checkBackendCredentialsCommence) {
             if (registrationError != ''){
@@ -140,37 +108,32 @@ const GetStartedModal = () => {
             }
     }}, [checkBackendCredentialsCommence, registrationError]);
 
+    const handleOnEmailFocus = () => {
+        // dispatch(userReducerActions.loginErrorReset());
+    };
+    const handleOnPasswordFocus = () => {
+        setCheckEmailCommence(true);
+        if (emailPattern.test(email)){
+                setIsValidEmail(true)
+                setUserEmailFeedback('')
+                setCheckPasswordCommence2(true)
+                passwordInputRef.current.focus();
+            }
+    };
     const handleOnPasswordBlur = () => {
-        dispatch(userReducerActions.loginErrorReset());
-    };
-    const [regSuccess, setRegSuccess] = useState(
-        ""
-    );
-    const RegistrationSuccess = () => {
-        setModalStatus("RegistrationSuccess");
-    };
-    const CreateAccountPage = () => {
-        dispatch(userReducerActions.loginErrorReset());
-        setModalStatus("CreateAccount");
-        setIsLogInVIew(false);
-        setHeaderText("Create Account");
-        setButtonText("Create Account");
-        setRegSuccess("");
-        setSocialMediaSection(
-            <Fragment>
-                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
-                <div className={classes.socialAuthContainer}>
-                    <XAuthButton />
-                    <DiscordAuthButton />
-                    <GitHubAuthButton />
-                </div>
-            </Fragment>
-        )
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>);
-        setCheckBackendCredentialsCommence(false)
+        // dispatch(userReducerActions.loginErrorReset());
     };
     const LogInPage = () => {
-        setModalStatus("LogIn")
+        setEmailInputFieldStatus(true);
+        setPasswordInputFieldStatus(true);
+        setPassCodeInputFieldStatus(false);
+        setCheckPasswordCommence2(false);
+        setCheckBackendCredentialsCommence(false);
+        dispatch(userReducerActions.registerErrorReset());
+        setModalStatus("LogIn");
+        setHeaderText("Login");
+        setIsLogInVIew(true);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -181,20 +144,46 @@ const GetStartedModal = () => {
                 </div>
             </Fragment>
         )
-        setHeaderText("Login");
-        setIsLogInVIew(true);
         setButtonText("Log In");
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
-        setRegSuccess("");
+    };
+    const CreateAccountPage = () => {
+        setEmailInputFieldStatus(true);
         setPasswordInputFieldStatus(true);
+        setPassCodeInputFieldStatus(false);
+        // dispatch(userReducerActions.loginErrorReset());
+        setCheckPasswordCommence2(true)
         setCheckBackendCredentialsCommence(false)
+        setModalStatus("CreateAccount");
+        setHeaderText("Create Account");
+        setIsLogInVIew(false);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>);
+        setSocialMediaSection(
+            <Fragment>
+                <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
+                <div className={classes.socialAuthContainer}>
+                    <XAuthButton />
+                    <DiscordAuthButton />
+                    <GitHubAuthButton />
+                </div>
+            </Fragment>
+        )
+        setButtonText("Create Account");
+    };
+    const RegistrationSuccess = () => {
+        setModalStatus("RegistrationSuccess");
+        setHeaderText("Registration Success");
+        setEmailInputFieldStatus(false)
+        setPasswordInputFieldStatus(false)
+        setPassCodeInputFieldStatus(true)
+        setButtonText("Confirm PassCode");
+        setSocialMediaSection('')
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't receive pass code via Email?<a onClick={LogInPage} className={classes.PageLink}> Resend Here </a></p></span>);
     };
     const ResetPasswordPage = () => {
-        setSocialMediaSection('')
-        setPasswordInputFieldStatus(false)
         setHeaderText("Reset Password")
+        setPasswordInputFieldStatus(false)
         setButtonText("Send Reset Email")
-        setRegSuccess("")
+        setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
     };
     const ActionButton = (
@@ -216,14 +205,14 @@ const GetStartedModal = () => {
                     dispatch(login_APIAction(email, password));
                     setCheckBackendCredentialsCommence(true);
                     break;
+                case "RegistrationSuccess":
+                    // dispatch(register_code_APIAction(passcode));
+                    break;
                 case "Reset Password":
                     break;
             } 
         }
     };
-    const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>
-    );
     const [socialMediaSection, setSocialMediaSection] = useState(
         <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -234,38 +223,65 @@ const GetStartedModal = () => {
                 </div>
             </Fragment>
     );
+    const [formOptions, setFormOptions] = useState(
+        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>
+    );
     const disableScroll = () => {
         window.addEventListener('scroll', preventDefaultScroll, { passive: false });
         window.addEventListener('wheel', preventDefaultScroll, { passive: false });
         window.addEventListener('touchmove', preventDefaultScroll, { passive: false });
-        window.addEventListener('keydown', preventDefaultKeydown, { passive: false });
+        window.addEventListener('keydown', preventScroll, { passive: false });
     };
     const enableScroll = () => {
         window.removeEventListener('scroll', preventDefaultScroll);
         window.removeEventListener('wheel', preventDefaultScroll);
         window.removeEventListener('touchmove', preventDefaultScroll);
-        window.removeEventListener('keydown', preventDefaultKeydown);
+        window.removeEventListener('keydown', preventScroll);
     };
     const preventDefaultScroll = (e) => {
         e.preventDefault();
     };
-    const preventDefaultKeydown = (e) => {
-        // List of keys that can cause scrolling
+    const preventScroll = (e) => {
         const keysThatScroll = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown', 'Home', 'End'];
-        
         if (keysThatScroll.includes(e.key)) {
             e.preventDefault();
         }
     };
-    const onEscKey = (e) => {
+    const exitModalAction = () => {
+        dispatch(userReducerActions.getStartedModalClose())
+        enableScroll()
+        setModalStatus("CreateAccount")
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
+        document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
+    };
+    const ExitButton = (
+        <div onClick={exitModalAction} className={classes.exitButtonContainer}>
+            <div className={classes.exitButton}>
+                <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
+            </div>
+        </div>
+    );
+    const onEscKey_ExitModal = (e) => {
         if (e.key === 'Escape') {
-            exitAction();
+            exitModalAction();
         }
     };
-    const modalRef = useRef();
-    const closeModal = (e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
-            exitAction();
+//Load Event listeners 
+    useEffect(() => {
+        window.addEventListener('keydown', onEscKey_ExitModal);
+        document.addEventListener("mousedown", onClickOutsideModal_closeModal);
+        setUserEmailFeedback(registrationError)
+        //Need ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+        if (getStartedView === 'LogIn'){
+            LogInPage();
+        } else if (getStartedView === 'RegistrationSuccess'){
+            RegistrationSuccess();
+        } 
+        disableScroll()
+    }, []);
+    const onClickOutsideModal_closeModal = (e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target)) { 
+            exitModalAction();
         }
     };
     return (
@@ -273,28 +289,42 @@ const GetStartedModal = () => {
             <div className={classes.modal} ref={modalRef}>
                 {ExitButton}
                 <div className={classes.modalContentContainer}>
-                    {regSuccess}
                     <form className={classes.modalForm} onSubmit={onSubmit}>
                         <CSRFToken />
                         <h1 className={classes.modalTitle}>{headerText}</h1>
-                        <div className={classes.inputContainer}>
-                            <input
-                                type='email'
-                                id='email'
-                                placeholder='Email'
-                                name='email'
-                                onChange={e => onChange(e)}
-                                ref={emailInputRef}
-                                className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
-                                autoComplete='email'
-                                onFocus={handleOnEmailFocus}
-                            />
-                            <div className={classes.emailInputFeedbackContainer}>
-                                <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
-                                    {userEmailFeedback} 
-                                </p>
+                        {passCodeInputFieldStatus && (
+                            <div className={classes.inputContainer}>
+                                <input
+                                    type='code'
+                                    id='code'
+                                    placeholder='Email Pass Code'
+                                    name='code'
+                                    onChange={e => onChange(e)}
+                                    ref={passCodeInputRef}
+                                    className={`${classes['emailInput']}`}
+                                />
                             </div>
-                        </div>
+                        )}
+                        {emailInputFieldStatus && (
+                            <div className={classes.inputContainer}>
+                                <input
+                                    type='email'
+                                    id='email'
+                                    placeholder='Email'
+                                    name='email'
+                                    onChange={e => onChange(e)}
+                                    ref={emailInputRef}
+                                    className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
+                                    autoComplete='email'
+                                    onFocus={handleOnEmailFocus}
+                                />
+                                <div className={classes.emailInputFeedbackContainer}>
+                                    <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>
+                                        {userEmailFeedback} 
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                         {passwordInputFieldStatus && (
                             <div className={classes.inputContainer}>
                                 <input

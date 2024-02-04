@@ -21,7 +21,6 @@ const PasswordSubModal = (props) => {
         setIsValidSpecial(specialCharacterPattern.test(props.password));
         setIsValidEight(minimumEightPattern.test(props.password));
     }, [props.password])
-
     useEffect(() =>{
         if (props.headerText == 'Create Account' && props.checkPasswordCommence2 && props.isValidEmail) {
             if (props.password.length === 0){
@@ -32,7 +31,10 @@ const PasswordSubModal = (props) => {
                 setIsValidPassword(false)
             }
         }
-    }, [props.password, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
+        else if(props.headerText == 'Login'){
+            setIsValidPassword(true)
+        }
+    }, [props.password, props.headerText, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
 
     return (
         <div className={`${classes['subModal']} ${isValidPassword && classes.isValidPassword}`}>
