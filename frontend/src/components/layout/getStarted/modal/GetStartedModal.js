@@ -11,8 +11,9 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState("CreateAccount");
+    const [modalStatus, setModalStatus] = useState("RegistrationSuccess");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
+    const registrationError = useSelector(({ user }) => user.registrationError);
     const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [emailInputFieldStatus, setEmailInputFieldStatus] = useState(true);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
@@ -39,8 +40,6 @@ const GetStartedModal = () => {
     const [checkPasswordCommence2, setCheckPasswordCommence2] = useState(false);
     const [checkBackendCredentialsCommence, setCheckBackendCredentialsCommence] = useState(false);
 
-    const registrationError = useSelector(({ user }) => user.registrationError);
-
     // useEffect Explanation
     // The useEffect runs initially when the component mounts
     //      Concurrently, the return function is not initiated, i.e. the timeout is never cleared
@@ -51,6 +50,7 @@ const GetStartedModal = () => {
     // this input field for the whole duration of .5 seconds. 
         //     Lesson 145 at 1:08 Explanation of code flow
     useEffect (() => {
+        console.log('useEffect #1')
         if (checkEmailCommence) {
             const identifier = setTimeout( () => { 
                 if (email.length === 0){
@@ -79,6 +79,7 @@ const GetStartedModal = () => {
     }, [email, checkEmailCommence, registrationError]);
 
     useEffect (() => {
+        console.log('useEffect #2')
         if (headerText === "Create Account" && checkPasswordCommence2) {
             setPasswordFeedback('');
         } else if (headerText === "Login" && checkPasswordCommence1) {
@@ -101,12 +102,44 @@ const GetStartedModal = () => {
     }, [password, checkPasswordCommence1, checkPasswordCommence2]);
 
     useEffect (() => {
+        console.log('useEffect #3')
         if (checkBackendCredentialsCommence) {
             if (registrationError != ''){
                 setIsValidEmail(false)
                 setUserEmailFeedback(registrationError)
             }
     }}, [checkBackendCredentialsCommence, registrationError]);
+
+    //Load Event listeners 
+    useEffect(() => {
+        console.log('useEffect #4')
+        window.addEventListener('keydown', onEscKey_ExitModal);
+        document.addEventListener("mousedown", onClickOutsideModal_closeModal);
+        setUserEmailFeedback(registrationError)
+        disableScroll()
+    }, []);
+
+    useEffect(() =>{
+        if (modalStatus === 'LogIn'){
+            LogInPage();
+        } else if (modalStatus === 'ResetPasswordPage'){
+            ResetPasswordPage();
+        } else if (modalStatus === 'CreateAccount'){
+            CreateAccountPage(); 
+        } else if (modalStatus === 'RegistrationSuccess'){
+            RegistrationSuccess();
+        } 
+    }, [modalStatus])
+
+    useEffect(() => {
+        console.log('useEffect #5')
+        if (getStartedView !== ''){
+            setModalStatus(getStartedView)
+        } 
+    }, [getStartedView]);
+
+    console.log('modalStatus: ', modalStatus)
+    console.log('getStartedView: ', getStartedView)
 
     const handleOnEmailFocus = () => {
         // dispatch(userReducerActions.loginErrorReset());
@@ -175,11 +208,12 @@ const GetStartedModal = () => {
         setEmailInputFieldStatus(false)
         setPasswordInputFieldStatus(false)
         setPassCodeInputFieldStatus(true)
-        setButtonText("Confirm PassCode");
+        setButtonText("Confirm Pass Code");
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't receive pass code via Email?<a onClick={LogInPage} className={classes.PageLink}> Resend Here </a></p></span>);
     };
     const ResetPasswordPage = () => {
+        setModalStatus("ResetPassword");
         setHeaderText("Reset Password")
         setPasswordInputFieldStatus(false)
         setButtonText("Send Reset Email")
@@ -266,19 +300,7 @@ const GetStartedModal = () => {
             exitModalAction();
         }
     };
-//Load Event listeners 
-    useEffect(() => {
-        window.addEventListener('keydown', onEscKey_ExitModal);
-        document.addEventListener("mousedown", onClickOutsideModal_closeModal);
-        setUserEmailFeedback(registrationError)
-        //Need ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-        if (getStartedView === 'LogIn'){
-            LogInPage();
-        } else if (getStartedView === 'RegistrationSuccess'){
-            RegistrationSuccess();
-        } 
-        disableScroll()
-    }, []);
+
     const onClickOutsideModal_closeModal = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) { 
             exitModalAction();
@@ -297,7 +319,7 @@ const GetStartedModal = () => {
                                 <input
                                     type='code'
                                     id='code'
-                                    placeholder='Email Pass Code'
+                                    placeholder='Enter Pass Code sent via e-mail'
                                     name='code'
                                     onChange={e => onChange(e)}
                                     ref={passCodeInputRef}
