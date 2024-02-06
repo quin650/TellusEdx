@@ -11,7 +11,7 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState("RegistrationSuccess");
+    const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
     const [isLogInVIew, setIsLogInVIew] = useState(false);
@@ -126,8 +126,8 @@ const GetStartedModal = () => {
             ResetPasswordPage();
         } else if (modalStatus === 'CreateAccount'){
             CreateAccountPage(); 
-        } else if (modalStatus === 'RegistrationSuccess'){
-            RegistrationSuccess();
+        } else if (modalStatus === 'VerifyYourAccount'){
+            VerifyYourAccount();
         } 
     }, [modalStatus])
 
@@ -202,15 +202,15 @@ const GetStartedModal = () => {
         )
         setButtonText("Create Account");
     };
-    const RegistrationSuccess = () => {
-        setModalStatus("RegistrationSuccess");
-        setHeaderText("Registration Success");
+    const VerifyYourAccount = () => {
+        setModalStatus("VerifyYourAccount");
+        setHeaderText("Email Sent. Enter Code");
         setEmailInputFieldStatus(false)
         setPasswordInputFieldStatus(false)
         setPassCodeInputFieldStatus(true)
-        setButtonText("Confirm Pass Code");
+        setButtonText("Verify and Sign In");
         setSocialMediaSection('')
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't receive pass code via Email?<a onClick={LogInPage} className={classes.PageLink}> Resend Here </a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={LogInPage} className={classes.PageLink}> Resend </a></p></span>);
     };
     const ResetPasswordPage = () => {
         setModalStatus("ResetPassword");
@@ -239,7 +239,7 @@ const GetStartedModal = () => {
                     dispatch(login_APIAction(email, password));
                     setCheckBackendCredentialsCommence(true);
                     break;
-                case "RegistrationSuccess":
+                case "VerifyYourAccount":
                     // dispatch(register_code_APIAction(passcode));
                     break;
                 case "Reset Password":
@@ -319,7 +319,7 @@ const GetStartedModal = () => {
                                 <input
                                     type='code'
                                     id='code'
-                                    placeholder='Enter Pass Code sent via e-mail'
+                                    placeholder='Enter Verification Code'
                                     name='code'
                                     onChange={e => onChange(e)}
                                     ref={passCodeInputRef}
