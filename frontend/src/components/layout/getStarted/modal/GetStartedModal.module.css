@@ -146,6 +146,20 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
+/* ********************************************************************* Pass Code Feedback */
+.passCodeInputFeedback{
+    display: block;
+    font-size: 13px;
+    color: var(--blue);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+}
 /* ********************************************************************* Password Input */
 .passwordInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);

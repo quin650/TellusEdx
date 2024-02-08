@@ -11,9 +11,11 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+    const [modalStatus, setModalStatus] = useState("CreateAccount");
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
+    const registrationFeedback = useSelector(({ user }) => user.registrationFeedback);
+
     const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [emailInputFieldStatus, setEmailInputFieldStatus] = useState(true);
     const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
@@ -31,6 +33,7 @@ const GetStartedModal = () => {
 
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
+    const [registrationSuccessFeedback, setRegistrationSuccessFeedback] = useState('');
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
     const [isValidEmail, setIsValidEmail] = useState(true);
@@ -108,7 +111,11 @@ const GetStartedModal = () => {
                 setIsValidEmail(false)
                 setUserEmailFeedback(registrationError)
             }
-    }}, [checkBackendCredentialsCommence, registrationError]);
+            if (registrationFeedback != ''){
+                setRegistrationSuccessFeedback(registrationFeedback)
+            }
+            
+    }}, [checkBackendCredentialsCommence, registrationError, registrationFeedback]);
 
     //Load Event listeners 
     useEffect(() => {
@@ -116,6 +123,7 @@ const GetStartedModal = () => {
         window.addEventListener('keydown', onEscKey_ExitModal);
         document.addEventListener("mousedown", onClickOutsideModal_closeModal);
         setUserEmailFeedback(registrationError)
+        setRegistrationSuccessFeedback(registrationFeedback)
         disableScroll()
     }, []);
 
@@ -325,6 +333,11 @@ const GetStartedModal = () => {
                                     ref={passCodeInputRef}
                                     className={`${classes['emailInput']}`}
                                 />
+                                <div className={classes.emailInputFeedbackContainer}>
+                                    <p className={classes.passCodeInputFeedback}>
+                                        {registrationSuccessFeedback} 
+                                    </p>
+                                </div>
                             </div>
                         )}
                         {emailInputFieldStatus && (

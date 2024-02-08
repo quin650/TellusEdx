@@ -68,12 +68,15 @@ export const register_APIAction = (username, password) => {
             } else {
                 console.log('register action success')
                 dispatch(userReducerActions.registerSuccess());
-                console.log('res.data.success: ', res.data)
+                console.log('res.data.success: ', res.data.success)
+                console.log('res.data: ', res.data)
                 dispatch(userReducerActions.registerFeedback(res.data));
             }
         } catch (err) {
-            console.log('err: ',err.response.data[0].error)
-            dispatch(userReducerActions.registerFail(err.response.data[0].error));
+            console.log('err: ',err.response.data.error)
+            dispatch(userReducerActions.registerFail(err.response.data.error));
+            // console.log('err: ',err.response.data[0].error)
+            //dispatch(userReducerActions.registerFail(err.response.data[0].error));
         };
     };
 };

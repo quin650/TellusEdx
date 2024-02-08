@@ -22,26 +22,21 @@ env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-bfs0kfedy+=q7*ftmxy$qi7=q9=+jc*3^-d2_wjl6-k5131yrl'
 SECRET_KEY = env.str("SECRET_KEY")
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = os.getenv("DEBUG", "False")
 
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = os.environ["HOST_USER"]  # EMAIL_HOST_USER = env.str("HOST_USER")
-EMAIL_HOST_PASSWORD = "XYZ"
+EMAIL_FROM = "joaquin@tellused.com"
+EMAIL_HOST_USER = "joaquin@tellused.com"
+EMAIL_HOST_PASSWORD = os.environ["GmailPassword"]
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+PASSWORD_RESET_TIMEOUT = 14400
 
 ALLOWED_HOSTS = []
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",

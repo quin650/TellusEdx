@@ -46,7 +46,7 @@ const userSlice = createSlice({
 		registerSuccess(state){
 			state.registered = true;
 			state.isAuthenticated = false;
-			state.getStartedView = 'RegistrationSuccess'
+			state.getStartedView = 'VerifyYourAccount'
 		},
 		registerFail(state, action){
 			state.registrationError = action.payload

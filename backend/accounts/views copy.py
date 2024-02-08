@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -11,20 +11,8 @@ from rest_framework import permissions
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from rest_framework.views import APIView
-from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
-from django.contrib import messages
 from rest_framework import serializers
-
-
-from django.template.loader import render_to_string
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str
-from django.core.mail import EmailMessage
-
-from .tokens import account_activation_token
-
 import re
 
 
@@ -69,62 +57,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-def activate(request, uidb64, token):
-    print("9")
-
-
-# def activate(request, uidb64, token):
-#     User = get_user_model()
-#     try:
-#         uid = force_str(urlsafe_base64_decode(uidb64))
-#         user = User.objects.get(pk=uid)
-#     except:
-#         user = None
-
-#     if user is not None and account_activation_token.check_token(user, token):
-#         user.is_active = True
-#         user.save()
-
-#         messages.success(
-#             request,
-#             "Thank you for your email confirmation. Now you can login your account.",
-#         )
-#         return redirect("login")
-#     else:
-#         messages.error(request, "Activation link is invalid!")
-
-#     return redirect("homepage")
-
-
-def activateEmail(request, user, to_email):
-    print("3")
-    mail_subject = "Activate your user account."
-    message = render_to_string(
-        "template_activate_account.html",
-        {
-            "user": user.username,
-            "domain": get_current_site(request).domain,
-            "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-            "token": account_activation_token.make_token(user),
-            "protocol": "https" if request.is_secure() else "http",
-        },
-    )
-    print("4")
-    email = EmailMessage(mail_subject, message, to=[to_email])
-    print("5")
-    try:
-        sent = email.send()
-        if sent:
-            print("Email sent successfully")
-            msg = {"success": "Check your inbox at {}".format(to_email)}
-        else:
-            print("Failed to send email")
-            msg = {"error": "Failed to send email to {}".format(to_email)}
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        msg = {"error": f"Error sending email: {e}"}
-
-
 @method_decorator(csrf_protect, name="dispatch")
 class RegisterView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -148,20 +80,15 @@ class RegisterView(APIView):
                         r"[!@#$%^&*()_+\-=\\[\]{};" ':"\\|,.<>\/?]+', password
                     )
                 ):
-                    print("1")
                     user = User.objects.create_user(
                         username=username,
                         email=email,
                         password=password,
                         is_active=False,
                     )
-                    print("2")
-                    activateEmail(request, user, email)
-                    print("m: ")
                     serializer = UserSerializerWithToken(user, many=False)
                     print(serializer.data)
                     return Response(serializer.data)
-                    # return Response(serializer.data)
                 else:
                     return Response({"error": "Invalid Password"})
         except:
