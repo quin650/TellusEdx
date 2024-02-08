@@ -44,7 +44,6 @@ export const logout_APIAction = () => {
 };
 export const register_APIAction = (username, password) => { 
     return async (dispatch) => {
-        
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -52,14 +51,11 @@ export const register_APIAction = (username, password) => {
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-    
         const body = JSON.stringify({ username, password });
-
         const registerData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/register`, body, config);
             return res;
         };
-
         try {
             const res = await registerData();
             if (res.data.error) {
@@ -75,8 +71,6 @@ export const register_APIAction = (username, password) => {
         } catch (err) {
             console.log('err: ',err.response.data.error)
             dispatch(userReducerActions.registerFail(err.response.data.error));
-            // console.log('err: ',err.response.data[0].error)
-            //dispatch(userReducerActions.registerFail(err.response.data[0].error));
         };
     };
 };
