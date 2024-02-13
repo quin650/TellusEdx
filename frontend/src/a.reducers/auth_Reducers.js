@@ -9,7 +9,6 @@ const initialState = {
 	getStartedView: '',
 	isAuthenticated: false,
 	registered: false,
-	registrationFeedback: '',
 	registrationError: '',
 	loading: false,
     userInfo: userInfoFromStorage,
@@ -55,9 +54,6 @@ const userSlice = createSlice({
 		},
 		registerErrorReset(state){
 			state.registrationError = ""
-		},
-		registerFeedback(state, action){
-			state.registrationFeedback = action.payload
 		},
 		authSuccess(state){
 			state.isAuthenticated = true;

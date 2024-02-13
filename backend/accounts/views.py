@@ -70,19 +70,44 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 def activate(request, uidb64, token):
-    print("9")
+    print("activate action initiated")
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        print("found user")
+    except:
+        user = None
+        print("user is none")
+
+    if user is not None and account_activation_token.check_token(user, token):
+        print("find token")
+        user.is_active = True
+        print("activate")
+        user.save()
+        print("save")
+
+        print("Thank you for your email confirmation. Now you can login your account.")
+        return redirect("login/")
+    else:
+        print("Activation link is invalid!")
+
+    return redirect("login/")
 
 
 def activateEmail(request, user, to_email):
     mail_subject = "Activate your user account."
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = account_activation_token.make_token(user)
+    protocol = "https" if request.is_secure() else "http"
+    domain = get_current_site(request).domain
+    activation_link = f"{protocol}://{domain}/activate/{uid}/{token}/"
+
     message = render_to_string(
         "template_activate_account.html",
         {
             "user": user.username,
-            "domain": get_current_site(request).domain,
-            "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-            "token": account_activation_token.make_token(user),
-            "protocol": "https" if request.is_secure() else "http",
+            "activation_link": activation_link,
         },
     )
     email = EmailMessage(mail_subject, message, to=[to_email])
@@ -130,10 +155,11 @@ class RegisterView(APIView):
                     )
                     activateEmail(request, user, email)
 
-                    serializer = UserSerializerWithToken(user, many=False)
-                    print(serializer.data)
-                    return Response(serializer.data)
+                    # serializer = UserSerializerWithToken(user, many=False)
+                    # print(serializer.data)
                     # return Response(serializer.data)
+                    message = {"success": "xyzxyzxyz"}
+                    return Response(message, status=status.HTTP_200_OK)
                 else:
                     return Response({"error": "Invalid Password"})
         except:
@@ -157,23 +183,3 @@ class getUserProfile(APIView):
         user = request.user
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
-
-
-# def activate(request, uidb64, token):
-#     User = get_user_model()
-#     try:
-#         uid = force_str(urlsafe_base64_decode(uidb64))
-#         user = User.objects.get(pk=uid)
-#     except:
-#         user = None
-#     if user is not None and account_activation_token.check_token(user, token):
-#         user.is_active = True
-#         user.save()
-#         messages.success(
-#             request,
-#             "Thank you for your email confirmation. Now you can login your account.",
-#         )
-#         return redirect("login")
-#     else:
-#         messages.error(request, "Activation link is invalid!")
-#     return redirect("homepage")

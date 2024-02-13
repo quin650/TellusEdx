@@ -63,8 +63,28 @@
     flex-direction: column;
 }
 .modalTitle{
+    display: flex;
     color: black;
     font-size: 2rem;
+    margin: 0;
+    position: relative;
+    align-items: flex-end;
+    margin: 0px auto 36px 0px;
+}
+.modalTitle2{
+    display: flex;
+    color: black;
+    font-size: 2rem;
+    margin: 0;
+    position: relative;
+    align-items: flex-end;
+    margin: 0px auto 8px 0px;
+}
+.modalSubTitle{
+    display: flex;
+    color: var(--blue);
+    font-size: 1.2rem;
+    font-style: italic;
     margin: 0;
     position: relative;
     align-items: flex-end;

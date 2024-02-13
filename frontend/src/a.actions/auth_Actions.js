@@ -63,10 +63,9 @@ export const register_APIAction = (username, password) => {
                 
             } else {
                 console.log('register action success')
-                dispatch(userReducerActions.registerSuccess());
-                console.log('res.data.success: ', res.data.success)
                 console.log('res.data: ', res.data)
-                dispatch(userReducerActions.registerFeedback(res.data));
+                console.log('res.data.success: ', res.data.success)
+                dispatch(userReducerActions.registerSuccess());
             }
         } catch (err) {
             console.log('err: ',err.response.data.error)

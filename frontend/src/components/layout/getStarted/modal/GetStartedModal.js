@@ -12,9 +12,10 @@ const GetStartedModal = () => {
     console.log('GetStartedModal1')
     const dispatch = useDispatch();
     const [modalStatus, setModalStatus] = useState("CreateAccount");
+    //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+    
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
-    const registrationFeedback = useSelector(({ user }) => user.registrationFeedback);
 
     const [isLogInVIew, setIsLogInVIew] = useState(false);
     const [emailInputFieldStatus, setEmailInputFieldStatus] = useState(true);
@@ -111,11 +112,8 @@ const GetStartedModal = () => {
                 setIsValidEmail(false)
                 setUserEmailFeedback(registrationError)
             }
-            if (registrationFeedback != ''){
-                setRegistrationSuccessFeedback(registrationFeedback)
-            }
             
-    }}, [checkBackendCredentialsCommence, registrationError, registrationFeedback]);
+    }}, [checkBackendCredentialsCommence, registrationError]);
 
     //Load Event listeners 
     useEffect(() => {
@@ -123,7 +121,6 @@ const GetStartedModal = () => {
         window.addEventListener('keydown', onEscKey_ExitModal);
         document.addEventListener("mousedown", onClickOutsideModal_closeModal);
         setUserEmailFeedback(registrationError)
-        setRegistrationSuccessFeedback(registrationFeedback)
         disableScroll()
     }, []);
 
@@ -212,7 +209,7 @@ const GetStartedModal = () => {
     };
     const VerifyYourAccount = () => {
         setModalStatus("VerifyYourAccount");
-        setHeaderText("Email Sent. Enter Code");
+        setHeaderText("Account created successfully!");
         setEmailInputFieldStatus(false)
         setPasswordInputFieldStatus(false)
         setPassCodeInputFieldStatus(true)
@@ -303,6 +300,10 @@ const GetStartedModal = () => {
             </div>
         </div>
     );
+    let HeaderSection = <h1 className={classes.modalTitle}>{headerText}</h1>
+    modalStatus === "VerifyYourAccount" ? 
+    HeaderSection = (<div><h1 className={classes.modalTitle2}>{headerText}</h1><h1 className={classes.modalSubTitle}>Check your email to confirm your account.</h1></div>) : 
+    HeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>)
     const onEscKey_ExitModal = (e) => {
         if (e.key === 'Escape') {
             exitModalAction();
@@ -321,7 +322,7 @@ const GetStartedModal = () => {
                 <div className={classes.modalContentContainer}>
                     <form className={classes.modalForm} onSubmit={onSubmit}>
                         <CSRFToken />
-                        <h1 className={classes.modalTitle}>{headerText}</h1>
+                        {HeaderSection}
                         {passCodeInputFieldStatus && (
                             <div className={classes.inputContainer}>
                                 <input
