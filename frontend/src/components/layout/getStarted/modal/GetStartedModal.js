@@ -328,7 +328,7 @@ const GetStartedModal = () => {
                                 <input
                                     type='code'
                                     id='code'
-                                    placeholder='Enter Verification Code'
+                                    placeholder='Verification Code'
                                     name='code'
                                     onChange={e => onChange(e)}
                                     ref={passCodeInputRef}

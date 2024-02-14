@@ -53,7 +53,7 @@ export const register_APIAction = (username, password) => {
         };
         const body = JSON.stringify({ username, password });
         const registerData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/register`, body, config);
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/register/`, body, config);
             return res;
         };
         try {
@@ -64,12 +64,51 @@ export const register_APIAction = (username, password) => {
             } else {
                 console.log('register action success')
                 console.log('res.data: ', res.data)
-                console.log('res.data.success: ', res.data.success)
-                dispatch(userReducerActions.registerSuccess());
+                dispatch(userReducerActions.registerSuccess(res.data));
+                localStorage.setItem('userInfo', JSON.stringify(res.data))
             }
         } catch (err) {
             console.log('err: ',err.response.data.error)
             dispatch(userReducerActions.registerFail(err.response.data.error));
+        };
+    };
+};
+
+export const activate_APIAction = (pin) => { 
+    return async (dispatch) => {
+        const userInfoString = localStorage.getItem('userInfo');
+        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+        const email = userInfo ? userInfo.email : null;
+        
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({ email, pin });
+        const activateData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/activate/`, body, config);
+            return res;
+        };
+        try {
+            const res = await activateData();
+            if (res.data.error) {
+                console.log('activate action fail')
+                console.log('res.data.error: ', res.data.error)
+                dispatch(userReducerActions.activateFail(res.data));
+                
+            } else {
+                console.log('activate action success')
+                console.log('res.data.success: ', res.data.success)
+                dispatch(userReducerActions.activateSuccess(res.data));
+            }
+        } catch (err) {
+            console.log('activate action fail')
+            console.log('res.data.error: ', res.data.error)
+            // console.log('err: ',err.response.data.error)
+            dispatch(userReducerActions.registerFail(res.data));
         };
     };
 };

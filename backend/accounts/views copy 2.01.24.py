@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -12,15 +12,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
-from django.contrib import messages
 from rest_framework import serializers
-from .models import UserPin
-import random
-
-from django.template.loader import render_to_string
-from django.core.mail import EmailMessage
-
-
 import re
 
 
@@ -65,76 +57,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-def activate(email, pin):
-
-    print("activate action")
-
-    # get user, get pin
-    # if pin matches, change is_active to true --> return Response('success' ...)
-    # if pin does not match, --> return Response('fail' ...)
-
-
-@method_decorator(csrf_protect, name="dispatch")
-class ActivateView(APIView):
-    permission_classes = (permissions.AllowAny,)
-
-    def post(self, request, format=None):
-        data = self.request.data
-        email = data["email"]
-        pin = data["pin"]
-
-        try:
-            if User.objects.filter(email=email).exists():
-                user = User.objects.get(email=email)
-                pin_value = (
-                    UserPin.objects.filter(user=user)
-                    .values_list("pin", flat=True)
-                    .first()
-                )
-                if pin == pin_value:
-                    user.is_active = True
-                    user.save()
-
-                    message = {"success": "Account activated"}
-                    return Response(message, status=status.HTTP_200_OK)
-                else:
-                    message = {"error": "Invalid email and/or pin"}
-                    return Response(message, status=status.HTTP_400_BAD_REQUEST)
-            else:
-                message = {"error": "Invalid email and/or pin"}
-                return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        except:
-            message = {"error": "Something went wrong when activating account"}
-            return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-
-def verificationEmail(email):
-    pin = random.randint(1000, 9999)
-    user = User.objects.get(email=email)
-    UserPin.objects.create(
-        user=user,
-        pin=pin,
-    )
-
-    mail_subject = "Activate your user account."
-    message = render_to_string(
-        "template_activate_account.html",
-        {
-            "user": user.username,
-            "pin": pin,
-        },
-    )
-    email_message = EmailMessage(mail_subject, message, to=[email])
-    try:
-        sent = email_message.send()
-        if sent:
-            print("Email sent successfully")
-        else:
-            print("Failed to send email")
-    except Exception as e:
-        print(f"Error sending email: {e}")
-
-
 @method_decorator(csrf_protect, name="dispatch")
 class RegisterView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -164,12 +86,9 @@ class RegisterView(APIView):
                         password=password,
                         is_active=False,
                     )
-
-                    verificationEmail(email)
-
-                    user = UserSerializerWithToken(user, many=False)
-                    print(user.data)
-                    return Response({"user": user.data})
+                    serializer = UserSerializerWithToken(user, many=False)
+                    print(serializer.data)
+                    return Response(serializer.data)
                 else:
                     return Response({"error": "Invalid Password"})
         except:
@@ -193,3 +112,29 @@ class getUserProfile(APIView):
         user = request.user
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
+
+
+def activate(request, uidb64, token):
+    print("activate action initiated")
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        print("found user")
+    except:
+        user = None
+        print("user is none")
+
+    if user is not None and account_activation_token.check_token(user, token):
+        print("find token")
+        user.is_active = True
+        print("activate")
+        user.save()
+        print("save")
+
+        print("Thank you for your email confirmation. Now you can login your account.")
+        return redirect("login/")
+    else:
+        print("Activation link is invalid!")
+
+    return redirect("login/")

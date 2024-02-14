@@ -35,6 +35,7 @@ class CreateUserProfileView(APIView):
                         phone=phone,
                         city=city,
                     )
+
                     user_profile = UserProfile.objects.get(user=user)
                     user_profile = UserProfileSerializer(user_profile)
                     return Response(
