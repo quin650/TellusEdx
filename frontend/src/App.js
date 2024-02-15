@@ -13,10 +13,7 @@ function App() {
     //Above call, is good  b/c it is specific to the state we want, and only pulls that one, so only rerendering happens when this specific state happens
     //Bad call b/c it pulls the whole slice and will cause a re-render if any other unrelated state changes
     //const { userInfo } = useSelector(state => state.user);
-    useEffect(() => {
-        userInfo && dispatch(userReducerActions.authSuccess())
-        // console.log('App.UseEffect')
-    }, [userInfo]);
+
 
     return (
         <Fragment>

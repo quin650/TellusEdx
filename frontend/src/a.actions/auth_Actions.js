@@ -73,12 +73,12 @@ export const register_APIAction = (username, password) => {
         };
     };
 };
-
 export const activate_APIAction = (pin) => { 
     return async (dispatch) => {
         const userInfoString = localStorage.getItem('userInfo');
         const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const email = userInfo ? userInfo.email : null;
+        const email = userInfo && userInfo.user ? userInfo.user.email : null;
+        console.log('email: ', email)
         
         const config = {
             headers: {

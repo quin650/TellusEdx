@@ -4,12 +4,6 @@ const userProfInfoFromStorage = localStorage.getItem('profInfo') ?
 	JSON.parse(localStorage.getItem('profInfo')) : null	
 
 const initialState = {
-    profile_id: '',
-    username: '',
-    first_name: '',
-    last_name: '',
-    phone: '',
-    city: '',
     profInfo: userProfInfoFromStorage,
 };
 const profSlice = createSlice({

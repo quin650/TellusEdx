@@ -65,15 +65,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-def activate(email, pin):
-
-    print("activate action")
-
-    # get user, get pin
-    # if pin matches, change is_active to true --> return Response('success' ...)
-    # if pin does not match, --> return Response('fail' ...)
-
-
 @method_decorator(csrf_protect, name="dispatch")
 class ActivateView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -82,16 +73,24 @@ class ActivateView(APIView):
         data = self.request.data
         email = data["email"]
         pin = data["pin"]
-
+        print("test -Email: ", email)
+        print("test -pin type: ", type(pin))
         try:
             if User.objects.filter(email=email).exists():
+                print("test2")
                 user = User.objects.get(email=email)
+                print("test3")
+
                 pin_value = (
                     UserPin.objects.filter(user=user)
                     .values_list("pin", flat=True)
                     .first()
                 )
-                if pin == pin_value:
+                print("pin_value type: ", type(pin_value))
+                print("pin == pin_value: ", pin == pin_value)
+                print("test4")
+                if int(pin) == pin_value:
+                    print("test5")
                     user.is_active = True
                     user.save()
 

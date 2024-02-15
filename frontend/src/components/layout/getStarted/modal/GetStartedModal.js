@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import { login_APIAction, register_APIAction } from "../../../../a.actions/auth_Actions";
+import { login_APIAction, register_APIAction, activate_APIAction } from "../../../../a.actions/auth_Actions";
 import CSRFToken from "../../../CSRFToken";
 import XAuthButton from "./SocialAuthLogos/xAuthButton";
 import DiscordAuthButton from "./SocialAuthLogos/discordAuthButton";
@@ -9,10 +9,10 @@ import GitHubAuthButton from "./SocialAuthLogos/gitHubAuthButton";
 import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
-    console.log('GetStartedModal1')
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState("CreateAccount");
+    //const [modalStatus, setModalStatus] = useState("CreateAccount");
     //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+    const [modalStatus, setModalStatus] = useState("VerificationSuccess");
     
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
@@ -54,7 +54,6 @@ const GetStartedModal = () => {
     // this input field for the whole duration of .5 seconds. 
         //     Lesson 145 at 1:08 Explanation of code flow
     useEffect (() => {
-        console.log('useEffect #1')
         if (checkEmailCommence) {
             const identifier = setTimeout( () => { 
                 if (email.length === 0){
@@ -83,7 +82,6 @@ const GetStartedModal = () => {
     }, [email, checkEmailCommence, registrationError]);
 
     useEffect (() => {
-        console.log('useEffect #2')
         if (headerText === "Create Account" && checkPasswordCommence2) {
             setPasswordFeedback('');
         } else if (headerText === "Login" && checkPasswordCommence1) {
@@ -106,7 +104,6 @@ const GetStartedModal = () => {
     }, [password, checkPasswordCommence1, checkPasswordCommence2]);
 
     useEffect (() => {
-        console.log('useEffect #3')
         if (checkBackendCredentialsCommence) {
             if (registrationError != ''){
                 setIsValidEmail(false)
@@ -117,7 +114,6 @@ const GetStartedModal = () => {
 
     //Load Event listeners 
     useEffect(() => {
-        console.log('useEffect #4')
         window.addEventListener('keydown', onEscKey_ExitModal);
         document.addEventListener("mousedown", onClickOutsideModal_closeModal);
         setUserEmailFeedback(registrationError)
@@ -133,18 +129,17 @@ const GetStartedModal = () => {
             CreateAccountPage(); 
         } else if (modalStatus === 'VerifyYourAccount'){
             VerifyYourAccount();
+        } else if (modalStatus === 'VerificationSuccess'){
+            VerificationSuccess();
         } 
     }, [modalStatus])
 
     useEffect(() => {
-        console.log('useEffect #5')
         if (getStartedView !== ''){
             setModalStatus(getStartedView)
         } 
     }, [getStartedView]);
 
-    console.log('modalStatus: ', modalStatus)
-    console.log('getStartedView: ', getStartedView)
 
     const handleOnEmailFocus = () => {
         // dispatch(userReducerActions.loginErrorReset());
@@ -217,6 +212,16 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={LogInPage} className={classes.PageLink}> Resend </a></p></span>);
     };
+    const VerificationSuccess = () => {
+        setModalStatus("VerificationSuccess");
+        setHeaderText("Verification Success!");
+        setEmailInputFieldStatus(false)
+        setPasswordInputFieldStatus(false)
+        setPassCodeInputFieldStatus(false)
+        setButtonText("Continue to Sign In");
+        setSocialMediaSection('')
+        setFormOptions('');
+    };
     const ResetPasswordPage = () => {
         setModalStatus("ResetPassword");
         setHeaderText("Reset Password")
@@ -232,25 +237,31 @@ const GetStartedModal = () => {
     );
     const onSubmit = (e) => {
         e.preventDefault();
-        setCheckEmailCommence(true)
-        setCheckPasswordCommence1(true)
-        if (isValidEmail && isValidPassword){
-            switch(modalStatus){
-                case "CreateAccount":
-                    dispatch(register_APIAction(email, password));
-                    setCheckBackendCredentialsCommence(true);
-                    break;
-                case "LogIn":
-                    dispatch(login_APIAction(email, password));
-                    setCheckBackendCredentialsCommence(true);
-                    break;
-                case "VerifyYourAccount":
-                    // dispatch(register_code_APIAction(passcode));
-                    break;
-                case "Reset Password":
-                    break;
-            } 
+        if (modalStatus === "VerificationSuccess"){
+            LogInPage();
+        } else{
+            setCheckEmailCommence(true)
+            setCheckPasswordCommence1(true)
+            if (isValidEmail && isValidPassword){
+                switch(modalStatus){
+                    case "CreateAccount":
+                        dispatch(register_APIAction(email, password));
+                        setCheckBackendCredentialsCommence(true);
+                        break;
+                    case "LogIn":
+                        dispatch(login_APIAction(email, password));
+                        setCheckBackendCredentialsCommence(true);
+                        break;
+                    case "VerifyYourAccount":
+                        dispatch(activate_APIAction(passCodeInputRef.current.value));
+                        break;
+    
+                    case "Reset Password":
+                        break;
+                } 
+            }
         }
+        
     };
     const [socialMediaSection, setSocialMediaSection] = useState(
         <Fragment>
@@ -326,11 +337,10 @@ const GetStartedModal = () => {
                         {passCodeInputFieldStatus && (
                             <div className={classes.inputContainer}>
                                 <input
-                                    type='code'
+                                    type='number'
                                     id='code'
                                     placeholder='Verification Code'
                                     name='code'
-                                    onChange={e => onChange(e)}
                                     ref={passCodeInputRef}
                                     className={`${classes['emailInput']}`}
                                 />

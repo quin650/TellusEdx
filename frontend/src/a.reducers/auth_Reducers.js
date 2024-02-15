@@ -18,9 +18,9 @@ const initialState = {
     name: '',
     isAdmin: '',
     token: '',
-	userInfo: userInfoFromStorage,
 	isActive: false,
 	activateFeedback: '',
+	userInfo: userInfoFromStorage,
 };
 
 const userSlice = createSlice({
@@ -50,56 +50,27 @@ const userSlice = createSlice({
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
-		// registerSuccess(state){
-		// 	state.registered = true;
-		// 	state.isAuthenticated = false;
-		// 	state.getStartedView = 'VerifyYourAccount'
-		// },
-
-
-
-
-
-
-
-
 		registerSuccess(state, action){
 			state.registered = true;
 			state.isAuthenticated = false;
 			state.loading = false;
 			state.getStartedView = 'VerifyYourAccount';
-			
-			state.profile_id = action.payload.user.id;
-			state.username = action.payload.user.username;
-            state.email = action.payload.user.email;
-            state.name = action.payload.user.name;
-            state.isAdmin = action.payload.user.isAdmin;
-            state.token = action.payload.user.token;
-			state.userInfo = action.payload;
+			state.userInfo = action.payload
 		},
 		activateSuccess(state, action){
 			state.isActive = true;
 			state.activateFeedback = action.payload.success;
+			state.getStartedView = 'VerificationSuccess';
 		},
 		activateFail(state, action){
 			state.isActive = false;
 			state.activateFeedback = action.payload.error;
 		},
-
-
 		registerFail(state, action){
 			state.registered = false;
 			state.isAuthenticated = false;
 			state.loading = false;
 			state.registrationError = action.payload
-			
-			state.profile_id = '';
-			state.username = '';
-            state.email = '';
-            state.name = '';
-            state.isAdmin = '';
-            state.token = '';
-			state.userInfo = '';
 		},
 		registerErrorReset(state){
 			state.registrationError = ""
