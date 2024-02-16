@@ -173,45 +173,6 @@ class RegisterView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class getUsers(APIView):
-    permission_classes = (permissions.IsAdminUser,)
-
-    def get(self, request, format=None):
-        users = User.objects.all()
-        users = UserSerializer(users, many=True)
-        return Response(users.data)
-
-
-class getUserProfile(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def get(self, request, format=None):
-        user = request.user
-        serializer = UserSerializer(user, many=False)
-        return Response(serializer.data)
-
-
-@method_decorator(csrf_protect, name="dispatch")
-class CheckAuthenticatedView(APIView):
-    permission_classes = (permissions.AllowAny,)
-
-    def get(self, request, format=None):
-        user = self.request.user
-        try:
-            isAuthenticated = user.is_authenticated
-            if isAuthenticated:
-                message = {"isAuthenticated": "success"}
-                return Response(message, status=status.HTTP_200_OK)
-            else:
-                message = {"isAuthenticated": "error"}
-                return Response(message, status=status.HTTP_401_UNAUTHORIZED)
-        except:
-            message = {
-                "error": "Something went wrong when checking authentication status"
-            }
-            return Response(message, status=status.HTTP_401_UNAUTHORIZED)
-
-
 class ResendPinView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -258,3 +219,42 @@ class ResendPinView(APIView):
             print(f"Error sending email: {e}")
             message = {"error": "Error sending email"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+class getUsers(APIView):
+    permission_classes = (permissions.IsAdminUser,)
+
+    def get(self, request, format=None):
+        users = User.objects.all()
+        users = UserSerializer(users, many=True)
+        return Response(users.data)
+
+
+class getUserProfile(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        user = request.user
+        serializer = UserSerializer(user, many=False)
+        return Response(serializer.data)
+
+
+@method_decorator(csrf_protect, name="dispatch")
+class CheckAuthenticatedView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def get(self, request, format=None):
+        user = self.request.user
+        try:
+            isAuthenticated = user.is_authenticated
+            if isAuthenticated:
+                message = {"isAuthenticated": "success"}
+                return Response(message, status=status.HTTP_200_OK)
+            else:
+                message = {"isAuthenticated": "error"}
+                return Response(message, status=status.HTTP_401_UNAUTHORIZED)
+        except:
+            message = {
+                "error": "Something went wrong when checking authentication status"
+            }
+            return Response(message, status=status.HTTP_401_UNAUTHORIZED)
