@@ -112,7 +112,37 @@ export const activate_APIAction = (pin) => {
         };
     };
 };
-
+export const resendPinAPIAction = () => { 
+    return async (dispatch) => {
+        const userInfoString = localStorage.getItem('userInfo');
+        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+        const email = userInfo ? userInfo.email : null;
+        
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({ email });
+        const activateData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/resendPin/`, body, config);
+            return res;
+        };
+        try {
+            const res = await activateData();
+            console.log('resendPinAPIAction res: ', res)
+            if (res.data.error) {
+                console.log('error1')
+            } else {
+                console.log('success')
+            }
+        } catch (err) {
+            console.log('error2')
+        };
+    };
+};
 export const checkAuthenticated = () => {
     return async (dispatch) => {
         const accessToken = localStorage.getItem('token');

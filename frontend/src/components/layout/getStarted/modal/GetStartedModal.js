@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import { login_APIAction, register_APIAction, activate_APIAction } from "../../../../a.actions/auth_Actions";
+import { login_APIAction, register_APIAction, activate_APIAction, resendPinAPIAction } from "../../../../a.actions/auth_Actions";
 import CSRFToken from "../../../CSRFToken";
 import XAuthButton from "./SocialAuthLogos/xAuthButton";
 import DiscordAuthButton from "./SocialAuthLogos/discordAuthButton";
@@ -11,7 +11,8 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     const dispatch = useDispatch();
     const [modalStatus, setModalStatus] = useState("CreateAccount");
-    
+    //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
 
@@ -208,7 +209,7 @@ const GetStartedModal = () => {
         setPassCodeInputFieldStatus(true)
         setButtonText("Verify and Sign In");
         setSocialMediaSection('')
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={LogInPage} className={classes.PageLink}> Resend </a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={ResendPinLink} className={classes.PageLink}> Resend </a></p></span>);
     };
     const VerificationSuccess = () => {
         setModalStatus("VerificationSuccess");
@@ -228,6 +229,10 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
     };
+    const ResendPinLink = () =>{
+        console.log('dispatch(resendPinAPIAction())')
+        dispatch(resendPinAPIAction());
+    }
     const ActionButton = (
         <button className={classes.actionButton} type='submit'>
             {buttonText}
@@ -253,7 +258,6 @@ const GetStartedModal = () => {
                     case "VerifyYourAccount":
                         dispatch(activate_APIAction(passCodeInputRef.current.value));
                         break;
-    
                     case "Reset Password":
                         break;
                 } 
