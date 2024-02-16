@@ -73,27 +73,18 @@ class ActivateView(APIView):
         data = self.request.data
         email = data["email"]
         pin = data["pin"]
-        print("test -Email: ", email)
-        print("test -pin type: ", type(pin))
         try:
             if User.objects.filter(email=email).exists():
-                print("test2")
                 user = User.objects.get(email=email)
-                print("test3")
-
                 pin_value = (
                     UserPin.objects.filter(user=user)
                     .values_list("pin", flat=True)
                     .first()
                 )
-                print("pin_value type: ", type(pin_value))
-                print("pin == pin_value: ", pin == pin_value)
-                print("test4")
                 if int(pin) == pin_value:
                     print("test5")
                     user.is_active = True
                     user.save()
-
                     message = {"success": "Account activated"}
                     return Response(message, status=status.HTTP_200_OK)
                 else:
@@ -168,7 +159,7 @@ class RegisterView(APIView):
 
                     user = UserSerializerWithToken(user, many=False)
                     print(user.data)
-                    return Response({"user": user.data})
+                    return Response({"userData": user.data})
                 else:
                     return Response({"error": "Invalid Password"})
         except:
@@ -192,3 +183,24 @@ class getUserProfile(APIView):
         user = request.user
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
+
+
+@method_decorator(csrf_protect, name="dispatch")
+class CheckAuthenticatedView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def get(self, request, format=None):
+        user = self.request.user
+        try:
+            isAuthenticated = user.is_authenticated
+            if isAuthenticated:
+                message = {"isAuthenticated": "success"}
+                return Response(message, status=status.HTTP_200_OK)
+            else:
+                message = {"isAuthenticated": "error"}
+                return Response(message, status=status.HTTP_401_UNAUTHORIZED)
+        except:
+            message = {
+                "error": "Something went wrong when checking authentication status"
+            }
+            return Response(message, status=status.HTTP_401_UNAUTHORIZED)

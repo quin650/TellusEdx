@@ -10,9 +10,7 @@ import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     const dispatch = useDispatch();
-    //const [modalStatus, setModalStatus] = useState("CreateAccount");
-    //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
-    const [modalStatus, setModalStatus] = useState("VerificationSuccess");
+    const [modalStatus, setModalStatus] = useState("CreateAccount");
     
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
