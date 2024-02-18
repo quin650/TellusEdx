@@ -68,8 +68,9 @@ const userSlice = createSlice({
 		registerErrorReset(state){
 			state.registrationError = "";
 		},
-		verificationEmailSent(state){
+		verificationEmailSent(state, action){
 			state.verificationEmail += 1;
+			pinActivationFeedback_rdx = action.payload
 		},
 		verifyPinSuccess(state, action){
 			state.isActive = true;

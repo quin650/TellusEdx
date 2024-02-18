@@ -130,7 +130,7 @@ export const resendPinAPIAction = () => {
                 console.log('error1')
             } else {
                 console.log('success')
-                dispatch(userReducerActions.verificationEmailSent())
+                dispatch(userReducerActions.verificationEmailSent(res.data.success))
             }
         } catch (err) {
             console.log('error2')

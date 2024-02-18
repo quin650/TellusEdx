@@ -209,7 +209,7 @@ class ResendPinView(APIView):
             sent = email_message.send()
             if sent:
                 print("Email sent successfully")
-                message = {"success": "Email sent successfully"}
+                message = {"success": "Check your email, code resent √"}
                 return Response(message, status=status.HTTP_200_OK)
             else:
                 print("Failed to send email")

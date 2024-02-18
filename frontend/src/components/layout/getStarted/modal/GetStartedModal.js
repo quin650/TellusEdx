@@ -329,6 +329,7 @@ const GetStartedModal = () => {
     let HeaderSection = OriginalHeaderSection
     modalStatus === "VerifyYourAccount" ? HeaderSection =  VerifyYourAccountHeaderSection : HeaderSection = OriginalHeaderSection
     const ResendPinLink = () =>{
+        console.log('resendPinAPIAction()')
         dispatch(resendPinAPIAction());
     }
     const onEscKey_ExitModal = (e) => {
