@@ -10,7 +10,6 @@ function App() {
     const dispatch = useDispatch();
     const userInfo = useSelector(({ user }) => user.userInfo);
     useEffect(()=>{
-        console.log('checkAuthenticated')
         dispatch(checkAuthenticated());
     },[])
 

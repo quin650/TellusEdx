@@ -88,13 +88,13 @@ class ActivateView(APIView):
                     message = {"success": "Account activated"}
                     return Response(message, status=status.HTTP_200_OK)
                 else:
-                    message = {"error": "Invalid email and/or pin"}
+                    message = {"error": "Invalid Pin, try again."}
                     return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
-                message = {"error": "Invalid email and/or pin"}
+                message = {"error": "Invalid Pin, try again"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
         except:
-            message = {"error": "Something went wrong when activating account"}
+            message = {"error": "Error! Enter pin or resend pin email"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 

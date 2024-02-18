@@ -10,8 +10,8 @@ import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     const dispatch = useDispatch();
-    const [modalStatus, setModalStatus] = useState("CreateAccount");
-    //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+    //const [modalStatus, setModalStatus] = useState("CreateAccount");
+    const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
 
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
@@ -101,7 +101,6 @@ const GetStartedModal = () => {
             };
         }
     }, [password, checkPasswordCommence1, checkPasswordCommence2]);
-
     useEffect (() => {
         if (checkBackendCredentialsCommence) {
             if (registrationError != ''){
@@ -110,15 +109,12 @@ const GetStartedModal = () => {
             }
             
     }}, [checkBackendCredentialsCommence, registrationError]);
-
-    //Load Event listeners 
-    useEffect(() => {
+    useEffect(() => {  //Load Event listeners 
         window.addEventListener('keydown', onEscKey_ExitModal);
         document.addEventListener("mousedown", onClickOutsideModal_closeModal);
         setUserEmailFeedback(registrationError)
         disableScroll()
     }, []);
-
     useEffect(() =>{
         if (modalStatus === 'LogIn'){
             LogInPage();
@@ -132,17 +128,11 @@ const GetStartedModal = () => {
             VerificationSuccess();
         } 
     }, [modalStatus])
-
     useEffect(() => {
         if (getStartedView !== ''){
             setModalStatus(getStartedView)
         } 
     }, [getStartedView]);
-
-
-    const handleOnEmailFocus = () => {
-        // dispatch(userReducerActions.loginErrorReset());
-    };
     const handleOnPasswordFocus = () => {
         setCheckEmailCommence(true);
         if (emailPattern.test(email)){
@@ -165,7 +155,7 @@ const GetStartedModal = () => {
         setModalStatus("LogIn");
         setHeaderText("Login");
         setIsLogInVIew(true);
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account?<a onClick={CreateAccountPage} className={classes.PageLink}> Register Here</a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account? <a onClick={CreateAccountPage} className={classes.PageLink}>Register Here </a></p></span>);
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -188,7 +178,7 @@ const GetStartedModal = () => {
         setModalStatus("CreateAccount");
         setHeaderText("Create Account");
         setIsLogInVIew(false);
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -207,7 +197,7 @@ const GetStartedModal = () => {
         setEmailInputFieldStatus(false)
         setPasswordInputFieldStatus(false)
         setPassCodeInputFieldStatus(true)
-        setButtonText("Verify and Sign In");
+        setButtonText("Verify Pin");
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={ResendPinLink} className={classes.PageLink}> Resend </a></p></span>);
     };
@@ -229,10 +219,6 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
     };
-    const ResendPinLink = () =>{
-        console.log('dispatch(resendPinAPIAction())')
-        dispatch(resendPinAPIAction());
-    }
     const ActionButton = (
         <button className={classes.actionButton} type='submit'>
             {buttonText}
@@ -242,7 +228,9 @@ const GetStartedModal = () => {
         e.preventDefault();
         if (modalStatus === "VerificationSuccess"){
             LogInPage();
-        } else{
+        }else if (modalStatus === "VerifyYourAccount"){
+            dispatch(activate_APIAction(passCodeInputRef.current.value));
+        }else{
             setCheckEmailCommence(true)
             setCheckPasswordCommence1(true)
             if (isValidEmail && isValidPassword){
@@ -255,15 +243,11 @@ const GetStartedModal = () => {
                         dispatch(login_APIAction(email, password));
                         setCheckBackendCredentialsCommence(true);
                         break;
-                    case "VerifyYourAccount":
-                        dispatch(activate_APIAction(passCodeInputRef.current.value));
-                        break;
                     case "Reset Password":
                         break;
                 } 
             }
         }
-        
     };
     const [socialMediaSection, setSocialMediaSection] = useState(
         <Fragment>
@@ -276,7 +260,7 @@ const GetStartedModal = () => {
             </Fragment>
     );
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>
+        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
     );
     const disableScroll = () => {
         window.addEventListener('scroll', preventDefaultScroll, { passive: false });
@@ -303,7 +287,7 @@ const GetStartedModal = () => {
         dispatch(userReducerActions.getStartedModalClose())
         enableScroll()
         setModalStatus("CreateAccount")
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account?<a onClick={LogInPage} className={classes.PageLink}> Sign In Here</a></p></span>)
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
         document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
     };
     const ExitButton = (
@@ -313,16 +297,45 @@ const GetStartedModal = () => {
             </div>
         </div>
     );
-    let HeaderSection = <h1 className={classes.modalTitle}>{headerText}</h1>
-    modalStatus === "VerifyYourAccount" ? 
-    HeaderSection = (<div><h1 className={classes.modalTitle2}>{headerText}</h1><h1 className={classes.modalSubTitle}>Check your email to confirm your account.</h1></div>) : 
-    HeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>)
+
+    const pinActivationFeedback_rdx = useSelector(({ user }) => user.pinActivationFeedback_rdx);
+    const pinActivationStatus_rdx = useSelector(({ user }) => user.pinActivationStatus_rdx);
+    const [pinActivationFeedback, setPinActivationFeedback] = useState('Check your email to confirm your account.');
+    const [pinActivationStatus, setPinActivationStatus] = useState(true);
+    const [animationKey, setAnimationKey] = useState(0); 
+
+    useEffect(() => {
+        setPinActivationFeedback(pinActivationFeedback_rdx);
+        setPinActivationStatus(pinActivationStatus_rdx);
+        setAnimationKey(prevKey => prevKey + 1);
+    },[pinActivationFeedback_rdx,pinActivationStatus_rdx])
+
+
+
+    let VerifyYourAccountHeaderSection = (
+        <div key={animationKey}>
+            <h1 className={classes.modalTitle2}>{headerText}</h1>
+            <h1 className={`${classes['modalSubTitle']} ${!pinActivationStatus && classes.pinActivationStatus}`}>{pinActivationFeedback}</h1>
+        </div>
+    );
+
+    const handleOnPassCodeFocus = () => {
+        console.log('handleOnPassCodeFocus');
+        dispatch(userReducerActions.verifyPinStatusReset());
+    };
+
+
+    let OriginalHeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>)
+    let HeaderSection = OriginalHeaderSection
+    modalStatus === "VerifyYourAccount" ? HeaderSection =  VerifyYourAccountHeaderSection : HeaderSection = OriginalHeaderSection
+    const ResendPinLink = () =>{
+        dispatch(resendPinAPIAction());
+    }
     const onEscKey_ExitModal = (e) => {
         if (e.key === 'Escape') {
             exitModalAction();
         }
     };
-
     const onClickOutsideModal_closeModal = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) { 
             exitModalAction();
@@ -345,6 +358,7 @@ const GetStartedModal = () => {
                                     name='code'
                                     ref={passCodeInputRef}
                                     className={`${classes['emailInput']}`}
+                                    onFocus={handleOnPassCodeFocus}
                                 />
                                 <div className={classes.emailInputFeedbackContainer}>
                                     <p className={classes.passCodeInputFeedback}>
@@ -364,7 +378,6 @@ const GetStartedModal = () => {
                                     ref={emailInputRef}
                                     className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                     autoComplete='email'
-                                    onFocus={handleOnEmailFocus}
                                 />
                                 <div className={classes.emailInputFeedbackContainer}>
                                     <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>

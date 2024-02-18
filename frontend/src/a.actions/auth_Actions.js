@@ -95,20 +95,13 @@ export const activate_APIAction = (pin) => {
         try {
             const res = await activateData();
             if (res.data.error) {
-                console.log('activate action fail')
-                console.log('res.data.error: ', res.data.error)
-                dispatch(userReducerActions.activateFail(res.data));
+                dispatch(userReducerActions.verifyPinFail(res.data.error));
                 
             } else {
-                console.log('activate action success')
-                console.log('res.data.success: ', res.data.success)
-                dispatch(userReducerActions.activateSuccess(res.data));
+                dispatch(userReducerActions.verifyPinSuccess());
             }
         } catch (err) {
-            console.log('activate action fail')
-            console.log('res.data.error: ', res.data.error)
-            // console.log('err: ',err.response.data.error)
-            dispatch(userReducerActions.registerFail(res.data));
+            dispatch(userReducerActions.verifyPinFail(err.response.data.error));
         };
     };
 };
@@ -137,6 +130,7 @@ export const resendPinAPIAction = () => {
                 console.log('error1')
             } else {
                 console.log('success')
+                dispatch(userReducerActions.verificationEmailSent())
             }
         } catch (err) {
             console.log('error2')

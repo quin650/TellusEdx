@@ -10,6 +10,7 @@ const initialState = {
 	isAuthenticated: false,
 	registered: false,
 	registrationError: '',
+	verificationEmail: 0,
 	loading: false,
     loginError:'',
 	profile_id: '',
@@ -19,7 +20,8 @@ const initialState = {
     isAdmin: '',
     token: '',
 	isActive: false,
-	activateFeedback: '',
+	pinActivationFeedback_rdx: 'Check your email to confirm your account.',
+	pinActivationStatus_rdx: true,
 	userInfo: userInfoFromStorage,
 };
 
@@ -57,33 +59,43 @@ const userSlice = createSlice({
 			state.getStartedView = 'VerifyYourAccount';
 			state.userInfo = action.payload
 		},
-		activateSuccess(state, action){
-			state.isActive = true;
-			state.activateFeedback = action.payload.success;
-			state.getStartedView = 'VerificationSuccess';
-		},
-		activateFail(state, action){
-			state.isActive = false;
-			state.activateFeedback = action.payload.error;
-		},
 		registerFail(state, action){
 			state.registered = false;
 			state.isAuthenticated = false;
 			state.loading = false;
-			state.registrationError = action.payload
+			state.registrationError = action.payload;
 		},
 		registerErrorReset(state){
-			state.registrationError = ""
+			state.registrationError = "";
 		},
-		authSuccess(state){
-			state.isAuthenticated = true;
+		verificationEmailSent(state){
+			state.verificationEmail += 1;
 		},
-		authFail(state){
-			state.isAuthenticated = false;
+		verifyPinSuccess(state, action){
+			state.isActive = true;
+			state.getStartedView = 'VerificationSuccess';
 		},
-		tokenSuccess(state, action){
-			state.token = action.payload;
+
+
+		verifyPinFail(state, action){
+			state.isActive = false;
+			state.pinActivationFeedback_rdx = action.payload;
+			state.pinActivationStatus_rdx = false;
 		},
+		verifyPinReset(state){
+			state.pinActivationFeedback_rdx = 'Check your email to confirm your account.';
+			state.pinActivationStatus_rdx = true;
+		},
+		verifyPinStatusReset(state){
+			state.pinActivationStatus_rdx = true;
+		},
+
+
+
+
+
+
+
         loginRequest(state){
             state.loading = true;
         },
@@ -105,6 +117,15 @@ const userSlice = createSlice({
 		},
 		logoutFail(state){
 			state;
+		},
+		authSuccess(state){
+			state.isAuthenticated = true;
+		},
+		authFail(state){
+			state.isAuthenticated = false;
+		},
+		tokenSuccess(state, action){
+			state.token = action.payload;
 		},
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;
