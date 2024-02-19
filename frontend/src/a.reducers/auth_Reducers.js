@@ -11,6 +11,7 @@ const initialState = {
 	registered: false,
 	registrationError: '',
 	verificationEmail: 0,
+	verificationEmailFailureStatus: '',
 	loading: false,
     loginError:'',
 	profile_id: '',
@@ -68,16 +69,24 @@ const userSlice = createSlice({
 		registerErrorReset(state){
 			state.registrationError = "";
 		},
+
+
+
 		verificationEmailSent(state, action){
 			state.verificationEmail += 1;
-			pinActivationFeedback_rdx = action.payload
+			state.pinActivationFeedback_rdx = action.payload
+			state.pinActivationStatus_rdx = false;
 		},
+		verificationEmailSentFailure(state){
+			state.verificationEmailFailureStatus = 'Failed'
+		},
+
+
+
 		verifyPinSuccess(state, action){
 			state.isActive = true;
 			state.getStartedView = 'VerificationSuccess';
 		},
-
-
 		verifyPinFail(state, action){
 			state.isActive = false;
 			state.pinActivationFeedback_rdx = action.payload;
@@ -90,10 +99,6 @@ const userSlice = createSlice({
 		verifyPinStatusReset(state){
 			state.pinActivationStatus_rdx = true;
 		},
-
-
-
-
 
 
 

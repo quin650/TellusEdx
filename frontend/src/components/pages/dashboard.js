@@ -35,12 +35,12 @@ const Dashboard = () => {
     useEffect(() =>{
         console.log('Dashboard.useEffect')
         setFormData({
-            first_name: first_name_global,
-            last_name: last_name_global,
-            phone: phone_global,
-            city: city_global
+            first_name: first_name_global || '',
+            last_name: last_name_global || '',
+            phone: phone_global || '',
+            city: city_global || '',
         })
-    },[first_name_global])
+    },[first_name_global, last_name_global, phone_global, city_global])
 
     var SubmitButtonText = "Create"
     const checkProfStatus = () => {

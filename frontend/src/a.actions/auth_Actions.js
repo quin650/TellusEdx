@@ -62,14 +62,11 @@ export const register_APIAction = (username, password) => {
                 dispatch(userReducerActions.registerFail());
                 
             } else {
-                console.log('register action success')
-                console.log('res.data: ', res.data)
                 dispatch(userReducerActions.registerSuccess(res.data));
                 localStorage.setItem('userInfo', JSON.stringify(res.data.userData))
                 localStorage.setItem('token', JSON.stringify(res.data.userData.token))
             }
         } catch (err) {
-            console.log('err: ',err.response.data.error)
             dispatch(userReducerActions.registerFail(err.response.data.error));
         };
     };
@@ -125,15 +122,16 @@ export const resendPinAPIAction = () => {
         };
         try {
             const res = await activateData();
-            console.log('resendPinAPIAction res: ', res)
+            console.log('resendPinAPIAction res.data.success: ', res.data.success)
             if (res.data.error) {
-                console.log('error1')
+                dispatch(userReducerActions.verificationEmailSentFailure(res.data.error))
             } else {
                 console.log('success')
                 dispatch(userReducerActions.verificationEmailSent(res.data.success))
             }
         } catch (err) {
-            console.log('error2')
+            console.log('err: ', err)
+            dispatch(userReducerActions.verificationEmailSentFailure())
         };
     };
 };
