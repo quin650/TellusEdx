@@ -12,7 +12,6 @@ const GetStartedModal = () => {
     const dispatch = useDispatch();
     const [modalStatus, setModalStatus] = useState("CreateAccount");
     //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
-    //const [modalStatus, setModalStatus] = useState("ResetPassword");
 
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
@@ -34,7 +33,7 @@ const GetStartedModal = () => {
 
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
-    const [registrationSuccessFeedback, setRegistrationSuccessFeedback] = useState(''); //Not being used right now, can use later maybe to provide feedback on incorrect pin..
+    const [registrationSuccessFeedback, setRegistrationSuccessFeedback] = useState('');
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
     const [isValidEmail, setIsValidEmail] = useState(true);
@@ -73,7 +72,6 @@ const GetStartedModal = () => {
                     setIsValidEmail(true);
                     setUserEmailFeedback('');
                     setCheckEmailCommence(false);
-                    setPasswordResetStatus(true);
                 }
             },  500);
             return ()  => {
@@ -81,6 +79,7 @@ const GetStartedModal = () => {
             };
         }
     }, [email, checkEmailCommence, registrationError]);
+
     useEffect (() => {
         if (headerText === "Create Account" && checkPasswordCommence2) {
             setPasswordFeedback('');
@@ -117,37 +116,23 @@ const GetStartedModal = () => {
         disableScroll()
     }, []);
     useEffect(() =>{
-        switch(modalStatus){
-            case "LogIn":
-                LogInPage();
-                break;
-            case "ResetPassword":
-                ResetPasswordPage();
-                break;
-            case "VerifyYourAccount":
-                VerifyYourAccount();
-                break;
-            case "VerificationSuccess":
-                VerificationSuccess();
-                break;
-            default:
-                console.log('default?')
-            }
-        }, [modalStatus])
+        if (modalStatus === 'LogIn'){
+            LogInPage();
+        } else if (modalStatus === 'ResetPasswordPage'){
+            ResetPasswordPage();
+        } else if (modalStatus === 'CreateAccount'){
+            CreateAccountPage(); 
+        } else if (modalStatus === 'VerifyYourAccount'){
+            VerifyYourAccount();
+        } else if (modalStatus === 'VerificationSuccess'){
+            VerificationSuccess();
+        } 
+    }, [modalStatus])
     useEffect(() => {
         if (getStartedView !== ''){
             setModalStatus(getStartedView)
         } 
     }, [getStartedView]);
-
-    const handleOnEmailBlur = () => {
-        setCheckEmailCommence(true);
-        emailInputRef.current.focus();
-        if (emailPattern.test(email)){
-                setIsValidEmail(true)
-                setUserEmailFeedback('')
-            }
-    };
     const handleOnPasswordFocus = () => {
         setCheckEmailCommence(true);
         if (emailPattern.test(email)){
@@ -158,7 +143,7 @@ const GetStartedModal = () => {
             }
     };
     const handleOnPasswordBlur = () => {
-        // ???
+        // dispatch(userReducerActions.loginErrorReset());
     };
     const LogInPage = () => {
         setEmailInputFieldStatus(true);
@@ -209,11 +194,11 @@ const GetStartedModal = () => {
     const VerifyYourAccount = () => {
         setModalStatus("VerifyYourAccount");
         setHeaderText("Account created successfully!");
-        setEmailInputFieldStatus(false);
-        setPasswordInputFieldStatus(false);
-        setPassCodeInputFieldStatus(true);
+        setEmailInputFieldStatus(false)
+        setPasswordInputFieldStatus(false)
+        setPassCodeInputFieldStatus(true)
         setButtonText("Verify");
-        setSocialMediaSection('');
+        setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={ResendPinLink} className={classes.PageLink}> Resend </a></p></span>);
     };
     const VerificationSuccess = () => {
@@ -228,10 +213,10 @@ const GetStartedModal = () => {
     };
     const ResetPasswordPage = () => {
         setModalStatus("ResetPassword");
-        setHeaderText("Reset Password");
-        setPasswordInputFieldStatus(false);
-        setButtonText("Email Reset Code");
-        setSocialMediaSection('');
+        setHeaderText("Reset Password")
+        setPasswordInputFieldStatus(false)
+        setButtonText("Send Reset Email")
+        setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
     };
     const ActionButton = (
@@ -245,9 +230,6 @@ const GetStartedModal = () => {
             LogInPage();
         }else if (modalStatus === "VerifyYourAccount"){
             dispatch(activate_APIAction(passCodeInputRef.current.value));
-        }else if (modalStatus === "ResetPassword"){
-            setCheckEmailCommence(true)
-            dispatch(passwordResetSendPinAPIAction(email));
         }else{
             setCheckEmailCommence(true)
             setCheckPasswordCommence1(true)
@@ -261,6 +243,8 @@ const GetStartedModal = () => {
                         dispatch(login_APIAction(email, password));
                         setCheckBackendCredentialsCommence(true);
                         break;
+                    case "ResetPassword":
+                        dispatch(passwordResetSendPinAPIAction(email));
                 } 
             }
         }
@@ -278,60 +262,6 @@ const GetStartedModal = () => {
     const [formOptions, setFormOptions] = useState(
         <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
     );
-
-    const pinActivationFeedback_rdx = useSelector(({ user }) => user.pinActivationFeedback_rdx);
-    const pinActivationStatus_rdx = useSelector(({ user }) => user.pinActivationStatus_rdx);
-    const [pinActivationFeedback, setPinActivationFeedback] = useState('Four-digit code sent to your email.');
-    const [pinActivationStatus, setPinActivationStatus] = useState(true);
-
-    const passwordResetFeedback_rdx = useSelector(({ user }) => user.passwordResetFeedback_rdx);
-    const passwordResetStatus_rdx = useSelector(({ user }) => user.passwordResetStatus_rdx);
-    const [passwordResetFeedback, setPasswordResetFeedback] = useState('Enter your email to receive reset code.');
-    const [passwordResetStatus, setPasswordResetStatus] = useState(true);  
-
-    const [animationKey1, setAnimationKey1] = useState(0); 
-    const [animationKey2, setAnimationKey2] = useState(0); 
-
-    useEffect(() => {
-        setPinActivationFeedback(pinActivationFeedback_rdx);
-        setPinActivationStatus(pinActivationStatus_rdx);
-        setAnimationKey1(prevKey => prevKey + 1);
-    },[pinActivationFeedback_rdx,pinActivationStatus_rdx])
-
-    useEffect(() => {
-        setPasswordResetFeedback(passwordResetFeedback_rdx);
-        setPasswordResetStatus(passwordResetStatus_rdx);
-        setAnimationKey2(prevKey => prevKey + 1);
-    },[passwordResetFeedback_rdx,passwordResetStatus_rdx])
-
-
-    let OriginalHeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>);
-    let HeaderSection = OriginalHeaderSection;
-    let VerifyYourAccountHeaderSection = (
-        <div key={animationKey1}>
-            <h1 className={classes.modalTitle2}>{headerText}</h1>
-            <h1 className={`${classes['modalSubTitle']} ${!pinActivationStatus && classes.pinActivationStatus}`}>{pinActivationFeedback}</h1>
-        </div>
-    );
-
-    let ResetPasswordHeaderSection = (
-        <div key={animationKey2}>
-            <h1 className={classes.modalTitle2}>{headerText}</h1>
-            <h1 className={`${classes['modalSubTitle']} ${!passwordResetStatus && classes.passwordResetStatus}`}>{passwordResetFeedback}</h1>
-        </div>
-    );
-
-    
-    if (modalStatus === "VerifyYourAccount"){
-        HeaderSection =  VerifyYourAccountHeaderSection;
-    } else if(modalStatus === "ResetPassword"){
-        HeaderSection =  ResetPasswordHeaderSection;
-    } else {
-        HeaderSection =  OriginalHeaderSection;
-    };
-
-
-
     const disableScroll = () => {
         window.addEventListener('scroll', preventDefaultScroll, { passive: false });
         window.addEventListener('wheel', preventDefaultScroll, { passive: false });
@@ -367,10 +297,37 @@ const GetStartedModal = () => {
             </div>
         </div>
     );
+
+    const pinActivationFeedback_rdx = useSelector(({ user }) => user.pinActivationFeedback_rdx);
+    const pinActivationStatus_rdx = useSelector(({ user }) => user.pinActivationStatus_rdx);
+    const [pinActivationFeedback, setPinActivationFeedback] = useState('Four-digit code sent to your email.');
+    const [pinActivationStatus, setPinActivationStatus] = useState(true);
+    const [animationKey, setAnimationKey] = useState(0); 
+
+    useEffect(() => {
+        setPinActivationFeedback(pinActivationFeedback_rdx);
+        setPinActivationStatus(pinActivationStatus_rdx);
+        setAnimationKey(prevKey => prevKey + 1);
+    },[pinActivationFeedback_rdx,pinActivationStatus_rdx])
+
+
+
+    let VerifyYourAccountHeaderSection = (
+        <div key={animationKey}>
+            <h1 className={classes.modalTitle2}>{headerText}</h1>
+            <h1 className={`${classes['modalSubTitle']} ${!pinActivationStatus && classes.pinActivationStatus}`}>{pinActivationFeedback}</h1>
+        </div>
+    );
+
     const handleOnPassCodeFocus = () => {
         console.log('handleOnPassCodeFocus');
         dispatch(userReducerActions.verifyPinStatusReset());
     };
+
+
+    let OriginalHeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>)
+    let HeaderSection = OriginalHeaderSection
+    modalStatus === "VerifyYourAccount" ? HeaderSection =  VerifyYourAccountHeaderSection : HeaderSection = OriginalHeaderSection
     const ResendPinLink = () =>{
         console.log('resendPinAPIAction()')
         dispatch(resendPinAPIAction());
@@ -422,7 +379,6 @@ const GetStartedModal = () => {
                                     ref={emailInputRef}
                                     className={`${classes['emailInput']} ${!isValidEmail && classes.isValidEmail}`}
                                     autoComplete='email'
-                                    onBlur={handleOnEmailBlur}
                                 />
                                 <div className={classes.emailInputFeedbackContainer}>
                                     <p className={`${classes['emailInputFeedback']} ${!isValidEmail && classes.isValidEmail}`}>

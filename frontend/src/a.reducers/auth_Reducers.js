@@ -21,8 +21,10 @@ const initialState = {
     isAdmin: '',
     token: '',
 	isActive: false,
-	pinActivationFeedback_rdx: 'Check your email to confirm your account.',
+	pinActivationFeedback_rdx: 'Four-digit code sent to your email.',
 	pinActivationStatus_rdx: true,
+	passwordResetFeedback_rdx: 'Enter your email to receive reset code.',
+	passwordResetStatus_rdx: true,
 	userInfo: userInfoFromStorage,
 };
 
@@ -69,9 +71,6 @@ const userSlice = createSlice({
 		registerErrorReset(state){
 			state.registrationError = "";
 		},
-
-
-
 		verificationEmailSent(state, action){
 			state.verificationEmail += 1;
 			state.pinActivationFeedback_rdx = action.payload
@@ -80,9 +79,6 @@ const userSlice = createSlice({
 		verificationEmailSentFailure(state){
 			state.verificationEmailFailureStatus = 'Failed'
 		},
-
-
-
 		verifyPinSuccess(state, action){
 			state.isActive = true;
 			state.getStartedView = 'VerificationSuccess';
@@ -93,15 +89,12 @@ const userSlice = createSlice({
 			state.pinActivationStatus_rdx = false;
 		},
 		verifyPinReset(state){
-			state.pinActivationFeedback_rdx = 'Check your email to confirm your account.';
+			state.pinActivationFeedback_rdx = 'Four-digit code sent to your email.';
 			state.pinActivationStatus_rdx = true;
 		},
 		verifyPinStatusReset(state){
 			state.pinActivationStatus_rdx = true;
 		},
-
-
-
         loginRequest(state){
             state.loading = true;
         },
@@ -118,6 +111,23 @@ const userSlice = createSlice({
 		loginErrorReset(state){
 			state.loginError = '';
 		},
+
+
+
+		passwordResetPinEmailSentSuccess(state){
+			state.passwordResetPinEmail += 1;
+			state.getStartedView = 'VerificationSuccess';
+		},
+		passwordResetPinEmailSentFailure(state, action){
+			state.pinActivationFeedback_rdx = action.payload;
+			state.pinActivationStatus_rdx = false;
+		},
+
+
+
+
+
+
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 		},

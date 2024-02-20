@@ -131,6 +131,66 @@ export const resendPinAPIAction = () => {
             }
         } catch (err) {
             console.log('err: ', err)
+            dispatch(userReducerActions.verificationEmailSentFailure(err.response.data.error))
+        };
+    };
+};
+
+export const passwordResetSendPinAPIAction = (email) => { 
+    return async (dispatch) => {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({ email });
+        const pwResetEmailPinData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/passwordResetPin/`, body, config);
+            return res;
+        };
+        try {
+            const res = await pwResetEmailPinData();
+            console.log('resendPinAPIAction res.data: ', res.data)
+            if (res.data.error) {
+                dispatch(userReducerActions.passwordResetPinEmailSentFailure(res.data.error))
+            } else {
+                console.log('success')
+                dispatch(userReducerActions.passwordResetPinEmailSentSuccess(res.data.success))
+            }
+        } catch (err) {
+            console.log('err: ', err)
+            dispatch(userReducerActions.passwordResetPinEmailSentFailure(err.response.data.error))
+        };
+    };
+};
+
+export const passwordResetReSendPinAPIAction = (email) => { 
+    return async (dispatch) => {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        };
+        const body = JSON.stringify({ email });
+        const pwResetEmailPinData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/passwordResetResendPin/`, body, config);
+            return res;
+        };
+        try {
+            const res = await pwResetEmailPinData();
+            console.log('resendPinAPIAction res.data.success: ', res.data.success)
+            if (res.data.error) {
+                dispatch(userReducerActions.verificationEmailSentFailure(res.data.error))
+            } else {
+                console.log('success')
+                dispatch(userReducerActions.verificationEmailSent(res.data.success))
+            }
+        } catch (err) {
+            console.log('err: ', err)
             dispatch(userReducerActions.verificationEmailSentFailure())
         };
     };

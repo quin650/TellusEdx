@@ -221,6 +221,102 @@ class ResendPinView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
+class PasswordResetSendPinView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        data = self.request.data
+        email = data["email"]
+        if not email:
+            return Response(
+                {"error": "Email field required"}, status=status.HTTP_400_BAD_REQUEST
+            )
+        pin = random.randint(1000, 9999)
+        user = User.objects.get(email=email)
+        user_pin = UserPin.objects.get(user=user)
+        if user_pin is None:
+            UserPin.objects.create(
+                user=user,
+                pin=pin,
+            )
+        else:
+            user_pin.pin = pin
+            user_pin.save()
+
+        mail_subject = "Reset Password Request"
+        message = render_to_string(
+            "template_reset_password.html",
+            {
+                "user": user.username,
+                "pin": pin,
+            },
+        )
+        email_message = EmailMessage(mail_subject, message, to=[email])
+
+        try:
+            sent = email_message.send()
+            if sent:
+                print("Email sent successfully")
+                message = {"success": "Four-digit code sent to your email"}
+                return Response(message, status=status.HTTP_200_OK)
+            else:
+                print("Failed to send email")
+                message = {"error": "Failed to send email"}
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            message = {"error": "Error sending email"}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordResetReSendPinView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        data = self.request.data
+        email = data["email"]
+        if not email:
+            return Response(
+                {"error": "Email field required"}, status=status.HTTP_400_BAD_REQUEST
+            )
+        pin = random.randint(1000, 9999)
+        user = User.objects.get(email=email)
+        user_pin = UserPin.objects.get(user=user)
+        if user_pin is None:
+            UserPin.objects.create(
+                user=user,
+                pin=pin,
+            )
+        else:
+            user_pin.pin = pin
+            user_pin.save()
+
+        mail_subject = "Reset Password Request"
+        message = render_to_string(
+            "template_reset_password.html",
+            {
+                "user": user.username,
+                "pin": pin,
+            },
+        )
+        email_message = EmailMessage(mail_subject, message, to=[email])
+
+        try:
+            sent = email_message.send()
+            if sent:
+                print("Email sent successfully")
+                message = {"success": "Code resent √ - Check your email"}
+                return Response(message, status=status.HTTP_200_OK)
+            else:
+                print("Failed to send email")
+                message = {"error": "Failed to send email"}
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            message = {"error": "Error sending email"}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
 class getUsers(APIView):
     permission_classes = (permissions.IsAdminUser,)
 
