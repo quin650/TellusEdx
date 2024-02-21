@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import classes from './PasswordSubModal.module.css'
 const PasswordSubModal = (props) => {
-    // console.log('PasswordSubModal')
     const [isValidLower, setIsValidLower] = useState(false);
     const [isValidUpper, setIsValidUpper] = useState(false);
     const [isValidNumber, setIsValidNumber] = useState(false);
@@ -13,7 +12,10 @@ const PasswordSubModal = (props) => {
     const numberPattern = /\d/;
     const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     const minimumEightPattern = /.{8,}/
-
+    console.log('test 1')
+    console.log("props.headerText !== 'Login': ", props.headerText !== 'Login')
+    console.log('props.checkPasswordCommence2: ', props.checkPasswordCommence2)
+    console.log('props.isValidEmail: ', props.isValidEmail)
     useEffect(() => {
         setIsValidLower(lowerCasePattern.test(props.password));
         setIsValidUpper(upperCasePattern.test(props.password));
@@ -22,17 +24,20 @@ const PasswordSubModal = (props) => {
         setIsValidEight(minimumEightPattern.test(props.password));
     }, [props.password])
     useEffect(() =>{
-        if (props.headerText == 'Create Account' && props.checkPasswordCommence2 && props.isValidEmail) {
+        console.log('test 2')
+        if (props.headerText !== 'Login' && props.checkPasswordCommence2 && props.isValidEmail) {
+            console.log('test123')
             if (props.password.length === 0){
-                setIsValidPassword(true)
+                setIsValidPassword(true);
             } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
-                setIsValidPassword(true)
+                setIsValidPassword(true);
             } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
-                setIsValidPassword(false)
+                setIsValidPassword(false);
             }
         }
-        else if(props.headerText == 'Login'){
-            setIsValidPassword(true)
+        else if(props.headerText === 'Login'){
+            console.log('test-xyz')
+            setIsValidPassword(true);
         }
     }, [props.password, props.headerText, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
 

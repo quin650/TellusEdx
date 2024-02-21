@@ -261,7 +261,7 @@ class PasswordResetSendPinView(APIView):
                 return Response(message, status=status.HTTP_200_OK)
             else:
                 print("Failed to send email")
-                message = {"error": "Failed to send email"}
+                message = {"error": "Email Failed to send. Confirm Email"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             print(f"Error sending email: {e}")

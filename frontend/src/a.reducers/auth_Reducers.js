@@ -116,7 +116,7 @@ const userSlice = createSlice({
 
 		passwordResetPinEmailSentSuccess(state){
 			state.passwordResetPinEmail += 1;
-			state.getStartedView = 'VerificationSuccess';
+			state.getStartedView = 'ResetPasswordPageReceivedPin';
 		},
 		passwordResetPinEmailSentFailure(state, action){
 			state.pinActivationFeedback_rdx = action.payload;
