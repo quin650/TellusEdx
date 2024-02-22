@@ -12,10 +12,6 @@ const PasswordSubModal = (props) => {
     const numberPattern = /\d/;
     const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     const minimumEightPattern = /.{8,}/
-    console.log('test 1')
-    console.log("props.headerText !== 'Login': ", props.headerText !== 'Login')
-    console.log('props.checkPasswordCommence2: ', props.checkPasswordCommence2)
-    console.log('props.isValidEmail: ', props.isValidEmail)
     useEffect(() => {
         setIsValidLower(lowerCasePattern.test(props.password));
         setIsValidUpper(upperCasePattern.test(props.password));
@@ -24,9 +20,16 @@ const PasswordSubModal = (props) => {
         setIsValidEight(minimumEightPattern.test(props.password));
     }, [props.password])
     useEffect(() =>{
-        console.log('test 2')
-        if (props.headerText !== 'Login' && props.checkPasswordCommence2 && props.isValidEmail) {
-            console.log('test123')
+        // this if section can be removed after testing the Reset your password modal
+        if (props.headerText === 'Reset your Password' && props.checkPasswordCommence2 ) {
+            if (props.password.length === 0){
+                setIsValidPassword(true);
+            } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
+                setIsValidPassword(true);
+            } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
+                setIsValidPassword(false);
+            }
+        }else if (props.headerText !== 'Login' && props.checkPasswordCommence2 && props.isValidEmail) {
             if (props.password.length === 0){
                 setIsValidPassword(true);
             } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
@@ -36,7 +39,6 @@ const PasswordSubModal = (props) => {
             }
         }
         else if(props.headerText === 'Login'){
-            console.log('test-xyz')
             setIsValidPassword(true);
         }
     }, [props.password, props.headerText, isValidLower, isValidUpper, isValidNumber, isValidSpecial, isValidEight])
