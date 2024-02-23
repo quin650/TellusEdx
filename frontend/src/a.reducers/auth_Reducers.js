@@ -20,12 +20,22 @@ const initialState = {
     name: '',
     isAdmin: '',
     token: '',
-	isActive: false,
-	pinActivationFeedback_rdx: 'Four-digit code sent to your email.',
-	pinActivationStatus_rdx: true,
-	passwordResetFeedback_rdx: 'Enter your email to receive reset code.',
-	passwordResetStatus_rdx: true,
 	userInfo: userInfoFromStorage,
+
+	// Verify Your Account
+	verifyYourAccountPinStatus_rdx: true,
+	verifyYourAccountPinFeedback_rdx: 'Verification Code sent to your email.',
+	
+	//Reset Password
+	resetPasswordStatus_rdx: true,
+	resetPasswordFeedback_rdx: 'Enter your email to receive a reset code.',
+	
+	//Reset Your Password
+	resetYourPasswordStatus_rdx: true,
+	ResetYourPasswordFeedback_rdx: '',
+	pinStatus_rdx: true,
+	pinFeedback_rdx: '',
+
 };
 
 const userSlice = createSlice({
@@ -33,12 +43,14 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 
+		// NavBar 
 		navBarMenuOpen(state) {
 			state.navbarMenuStatus = true;
 		},
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
+		// Modal
 		getStartedModalLogIn(state) {
 			state.getStartedModalStatus = true;
 			state.navbarMenuStatus = false;
@@ -52,6 +64,7 @@ const userSlice = createSlice({
 			state.getStartedModalStatus = false;
 			state.navbarMenuStatus = false;
 		},
+		// Registration
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
 		},
@@ -71,30 +84,28 @@ const userSlice = createSlice({
 		registerErrorReset(state){
 			state.registrationError = "";
 		},
-		verificationEmailSent(state, action){
-			state.verificationEmail += 1;
-			state.pinActivationFeedback_rdx = action.payload
-			state.pinActivationStatus_rdx = false;
-		},
-		verificationEmailSentFailure(state){
-			state.verificationEmailFailureStatus = 'Failed'
-		},
-		verifyPinSuccess(state, action){
-			state.isActive = true;
+		// Verify Your Account
+		verifyYourAccountPinSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
 		},
-		verifyPinFail(state, action){
-			state.isActive = false;
-			state.pinActivationFeedback_rdx = action.payload;
-			state.pinActivationStatus_rdx = false;
+		verifyYourAccountPinFail(state, action){
+			state.verifyYourAccountPinStatus_rdx = false;
+			state.verifyYourAccountPinFeedback_rdx = action.payload;
 		},
-		verifyPinReset(state){
-			state.pinActivationFeedback_rdx = 'Four-digit code sent to your email.';
-			state.pinActivationStatus_rdx = true;
+		verifyYourAccountPinReset(state){
+			state.verifyYourAccountPinStatus_rdx = true;
 		},
-		verifyPinStatusReset(state){
-			state.pinActivationStatus_rdx = true;
+		verifyYourAccountPinResent(state, action){
+			state.verifyYourAccountPinStatus_rdx = true;
+			state.verifyYourAccountPinFeedback_rdx = action.payload
+			state.verificationEmail += 1;
 		},
+		verifyYourAccountPinResentFailure(state){
+			state.verifyYourAccountPinStatus_rdx = false;
+			state.verifyYourAccountPinFeedback_rdx = action.payload
+			state.verificationEmailFailureStatus = 'Failed'
+		},
+		// Log In
         loginRequest(state){
             state.loading = true;
         },
@@ -111,29 +122,13 @@ const userSlice = createSlice({
 		loginErrorReset(state){
 			state.loginError = '';
 		},
-
-
-
-		passwordResetPinEmailSentSuccess(state){
-			state.passwordResetPinEmail += 1;
-			state.getStartedView = 'ResetPasswordPageReceivedPin';
-		},
-		passwordResetPinEmailSentFailure(state, action){
-			state.pinActivationFeedback_rdx = action.payload;
-			state.pinActivationStatus_rdx = false;
-		},
-
-
-
-
-
-
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 		},
 		logoutFail(state){
 			state;
 		},
+		// Authentication
 		authSuccess(state){
 			state.isAuthenticated = true;
 		},
@@ -143,6 +138,43 @@ const userSlice = createSlice({
 		tokenSuccess(state, action){
 			state.token = action.payload;
 		},
+		// ResetPassword
+		passwordResetPinEmailSentSuccess(state){
+			state.passwordResetPinEmail += 1;
+			state.resetPasswordStatus_rdx = true;
+			state.resetPasswordFeedback_rdx = action.payload
+			state.getStartedView = 'ResetPasswordPageReceivedPin';
+		},
+		passwordResetPinEmailSentFailure(state, action){
+			state.resetPasswordStatus_rdx = false;
+			state.resetPasswordFeedback_rdx = action.payload;
+		},
+
+		// ResetYourPassword
+		passwordResetSuccess(state){
+			state.resetYourPasswordStatus_rdx = true;
+			state.ResetYourPasswordFeedback_rdx = '';
+			state.pinStatus_rdx = true;
+			state.pinFeedback_rdx = '';
+		},
+		passwordResetFailurePasswordSuccess(state){
+			state.resetYourPasswordStatus_rdx = true;
+			state.ResetYourPasswordFeedback_rdx = '';
+		},
+		passwordResetFailurePasswordIssue(state, action){
+			state.resetYourPasswordStatus_rdx = false;
+			state.ResetYourPasswordFeedback_rdx = action.payload;
+		},
+		passwordResetFailurePassCodeSuccess(state){
+			state.pinStatus_rdx = true;
+			state.pinFeedback_rdx = '';
+		},
+		passwordResetFailurePassCodeIssue(state, action){
+			state.pinStatus_rdx = false;
+			state.pinFeedback_rdx = action.payload;
+		},
+
+		//Delete User
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;
 		},

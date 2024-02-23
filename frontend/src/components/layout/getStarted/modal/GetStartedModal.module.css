@@ -178,7 +178,6 @@ input:-webkit-autofill:focus{
 /* ********************************************************************* Email Input Invalid */
 .emailInput.isValidEmail {
     border: 2px solid  rgb(251, 83, 83);
-
 }
 .emailInputFeedback.isValidEmail {
     display: block;
@@ -193,16 +192,21 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
-/* ********************************************************************* Pass Code Feedback */
-.passCodeInputFeedbackContainer{
+/* ********************************************************************* pin Input */
+.pinInput:focus {
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
+    border: 2px solid rgba(39, 85, 196, 1);
+}
+/* ********************************************************************* pin Feedback */
+.pinInputFeedbackContainer{
     height: 26px;
     margin: 0px;
 }
-.passCodeInputFeedbackContainer.VerifyYourAccount{
+.pinInputFeedbackContainer.VerifyYourAccount{
     height: 49px;
     margin: 0px;
 }
-.passCodeInputFeedback{
+.pinInputFeedback{
     display: block;
     font-size: 13px;
     color: var(--blue);
@@ -215,13 +219,29 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
+/* ********************************************************************* pin Input Invalid */
+.pinInput.pinResetPWStatus {
+    border: 2px solid  rgb(251, 83, 83);
+}
+.pinInputFeedback.pinResetPWStatus {
+    display: block;
+    font-size: 13px;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+}
+
 /* ********************************************************************* Password Input */
 .passwordInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 2px solid rgba(39, 85, 196, 1);
 }
-
-
 
 .passwordInputFeedbackSection{
     min-height: 49px;

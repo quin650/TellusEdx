@@ -21,7 +21,7 @@ const PasswordSubModal = (props) => {
     }, [props.password])
     useEffect(() =>{
         // this if section can be removed after testing the Reset your password modal
-        if (props.headerText === 'Reset your Password' && props.checkPasswordCommence2 ) {
+        if (props.headerText === 'Reset Your Password' && props.checkPasswordCommence2 ) {
             if (props.password.length === 0){
                 setIsValidPassword(true);
             } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){

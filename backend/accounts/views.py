@@ -66,7 +66,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @method_decorator(csrf_protect, name="dispatch")
-class ActivateView(APIView):
+class VerifyYourAccountView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
@@ -173,7 +173,7 @@ class RegisterView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ResendPinView(APIView):
+class VerifyYourAccountResendPinView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, *args, **kwargs):
@@ -221,7 +221,7 @@ class ResendPinView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class PasswordResetSendPinView(APIView):
+class ResetPasswordSendPinView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, *args, **kwargs):
@@ -257,7 +257,7 @@ class PasswordResetSendPinView(APIView):
             sent = email_message.send()
             if sent:
                 print("Email sent successfully")
-                message = {"success": "Four-digit code sent to your email"}
+                message = {"success": "Verification Code sent to your email."}
                 return Response(message, status=status.HTTP_200_OK)
             else:
                 print("Failed to send email")
@@ -269,51 +269,38 @@ class PasswordResetSendPinView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class PasswordResetReSendPinView(APIView):
+class ResetYourPasswordView(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, format=None):
         data = self.request.data
         email = data["email"]
-        if not email:
-            return Response(
-                {"error": "Email field required"}, status=status.HTTP_400_BAD_REQUEST
-            )
-        pin = random.randint(1000, 9999)
-        user = User.objects.get(email=email)
-        user_pin = UserPin.objects.get(user=user)
-        if user_pin is None:
-            UserPin.objects.create(
-                user=user,
-                pin=pin,
-            )
-        else:
-            user_pin.pin = pin
-            user_pin.save()
-
-        mail_subject = "Reset Password Request"
-        message = render_to_string(
-            "template_reset_password.html",
-            {
-                "user": user.username,
-                "pin": pin,
-            },
-        )
-        email_message = EmailMessage(mail_subject, message, to=[email])
-
+        passCode = data["passCode"]
+        password = data["password"]
+        passwordConfirm = data["passwordConfirm"]
         try:
-            sent = email_message.send()
-            if sent:
-                print("Email sent successfully")
-                message = {"success": "Code resent √ - Check your email"}
-                return Response(message, status=status.HTTP_200_OK)
+            if User.objects.filter(email=email).exists():
+                user = User.objects.get(email=email)
+                pin_value = (
+                    UserPin.objects.filter(user=user)
+                    .values_list("pin", flat=True)
+                    .first()
+                )
+                if int(pin) == pin_value:
+                    print("test5")
+                    user.is_active = True
+                    user.save()
+                    message = {"success": "Account activated"}
+                    return Response(message, status=status.HTTP_200_OK)
+                else:
+                    message = {"error": "Invalid Pin, try again."}
+                    return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
-                print("Failed to send email")
-                message = {"error": "Failed to send email"}
+                # User Doesn't exists..
+                message = {"error": "Invalid Email Used. System Error"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            print(f"Error sending email: {e}")
-            message = {"error": "Error sending email"}
+        except:
+            message = {"error": "Error! Enter pin or resend pin email"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -354,3 +341,32 @@ class CheckAuthenticatedView(APIView):
                 "error": "Something went wrong when checking authentication status"
             }
             return Response(message, status=status.HTTP_401_UNAUTHORIZED)
+
+
+# permission_classes = (permissions.AllowAny, )
+
+#     def post(self, request, format=None):
+#         data = self.request.data
+
+#         username = data['username']
+#         password = data['password']
+#         re_password = data['re_password']
+#         try:
+#             if password == re_password:
+
+#                 if User.objects.filter(username=username).exists():
+#                     return Response({'error': 'Username already exists'})
+#                 else:
+#                     if len(password) < 6:
+#                         return Response({'error': 'Password must be at least 6 characters'})
+#                     else:
+#                         user = User.objects.create_user(username=username, password=password)
+#                         user = User.objects.get(id=user.id)
+#                         user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', city='')
+#                         user_notes = UserNotes.objects.create(user=user, note_place_id='', note_tags='', note='')
+#                         return Response({'success': 'User created successfully'})
+
+#             else:
+#                 return Response({'error': 'Passwords do not match'})
+#         except:
+#                 return Response({'error': 'Something went wrong when registering account'})
