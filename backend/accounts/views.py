@@ -160,9 +160,7 @@ class RegisterView(APIView):
                         password=password,
                         is_active=False,
                     )
-
                     verificationEmail(email)
-
                     user = UserSerializerWithToken(user, many=False)
                     print(user.data)
                     return Response({"userData": user.data})
@@ -276,7 +274,7 @@ class ResetYourPasswordView(APIView):
         data = self.request.data
         email = data["email"]
         passCode = data["passCode"]
-        password = data["password"]
+        new_password = data["password"]
         passwordConfirm = data["passwordConfirm"]
         try:
             if User.objects.filter(email=email).exists():
@@ -286,21 +284,39 @@ class ResetYourPasswordView(APIView):
                     .values_list("pin", flat=True)
                     .first()
                 )
-                if int(pin) == pin_value:
-                    print("test5")
-                    user.is_active = True
-                    user.save()
-                    message = {"success": "Account activated"}
-                    return Response(message, status=status.HTTP_200_OK)
+                if int(passCode) == pin_value:
+                    if new_password == passwordConfirm:
+                        if (
+                            len(new_password) > 7
+                            and any(char.islower() for char in new_password)
+                            and any(char.isupper() for char in new_password)
+                            and any(char.isdigit() for char in new_password)
+                            and re.search(
+                                r"[!@#$%^&*()_+\-=\\[\]{};" ':"\\|,.<>\/?]+',
+                                new_password,
+                            )
+                        ):
+                            # Set the new password
+                            user.set_password(new_password)
+                            user.save()
+                            message = {"success": "Password Changed Successfully"}
+                            return Response(message, status=status.HTTP_200_OK)
+                        else:
+                            message = {
+                                "PasswordError": "Password Strength is not High enough"
+                            }
+                            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+                    else:
+                        message = {"PasswordError": "Passwords Need to Match"}
+                        return Response(message, status=status.HTTP_400_BAD_REQUEST)
                 else:
-                    message = {"error": "Invalid Pin, try again."}
+                    message = {"PinError": "Invalid Pin, try again."}
                     return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
-                # User Doesn't exists..
-                message = {"error": "Invalid Email Used. System Error"}
+                message = {"PasswordError": "Invalid Email Used. System Error"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
         except:
-            message = {"error": "Error! Enter pin or resend pin email"}
+            message = {"error": "System Error"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 

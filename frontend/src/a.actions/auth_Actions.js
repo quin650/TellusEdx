@@ -187,6 +187,7 @@ export const resetPasswordAPIAction = (email) => {
             } else {
                 console.log('success')
                 dispatch(userReducerActions.passwordResetPinEmailSentSuccess(res.data.success))
+                localStorage.setItem('email', JSON.stringify(email))
             }
         } catch (err) {
             console.log('err: ', err)
@@ -196,10 +197,8 @@ export const resetPasswordAPIAction = (email) => {
 };
 export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { 
     return async (dispatch) => {
-        // Need to fix this... depends on how we will save the email at the "Reset Password" Modal
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const email = userInfo ? userInfo.email : null;
+        let email = JSON.parse(localStorage.getItem('email'));
+
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -213,23 +212,24 @@ export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) 
             return res;
         };
 
-        if (password === passwordConfirm){
-            try {
-                const res = await pwResetEmailPinData();
-                console.log('resetYourPasswordAPIAction res.data: ', res.data)
-                if (res.data.error) {
-                    // dispatch(userReducerActions.passwordResetFailure(res.data.error))
-                } else {
-                    // console.log('success')
-                    // dispatch(userReducerActions.passwordResetSuccess(res.data.success))
-                }
-            } catch (err) {
-                // console.log('err: ', err)
-                // dispatch(userReducerActions.passwordResetFailure(err.response.data.error))
-            };
-        } else{
-            dispatch(userReducerActions.passwordResetFailurePasswordIssue("passwords don't match"))
-        }
+        try {
+            const res = await pwResetEmailPinData();
+            console.log('resetYourPasswordAPIAction res.data: ', res.data)
+            if (res.data.PasswordError) {
+                dispatch(userReducerActions.passwordResetFailurePasswordIssue(res.data.PasswordError));
+            } else if (res.data.PinError) {
+                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.PinError));
+            }else if (res.data.error) {
+                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.error)); 
+            }else {
+                console.log('success')
+                dispatch(userReducerActions.passwordResetSuccess());
+            }
+        } catch (err) {
+            // console.log('err: ', err)
+            // dispatch(userReducerActions.passwordResetFailure(err.response.data.error))
+        };
+
     };
 };
 // export const delete_account = () => {

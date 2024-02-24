@@ -21,6 +21,7 @@ const initialState = {
     isAdmin: '',
     token: '',
 	userInfo: userInfoFromStorage,
+	generalFeedback_rdx: '',
 
 	// Verify Your Account
 	verifyYourAccountPinStatus_rdx: true,
@@ -156,22 +157,20 @@ const userSlice = createSlice({
 			state.ResetYourPasswordFeedback_rdx = '';
 			state.pinStatus_rdx = true;
 			state.pinFeedback_rdx = '';
-		},
-		passwordResetFailurePasswordSuccess(state){
-			state.resetYourPasswordStatus_rdx = true;
-			state.ResetYourPasswordFeedback_rdx = '';
+			state.getStartedView = 'PasswordChanged';
 		},
 		passwordResetFailurePasswordIssue(state, action){
 			state.resetYourPasswordStatus_rdx = false;
 			state.ResetYourPasswordFeedback_rdx = action.payload;
 		},
-		passwordResetFailurePassCodeSuccess(state){
-			state.pinStatus_rdx = true;
-			state.pinFeedback_rdx = '';
-		},
 		passwordResetFailurePassCodeIssue(state, action){
 			state.pinStatus_rdx = false;
 			state.pinFeedback_rdx = action.payload;
+		},
+		passwordResetFailurePassCodeIssue(state, action){
+			state.resetYourPasswordStatus_rdx = false;
+			state.pinStatus_rdx = false;
+			state.generalFeedback_rdx = action.payload;
 		},
 
 		//Delete User

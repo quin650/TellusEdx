@@ -310,8 +310,6 @@ const GetStartedModal = () => {
         setAnimationKey(prevKey => prevKey + 1);
     },[pinActivationFeedback_rdx,pinActivationStatus_rdx])
 
-
-
     let VerifyYourAccountHeaderSection = (
         <div key={animationKey}>
             <h1 className={classes.modalTitle2}>{headerText}</h1>
@@ -323,7 +321,6 @@ const GetStartedModal = () => {
         console.log('handleOnPassCodeFocus');
         dispatch(userReducerActions.verifyPinStatusReset());
     };
-
 
     let OriginalHeaderSection = (<h1 className={classes.modalTitle}>{headerText}</h1>)
     let HeaderSection = OriginalHeaderSection
