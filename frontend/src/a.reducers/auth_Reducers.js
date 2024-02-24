@@ -21,9 +21,11 @@ const initialState = {
     isAdmin: '',
     token: '',
 	userInfo: userInfoFromStorage,
+
+	//General Feedback
 	generalFeedback_rdx: '',
 
-	// Verify Your Account
+	//Verify Your Account
 	verifyYourAccountPinStatus_rdx: true,
 	verifyYourAccountPinFeedback_rdx: 'Verification Code sent to your email.',
 	
@@ -89,21 +91,28 @@ const userSlice = createSlice({
 		verifyYourAccountPinSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
 		},
+
+
+		
 		verifyYourAccountPinFail(state, action){
 			state.verifyYourAccountPinStatus_rdx = false;
 			state.verifyYourAccountPinFeedback_rdx = action.payload;
+			state.generalFeedback_rdx = action.payload;
 		},
 		verifyYourAccountPinReset(state){
 			state.verifyYourAccountPinStatus_rdx = true;
 		},
+
 		verifyYourAccountPinResent(state, action){
 			state.verifyYourAccountPinStatus_rdx = true;
 			state.verifyYourAccountPinFeedback_rdx = action.payload
+			state.generalFeedback_rdx = action.payload;
 			state.verificationEmail += 1;
 		},
 		verifyYourAccountPinResentFailure(state){
 			state.verifyYourAccountPinStatus_rdx = false;
 			state.verifyYourAccountPinFeedback_rdx = action.payload
+			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = 'Failed'
 		},
 		// Log In

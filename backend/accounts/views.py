@@ -72,29 +72,32 @@ class VerifyYourAccountView(APIView):
     def post(self, request, format=None):
         data = self.request.data
         email = data["email"]
-        pin = data["pin"]
+        passCode = data["passCode"]
         try:
-            if User.objects.filter(email=email).exists():
+            if len(passCode) == 0:
+                message = {"error": "PassCode Field Required"}
+                return Response(message, status=status.HTTP_400_BAD_REQUEST)
+            elif User.objects.filter(email=email).exists():
                 user = User.objects.get(email=email)
-                pin_value = (
+                passCode_value = (
                     UserPin.objects.filter(user=user)
                     .values_list("pin", flat=True)
                     .first()
                 )
-                if int(pin) == pin_value:
+                if int(passCode) == passCode_value:
                     print("test5")
                     user.is_active = True
                     user.save()
                     message = {"success": "Account activated"}
                     return Response(message, status=status.HTTP_200_OK)
                 else:
-                    message = {"error": "Invalid Pin, try again."}
+                    message = {"error": "Invalid PassCode, try again."}
                     return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
-                message = {"error": "Invalid Pin, try again"}
+                message = {"error": "System Error, User not found"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
         except:
-            message = {"error": "Error! Enter pin or resend pin email"}
+            message = {"error": "Error! Enter PassCode or resend PassCode email"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 

@@ -88,7 +88,7 @@
     margin: 0px auto 36px 0px;
 }
 
-.modalSubTitle.pinActivationStatus {
+.modalSubTitle.isValidPassCode {
     color: red;
     animation: left-to-right .4s linear forwards 2 alternate .1ms;
 }
@@ -208,6 +208,7 @@ input:-webkit-autofill:focus{
 }
 .pinInputFeedback{
     display: block;
+    visibility: hidden;
     font-size: 13px;
     color: var(--blue);
     padding-top: 2px;
@@ -220,11 +221,12 @@ input:-webkit-autofill:focus{
     margin-left: 2px;
 }
 /* ********************************************************************* pin Input Invalid */
-.pinInput.pinResetPWStatus {
+.pinInput.isValidPassCode {
     border: 2px solid  rgb(251, 83, 83);
 }
-.pinInputFeedback.pinResetPWStatus {
+.pinInputFeedback.isValidPassCode {
     display: block;
+    visibility: visible;
     font-size: 13px;
     color: rgb(224, 2, 2);
     padding-top: 2px;

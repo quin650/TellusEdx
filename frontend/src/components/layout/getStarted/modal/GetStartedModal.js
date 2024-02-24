@@ -29,7 +29,7 @@ const GetStartedModal = () => {
     const [headerText, setHeaderText] = useState("Create Account");
     const [buttonText, setButtonText] = useState("Create Account");
 
-    const [formData, setFormData] = useState({email: '', password: ''});
+    const [formData, setFormData] = useState({email: '', password: '', passCode: '123', passwordConfirm: ''});
     const { email, password, passCode, passwordConfirm } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const emailInputRef = useRef();
@@ -47,7 +47,7 @@ const GetStartedModal = () => {
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [isValidPasswordConfirm, setIsValidPasswordConfirm] = useState(true);
-    const [isValidPin, setIsValidPin] = useState(true);
+    const [isValidPassCode, setIsValidPassCode] = useState(true);
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence1, setCheckPasswordCommence1] = useState(false); //For regular checking password correctness
     const [checkPasswordCommence2, setCheckPasswordCommence2] = useState(false); //For PasswordSubModal Initiation purposes
@@ -113,7 +113,7 @@ const GetStartedModal = () => {
         } else if (headerText === "Reset Your Password" && checkPasswordCommence1) {
             const identifier = setTimeout( () => { 
                 if (passCode === 0 ){
-                    setIsValidPin(false)
+                    setIsValidPassCode(false)
                     passCodeInputRef.current.focus();
                     setResetYourPasswordFeedback('Verification Code Required')
                 }else if (passwordConfirm === 0 ){
@@ -218,7 +218,7 @@ const GetStartedModal = () => {
 
     };
     const handleOnPassCodeBlur = () => {
-        if (!isValidPin){
+        if (!isValidPassCode){
             passCodeInputRef.current.focus();
         }
     };
@@ -378,7 +378,7 @@ const GetStartedModal = () => {
         setCheckPinCommence(true);
         if (passCode.length === 0){
             setVerifyYourAccountPinActivationStatus(false);
-            setIsValidPin(false);
+            setIsValidPassCode(false);
             setResetYourPasswordFeedback('Verification Code Required');
         } else if (password !== passwordConfirm){
             setIsValidPassword(false);
@@ -400,35 +400,23 @@ const GetStartedModal = () => {
         <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
     );
 
-    //--*********************************************************************************************************
-    const generalFeedback_rdx = useSelector(({ user }) => user.generalFeedback_rdx);
     const [generalFeedback, setGeneralFeedback] = useState('');
-    const [animationKey0, setAnimationKey0] = useState(0); 
-    useEffect(() => {
-        setGeneralFeedback(generalFeedback_rdx);
-        setAnimationKey0(prevKey => prevKey + 1);
-    },[generalFeedback_rdx])
-
-
-    //--*********************************************************************************************************
-    const [passCodeFeedback, setPassCodeFeedback] = useState('');
-
 
     //Verify Your Account --------------------------------------------------------------------------------------------------
     const verifyYourAccountPinStatus_rdx = useSelector(({ user }) => user.verifyYourAccountPinStatus_rdx);
     const verifyYourAccountPinFeedback_rdx = useSelector(({ user }) => user.verifyYourAccountPinFeedback_rdx);
-    const [verifyYourAccountPinActivationStatus, setVerifyYourAccountPinActivationStatus] = useState(true);
-    const [verifyYourAccountPinFeedback, setVerifyYourAccountPinFeedback] = useState('Verification Code sent to your email.');
+    const [pinFeedback, setPinFeedback] = useState('');
     const [animationKey1, setAnimationKey1] = useState(0); 
     useEffect(() => {
-        setVerifyYourAccountPinActivationStatus(verifyYourAccountPinStatus_rdx);
-        setVerifyYourAccountPinFeedback(verifyYourAccountPinFeedback_rdx);
+        setIsValidPassCode(verifyYourAccountPinStatus_rdx);
+        setPinFeedback(verifyYourAccountPinFeedback_rdx);
+        setGeneralFeedback(verifyYourAccountPinFeedback_rdx)
         setAnimationKey1(prevKey => prevKey + 1);
     },[verifyYourAccountPinStatus_rdx, verifyYourAccountPinFeedback_rdx])
     let VerifyYourAccountHeaderSection = (
         <div key={animationKey1}>
             <h1 className={classes.modalTitle2}>{headerText}</h1>
-            <h1 className={`${classes['modalSubTitle']} ${!verifyYourAccountPinActivationStatus && classes.verifyYourAccountPinActivationStatus}`}>{verifyYourAccountPinFeedback}</h1>
+            <h1 className={`${classes['modalSubTitle']} ${!isValidPassCode && classes.isValidPassCode}`}>{generalFeedback}</h1>
         </div>
     );
 
@@ -521,6 +509,7 @@ const GetStartedModal = () => {
     );
     const ResendPinLink = () =>{
         dispatch(verifyYourAccountResendPin_APIAction());
+        passCodeInputRef.current.value = ''
     }
     const onEscKey_ExitModal = (e) => {
         if (e.key === 'Escape') {
@@ -544,18 +533,17 @@ const GetStartedModal = () => {
                             <div className={classes.inputContainer}>
                                 <input
                                     type='number'
-                                    id='code'
+                                    id='passCode'
                                     placeholder='Verification Code'
-                                    name='code'
+                                    name='passCode'
                                     onChange={e => onChange(e)}
                                     ref={passCodeInputRef}
-                                    className={`${classes['pinInput']} ${!isValidPin && classes.isValidPin}`}
+                                    className={`${classes['pinInput']} ${!isValidPassCode && classes.isValidPassCode}`}
                                     onFocus={handleOnPassCodeFocus}
                                     onBlur={handleOnPassCodeBlur}
                                 />
                                 <div className={`${classes['pinInputFeedbackContainer']} ${modalStatus === 'VerifyYourAccount' && classes.VerifyYourAccount}`}>
-                                    <p className={`${classes['pinInputFeedback']} ${!resetYourPasswordStatus && classes.resetYourPasswordStatus}`}>
-                                        {resetYourPasswordFeedback}  
+                                    <p className={`${classes['pinInputFeedback']} ${!isValidPassCode && classes.isValidPassCode}`}>
                                     </p>
                                 </div>
                             </div>

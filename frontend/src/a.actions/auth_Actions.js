@@ -71,7 +71,7 @@ export const register_APIAction = (username, password) => {
         };
     };
 };
-export const verifyYourAccount_APIAction = (pin) => { 
+export const verifyYourAccount_APIAction = (passCode) => { 
     return async (dispatch) => {
         const userInfoString = localStorage.getItem('userInfo');
         const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
@@ -84,7 +84,7 @@ export const verifyYourAccount_APIAction = (pin) => {
                 'X-CSRFToken': Cookies.get('csrftoken')
             }
         };
-        const body = JSON.stringify({ email, pin });
+        const body = JSON.stringify({ email, passCode });
         const activateData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyYourAccountView/`, body, config);
             return res;
@@ -96,7 +96,6 @@ export const verifyYourAccount_APIAction = (pin) => {
                 
             } else {
                 dispatch(userReducerActions.verifyYourAccountPinSuccess());
-                dispatch(userReducerActions.verifyYourAccountPinReset());
             }
         } catch (err) {
             dispatch(userReducerActions.verifyYourAccountPinFail(err.response.data.error));
@@ -195,7 +194,7 @@ export const resetPasswordAPIAction = (email) => {
         };
     };
 };
-export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { 
+export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { verifyYourAccount_APIAction
     return async (dispatch) => {
         let email = JSON.parse(localStorage.getItem('email'));
 
