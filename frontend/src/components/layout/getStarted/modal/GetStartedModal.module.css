@@ -93,7 +93,7 @@
     animation: left-to-right .4s linear forwards 2 alternate .1ms;
 }
 
-.modalSubTitle.passwordResetStatus {
+.modalSubTitle.resetPasswordStatus {
     color: red;
     animation: left-to-right .4s linear forwards 2 alternate .1ms;
 }

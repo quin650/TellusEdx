@@ -11,9 +11,9 @@ import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => {
     const dispatch = useDispatch();
     //const [modalStatus, setModalStatus] = useState("CreateAccount");
-    const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
+    //const [modalStatus, setModalStatus] = useState("VerifyYourAccount");
     //const [modalStatus, setModalStatus] = useState("VerificationSuccess");
-    //const [modalStatus, setModalStatus] = useState("ResetPassword");
+    const [modalStatus, setModalStatus] = useState("ResetPassword");
     //const [modalStatus, setModalStatus] = useState("ResetYourPassword");
     //const [modalStatus, setModalStatus] = useState("ResetPasswordReceivedPinPage");
     //const [modalStatus, setModalStatus] = useState("PasswordChanged");
@@ -40,14 +40,12 @@ const GetStartedModal = () => {
 
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
-    const [passwordConfirmFeedback, setPasswordConfirmFeedback] = useState('');
-    const [registrationSuccessFeedback, setRegistrationSuccessFeedback] = useState(''); //Not being used right now, can use later maybe to provide feedback on incorrect pin..
+    
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/;
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
-    const [isValidPasswordConfirm, setIsValidPasswordConfirm] = useState(true);
-    const [isValidPassCode, setIsValidPassCode] = useState(true);
+    
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence1, setCheckPasswordCommence1] = useState(false); //For regular checking password correctness
     const [checkPasswordCommence2, setCheckPasswordCommence2] = useState(false); //For PasswordSubModal Initiation purposes
@@ -182,8 +180,7 @@ const GetStartedModal = () => {
         } 
     }, [getStartedView]);
     const handleOnEmailFocus = () => {
-        // setPasswordResetStatus(true);
-
+        dispatch(userReducerActions.passwordResetPinEmailResetStatus());
     };
     const handleOnEmailBlur = () => {
         setCheckEmailCommence(true);
@@ -215,7 +212,6 @@ const GetStartedModal = () => {
     const handleOnPassCodeFocus = () => {
         setCheckPinCommence(true);
         dispatch(userReducerActions.verifyYourAccountPinReset());
-
     };
     const handleOnPassCodeBlur = () => {
         if (!isValidPassCode){
@@ -278,6 +274,7 @@ const GetStartedModal = () => {
         setPasswordConfirmInputFieldStatus(false);
         setButtonText("Verify");
         setSocialMediaSection('');
+        setGeneralFeedback('Verification Code sent to your email.')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={ResendPinLink} className={classes.PageLink}> Resend </a></p></span>);
     };
     const VerificationSuccess = () => {
@@ -310,6 +307,7 @@ const GetStartedModal = () => {
         setPasswordConfirmInputFieldStatus(false);
         setButtonText("Send Email");
         setSocialMediaSection('');
+        setGeneralFeedback('Enter your email to receive a reset code.');
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
     };
     const ResetPasswordReceivedPinPage = () => {
@@ -350,7 +348,14 @@ const GetStartedModal = () => {
             dispatch(verifyYourAccount_APIAction(passCode));
         }else if (modalStatus === "ResetPassword"){
             setCheckEmailCommence(true);
-            dispatch(resetPasswordAPIAction(email));
+            console.log(email)
+            if (!email) {
+                dispatch(userReducerActions.passwordResetPinEmailSentFailure('Email Field Required'));
+                return;
+            }else {
+                dispatch(resetPasswordAPIAction(email));
+            }
+            
         }else if (modalStatus === "ResetPasswordReceivedPinPage"){
             ResetPassword();
         }else if (modalStatus === "ResetYourPassword"){
@@ -399,17 +404,19 @@ const GetStartedModal = () => {
     const [formOptions, setFormOptions] = useState(
         <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
     );
-
+    const [isValidPasswordConfirm, setIsValidPasswordConfirm] = useState(true);
+    const [isValidPassCode, setIsValidPassCode] = useState(true);
+    const [passwordConfirmFeedback, setPasswordConfirmFeedback] = useState('');
+    const [registrationSuccessFeedback, setRegistrationSuccessFeedback] = useState(''); //Not being used right now, can use later maybe to provide feedback on incorrect pin..
     const [generalFeedback, setGeneralFeedback] = useState('');
 
     //Verify Your Account --------------------------------------------------------------------------------------------------
     const verifyYourAccountPinStatus_rdx = useSelector(({ user }) => user.verifyYourAccountPinStatus_rdx);
     const verifyYourAccountPinFeedback_rdx = useSelector(({ user }) => user.verifyYourAccountPinFeedback_rdx);
-    const [pinFeedback, setPinFeedback] = useState('');
+    //const [isValidPassCode, setIsValidPassCode] = useState(true); Use state is saved at top of file... 
     const [animationKey1, setAnimationKey1] = useState(0); 
     useEffect(() => {
         setIsValidPassCode(verifyYourAccountPinStatus_rdx);
-        setPinFeedback(verifyYourAccountPinFeedback_rdx);
         setGeneralFeedback(verifyYourAccountPinFeedback_rdx)
         setAnimationKey1(prevKey => prevKey + 1);
     },[verifyYourAccountPinStatus_rdx, verifyYourAccountPinFeedback_rdx])
@@ -424,17 +431,16 @@ const GetStartedModal = () => {
     const resetPasswordStatus_rdx = useSelector(({ user }) => user.resetPasswordStatus_rdx);
     const resetPasswordFeedback_rdx = useSelector(({ user }) => user.resetPasswordFeedback_rdx);
     const [resetPasswordStatus, setResetPasswordStatus] = useState(true);
-    const [resetPasswordFeedback, setResetPasswordFeedback] = useState('Enter your email to receive a reset code');
     const [animationKey2, setAnimationKey2] = useState(0);
     useEffect(() => {
         setResetPasswordStatus(resetPasswordStatus_rdx);
-        setResetPasswordFeedback(resetPasswordFeedback_rdx);
+        setGeneralFeedback(resetPasswordFeedback_rdx)
         setAnimationKey2(prevKey => prevKey + 1);
     },[resetPasswordStatus_rdx, resetPasswordFeedback_rdx,])
     let ResetPasswordHeaderSection = (
         <div key={animationKey2}>
             <h1 className={classes.modalTitle2}>{headerText}</h1>
-            <h1 className={`${classes['modalSubTitle']} ${!resetPasswordStatus && classes.resetPasswordStatus}`}>{resetPasswordFeedback}</h1>
+            <h1 className={`${classes['modalSubTitle']} ${!resetPasswordStatus && classes.resetPasswordStatus}`}>{generalFeedback}</h1>
         </div>
     );
 

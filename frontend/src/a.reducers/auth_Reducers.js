@@ -22,9 +22,6 @@ const initialState = {
     token: '',
 	userInfo: userInfoFromStorage,
 
-	//General Feedback
-	generalFeedback_rdx: '',
-
 	//Verify Your Account
 	verifyYourAccountPinStatus_rdx: true,
 	verifyYourAccountPinFeedback_rdx: 'Verification Code sent to your email.',
@@ -90,8 +87,8 @@ const userSlice = createSlice({
 		// Verify Your Account
 		verifyYourAccountPinSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
+			state.generalFeedback_rdx = '';
 		},
-
 
 		
 		verifyYourAccountPinFail(state, action){
@@ -158,6 +155,9 @@ const userSlice = createSlice({
 		passwordResetPinEmailSentFailure(state, action){
 			state.resetPasswordStatus_rdx = false;
 			state.resetPasswordFeedback_rdx = action.payload;
+		},
+		passwordResetPinEmailResetStatus(state){
+			state.resetPasswordStatus_rdx = true;
 		},
 
 		// ResetYourPassword

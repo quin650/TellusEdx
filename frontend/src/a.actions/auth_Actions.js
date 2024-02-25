@@ -175,7 +175,7 @@ export const resetPasswordAPIAction = (email) => {
         };
         const body = JSON.stringify({ email });
         const pwResetEmailPinData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetpasswordSendPin/`, body, config);
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordSendPin/`, body, config);
             return res;
         };
         try {
