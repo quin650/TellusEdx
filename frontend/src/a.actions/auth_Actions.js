@@ -180,7 +180,7 @@ export const resetPasswordAPIAction = (email) => {
         };
         try {
             const res = await pwResetEmailPinData();
-            console.log('resendPinAPIAction res.data: ', res.data)
+            console.log('resetPasswordAPIAction res.data: ', res.data)
             if (res.data.error) {
                 dispatch(userReducerActions.passwordResetPinEmailSentFailure(res.data.error))
             } else {

@@ -226,25 +226,36 @@ class VerifyYourAccountView(APIView):
 class ResetPasswordSendPinView(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, format=None):
         data = self.request.data
         email = data["email"]
+        print("data: ", data)
         # Validate email field
         if not email:
             message = {"error": "Email field required"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        pin = random.randint(1000, 9999)
-        user = User.objects.get(email=email)
-        user_pin = UserPin.objects.get(user=user)
-        if user_pin is None:
-            UserPin.objects.create(
-                user=user,
-                pin=pin,
-            )
-        else:
-            user_pin.pin = pin
-            user_pin.save()
+        try:
+            validate_email(email)
+        except ValidationError:
+            message = {"error": "Invalid email format"}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
+        # Check if user exists
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            message = {"error": "Invalid Email. Try again."}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+        # Generate and update PIN for user
+        pin = random.randint(1000, 9999)
+        user_pin, created = UserPin.objects.update_or_create(
+            user=user, defaults={"pin": pin}
+        )
+        # user_pin will be the UserPin instance that was either fetched and updated, or newly created.
+        # created will be a boolean value: True if a new UserPin instance was created, and False if an existing instance was found and updated.
+
+        # Prepare and send email
         mail_subject = "Reset Password Request"
         message = render_to_string(
             "template_reset_password.html",
@@ -257,18 +268,16 @@ class ResetPasswordSendPinView(APIView):
 
         try:
             sent = email_message.send()
-            if sent:
-                print("Email sent successfully")
-                message = {"success": "Verification Code sent to your email."}
-                return Response(message, status=status.HTTP_200_OK)
-            else:
-                print("Failed to send email")
-                message = {"error": "Email Failed to send. Confirm Email"}
-                return Response(message, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             print(f"Error sending email: {e}")
             message = {"error": "Error sending email"}
-            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+            return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        if sent:
+            message = {"success": "Verification Code was sent to your email."}
+            return Response(message, status=status.HTTP_200_OK)
+        else:
+            message = {"error": "Email Failed to send. Confirm Email Address"}
+            return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class ResetYourPasswordView(APIView):
@@ -361,59 +370,3 @@ class CheckAuthenticatedView(APIView):
                 "error": "Something went wrong when checking authentication status"
             }
             return Response(message, status=status.HTTP_401_UNAUTHORIZED)
-
-
-# class ResetPasswordSendPinView(APIView):
-#     permission_classes = (permissions.AllowAny,)
-
-#     def post(self, request, format=None):
-#         data = self.request.data
-#         email = data["email"]
-#         print("data: ", data)
-#         # Validate email field
-#         if not email:
-#             message = {"error": "Email field required"}
-#             return Response(message, status=status.HTTP_400_BAD_REQUEST)
-#         try:
-#             validate_email(email)
-#         except ValidationError:
-#             message = {"error": "Invalid email format"}
-#             return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-#         # Check if user exists
-#         try:
-#             user = User.objects.get(email=email)
-#         except User.DoesNotExist:
-#             message = {"error": "User does not exist"}
-#             return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-#         # Generate and update PIN for user
-#         pin = random.randint(1000, 9999)
-#         user_pin, created = UserPin.objects.update_or_create(
-#             user=user, defaults={"pin": pin}
-#         )
-#         # user_pin will be the UserPin instance that was either fetched and updated, or newly created.
-#         # created will be a boolean value: True if a new UserPin instance was created, and False if an existing instance was found and updated.
-
-#         # Prepare and send email
-#         mail_subject = "Reset Password Request"
-#         message = render_to_string(
-#             "template_reset_password.html",
-#             {
-#                 "user": user.username,
-#                 "pin": pin,
-#             },
-#         )
-#         email_message = EmailMessage(mail_subject, message, to=[email])
-
-#         try:
-#             sent = email_message.send()
-#         except Exception as e:
-#             message = {"error": "Error sending email"}
-#             return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#         if sent:
-#             message = {"success": "Verification Code sent to your email."}
-#             return Response(message, status=status.HTTP_200_OK)
-#         else:
-#             message = {"error": "Email Failed to send. Confirm Email Address"}
-#             return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

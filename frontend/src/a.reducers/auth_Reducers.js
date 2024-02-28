@@ -32,7 +32,7 @@ const initialState = {
 	
 	//Reset Your Password
 	resetYourPasswordStatus_rdx: true,
-	ResetYourPasswordFeedback_rdx: '',
+	ResetYourPasswordFeedback_rdx: 'Enter Verification Code and New Password',
 	pinStatus_rdx: true,
 	pinFeedback_rdx: '',
 
@@ -88,9 +88,7 @@ const userSlice = createSlice({
 		verifyYourAccountPinSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
 			state.generalFeedback_rdx = '';
-		},
-
-		
+		},		
 		verifyYourAccountPinFail(state, action){
 			state.verifyYourAccountPinStatus_rdx = false;
 			state.verifyYourAccountPinFeedback_rdx = action.payload;
@@ -112,6 +110,12 @@ const userSlice = createSlice({
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = 'Failed'
 		},
+		// Verification Success
+		verificationSuccessContinue(state){
+			state.getStartedView = 'LogIn';
+		},
+
+
 		// Log In
         loginRequest(state){
             state.loading = true;
@@ -146,11 +150,11 @@ const userSlice = createSlice({
 			state.token = action.payload;
 		},
 		// ResetPassword
-		passwordResetPinEmailSentSuccess(state){
+		passwordResetPinEmailSentSuccess(state, action){
 			state.passwordResetPinEmail += 1;
 			state.resetPasswordStatus_rdx = true;
-			state.resetPasswordFeedback_rdx = action.payload
-			state.getStartedView = 'ResetPasswordPageReceivedPin';
+			state.resetPasswordFeedback_rdx = action.payload;
+			state.getStartedView = 'ResetPasswordReceivedPinPage';
 		},
 		passwordResetPinEmailSentFailure(state, action){
 			state.resetPasswordStatus_rdx = false;

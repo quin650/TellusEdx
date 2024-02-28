@@ -97,6 +97,10 @@
     color: red;
     animation: left-to-right .4s linear forwards 2 alternate .1ms;
 }
+.modalSubTitle.resetYourPasswordStatus {
+    color: red;
+    animation: left-to-right .4s linear forwards 2 alternate .1ms;
+}
 
 @keyframes left-to-right {
     0% {
@@ -303,12 +307,23 @@ input:-webkit-autofill:focus{
     margin-left: 2px;
 }
 
-.passwordInputFeedbackContainer.isValidPasswordConfirm{
+.passwordInput.isValidPasswordConfirm {
+    border: 2px solid  rgb(251, 83, 83);
+}
+.passwordConfirmInputFeedbackContainer{
+    display: none;
+    height: 0px;
+    margin: 0px;
+}
+.passwordConfirmInputFeedback{
+    display: none;
+}
+.passwordConfirmInputFeedbackContainer.isValidPasswordConfirm{
     display: block;
     height: 23px;
     margin: 0px;
 }
-.passwordInputFeedback.isValidPasswordConfirm {
+.passwordConfirmInputFeedback.isValidPasswordConfirm {
     display: block;
     visibility: visible;
     font-size: 13px;

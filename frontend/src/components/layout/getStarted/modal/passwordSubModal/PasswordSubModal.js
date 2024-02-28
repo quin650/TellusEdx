@@ -24,10 +24,13 @@ const PasswordSubModal = (props) => {
         if (props.headerText === 'Reset Your Password' && props.checkPasswordCommence2 ) {
             if (props.password.length === 0){
                 setIsValidPassword(true);
+                props.getPWValidity(true);
             } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
                 setIsValidPassword(true);
+                props.getPWValidity(true);
             } else if (!isValidLower || !isValidUpper || !isValidNumber || !isValidSpecial || !isValidEight){
                 setIsValidPassword(false);
+                props.getPWValidity(false);
             }
         }else if (props.headerText !== 'Login' && props.checkPasswordCommence2 && props.isValidEmail) {
             if (props.password.length === 0){
