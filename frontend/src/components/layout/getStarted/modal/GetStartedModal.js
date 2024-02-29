@@ -114,34 +114,34 @@ const GetStartedModal = () => {
     useEffect(() =>{
         switch(modalStatus){
             case "CreateAccount":
-                CreateAccountPage();
-                break;
-            case "LogIn":
-                LogInPage();
-                break;
-            case "ResetPassword":
-                ResetPassword();
-                break;
-            case "ResetPasswordReceivedPassCodePage":
-                ResetPasswordReceivedPassCodePage();
-                break;
-            case "ResetYourPassword":
-                ResetYourPassword();
+                GoTo_CreateAccountPage();
                 break;
             case "VerifyYourAccount":
-                VerifyYourAccount();
+                GoTo_VerifyYourAccountPage();
                 break;
             case "VerificationSuccess":
-                VerificationSuccess();
+                GoTo_VerificationSuccessPage();
+                break;
+            case "LogIn":
+                GoTo_LogInPage();
+                break;              
+            case "ResetPassword":
+                GoTo_ResetPasswordPage();
+                break;
+            case "ResetPasswordReceivedPassCodePage":
+                GoTo_ResetPasswordReceivedPassCodePage();
+                break;
+            case "ResetYourPassword":
+                GoTo_ResetYourPasswordPage();
                 break;
             case "PasswordChanged":
-                PasswordChanged();
+                GoTo_PasswordChangedPage();
                 break;
             default:
-                CreateAccountPage();
+                GoTo_CreateAccountPage();
                 disableScroll();
     }}, [modalStatus])
-    const LogInPage = () => {
+    const GoTo_LogInPage = () => {
         setEmailInputFieldStatus(true);
         setPasswordInputFieldStatus(true);
         setPassCodeInputFieldStatus(false);
@@ -152,7 +152,7 @@ const GetStartedModal = () => {
         setModalStatus("LogIn");
         setHeaderText("Login");
         setIsLogInVIew(true);
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account? <a onClick={CreateAccountPage} className={classes.PageLink}>Register Here </a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account? <a onClick={GoTo_CreateAccountPage} className={classes.PageLink}>Register Here </a></p></span>);
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -165,7 +165,7 @@ const GetStartedModal = () => {
         )
         setButtonText("Log In");
     };
-    const CreateAccountPage = () => {
+    const GoTo_CreateAccountPage = () => {
         setEmailInputFieldStatus(true);
         setPasswordInputFieldStatus(true);
         setPassCodeInputFieldStatus(false);
@@ -175,7 +175,7 @@ const GetStartedModal = () => {
         setModalStatus("CreateAccount");
         setHeaderText("Create Account");
         setIsLogInVIew(false);
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={GoTo_LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
         setSocialMediaSection(
             <Fragment>
                 <span className={classes.orContinueWithContainer}><p className={classes.orContinueWithTextFormat}> or continue with </p></span>
@@ -188,7 +188,7 @@ const GetStartedModal = () => {
         )
         setButtonText("Create Account");
     };
-    const VerifyYourAccount = () => {
+    const GoTo_VerifyYourAccountPage = () => {
         setModalStatus("VerifyYourAccount");
         setHeaderText("Account created successfully!");
         setEmailInputFieldStatus(false);
@@ -200,7 +200,7 @@ const GetStartedModal = () => {
         setGeneralFeedback('Verification Code sent to your email.')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't get code?<a onClick={ResendPassCodeLink} className={classes.PageLink}> Resend </a></p></span>);
     };
-    const VerificationSuccess = () => {
+    const GoTo_VerificationSuccessPage = () => {
         setModalStatus("VerificationSuccess");
         setHeaderText("Verification Success!");
         setEmailInputFieldStatus(false);
@@ -211,7 +211,7 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions('');
     };
-    const PasswordChanged = () => {
+    const GoTo_PasswordChangedPage = () => {
         setModalStatus("PasswordChanged");
         setHeaderText("Password Changed!");
         setEmailInputFieldStatus(false);
@@ -222,7 +222,7 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions('');
     };
-    const ResetPassword = () => {
+    const GoTo_ResetPasswordPage = () => {
         setModalStatus("ResetPassword");
         setHeaderText("Reset Password");
         setEmailInputFieldStatus(true);
@@ -231,9 +231,9 @@ const GetStartedModal = () => {
         setButtonText("Send Email");
         setSocialMediaSection('');
         setGeneralFeedback('Enter your email to receive a reset code.');
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={LogInPage}>Cancel</a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}><a className={classes.PageLink} onClick={GoTo_LogInPage}>Cancel</a></p></span>);
     };
-    const ResetPasswordReceivedPassCodePage = () => {
+    const GoTo_ResetPasswordReceivedPassCodePage = () => {
         setModalStatus("ResetPasswordReceivedPassCodePage");
         setHeaderText("Check your email");
         setEmailInputFieldStatus(false);
@@ -244,7 +244,7 @@ const GetStartedModal = () => {
         setSocialMediaSection('')
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Didn't receive an email? Check spam filters</p></span>);
     };
-    const ResetYourPassword = () => {
+    const GoTo_ResetYourPasswordPage = () => {
         setModalStatus("ResetYourPassword");
         setHeaderText("Reset Your Password");
         setGeneralFeedback("Enter Verification Code and New Password")
@@ -278,7 +278,7 @@ const GetStartedModal = () => {
             dispatch(verifyYourAccount_APIAction(passCode));
         }
         else if (modalStatus === "VerificationSuccess"){
-            LogInPage();
+            GoTo_LogInPage();
             dispatch(userReducerActions.verificationSuccessContinue());
         }else if (modalStatus === "ResetPassword"){
             setCheckEmailCommence(true);
@@ -290,11 +290,11 @@ const GetStartedModal = () => {
                 dispatch(resetPasswordAPIAction(email));
             }
         }else if (modalStatus === "ResetPasswordReceivedPassCodePage"){
-            ResetYourPassword();
+            GoTo_ResetYourPasswordPage();
         }else if (modalStatus === "ResetYourPassword"){
             ResetYourPasswordCheckPriorToSubmission(passCode, password, passwordConfirm);
         }else if (modalStatus === "PasswordChanged"){
-            LogInPage();
+            GoTo_LogInPage();
         }else{
             setCheckEmailCommence(true)
             setCheckPasswordCommence1(true)
@@ -407,7 +407,7 @@ const GetStartedModal = () => {
         enableScroll();
         dispatch(userReducerActions.getStartedModalClose());
         setModalStatus("CreateAccount");
-        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
+        setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={GoTo_LogInPage} className={classes.PageLink}>Sign In Here </a></p></span>);
         document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
     };
     const ExitButton = (
@@ -440,7 +440,7 @@ const GetStartedModal = () => {
             </Fragment>
     );
     const [formOptions, setFormOptions] = useState(
-        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
+        <span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={GoTo_LogInPage} className={classes.PageLink}>Sign In Here</a></p></span>
     );
     useEffect (() => {
         if (headerText === "Create Account" && checkPasswordCommence2) {
@@ -651,7 +651,7 @@ const GetStartedModal = () => {
                                             {passwordFeedback}
                                         </p>
                                     </div>
-                                    <p className={`${classes['forgotPasswordLink']} ${isLogInVIew && !isValidPassword ? classes.isLogInVIew_isValidPassword : isLogInVIew ? classes.isLogInVIew : ''}`}><a onClick={ResetPassword} className={classes.PageLink}>Forgot Password?</a></p>
+                                    <p className={`${classes['forgotPasswordLink']} ${isLogInVIew && !isValidPassword ? classes.isLogInVIew_isValidPassword : isLogInVIew ? classes.isLogInVIew : ''}`}><a onClick={GoTo_ResetPasswordPage} className={classes.PageLink}>Forgot Password?</a></p>
                                 </section>
                             </div>
                         )}
