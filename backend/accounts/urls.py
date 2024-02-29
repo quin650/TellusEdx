@@ -7,10 +7,10 @@ urlpatterns = [
     path("register/", views.RegisterView.as_view()),
     path("verifyYourAccountView/", views.VerifyYourAccountView.as_view()),
     path(
-        "verifyYourAccountResendPinView/",
-        views.VerifyYourAccountResendPinView.as_view(),
+        "verifyYourAccountResendPassCodeView/",
+        views.verifyYourAccountResendPassCodeView.as_view(),
     ),
-    path("resetPasswordSendPin/", views.ResetPasswordSendPinView.as_view()),
+    path("resetPasswordSendPassCode/", views.ResetPasswordSendPassCodeView.as_view()),
     path("resetYourPassword/", views.ResetYourPasswordView.as_view()),
     path("login/", views.MyTokenObtainPairView.as_view()),
     path("authenticated/", views.CheckAuthenticatedView.as_view()),

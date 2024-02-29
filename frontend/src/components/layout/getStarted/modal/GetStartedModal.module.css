@@ -196,21 +196,21 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
-/* ********************************************************************* pin Input */
-.pinInput:focus {
+/* ********************************************************************* passCode Input */
+.passCodeInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 2px solid rgba(39, 85, 196, 1);
 }
-/* ********************************************************************* pin Feedback */
-.pinInputFeedbackContainer{
+/* ********************************************************************* passCode Feedback */
+.passCodeInputFeedbackContainer{
     height: 26px;
     margin: 0px;
 }
-.pinInputFeedbackContainer.VerifyYourAccount{
+.passCodeInputFeedbackContainer.VerifyYourAccount{
     height: 49px;
     margin: 0px;
 }
-.pinInputFeedback{
+.passCodeInputFeedback{
     display: block;
     visibility: hidden;
     font-size: 13px;
@@ -224,11 +224,11 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
-/* ********************************************************************* pin Input Invalid */
-.pinInput.isValidPassCode {
+/* ********************************************************************* passCode Input Invalid */
+.passCodeInput.isValidPassCode {
     border: 2px solid  rgb(251, 83, 83);
 }
-.pinInputFeedback.isValidPassCode {
+.passCodeInputFeedback.isValidPassCode {
     display: block;
     visibility: visible;
     font-size: 13px;

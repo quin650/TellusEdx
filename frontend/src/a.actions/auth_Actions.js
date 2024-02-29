@@ -92,17 +92,17 @@ export const verifyYourAccount_APIAction = (passCode) => {
         try {
             const res = await activateData();
             if (res.data.error) {
-                dispatch(userReducerActions.verifyYourAccountPinFail(res.data.error));
+                dispatch(userReducerActions.verifyYourAccountPassCodeFail(res.data.error));
                 
             } else {
-                dispatch(userReducerActions.verifyYourAccountPinSuccess());
+                dispatch(userReducerActions.verifyYourAccountPassCodeSuccess());
             }
         } catch (err) {
-            dispatch(userReducerActions.verifyYourAccountPinFail(err.response.data.error));
+            dispatch(userReducerActions.verifyYourAccountPassCodeFail(err.response.data.error));
         };
     };
 };
-export const verifyYourAccountResendPin_APIAction = () => { 
+export const verifyYourAccountResendPassCode_APIAction = () => { 
     return async (dispatch) => {
         const userInfoString = localStorage.getItem('userInfo');
         const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
@@ -117,21 +117,18 @@ export const verifyYourAccountResendPin_APIAction = () => {
         };
         const body = JSON.stringify({ email });
         const activateData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyYourAccountResendPinView/`, body, config);
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyYourAccountResendPassCodeView/`, body, config);
             return res;
         };
         try {
             const res = await activateData();
-            console.log('resendPinAPIAction res.data.success: ', res.data.success)
             if (res.data.error) {
-                dispatch(userReducerActions.verifyYourAccountPinResentFailure(res.data.error))
+                dispatch(userReducerActions.verifyYourAccountPassCodeResentFailure(res.data.error))
             } else {
-                console.log('success')
-                dispatch(userReducerActions.verifyYourAccountPinResent(res.data.success))
+                dispatch(userReducerActions.verifyYourAccountPassCodeResent(res.data.success))
             }
         } catch (err) {
-            console.log('err: ', err)
-            dispatch(userReducerActions.verifyYourAccountPinResentFailure(err.response.data.error))
+            dispatch(userReducerActions.verifyYourAccountPassCodeResentFailure(err.response.data.error))
         };
     };
 };
@@ -174,23 +171,20 @@ export const resetPasswordAPIAction = (email) => {
             }
         };
         const body = JSON.stringify({ email });
-        const pwResetEmailPinData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordSendPin/`, body, config);
+        const pwResetEmailPassCodeData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordSendPassCode/`, body, config);
             return res;
         };
         try {
-            const res = await pwResetEmailPinData();
-            console.log('resetPasswordAPIAction res.data: ', res.data)
+            const res = await pwResetEmailPassCodeData();
             if (res.data.error) {
-                dispatch(userReducerActions.passwordResetPinEmailSentFailure(res.data.error))
+                dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(res.data.error))
             } else {
-                console.log('success')
-                dispatch(userReducerActions.passwordResetPinEmailSentSuccess(res.data.success))
+                dispatch(userReducerActions.passwordResetPassCodeEmailSentSuccess(res.data.success))
                 localStorage.setItem('email', JSON.stringify(email))
             }
         } catch (err) {
-            console.log('err: ', err)
-            dispatch(userReducerActions.passwordResetPinEmailSentFailure(err.response.data.error))
+            dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(err.response.data.error))
         };
     };
 };
@@ -206,27 +200,24 @@ export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) 
             }
         };
         const body = JSON.stringify({ email, passCode, password, passwordConfirm});
-        const pwResetEmailPinData = async () => {
+        const pwResetEmailPassCodeData = async () => {
             const res = await axios.post(`http://127.0.0.1:8000/accounts/resetYourPassword/`, body, config);
             return res;
         };
 
         try {
-            const res = await pwResetEmailPinData();
-            console.log('resetYourPasswordAPIAction res.data: ', res.data)
+            const res = await pwResetEmailPassCodeData();
             if (res.data.PasswordError) {
                 dispatch(userReducerActions.passwordResetFailurePasswordIssue(res.data.PasswordError));
-            } else if (res.data.PinError) {
-                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.PinError));
+            } else if (res.data.PassCodeError) {
+                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.PassCodeError));
             }else if (res.data.error) {
-                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.error)); 
+                dispatch(userReducerActions.passwordResetFailureIssue(res.data.error)); 
             }else {
-                console.log('success')
                 dispatch(userReducerActions.passwordResetSuccess());
             }
         } catch (err) {
-            // console.log('err: ', err)
-            // dispatch(userReducerActions.passwordResetFailure(err.response.data.error))
+            dispatch(userReducerActions.passwordResetFailureIssue(err.response.data.error))
         };
 
     };

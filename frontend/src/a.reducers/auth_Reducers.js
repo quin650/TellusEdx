@@ -20,11 +20,12 @@ const initialState = {
     name: '',
     isAdmin: '',
     token: '',
+	passwordResetPassCodeEmail: 0,
 	userInfo: userInfoFromStorage,
 
 	//Verify Your Account
-	verifyYourAccountPinStatus_rdx: true,
-	verifyYourAccountPinFeedback_rdx: 'Verification Code sent to your email.',
+	verifyYourAccountPassCodeStatus_rdx: true,
+	verifyYourAccountPassCodeFeedback_rdx: 'Verification Code sent to your email.',
 	
 	//Reset Password
 	resetPasswordStatus_rdx: true,
@@ -33,8 +34,8 @@ const initialState = {
 	//Reset Your Password
 	resetYourPasswordStatus_rdx: true,
 	ResetYourPasswordFeedback_rdx: 'Enter Verification Code and New Password',
-	pinStatus_rdx: true,
-	pinFeedback_rdx: '',
+	passCodeStatus_rdx: true,
+	passCodeFeedback_rdx: '',
 
 };
 
@@ -85,28 +86,28 @@ const userSlice = createSlice({
 			state.registrationError = "";
 		},
 		// Verify Your Account
-		verifyYourAccountPinSuccess(state){
+		verifyYourAccountPassCodeSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
 			state.generalFeedback_rdx = '';
 		},		
-		verifyYourAccountPinFail(state, action){
-			state.verifyYourAccountPinStatus_rdx = false;
-			state.verifyYourAccountPinFeedback_rdx = action.payload;
+		verifyYourAccountPassCodeFail(state, action){
+			state.verifyYourAccountPassCodeStatus_rdx = false;
+			state.verifyYourAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 		},
-		verifyYourAccountPinReset(state){
-			state.verifyYourAccountPinStatus_rdx = true;
+		verifyYourAccountPassCodeReset(state){
+			state.verifyYourAccountPassCodeStatus_rdx = true;
 		},
 
-		verifyYourAccountPinResent(state, action){
-			state.verifyYourAccountPinStatus_rdx = true;
-			state.verifyYourAccountPinFeedback_rdx = action.payload
+		verifyYourAccountPassCodeResent(state, action){
+			state.verifyYourAccountPassCodeStatus_rdx = true;
+			state.verifyYourAccountPassCodeFeedback_rdx = action.payload
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmail += 1;
 		},
-		verifyYourAccountPinResentFailure(state){
-			state.verifyYourAccountPinStatus_rdx = false;
-			state.verifyYourAccountPinFeedback_rdx = action.payload
+		verifyYourAccountPassCodeResentFailure(state){
+			state.verifyYourAccountPassCodeStatus_rdx = false;
+			state.verifyYourAccountPassCodeFeedback_rdx = action.payload
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = 'Failed'
 		},
@@ -150,17 +151,17 @@ const userSlice = createSlice({
 			state.token = action.payload;
 		},
 		// ResetPassword
-		passwordResetPinEmailSentSuccess(state, action){
-			state.passwordResetPinEmail += 1;
+		passwordResetPassCodeEmailSentSuccess(state, action){
+			state.passwordResetPassCodeEmail += 1;
 			state.resetPasswordStatus_rdx = true;
 			state.resetPasswordFeedback_rdx = action.payload;
-			state.getStartedView = 'ResetPasswordReceivedPinPage';
+			state.getStartedView = 'ResetPasswordReceivedPassCodePage';
 		},
-		passwordResetPinEmailSentFailure(state, action){
+		passwordResetPassCodeEmailSentFailure(state, action){
 			state.resetPasswordStatus_rdx = false;
 			state.resetPasswordFeedback_rdx = action.payload;
 		},
-		passwordResetPinEmailResetStatus(state){
+		passwordResetPassCodeEmailResetStatus(state){
 			state.resetPasswordStatus_rdx = true;
 		},
 
@@ -168,8 +169,8 @@ const userSlice = createSlice({
 		passwordResetSuccess(state){
 			state.resetYourPasswordStatus_rdx = true;
 			state.ResetYourPasswordFeedback_rdx = '';
-			state.pinStatus_rdx = true;
-			state.pinFeedback_rdx = '';
+			state.passCodeStatus_rdx = true;
+			state.passCodeFeedback_rdx = '';
 			state.getStartedView = 'PasswordChanged';
 		},
 		passwordResetFailurePasswordIssue(state, action){
@@ -177,12 +178,12 @@ const userSlice = createSlice({
 			state.ResetYourPasswordFeedback_rdx = action.payload;
 		},
 		passwordResetFailurePassCodeIssue(state, action){
-			state.pinStatus_rdx = false;
-			state.pinFeedback_rdx = action.payload;
+			state.passCodeStatus_rdx = false;
+			state.passCodeFeedback_rdx = action.payload;
 		},
-		passwordResetFailurePassCodeIssue(state, action){
+		passwordResetFailureIssue(state, action){
 			state.resetYourPasswordStatus_rdx = false;
-			state.pinStatus_rdx = false;
+			state.passCodeStatus_rdx = false;
 			state.generalFeedback_rdx = action.payload;
 		},
 
