@@ -23,20 +23,19 @@ const initialState = {
 	passwordResetPassCodeEmail: 0,
 	userInfo: userInfoFromStorage,
 
-	//Verify Your Account
+	//Verify Account
 	verifyAccountPassCodeStatus_rdx: true,
 	verifyAccountPassCodeFeedback_rdx: 'Verification Code sent to your email.',
 	
-	//Reset Password
-	resetPasswordStatus_rdx: true,
-	resetPasswordFeedback_rdx: 'Enter your email to receive a reset code.',
+	//Reset Password Email PassCode
+	resetPasswordEmailPassCodeStatus_rdx: true,
+	resetPasswordEmailPassCodeFeedback_rdx: 'Enter your email to receive a reset code.',
 	
 	//Reset Your Password
-	resetYourPasswordStatus_rdx: true,
-	ResetYourPasswordFeedback_rdx: 'Enter Verification Code and New Password',
+	resetPasswordChangeStatus_rdx: true,
+	resetPasswordChangeFeedback_rdx: 'Enter Verification Code and New Password',
 	passCodeStatus_rdx: true,
 	passCodeFeedback_rdx: '',
-
 };
 
 const userSlice = createSlice({
@@ -51,6 +50,7 @@ const userSlice = createSlice({
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
+
 		// Modal
 		getStartedModalLogIn(state) {
 			state.getStartedModalStatus = true;
@@ -65,6 +65,7 @@ const userSlice = createSlice({
 			state.getStartedModalStatus = false;
 			state.navbarMenuStatus = false;
 		},
+
 		// Registration
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
@@ -85,6 +86,7 @@ const userSlice = createSlice({
 		registerErrorReset(state){
 			state.registrationError = "";
 		},
+
 		// Verify Your Account
 		verifyAccountPassCodeSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
@@ -98,7 +100,6 @@ const userSlice = createSlice({
 		verifyAccountPassCodeReset(state){
 			state.verifyAccountPassCodeStatus_rdx = true;
 		},
-
 		verifyAccountPassCodeResent(state, action){
 			state.verifyAccountPassCodeStatus_rdx = true;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload
@@ -112,10 +113,9 @@ const userSlice = createSlice({
 			state.verificationEmailFailureStatus = 'Failed'
 		},
 		// Verification Success
-		verificationSuccessContinue(state){
-			state.getStartedView = 'LogIn';
+		GoTo_LogInModal_rdx(state){
+			state.getStartedView = 'LogInModal';
 		},
-
 
 		// Log In
         loginRequest(state){
@@ -140,6 +140,7 @@ const userSlice = createSlice({
 		logoutFail(state){
 			state;
 		},
+
 		// Authentication
 		authSuccess(state){
 			state.isAuthenticated = true;
@@ -150,32 +151,33 @@ const userSlice = createSlice({
 		tokenSuccess(state, action){
 			state.token = action.payload;
 		},
+
 		// ResetPassword
 		passwordResetPassCodeEmailSentSuccess(state, action){
 			state.passwordResetPassCodeEmail += 1;
-			state.resetPasswordStatus_rdx = true;
-			state.resetPasswordFeedback_rdx = action.payload;
+			state.resetPasswordEmailPassCodeStatus_rdx = true;
+			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
 			state.getStartedView = 'ResetPasswordReceivedPassCodePage';
 		},
 		passwordResetPassCodeEmailSentFailure(state, action){
-			state.resetPasswordStatus_rdx = false;
-			state.resetPasswordFeedback_rdx = action.payload;
+			state.resetPasswordEmailPassCodeStatus_rdx = false;
+			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
 		},
 		passwordResetPassCodeEmailResetStatus(state){
-			state.resetPasswordStatus_rdx = true;
+			state.resetPasswordEmailPassCodeStatus_rdx = true;
 		},
 
 		// ResetYourPassword
 		passwordResetSuccess(state){
 			state.resetYourPasswordStatus_rdx = true;
-			state.ResetYourPasswordFeedback_rdx = '';
+			state.resetYourPasswordFeedback_rdx = '';
 			state.passCodeStatus_rdx = true;
 			state.passCodeFeedback_rdx = '';
 			state.getStartedView = 'PasswordChanged';
 		},
 		passwordResetFailurePasswordIssue(state, action){
 			state.resetYourPasswordStatus_rdx = false;
-			state.ResetYourPasswordFeedback_rdx = action.payload;
+			state.resetYourPasswordFeedback_rdx = action.payload;
 		},
 		passwordResetFailurePassCodeIssue(state, action){
 			state.passCodeStatus_rdx = false;

@@ -161,7 +161,7 @@ export const checkAuthenticated = () => {
         };
     };
 };
-export const resetPasswordAPIAction = (email) => { 
+export const resetPasswordSendPassCode_APIAction = (email) => { 
     return async (dispatch) => {
         const config = {
             headers: {
@@ -188,7 +188,7 @@ export const resetPasswordAPIAction = (email) => {
         };
     };
 };
-export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { 
+export const resetPasswordEmailPassCode_APIAction = (passCode, password, passwordConfirm) => { 
     return async (dispatch) => {
         let email = JSON.parse(localStorage.getItem('email'));
 

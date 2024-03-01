@@ -93,15 +93,6 @@
     animation: left-to-right .4s linear forwards 2 alternate .1ms;
 }
 
-.modalSubTitle.resetPasswordStatus {
-    color: red;
-    animation: left-to-right .4s linear forwards 2 alternate .1ms;
-}
-.modalSubTitle.resetYourPasswordStatus {
-    color: red;
-    animation: left-to-right .4s linear forwards 2 alternate .1ms;
-}
-
 @keyframes left-to-right {
     0% {
         transform: translateX(0);
@@ -172,7 +163,7 @@ input:-webkit-autofill:focus{
     height: 26px;
     margin: 0px;
 }
-.emailInputFeedbackContainer.ResetPassword{
+.emailInputFeedbackContainer.ResetPasswordEmailPassCode{
     height: 49px;
     margin: 0px;
 }
@@ -255,10 +246,10 @@ input:-webkit-autofill:focus{
 .passwordConfirmInputFeedbackSection{
     min-height: 49px;
 }
-.passwordInputFeedbackSection.ResetYourPassword{
+.passwordInputFeedbackSection.ResetPasswordChangeModal{
     min-height: 26px;
 }
-.passwordInputFeedbackSection.ResetPassword{
+.passwordInputFeedbackSection.ResetPasswordEmailPassCode{
     min-height: 13px;
 }
 
