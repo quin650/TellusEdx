@@ -206,7 +206,7 @@ input:-webkit-autofill:focus{
     height: 26px;
     margin: 0px;
 }
-.passCodeInputFeedbackContainer.VerifyYourAccount{
+.passCodeInputFeedbackContainer.VerifyAccountModal{
     height: 49px;
     margin: 0px;
 }
@@ -338,11 +338,11 @@ input:-webkit-autofill:focus{
     margin-left: 2px;
 }
 /* ********************************************************************* Forgot Password Invalid */
-.forgotPasswordLink.isLogInVIew {
+.forgotPasswordLink.LogInModal {
     visibility: visible;
     align-items: flex-end;
 }
-.forgotPasswordLink.isLogInVIew_isValidPassword {
+.forgotPasswordLink.LogInModal_isValidPassword {
     visibility: visible;
     align-items: flex-start;
 }

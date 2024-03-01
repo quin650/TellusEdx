@@ -5,10 +5,10 @@ urlpatterns = [
     path("", views.getUsers.as_view(), name="users"),
     path("csrf_cookie", views.GetCSRFToken.as_view()),
     path("register/", views.RegisterView.as_view()),
-    path("verifyYourAccountView/", views.VerifyYourAccountView.as_view()),
+    path("verifyAccountView/", views.VerifyAccountView.as_view()),
     path(
-        "verifyYourAccountResendPassCodeView/",
-        views.verifyYourAccountResendPassCodeView.as_view(),
+        "verifyAccountResendPassCodeView/",
+        views.verifyAccountResendPassCodeView.as_view(),
     ),
     path("resetPasswordSendPassCode/", views.ResetPasswordSendPassCodeView.as_view()),
     path("resetYourPassword/", views.ResetYourPasswordView.as_view()),

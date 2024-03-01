@@ -59,7 +59,7 @@ export const register_APIAction = (username, password) => {
         try {
             const res = await registerData();
             if (res.data.error) {
-                dispatch(userReducerActions.registerFail());
+                dispatch(userReducerActions.registerFail(res.data.error));
                 
             } else {
                 dispatch(userReducerActions.registerSuccess(res.data));
@@ -71,7 +71,7 @@ export const register_APIAction = (username, password) => {
         };
     };
 };
-export const verifyYourAccount_APIAction = (passCode) => { 
+export const verifyAccount_APIAction = (passCode) => { 
     return async (dispatch) => {
         const userInfoString = localStorage.getItem('userInfo');
         const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
@@ -86,23 +86,23 @@ export const verifyYourAccount_APIAction = (passCode) => {
         };
         const body = JSON.stringify({ email, passCode });
         const activateData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyYourAccountView/`, body, config);
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountView/`, body, config);
             return res;
         };
         try {
             const res = await activateData();
             if (res.data.error) {
-                dispatch(userReducerActions.verifyYourAccountPassCodeFail(res.data.error));
+                dispatch(userReducerActions.verifyAccountPassCodeFail(res.data.error));
                 
             } else {
-                dispatch(userReducerActions.verifyYourAccountPassCodeSuccess());
+                dispatch(userReducerActions.verifyAccountPassCodeSuccess());
             }
         } catch (err) {
-            dispatch(userReducerActions.verifyYourAccountPassCodeFail(err.response.data.error));
+            dispatch(userReducerActions.verifyAccountPassCodeFail(err.response.data.error));
         };
     };
 };
-export const verifyYourAccountResendPassCode_APIAction = () => { 
+export const verifyAccountResendPassCode_APIAction = () => { 
     return async (dispatch) => {
         const userInfoString = localStorage.getItem('userInfo');
         const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
@@ -117,18 +117,18 @@ export const verifyYourAccountResendPassCode_APIAction = () => {
         };
         const body = JSON.stringify({ email });
         const activateData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyYourAccountResendPassCodeView/`, body, config);
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountResendPassCodeView/`, body, config);
             return res;
         };
         try {
             const res = await activateData();
             if (res.data.error) {
-                dispatch(userReducerActions.verifyYourAccountPassCodeResentFailure(res.data.error))
+                dispatch(userReducerActions.verifyAccountPassCodeResentFailure(res.data.error))
             } else {
-                dispatch(userReducerActions.verifyYourAccountPassCodeResent(res.data.success))
+                dispatch(userReducerActions.verifyAccountPassCodeResent(res.data.success))
             }
         } catch (err) {
-            dispatch(userReducerActions.verifyYourAccountPassCodeResentFailure(err.response.data.error))
+            dispatch(userReducerActions.verifyAccountPassCodeResentFailure(err.response.data.error))
         };
     };
 };
@@ -188,7 +188,7 @@ export const resetPasswordAPIAction = (email) => {
         };
     };
 };
-export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { verifyYourAccount_APIAction
+export const resetYourPasswordAPIAction = (passCode, password, passwordConfirm) => { 
     return async (dispatch) => {
         let email = JSON.parse(localStorage.getItem('email'));
 

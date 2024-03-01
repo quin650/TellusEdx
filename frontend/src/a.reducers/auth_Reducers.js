@@ -24,8 +24,8 @@ const initialState = {
 	userInfo: userInfoFromStorage,
 
 	//Verify Your Account
-	verifyYourAccountPassCodeStatus_rdx: true,
-	verifyYourAccountPassCodeFeedback_rdx: 'Verification Code sent to your email.',
+	verifyAccountPassCodeStatus_rdx: true,
+	verifyAccountPassCodeFeedback_rdx: 'Verification Code sent to your email.',
 	
 	//Reset Password
 	resetPasswordStatus_rdx: true,
@@ -73,7 +73,7 @@ const userSlice = createSlice({
 			state.registered = true;
 			state.isAuthenticated = false;
 			state.loading = false;
-			state.getStartedView = 'VerifyYourAccount';
+			state.getStartedView = 'VerifyAccountModal';
 			state.userInfo = action.payload
 		},
 		registerFail(state, action){
@@ -86,28 +86,28 @@ const userSlice = createSlice({
 			state.registrationError = "";
 		},
 		// Verify Your Account
-		verifyYourAccountPassCodeSuccess(state){
+		verifyAccountPassCodeSuccess(state){
 			state.getStartedView = 'VerificationSuccess';
 			state.generalFeedback_rdx = '';
 		},		
-		verifyYourAccountPassCodeFail(state, action){
-			state.verifyYourAccountPassCodeStatus_rdx = false;
-			state.verifyYourAccountPassCodeFeedback_rdx = action.payload;
+		verifyAccountPassCodeFail(state, action){
+			state.verifyAccountPassCodeStatus_rdx = false;
+			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 		},
-		verifyYourAccountPassCodeReset(state){
-			state.verifyYourAccountPassCodeStatus_rdx = true;
+		verifyAccountPassCodeReset(state){
+			state.verifyAccountPassCodeStatus_rdx = true;
 		},
 
-		verifyYourAccountPassCodeResent(state, action){
-			state.verifyYourAccountPassCodeStatus_rdx = true;
-			state.verifyYourAccountPassCodeFeedback_rdx = action.payload
+		verifyAccountPassCodeResent(state, action){
+			state.verifyAccountPassCodeStatus_rdx = true;
+			state.verifyAccountPassCodeFeedback_rdx = action.payload
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmail += 1;
 		},
-		verifyYourAccountPassCodeResentFailure(state){
-			state.verifyYourAccountPassCodeStatus_rdx = false;
-			state.verifyYourAccountPassCodeFeedback_rdx = action.payload
+		verifyAccountPassCodeResentFailure(state){
+			state.verifyAccountPassCodeStatus_rdx = false;
+			state.verifyAccountPassCodeFeedback_rdx = action.payload
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = 'Failed'
 		},

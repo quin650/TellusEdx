@@ -140,7 +140,7 @@ class RegisterView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class verifyYourAccountResendPassCodeView(APIView):
+class verifyAccountResendPassCodeView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, *args, **kwargs):
@@ -188,7 +188,7 @@ class verifyYourAccountResendPassCodeView(APIView):
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class VerifyYourAccountView(APIView):
+class VerifyAccountView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):

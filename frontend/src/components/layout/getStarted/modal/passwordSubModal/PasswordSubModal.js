@@ -20,8 +20,8 @@ const PasswordSubModal = (props) => {
         setIsValidEight(minimumEightPattern.test(props.password));
     }, [props.password])
     useEffect(() =>{
-        // this if section can be removed after testing the Reset your password modal
-        if (props.headerText === 'Reset Your Password' && props.checkPasswordCommence2 ) {
+        // TODO --> this if section can be removed after testing the Reset your password modal
+        if (props.headerText === 'Reset Your Password' && props.checkPasswordSubModalCommence ) {
             if (props.password.length === 0){
                 setIsValidPassword(true);
                 props.getPWValidity(true);
@@ -32,7 +32,7 @@ const PasswordSubModal = (props) => {
                 setIsValidPassword(false);
                 props.getPWValidity(false);
             }
-        }else if (props.headerText !== 'Login' && props.checkPasswordCommence2 && props.isValidEmail) {
+        }else if (props.headerText !== 'Login' && props.checkPasswordSubModalCommence && props.isValidEmail) {
             if (props.password.length === 0){
                 setIsValidPassword(true);
             } else if (isValidLower && isValidUpper && isValidNumber && isValidSpecial && isValidEight){
