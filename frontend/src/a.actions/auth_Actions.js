@@ -188,7 +188,7 @@ export const resetPasswordSendPassCode_APIAction = (email) => {
         };
     };
 };
-export const resetPasswordEmailPassCode_APIAction = (passCode, password, passwordConfirm) => { 
+export const resetPasswordChange_APIAction = (passCode, password, passwordConfirm) => { 
     return async (dispatch) => {
         let email = JSON.parse(localStorage.getItem('email'));
 
@@ -200,13 +200,13 @@ export const resetPasswordEmailPassCode_APIAction = (passCode, password, passwor
             }
         };
         const body = JSON.stringify({ email, passCode, password, passwordConfirm});
-        const pwResetEmailPassCodeData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetYourPassword/`, body, config);
+        const passwordResetChangeData = async () => {
+            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordChange/`, body, config);
             return res;
         };
 
         try {
-            const res = await pwResetEmailPassCodeData();
+            const res = await passwordResetChangeData();
             if (res.data.PasswordError) {
                 dispatch(userReducerActions.passwordResetFailurePasswordIssue(res.data.PasswordError));
             } else if (res.data.PassCodeError) {

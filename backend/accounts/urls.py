@@ -11,7 +11,7 @@ urlpatterns = [
         views.verifyAccountResendPassCodeView.as_view(),
     ),
     path("resetPasswordSendPassCode/", views.ResetPasswordSendPassCodeView.as_view()),
-    path("resetYourPassword/", views.ResetYourPasswordView.as_view()),
+    path("resetPasswordChange/", views.ResetPasswordChangeView.as_view()),
     path("login/", views.MyTokenObtainPairView.as_view()),
     path("authenticated/", views.CheckAuthenticatedView.as_view()),
     path("profile/", views.getUserProfile.as_view()),

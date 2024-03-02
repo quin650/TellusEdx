@@ -135,7 +135,8 @@ class RegisterView(APIView):
                     return Response({"userData": user.data})
                 else:
                     return Response({"error": "Invalid Password"})
-        except:
+        except Exception as e:
+            print(f"Error sending email: {e}")
             message = {"error": "Something went wrong when registering account?"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
@@ -279,7 +280,7 @@ class ResetPasswordSendPassCodeView(APIView):
             return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class ResetYourPasswordView(APIView):
+class ResetPasswordChangeView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):

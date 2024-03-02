@@ -55,7 +55,7 @@ const userSlice = createSlice({
 		getStartedModalLogIn(state) {
 			state.getStartedModalStatus = true;
 			state.navbarMenuStatus = false;
-			state.getStartedView = 'LogIn';
+			state.getStartedView = 'LogInModal';
 		},
 		getStartedModalOpen(state) {
 			state.getStartedModalStatus = true;
@@ -89,7 +89,7 @@ const userSlice = createSlice({
 
 		// Verify Your Account
 		verifyAccountPassCodeSuccess(state){
-			state.getStartedView = 'VerificationSuccess';
+			state.getStartedView = 'VerificationSuccessModal';
 			state.generalFeedback_rdx = '';
 		},		
 		verifyAccountPassCodeFail(state, action){
@@ -157,7 +157,7 @@ const userSlice = createSlice({
 			state.passwordResetPassCodeEmail += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
-			state.getStartedView = 'ResetPasswordReceivedPassCodePage';
+			state.getStartedView = 'ResetPasswordEnterPassCodeModal';
 		},
 		passwordResetPassCodeEmailSentFailure(state, action){
 			state.resetPasswordEmailPassCodeStatus_rdx = false;
@@ -169,22 +169,22 @@ const userSlice = createSlice({
 
 		// ResetYourPassword
 		passwordResetSuccess(state){
-			state.resetYourPasswordStatus_rdx = true;
-			state.resetYourPasswordFeedback_rdx = '';
+			state.resetPasswordChangeStatus_rdx = true;
+			state.resetPasswordChangeFeedback_rdx = '';
 			state.passCodeStatus_rdx = true;
 			state.passCodeFeedback_rdx = '';
-			state.getStartedView = 'PasswordChanged';
+			state.getStartedView = 'PasswordChangedSuccessfullyModal';
 		},
 		passwordResetFailurePasswordIssue(state, action){
-			state.resetYourPasswordStatus_rdx = false;
-			state.resetYourPasswordFeedback_rdx = action.payload;
+			state.resetPasswordChangeStatus_rdx = false;
+			state.resetPasswordChangeFeedback_rdx = action.payload;
 		},
 		passwordResetFailurePassCodeIssue(state, action){
 			state.passCodeStatus_rdx = false;
 			state.passCodeFeedback_rdx = action.payload;
 		},
 		passwordResetFailureIssue(state, action){
-			state.resetYourPasswordStatus_rdx = false;
+			state.resetPasswordChangeStatus_rdx = false;
 			state.passCodeStatus_rdx = false;
 			state.generalFeedback_rdx = action.payload;
 		},
