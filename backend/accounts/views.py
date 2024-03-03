@@ -291,6 +291,7 @@ class ResetPasswordChangeView(APIView):
         passwordConfirm = data["passwordConfirm"]
         try:
             if User.objects.filter(email=email).exists():
+                print("1")
                 user = User.objects.get(email=email)
                 passCodeValue = (
                     UserPassCode.objects.filter(user=user)
@@ -298,7 +299,9 @@ class ResetPasswordChangeView(APIView):
                     .first()
                 )
                 if int(passCode) == passCodeValue:
+                    print("2")
                     if new_password == passwordConfirm:
+                        print("3")
                         if (
                             len(new_password) > 7
                             and any(char.islower() for char in new_password)
@@ -310,25 +313,32 @@ class ResetPasswordChangeView(APIView):
                             )
                         ):
                             # Set the new password
+                            print("4")
                             user.set_password(new_password)
                             user.save()
                             message = {"success": "Password Changed Successfully"}
                             return Response(message, status=status.HTTP_200_OK)
                         else:
+                            print("5")
                             message = {
                                 "PasswordError": "Password Strength is not High enough"
                             }
                             return Response(message, status=status.HTTP_400_BAD_REQUEST)
                     else:
+                        print("6")
                         message = {"PasswordError": "Passwords Need to Match"}
                         return Response(message, status=status.HTTP_400_BAD_REQUEST)
                 else:
+                    print("7")
                     message = {"PassCodeError": "Invalid PassCode, try again."}
                     return Response(message, status=status.HTTP_400_BAD_REQUEST)
             else:
+                print("8")
                 message = {"PasswordError": "Invalid Email Used. System Error"}
                 return Response(message, status=status.HTTP_400_BAD_REQUEST)
-        except:
+        except Exception as e:
+            print("9")
+            print(f"Error: {e}")
             message = {"error": "System Error"}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
 

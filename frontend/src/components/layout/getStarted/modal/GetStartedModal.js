@@ -10,16 +10,14 @@ import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => { 
     const dispatch = useDispatch();
-    //const [modalStatus, setModalStatus] = useState("CreateAccountModal");
+    const [modalStatus, setModalStatus] = useState("CreateAccountModal");
     //const [modalStatus, setModalStatus] = useState("VerifyAccountModal");
     //const [modalStatus, setModalStatus] = useState("VerificationSuccessModal");
-    
     //const [modalStatus, setModalStatus] = useState("LogInModal");
     //const [modalStatus, setModalStatus] = useState("ResetPasswordEmailPassCodeModal");
-    const [modalStatus, setModalStatus] = useState("ResetPasswordEnterPassCodeModal");
+    //const [modalStatus, setModalStatus] = useState("ResetPasswordEnterPassCodeModal");
     //const [modalStatus, setModalStatus] = useState("ResetPasswordChangeModal");
     //const [modalStatus, setModalStatus] = useState("PasswordChangedSuccessfullyModal");
-    
 
     const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
@@ -29,8 +27,6 @@ const GetStartedModal = () => {
     const resetPasswordEmailPassCodeFeedback_rdx = useSelector(({ user }) => user.resetPasswordEmailPassCodeFeedback_rdx);
     const resetPasswordChangeStatus_rdx = useSelector(({ user }) => user.resetPasswordChangeStatus_rdx);
     const resetPasswordChangeFeedback_rdx = useSelector(({ user }) => user.resetPasswordChangeFeedback_rdx);
-    const passCodeStatus_rdx = useSelector(({ user }) => user.passCodeStatus_rdx);
-    const passCodeFeedback_rdx = useSelector(({ user }) => user.passCodeFeedback_rdx);
 
     const [formData, setFormData] = useState({email: '', password: '', passCode: '', passwordConfirm: ''});
     const { email, password, passCode, passwordConfirm } = formData;
@@ -52,17 +48,16 @@ const GetStartedModal = () => {
     const [passCodeInputFieldStatus, setPassCodeInputFieldStatus] = useState(false);
     const [resetPasswordEmailPassCodeStatus, setResetPasswordEmailPassCodeStatus] = useState(true);
     const [resetPasswordChangeStatus, setResetPasswordChangeStatus] = useState(true); 
-    const [resetPasswordChangeFeedback, setResetPasswordChangeFeedback] = useState('');
     const [refresh_VerifyAccountHeader, setRefresh_VerifyAccountHeader] = useState(0);
     const [refresh_ResetPasswordHeader, setRefresh_ResetPasswordHeader] = useState(0);
-    const [refreshYourPasswordHeader, setRefreshYourPasswordHeader] = useState(0);
+    const [refresh_ResetPasswordChangeHeader, setRefresh_ResetPasswordChangeHeader] = useState(0);
 
-    const [headerText, setHeaderText] = useState("Create Account");
-    const [buttonText, setButtonText] = useState("Create Account");
     const [generalFeedback, setGeneralFeedback] = useState('');
     const [userEmailFeedback, setUserEmailFeedback] = useState('');
     const [passwordFeedback, setPasswordFeedback] = useState('');
     const [passwordConfirmFeedback, setPasswordConfirmFeedback] = useState('');
+    const [headerText, setHeaderText] = useState("Create Account");
+    const [buttonText, setButtonText] = useState("Create Account");
 
     const [checkEmailCommence, setCheckEmailCommence] = useState(false);
     const [checkPasswordCommence, setCheckPasswordCommence] = useState(false); //*Action --> Commence checking regular password UI (aka not passwordSubModal) //*set to true OnSubmit-> create account | log in | reset Your Password 
@@ -122,6 +117,7 @@ const GetStartedModal = () => {
     // !Actions
     useEffect(() => {
         if (getStartedView !== ''){
+            console.log('test getStartedView useeffect')
             setModalStatus(getStartedView)
         } 
     }, [getStartedView]);
@@ -152,6 +148,7 @@ const GetStartedModal = () => {
                 GoTo_PasswordChangedSuccessfullyModal();
                 break;
             default:
+                console.log('default..')
                 GoTo_CreateAccountModal();
                 disableScroll();
     }}, [modalStatus])
@@ -162,7 +159,7 @@ const GetStartedModal = () => {
         setCheckPasswordSubModalCommence(false);
         setPasswordConfirmInputFieldStatus(false);
         setCheckBackendCredentialsCommence(false);
-        dispatch(userReducerActions.registerErrorReset());
+        // dispatch(userReducerActions.registerErrorReset());
         setModalStatus("LogInModal");
         setHeaderText("Login");
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>No Account? <a onClick={GoTo_CreateAccountModal} className={classes.PageLink}>Register Here </a></p></span>);
@@ -314,20 +311,16 @@ const GetStartedModal = () => {
     };
     const handleOnPasswordConfirmFocus = () => {
         setCheckPasswordConfirmCommence(true);
-        if (isValidPassword){
-            setCheckPassCodeCommence(false);
-        }
-        
     };
     const handleOnPassCodeFocus = () => {
         dispatch(userReducerActions.verifyAccountPassCodeReset());
-        // isn't working?
-        if (modalStatus==="ResetPasswordChangeModal" && !isValidPassCode){
-            passCodeInputRef.current.focus();
-        };
+        dispatch(userReducerActions.passwordResetPasswordChangeResetStatus());
     };
     const handleOnPassCodeBlur = () => {
         setCheckPassCodeCommence(true);
+        if (modalStatus==="ResetPasswordChangeModal" && !isValidPassCode){
+            passCodeInputRef.current.focus();
+        };
     };
 
     // !General Page Settings/Event listeners -- Scrolling rules + Exit Rules
@@ -404,7 +397,7 @@ const GetStartedModal = () => {
         </div>
     );
     let ResetPasswordChangeHeaderSection = (
-        <div key={refreshYourPasswordHeader}>
+        <div key={refresh_ResetPasswordChangeHeader}>
             <h1 className={classes.modalTitle2}>{headerText}</h1>
             <h1 className={`${classes['modalSubTitle']} ${!resetPasswordChangeStatus && classes.isValidPassCode}`}>{generalFeedback}</h1>
         </div>
@@ -448,12 +441,12 @@ const GetStartedModal = () => {
                     passCodeInputRef.current.focus();
                     setGeneralFeedback('Verification Code Required');
                     setResetPasswordChangeStatus(false);
-                    setRefreshYourPasswordHeader(prevKey => prevKey + 1);
+                    setRefresh_ResetPasswordChangeHeader(prevKey => prevKey + 1);
                 }else if (passCode.length > 0 ){
                     setIsValidPassCode(true);
-                    setGeneralFeedback('Enter Verification Code and New Password');
+                    //setGeneralFeedback('Enter Verification Code and New Password');
                     setResetPasswordChangeStatus(true);
-                    setRefreshYourPasswordHeader(prevKey => prevKey + 1);
+                    setRefresh_ResetPasswordChangeHeader(prevKey => prevKey + 1);
                 } 
             },  500);
             return ()  => {
@@ -509,7 +502,7 @@ const GetStartedModal = () => {
     useEffect(() => {
         setResetPasswordChangeStatus(resetPasswordChangeStatus_rdx);
         setGeneralFeedback(resetPasswordChangeFeedback_rdx);
-        setRefreshYourPasswordHeader(prevKey => prevKey + 1);
+        setRefresh_ResetPasswordChangeHeader(prevKey => prevKey + 1);
     },[resetPasswordChangeStatus_rdx,resetPasswordChangeFeedback_rdx])
 
     // !Submit Calls
@@ -543,8 +536,10 @@ const GetStartedModal = () => {
                 break;
             case "ResetPasswordChangeModal":
                 ResetPasswordChangeCheckPriorToSubmission(passCode, password, passwordConfirm);
+                break;
             case "PasswordChangedSuccessfullyModal":
-                GoTo_LogInPage();
+                GoTo_LogInModal();
+                break;
             default:
                 setCheckEmailCommence(true)
                 setCheckPasswordCommence(true)
@@ -563,9 +558,7 @@ const GetStartedModal = () => {
         };
     };
     const ResetPasswordChangeCheckPriorToSubmission = (passCode, password, passwordConfirm) =>{
-        setCheckPasswordCommence(true);//*For regular checking password correctness
-        setCheckPasswordSubModalCommence(true);//*For PasswordSubModal Initiation purposes
-        setCheckPassCodeCommence(true);
+        setCheckPasswordCommence(false);         //*For regular checking password correctness
         if (passCode.length === 0){
             setIsValidPassCode(false);
             setResetPasswordChangeStatus(false);
@@ -575,8 +568,9 @@ const GetStartedModal = () => {
             setIsValidPassword(false);
             setIsValidPasswordConfirm(false);
             setResetPasswordChangeStatus(false);
+        } else{
+            dispatch(resetPasswordChange_APIAction(passCode, password, passwordConfirm));
         }
-        dispatch(resetPasswordChange_APIAction(passCode, password, passwordConfirm));
     }
 
     // !JSX
@@ -688,103 +682,3 @@ const GetStartedModal = () => {
 }
 
 export default GetStartedModal;
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (modalStatus === "VerifyAccountModal"){
-    //         dispatch(verifyAccount_APIAction(passCode));
-    //     }
-    //     else if (modalStatus === "VerificationSuccessModal"){
-    //         GoTo_LogInPage();
-    //         dispatch(userReducerActions.GoTo_LogInModal_rdx());
-    //     }else if (modalStatus === "ResetPasswordEmailPassCodeModal"){
-    //         setCheckEmailCommence(true);
-    //         console.log(email)
-    //         if (!email) {
-    //             dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure('Email Field Required'));
-    //             return;
-    //         }else {
-    //             dispatch(resetPasswordEmailPassCode_APIAction(email));
-    //         }
-    //     }else if (modalStatus === "ResetPasswordReceivedPassCodePage"){
-    //         GoTo_ResetPasswordChangeModal();
-    //     }else if (modalStatus === "ResetPasswordChangeModal"){
-    //         ResetPasswordChangeCheckPriorToSubmission(passCode, password, passwordConfirm);
-    //     }else if (modalStatus === "PasswordChanged"){
-    //         GoTo_LogInPage();
-    //     }else{
-    //         setCheckEmailCommence(true)
-    //         setCheckPasswordCommence(true)
-    //         if (isValidEmail && isValidPassword){
-    //             switch(modalStatus){
-    //                 case "CreateAccountModal":
-    //                     dispatch(register_APIAction(email, password));
-    //                     setCheckBackendCredentialsCommence(true);
-    //                     break;
-    //                 case "LogInModal":
-    //                     dispatch(login_APIAction(email, password));
-    //                     setCheckBackendCredentialsCommence(true);
-    //                     break;
-    //             } 
-    //         }
-    //     }
-    // };
-    // useEffect (() => {
-    //     if (headerText === "Create Account" && checkPasswordSubModalCommence) {
-    //         setPasswordFeedback('');
-    //     } else if (headerText === "Login" && checkPasswordCommence) {
-    //         const identifier = setTimeout( () => { 
-    //             if (password.length === 0 ){
-    //                 setIsValidPassword(false)
-    //                 setPasswordFeedback('Password Field Required')
-    //             } else if (password.length < 8 ){
-    //                 setIsValidPassword(false)
-    //                 setPasswordFeedback('At least 8 Characters Required')
-    //             } else if (password.length > 7 ){
-    //                 setIsValidPassword(true)
-    //                 setPasswordFeedback('')
-    //             }
-    //         },  500);
-    //         return ()  => {
-    //             clearTimeout(identifier)
-    //         };
-    //     } else if (headerText === "Reset Your Password" && checkPassCodeCommence) {
-    //         console.log('test2')
-    //         const identifier = setTimeout( () => { 
-    //             if (passCode.length === 0 ){
-    //                 setIsValidPassCode(false)
-    //                 passCodeInputRef.current.focus();
-    //                 setGeneralFeedback('Verification Code Required')
-    //                 setResetPasswordChangeStatus(false);
-    //                 setRefreshYourPasswordHeader(prevKey => prevKey + 1);
-    //             }else if (passCode.length > 0 ){
-    //                 setIsValidPassCode(true)
-    //                 setGeneralFeedback('Enter Verification Code and New Password')
-    //                 setResetPasswordChangeStatus(true);
-    //                 setRefreshYourPasswordHeader(prevKey => prevKey + 1);
-    //             } 
-    //         },  500);
-    //         return ()  => {
-    //             clearTimeout(identifier)
-    //         };
-    //     } else if (headerText === "Reset Your Password" && checkPasswordConfirmCommence) {
-    //         console.log('test3')
-    //         const identifier = setTimeout( () => { 
-    //             if (passwordConfirm.length === 0 ){
-    //                 setResetPasswordChangeStatus(false)
-    //                 setIsValidPasswordConfirm(false)
-    //                 setGeneralFeedback('Confirm Password Field Required')
-    //             } else if (passwordConfirm !== password){
-    //                 setResetPasswordChangeStatus(false)
-    //                 setIsValidPasswordConfirm(false)
-    //                 setGeneralFeedback('Passwords do not match')
-    //             } else if (passwordConfirm === password){
-    //                 setResetPasswordChangeStatus(true)
-    //                 setIsValidPasswordConfirm(true)
-    //                 setGeneralFeedback('Passwords match √')
-    //             }
-    //         },  1500);
-    //         return ()  => {
-    //             clearTimeout(identifier)
-    //         };
-    // }}, [password, passwordConfirm, checkPasswordCommence, checkPasswordSubModalCommence, checkPassCodeCommence, checkPasswordConfirmCommence, passCode]);

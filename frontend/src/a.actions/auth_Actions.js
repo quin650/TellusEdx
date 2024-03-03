@@ -207,17 +207,21 @@ export const resetPasswordChange_APIAction = (passCode, password, passwordConfir
 
         try {
             const res = await passwordResetChangeData();
-            if (res.data.PasswordError) {
-                dispatch(userReducerActions.passwordResetFailurePasswordIssue(res.data.PasswordError));
-            } else if (res.data.PassCodeError) {
-                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(res.data.PassCodeError));
-            }else if (res.data.error) {
+            console.log('res.data: ', res.data)
+            if (res.data.error) {
                 dispatch(userReducerActions.passwordResetFailureIssue(res.data.error)); 
             }else {
                 dispatch(userReducerActions.passwordResetSuccess());
             }
         } catch (err) {
+            console.log('Error response data:', err.response.data); 
+            if (err.response.data.PasswordError) {
+                dispatch(userReducerActions.passwordResetFailurePasswordIssue(err.response.data.PasswordError));
+            } else if (err.response.data.PassCodeError) {
+                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(err.response.data.PassCodeError));
+            }else{
             dispatch(userReducerActions.passwordResetFailureIssue(err.response.data.error))
+            }
         };
 
     };

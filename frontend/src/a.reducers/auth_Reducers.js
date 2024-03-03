@@ -34,8 +34,6 @@ const initialState = {
 	//Reset Your Password
 	resetPasswordChangeStatus_rdx: true,
 	resetPasswordChangeFeedback_rdx: 'Enter Verification Code and New Password',
-	passCodeStatus_rdx: true,
-	passCodeFeedback_rdx: '',
 };
 
 const userSlice = createSlice({
@@ -112,6 +110,7 @@ const userSlice = createSlice({
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = 'Failed'
 		},
+
 		// Verification Success
 		GoTo_LogInModal_rdx(state){
 			state.getStartedView = 'LogInModal';
@@ -134,6 +133,8 @@ const userSlice = createSlice({
 		loginErrorReset(state){
 			state.loginError = '';
 		},
+
+		// Log Out
 		logoutSuccess(state){
 			state.isAuthenticated = false;
 		},
@@ -152,7 +153,7 @@ const userSlice = createSlice({
 			state.token = action.payload;
 		},
 
-		// ResetPassword
+		// Reset Password - Email PassCode
 		passwordResetPassCodeEmailSentSuccess(state, action){
 			state.passwordResetPassCodeEmail += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
@@ -167,7 +168,7 @@ const userSlice = createSlice({
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 		},
 
-		// ResetYourPassword
+		// Reset Password - Change
 		passwordResetSuccess(state){
 			state.resetPasswordChangeStatus_rdx = true;
 			state.resetPasswordChangeFeedback_rdx = '';
@@ -177,19 +178,22 @@ const userSlice = createSlice({
 		},
 		passwordResetFailurePasswordIssue(state, action){
 			state.resetPasswordChangeStatus_rdx = false;
-			state.resetPasswordChangeFeedback_rdx = action.payload;
+			state.resetPasswordChangeFeedback_rdx = action.payload; //gets fed into general feedback in frontend
 		},
 		passwordResetFailurePassCodeIssue(state, action){
-			state.passCodeStatus_rdx = false;
-			state.passCodeFeedback_rdx = action.payload;
+			state.resetPasswordChangeStatus_rdx = false;
+			state.resetPasswordChangeFeedback_rdx = action.payload;
 		},
 		passwordResetFailureIssue(state, action){
 			state.resetPasswordChangeStatus_rdx = false;
-			state.passCodeStatus_rdx = false;
+			state.resetPasswordChangeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 		},
+		passwordResetPasswordChangeResetStatus(state){
+			state.resetPasswordChangeStatus_rdx = true;
+		},
 
-		//Delete User
+		//Delete - User
 		deleteUserSuccess(state){
 			state.isAuthenticated = false;
 		},
