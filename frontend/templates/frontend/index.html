@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TellusEd</title>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/pdf_viewer.css' %}" />
 
 		<!--Google Font Montserrat (Heading)-->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,6 +41,11 @@
 	<body>
 		<div id="root">
 			<script src="{% static 'frontend/main.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+			<script>
+				pdfjsLib.GlobalWorkerOptions.workerSrc =
+					"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
+			</script>
 		</div>
 	</body>
 </html>

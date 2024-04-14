@@ -1,133 +1,100 @@
-import React , { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { delete_user_profile } from "../../a.actions/profile_Actions";
-import { update_user_profile } from "../../a.actions/profile_Actions";
-import { create_user_profile } from "../../a.actions/profile_Actions";
-import { load_user_profile } from "../../a.actions/profile_Actions";
-import classes from './dashboard.module.css';
+import React , { useState, useEffect, useRef } from "react";
+import classes from './dashboard.module.css'
+import pdf from './pdf1.pdf'
 
 const Dashboard = () => {
-    console.log('Dashboard')
-    const dispatch = useDispatch();
-
-    // const tokenString = localStorage.getItem('token');
-    // const accessToken = tokenString ? JSON.parse(tokenString) : null;
-    // console.log('accessToken: ', accessToken)
+    const [pdfUrl, setPdfUrl] = useState(pdf);
+    const [pageNum, setPageNum] = useState(19);
+    const [pdfDocument, setPdfDocument] = useState(null);
+    const [scale, setScale] = useState(2);
+    const [pageIsRendering, setPageIsRendering] = useState(false);
+    const [pageNumIsPending, setPageNumIsPending] = useState(null)
+    const canvasRef = useRef(null);
 
     useEffect(()=>{
-        console.log('Dashboard.UseEffect.Load_user_profile')
-        dispatch(load_user_profile());
-    },[])
-    const profile_id = useSelector(state => state.prof.profile_id);
-    const first_name_global = useSelector(state => state.prof.first_name);
-    const last_name_global = useSelector(state => state.prof.last_name);
-    const phone_global = useSelector(state => state.prof.phone);
-    const city_global = useSelector(state => state.prof.city);
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => { 
+            setPdfDocument(pdfDoc); 
+        }).catch(error => {
+            console.error("Error loading PDF: ", error);
+        });
+    }, [pdfUrl])
 
-    const [formData, setFormData] = useState({
-        first_name:'',
-        last_name:'',
-        phone:'',
-        city:''
-    });
-
-    const { first_name, last_name, phone, city } = formData;
-    useEffect(() =>{
-        console.log('Dashboard.useEffect')
-        setFormData({
-            first_name: first_name_global || '',
-            last_name: last_name_global || '',
-            phone: phone_global || '',
-            city: city_global || '',
-        })
-    },[first_name_global, last_name_global, phone_global, city_global])
-
-    var SubmitButtonText = "Create"
-    const checkProfStatus = () => {
-        console.log('Dashboard.checkProfStatus')
-        if (profile_id){
-            SubmitButtonText = "Submit";
-        } else {
-            SubmitButtonText = "Create";
+    useEffect(() => {
+        if (pdfDocument) {
+            renderPage(pageNum);
         }
-    }
+    }, [pdfDocument, pageNum]);  
 
-    checkProfStatus();
+    const renderPage = num =>{     
+        setPageIsRendering(true);                        
+        pdfDocument.getPage(num).then(page=>{
+            if (!canvasRef.current) return;  
+            const canvas = canvasRef.current;
+            const context = canvas.getContext("2d");
+            var viewport = page.getViewport({scale});
+            canvas.width = viewport.width;                           
+            canvas.height = viewport.height;
+            const renderContext = {
+                canvasContext: context,     
+                viewport
+            };
+            page.render(renderContext).promise.then(() => {
+                setPageIsRendering(false);
+                if (pageNumIsPending !== null){                 
+                    renderPage(pageNumIsPending);
+                    setPageNumIsPending(null);
+                };
+            });
+        });
+    };
 
-    const onChange = e  => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    const onSubmit = e => {
-        console.log('Dashboard.onSubmit')
-        e.preventDefault();
-        if (profile_id) {
-            dispatch(update_user_profile(first_name, last_name, phone, city));
-            console.log('dispatch update_user_profile')
-        } else {
-            dispatch(create_user_profile(first_name, last_name, phone, city));
-            console.log('dispatch create_user_profile')
+    const queueRenderPage = num => {                
+        if(pageIsRendering){                                    
+            pageNumIsPending = num;                             
+        } else{
+            renderPage(num);                                    
         }
     };
 
+    const showPrevPage = () => {
+        if(pageNum <= 1){                  
+            return;
+        }
+        setPageNum(prevPageNum => prevPageNum - 1);         
+        queueRenderPage(pageNum - 1)                    
+    };
+
+    const showNextPage = () => {
+        if(pageNum >= pdfDocument.numPages){  
+            return;
+        }
+        setPageNum(prevPageNum => prevPageNum + 1);
+        queueRenderPage(pageNum + 1);
+    };
+
+    const handleInputChange = (e) => {
+        const newPageNum = parseInt(e.target.value, 10);  
+        if (newPageNum >= 1 && newPageNum <= pdfDocument.numPages) {
+            setPageNum(newPageNum);  
+            queueRenderPage(newPageNum);  
+    }
+};
+
     return (
-        <div className={classes.outer_container_top}>
-            <div className={classes.main}>
-                <div className={classes.container2}>
-                    <h1>Welcome to your User Dashboard</h1>
-                    <p>Update your user profile below: </p>
-                    <form onSubmit={e => onSubmit(e)}>
-                        <div className={classes.input_section}>
-                            <label htmlFor="first_name">First Name</label>
-                            <input
-                                type='text'
-                                placeholder={`${first_name_global}`}
-                                name='first_name'
-                                onChange={e => onChange(e)}
-                                value={first_name}
-                                required
-                            />
-                        </div>
-                        <div className={classes.input_section}>
-                            <label htmlFor="last_name">Last Name</label>
-                            <input
-                                type='text'
-                                placeholder={`${last_name_global}`}
-                                name='last_name'
-                                onChange={e => onChange(e)}
-                                value={last_name}
-                            />
-                        </div>
-                        <div className={classes.input_section}>
-                            <label htmlFor="phone">Phone</label>
-                            <input
-                                type='text'
-                                placeholder={`${phone_global}`}
-                                name='phone'
-                                onChange={e => onChange(e)}
-                                value={phone}
-                            />
-                        </div>
-                        <div className={classes.input_section}>
-                            <label htmlFor="city">City</label>
-                            <input
-                                type='city'
-                                placeholder={`${city_global}`}
-                                name='city'
-                                onChange={e => onChange(e)}
-                                value={city}
-                            />
-                        </div>
-                        <button type='submit'>{SubmitButtonText}</button>
-                    </form>
-                    <p>
-                        Click the button below to delete your account:
-                    </p>
-                    <button 
-                    href='#!'
-                    onClick={() => dispatch(delete_user_profile())}
-                    >
-                        Delete
-                    </button>
+        <div id="my_pdf_viewer" className={classes.pdf_viewer}>
+            <header className={classes.headerControls}>
+                <div className={classes.navigation_controls}>
+                    <button onClick={showPrevPage} id="go_previous">Previous Page</button>
+                    <input type="number" onChange={handleInputChange} value={pageNum} id="current_page"></input>
+                    <button onClick={showNextPage} id="go_next">Next Page</button>
+                    <span className={classes.zoom_controls}>
+                        <button id="zoom_in">+</button>
+                        <button id="zoom_out">-</button>
+                    </span>
                 </div>
+            </header>
+            <div id="canvas_container">
+                <canvas ref={canvasRef} id="canvas"></canvas>
             </div>
         </div>
     );
