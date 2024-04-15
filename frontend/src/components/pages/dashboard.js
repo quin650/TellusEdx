@@ -133,10 +133,11 @@ const Dashboard = () => {
                     </span>
                 </div>
             </div>
-            <div id="canvas_container">
+            <div id="canvas_container" className={classes.canvas_container}>
                 <canvas ref={canvasRef} id="canvas"></canvas>
+                <div id="textLayer" className={classes.textLayer}></div>
             </div>
-            <div id="textLayer"></div>
+            
         </div>
     );
 };

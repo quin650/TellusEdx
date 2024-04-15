@@ -11,6 +11,7 @@
     overflow: auto;
     background: #333;
     border: 3px solid #000;
+
 }
 
 .top_bar{
@@ -36,4 +37,11 @@
 }
 .zoom_controls button{
     width: 20px;;
+}
+
+.canvas_container{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
