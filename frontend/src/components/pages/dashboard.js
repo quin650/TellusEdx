@@ -5,11 +5,11 @@ import pdf from './pdf1.pdf'
 const Dashboard = () => {
     const [pdfUrl, setPdfUrl] = useState(pdf);
     const [pageNum, setPageNum] = useState(1);
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState(1)
     const [pdfDocument, setPdfDocument] = useState(null);
     const [scale, setScale] = useState(2);
     const [pageIsRendering, setPageIsRendering] = useState(false);
-    var pageNumIsPending = null;
+    let pageNumIsPending = null;
     const canvasRef = useRef(null);
 
     useEffect(()=>{
@@ -25,9 +25,10 @@ const Dashboard = () => {
         if (pdfDocument) {
             renderPage(pageNum);
         }
-    }, [pdfDocument, pageNum]);  
+    }, [pdfDocument, pageNum, scale]);  
 
     const renderPage = num =>{     
+        if (pageIsRendering) return;            //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                        
         pdfDocument.getPage(num).then(page=>{
             if (!canvasRef.current) return;  
@@ -42,11 +43,22 @@ const Dashboard = () => {
             };
             page.render(renderContext).promise.then(() => {
                 setPageIsRendering(false);
+                return page.getTextContent();                    
+            }).then(textContent => {                                        
+                const textLayerDiv = document.getElementById('textLayer'); 
+                textLayerDiv.className = 'textLayer';                     
+                const textLayer = pdfjsLib.renderTextLayer({                
+                    textContent: textContent,                               
+                    container: textLayerDiv,                               
+                    viewport                                                
+                }); 
+                textLayer._render();     
                 if (pageNumIsPending !== null){                 
                     renderPage(pageNumIsPending);
                     pageNumIsPending = null;
                 };
             });
+
         });
     };
 
@@ -59,7 +71,7 @@ const Dashboard = () => {
     };
 
     const showPrevPage = () => {
-        if(pageNum <= 1){                  
+        if(pdfDocument && pageNum <= 1){                  
             return;
         }
         let newVal = prevPageNum => prevPageNum - 1
@@ -69,7 +81,7 @@ const Dashboard = () => {
     };
 
     const showNextPage = () => {
-        if(pageNum >= pdfDocument.numPages){  
+        if(pdfDocument && pageNum >= pdfDocument.numPages){  
             return;
         }
         let newVal = prevPageNum => prevPageNum + 1
@@ -77,9 +89,11 @@ const Dashboard = () => {
         setInputValue(newVal); 
         queueRenderPage(pageNum + 1);
     };
+
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);
-        if (e.target.value === '') {
+        const val = e.target.value;
+        setInputValue(val);
+        if (val === '') {
             setPageNum('')
             return;
         }
@@ -88,7 +102,7 @@ const Dashboard = () => {
     useEffect(() => {
         const identifier = setTimeout(() => {
             var newPageNum = parseInt(inputValue, 10);
-            if (newPageNum >= 1 && newPageNum <= pdfDocument.numPages) {
+            if (pdfDocument && newPageNum >= 1 && newPageNum <= pdfDocument.numPages) {
                 setPageNum(newPageNum);
                 queueRenderPage(newPageNum);
             }
@@ -98,22 +112,31 @@ const Dashboard = () => {
         }
     }, [inputValue])
 
+    const zoomIn = () =>{
+        setScale(scale+0.5)
+    }
+
+    const zoomOut = () =>{
+        setScale(scale-0.5)
+    }
+
     return (
         <div id="my_pdf_viewer" className={classes.pdf_viewer}>
-            <header className={classes.headerControls}>
+            <div className={classes.top_bar}>
                 <div className={classes.navigation_controls}>
                     <button onClick={showPrevPage} id="go_previous">Previous Page</button>
                     <input type="text" onChange={handleInputChange} value={inputValue} id="current_page"></input>
                     <button onClick={showNextPage} id="go_next">Next Page</button>
                     <span className={classes.zoom_controls}>
-                        <button id="zoom_in">+</button>
-                        <button id="zoom_out">-</button>
+                        <button onClick={zoomIn} id="zoom_in">+</button>
+                        <button onClick={zoomOut} id="zoom_out">-</button>
                     </span>
                 </div>
-            </header>
+            </div>
             <div id="canvas_container">
                 <canvas ref={canvasRef} id="canvas"></canvas>
             </div>
+            <div id="textLayer"></div>
         </div>
     );
 };

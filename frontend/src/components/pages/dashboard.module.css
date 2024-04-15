@@ -13,7 +13,7 @@
     border: 3px solid #000;
 }
 
-.headerControls{
+.top_bar{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
