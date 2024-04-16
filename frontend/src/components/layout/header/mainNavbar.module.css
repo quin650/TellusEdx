@@ -1,12 +1,24 @@
-.outer_container_nav {                   /*Desktop 1st workflow. Starting at 3440 ultra wide screen*/
+.outer_container_nav {              
     display: flex;
-    position: static;
+    position: absolute;
     justify-content: center;
     align-items: center;
     height: 48px;
     width: 100%;
     max-width: 3840px;
-    margin: 8px auto 8px auto;
+    margin: 0 auto;
+    top: 0;
+    z-index: 1000;
+    background-color: #4f4f4f68;
+    transition: top 0.3ms;
+}
+
+.outer_container_nav.isAuthenticated { 
+    top: -44px; 
+}
+
+.outer_container_nav.isAuthenticated:hover {
+    top: 0;
 }
 
 .inner_container_nav {
@@ -17,7 +29,7 @@
     height: 48px;
     width: 100%;
     padding: 0;
-    padding-top: 12px;
+    /* padding-top: 12px; */
     margin: 0;
     color: var(--white);
 }
@@ -86,8 +98,6 @@
     justify-content: flex-end;
 }
 
-
-
 .avatar {
     display: flex;
     height: 2.2rem;
@@ -98,3 +108,4 @@
     margin-right: .5rem;
     align-items: center;
 }
+

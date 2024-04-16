@@ -8,7 +8,7 @@ import { checkAuthenticated } from './a.actions/auth_Actions';
 
 function App() {
     const dispatch = useDispatch();
-    const userInfo = useSelector(({ user }) => user.userInfo);
+    const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     useEffect(()=>{
         dispatch(checkAuthenticated());
     },[])
@@ -25,7 +25,7 @@ function App() {
                 </Routes>
             </main>
             <footer>
-                <Footer />
+                { !isAuthenticated ? <Footer /> :  ''}
             </footer>
         </Fragment>
     );

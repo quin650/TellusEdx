@@ -122,22 +122,21 @@ const Dashboard = () => {
 
     return (
         <div id="my_pdf_viewer" className={classes.pdf_viewer}>
-            <div className={classes.top_bar}>
-                <div className={classes.navigation_controls}>
-                    <button onClick={showPrevPage} id="go_previous">Previous Page</button>
-                    <input type="text" onChange={handleInputChange} value={inputValue} id="current_page"></input>
-                    <button onClick={showNextPage} id="go_next">Next Page</button>
-                    <span className={classes.zoom_controls}>
-                        <button onClick={zoomIn} id="zoom_in">+</button>
-                        <button onClick={zoomOut} id="zoom_out">-</button>
-                    </span>
-                </div>
-            </div>
             <div id="canvas_container" className={classes.canvas_container}>
                 <canvas ref={canvasRef} id="canvas"></canvas>
                 <div id="textLayer" className={classes.textLayer}></div>
+                <div className={classes.navigation_container}>
+                    <div className={classes.navigation_controls}>
+                        <button onClick={showPrevPage} id="go_previous">Previous Page</button>
+                        <input type="text" onChange={handleInputChange} value={inputValue} id="current_page"></input>
+                        <button onClick={showNextPage} id="go_next">Next Page</button>
+                        <span className={classes.zoom_controls}>
+                            <button onClick={zoomIn} id="zoom_in">+</button>
+                            <button onClick={zoomOut} id="zoom_out">-</button>
+                        </span>
+                    </div>
+                </div>
             </div>
-            
         </div>
     );
 };

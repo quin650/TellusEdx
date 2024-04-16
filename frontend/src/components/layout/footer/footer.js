@@ -6,7 +6,6 @@ import classes from './footer.module.css';
 const Footer = () => {
     // console.log('footer')
     const handleClickScroll = () => {
-        console.log('footer.handlescroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 

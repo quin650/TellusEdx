@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavbarMenuButton from './navbarMenuButton';
@@ -8,12 +8,11 @@ import Logo from '../../../../static/images/Logo_arrows.png';
 import classes from './mainNavbar.module.css';
 
 const MainNavbar = () => {
-    // console.log('MainNavbar')
     const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     const handleClickScroll = () => {
-        console.log('MainNavbar.handleClickScroll')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
+
     const authUser = (
         <Fragment>
                 <li className={classes.NavItem1}>
@@ -41,7 +40,7 @@ const MainNavbar = () => {
     !isAuthenticated ? content = authGuest : content = authUser
 
     return (
-        <nav className={classes.outer_container_nav}>
+        <nav className={`${classes['outer_container_nav']} ${isAuthenticated && classes.isAuthenticated}`}>
             <ul className={classes.inner_container_nav}>
                 {content}
             </ul>
