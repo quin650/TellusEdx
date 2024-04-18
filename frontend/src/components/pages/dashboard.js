@@ -5,26 +5,34 @@ import pdf from './pdf1.pdf'
 const Dashboard = () => {
     const [pdfUrl, setPdfUrl] = useState(pdf);
     const [pageNum, setPageNum] = useState(1);
-    const [inputValue, setInputValue] = useState(1)
+    const [inputValue, setInputValue] = useState(2)
     const [pdfDocument, setPdfDocument] = useState(null);
-    const [scale, setScale] = useState(2);
+    const [scale, setScale] = useState(1);
     const [pageIsRendering, setPageIsRendering] = useState(false);
     let pageNumIsPending = null;
     const canvasRef = useRef(null);
 
     useEffect(()=>{
         pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => { 
-            setPdfDocument(pdfDoc); 
+            setPdfDocument(pdfDoc);
+            pdfDoc.getPage(pageNum).then(page => {
+                const viewport = page.getViewport({ scale: 1 });
+                const windowHeight = window.innerHeight;
+                const scaleToUse = windowHeight / viewport.height;
+                setScale(scaleToUse);
+            });
         }).catch(error => {
             console.error("Error loading PDF: ", error);
         });
     }, [pdfUrl])
+
     useEffect(() => {
         setInputValue(pageNum)
         if (pdfDocument) {
             renderPage(pageNum);
         }
-    }, [pdfDocument, pageNum, scale]);  
+    }, [pdfDocument, pageNum, scale]); 
+
     const renderPage = num =>{     
         if (pageIsRendering) return;            //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                        
@@ -32,7 +40,7 @@ const Dashboard = () => {
             if (!canvasRef.current) return;  
             const canvas = canvasRef.current;
             const context = canvas.getContext("2d");
-            var viewport = page.getViewport({scale});
+            const viewport = page.getViewport({scale});
             canvas.width = viewport.width;                           
             canvas.height = viewport.height;
             const renderContext = {
