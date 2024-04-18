@@ -19,14 +19,12 @@ const Dashboard = () => {
             console.error("Error loading PDF: ", error);
         });
     }, [pdfUrl])
-
     useEffect(() => {
         setInputValue(pageNum)
         if (pdfDocument) {
             renderPage(pageNum);
         }
     }, [pdfDocument, pageNum, scale]);  
-
     const renderPage = num =>{     
         if (pageIsRendering) return;            //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                        
@@ -58,38 +56,31 @@ const Dashboard = () => {
                     pageNumIsPending = null;
                 };
             });
-
         });
     };
-
-    const queueRenderPage = num => {                
+    const queueRenderPage = num => {            
         if(pageIsRendering){                                    
             pageNumIsPending = num;                             
         } else{
             renderPage(num);                                    
         }
     };
-
-    const showPrevPage = () => {
-        if(pdfDocument && pageNum <= 1){                  
-            return;
-        }
-        let newVal = prevPageNum => prevPageNum - 1
-        setPageNum(newVal);    
-        setInputValue(newVal);     
-        queueRenderPage(pageNum - 1);                  
-    };
-
     const showNextPage = () => {
-        if(pdfDocument && pageNum >= pdfDocument.numPages){  
-            return;
+        let newVal = pageNum + 1
+        if(pdfDocument && newVal <= pdfDocument.numPages){  
+            setPageNum(newVal);    
+            setInputValue(newVal); 
+            queueRenderPage(newVal);
         }
-        let newVal = prevPageNum => prevPageNum + 1
-        setPageNum(newVal);    
-        setInputValue(newVal); 
-        queueRenderPage(pageNum + 1);
     };
-
+    const showPrevPage = () => {
+        let newVal = pageNum - 1
+        if(pdfDocument && newVal >= 1){                  
+            setPageNum(newVal);    
+            setInputValue(newVal);   
+            queueRenderPage(newVal);  
+        }                
+    };
     const handleInputChange = (e) => {
         const val = e.target.value;
         setInputValue(val);
@@ -98,7 +89,6 @@ const Dashboard = () => {
             return;
         }
     };
-
     useEffect(() => {
         const identifier = setTimeout(() => {
             var newPageNum = parseInt(inputValue, 10);
@@ -111,20 +101,33 @@ const Dashboard = () => {
             clearTimeout(identifier);
         }
     }, [inputValue])
-
     const zoomIn = () =>{
         setScale(scale+0.5)
     }
-
     const zoomOut = () =>{
         setScale(scale-0.5)
     }
-
+    // Event Listeners
+    const handleKeyDown = (e) => {
+        if (e.key =="ArrowRight"){
+            showNextPage();
+        } else if (e.key == "ArrowLeft"){
+            showPrevPage();
+        }
+    };
+    useEffect(()=>{
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {              // Ensure to remove the event listener on component unmount or before re-adding
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    },[pageNum, pdfDocument])       // Include pageNum and pdfDocument to ensure the listener updates
     return (
         <div id="my_pdf_viewer" className={classes.pdf_viewer}>
             <div id="canvas_container" className={classes.canvas_container}>
                 <canvas ref={canvasRef} id="canvas"></canvas>
                 <div id="textLayer" className={classes.textLayer}></div>
+
+
                 <div className={classes.navigation_container}>
                     <div className={classes.navigation_controls}>
                         <button onClick={showPrevPage} id="go_previous">Previous Page</button>
@@ -140,5 +143,4 @@ const Dashboard = () => {
         </div>
     );
 };
-
 export default Dashboard;
