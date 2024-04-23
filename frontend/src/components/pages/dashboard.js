@@ -7,32 +7,39 @@ const Dashboard = () => {
     const [inputValue, setInputValue] = useState(2)                     // Page Manual Input for *goto page functionality
     const [pdfDocument, setPdfDocument] = useState(null);               // The Document Object (before being set)
     const [scale, setScale] = useState(1);                              // The size of document rendering on screen
+    const [pageNum, setPageNum] = useState(1);
     const [pageIsRendering, setPageIsRendering] = useState(false);      // The Rendering State
     let pageNumIsPending = null;                                        // While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
     const canvasRef = useRef(null);                                     // The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
+    console.log('scale: ', scale)
+
     useEffect(()=>{
+        console.log('1')
         //Get Document
         pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => {           // pdfjsLib uses getDocument(pdf_url) method and returns the Document object
             setPdfDocument(pdfDoc);                                     // set pdfDoc equal to the Pdf-Document-object 
             pdfDoc.getPage(pageNum).then(page => {                      // creates a pdf page object by using the pdfDoc object/pdf document
-                const viewport = page.getViewport({ scale: 1 });        // get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
+                const viewport = page.getViewport({scale});             // get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
                 const windowHeight = window.innerHeight;                // Make the Canvas' height = ViewPort's height
                 const scaleToUse = windowHeight / viewport.height;      // Based on the size the pdf shown, we estimate the scale equal to the full size of the window so that the pdf renders as large as possible based on the window size
+                console.log('scaleToUse: ', scaleToUse)
                 setScale(scaleToUse);                                   // Set the state of the scale that will be used.
             });
         }).catch(error => {                                             // catch error
             console.error("Error loading PDF: ", error);                
         });
     }, [pdfUrl])                                                        // The document will be set every time the document url changes
-
     useEffect(() => {
+        console.log('2')
         setInputValue(pageNum)                                          // When the pdfDocument sets, the pageNum, or the scale change, the Input Value is set.
         if (pdfDocument) {                                              // if the pdf Document has been set, then:
             renderPage(pageNum);                                        // Render the Page (pageNum is initially set to page# 1)
         }
-    }, [pdfDocument, pageNum, scale]); 
+    }, [pageNum, scale]);                                               // Removed "pdfDocument"...
+
     //Render the page
     const renderPage = num =>{                                          //Function for rendering page
+        console.log('3')
         if (pageIsRendering) return;                                    //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                                       //Change Rendering Status to "true"/currently rendering
         //Get page
