@@ -16,7 +16,7 @@ function App() {
     return (
         <Fragment>
             <header>
-                <MainNavbar />
+                { !isAuthenticated ? <MainNavbar /> :  ''}  {/* Navbar is removed when isAuth */}
             </header>
             <main>
                 <Routes>
@@ -25,7 +25,7 @@ function App() {
                 </Routes>
             </main>
             <footer>
-                { !isAuthenticated ? <Footer /> :  ''}
+                { !isAuthenticated ? <Footer /> :  ''}      {/* Footer is removed when isAuth */}
             </footer>
         </Fragment>
     );

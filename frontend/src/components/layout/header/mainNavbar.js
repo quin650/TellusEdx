@@ -40,10 +40,8 @@ const MainNavbar = () => {
     !isAuthenticated ? content = authGuest : content = authUser
 
     return (
-        <nav className={`${classes['outer_container_nav']} ${isAuthenticated && classes.isAuthenticated}`}>
-            <ul className={classes.inner_container_nav}>
+        <nav className={classes.inner_container_nav}>
                 {content}
-            </ul>
         </nav>
     );
 };

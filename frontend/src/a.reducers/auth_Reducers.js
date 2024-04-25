@@ -8,6 +8,7 @@ const initialState = {
 	getStartedModalStatus: false,
 	getStartedView: '',
 	isAuthenticated: false,
+	isDashboardFullScreen: true,
 	registered: false,
 	registrationError: '',
 	verificationEmail: 0,

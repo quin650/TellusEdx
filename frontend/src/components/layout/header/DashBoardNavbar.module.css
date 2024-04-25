@@ -13,6 +13,14 @@
     transition: top 0.3ms;
 }
 
+.outer_container_nav.isDashboardFullScreen { 
+    top: -44px; 
+}
+
+.outer_container_nav.isDashboardFullScreen:hover {
+    top: 0;
+}
+
 .inner_container_nav {
     display: flex;
     flex-direction: row;
