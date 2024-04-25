@@ -13,11 +13,11 @@
     transition: top 0.3ms;
 }
 
-.outer_container_nav.isDashboardFullScreen { 
+.outer_container_nav.isFullScreen { 
     top: -44px; 
 }
 
-.outer_container_nav.isDashboardFullScreen:hover {
+.outer_container_nav.isFullScreen:hover {
     top: 0;
 }
 

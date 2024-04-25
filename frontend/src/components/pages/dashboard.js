@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [pageNum, setPageNum] = useState(1);
     const [pageIsRendering, setPageIsRendering] = useState(false);      //The Rendering State
     const [windowSizeChanges, setWindowSizeChanges] = useState(1);
-    const [fullScreen, setFullScreen] = useState(true);
+    const [isFullScreen, setIsFullScreen] = useState(true);
     let pageNumIsPending = null;                                        //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
     const canvasRef = useRef(null);                                     //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
     //Set PdfDocument, Scale, and setOkToRender = True
@@ -140,7 +140,7 @@ const Dashboard = () => {
         }
     };
     useEffect(() => {
-        if (fullScreen) {
+        if (isFullScreen) {
             let resizeTimer;
             const handleResize = () => {   
                 clearTimeout(resizeTimer);
@@ -157,7 +157,7 @@ const Dashboard = () => {
                 clearTimeout(resizeTimer); // Clear the timeout to prevent delayed execution
             }
         }
-    }, [fullScreen])    
+    }, [isFullScreen])    
     useEffect(()=>{
         document.addEventListener("keydown", handleKeyDown);
         return () => {                                          
@@ -166,7 +166,7 @@ const Dashboard = () => {
     },[pageNum, pdfDocument])                                           //Include pageNum and pdfDocument to ensure the listener updates
     return (
         <Fragment>
-            <DashBoardNavbar />
+            <DashBoardNavbar isFullScreen={isFullScreen}/>
             <div id="my_pdf_viewer" className={classes.pdf_viewer}>
                 <div id="canvas_container" className={classes.canvas_container}>
                     <canvas ref={canvasRef} id="canvas"></canvas>
