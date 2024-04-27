@@ -8,13 +8,19 @@ const DashBoardNavbar = (props) => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 
+    const toggle = () =>{
+        props.toggleFullScreen();
+    }
+
     return (
         <nav className={`${classes['outer_container_nav']} ${props.isFullScreen && classes.isFullScreen}`}>
             <ul className={classes.inner_container_nav}>
-                <li className={classes.NavItem1}>
-                    Page Controls
+                <li className={classes.windowControlsContainer}>
+                    <button className={classes.close}></button>
+                    <button className={classes.minimize}></button>
+                    <button onClick={toggle} className={`${classes['fullScreenToggle']} ${props.isFullScreen && classes.isFullScreen}`}></button>
                 </li>
-                <li className={classes.NavItem3}>
+                <li className={classes.NavBarMenuItem}>
                     <NavbarMenuButton />
                 </li>
             </ul>
