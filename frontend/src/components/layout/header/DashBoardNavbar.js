@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import NavbarMenuButton from './navbarMenuButton';
 import classes from './DashBoardNavbar.module.css';
 
-const DashBoardNavbar = (props) => {
+const DashBoardNavbar =  React.memo((props) =>{ //react.memo --use when: Stable props: When the props passed down to the component change infrequently. +  preventing unnecessary renders provides a noticeable performance improvement
     const handleClickScroll = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
@@ -26,6 +26,6 @@ const DashBoardNavbar = (props) => {
             </ul>
         </nav>
     );
-};
+});
 
 export default DashBoardNavbar;

@@ -7,69 +7,42 @@ const Dashboard = () => {
     const [pdfState, setPdfState] = useState({
         pdfUrl: pdf,                                                    //The Document URL/File Location
         pdfDocument: null,                                              //The Document Object (before being set)
-        scale: null,                                                    //The size of document rendering on screen(Height-Based)
-        scaleFull: null,                                                //The size of document rendering on screen(Width-Based)
-        pageNum: 1,                                                     
+        scale: null,                                                    //The size of document rendering on screen
+        okToRender: false,                                              //Changed to true when the component has had the chance to set the accurate scale
+        pageNum: 1,
         inputValue: 1,                                                  //Page Manual Input for *goto page functionality
     });
+    
+    const [fullScreenScale, setFullScreenScale] = useState(null);       //
     const [pageIsRendering, setPageIsRendering] = useState(false);      //The Rendering State
     const [windowSizeChanges, setWindowSizeChanges] = useState(1);      //
-    const [triggerRerender, setTriggerRerender] = useState(0);
     const [isFullScreen, setIsFullScreen] = useState(false);            //
     let pageNumIsPending = null;                                        //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
     const canvasRef = useRef(null);                                     //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
-    //Set pdfDocument, FullScreen Scale
+    
     useEffect(()=>{
         //Get Document
         //console.log("Fetching PDF document for URL: ", pdfState.pdfUrl);
         const fetchPdf = async () => {
             try {
                 const pdfDoc = await pdfjsLib.getDocument(pdfState.pdfUrl).promise;//pdfjsLib uses getDocument(pdf_url) method and returns the Document object
-                const page = await pdfDoc.getPage(pdfState.pageNum) //creates a pdf page object by using the pdfDoc object/pdf document
-                const viewport = page.getViewport({scale: 1});      //get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
-                const windowWidth = window.innerWidth;              //Make the Canvas' height = ViewPort's height
-                const windowHeight = window.innerHeight;            //Make the Canvas' height = ViewPort's height
-                const scaleForStart = windowHeight / viewport.height;//Based on the size the pdf shown, we estimate the scale equal to the full size of the window so that the pdf renders as large as possible based on the window size
-                let scaleToUse = scaleForStart
-                setPdfState(prevState => ({
-                    ...prevState,
-                    pdfDocument: pdfDoc,
-                    scale: scaleToUse,                           //Set the state of the scale that will be used.
-                }));
-            } catch(error) {                                        //catch error
-                //console.error("Error loading PDF: ", error);                
-            }
+                    const page = await pdfDoc.getPage(pdfState.pageNum) //creates a pdf page object by using the pdfDoc object/pdf document
+                    const viewport = page.getViewport({scale: 1});      //get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
+                    const windowWidth = window.innerWidth;              //Make the Canvas' height = ViewPort's height
+                    const scaleToUse = windowWidth / viewport.width;    //Based on the size the pdf shown, we estimate the scale equal to the full size of the window so that the pdf renders as large as possible based on the window size
+                    setPdfState(prevState => ({
+                        ...prevState,
+                        pdfDocument: pdfDoc,                            //set pdfDoc equal to the Pdf-Document-object 
+                        scale: scaleToUse,                              //Set the state of the scale that will be used.
+                        okToRender: true
+                    }));
+                    //console.log("Scale set to:", scaleToUse);
+                } catch(error) {                                        //catch error
+                    //console.error("Error loading PDF: ", error);                
+                }
         };
         fetchPdf();
-    }, []);           
-
-    useEffect(()=>{
-        //Get Document
-        //console.log("Fetching PDF document for URL: ", pdfState.pdfUrl);
-        const fetchPdf = async () => {
-            console.log('the new scale: ', pdfState.scale)
-            console.log('was triggered by:', windowSizeChanges)
-            if (pdfState.pdfDocument) {  // Only fetch if pdfDocument is not already loaded
-                try {
-                        const page = await pdfState.pdfDocument.getPage(pdfState.pageNum) //creates a pdf page object by using the pdfDoc object/pdf document
-                        const viewport = page.getViewport({scale: 1});      //get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
-                        const windowWidth = window.innerWidth;              //Make the Canvas' height = ViewPort's height
-                        const windowHeight = window.innerHeight;            //Make the Canvas' height = ViewPort's height
-                        const scaleForFull = windowWidth / viewport.width;  //Based on the size the pdf shown, we estimate the scale equal to the full size of the window so that the pdf renders as large as possible based on the window size
-                        const scaleForStart = windowHeight / viewport.height;//Based on the size the pdf shown, we estimate the scale equal to the full size of the window so that the pdf renders as large as possible based on the window size
-                        let scaleToUse
-                        isFullScreen ? scaleToUse = scaleForFull : scaleToUse = scaleForStart;
-                        setPdfState(prevState => ({
-                            ...prevState,
-                            scale: scaleToUse,                              //Set the state of the scale that will be used.
-                        }));
-                    } catch(error) {                                        //catch error
-                        //console.error("Error loading PDF: ", error);                
-                    }
-            };
-        };
-        fetchPdf();
-    }, [windowSizeChanges, isFullScreen]);                             //The document will be set every time the document url changes
+    }, []);                                                             //The document will be set every time the document url changes
     useEffect(() => {
         //console.log("Attempting to render page: ", pdfState.pageNum, "with scale:", pdfState.scale);
         if (pdfState.pdfDocument && pdfState.scale) {                   //if the pdf Document has been set, then:                              
@@ -79,7 +52,7 @@ const Dashboard = () => {
             }));
             renderPage(pdfState.pageNum);                               //Render the Page (pageNum is initially set to page# 1)
         }
-    }, [pdfState.pageNum, pdfState.scale, triggerRerender]);            //Removed "pdfDocument"...
+    }, [pdfState.pageNum, pdfState.scale]);                             //Removed "pdfDocument"...
     //Render the page
     const renderPage = useCallback((num) =>{                            //Function for rendering page
         //console.log("Rendering page number:", num);
@@ -141,6 +114,7 @@ const Dashboard = () => {
                 pageNum: prevState.pageNum + 1,
                 inputValue: prevState.pageNum + 1
             }));
+
             queueRenderPage(newVal);
         }
     };
@@ -196,12 +170,15 @@ const Dashboard = () => {
         }));
         // console.log("Zoomed in to scale:", pdfState.scale - 0.5);    // Optional: Log the new scale
     }
+
     const zoomOut = () => {
         setPdfState(prevState => ({
             ...prevState,
             scale: prevState.scale - 0.5                                // Decreasing the scale by 0.5
         }));
+        // console.log("Zoomed out to scale:", pdfState.scale - 0.5);   // Optional: Log the new scale
     }
+    
     //Event Listeners
     const handleKeyDown = (e) => {
         if (e.key =="ArrowRight"){
@@ -210,21 +187,17 @@ const Dashboard = () => {
             showPrevPage();
         }
     };
-    useEffect(()=>{
-        document.addEventListener("keydown", handleKeyDown);
-        return () => {                                          
-            document.removeEventListener("keydown", handleKeyDown);     // Ensure to remove the event listener on component unmount or before re-adding
-        };
-    },[pdfState.pageNum, pdfState.pdfDocument])                         //Include pageNum and pdfDocument to ensure the listener updates
-    //FullScreen
     useEffect(() => {
         if (isFullScreen) {
             let resizeTimer;
             const handleResize = () => {   
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
+                    // console.log('Window size has changed!');
+                    // console.log('New window width:', window.innerWidth);
+                    // console.log('New window height:', window.innerHeight);
                     setWindowSizeChanges(prevCount => prevCount + 1)
-                }, 300);
+                }, 100);
             };
             window.addEventListener('resize', handleResize);            // Adding the resize event listener to the window
             return () => {
@@ -232,19 +205,21 @@ const Dashboard = () => {
                 clearTimeout(resizeTimer);                              // Clear the timeout to prevent delayed execution
             }
         }
-    }, [isFullScreen])
-
+    }, [isFullScreen])    
     useEffect(()=>{
         document.addEventListener("keydown", handleKeyDown);
         return () => {                                          
             document.removeEventListener("keydown", handleKeyDown);     // Ensure to remove the event listener on component unmount or before re-adding
         };
     },[pdfState.pageNum, pdfState.pdfDocument])                         //Include pageNum and pdfDocument to ensure the listener updates
-
+    
+    
     const toggleFullScreen = useCallback(() => {
-        setIsFullScreen(prev => !prev);                                 // Toggle the full screen state
-        setTriggerRerender(prevCount => prevCount + 1);                 // Trigger re-render due to scale change
+        setIsFullScreen(prev => !prev);
+        setWindowSizeChanges(prevCount => prevCount + 1)                //Forces Render so the screen goes full screen
     }, []);
+
+    console.log('Dashboard component rendered');
     return (
         <Fragment>
             <DashBoardNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen}/>
