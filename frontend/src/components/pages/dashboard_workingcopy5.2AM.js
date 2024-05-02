@@ -80,24 +80,18 @@ const Dashboard = () => {
             renderPage(pdfState.pageNum);                               //Render the Page (pageNum is initially set to page# 1)
         }
     }, [pdfState.pageNum, pdfState.scale, triggerRerender]);            //Removed "pdfDocument"...
-
     //Render the page
-    const renderPage = useCallback(async (num) =>{                      //Function for rendering page
+    const renderPage = useCallback((num) =>{                            //Function for rendering page
         console.log("Rendering page number:", num);
         if (pageIsRendering || pdfState.scale == null) return;          //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                                       //Change Rendering Status to "true"/currently rendering
-        const canvas = canvasRef.current;                               //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
-        const context = canvas.getContext("2d");                        //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
-        
+        const canvas = canvasRef.current;                           //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
+        const context = canvas.getContext("2d");                    //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
         console.log("Page is rendering...");
         //Get page
-        try{
-            const page = await pdfState.pdfDocument.getPage(num);      //Creates a pdf page object by using the pdfDoc object/pdf document
-            if (!page || !canvasRef.current) {
-                setPageIsRendering(false);
-                console.error('Error: Page or canvas is not available.')
-                return;                             //If the canvas element isn't available yet, then exit render function
-            }
+        
+        pdfState.pdfDocument.getPage(num).then(page=>{                  //Creates a pdf page object by using the pdfDoc object/pdf document
+            if (!canvasRef.current) return;                             //If the canvas element isn't available yet, then exit render function
             //Set scale
             const viewport = page.getViewport({scale: pdfState.scale}); //Get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
             canvas.height = viewport.height;                            //Make the Canvas' height = ViewPort's height
@@ -106,31 +100,38 @@ const Dashboard = () => {
                 canvasContext: context,                                 //The object with properties and methods for rendering graphics inside the canvas
                 viewport                                                //Representation of the size and scale at which the PDF page should be rendered
             };
-            const renderTask  = await page.render(renderContext).promise
-            //Render the page (actual)                                  //draws the content of a specific pdf page onto the canvas  https://github.com/mozilla/pdf.js/issues/7072#issuecomment-459616711 
-            setPageIsRendering(false);                                  //Once the page is rendered, set rendering state to false
-            const textContent = await page.getTextContent();                           //Once page is rendered, extract text content 
-            //Create the textLayer                                      //Text layer (allows text selection/accessibility features)
-            const textLayerDiv = document.getElementById('textLayer');//??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
-            textLayerDiv.className = 'textLayer';                     //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
-            const textLayer = pdfjsLib.renderTextLayer({                //Create text layer        
-                textContent: textContent,                               // 
-                container: textLayerDiv,                                //Specifies the container (textLayerDiv)   
-                viewport                                                //Specifies the dimensions/scale at which the PDF page will be rendered    
+            //Render the page (actual)
+            
+            page.render(renderContext).promise.then(() => {             //draws the content of a specific pdf page onto the canvas  https://github.com/mozilla/pdf.js/issues/7072#issuecomment-459616711 
+                setPageIsRendering(false);                              //Once the page is rendered, set rendering state to false
+                return page.getTextContent();                           //Once page is rendered, extract text content 
+            }).then(textContent => {                                    //Text layer (allows text selection/accessibility features)
+                //Create the textLayer
+                const textLayerDiv = document.getElementById('textLayer');//??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
+                textLayerDiv.className = 'textLayer';                     //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
+                const textLayer = pdfjsLib.renderTextLayer({            //Create text layer        
+                    textContent: textContent,                           // 
+                    container: textLayerDiv,                            //Specifies the container (textLayerDiv)   
+                    viewport                                            //Specifies the dimensions/scale at which the PDF page will be rendered    
+                });
+                //Render the textLayer (actual) 
+                textLayer._render();                                    //Render text layer onto the textLayerDiv
+                if (pageNumIsPending !== null){                         //This conditional block checks if there is a pending page number to be rendered
+                    renderPage(pageNumIsPending);                       //If there is, it calls renderPage(pageNumIsPending) to render the specified page
+                    pageNumIsPending = null;                            //Then sets pageNumIsPending to null
+                }
             });
-            //Render the textLayer (actual) 
-            textLayer._render();                                        //Render text layer onto the textLayerDiv
-            if (pageNumIsPending !== null){                             //This conditional block checks if there is a pending page number to be rendered
-                renderPage(pageNumIsPending);                           //If there is, it calls renderPage(pageNumIsPending) to render the specified page
-                pageNumIsPending = null;                                //Then sets pageNumIsPending to null
-            }
-        }catch(error) {
-            setPageIsRendering(false);
-            console.error('Error rendering page:', error);
-        }
+        });
     }, [pdfState.scale, pageIsRendering, pdfState.pdfDocument]);
-
-
+    const queueRenderPage = useCallback(num => {                        //Manage Renders in queue (Render Page has a conditional statement that will call render again based on the queued "pageNumIsPending")
+        console.log("Queueing page number:", num);
+        if(pageIsRendering){                                            //If page is in the middle of rendering:
+            pageNumIsPending = num;                                     //then set pageNumIsPending to the number the page should render to (which will then render after the prev render completes)
+            console.log("Page rendering is pending for number:", num);
+        } else{
+            renderPage(num);                                            //Otherwise, if page is not already rendering, then call to render (which will render the desired page)
+        }
+    }, [pageIsRendering]); 
     //Prev-Next Page
     const showNextPage = () => {                                        //if page is greater than or equal to maxPages, return and do nothing  
         let newVal = pdfState.pageNum + 1
@@ -142,6 +143,7 @@ const Dashboard = () => {
                 pageNum: prevState.pageNum + 1,
                 inputValue: prevState.pageNum + 1
             }));
+            queueRenderPage(newVal);
         }
     };
     const showPrevPage = () => {
@@ -154,6 +156,7 @@ const Dashboard = () => {
                 pageNum: prevState.pageNum - 1,
                 inputValue: prevState.pageNum - 1
             }));   
+            queueRenderPage(newVal);  
         }                
     };
     //Page Input Field 
@@ -180,6 +183,7 @@ const Dashboard = () => {
                     ...prevState,
                     pageNum: newPageNum  // Update pageNum within pdfState
                 }));
+                queueRenderPage(newPageNum);
             }
         }, 700);
         return () => {
@@ -241,9 +245,6 @@ const Dashboard = () => {
 
     const toggleFullScreen = useCallback(() => {
         setIsFullScreen(prev => !prev);                                 // Toggle the full screen state
-        if (renderTask){
-            renderTask.cancel();
-        }
         setTriggerRerender(prevCount => prevCount + 1);                 // Trigger re-render due to scale change
     }, []);
     return (
