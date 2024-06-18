@@ -14,20 +14,18 @@ function App() {
     },[])
 
     return (
-        <Fragment>
+        <main>
             <header>
                 { !isAuthenticated ? <MainNavbar /> :  ''}  {/* Navbar is removed when isAuth */}
             </header>
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                </Routes>
-            </main>
-            <footer>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+            </Routes>
+            <footer >
                 { !isAuthenticated ? <Footer /> :  ''}      {/* Footer is removed when isAuth */}
-            </footer>
-        </Fragment>
+            </footer >
+        </main>
     );
 };
 export default App;

@@ -8,14 +8,6 @@ import { Provider } from 'react-redux';
 const appContainer = document.getElementById('root');
 const root = ReactDOM.createRoot(appContainer);
 
-    if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-    } else {
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        }
-    }
-
 root.render(
     <Provider store={store}>
         <BrowserRouter>

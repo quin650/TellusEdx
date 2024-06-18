@@ -12,7 +12,7 @@ const ToggleButton = (props) =>{
         props.ToggleFunction(ToggleIsContribute);
         console.log('ToggleButton.handleToggle')
     };
-
+    
     return(
         <div className={classes.toggleSection}>
             <label className={classes.switch}>

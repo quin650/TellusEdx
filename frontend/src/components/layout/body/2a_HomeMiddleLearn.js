@@ -2,7 +2,6 @@ import React from "react";
 import classes from './2c_HomeMiddle.module.css';
 
 const HomeMiddleLearn = () => {
-    // console.log('HomeMiddleLearn')
     return (
         <div className={classes.middleMainContainer}>
             <article className={classes.right}>

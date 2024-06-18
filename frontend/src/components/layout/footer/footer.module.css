@@ -1,13 +1,11 @@
 /* ----------------------Footer---------------------- https: //www.youtube.com/watch?v=YOb67OKw62s i.e. Responsive Footer Design using Html & Css by "The WebShala" */
 .footer {
-    scroll-snap-align: top;
     display: flex;
     position: relative;
     background-color: black;
     width: 100%;
     min-width: 400px;
-    height: 80vh;
-    position: -20vh;
+    position: -20vh; 
     border-top-left-radius: 36px;
     border-top-right-radius: 36px;
     align-items: flex-start;

@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from "react";
+
+import { Link} from 'react-router-dom';
 import Logo from '../../../../static/images/1Logo.png';
 import classes from './footer.module.css';
 
 const Footer = () => {
-    // console.log('footer')
     const handleClickScroll = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        document.querySelector('main').scrollTo(0,0)
     };
 
     return (
-        <footer className={classes.footer}>
+        <div className={classes.footer}>
             <div className={classes.outerLogoContainer}>
                     <ul className={classes.innerLogoContainer}>
                         <li>
@@ -54,15 +54,15 @@ const Footer = () => {
                 </div>
                 <div className={classes.socialRow}>
                     <span className={classes.social_links}>
-                        <a href='www.tellused.com'><i className={['fab fa-twitter']}></i></a>
-                        <a href='www.tellused.com'><i className={["fab fa-github fa-lg"]}></i></a>
-                        <a href='www.tellused.com'><i className={['fab fa-discord']}></i></a>
-                        <a href='www.tellused.com'><i className={['fab fa-facebook fa-lg']}></i></a>
+                        <a href='www.tellused.com'><i className={["fa-brands fa-x-twitter"]}></i></a>
+                        <a href='www.tellused.com'><i className={["fab fa-github"]}></i></a>
+                        <a href='www.tellused.com'><i className={["fab fa-discord"]}></i></a>
+                        <a href='www.tellused.com'><i className={["fab fa-facebook"]}></i></a>
                     </span>
                     <span className={classes.copyright}>Copyright © 2023 TellusEd. All Rights Reserved</span>
                 </div>
             </div>
-        </footer >
+        </div>
     );
 }
 

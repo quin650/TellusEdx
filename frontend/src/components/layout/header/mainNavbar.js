@@ -41,7 +41,7 @@ const MainNavbar = () => {
 
     return (
         <nav className={classes.inner_container_nav}>
-                {content}
+            {content}
         </nav>
     );
 };

@@ -56,11 +56,13 @@
     border-radius: 27px;
     padding: 75px 72px 36px 72px;
     background-color: white;
+    overflow-y: auto; 
 }
 .modalForm {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 .modalTitle{
     display: flex;

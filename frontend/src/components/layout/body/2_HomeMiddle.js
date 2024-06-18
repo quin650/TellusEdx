@@ -5,7 +5,6 @@ import HomeMiddleContribute from "./2b_HomeMiddleContribute";
 import classes from './2c_HomeMiddle.module.css';
 
 const HomeMiddle = () => {
-    // console.log('HomeMiddle')
     const[ifToggleIsLearn, SetIfToggleIsLearn] = useState(true)
 
     const ToggleFunction = (x) =>{
@@ -20,9 +19,11 @@ const HomeMiddle = () => {
     }
 
     return (
-        <section className={classes.middleMainSection}>
-            {content}
-            <ToggleButton ToggleFunction={ToggleFunction}/>
+        <section>
+            <div className={classes.middleMainSection}>
+                {content}
+                <ToggleButton ToggleFunction={ToggleFunction}/>
+            </div>
         </section>
     );
 }

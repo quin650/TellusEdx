@@ -1,13 +1,11 @@
 /* @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"); */
-
 * {
     box-sizing: border-box;
 }
 
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
-    scroll-snap-type: y mandatory;
-    /* color-scheme: dark light; */
+
 }
 
 body {
@@ -15,35 +13,36 @@ body {
     padding: 0;
     background-color: white;
     min-width: 400px;
-    width: calc(100vw - 4px);
+    width: 100vw;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: transparent transparent;
-}
-::-webkit-scrollbar {
-    width: 6px; /* For Chrome, Safari, and Opera */
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: transparent; /* For Chrome, Safari, and Opera */
+main{
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    -webkit-scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; 
+    scrollbar-color: transparent transparent; 
 }
-
-
-section{
-    -webkit-scroll-snap-align: start;
+header{
     scroll-snap-align: start;
+    -webkit-scroll-snap-align: start;
+}
+section{
+    scroll-snap-align: start;
+    -webkit-scroll-snap-align: start;
+    height: 100vh;
 }
 
 footer{
-    -webkit-scroll-snap-align: end;
-    scroll-snap-align: end;
-}
-
-nav{
-    -webkit-scroll-snap-align: start;
     scroll-snap-align: start;
+    -webkit-scroll-snap-align: start;
+    height: 80vh;
 }
 
 :root {
@@ -53,4 +52,14 @@ nav{
     --darkGray: #ffffff33;
     --black: black;
     --darkgray: #1d1d1d;
+}
+
+::-webkit-scrollbar {
+    width: 6px; 
+}
+::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+}
+::-webkit-scrollbar-track {
+    background: transparent;
 }

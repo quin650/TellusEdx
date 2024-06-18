@@ -8,7 +8,9 @@
     margin: 0;
     padding: 0;
     background-color: white;
-    height: Calc(100vh - 64px);
+    top: -64px;
+    /* height: Calc(100vh - 64px); */
+    height: 100vh;
     width: 100%;
     min-width: 400px;
     background-size: contain;           /* Use 'cover' to scale the background image to cover the entire container */

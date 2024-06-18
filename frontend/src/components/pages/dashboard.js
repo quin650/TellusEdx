@@ -18,10 +18,10 @@ const Dashboard = () => {
     const [isFullScreen, setIsFullScreen] = useState(false);            //
     let pageNumIsPending = null;                                        //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
     const canvasRef = useRef(null);                                     //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
-    //Set pdfDocument, FullScreen Scale
+    //!Set pdfDocument, FullScreen Scale
     useEffect(()=>{
-        //Get Document
-        console.log("Fetching PDF document for URL: ", pdfState.pdfUrl);
+        //!Get Document
+        // console.log("Fetching PDF document for URL: ", pdfState.pdfUrl);
         const fetchPdf = async () => {
             try {
                 const pdfDoc = await pdfjsLib.getDocument(pdfState.pdfUrl).promise;//pdfjsLib uses getDocument(pdf_url) method and returns the Document object
@@ -42,13 +42,9 @@ const Dashboard = () => {
         };
         fetchPdf();
     }, []);           
-
     useEffect(()=>{
-        //Get Document
-        //console.log("Fetching PDF document for URL: ", pdfState.pdfUrl);
+        //!Get Document
         const fetchPdf = async () => {
-            console.log('the new scale: ', pdfState.scale)
-            console.log('was triggered by:', windowSizeChanges)
             if (pdfState.pdfDocument) {  // Only fetch if pdfDocument is not already loaded
                 try {
                         const page = await pdfState.pdfDocument.getPage(pdfState.pageNum) //creates a pdf page object by using the pdfDoc object/pdf document
@@ -69,9 +65,9 @@ const Dashboard = () => {
             };
         };
         fetchPdf();
-    }, [windowSizeChanges, isFullScreen]);                             //The document will be set every time the document url changes
+    }, [windowSizeChanges, isFullScreen]);                              //The document will be set every time the document url changes
     useEffect(() => {
-        console.log("Attempting to render page: ", pdfState.pageNum, "with scale:", pdfState.scale);
+        //console.log("Attempting to render page: ", pdfState.pageNum, "with scale:", pdfState.scale);
         if (pdfState.pdfDocument && pdfState.scale) {                   //if the pdf Document has been set, then:                              
             setPdfState(prevState => ({                                 //When the pdfDocument sets, the pageNum, or the scale change, the Input Value is set.
                 ...prevState,
@@ -80,25 +76,24 @@ const Dashboard = () => {
             renderPage(pdfState.pageNum);                               //Render the Page (pageNum is initially set to page# 1)
         }
     }, [pdfState.pageNum, pdfState.scale, triggerRerender]);            //Removed "pdfDocument"...
-
-    //Render the page
+    //!Render the page
     const renderPage = useCallback(async (num) =>{                      //Function for rendering page
-        console.log("Rendering page number:", num);
+        //console.log("Rendering page number:", num);
         if (pageIsRendering || pdfState.scale == null) return;          //Ensure that you do not attempt another rendering operation until the current one is finished.
         setPageIsRendering(true);                                       //Change Rendering Status to "true"/currently rendering
         const canvas = canvasRef.current;                               //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
         const context = canvas.getContext("2d");                        //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
         
-        console.log("Page is rendering...");
-        //Get page
+        //console.log("Page is rendering...");
+        //!Get page
         try{
-            const page = await pdfState.pdfDocument.getPage(num);      //Creates a pdf page object by using the pdfDoc object/pdf document
+            const page = await pdfState.pdfDocument.getPage(num);       //Creates a pdf page object by using the pdfDoc object/pdf document
             if (!page || !canvasRef.current) {
                 setPageIsRendering(false);
-                console.error('Error: Page or canvas is not available.')
-                return;                             //If the canvas element isn't available yet, then exit render function
+                //console.error('Error: Page or canvas is not available.')
+                return;                                                 //If the canvas element isn't available yet, then exit render function
             }
-            //Set scale
+            //!Set scale
             const viewport = page.getViewport({scale: pdfState.scale}); //Get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
             canvas.height = viewport.height;                            //Make the Canvas' height = ViewPort's height
             canvas.width = viewport.width;                              //Make the Canvas' width = ViewPort's width
@@ -107,10 +102,10 @@ const Dashboard = () => {
                 viewport                                                //Representation of the size and scale at which the PDF page should be rendered
             };
             const renderTask  = await page.render(renderContext).promise
-            //Render the page (actual)                                  //draws the content of a specific pdf page onto the canvas  https://github.com/mozilla/pdf.js/issues/7072#issuecomment-459616711 
+            //!Render the page (actual)                                  //draws the content of a specific pdf page onto the canvas  https://github.com/mozilla/pdf.js/issues/7072#issuecomment-459616711 
             setPageIsRendering(false);                                  //Once the page is rendered, set rendering state to false
             const textContent = await page.getTextContent();                           //Once page is rendered, extract text content 
-            //Create the textLayer                                      //Text layer (allows text selection/accessibility features)
+            //!Create the textLayer                                      //Text layer (allows text selection/accessibility features)
             const textLayerDiv = document.getElementById('textLayer');//??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
             textLayerDiv.className = 'textLayer';                     //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
             const textLayer = pdfjsLib.renderTextLayer({                //Create text layer        
@@ -118,7 +113,7 @@ const Dashboard = () => {
                 container: textLayerDiv,                                //Specifies the container (textLayerDiv)   
                 viewport                                                //Specifies the dimensions/scale at which the PDF page will be rendered    
             });
-            //Render the textLayer (actual) 
+            //!Render the textLayer (actual) 
             textLayer._render();                                        //Render text layer onto the textLayerDiv
             if (pageNumIsPending !== null){                             //This conditional block checks if there is a pending page number to be rendered
                 renderPage(pageNumIsPending);                           //If there is, it calls renderPage(pageNumIsPending) to render the specified page
@@ -129,9 +124,7 @@ const Dashboard = () => {
             console.error('Error rendering page:', error);
         }
     }, [pdfState.scale, pageIsRendering, pdfState.pdfDocument]);
-
-
-    //Prev-Next Page
+    //!Prev-Next Page
     const showNextPage = () => {                                        //if page is greater than or equal to maxPages, return and do nothing  
         let newVal = pdfState.pageNum + 1
         if(pdfState.pdfDocument && newVal <= pdfState.pdfDocument.numPages){  
@@ -156,7 +149,7 @@ const Dashboard = () => {
             }));   
         }                
     };
-    //Page Input Field 
+    //!Page Input Field 
     const handleInputChange = (e) => {
         const val = e.target.value;
         setPdfState(prevState => ({
@@ -178,7 +171,7 @@ const Dashboard = () => {
             if (pdfState.pdfDocument && newPageNum >= 1 && newPageNum <= pdfState.pdfDocument.numPages) {
                 setPdfState(prevState => ({
                     ...prevState,
-                    pageNum: newPageNum  // Update pageNum within pdfState
+                    pageNum: newPageNum                                 // Update pageNum within pdfState
                 }));
             }
         }, 700);
@@ -186,13 +179,12 @@ const Dashboard = () => {
             clearTimeout(identifier);
         }
     }, [pdfState.inputValue])
-    //Zoom Functionality
+    //!Zoom Functionality
     const zoomIn = () => {
         setPdfState(prevState => ({
             ...prevState,
             scale: prevState.scale + 0.5                                // Decreasing the scale by 0.5
         }));
-        console.log("Zoomed in to scale:", pdfState.scale - 0.5);    // Optional: Log the new scale
     }
     const zoomOut = () => {
         setPdfState(prevState => ({
@@ -200,7 +192,7 @@ const Dashboard = () => {
             scale: prevState.scale - 0.5                                // Decreasing the scale by 0.5
         }));
     }
-    //Event Listeners
+    //!Event Listeners
     const handleKeyDown = (e) => {
         if (e.key =="ArrowRight"){
             showNextPage();
@@ -214,7 +206,7 @@ const Dashboard = () => {
             document.removeEventListener("keydown", handleKeyDown);     // Ensure to remove the event listener on component unmount or before re-adding
         };
     },[pdfState.pageNum, pdfState.pdfDocument])                         //Include pageNum and pdfDocument to ensure the listener updates
-    //FullScreen
+    //!FullScreen
     useEffect(() => {
         if (isFullScreen) {
             let resizeTimer;
@@ -231,14 +223,12 @@ const Dashboard = () => {
             }
         }
     }, [isFullScreen])
-
     useEffect(()=>{
         document.addEventListener("keydown", handleKeyDown);
         return () => {                                          
             document.removeEventListener("keydown", handleKeyDown);     // Ensure to remove the event listener on component unmount or before re-adding
         };
     },[pdfState.pageNum, pdfState.pdfDocument])                         //Include pageNum and pdfDocument to ensure the listener updates
-
     const toggleFullScreen = useCallback(() => {
         setIsFullScreen(prev => !prev);                                 // Toggle the full screen state
         if (renderTask){
@@ -269,4 +259,4 @@ const Dashboard = () => {
         </Fragment>
     );
 };
-export default Dashboard;
+export default Dashboard

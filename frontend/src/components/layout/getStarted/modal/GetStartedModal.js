@@ -637,7 +637,7 @@ const GetStartedModal = () => {
                                     onBlur={handleOnPasswordBlur}
                                 />
                                 <PasswordSubModal password={password} checkPasswordSubModalCommence={checkPasswordSubModalCommence} isValidEmail={isValidEmail} headerText={headerText} Get_PassWordValidity = {Get_PassWordValidity}/>
-                                <section className={`${classes['passwordInputFeedbackSection']} ${modalStatus === 'ResetPasswordChangeModal' ? classes.ResetPasswordChangeModal : modalStatus === 'ResetPasswordEmailPassCodeModal' ? classes.ResetPasswordEmailPassCodeModal : ''} `}>
+                                <div className={`${classes['passwordInputFeedbackSection']} ${modalStatus === 'ResetPasswordChangeModal' ? classes.ResetPasswordChangeModal : modalStatus === 'ResetPasswordEmailPassCodeModal' ? classes.ResetPasswordEmailPassCodeModal : ''} `}>
                                     <div className={`${classes['passwordInputFeedbackContainer']} ${!isValidPassword && classes.isValidPassword}`}>
                                         <p className={`${classes['passwordInputFeedback']} ${!isValidPassword && classes.isValidPassword}`}>
                                             {passwordFeedback}
@@ -646,7 +646,7 @@ const GetStartedModal = () => {
                                     <p className={`${classes['forgotPasswordLink']} ${modalStatus === "LogInModal" ? (!isValidPassword ? classes.LogInModal_isValidPassword : classes.LogInModal) : ''}`}>
                                         <a onClick={GoTo_ResetPasswordEmailPassCodeModal} className={classes.PageLink}>Forgot Password?</a>
                                     </p>
-                                </section>
+                                </div>
                             </div>
                         )}
                         {passwordConfirmInputFieldStatus && (
@@ -662,13 +662,13 @@ const GetStartedModal = () => {
                                     autoComplete='current-password'
                                     onFocus={handleOnPasswordConfirmFocus}
                                 />
-                                <section className={classes.passwordConfirmInputFeedbackSection}>
+                                <div className={classes.passwordConfirmInputFeedbackSection}>
                                     <div className={`${classes['passwordConfirmInputFeedbackContainer']} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
                                         <p className={`${classes['passwordConfirmInputFeedback']} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
                                             {passwordConfirmFeedback} 
                                         </p>
                                     </div>
-                                </section>
+                                </div>
                             </div>
                         )}
                         {ActionButton}
