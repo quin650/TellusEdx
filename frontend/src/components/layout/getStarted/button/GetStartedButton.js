@@ -8,7 +8,7 @@ const GetStartedButton = () => {
     const dispatch = useDispatch();
     const modalButtonAction = () => {
         // console.log('GetStartedButton.modalButtonAction')
-        dispatch(userReducerActions.getStartedModalOpen());
+        dispatch(userReducerActions.getStartedModalCreateAccount());
     }
 
     return (

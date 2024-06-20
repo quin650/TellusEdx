@@ -1,28 +1,44 @@
 .hamburgerMaster {
+    width: 40px;
     order: 3;
-    width: 30px;
     margin: 0rem;
+    margin-right: 2.5%;
     cursor: pointer;
 }
 
 .hamburger {
-    width: 30px;
+    width: 40px;
     height: 3.5px;
     background-color: black;
-    margin: 5px 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
 }
 
-
 .exitButtonContainer{
-    cursor: pointer;
-    position: relative;
     z-index: 3000;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 30px;
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
 }
 
 .exitButton{
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+}
+.exitButton:hover{
+    background-color: rgb(33, 33, 33);
+}
+.svgExit{
+    width: 20px;
+    height: 20px;
+    margin-right: 11px;
+}
+
+.svgExit path{
+    fill: white;
 }

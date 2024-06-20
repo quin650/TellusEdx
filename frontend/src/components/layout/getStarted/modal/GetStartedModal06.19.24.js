@@ -10,8 +10,7 @@ import PasswordSubModal from "./passwordSubModal/PasswordSubModal";
 import classes from './GetStartedModal.module.css';
 const GetStartedModal = () => { 
     const dispatch = useDispatch();
-    const getStartedView = useSelector(({ user }) => user.getStartedView);
-    const [modalStatus, setModalStatus] = useState(getStartedView);
+    const [modalStatus, setModalStatus] = useState("CreateAccountModal");
     //const [modalStatus, setModalStatus] = useState("VerifyAccountModal");
     //const [modalStatus, setModalStatus] = useState("VerificationSuccessModal");
     //const [modalStatus, setModalStatus] = useState("LogInModal");
@@ -20,7 +19,7 @@ const GetStartedModal = () => {
     //const [modalStatus, setModalStatus] = useState("ResetPasswordChangeModal");
     //const [modalStatus, setModalStatus] = useState("PasswordChangedSuccessfullyModal");
 
-
+    const getStartedView = useSelector(({ user }) => user.getStartedView);
     const registrationError = useSelector(({ user }) => user.registrationError);
     const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
     const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
@@ -116,14 +115,12 @@ const GetStartedModal = () => {
     }}, [checkBackendCredentialsCommence, registrationError]);
 
     // !Actions
-
     useEffect(() => {
-        if (getStartedView !== modalStatus) {
-            setModalStatus(getStartedView);
-        }
+        if (getStartedView !== ''){
+            console.log('test getStartedView useeffect')
+            setModalStatus(getStartedView)
+        } 
     }, [getStartedView]);
-    
-
     useEffect(() =>{
         switch(modalStatus){
             case "CreateAccountModal":
@@ -135,7 +132,7 @@ const GetStartedModal = () => {
             case "VerificationSuccessModal":
                 GoTo_VerificationSuccessModal();
                 break;
-            case 'LogInModal':
+            case "LogInModal":
                 GoTo_LogInModal();
                 break;              
             case "ResetPasswordEmailPassCodeModal":

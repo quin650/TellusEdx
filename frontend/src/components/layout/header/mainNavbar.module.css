@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     height: 48px;
-    width: 100%;
+    width: 100vw;
     padding: 0;
     /* padding-top: 12px; */
     margin: 0;
@@ -86,7 +86,6 @@
 .NavItem3 {
     display: flex;
     margin-left: 60px;
-    margin-right: 2.5%;
     justify-content: flex-end;
 }
 

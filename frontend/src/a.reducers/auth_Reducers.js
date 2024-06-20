@@ -56,6 +56,11 @@ const userSlice = createSlice({
 			state.navbarMenuStatus = false;
 			state.getStartedView = 'LogInModal';
 		},
+		getStartedModalCreateAccount(state) {
+			state.getStartedModalStatus = true;
+			state.navbarMenuStatus = false;
+			state.getStartedView = 'CreateAccountModal';
+		},
 		getStartedModalOpen(state) {
 			state.getStartedModalStatus = true;
 			state.navbarMenuStatus = false;
