@@ -31,7 +31,7 @@
     height: 100%;
 }
 .exitButton:hover{
-    background-color: rgb(33, 33, 33);
+    background-color: #1e1d1d;
 }
 .svgExit{
     width: 20px;

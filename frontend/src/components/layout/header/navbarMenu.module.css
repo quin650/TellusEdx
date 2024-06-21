@@ -13,9 +13,9 @@
 }
 .sidebar {
     display: flex;
-    justify-content: space-between;
     z-index: 2000;
     position: fixed;
+    justify-content: space-between;
     width: 320px;
     height: 100vh;
     background-color: #000;
@@ -23,7 +23,6 @@
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
-    
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
 }
@@ -78,6 +77,7 @@
     margin-bottom: 20px;
 }
 
+
 .menuItem {
     display: flex;
     align-items: center;
@@ -85,34 +85,58 @@
     color: #9E9E9E;
     text-decoration: none;
 }
-.menuItem .icon {
-    margin-right: 10px;
-}
 .menuItem:hover{
     color: #0066FF;
+    fill: #0066FF;
 }
 
 
-.menuItemLast {
+
+
+
+.homeIcon {
     display: flex;
     align-items: center;
-    padding: 10px 8px 20px 8px;
+    padding: 10px 8px;
     color: #9E9E9E;
     text-decoration: none;
 }
-.menuItemLast .icon {
-    margin-right: 10px;
+.homeIconPath{
+    fill: #9E9E9E;
+}
+.homeIcon:hover {
+    color: #0066FF;
+}
+.homeIcon:hover .homeIconPath{
+    fill: #0066FF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.buttonPadding {
+    padding-top: 10px 
 }
 .menuItemLast:hover{
     color: #0066FF;
 }
 
-
-.darkModeToggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.sidebarMenu span{
+    margin-left: 10px;
 }
+.sidebarMenu input{
+    margin-left: auto;
+
+}
+
 .getStartedBtn {
     width: 100%;
     padding: 10px;
