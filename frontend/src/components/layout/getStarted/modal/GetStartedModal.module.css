@@ -146,13 +146,14 @@
 This code below fixes an issue coming from chrome by which autoComplete makes 
 the css wonky i.e. creates a background color based on the box-shadow
 */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{    transition: background-color 5000s ease-in-out 0s;
+.inputContainer input:-webkit-autofill,
+.inputContainer input:-webkit-autofill:hover,
+.inputContainer input:-webkit-autofill:focus{    
+    transition: background-color 5000s ease-in-out 0s;
     /* is another trick to override the background color. It uses a large inset box shadow to cover the entire field, simulating a white background. */
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
-input:-webkit-autofill:focus{
+.inputContainer input:-webkit-autofill:focus{
     box-shadow: 0 0 5px rgba(39, 85, 196, 1) !important; /* adds a blue glow effect around the element when it's focused, using RGBA color for semi-transparency. */
     border: 2px solid rgba(39, 85, 196, 1) !important; /* changes the border color to a similar blue, providing a consistent focus style. */
 }

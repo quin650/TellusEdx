@@ -13,43 +13,67 @@
 }
 .sidebar {
     display: flex;
+    justify-content: space-between;
     z-index: 2000;
     position: fixed;
-    width: 350px;
+    width: 320px;
     height: 100vh;
     background-color: #000;
     color: #fff;
     flex-direction: column;
-    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
     border-top-left-radius: 14px;
-    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
 }
-
-.sidebarHeader {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-.brandName {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.sidebarSearch input {
+.outerLogoContainer {
     display: flex;
     position: relative;
-    margin-top: 20px;
-    margin-left: 20px;
-    list-style: none;
+    flex-direction: row;
+    width: 100%;
+    margin: 0px;
+}
+.Logo {
+    display: flex;
+    height: 2.448rem;
+    width: 2.358rem;
+}
+.Logo:hover {
+    cursor: pointer;
+    transform: rotate(180deg);
+    animation: around .18s ease-in forwards;
 }
 
+@keyframes around {                             /*========== Animation ==========*/
+    0% {transform: rotate(22.5deg);}
+    33% {transform: rotate(45deg);}
+    66% {transform: rotate(67.5deg);}
+    100% {transform: rotate(90deg);}
+}
+.companyName{
+    align-self: center;
+    font-family: Montserrat;
+    font-size: 1.4rem;
+    letter-spacing: -.5px;
+    margin-left: 23px;
+    font-weight:lighter;
+    cursor: pointer;
+    color: var(--white);
+}
+.top{
+    margin: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.bottom{
+    margin-bottom: 45px;
+}
+.subgroup{
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .sidebarMenu {
     margin-bottom: 20px;
 }
@@ -57,21 +81,38 @@
 .menuItem {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px 8px;
     color: #9E9E9E;
     text-decoration: none;
 }
-
 .menuItem .icon {
     margin-right: 10px;
 }
+.menuItem:hover{
+    color: #0066FF;
+}
+
+
+.menuItemLast {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px 20px 8px;
+    color: #9E9E9E;
+    text-decoration: none;
+}
+.menuItemLast .icon {
+    margin-right: 10px;
+}
+.menuItemLast:hover{
+    color: #0066FF;
+}
+
 
 .darkModeToggle {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .getStartedBtn {
     width: 100%;
     padding: 10px;
@@ -88,8 +129,10 @@
 }
 
 .break{
-    border-bottom: .5px solid #666666;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    width: 89%;
+    border-bottom: .5px solid #555555;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 }

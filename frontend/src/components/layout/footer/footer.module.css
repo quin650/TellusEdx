@@ -128,7 +128,6 @@
 }
 .footer_col ul li a {
     font-size: 19px;
-    text-transform: capitalize;
     text-decoration: none;
     font-weight: 300;
     color: var(--gray);

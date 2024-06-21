@@ -1,20 +1,22 @@
 .searchInputContainer {
     position: relative;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
-.searchInputContainer label{
+
+.searchIcon {
     position: absolute;
-    z-index: 1;
-    top: 10px;
-    left: 8px;
-    color: rgb(113, 112, 112);
-    font-size: 12;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1000;
 }
 
-.searchInput::placeholder{
-    padding-left: 0px;
-}
 
-.searchInput {
+.searchInputContainer input {
     position: relative;
     display: flex;
     box-sizing: border-box;
@@ -22,32 +24,29 @@
     height: 50px;
     align-items: center;
     justify-content: center;
-    background-color: #333;
-    border-radius: 5px;
-    font-size: 18px;
+    background-color: #1e1d1d !important;
+    border-radius: 9px;
     font-weight: 550;
-    color: #fff;
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    outline: none;
-    padding: 3px 0px 3px 13px;
-    border: none;
-    margin-bottom: 20px;
+    color: #fff !important;
+    transition: all 0.30s ease-in-out;
+    border: 1px solid #292929 !important;
+    padding-left: 40px !important;
 }
 
-.searchInput:focus {
-    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
-    border: 1px solid rgba(39, 85, 196, 1);
+.searchInputContainer input::placeholder {
+    padding-left: 0px;
+    color: #fff !important; 
 }
 
-/* .sidebarSearch input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-} */
+.searchInputContainer input:focus::placeholder {
+    opacity: 0; 
+}
+
+.searchInputContainer input:focus,
+.searchInputContainer input:-webkit-autofill:focus {
+    background-color: #282727 !important;
+    box-shadow: 0 0 0px black;
+    border: 1px solid #292929 !important;
+    outline: 0px solid black !important;
+}
+
