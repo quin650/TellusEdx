@@ -19,8 +19,6 @@ const GetStartedModal = () => {
     //const [modalStatus, setModalStatus] = useState("ResetPasswordEnterPassCodeModal");
     //const [modalStatus, setModalStatus] = useState("ResetPasswordChangeModal");
     //const [modalStatus, setModalStatus] = useState("PasswordChangedSuccessfullyModal");
-
-
     const registrationError = useSelector(({ user }) => user.registrationError);
     const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
     const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
@@ -116,14 +114,11 @@ const GetStartedModal = () => {
     }}, [checkBackendCredentialsCommence, registrationError]);
 
     // !Actions
-
     useEffect(() => {
         if (getStartedView !== modalStatus) {
             setModalStatus(getStartedView);
         }
     }, [getStartedView]);
-    
-
     useEffect(() =>{
         switch(modalStatus){
             case "CreateAccountModal":
@@ -358,6 +353,7 @@ const GetStartedModal = () => {
         dispatch(userReducerActions.getStartedModalClose());
         setModalStatus("CreateAccountModal");
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={GoTo_LogInModal} className={classes.PageLink}>Sign In Here </a></p></span>);
+        window.removeEventListener('keydown', onEscKey_ExitModal); // new
         document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
     };
     const ExitButton = (

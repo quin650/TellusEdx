@@ -65,6 +65,10 @@
     cursor: pointer;
     margin-top: 5px;
 }
+
+.companyName:hover{
+    color: #0066FF;
+}
 .outerFooterContainer {
     box-sizing: border-box;
     background-color: var(--black);

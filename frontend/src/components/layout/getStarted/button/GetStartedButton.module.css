@@ -14,7 +14,6 @@
 .button_format:hover {
     color: white;
     background-color: #3e67c6;
-    border: solid 1px white;
 }
 
 .button_format:active {

@@ -32,7 +32,10 @@
     border: 1px solid #292929 !important;
     padding-left: 40px !important;
 }
-
+.searchInputContainer input:hover,
+.searchInputContainer input:-webkit-autofill:hover {
+    background-color: #282727 !important;
+}
 .searchInputContainer input::placeholder {
     padding-left: 0px;
     color: #fff !important; 

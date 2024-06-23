@@ -60,6 +60,9 @@
     cursor: pointer;
     color: var(--white);
 }
+.companyName:hover{
+    color: #0066FF;
+}
 .top{
     margin: 0px;
     padding-left: 30px;
@@ -77,56 +80,8 @@
     margin-bottom: 20px;
 }
 
-
-.menuItem {
-    display: flex;
-    align-items: center;
-    padding: 10px 8px;
-    color: #9E9E9E;
-    text-decoration: none;
-}
-.menuItem:hover{
-    color: #0066FF;
-    fill: #0066FF;
-}
-
-
-
-
-
-.homeIcon {
-    display: flex;
-    align-items: center;
-    padding: 10px 8px;
-    color: #9E9E9E;
-    text-decoration: none;
-}
-.homeIconPath{
-    fill: #9E9E9E;
-}
-.homeIcon:hover {
-    color: #0066FF;
-}
-.homeIcon:hover .homeIconPath{
-    fill: #0066FF;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 .buttonPadding {
     padding-top: 10px 
-}
-.menuItemLast:hover{
-    color: #0066FF;
 }
 
 .sidebarMenu span{
@@ -159,4 +114,170 @@
     width: 85%;
     margin-left: auto;
     margin-right: auto;
+}
+/* Icon conditional formatting */
+
+
+
+/* General  Formatting */
+.menuItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    color: #9E9E9E;
+    text-decoration: none;
+}
+.menuItem:hover{
+    color: #0066FF;
+    fill: #0066FF;
+}
+.menuItemLast:hover{
+    color: #0066FF;
+}
+
+.menuItem span{
+    margin-right: auto;
+}
+/* General  Formatting */
+.homeIconStyle {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    color: #9E9E9E;
+    text-decoration: none;
+}
+.homeIconStyle i{
+    fill: #9E9E9E;
+}
+.homeIconStyle:hover {
+    color: #0066FF;
+}
+
+/* Home Formatting */
+.homeIconStyle.isActiveHomeIcon {
+    color: white;
+}
+.homeIconStyle.isActiveHomeIcon:hover {
+    color: #0066FF;
+}
+/* Dashboard Formatting */
+.homeIconStyle.isActiveDashboardIcon {
+    color: white;
+}
+.homeIconStyle.isActiveDashboardIcon:hover {
+    color: #0066FF;
+}
+/* About Us Formatting */
+.homeIconStyle.isActiveAboutUsIcon {
+    color: white;
+}
+.homeIconStyle.isActiveAboutUsIcon:hover {
+    color: #0066FF;
+}
+/* Support Center Formatting */
+.homeIconStyle.isActiveSupportCenterIcon {
+    color: white;
+}
+.homeIconStyle.isActiveSupportCenterIcon:hover {
+    color: #0066FF;
+}
+/* help Formatting */
+.homeIconStyle.isActiveHelpIcon {
+    color: white;
+}
+.homeIconStyle.isActiveHelpIcon:hover {
+    color: #0066FF;
+}
+.darkModeMenuItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    color: #9E9E9E;
+    text-decoration: none;
+}
+.darkModeMenuItem span {
+    margin-right: auto;
+}
+/* login Formatting */
+.homeIconStyle.isActiveLanguageIcon {
+    color: white;
+}
+.homeIconStyle.isActiveLanguageIcon:hover {
+    color: #0066FF;
+}
+
+/* logout Formatting */
+.homeIconStyle.isActiveLanguageIcon {
+    color: white;
+}
+.homeIconStyle.isActiveLanguageIcon:hover {
+    color: #0066FF;
+}
+
+/* Toggle Section */                                               /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
+.toggleContainer {
+    width: 60px;
+    height: 30px; 
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 30px; 
+    box-shadow: inset 0px 2.5px 7.5px rgba(0,0,0,0.4), inset 0px -2.5px 7.5px rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.toggleButton {
+    content: "";
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 2px; 
+    left: 2px;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.toggleCheckBox {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.toggleCheckBox:checked + .toggleContainer {
+    background: #242424;
+}
+.toggleCheckBox:checked + .toggleButton {
+    left: 58px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg,#777,#3a3a3a);
+}
+.toggleContainer:active .toggleButton{ 
+    width: 40px; 
+    transition: 0.3s;
+}
+
+/* icons */
+.toggleContainer svg {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 3px;  
+    transition: 0.3s;
+}
+.toggleContainer svg.sun {
+    left:3px;
+    fill:#fff;
+
+}
+.toggleContainer svg.moon {
+    left:33px;
+    fill:#7e7e7e;
+
+}
+.toggleCheckBox:checked + .toggleContainer svg.sun {
+    fill:#7e7e7e;
+}
+.toggleCheckBox:checked + .toggleContainer svg.moon {
+    fill:#fff;
 }

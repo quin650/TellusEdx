@@ -17,7 +17,7 @@ const Footer = () => {
                             <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                         </li>
                         <li>
-                            <span className={classes.companyName} onClick={handleClickScroll} >TellusEd</span>
+                            <span  to="/home"  onClick={handleClickScroll} className={classes.companyName}>TellusEd</span>
                         </li>
                     </ul>
             </div>
