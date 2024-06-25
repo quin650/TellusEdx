@@ -8,6 +8,7 @@ const initialState = {
 	getStartedModalStatus: false,
 	getStartedView: '',
 	isAuthenticated: false,
+	isDemoView: false,
 	isDashboardFullScreen: true,
 	registered: false,
 	registrationError: '',
@@ -43,6 +44,12 @@ const userSlice = createSlice({
 	reducers: {
 
 		// NavBar 
+		setDemoView(state) {
+			state.isDemoView = true;
+		},
+		setRegularView(state) {
+			state.isDemoView = false;
+		},
 		navBarMenuOpen(state) {
 			state.navbarMenuStatus = true;
 		},

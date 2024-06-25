@@ -38,7 +38,7 @@
 }
 .searchInputContainer input::placeholder {
     padding-left: 0px;
-    color: #fff !important; 
+    color: #9E9E9E !important; 
 }
 
 .searchInputContainer input:focus::placeholder {

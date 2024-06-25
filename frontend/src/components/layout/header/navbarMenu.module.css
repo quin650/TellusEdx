@@ -19,7 +19,7 @@
     width: 320px;
     height: 100vh;
     background-color: #000;
-    color: #fff;
+    /* color: #fff; */
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -59,6 +59,7 @@
     font-weight:lighter;
     cursor: pointer;
     color: var(--white);
+    text-decoration: none; 
 }
 .companyName:hover{
     color: #0066FF;
