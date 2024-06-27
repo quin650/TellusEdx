@@ -56,10 +56,20 @@
     margin-left: 0px;
     margin-right: auto;
 }
+.buttonSection {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    width: 100%;
+    margin-bottom: 17vh;
+}
 
 .Logo1 { height: 119.00px;  width: 119.00px;
     position: absolute; z-index: 100; top: calc(10vh + 16px);     left: -3px;     transform: rotate(-18deg);  
-    border-radius: 2px ;  box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a;  transition: 800ms;
+    border-radius: 2px ;  box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a;
 }
 .Logo2 { height: 71.00px;   width: 71.00px;
     position: absolute; z-index: 90;  top: calc(10vh + 24px);     left: 103px;    transform: rotate(-2deg);
@@ -93,9 +103,41 @@
 .Logo1:hover, .Logo2:hover, .Logo3:hover, .Logo4:hover, .Logo5:hover, .Logo6:hover, .Logo7:hover, .Logo8:hover {
     z-index: 1000;
     cursor: pointer;
-    transform: rotate(0deg);
-    transform: scale(1.25);
+    transform: rotate(0deg) scale(1.2);
     transition: 500ms;
+}
+
+.Logo1:focus{
+    transform: rotate(342deg);
+    transition: transform 1s;
+}
+.Logo2:focus{
+    transform: rotate(358deg);
+    transition: transform 1s;
+}
+.Logo3:focus{
+    transform: rotate(348deg);
+    transition: transform 1s;
+}
+.Logo4:focus{
+    transform: rotate(368deg);
+    transition: transform 1s;
+}
+.Logo5:focus{
+    transform: rotate(384deg);
+    transition: transform 1s;
+}
+.Logo6:focus{
+    transform: rotate(360deg);
+    transition: transform 1s;
+}
+.Logo7:focus{
+    transform: rotate(380deg);
+    transition: transform 1s;
+}
+.Logo8:focus{
+    transform: rotate(330deg);
+    transition: transform 1s;
 }
 
 /*========== Media Query ==========*/
