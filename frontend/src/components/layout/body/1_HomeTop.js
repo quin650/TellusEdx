@@ -1,44 +1,35 @@
 import React from "react";
 import GetStartedButton from "../getStarted/button/GetStartedButton";
 import BackgroundImage from '../../../../static/images/Background_Limited.png';
-import logo from '/Users/quin/Desktop/TellusEdShield/TellusEdx/frontend/static/images/1Logo.png';
+
 import Logo from '../../../../static/images/1Logo.png';
+import Logo1 from '../../../../static/images/Logo1.png';
+import Logo2 from '../../../../static/images/Logo2.png';
+import Logo3 from '../../../../static/images/Logo3.png';
+import Logo4 from '../../../../static/images/Logo4.png';
+import Logo5 from '../../../../static/images/Logo51.png';
+import Logo6 from '../../../../static/images/Logo6.png';
+import Logo7 from '../../../../static/images/Logo7.png';
+import Logo8 from '../../../../static/images/Logo8.png';
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
 
     return (                                                                    
         <div className={classes.outer_container_top}>                    
-            <div className={classes.inner_container_top}>     
-                <img className={classes.inner_container_img} src={BackgroundImage} alt='subjects' />         
+            <div className={classes.inner_container_top}>           
                 <blockquote className={classes.caption} >          
                     <h1> LEARNING NEVER EXHAUSTS THE MIND</h1>  
                     <h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
-                </blockquote>              
-                <div className={classes.one}>                     
-                    <img src={Logo} alt='Logo' className={classes.Logo1}></img>    
-                </div>
-                <div className={classes.two}>
-                    <img src={Logo} alt='Logo' className={classes.Logo2}></img>
-                </div>
-                <div className={classes.three}>
-                    <img src={Logo} alt='Logo' className={classes.Logo3}></img>
-                </div>
-                <div className={classes.four}>
-                    <img src={Logo} alt='Logo' className={classes.Logo4}></img>
-                </div>
-                <div className={classes.five}>
-                    <img src={Logo} alt='Logo' className={classes.Logo5}></img>
-                </div>
-                <div className={classes.six}>
-                    <img src={Logo} alt='Logo' className={classes.Logo6}></img>
-                </div>
-                <div className={classes.seven}>
-                    <img src={Logo} alt='Logo' className={classes.Logo7}></img>
-                </div>
-                <div className={classes.eight}>
-                    <img src={Logo} alt='Logo' className={classes.Logo8}></img>
-                </div>
+                </blockquote>  
+                    <img src={Logo1} alt='Logo' className={classes.Logo1}></img>               
+                    <img src={Logo2} alt='Logo' className={classes.Logo2}></img>
+                    <img src={Logo3} alt='Logo' className={classes.Logo3}></img>
+                    <img src={Logo4} alt='Logo' className={classes.Logo4}></img>
+                    <img src={Logo5} alt='Logo' className={classes.Logo5}></img>
+                    <img src={Logo6} alt='Logo' className={classes.Logo6}></img>
+                    <img src={Logo7} alt='Logo' className={classes.Logo7}></img>
+                    <img src={Logo8} alt='Logo' className={classes.Logo8}></img>
             </div>
         </div>
     );

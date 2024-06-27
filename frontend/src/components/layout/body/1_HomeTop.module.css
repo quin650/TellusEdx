@@ -1,5 +1,5 @@
 .outer_container_top {
-    z-index: 1;
+    z-index: 100;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 .inner_container_top {
-    z-index: 1;
+    z-index: 100;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -26,17 +26,8 @@
     width:80%;
     overflow: visible;
 }
-.inner_container_img {
-    z-index: 1;                 
-    position: absolute;
-    object-position: left top;
-    left: -20px;
-    margin-top: 10vh;
-    margin-left: 0px;
-    margin-right: auto;
-}
 .caption {
-    z-index: 3 ;
+    z-index: 300 ;
     position: absolute;
     display: flex;
     position: relative;
@@ -48,6 +39,7 @@
     margin-right: auto;
     align-items: center;
     height: 80vh;
+    pointer-events: none; /* Text ignores pointer events, allows for the icons to still be selected even-though they are set behind the text */
 }
 .caption h1 {
     font-size: 6rem;
@@ -64,51 +56,49 @@
     margin-left: 0px;
     margin-right: auto;
 }
-/*========== copied from .inner_container_top img ==========*/  
 
-.one    { position: absolute; z-index: 100; top: calc(10vh + 21px); left: -20px; }
-.two    { position: absolute; z-index: 90;  top: calc(10vh + 26.8px); left: 104px; }
-.three  { position: absolute; z-index: 80;  top: calc(10vh + 61.8px); left: 154px; }
-.four   { position: absolute; z-index: 70;  top: calc(10vh + 107px); left: 70px; }
-.five   { position: absolute; z-index: 95;  top: calc(10vh + 103px); left: 280px; }
-.six    { position: absolute; z-index: 80;  top: calc(10vh + 204px); left: 175px; }
-.seven  { position: absolute; z-index: 2;   top: calc(10vh + 282px); left: 320px; }
-.eight  { position: absolute; z-index: 1;   top: calc(10vh + 373px); left: 270px; }
-
-.one:hover, .two:hover, .three:hover, .four:hover, .five:hover, .six:hover, .seven:hover, .eight:hover { z-index: 1000;}
-
-.Logo1 { height: 140px;     width: 134.99px; }
-.Logo2 { height: 71.04px;   width: 68.49px; }
-.Logo3 { height: 59.2px;    width: 57.08px; }
-.Logo4 { height: 73px;      width: 70.38px; }
-.Logo5 { height: 90px;      width: 86.77px; }
-.Logo6 { height: 62px;      width: 59.78px; }
-.Logo7 { height: 71.04px;   width: 68.496px; }
-.Logo8 { height: 50px;      width: 48.2px; }
+.Logo1 { height: 119.00px;  width: 119.00px;
+    position: absolute; z-index: 100; top: calc(10vh + 16px);     left: -3px;     transform: rotate(-18deg);  
+    border-radius: 2px ;  box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a;  transition: 800ms;
+}
+.Logo2 { height: 71.00px;   width: 71.00px;
+    position: absolute; z-index: 90;  top: calc(10vh + 24px);     left: 103px;    transform: rotate(-2deg);
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #9e9ef7, 6px 6px 12px #3e41a0;
+}
+.Logo3 { height: 59.00px;   width: 59.00px;
+    position: absolute; z-index: 80;  top: calc(10vh + 59px);   left: 154px;    transform: rotate(-12deg);
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #fad7a2, 6px 6px 12px #a1734a;
+}
+.Logo4 { height: 73.00px;   width: 73.00px;
+    position: absolute; z-index: 70;  top: calc(10vh + 97px);    left: 65px;     transform: rotate(8deg);
+    border-radius: 2px ; box-shadow:  -6px -6px 12px #fcff99, 6px 6px 12px #737135;
+}
+.Logo5 { height: 90.00px;   width: 90.00px;
+    position: absolute; z-index: 95;  top: calc(10vh + 103px);    left: 280px;    transform: rotate(24deg);
+    border-radius: 2px ; box-shadow: -8px -8px 16px #b3ff99, 8px 8px 16px #4c7c39;
+}
+.Logo6 { height: 64.00px;   width: 64.00px;
+    position: absolute; z-index: 80;  top: calc(10vh + 204px);    left: 175px;    transform: rotate(0deg);
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #ffff99, 6px 6px 12px #737135;
+}
+.Logo7 { height: 71.00px;   width: 71.00px;
+    position: absolute; z-index: 20;  top: calc(10vh + 278px);    left: 317px;    transform: rotate(20deg);
+    border-radius: 2px ; box-shadow: -6px -6px 12px  #b7f99e, 6px 6px 12px #3c6d35;
+}
+.Logo8 { height: 40.00px;   width: 40.00px;
+    position: absolute; z-index: 10;  top: calc(10vh + 363px);    left: 275px;    transform: rotate(-30deg);
+    border-radius: 2px ;  box-shadow: -4px -4px 8px #ce99ff, 4px 4px 8px #784aa1;
+}
 
 .Logo1:hover, .Logo2:hover, .Logo3:hover, .Logo4:hover, .Logo5:hover, .Logo6:hover, .Logo7:hover, .Logo8:hover {
+    z-index: 1000;
     cursor: pointer;
-    transform: rotate(180deg);
-    animation:
-    around .18s ease-in forwards;
+    transform: rotate(0deg);
+    transform: scale(1.25);
+    transition: 500ms;
 }
 
-/*========== Animations ==========*/
-@keyframes around {            
-    0% {transform: rotate(22.5deg);}
-    33% {transform: rotate(45deg);}
-    66% {transform: rotate(67.5deg);}
-    100% {transform: rotate(90deg);}
-}
-@keyframes slideFromBotToPosition {
-    0% {
-        transform: translateY(0px);
-    }
-
-    100% {
-        transform: translateY(-100px);
-    }
-}
+/*========== Media Query ==========*/
 @media (max-width: 1011px) {            /* Width under 1011px */
     .caption h1 {
         font-size: 3.7rem;
@@ -134,5 +124,21 @@
 @media (max-height: 550px) {            /* Height under 700px */
     .caption {
         margin-top: 0px;
+    }
+}
+/*========== Animations ==========*/
+@keyframes around {            
+    0% {transform: rotate(0deg);}
+    33% {transform: rotate(-12deg);}
+    66% {transform: rotate(-7deg);}
+    100% {transform: rotate(0deg);}
+}
+@keyframes slideFromBotToPosition {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-100px);
     }
 }
