@@ -1,6 +1,5 @@
 import React from "react";
 import GetStartedButton from "../getStarted/button/GetStartedButton";
-
 import Logo1 from '../../../../static/images/Logo1.png';
 import Logo2 from '../../../../static/images/Logo2.png';
 import Logo3 from '../../../../static/images/Logo3.png';
@@ -12,7 +11,6 @@ import Logo8 from '../../../../static/images/Logo8.png';
 import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
-
     return (                                                                    
         <div className={classes.outer_container_top}>                    
             <div className={classes.inner_container_top}>           

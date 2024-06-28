@@ -5,7 +5,6 @@
     margin-right: 2.5%;
     cursor: pointer;
 }
-
 .hamburger {
     width: 40px;
     height: 3.5px;
@@ -19,25 +18,23 @@
     z-index: 3000;
     display: flex;
     cursor: pointer;
-    width: 40px;
-    height: 30px;
+    height: 30.5px;
+    width: 39.5px;
 }
-
 .exitButton{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 40px;
-    height: 100%;
-    padding-right: 11px;
+    height: 30.5px;
+    width: 39.5px;
+    /* padding-right: 11px; */
 }
 .exitButton:hover{
     background-color: #1e1d1d;
 }
 .svgExit{
-    width: 20px;
-    height: 20px;
-
+    width: 32px;
+    height: 33px;
 }
 
 .svgExit path{
