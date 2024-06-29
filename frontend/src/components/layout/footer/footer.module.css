@@ -3,6 +3,7 @@
     display: flex;
     position: relative;
     background-color: black;
+    height: 80vh;
     width: 100%;
     min-width: 400px;
     position: -20vh; 
@@ -12,7 +13,6 @@
     flex-direction: column;
     justify-content: center;
 }
-
 .outerLogoContainer {
     display: flex;
     position: relative;
@@ -26,7 +26,6 @@
     padding-top: 8px;
     top: 1%;
 }
-
 .innerLogoContainer { 
     position: relative;
     display: flex;
@@ -38,23 +37,21 @@
     margin: auto;
     color: var(--white);
 }
-
 .Logo {
     display: flex;
-    height: 3.7rem;
-    width: 3.57rem;
+    height: 3.589rem;
+    height: 3.589rem;
 }
 .Logo:hover {
     cursor: pointer;
     transform: rotate(180deg);
     animation: around .18s ease-in forwards;
 }
-
 @keyframes around {                             /*========== Animation ==========*/
-    0% {transform: rotate(22.5deg);}
-    33% {transform: rotate(45deg);}
-    66% {transform: rotate(67.5deg);}
-    100% {transform: rotate(90deg);}
+    0% {transform: rotate(45deg);}
+    33% {transform: rotate(90deg);}
+    66% {transform: rotate(135deg);}
+    100% {transform: rotate(180deg);}
 }
 .companyName{
     font-family: Montserrat;
@@ -65,7 +62,6 @@
     cursor: pointer;
     margin-top: 5px;
 }
-
 .companyName:hover{
     color: #0066FF;
 }
@@ -76,7 +72,6 @@
     height: 70vh;
     margin:auto;
 }
-
 .innerFooterContainer {
     display: flex;
     justify-content: center;
@@ -98,7 +93,6 @@
     padding: 0px;
     min-width: 20%;
 }
-
 .footer_col {
     display: block;
     min-width: 147px;
@@ -178,7 +172,6 @@
     margin-left: 1.35rem;
     margin-right: 1.35rem;
 }
-
 .social_links a:hover {
     color: black;
     background-color: #0066FF;
@@ -188,7 +181,6 @@
     font-size: 32px;
     border-radius: 50%;
 }
-
 .copyright{
     font-family: Montserrat;
     font-size: .6rem;

@@ -1,13 +1,15 @@
 import React, {Fragment} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
-import GetStartedModal from '../getStarted/modal/GetStartedModal';
+import GetStartedModal from '../../modals/GetStartedModal';
+import LanguageSettingsModal from '../../modals/LanguageSettingsModal';
 import NavbarMenu from './navbarMenu';
 import classes from './NavbarMenuButton.module.css';
 
 const NavbarMenuButton = () => {
     const dispatch = useDispatch();
-    const {navbarMenuStatus, getStartedModalStatus} = useSelector(({ user }) => user);
+    const {navbarMenuStatus, getStartedModalStatus, languageSettingsModalStatus} = useSelector(({ user }) => user);
+    languageSettingsModalStatus
 
     const OpenAction = () => {
         dispatch(userReducerActions.navBarMenuOpen());
@@ -40,6 +42,7 @@ const NavbarMenuButton = () => {
         <Fragment>
             {navbarMenuStatus && <NavbarMenu />}
             {getStartedModalStatus && <GetStartedModal />}
+            {languageSettingsModalStatus && <LanguageSettingsModal />}
             {content}
         </Fragment>
     );

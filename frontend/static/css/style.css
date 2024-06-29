@@ -43,7 +43,6 @@ section{
 footer{
     scroll-snap-align: start;
     -webkit-scroll-snap-align: start;
-    height: 80vh;
 }
 
 :root {

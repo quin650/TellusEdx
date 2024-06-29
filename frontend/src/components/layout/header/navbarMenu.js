@@ -2,10 +2,11 @@ import React, {useState, useEffect, useRef} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import SearchBar from './searchBar';
-import GetStartedButton from '../getStarted/button/GetStartedButton';
+import GetStartedButton from '../../modals/GetStartedButton';
 import { logout_APIAction } from '../../../a.actions/auth_Actions';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import Logo from '../../../../static/images/1Logo.png';
+import usaFlagImg from '../../../../static/images/countries/1.US - United States.png';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
@@ -168,7 +169,11 @@ const NavbarMenu = () => {
                     <div className={classes.break}></div>
                     <div className={classes.subgroup}>
                         <div className={classes.sidebarMenu}>
-                            <Link onClick={OpenLanguageSettingsModal} to='#' className={`${classes['homeIconStyle']} ${isActiveLanguageIcon && classes.isActiveLanguageIcon}`}><i>{languageIcon}</i><span>Language</span></Link>
+                            <Link onClick={OpenLanguageSettingsModal} to='#' className={`${classes['homeIconStyle']} ${isActiveLanguageIcon && classes.isActiveLanguageIcon}`}>
+                                <i>{languageIcon}</i>
+                                <span>Language</span>
+                                <img src={usaFlagImg} alt='Logo' className={classes.usaFlagImg} tabIndex="0"></img>     
+                            </Link>
                             <label className={classes.darkModeMenuItem} htmlFor="darkmode-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>
                                 <span>Dark Mode</span>

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavbarMenuButton from './navbarMenuButton';
-import GetStartedButton from '../getStarted/button/GetStartedButton';
+import GetStartedButton from '../../modals/GetStartedButton';
 import Logo from '../../../../static/images/Logo_arrows.png';
 // import defaultPNG from '../../../../static/images/1Avatar.png';
 import classes from './mainNavbar.module.css';
@@ -16,7 +16,7 @@ const MainNavbar = () => {
     const authUser = (
         <Fragment>
                 <li className={classes.NavItem1}>
-                    <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                    <Link to="/home" onClick={handleClickScroll}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                 </li>
                 <li className={classes.NavItem3}>
                     <NavbarMenuButton />
@@ -26,7 +26,7 @@ const MainNavbar = () => {
     const authGuest = (
         <Fragment>
                 <li className={classes.NavItem1}>
-                    <Link to="/home" onClick={handleClickScroll} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
+                    <Link to="/home" onClick={handleClickScroll}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
                 </li>
                 <li className={classes.NavItem2}>
                     <GetStartedButton />

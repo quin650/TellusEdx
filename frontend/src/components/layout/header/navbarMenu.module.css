@@ -269,16 +269,27 @@
 .toggleContainer svg.sun {
     left:3px;
     fill:#fff;
-
 }
 .toggleContainer svg.moon {
     left:33px;
     fill:#7e7e7e;
-
 }
 .toggleCheckBox:checked + .toggleContainer svg.sun {
     fill:#7e7e7e;
 }
 .toggleCheckBox:checked + .toggleContainer svg.moon {
     fill:#fff;
+}
+.flagContainer {
+    width: 60px;
+    height: 30px; 
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.usaFlagImg {
+    height: 19px; 
+    width: 28px;
+    margin-left: auto;
+    margin-right: 16px;
 }

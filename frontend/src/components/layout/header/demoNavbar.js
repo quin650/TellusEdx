@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import NavbarMenuButton from './navbarMenuButton';
 import classes from './demoNavbar.module.css';
 

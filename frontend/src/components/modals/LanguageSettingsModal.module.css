@@ -3,9 +3,9 @@
     position: fixed;
     z-index: 1000;
     backdrop-filter: blur(6px);
-    top: -56px;
-    height: calc(100vh + 56px);
+    height: 100vh;
     width: 100vw;
+    top: 0px;
     left: 0%;
     margin: 0;
     padding: 0;
@@ -19,11 +19,11 @@
     display: flex;
     z-index: 2000;
     position: fixed;
-    background-color: white;
-    justify-content: center;
-    border-radius: 27px;
     height: 545px;
     width: 530px;
+    border-radius: 27px;
+    justify-content: center;
+    background-color: white;
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
@@ -51,25 +51,65 @@
 .modalContentContainer {
     box-sizing: border-box;
     position: absolute;
-    padding: 75px 72px 36px 72px;
-    border-radius: 27px;
     height: 545px;
     width: 530px;
-    background: white;
+    border-radius: 27px;
+    padding: 75px 72px 36px 72px;
+    background-color: white;
+    overflow-y: auto; 
 }
 .modalForm {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 .modalTitle{
+    display: flex;
     color: black;
     font-size: 2rem;
-    margin: 0;
     position: relative;
     align-items: flex-end;
     margin: 0px auto 36px 0px;
 }
+.modalTitle2{
+    display: flex;
+    color: black;
+    font-size: 2rem;
+    position: relative;
+    align-items: flex-end;
+    margin: 0px auto 8px 0px;
+}
+.modalSubTitle{
+    display: flex;
+    color: var(--blue);
+    font-size: 1.2rem;
+    font-style: italic;
+    position: relative;
+    align-items: flex-end;
+    margin: 0px auto 36px 0px;
+}
+
+.modalSubTitle.isValidPassCode {
+    color: red;
+    animation: left-to-right .4s linear forwards 2 alternate .1ms;
+}
+
+@keyframes left-to-right {
+    0% {
+        transform: translateX(0);
+    }
+    33% {
+        transform: translateX(-1%);
+    }
+    66% {
+        transform: translateX(1%);
+    }
+    100% {
+        transform: translateX(-1%);
+    }
+}
+
 /* ********************************************************************* Inputs */
 .inputContainer{
     position: relative;
@@ -106,14 +146,14 @@
 This code below fixes an issue coming from chrome by which autoComplete makes 
 the css wonky i.e. creates a background color based on the box-shadow
 */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{
+.inputContainer input:-webkit-autofill,
+.inputContainer input:-webkit-autofill:hover,
+.inputContainer input:-webkit-autofill:focus{    
     transition: background-color 5000s ease-in-out 0s;
     /* is another trick to override the background color. It uses a large inset box shadow to cover the entire field, simulating a white background. */
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
-input:-webkit-autofill:focus{
+.inputContainer input:-webkit-autofill:focus{
     box-shadow: 0 0 5px rgba(39, 85, 196, 1) !important; /* adds a blue glow effect around the element when it's focused, using RGBA color for semi-transparency. */
     border: 2px solid rgba(39, 85, 196, 1) !important; /* changes the border color to a similar blue, providing a consistent focus style. */
 }
@@ -126,13 +166,16 @@ input:-webkit-autofill:focus{
     height: 26px;
     margin: 0px;
 }
+.emailInputFeedbackContainer.ResetPasswordEmailPassCode{
+    height: 49px;
+    margin: 0px;
+}
 .emailInputFeedback{
     display: none;    
 }
 /* ********************************************************************* Email Input Invalid */
 .emailInput.isValidEmail {
     border: 2px solid  rgb(251, 83, 83);
-
 }
 .emailInputFeedback.isValidEmail {
     display: block;
@@ -147,14 +190,74 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
+/* ********************************************************************* passCode Input */
+.passCodeInput:focus {
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
+    border: 2px solid rgba(39, 85, 196, 1);
+}
+/* ********************************************************************* passCode Feedback */
+.passCodeInputFeedbackContainer{
+    height: 26px;
+    margin: 0px;
+}
+.passCodeInputFeedbackContainer.VerifyAccountModal{
+    height: 49px;
+    margin: 0px;
+}
+.passCodeInputFeedback{
+    display: block;
+    visibility: hidden;
+    font-size: 13px;
+    color: var(--blue);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+}
+/* ********************************************************************* passCode Input Invalid */
+.passCodeInput.isValidPassCode {
+    border: 2px solid  rgb(251, 83, 83);
+}
+.passCodeInputFeedback.isValidPassCode {
+    display: block;
+    visibility: visible;
+    font-size: 13px;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+}
+
 /* ********************************************************************* Password Input */
 .passwordInput:focus {
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
     border: 2px solid rgba(39, 85, 196, 1);
 }
-.passwordInputFeedbackAndResetPasswordSection{
+
+.passwordInputFeedbackSection{
     min-height: 49px;
 }
+.passwordConfirmInputFeedbackSection{
+    min-height: 49px;
+}
+.passwordInputFeedbackSection.ResetPasswordChangeModal{
+    min-height: 26px;
+}
+.passwordInputFeedbackSection.ResetPasswordEmailPassCode{
+    min-height: 13px;
+}
+
+
+
 .passwordInputFeedbackContainer{
     display: none;
     height: 0px;
@@ -197,12 +300,43 @@ input:-webkit-autofill:focus{
     margin-bottom: 0px;
     margin-left: 2px;
 }
+
+.passwordInput.isValidPasswordConfirm {
+    border: 2px solid  rgb(251, 83, 83);
+}
+.passwordConfirmInputFeedbackContainer{
+    display: none;
+    height: 0px;
+    margin: 0px;
+}
+.passwordConfirmInputFeedback{
+    display: none;
+}
+.passwordConfirmInputFeedbackContainer.isValidPasswordConfirm{
+    display: block;
+    height: 23px;
+    margin: 0px;
+}
+.passwordConfirmInputFeedback.isValidPasswordConfirm {
+    display: block;
+    visibility: visible;
+    font-size: 13px;
+    color: rgb(224, 2, 2);
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+}
 /* ********************************************************************* Forgot Password Invalid */
-.forgotPasswordLink.isLogInVIew {
+.forgotPasswordLink.LogInModal {
     visibility: visible;
     align-items: flex-end;
 }
-.forgotPasswordLink.isLogInVIew_isValidPassword {
+.forgotPasswordLink.LogInModal_isValidPassword {
     visibility: visible;
     align-items: flex-start;
 }
@@ -272,5 +406,20 @@ input:-webkit-autofill:focus{
     text-decoration: underline;
 }
 .PageLink:active {
-    font-weight: 500;
+    background-color: var(--blue);
+    color: white;
+    box-shadow: 0 0 5px rgba(39, 85, 196, 1);
+}
+/* ********************************************************************* Width under 600px */
+@media (max-width: 600px) {
+    .modal{
+        width: 85%;
+        min-width: 400px;
+    }
+    .modalContentContainer {
+        width: 85%;
+        min-width: 400px;
+        padding-left: calc(8VW);
+        padding-right: calc(8VW);
+    }
 }

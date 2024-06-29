@@ -6,9 +6,9 @@ import MainNavbar from './components/layout/header/mainNavbar';
 import Footer from './components/layout/footer/footer';
 import Home from './components/pages/home';
 import Demo from './components/pages/demo';
-import AboutUs from './components/pages/AboutUs';
-import SupportCenter from './components/pages/SupportCenter';
-import Help from './components/pages/Help';
+import AboutUs from './components/pages/aboutUs';
+import SupportCenter from './components/pages/supportCenter';
+import Help from './components/pages/help';
 // import { checkAuthenticated } from './a.actions/auth_Actions';
 
 const App = () => {

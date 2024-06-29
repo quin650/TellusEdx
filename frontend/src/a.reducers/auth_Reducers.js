@@ -7,6 +7,7 @@ const initialState = {
 	navbarMenuStatus: false,
 	getStartedModalStatus: false,
 	getStartedView: '',
+	languageSettingsModalStatus: false,
 	isAuthenticated: false,
 	isDemoView: false,
 	isDashboardFullScreen: true,
