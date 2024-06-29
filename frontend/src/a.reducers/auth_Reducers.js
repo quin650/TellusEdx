@@ -8,6 +8,7 @@ const initialState = {
 	getStartedModalStatus: false,
 	getStartedView: '',
 	languageSettingsModalStatus: false,
+	languageCurrent: 'English',
 	isAuthenticated: false,
 	isDemoView: false,
 	isDashboardFullScreen: true,
@@ -213,6 +214,50 @@ const userSlice = createSlice({
 		},
 		deleteUserFail(state){
 			state;
+		},
+
+		//General Settings
+		languageSettingsModalOpen(state){
+			state.languageSettingsModalStatus = true;
+		},
+		languageSettingsModalClose(state){
+			state.languageSettingsModalStatus = false;
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'English';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Spanish';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Mandarin';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'French';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'German';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Japanese';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Portuguese';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Russian';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Arabic';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Italian';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Korean';
+		},
+		languageSettingsEnglish(state){
+			state.languageCurrent = 'Hindi';
 		},
 	},
 });

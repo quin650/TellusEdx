@@ -9,7 +9,6 @@ import classes from './NavbarMenuButton.module.css';
 const NavbarMenuButton = () => {
     const dispatch = useDispatch();
     const {navbarMenuStatus, getStartedModalStatus, languageSettingsModalStatus} = useSelector(({ user }) => user);
-    languageSettingsModalStatus
 
     const OpenAction = () => {
         dispatch(userReducerActions.navBarMenuOpen());

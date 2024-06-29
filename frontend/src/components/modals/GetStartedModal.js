@@ -34,7 +34,7 @@ const GetStartedModal = () => {
     const passwordInputRef = useRef();
     const passwordConfirmInputRef = useRef();
     const passCodeInputRef = useRef();
-    const modalRef = useRef();
+    const getStartedModalRef = useRef();
 
     const [isValidEmail, setIsValidEmail] = useState(true);
     const [isValidPassword, setIsValidPassword] = useState(true);
@@ -348,16 +348,16 @@ const GetStartedModal = () => {
             e.preventDefault();
         }
     };
-    const exitModalAction = () => {
+    const exitGetStartedModalAction = () => {
         enableScroll();
         dispatch(userReducerActions.getStartedModalClose());
         setModalStatus("CreateAccountModal");
         setFormOptions(<span className={classes.optionSpan}><p className={classes.optionsText}>Have an account? <a onClick={GoTo_LogInModal} className={classes.PageLink}>Sign In Here </a></p></span>);
-        window.removeEventListener('keydown', onEscKey_ExitModal); // new
+        window.removeEventListener('keydown', onEscKey_ExitModal);
         document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
     };
     const ExitButton = (
-        <div onClick={exitModalAction} className={classes.exitButtonContainer}>
+        <div onClick={exitGetStartedModalAction} className={classes.exitButtonContainer}>
             <div className={classes.exitButton}>
                 <svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z" fillRule="nonzero" fillOpacity="1" fill="#000" stroke="none"></path></svg>
             </div>
@@ -365,12 +365,13 @@ const GetStartedModal = () => {
     );
     const onEscKey_ExitModal = (e) => {
         if (e.key === 'Escape') {
-            exitModalAction();
+            exitGetStartedModalAction();
         }
     };
+
     const onClickOutsideModal_closeModal = (e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target)) { 
-            exitModalAction();
+        if (getStartedModalRef.current && !getStartedModalRef.current.contains(e.target)) { 
+            exitGetStartedModalAction();
         }
     };
 
@@ -575,7 +576,7 @@ const GetStartedModal = () => {
     // !JSX
     return (
         <div className={classes.blurredBackgroundContainer} >
-            <div className={classes.modal} ref={modalRef}>
+            <div className={classes.modal} ref={getStartedModalRef}>
                 {ExitButton}
                 <div className={classes.modalContentContainer}>
                     <form className={classes.modalForm} onSubmit={onSubmit}>
