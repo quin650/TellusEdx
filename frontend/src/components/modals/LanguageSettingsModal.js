@@ -2,14 +2,17 @@ import React, { useState, Fragment, useEffect, useRef, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../src/a.reducers/auth_Reducers";
 import { login_APIAction } from "../../../src/a.actions/auth_Actions";
+import usaFlagImg from '../../../../frontend/static/images/countries/1.US - United States.png';
+import mexicoFlagImg from '../../../../frontend/static/images/countries/2.MX - Mexico.png';
+
 
 import classes from './LanguageSettingsModal.module.css';
 const LanguageSettingsModal = () => { 
     const dispatch = useDispatch();
     const languageModalRef = useRef();
     const languageCurrent = useSelector(({ user }) => user.languageCurrent);
-
     const [languageStatus, setLanguageStatus] = useState('English');
+
 
     useEffect(() => {
         if (languageCurrent !== languageStatus) {
@@ -67,16 +70,45 @@ const LanguageSettingsModal = () => {
         }
     };
 
+    const [isCheckedEnglish, setIsCheckedEnglish] = useState(false);
+
+    const handleEnglishCheckboxChange = () => {
+        setIsCheckedEnglish(!isCheckedEnglish);
+    };
+
+    const [isCheckedSpanish, setIsCheckedSpanish] = useState(false);
+
+    const handleSpanishCheckboxChange = () => {
+        setIsCheckedSpanish(!isCheckedSpanish);
+    };
+
+
     return (
         <div className={classes.blurredBackgroundContainer} >
-            <div className={classes.modal} ref={languageModalRef}>
+            <div className={classes.languageModal} ref={languageModalRef}>
                 {ExitButton}
-                <div className={classes.modalContentContainer}>
-                    <form className={classes.modalForm}>
-                        <div className={classes.inputContainer}>
-                            test
+                <div className={classes.languageModalContentContainer}>
+                        <div onClick={handleEnglishCheckboxChange} className={`${classes['optionEnglish']} ${isCheckedEnglish && classes.isCheckedEnglish}`}>
+                            <span>English</span>
+                            <img src={usaFlagImg} alt='Logo' className={classes.flag}></img>     
+                            <input
+                                className={classes.optionInputBox}
+                                type="checkbox"
+                                checked={isCheckedEnglish}
+                                onChange={handleEnglishCheckboxChange}
+                            />
                         </div>
-                    </form>
+                        <hr className={classes.break}></hr>
+                        <div onClick={handleSpanishCheckboxChange} className={`${classes['optionSpanish']} ${isCheckedSpanish && classes.isCheckedSpanish}`}>
+                            <span>Spanish</span>
+                            <img src={mexicoFlagImg} alt='Logo' className={classes.flag}></img>     
+                            <input
+                                className={classes.optionInputBox}
+                                type="checkbox"
+                                checked={isCheckedSpanish}
+                                onChange={handleSpanishCheckboxChange}
+                            />
+                        </div>
                 </div>
             </div>
         </div>

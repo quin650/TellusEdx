@@ -122,7 +122,6 @@ const NavbarMenu = () => {
     const handleToggle = () => {
         setToggleIsDark(!ToggleIsDark);
     };
-
     useEffect(() => {
         languageSettingsModalStatusRef.current = languageSettingsModalStatus;
     }, [languageSettingsModalStatus]);
@@ -178,7 +177,7 @@ const NavbarMenu = () => {
                             <Link onClick={OpenLanguageSettingsModal} to='#' className={`${classes['homeIconStyle']} ${isActiveLanguageIcon && classes.isActiveLanguageIcon}`}>
                                 <i>{languageIcon}</i>
                                 <span>Language</span>
-                                <img src={usaFlagImg} alt='Logo' className={classes.usaFlagImg} tabIndex="0"></img>     
+                                <img src={usaFlagImg} alt='Logo' className={classes.flag} tabIndex="0"></img>     
                             </Link>
                             <label className={classes.darkModeMenuItem} htmlFor="darkmode-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>
