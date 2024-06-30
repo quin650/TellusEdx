@@ -146,6 +146,9 @@
     padding: 10px 8px;
     color: #9E9E9E;
     text-decoration: none;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 .homeIconStyle i{
     fill: #9E9E9E;
@@ -153,7 +156,11 @@
 .homeIconStyle:hover {
     color: #0066FF;
 }
-
+.homeIconStyle:active {
+    background-color: #1e1d1d;
+    border: 1px solid #292929;
+    border-radius: 8px;
+}
 /* Home Formatting */
 .homeIconStyle.isActiveHomeIcon {
     color: white;
@@ -189,6 +196,7 @@
 .homeIconStyle.isActiveHelpIcon:hover {
     color: #0066FF;
 }
+/* Dark Mode */   
 .darkModeMenuItem {
     display: flex;
     align-items: center;
@@ -199,22 +207,6 @@
 .darkModeMenuItem span {
     margin-right: auto;
 }
-/* login Formatting */
-.homeIconStyle.isActiveLanguageIcon {
-    color: white;
-}
-.homeIconStyle.isActiveLanguageIcon:hover {
-    color: #0066FF;
-}
-
-/* logout Formatting */
-.homeIconStyle.isActiveLanguageIcon {
-    color: white;
-}
-.homeIconStyle.isActiveLanguageIcon:hover {
-    color: #0066FF;
-}
-
 /* Toggle Section */                                               /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
 .toggleContainer {
     width: 60px;
@@ -286,6 +278,12 @@
     position: relative;
     display: block;
     cursor: pointer;
+}
+.homeIconStyle:hover img{
+    border: 1px solid white;
+}
+.homeIconStyle:active img{
+    outline: 1px solid white;
 }
 .flag {
     height: 19px; 

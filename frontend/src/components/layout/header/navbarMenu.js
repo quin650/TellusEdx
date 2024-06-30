@@ -15,7 +15,7 @@ const NavbarMenu = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const [activeIcon, setActiveIcon] = useState('/');
-    const [isActiveLanguageIcon, setIsActiveLanguageIcon] = useState(false);
+
     const languageSettingsModalStatus = useSelector(({ user }) => user.languageSettingsModalStatus);
     const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
     const [ToggleIsDark, setToggleIsDark] = useState(false);
@@ -174,8 +174,8 @@ const NavbarMenu = () => {
                     <div className={classes.break}></div>
                     <div className={classes.subgroup}>
                         <div className={classes.sidebarMenu}>
-                            <Link onClick={OpenLanguageSettingsModal} to='#' className={`${classes['homeIconStyle']} ${isActiveLanguageIcon && classes.isActiveLanguageIcon}`}>
-                                <i>{languageIcon}</i>
+                            <Link onClick={OpenLanguageSettingsModal} to='#' className={classes.homeIconStyle}>
+                                <i className={classes.languageIcon}>{languageIcon}</i>
                                 <span>Language</span>
                                 <img src={usaFlagImg} alt='Logo' className={classes.flag} tabIndex="0"></img>     
                             </Link>
