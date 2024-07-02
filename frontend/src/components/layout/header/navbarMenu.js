@@ -6,7 +6,7 @@ import GetStartedButton from '../../modals/GetStartedButton';
 import { logout_APIAction } from '../../../a.actions/auth_Actions';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import Logo from '../../../../static/images/1Logo.png';
-import usaFlagImg from '../../../../static/images/countries/1.US - United States.png';
+import usaFlagImg from '../../../../static/images/countries/1UnitedStates.png';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {

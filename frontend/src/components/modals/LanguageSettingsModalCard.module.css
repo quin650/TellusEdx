@@ -1,0 +1,181 @@
+.blurredBackgroundContainer {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(175, 175, 175, 40%);
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
+}
+/* ********************************************************************* Modal */
+.languageModal {
+    display: flex;
+    z-index: 2000;
+    position: fixed;
+    height: 545px;
+    width: 430px;
+    border-radius: 27px;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid #9da8bb;
+}
+/* ********************************************************************* Exit */
+.exitButtonContainer {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1000;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-left: calc(100% - 40px);
+}
+.exitButton {
+    padding: 10.5px 13px 10.5px 13px
+}
+.exitButton:hover {
+    background-color: #c3c3c3;
+}
+.exitSvg {
+    width: 14px;
+    height: 14px;
+}
+/* ********************************************************************* Modal Content */
+.languageModalContentContainer {
+    box-sizing: border-box;
+    position: absolute;
+    height: 545px;
+    width: 430px;
+    border-radius: 27px;
+    padding: 36px 36px 36px 36px;
+    background-color: white;
+    overflow-y: auto; 
+    color:red;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.optionEnglish {
+    display: flex;
+    align-items: center;
+    padding: 15px 8px;
+    color: #9E9E9E;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid white;
+    box-shadow: 1px 2px 1px 0px rgb(255, 255, 255);
+    background-color: white;
+    transform: translateY(0px);
+}
+.optionEnglish:hover {
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    transform: translateY(0px);
+
+}
+/* click  - press down */
+.optionEnglish:active {
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: #eeeeee;
+    transform: translateY(1px);
+}
+/* click  - release */
+.optionEnglish:focus {
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    transform: translateY(0px);
+}
+
+
+
+
+
+
+
+
+
+
+
+.optionEnglish.isCheckedEnglish {
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: #eeeeee;
+    transform: translateY(0px);
+}
+.optionEnglish.isCheckedEnglish:hover{
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    transform: translateY(0px);
+
+}
+/* click  - press down */
+.optionEnglish.isCheckedEnglish:active{
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: #eeeeee;
+    transform: translateY(1px);
+}
+/* click  - release */
+.optionEnglish.isCheckedSpanish:focus {
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    transform: translateY(0px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.break{
+    border: 1px solid rgb(198, 198, 198);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.flag {
+    height: 19px; 
+    width: 28px;
+    margin-left: auto;
+    margin-right: 16px;
+}
+.optionInputBox{
+    height: 20px;
+    width: 20px;
+}
+/* ********************************************************************* Width under 600px */
+@media (max-width: 600px) {
+    .languageModal{
+        width: 85%;
+        min-width: 400px;
+    }
+    .languageModalContentContainer {
+        width: 85%;
+        min-width: 400px;
+        padding-left: calc(8VW);
+        padding-right: calc(8VW);
+    }
+}
