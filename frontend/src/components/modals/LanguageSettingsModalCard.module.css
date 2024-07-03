@@ -1,6 +1,5 @@
 /* ********************************************************************* Modal Content */
-
-.optionEnglish {
+.languageOption {
     display: flex;
     align-items: center;
     padding: 15px 8px;
@@ -12,51 +11,51 @@
     background-color: white;
     transform: translateY(0px);
 }
-.optionEnglish:hover {
-    border: 1px solid #eeeeee;
+.languageOption:hover {
+    border: 1px solid black;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: white;
     transform: translateY(0px);
 }
 /* click  - press down */
-.optionEnglish:active {
+.languageOption:active {
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #eeeeee;
     transform: translateY(1px);
 }
 /* click  - release */
-.optionEnglish:focus {
+.languageOption:focus {
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: white;
     transform: translateY(0px);
 }
-.optionEnglish.isCheckedEnglish {
-    border: 1px solid #eeeeee;
+.languageOption.isChecked {
+    border: 1px solid #000000;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: #f1f1f1;
     transform: translateY(0px);
+    
 }
-.optionEnglish.isCheckedEnglish:hover{
-    border: 1px solid #eeeeee;
+.languageOption.isChecked:hover{
+    border: 1px solid #000000;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: #f1f1f1;
     transform: translateY(0px);
-
 }
 /* click  - press down */
-.optionEnglish.isCheckedEnglish:active{
+.languageOption.isChecked:active{
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #eeeeee;
     transform: translateY(1px);
 }
 /* click  - release */
-.optionEnglish.isCheckedSpanish:focus {
+.languageOption.isCheckedSpanish:focus {
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: #f1f1f1;
     transform: translateY(0px);
 }
 .break{
@@ -71,8 +70,6 @@
     margin-right: 16px;
     border: 1px solid black;
 }
-
-
 .optionInputBox{
     height: 20px;
     width: 20px;

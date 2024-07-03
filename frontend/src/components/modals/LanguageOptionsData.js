@@ -27,7 +27,7 @@ const data = [
     {
         "id": 3,
         "group": 3,
-        "name": "China",
+        "name": "Chinese",
         "flag": chinaFlagImg
     },
     {
