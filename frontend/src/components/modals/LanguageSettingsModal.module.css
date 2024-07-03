@@ -77,9 +77,6 @@
     background: transparent; /* Set track color for Chrome and Safari */
 }
 
-.languageModalContentContainer::-webkit-scrollbar-track:hover {
-    background: red;
-}
 /* ********************************************************************* Width under 600px */
 @media (max-width: 600px) {
     .languageModal{
