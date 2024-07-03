@@ -11,12 +11,10 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background-color: white;
     min-width: 400px;
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    background-color: white;
 }
 
 main{
@@ -27,9 +25,30 @@ main{
     scroll-snap-type: y mandatory;
     -webkit-scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 100vh;
+    scrollbar-color: gray transparent; 
     scrollbar-width: thin; 
-    scrollbar-color: transparent transparent; 
+
 }
+::-webkit-scrollbar {
+    width: 6px; /* Styling the scrollbar in Chrome and Safari */
+}
+::-webkit-scrollbar-thumb {/* the draggable part of the scrollbar */
+    background-color: gray; 
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;    
+}
+::-webkit-scrollbar-track {/* the area that the thumb moves within. */
+    background: transparent;
+}
+
+
+
 header{
     scroll-snap-align: start;
     -webkit-scroll-snap-align: start;
@@ -54,12 +73,3 @@ footer{
     --darkgray: #1d1d1d;
 }
 
-::-webkit-scrollbar {
-    width: 6px; 
-}
-::-webkit-scrollbar-thumb {
-    background-color: transparent; 
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}

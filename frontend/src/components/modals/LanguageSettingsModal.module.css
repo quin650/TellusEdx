@@ -57,8 +57,28 @@
     border-radius: 27px;
     padding: 36px 36px 36px 36px;
     background-color: white;
-    overflow-y: auto; 
-    color:red;
+    overflow-y: scroll;  
+    max-height: 545px ; /* Set a maximum height for the scrollable element */
+    scrollbar-color: gray transparent ;/* Custom scrollbar styling for Firefox */
+    scrollbar-width: thin ;/* Custom scrollbar styling for Firefox */
+}
+.languageModalContentContainer::-webkit-scrollbar {
+    width: 6px;/* Styling the scrollbar in Chrome and Safari */
+}
+
+.languageModalContentContainer::-webkit-scrollbar-thumb {/* the draggable part of the scrollbar */
+    background-color: gray; /* Set thumb color for Chrome and Safari */
+    border-radius: 8px;
+}
+.languageModalContentContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;     
+}
+.languageModalContentContainer::-webkit-scrollbar-track {/* the area that the thumb moves within. */
+    background: transparent; /* Set track color for Chrome and Safari */
+}
+
+.languageModalContentContainer::-webkit-scrollbar-track:hover {
+    background: red;
 }
 /* ********************************************************************* Width under 600px */
 @media (max-width: 600px) {

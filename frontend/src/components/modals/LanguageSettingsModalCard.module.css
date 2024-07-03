@@ -1,15 +1,5 @@
 /* ********************************************************************* Modal Content */
-.languageModalContentContainer {
-    box-sizing: border-box;
-    position: absolute;
-    height: 545px;
-    width: 430px;
-    border-radius: 27px;
-    padding: 36px 36px 36px 36px;
-    background-color: white;
-    overflow-y: auto; 
-    color:red;
-}
+
 .optionEnglish {
     display: flex;
     align-items: center;
@@ -27,7 +17,6 @@
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: white;
     transform: translateY(0px);
-
 }
 /* click  - press down */
 .optionEnglish:active {
@@ -80,9 +69,11 @@
     width: 28px;
     margin-left: auto;
     margin-right: 16px;
+    border: 1px solid black;
 }
+
+
 .optionInputBox{
     height: 20px;
     width: 20px;
 }
-

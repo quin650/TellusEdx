@@ -43,7 +43,6 @@
     transform: rotate(180deg);
     animation: around .18s ease-in forwards;
 }
-
 @keyframes around {                             /*========== Animation ==========*/
     0% {transform: rotate(22.5deg);}
     33% {transform: rotate(45deg);}
@@ -69,7 +68,6 @@
     padding-left: 30px;
     padding-right: 30px;
 }
-
 .bottom{
     margin-bottom: 45px;
 }
@@ -78,13 +76,11 @@
     padding-right: 30px;
 }
 .sidebarMenu {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
-
 .buttonPadding {
     padding-top: 10px 
 }
-
 .sidebarMenu span{
     margin-left: 10px;
 }
@@ -92,7 +88,6 @@
     margin-left: auto;
 
 }
-
 .getStartedBtn {
     width: 100%;
     padding: 10px;
@@ -103,11 +98,9 @@
     font-size: 1em;
     cursor: pointer;
 }
-
 .getStartedBtn:hover {
     background-color: #0056b3;
 }
-
 .break{
     border-bottom: .5px solid #555555;
     margin-top: 10px;
@@ -116,9 +109,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-/* Icon conditional formatting */
-
-
 
 /* General  Formatting */
 .menuItem {
@@ -127,15 +117,15 @@
     padding: 10px 8px;
     color: #9E9E9E;
     text-decoration: none;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 52px;
+    width: 260px;
 }
 .menuItem:hover{
-    color: #0066FF;
-    fill: #0066FF;
+    background-color: #1e1d1d;
 }
-.menuItemLast:hover{
-    color: #0066FF;
-}
-
 .menuItem span{
     margin-right: auto;
 }
@@ -149,12 +139,14 @@
     background-color: black;
     border: 1px solid black;
     border-radius: 8px;
+    height: 52px;
+    width: 260px;
 }
 .homeIconStyle i{
     fill: #9E9E9E;
 }
 .homeIconStyle:hover {
-    color: #0066FF;
+    background-color: #1e1d1d;
 }
 .homeIconStyle:active {
     background-color: #1e1d1d;
@@ -165,36 +157,21 @@
 .homeIconStyle.isActiveHomeIcon {
     color: white;
 }
-.homeIconStyle.isActiveHomeIcon:hover {
-    color: #0066FF;
-}
 /* Dashboard Formatting */
 .homeIconStyle.isActiveDashboardIcon {
     color: white;
-}
-.homeIconStyle.isActiveDashboardIcon:hover {
-    color: #0066FF;
 }
 /* About Us Formatting */
 .homeIconStyle.isActiveAboutUsIcon {
     color: white;
 }
-.homeIconStyle.isActiveAboutUsIcon:hover {
-    color: #0066FF;
-}
 /* Support Center Formatting */
 .homeIconStyle.isActiveSupportCenterIcon {
     color: white;
 }
-.homeIconStyle.isActiveSupportCenterIcon:hover {
-    color: #0066FF;
-}
 /* help Formatting */
 .homeIconStyle.isActiveHelpIcon {
     color: white;
-}
-.homeIconStyle.isActiveHelpIcon:hover {
-    color: #0066FF;
 }
 /* Dark Mode */   
 .darkModeMenuItem {
@@ -203,6 +180,14 @@
     padding: 10px 8px;
     color: #9E9E9E;
     text-decoration: none;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 52px;
+    width: 260px;
+}
+.darkModeMenuItem:hover {
+    background-color: #1e1d1d;
 }
 .darkModeMenuItem span {
     margin-right: auto;
