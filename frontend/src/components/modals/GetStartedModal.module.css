@@ -400,7 +400,6 @@ the css wonky i.e. creates a background color based on the box-shadow
 }
 .PageLink {
     cursor: pointer;
-    font-weight: bold;
 }
 .PageLink:hover {
     text-decoration: underline;
@@ -410,6 +409,7 @@ the css wonky i.e. creates a background color based on the box-shadow
     color: white;
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
 }
+
 /* ********************************************************************* Width under 600px */
 @media (max-width: 600px) {
     .modal{

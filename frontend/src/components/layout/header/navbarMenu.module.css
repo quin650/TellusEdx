@@ -19,12 +19,12 @@
     width: 320px;
     height: 100vh;
     background-color: #000;
-    /* color: #fff; */
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
+    
 }
 .outerLogoContainer {
     display: flex;
@@ -185,6 +185,7 @@
     border-radius: 8px;
     height: 52px;
     width: 260px;
+    cursor: pointer;
 }
 .darkModeMenuItem:hover {
     background-color: #1e1d1d;
