@@ -16,9 +16,10 @@ const NavbarMenu = () => {
     const location = useLocation();
     const [activeIcon, setActiveIcon] = useState('/');
 
-    const languageSettingsModalStatus = useSelector(({ user }) => user.languageSettingsModalStatus);
+    const {navbarMenuStatus, languageSettingsModalStatus} = useSelector(({ user }) => user);
     const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
     const [ToggleIsDark, setToggleIsDark] = useState(false);
+
 
     // Icons
     const homeIcon = (
@@ -140,6 +141,15 @@ const NavbarMenu = () => {
         }
     };
 
+    const [navState, setNavState] = useState(false)
+    useEffect(()=>{
+        if (navbarMenuStatus){
+            setNavState(true)
+        } else{
+            setNavState(false)
+        }
+    }, [navbarMenuStatus])
+
     // Other JSX
     let option = (<a href='#' onClick={LogInHandler} className={classes.menuItem}><i className={classes.icon} onClick={LogInHandler}>{logInIcon}</i><span>Log in</span></a>)
     isAuthenticated
@@ -151,7 +161,7 @@ const NavbarMenu = () => {
     : content = <div className={classes.buttonPadding}><GetStartedButton /></div>
     return (
         <div className={classes.blurredBackgroundContainer}>
-            <menu className={classes.sidebar} ref={navBarRef}>
+            <menu className={`${classes['sidebar']} ${navState ? classes.navState : ''}`} ref={navBarRef}>
                 <div className={classes.top}>
                     <div className={classes.outerLogoContainer}>
                         <Link to='/home' onClick={CloseNavBarMenu} className={classes.Logo}><img src={Logo} alt='Logo' className={classes.Logo}></img></Link>
@@ -205,4 +215,3 @@ const NavbarMenu = () => {
 };
 
 export default NavbarMenu;
-
