@@ -7,9 +7,6 @@ const LanguageSettingsModalCard = (props)=>{
     const dispatch = useDispatch();
     const languageCurrent_rdx = useSelector(({ user }) => user.languageCurrent_rdx);
     const [isChecked, setIsChecked] = useState(false)
-
-    console.log('languageCurrent_rdx: ', languageCurrent_rdx)
-
     useEffect(()=>{
         if (languageCurrent_rdx === props.language){
             setIsChecked(true)
@@ -17,9 +14,7 @@ const LanguageSettingsModalCard = (props)=>{
             setIsChecked(false)
         }
     },[languageCurrent_rdx])
-
     const handleCheckboxChange = () => {
-        console.log(props.language, " toggled")
         if (isChecked){
             setIsChecked(false)
             dispatch(userReducerActions.languageSettingsChange(''))
@@ -28,7 +23,6 @@ const LanguageSettingsModalCard = (props)=>{
             dispatch(userReducerActions.languageSettingsChange(props.language))
         }
     }
-
     return (
         <Fragment>
             <div onClick={handleCheckboxChange} className={`${classes['languageOption']} ${isChecked && classes.isChecked}`} >
