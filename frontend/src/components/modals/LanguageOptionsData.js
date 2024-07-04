@@ -15,73 +15,73 @@ const data = [
     {
         "id": 1,
         "group": 1,
-        "name": "English",
+        "language": "English",
         "flag": USAFlagImg
     },
     {
         "id": 2,
         "group": 2,
-        "name": "Spanish",
+        "language": "Spanish",
         "flag": mexicoFlagImg
     },
     {
         "id": 3,
         "group": 3,
-        "name": "Chinese",
+        "language": "Chinese",
         "flag": chinaFlagImg
     },
     {
         "id": 4,
         "group": 4,
-        "name": "French",
+        "language": "French",
         "flag": franceFlagImg
     },
     {
         "id": 5,
         "group": 5,
-        "name": "German",
+        "language": "German",
         "flag": germanyFlagImg
     },
     {
         "id": 6,
         "group": 6,
-        "name": "Japanese",
+        "language": "Japanese",
         "flag": japanFlagImg
     },
     {
         "id": 7,
         "group": 7,
-        "name": "Portuguese",
+        "language": "Portuguese",
         "flag": portugalFlagImg
     },
     {
         "id": 8,
         "group": 8,
-        "name": "Russian",
+        "language": "Russian",
         "flag": russiaFlagImg
     },
     {
         "id": 9,
         "group": 9,
-        "name": "Arabic",
+        "language": "Arabic",
         "flag": UAEFlagImg
     },
     {
         "id": 10,
         "group": 10,
-        "name": "Italian",
+        "language": "Italian",
         "flag": italyFlagImg
     },
     {
         "id": 11,
         "group": 11,
-        "name": "Korean",
+        "language": "Korean",
         "flag": koreaFlagImg
     },
     {
         "id": 12,
         "group": 12,
-        "name": "Hindu",
+        "language": "Hindu",
         "flag": indiaFlagImg
     },
 ];

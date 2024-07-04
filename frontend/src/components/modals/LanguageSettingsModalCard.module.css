@@ -16,6 +16,7 @@
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: white;
     transform: translateY(0px);
+    cursor: pointer;
 }
 /* click  - press down */
 .languageOption:active {
@@ -43,6 +44,7 @@
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #f1f1f1;
     transform: translateY(0px);
+    cursor: pointer;
 }
 /* click  - press down */
 .languageOption.isChecked:active{

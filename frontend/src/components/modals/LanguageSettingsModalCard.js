@@ -1,22 +1,44 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { userReducerActions } from '../../../src/a.reducers/auth_Reducers';
 import classes from './LanguageSettingsModalCard.module.css';
 
 const LanguageSettingsModalCard = (props)=>{
-    const [isChecked, setIsChecked] = useState(false);
-    const handleEnglishCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    };
+    const dispatch = useDispatch();
+    const languageCurrent_rdx = useSelector(({ user }) => user.languageCurrent_rdx);
+    const [isChecked, setIsChecked] = useState(false)
+
+    console.log('languageCurrent_rdx: ', languageCurrent_rdx)
+
+    useEffect(()=>{
+        if (languageCurrent_rdx === props.language){
+            setIsChecked(true)
+        } else if (isChecked && languageCurrent_rdx !== props.language){
+            setIsChecked(false)
+        }
+    },[languageCurrent_rdx])
+
+    const handleCheckboxChange = () => {
+        console.log(props.language, " toggled")
+        if (isChecked){
+            setIsChecked(false)
+            dispatch(userReducerActions.languageSettingsChange(''))
+        } else if (!isChecked && languageCurrent_rdx !== props.language){
+            setIsChecked(true)
+            dispatch(userReducerActions.languageSettingsChange(props.language))
+        }
+    }
 
     return (
         <Fragment>
-            <div onClick={handleEnglishCheckboxChange} className={`${classes['languageOption']} ${isChecked && classes.isChecked}`} >
-                <span>{props.name}</span>
+            <div onClick={handleCheckboxChange} className={`${classes['languageOption']} ${isChecked && classes.isChecked}`} >
+                <span>{props.language}</span>
                 <img src={props.flag} alt='Logo' className={classes.flag}></img> 
                 <input
                     className={classes.optionInputBox}
                     type="checkbox"
                     checked={isChecked}
-                    onChange={handleEnglishCheckboxChange}
+                    onChange={handleCheckboxChange}
                 />
             </div>
             <hr className={classes.break}></hr>
