@@ -1,0 +1,15 @@
+.tocContainer{
+    z-index: 101;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 180px;
+    left: 15px;
+    width: 20px;
+
+    margin-bottom: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    background-color: white;
+}

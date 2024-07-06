@@ -1,0 +1,20 @@
+.tocCardContainer{
+    position: relative;
+    align-self: center;
+    width: 10px;
+    height: 30px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border-radius: 4px;
+    border: 2px solid white;
+    background-color: black;
+}
+
+.tocCardContainer:hover{
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.tocCardContainer.isCurrent{
+    outline: 1PX solid blue;
+}
