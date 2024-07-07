@@ -1,0 +1,64 @@
+.tocCardContainer {
+    position: relative;
+    align-self: center;
+    width: 10px;
+    height: 30px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border-radius: 4px;
+    border: 2px solid white;
+    background-color: black;
+}
+.tocCardContainer .theTextContainer {
+    display: none;
+}
+.tocCardContainer:hover {
+    outline: 3px solid black;
+    cursor: pointer;
+}
+.tocCardContainer:hover .theTextContainer {
+    display: block;
+}
+.tocCardContainer:active {
+    border: 3px solid black;
+}
+.tocCardContainer:focus {
+    background-color: violet;
+}
+
+.tocCardContainer.isCurrent {
+    background-color: blue;
+}
+.tocCardContainer.isCurrent .theTextContainer {
+    display: none;
+}
+.tocCardContainer.isCurrent:hover {
+    outline: 3px solid blue;
+    cursor: pointer;
+}
+.tocCardContainer.isCurrent:hover .theTextContainer {
+    display: block;
+}
+.tocCardContainer.isCurrent:active {
+    border: 3px solid blue;
+}
+.tocCardContainer.isCurrent:focus {
+    background-color: violet;
+}
+.theTextContainer {
+    z-index: 301;
+    display: block;
+    position: fixed;
+    margin-left: 20px;
+    border-radius: 4px;
+    background-color: rgb(233, 233, 233);
+
+}
+.theText {
+    font-size: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+}

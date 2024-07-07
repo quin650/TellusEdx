@@ -9,7 +9,7 @@ import Demo from './components/pages/demo';
 import AboutUs from './components/pages/aboutUs';
 import SupportCenter from './components/pages/supportCenter';
 import Help from './components/pages/help';
-import TableOfContents from './components/features/TableOfContents';
+import TableOfContents from './components/features/1TableOfContents';
 // import { checkAuthenticated } from './a.actions/auth_Actions';
 
 const App = () => {
