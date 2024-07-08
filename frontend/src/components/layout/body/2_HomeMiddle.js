@@ -20,7 +20,7 @@ const HomeMiddle = () => {
 
     return (
         <section>
-            <div className={classes.middleMainSection}>
+            <div className={classes.middleMainSection} id="learn/Contribute">
                 {content}
                 <ToggleButton ToggleFunction={ToggleFunction}/>
             </div>
