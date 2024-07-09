@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { Route, Routes, useLocation} from 'react-router-dom';
 import { userReducerActions } from './a.reducers/auth_Reducers';
@@ -23,11 +23,44 @@ const App = () => {
             dispatch(userReducerActions.setRegularView());
         }
     }, [location, dispatch, isDemoView]);
-
     // const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
     // useEffect(()=>{
     //     dispatch(checkAuthenticated());
     // },[])
+
+
+    const [ids, setIds] = useState([]);
+    useEffect(() => {
+    const elementsWithId = document.querySelectorAll('div[id]');
+    const idsArray = Array.from(elementsWithId).map(element => element.id);
+    setIds(idsArray);
+    console.log('ids: ', idsArray);
+    }, [location]); 
+
+    const [activeId, setActiveId] = useState('');
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = document.querySelectorAll('div[id]');
+            let currentId = '';
+        
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentId = section.id;
+                }
+            });
+            setActiveId(currentId);
+        };
+        const scrollContainer = document.querySelector('main');
+        scrollContainer.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => {
+            scrollContainer.removeEventListener('scroll', handleScroll);
+        };
+
+    }, [location]);
+
+    console.log('activeId: ', activeId);
 
     return (
         <main>

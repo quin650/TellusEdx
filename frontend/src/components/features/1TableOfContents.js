@@ -1,30 +1,27 @@
 import React, { useState }  from 'react'
 import TableOfContents_Section from './TableOfContents_section'
-// import classes from './1TableOfContents.modules.css'
 import classes from './TableOfContents_Section.modules.css'
 import data from './tocData'
 
-
-
 const TableOfContents = () => {
-    document.addEventListener('keydown', function(event) {
+
+    // Event Listeners
+    const altOptionPressedKeyDown = (event) => {
         if (event.altKey || event.key === 'Alt' || event.key === 'Option') {
-            console.log('Alt/Option key is pressed.');
-            setIsPressed(true)
+            setAltOptionKeyPressed(true)
         }
-    });
-
-    document.addEventListener('keyup', function(event) {
+    };
+    const altOptionPressedKeyUp = (event) => {
         if (!event.altKey || event.key === 'Alt' || event.key === 'Option') {
-            console.log('Alt/Option key is released.');
-            setIsPressed(false)
+            setAltOptionKeyPressed(false)
         }
-    });
+    };
+    document.addEventListener('keydown', altOptionPressedKeyDown)
+    document.addEventListener('keyup', altOptionPressedKeyUp)
 
-
-    const [isPressed, setIsPressed] = useState(false);
+    const [altOptionKeyPressed, setAltOptionKeyPressed] = useState(false);
     return (
-        <div className={`${classes['tocContainer']} ${isPressed && classes.isPressed}`}>
+        <div className={`${classes['tocContainer']} ${altOptionKeyPressed && classes.altOptionKeyPressed}`}>
             <TableOfContents_Section id={1} goto={'landingPage'} text={'Landing Page'} status={true}/>
             <TableOfContents_Section id={2} goto={'learn/Contribute'} text={'Learn/Contribute'} status={false}/>
             <TableOfContents_Section id={3} goto={'footer'} text={'Footer'} status={false}/>

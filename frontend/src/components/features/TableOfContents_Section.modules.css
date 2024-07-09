@@ -13,7 +13,7 @@
     border-radius: 4px;
     background-color: white;
 }
-.tocContainer.isPressed{
+.tocContainer.altOptionKeyPressed{
     z-index: 101;
     position: absolute;
     display: flex;
@@ -29,7 +29,7 @@
 }
 
 /* alt or option pressed */
-.tocContainer.isPressed .tocSectionContainer {
+.tocContainer.altOptionKeyPressed .tocSectionContainer {
     position: relative;
     align-self: center;
     width: 10px;
@@ -40,31 +40,31 @@
     border: 2px solid white;
     background-color: black;
 }
-.tocContainer.isPressed .tocSectionContainer .theTextContainer {
+.tocContainer.altOptionKeyPressed .tocSectionContainer .theTextContainer {
     display: none;
 }
-.tocContainer.isPressed:hover .tocSectionContainer .theTextContainer {
+.tocContainer.altOptionKeyPressed:hover .tocSectionContainer .theTextContainer {
     display: block;
 }
-.tocContainer.isPressed .tocSectionContainer:active .theTextContainer{
+.tocContainer.altOptionKeyPressed .tocSectionContainer:active .theTextContainer{
     display: none;
 }
-.tocContainer.isPressed .tocSectionContainer:focus .theTextContainer{
+.tocContainer.altOptionKeyPressed .tocSectionContainer:focus .theTextContainer{
     display: none;
 }   
-.tocContainer.isPressed .tocSectionContainer.isCurrent {
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent {
     background-color: blue;
 }
-.tocContainer.isPressed .tocSectionContainer.isCurrent:active {
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:active {
     border: 3px solid blue;
 }
-.tocContainer.isPressed .tocSectionContainer.isCurrent:active .theTextContainer{
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:active .theTextContainer{
     display: none;
 }
-.tocContainer.isPressed .tocSectionContainer.isCurrent:focus .theTextContainer{
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:focus .theTextContainer{
     display: none;
 }
-.tocContainer.isPressed .theTextContainer {
+.tocContainer.altOptionKeyPressed .theTextContainer {
     z-index: 301;
     display: block;
     position: fixed;
@@ -74,7 +74,7 @@
     border: 1px solid rgb(233, 233, 233);    
 
 }
-.tocContainer.isPressed .theText {
+.tocContainer.altOptionKeyPressed .theText {
     font-size: 12px;
     padding-left: 8px;
     padding-right: 8px;
