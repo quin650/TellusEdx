@@ -16,6 +16,8 @@ const App = () => {
     const dispatch = useDispatch();
     const isDemoView = useSelector(({ user }) => user.isDemoView)
     const location = useLocation();
+    const [contents, setContents] = useState([]);
+    const [activePage, setActivePage] = useState('');
     useEffect(() => {
         if (location.pathname === '/demo') {
             dispatch(userReducerActions.setDemoView());
@@ -28,28 +30,26 @@ const App = () => {
     //     dispatch(checkAuthenticated());
     // },[])
 
-
-    const [ids, setIds] = useState([]);
     useEffect(() => {
-    const elementsWithId = document.querySelectorAll('div[id]');
-    const idsArray = Array.from(elementsWithId).map(element => element.id);
-    setIds(idsArray);
-    console.log('ids: ', idsArray);
+        let contentsArray = [];
+        const contentsId = document.querySelectorAll('div[id]');
+        Array.from(contentsId).map((element) => {
+            contentsArray.push(element.id);
+        });
+        setContents(contentsArray);
     }, [location]); 
 
-    const [activeId, setActiveId] = useState('');
     useEffect(() => {
         const handleScroll = () => {
-            const sections = document.querySelectorAll('div[id]');
-            let currentId = '';
-        
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
+            const pages = document.querySelectorAll('div[id]');
+            let currentPage = '';
+            pages.forEach(page => {
+                const rect = page.getBoundingClientRect();
                 if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                    currentId = section.id;
+                    currentPage = page.id;
                 }
             });
-            setActiveId(currentId);
+            setActivePage(currentPage);
         };
         const scrollContainer = document.querySelector('main');
         scrollContainer.addEventListener('scroll', handleScroll);
@@ -57,17 +57,19 @@ const App = () => {
         return () => {
             scrollContainer.removeEventListener('scroll', handleScroll);
         };
-
     }, [location]);
-
-    console.log('activeId: ', activeId);
 
     return (
         <main>
             <header>
                 { !isDemoView ? <MainNavbar /> :  ''}  
             </header>
-            <TableOfContents />
+
+            <TableOfContents 
+                contents={contents}
+                activePage={activePage} 
+            />
+
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />

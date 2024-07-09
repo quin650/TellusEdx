@@ -1,26 +1,16 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './TableOfContents_Section.modules.css'
 
 const TableOfContents_Section = (props) => {
-    const [isCurrent, setIsCurrent] = useState(false);
-
-    useEffect(()=>{
-        if (props.status){
-            setIsCurrent(true)
-        } else{
-            setIsCurrent(false)
-        }
-    }, [props.status])
-
+    const { id, text, goto, status } = props;
     const handleClickScroll = () => {
-        console.log('section clicked')
-        document.getElementById(props.goto).scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(goto).scrollIntoView({ behavior: 'smooth' });
     };
     return (
-        <div onClick={handleClickScroll} className={`${classes['tocSectionContainer']} ${isCurrent && classes.isCurrent}`}>
+        <div id={id} onClick={handleClickScroll} className={`${classes['tocSectionContainer']} ${status && classes.isCurrent}`}>
             <div className={classes.theTextContainer}>
                 <p className={classes.theText}>
-                    {props.text}
+                    {text}
                 </p>
             </div>
         </div>
