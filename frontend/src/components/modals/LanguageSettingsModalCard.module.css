@@ -42,7 +42,7 @@
 .languageOption.isChecked:hover{
     border: 1px solid #000000;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #f1f1f1;
+    background-color: #dddddd;
     transform: translateY(0px);
     cursor: pointer;
 }
