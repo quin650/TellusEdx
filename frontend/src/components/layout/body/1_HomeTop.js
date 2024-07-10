@@ -12,7 +12,7 @@ import classes from './1_HomeTop.module.css';
 
 const HomeTop = () => {
     return (                                                                    
-        <div className={classes.outer_container_top} id="landingPage">                    
+        <div className={classes.outer_container_top} id="Landing_Page">                    
             <div className={classes.inner_container_top}>           
                 <blockquote className={classes.caption} >          
                     <h1> LEARNING NEVER EXHAUSTS THE MIND</h1>  

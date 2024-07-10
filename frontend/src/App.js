@@ -31,10 +31,12 @@ const App = () => {
     // },[])
 
     useEffect(() => {
-        let contentsArray = [];
+        let contentsArray = []
         const contentsId = document.querySelectorAll('div[id]');
         Array.from(contentsId).map((element) => {
-            contentsArray.push(element.id);
+            if (isNaN(element.id)){
+                contentsArray.push(element.id);
+            }
         });
         setContents(contentsArray);
     }, [location]); 
@@ -64,12 +66,7 @@ const App = () => {
             <header>
                 { !isDemoView ? <MainNavbar /> :  ''}  
             </header>
-
-            <TableOfContents 
-                contents={contents}
-                activePage={activePage} 
-            />
-
+            <TableOfContents contents={contents} activePage={activePage} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />

@@ -10,7 +10,7 @@ const Footer = () => {
     };
 
     return (
-        <div className={classes.footer} id="footer">
+        <div className={classes.footer} id="Footer">
             <div className={classes.outerLogoContainer}>
                     <ul className={classes.innerLogoContainer}>
                         <li>
