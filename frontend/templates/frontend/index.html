@@ -38,14 +38,12 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 		/>
 	</head>
-	<body>
-		<div class="root">
-			<script src="{% static 'frontend/main.js' %}"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-			<script>
-				pdfjsLib.GlobalWorkerOptions.workerSrc =
-					"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
-			</script>
-		</div>
+	<body class="root">
+		<script src="{% static 'frontend/main.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+		<script>
+			pdfjsLib.GlobalWorkerOptions.workerSrc =
+				"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
+		</script>
 	</body>
 </html>

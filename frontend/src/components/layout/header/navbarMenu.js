@@ -18,8 +18,6 @@ const NavbarMenu = () => {
 
     const {navbarMenuStatus, languageSettingsModalStatus} = useSelector(({ user }) => user);
     const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
-    const [ToggleIsDark, setToggleIsDark] = useState(false);
-
 
     // Icons
     const homeIcon = (
@@ -120,9 +118,20 @@ const NavbarMenu = () => {
     const OpenLanguageSettingsModal = () => {
         dispatch(userReducerActions.languageSettingsModalOpen());
     }
-    const handleToggle = () => {
-        setToggleIsDark(!ToggleIsDark);
+    const toggleTheme = (e) => {
+        if (e.target.checked){
+            setDarkMode();
+        } else {
+            setLightMode();
+        }
     };
+    const setDarkMode = () =>{
+        document.querySelector("body").setAttribute("data-theme", "dark");
+    };
+    const setLightMode = () =>{
+        document.querySelector("body").setAttribute("data-theme", "light");
+    };
+
     useEffect(() => {
         languageSettingsModalStatusRef.current = languageSettingsModalStatus;
     }, [languageSettingsModalStatus]);
@@ -189,11 +198,16 @@ const NavbarMenu = () => {
                                 <span>Language</span>
                                 <img src={usaFlagImg} alt='Logo' className={classes.flag} tabIndex="0"></img>     
                             </Link>
-                            <label className={classes.darkModeMenuItem} htmlFor="darkmode-toggle">
+                            <label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>
                                 <span>Dark Mode</span>
                                 <div className={classes.toggleContainer}>
-                                    <input className={classes.toggleCheckBox} type="checkbox" id="darkmode-toggle"/>
+                                    <input 
+                                        className={classes.toggleCheckBox} 
+                                        type="checkbox" 
+                                        id="theme-toggle"
+                                        onChange={toggleTheme}
+                                    />
                                     <div className={classes.toggleButton}></div>
                                     {sunIcon}
                                     {moonIcon}

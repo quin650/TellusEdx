@@ -5,8 +5,28 @@
 
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
-
 }
+
+.root {
+    --blue: rgb(39, 85, 196);
+    --white: #ffffff;
+    --gray: #b3b3b3;
+    --darkGray: #ffffff33;
+    --black: black;
+    --darkgray: #1d1d1d;
+    --backgroundColor: white;
+}
+
+[data-theme="dark"] {
+    --blue: red;
+    --white: #ffffff;
+    --gray: #b3b3b3;
+    --darkGray: #ffffff33;
+    --black: black;
+    --darkgray: #1d1d1d;
+    --backgroundColor: black;
+}
+
 
 body {
     margin: 0;
@@ -14,7 +34,7 @@ body {
     min-width: 400px;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: var(--backgroundColor)
 }
 
 main{
@@ -31,7 +51,7 @@ main{
     max-height: 100vh;
     scrollbar-color: gray transparent; 
     scrollbar-width: thin; 
-
+    background-color: var(--backgroundColor)
 }
 ::-webkit-scrollbar {
     width: 6px; /* Styling the scrollbar in Chrome and Safari */
@@ -64,12 +84,4 @@ footer{
     -webkit-scroll-snap-align: start;
 }
 
-:root {
-    --blue: rgb(39, 85, 196);
-    --white: #ffffff;
-    --gray: #b3b3b3;
-    --darkGray: #ffffff33;
-    --black: black;
-    --darkgray: #1d1d1d;
-}
 
