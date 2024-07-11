@@ -6,7 +6,7 @@
     height: 100vh;
     width: 100vw;
     top: 0px;
-    background-color: rgb(175, 175, 175, 40%);
+    background-color: var(--BlurredBackground);
     justify-content: flex-end;
     align-items: center;
     font-family: Roboto; 
@@ -18,7 +18,7 @@
     justify-content: space-between;
     width: 0px;
     height: 100vh;
-    background-color: #000;
+    background-color: var(--NavBarMenu_BackgroundColor);
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -61,11 +61,11 @@
     margin-left: 23px;
     font-weight:lighter;
     cursor: pointer;
-    color: var(--white);
+    color: var(--NavBarMenu_CompanyName);
     text-decoration: none; 
 }
 .companyName:hover{
-    color: #0066FF;
+    color: var(--Blue);
 }
 .top{
     margin: 0px;
@@ -90,23 +90,10 @@
 }
 .sidebarMenu input{
     margin-left: auto;
+}
 
-}
-.getStartedBtn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-}
-.getStartedBtn:hover {
-    background-color: #0056b3;
-}
 .break{
-    border-bottom: .5px solid #555555;
+    border-bottom: .5px solid var(--NavBarMenu_Break);
     margin-top: 10px;
     margin-bottom: 10px;
     width: 85%;
@@ -119,98 +106,115 @@
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: #9E9E9E;
+    color: var(--NavBarMenu_OptionsColor);
     text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
+    background-color: var(--NavBarMenu_BackgroundColor);
+    border: 1px solid var(--NavBarMenu_BackgroundColor);
     border-radius: 8px;
     height: 52px;
     width: 260px;
 }
 .menuItem:hover{
-    background-color: #1e1d1d;
+    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
 }
 .menuItem span{
     margin-right: auto;
 }
 /* General  Formatting */
-.homeIconStyle {
+.sidebarMenuOptions {
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: #9E9E9E;
+    color: var(--NavBarMenu_OptionsColor);
     text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
+    background-color: var(--NavBarMenu_OptionsBackgroundColor);
+    border: 1px solid var(--NavBarMenu_OptionsBackgroundColor);
     border-radius: 8px;
     height: 52px;
     width: 260px;
 }
-.homeIconStyle i{
-    fill: #9E9E9E;
+.sidebarMenuOptions i{
+    fill: var(--NavBarMenu_OptionsBackgroundColor);
 }
-.homeIconStyle:hover {
-    background-color: #1e1d1d;
+.sidebarMenuOptions:hover {
+    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
 }
-.homeIconStyle:active {
-    background-color: #1e1d1d;
-    border: 1px solid #292929;
+.sidebarMenuOptions:active {
+    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
+    border: 1px solid var(--NavBarMenu_OptionsBackgroundColorHover);
     border-radius: 8px;
 }
 /* Home Formatting */
-.homeIconStyle.isActiveHomeIcon {
-    color: white;
+.sidebarMenuOptions.isActiveHomeIcon {
+    color: var(--NavBarMenu_OptionsColorActive);
 }
 /* Dashboard Formatting */
-.homeIconStyle.isActiveDashboardIcon {
-    color: white;
+.sidebarMenuOptions.isActiveDashboardIcon {
+    color: var(--NavBarMenu_OptionsColorActive);
 }
 /* About Us Formatting */
-.homeIconStyle.isActiveAboutUsIcon {
-    color: white;
+.sidebarMenuOptions.isActiveAboutUsIcon {
+    color: var(--NavBarMenu_OptionsColorActive);
 }
 /* Support Center Formatting */
-.homeIconStyle.isActiveSupportCenterIcon {
-    color: white;
+.sidebarMenuOptions.isActiveSupportCenterIcon {
+    color: var(--NavBarMenu_OptionsColorActive);
 }
 /* help Formatting */
-.homeIconStyle.isActiveHelpIcon {
-    color: white;
+.sidebarMenuOptions.isActiveHelpIcon {
+    color: var(--NavBarMenu_OptionsColorActive);
 }
 /* Dark Mode */   
 .darkModeMenuItem {
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: #9E9E9E;
+    color: var(--NavBarMenu_OptionsColor);
     text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
+    background-color: var(--NavBarMenu_OptionsBackgroundColor);
+    border: 1px solid var(--NavBarMenu_OptionsBackgroundColor);
     border-radius: 8px;
     height: 52px;
     width: 260px;
     cursor: pointer;
 }
 .darkModeMenuItem:hover {
-    background-color: #1e1d1d;
+    background-color: var(--NavBarMenu_OptionsBackgroundColorHover)
 }
 .darkModeMenuItem span {
     margin-right: auto;
 }
 /* Toggle Section */                                               /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
-.toggleContainer {
+.darkModeToggleContainer {
     width: 60px;
     height: 30px; 
     position: relative;
     display: block;
     background: #ebebeb;
     border-radius: 30px; 
-    box-shadow: inset 0px 2.5px 7.5px rgba(0,0,0,0.4), inset 0px -2.5px 7.5px rgba(255,255,255,0.4);
+    box-shadow: inset 0px 2.5px 7.5px var(--NavBarMenu_OptionsBoxShadow1), inset 0px -2.5px 7.5px var(--NavBarMenu_OptionsBoxShadow2);
     cursor: pointer;
     transition: 0.3s;
     overflow: hidden;
 }
-.toggleButton {
+.toggleCheckBox {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.toggleCheckBox:checked + .darkModeToggleContainer {
+    background: var(--darkModeToggleButtonChecked1);
+}
+.toggleCheckBox:checked + .darkModeToggleButton {
+    left: 58px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg,#777,var(--darkModeToggleButtonChecked2));
+}
+.darkModeToggleContainer:active .darkModeToggleButton{ 
+    width: 40px; 
+    transition: 0.3s;
+}
+.darkModeToggleButton {
     content: "";
     width: 26px;
     height: 26px;
@@ -219,48 +223,30 @@
     left: 2px;
     background: linear-gradient(180deg, #ffcc89, #d8860b);
     border-radius: 50%;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 10px var(--NavBarMenu_OptionsBoxShadow1);
     transition: 0.3s;
 }
-.toggleCheckBox {
-    width: 0;
-    height: 0;
-    visibility: hidden;
-}
-.toggleCheckBox:checked + .toggleContainer {
-    background: #242424;
-}
-.toggleCheckBox:checked + .toggleButton {
-    left: 58px;
-    transform: translateX(-100%);
-    background: linear-gradient(180deg,#777,#3a3a3a);
-}
-.toggleContainer:active .toggleButton{ 
-    width: 40px; 
-    transition: 0.3s;
-}
-
 /* icons */
-.toggleContainer svg {
+.darkModeToggleContainer svg {
     position: absolute;
     width: 24px;
     height: 24px;
     top: 3px;  
     transition: 0.3s;
 }
-.toggleContainer svg.sun {
+.darkModeToggleContainer svg.sun {
     left:3px;
-    fill:#fff;
+    fill: var(--darkModeToggleContainerSun);
 }
-.toggleContainer svg.moon {
+.darkModeToggleContainer svg.moon {
     left:33px;
-    fill:#7e7e7e;
+    fill: var(--darkModeToggleContainerMoon);
 }
-.toggleCheckBox:checked + .toggleContainer svg.sun {
-    fill:#7e7e7e;
+.toggleCheckBox:checked + .darkModeToggleContainer svg.sun {
+    fill: var(--darkModeToggleContainerMoon);
 }
-.toggleCheckBox:checked + .toggleContainer svg.moon {
-    fill:#fff;
+.toggleCheckBox:checked + .darkModeToggleContainer svg.moon {
+    fill: var(--darkModeToggleContainerSun);
 }
 .flagContainer {
     width: 60px;
@@ -269,11 +255,11 @@
     display: block;
     cursor: pointer;
 }
-.homeIconStyle:hover img{
-    border: 1px solid white;
+.sidebarMenuOptions:hover img{
+    border: 1px solid var(--NavBarMenu_OptionsColorHover);
 }
-.homeIconStyle:active img{
-    outline: 1px solid white;
+.sidebarMenuOptions:active img{
+    outline: 1px solid var(--NavBarMenu_OptionsColorHover);
 }
 .flag {
     height: 19px; 

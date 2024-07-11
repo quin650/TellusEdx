@@ -1,4 +1,4 @@
-.outer_container_nav {              
+/* .outer_container_nav {              
     display: flex;
     position: absolute;
     justify-content: center;
@@ -11,7 +11,7 @@
     z-index: 1000;
     background-color: #4f4f4f68;
     transition: top 0.3ms;
-}
+} */
 
 .inner_container_nav {
     display: flex;
@@ -21,9 +21,8 @@
     height: 48px;
     width: 100vw;
     padding: 0;
-    /* padding-top: 12px; */
     margin: 0;
-    color: var(--white);
+    color: var(--MainNavBar_BackgroundColor1);
 }
 
 @media(max-width: 475px){

@@ -178,22 +178,22 @@ const NavbarMenu = () => {
                     </div>
                     <SearchBar />
                     <div className={classes.sidebarMenu}>
-                        <Link to='/home' onClick={CloseNavBarMenu} className={`${classes['homeIconStyle']} ${(activeIcon === '/home' || activeIcon === '/') && classes.isActiveHomeIcon}`}><i>{homeIcon}</i><span>Home</span></Link>
-                        <Link to='/demo' onClick={CloseNavBarMenu} className={`${classes['homeIconStyle']} ${activeIcon === '/demo'  && classes.isActiveDashboardIcon}`}><i>{dashboardIcon}</i><span>Demo</span></Link>
+                        <Link to='/home' onClick={CloseNavBarMenu} className={`${classes['sidebarMenuOptions']} ${(activeIcon === '/home' || activeIcon === '/') && classes.isActiveHomeIcon}`}><i>{homeIcon}</i><span>Home</span></Link>
+                        <Link to='/demo' onClick={CloseNavBarMenu} className={`${classes['sidebarMenuOptions']} ${activeIcon === '/demo'  && classes.isActiveDashboardIcon}`}><i>{dashboardIcon}</i><span>Demo</span></Link>
                     </div>
                 </div>
                 <div className={classes.bottom}>
                     <div className={classes.subgroup}>
                         <div className={classes.sidebarMenu}>
-                            <Link to='/aboutus' onClick={CloseNavBarMenu} className={`${classes['homeIconStyle']} ${activeIcon === '/aboutus' && classes.isActiveAboutUsIcon}`}><i>{aboutUsIcon}</i><span>About Us</span></Link>
-                            <Link to='/supportcenter' onClick={CloseNavBarMenu} className={`${classes['homeIconStyle']} ${activeIcon === '/supportcenter' && classes.isActiveSupportCenterIcon}`}><i>{supportCenterIcon}</i><span>Support Center</span></Link>
-                            <Link to='/help' onClick={CloseNavBarMenu} className={`${classes['homeIconStyle']} ${activeIcon === '/help' && classes.isActiveHelpIcon}`}><i>{helpIcon}</i><span>Help</span></Link>
+                            <Link to='/aboutus' onClick={CloseNavBarMenu} className={`${classes['sidebarMenuOptions']} ${activeIcon === '/aboutus' && classes.isActiveAboutUsIcon}`}><i>{aboutUsIcon}</i><span>About Us</span></Link>
+                            <Link to='/supportcenter' onClick={CloseNavBarMenu} className={`${classes['sidebarMenuOptions']} ${activeIcon === '/supportcenter' && classes.isActiveSupportCenterIcon}`}><i>{supportCenterIcon}</i><span>Support Center</span></Link>
+                            <Link to='/help' onClick={CloseNavBarMenu} className={`${classes['sidebarMenuOptions']} ${activeIcon === '/help' && classes.isActiveHelpIcon}`}><i>{helpIcon}</i><span>Help</span></Link>
                         </div>
                     </div>
                     <div className={classes.break}></div>
                     <div className={classes.subgroup}>
                         <div className={classes.sidebarMenu}>
-                            <Link onClick={OpenLanguageSettingsModal} to='#' className={classes.homeIconStyle}>
+                            <Link onClick={OpenLanguageSettingsModal} to='#' className={classes.sidebarMenuOptions}>
                                 <i className={classes.languageIcon}>{languageIcon}</i>
                                 <span>Language</span>
                                 <img src={usaFlagImg} alt='Logo' className={classes.flag} tabIndex="0"></img>     
@@ -201,14 +201,14 @@ const NavbarMenu = () => {
                             <label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>
                                 <span>Dark Mode</span>
-                                <div className={classes.toggleContainer}>
+                                <div className={classes.darkModeToggleContainer}>
                                     <input 
                                         className={classes.toggleCheckBox} 
                                         type="checkbox" 
                                         id="theme-toggle"
                                         onChange={toggleTheme}
                                     />
-                                    <div className={classes.toggleButton}></div>
+                                    <div className={classes.darkModeToggleButton}></div>
                                     {sunIcon}
                                     {moonIcon}
                                 </div>
