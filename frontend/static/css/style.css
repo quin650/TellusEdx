@@ -25,7 +25,7 @@ body {
     --Blue: #2755c4;
 
     /* new  */
-    --BlueHover: #295cd3;
+    --BlueHover: #3e66c4;
     --BackgroundColor: white;
     --Text1: #000000;
     --Text1_secondary: #757575;
@@ -47,6 +47,10 @@ body {
     --Footer_BackgroundColor: black;
     --bright: 1;
     --toggleBoxShadow: rgba(0, 0, 0, 0.163);
+    --TableOfContentsBackground: white;
+    --TableOfContentsBorder: white;
+    --OtherText: white;
+    --OffWhite: #dcdcdc;
 }
 
 [data-theme="dark"] {
@@ -61,6 +65,9 @@ body {
 
     --bright: 0.5;
     --toggleBoxShadow: rgba(0, 0, 0, 0.45);
+    --TableOfContentsBackground: #B3B3B3;
+    --TableOfContentsBorder: #B3B3B3;
+    --OtherText: #B3B3B3;
 }
 
 

@@ -6,12 +6,12 @@
     flex-direction: column;
     top: 180px;
     left: 15px;
-    width: 20px;
+    width: 14px;
 
     margin-bottom: auto;
     margin-right: auto;
     border-radius: 4px;
-    background-color: white;
+    background-color: var(--TableOfContentsBackground);
 }
 .tocContainer.altOptionKeyPressed{
     z-index: 101;
@@ -21,7 +21,7 @@
     flex-direction: column;
     top: 180px;
     left: 15px;
-    width: 20px;
+    width: 14px;
 
     margin-bottom: auto;
     margin-right: auto;
@@ -37,7 +37,7 @@
     margin-top: 10%;
     margin-bottom: 10%;
     border-radius: 4px;
-    border: 2px solid white;
+    border: 2px solid var(--TableOfContentsBorder);
     background-color: black;
 }
 .tocContainer.altOptionKeyPressed .tocSectionContainer .theTextContainer {
@@ -93,7 +93,7 @@
     margin-top: 10%;
     margin-bottom: 10%;
     border-radius: 4px;
-    border: 2px solid white;
+    border: 2px solid var(--TableOfContentsBorder);
     background-color: black;
 }
 .tocSectionContainer .theTextContainer {

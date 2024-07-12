@@ -1,7 +1,7 @@
 .button_format {
     font-size: 1.1rem;
     font-weight: 600;
-    color: white;
+    color: var(--OtherText);
     background-color: var(--Blue);
     padding: .2rem .2rem;
     width: 9.4rem;
@@ -12,7 +12,6 @@
 }
 
 .button_format:hover {
-    color: white;
     background-color: var(--BlueHover);
 }
 
