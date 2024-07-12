@@ -18,7 +18,7 @@
     justify-content: space-between;
     width: 0px;
     height: 100vh;
-    background-color: var(--NavBarMenu_BackgroundColor);
+    background-color: black;
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -61,7 +61,7 @@
     margin-left: 23px;
     font-weight:lighter;
     cursor: pointer;
-    color: var(--NavBarMenu_CompanyName);
+    color: white;
     text-decoration: none; 
 }
 .companyName:hover{
@@ -93,7 +93,7 @@
 }
 
 .break{
-    border-bottom: .5px solid var(--NavBarMenu_Break);
+    border-bottom: .5px solid #555555;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 85%;
@@ -106,16 +106,16 @@
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: var(--NavBarMenu_OptionsColor);
+    color: #B3B3B3;
     text-decoration: none;
-    background-color: var(--NavBarMenu_BackgroundColor);
-    border: 1px solid var(--NavBarMenu_BackgroundColor);
+    background-color: black;
+    border: 1px solid black;
     border-radius: 8px;
     height: 52px;
     width: 260px;
 }
 .menuItem:hover{
-    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
+    background-color: #1e1d1d;
 }
 .menuItem span{
     margin-right: auto;
@@ -125,61 +125,61 @@
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: var(--NavBarMenu_OptionsColor);
+    color: #B3B3B3;
     text-decoration: none;
-    background-color: var(--NavBarMenu_OptionsBackgroundColor);
-    border: 1px solid var(--NavBarMenu_OptionsBackgroundColor);
+    background-color: black;
+    border: 1px solid black;
     border-radius: 8px;
     height: 52px;
     width: 260px;
 }
 .sidebarMenuOptions i{
-    fill: var(--NavBarMenu_OptionsBackgroundColor);
+    fill: black;
 }
 .sidebarMenuOptions:hover {
-    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
+    background-color: #1e1d1d;
 }
 .sidebarMenuOptions:active {
-    background-color: var(--NavBarMenu_OptionsBackgroundColorHover);
-    border: 1px solid var(--NavBarMenu_OptionsBackgroundColorHover);
+    background-color: #1e1d1d;
+    border: 1px solid #1e1d1d;
     border-radius: 8px;
 }
 /* Home Formatting */
 .sidebarMenuOptions.isActiveHomeIcon {
-    color: var(--NavBarMenu_OptionsColorActive);
+    color: white;
 }
 /* Dashboard Formatting */
 .sidebarMenuOptions.isActiveDashboardIcon {
-    color: var(--NavBarMenu_OptionsColorActive);
+    color:  white;
 }
 /* About Us Formatting */
 .sidebarMenuOptions.isActiveAboutUsIcon {
-    color: var(--NavBarMenu_OptionsColorActive);
+    color:  white;
 }
 /* Support Center Formatting */
 .sidebarMenuOptions.isActiveSupportCenterIcon {
-    color: var(--NavBarMenu_OptionsColorActive);
+    color: white;
 }
 /* help Formatting */
 .sidebarMenuOptions.isActiveHelpIcon {
-    color: var(--NavBarMenu_OptionsColorActive);
+    color:  white;
 }
 /* Dark Mode */   
 .darkModeMenuItem {
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    color: var(--NavBarMenu_OptionsColor);
+    color: #B3B3B3;
     text-decoration: none;
-    background-color: var(--NavBarMenu_OptionsBackgroundColor);
-    border: 1px solid var(--NavBarMenu_OptionsBackgroundColor);
+    background-color: black;
+    border: 1px solid black;
     border-radius: 8px;
     height: 52px;
     width: 260px;
     cursor: pointer;
 }
 .darkModeMenuItem:hover {
-    background-color: var(--NavBarMenu_OptionsBackgroundColorHover)
+    background-color: #1e1d1d;
 }
 .darkModeMenuItem span {
     margin-right: auto;
@@ -192,7 +192,7 @@
     display: block;
     background: #ebebeb;
     border-radius: 30px; 
-    box-shadow: inset 0px 2.5px 7.5px var(--NavBarMenu_OptionsBoxShadow1), inset 0px -2.5px 7.5px var(--NavBarMenu_OptionsBoxShadow2);
+    box-shadow: inset 0px 2.5px 7.5px rgba(0,0,0,0.4), inset 0px -2.5px 7.5px rgba(255,255,255,0.4);
     cursor: pointer;
     transition: 0.3s;
     overflow: hidden;
@@ -203,12 +203,12 @@
     visibility: hidden;
 }
 .toggleCheckBox:checked + .darkModeToggleContainer {
-    background: var(--darkModeToggleButtonChecked1);
+    background: #242424;
 }
 .toggleCheckBox:checked + .darkModeToggleButton {
     left: 58px;
     transform: translateX(-100%);
-    background: linear-gradient(180deg,#777,var(--darkModeToggleButtonChecked2));
+    background: linear-gradient(180deg,#777,#3a3a3a);
 }
 .darkModeToggleContainer:active .darkModeToggleButton{ 
     width: 40px; 
@@ -223,7 +223,7 @@
     left: 2px;
     background: linear-gradient(180deg, #ffcc89, #d8860b);
     border-radius: 50%;
-    box-shadow: 0px 5px 10px var(--NavBarMenu_OptionsBoxShadow1);
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
     transition: 0.3s;
 }
 /* icons */
@@ -236,17 +236,17 @@
 }
 .darkModeToggleContainer svg.sun {
     left:3px;
-    fill: var(--darkModeToggleContainerSun);
+    fill: #FFFFFF;
 }
 .darkModeToggleContainer svg.moon {
     left:33px;
-    fill: var(--darkModeToggleContainerMoon);
+    fill: #7e7e7e;
 }
 .toggleCheckBox:checked + .darkModeToggleContainer svg.sun {
-    fill: var(--darkModeToggleContainerMoon);
+    fill: #7e7e7e;
 }
 .toggleCheckBox:checked + .darkModeToggleContainer svg.moon {
-    fill: var(--darkModeToggleContainerSun);
+    fill: #FFFFFF;
 }
 .flagContainer {
     width: 60px;
@@ -256,10 +256,10 @@
     cursor: pointer;
 }
 .sidebarMenuOptions:hover img{
-    border: 1px solid var(--NavBarMenu_OptionsColorHover);
+    border: 1px solid  white;
 }
 .sidebarMenuOptions:active img{
-    outline: 1px solid var(--NavBarMenu_OptionsColorHover);
+    outline: 1px solid  white;
 }
 .flag {
     height: 19px; 

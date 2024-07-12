@@ -6,6 +6,15 @@
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 400px;
+    width: 100vw;
+    height: 100vh;
+}
+
 /* previous version --light?  */
 .root {
     --White: #ffffff;
@@ -14,9 +23,9 @@ html {
     --Black: black;
     --Darkgray: #1d1d1d;
     --Blue: #2755c4;
+
     /* new  */
-    /* --BlueHover: #0056b3; */
-    --BlueHover: #0066FF;
+    --BlueHover: #295cd3;
     --BackgroundColor: white;
     --Text1: #000000;
     --Text1_secondary: #757575;
@@ -28,102 +37,32 @@ html {
     --MainNavBar_BackgroundColor1: #000000;
     --MainNavBar_BackgroundColorText1: #F0F2F5;
     --MainNavBar_BackgroundColorText2: #FFFFFF;
-    /* Navbar Menu*/
 
-    --NavBarMenu_BackgroundColor: #000000;
-    --NavBarMenu_CompanyName: #FFFFFF;
+    /* Navbar Menu*/
     --NavBarMenu_MenuItem: #FFFFFF;
     --NavBarMenu_MenuItemColor: #9E9E9E;
-    --NavBarMenu_OptionsBackgroundColor:#000000; 
-    --NavBarMenu_OptionsBackgroundColorHover:#1e1d1d;
-
-    --NavBarMenu_OptionsColor:#9E9E9E; 
-    --NavBarMenu_OptionsColorActive: #FFFFFF;
-    --NavBarMenu_OptionsColorHover:#FFFFFF;
-    --NavBarMenu_Break: #555555;
-
     --NavBarMenu_OptionsBoxShadow1:rgba(0,0,0,0.4);
     --NavBarMenu_OptionsBoxShadow2:rgba(255,255,255,0.4);
-    --darkModeToggleButtonChecked1: #242424;
-    --darkModeToggleButtonChecked2: #3a3a3a;
-
-    --darkModeToggleContainerSun: #FFFFFF;
-    --darkModeToggleContainerMoon: #7e7e7e;
     /* footer */
     --Footer_BackgroundColor: black;
+    --bright: 1;
+    --toggleBoxShadow: rgba(0, 0, 0, 0.163);
 }
 
-
-
-
-/* new  */
-/* [data-theme="light"] {
-    --white: #ffffff;
-    --gray: #b3b3b3;
-    --darkGray: #ffffff33;
-    --black: black;
-    --darkgray: #1d1d1d;
-    --blue: rgb(39, 85, 196);
-
-    --backgroundColor: #F0F2F5;
-    --text1: #000000;
-    --text2: #202124;
-    --secondaryText1: #757575;
-    --secondaryText2: #757575;
-
-    --modal1: #FFFFFF;
-    --modal2: #E8EAED;
-    --NavBarBackgroundColor1: white;
-    --NavBarBackgroundColor2: #F0F2F5;
-    --NavBarBackgroundColorText1: #F0F2F5;
-    --NavBarBackgroundColorText2: #555555;
-    --NavBarBackgroundColorHover: #FFFFFF;
-} */
-/* new  */
 [data-theme="dark"] {
-    --white: #ffffff;
-    --gray: #b3b3b3;
-    --darkGray: #ffffff33;
-    --black: #000000;
-    --darkgray: #1d1d1d;
+    /* new  */
+    --BackgroundColor: #232323;
+    --Text1: #B3B3B3;
+    --Text1_secondary: #FFFFFF;
+    --BlurredBackground: rgb(175, 175, 175, 40%);
+    /* modal */
+    --Modal1: #FFFFFF;
+    --Modal2: #E8EAED;
 
-    --backgroundColor: #232323;
-    --text1: #B3B3B3;
-    --text2: #9AA0A6;
-    --secondaryText1: #757575;
-    --secondaryText2: #5F6368;
-    /* Specific */
-    --modal1: #202124;
-    --modal2: black;
-    --NavBarBackgroundColor1: #000000;
-    --NavBarBackgroundColor2: #202124;
-    --NavBarBackgroundColorText1:#9E9E9E;
-    --NavBarBackgroundColorText2: #FFFFFF;
-    --NavBarBackgroundColorHover: #1e1d1d;
-    --NavBarBackgroundColorBreak: #555555;
-    --sidebarMenuOptionsBackgroundColor:#000000; 
-    --sidebarMenuOptionsColor:#9E9E9E; 
-    --sidebarMenuOptionsBorderColor: #292929;
-    --sidebarMenuOptionsActive: #ffffff;
-    --sidebarMenuOptionsHover: #ffffff;
-    --darkModeToggleContainerBackground:#ebebeb;
-    --darkModeToggleContainerBoxShadow1:rgba(0,0,0,0.4);
-    --darkModeToggleContainerBoxShadow2:rgba(255,255,255,0.4);
-    --darkModeToggleButtonBoxShadow: rgba(0,0,0,0.2);
-    --darkModeToggleButtonChecked1: #242424;
-    --darkModeToggleButtonChecked2: #3a3a3a;
-    --toggleContainerSun: #FFFFFF;
-    --toggleContainerMoon: #7e7e7e;
+    --bright: 0.5;
+    --toggleBoxShadow: rgba(0, 0, 0, 0.45);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    min-width: 400px;
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-}
 
 main{
     height: 100vh;
@@ -139,7 +78,7 @@ main{
     max-height: 100vh;
     scrollbar-color: gray transparent; 
     scrollbar-width: thin; 
-    background-color: var(--backgroundColor)
+    background: var(--BackgroundColor);
 }
 ::-webkit-scrollbar {
     width: 6px; /* Styling the scrollbar in Chrome and Safari */

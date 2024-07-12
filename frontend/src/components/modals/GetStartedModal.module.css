@@ -82,7 +82,7 @@
 }
 .modalSubTitle{
     display: flex;
-    color: var(--blue);
+    color: var(--Blue);
     font-size: 1.2rem;
     font-style: italic;
     position: relative;
@@ -208,7 +208,7 @@ the css wonky i.e. creates a background color based on the box-shadow
     display: block;
     visibility: hidden;
     font-size: 13px;
-    color: var(--blue);
+    color: var(--Blue);
     padding-top: 2px;
     padding-bottom: 5px;
     padding-left: 0px;
@@ -348,8 +348,8 @@ the css wonky i.e. creates a background color based on the box-shadow
     align-items: center;
     justify-content: center;
     color: white;
-    background-color: var(--blue);
-    border: 2px solid var(--blue);
+    background-color: var(--Blue);
+    border: 2px solid var(--Blue);
     border-radius: 9px;
     font-size: 18px;
     font-weight: 550;
@@ -405,7 +405,7 @@ the css wonky i.e. creates a background color based on the box-shadow
     text-decoration: underline;
 }
 .PageLink:active {
-    background-color: var(--blue);
+    background-color: var(--Blue);
     color: white;
     box-shadow: 0 0 5px rgba(39, 85, 196, 1);
 }

@@ -126,10 +126,10 @@ const NavbarMenu = () => {
         }
     };
     const setDarkMode = () =>{
-        document.querySelector("body").setAttribute("data-theme", "dark");
+        document.querySelector("main").setAttribute("data-theme", "dark");
     };
     const setLightMode = () =>{
-        document.querySelector("body").setAttribute("data-theme", "light");
+        document.querySelector("main").setAttribute("data-theme", "light");
     };
 
     useEffect(() => {
