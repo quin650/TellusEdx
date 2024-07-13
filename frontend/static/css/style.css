@@ -44,13 +44,21 @@ body {
     --NavBarMenu_OptionsBoxShadow1:rgba(0,0,0,0.4);
     --NavBarMenu_OptionsBoxShadow2:rgba(255,255,255,0.4);
     /* footer */
-    --Footer_BackgroundColor: black;
+    --Footer_BackgroundColor: #000000;
     --bright: 1;
     --toggleBoxShadow: rgba(0, 0, 0, 0.163);
     --TableOfContentsBackground: white;
     --TableOfContentsBorder: white;
     --OtherText: white;
     --OffWhite: #dcdcdc;
+    --WhiteToBlack: #FFFFFF;
+    --WhiteToGray: #FFFFFF;
+    --WhiteToDarkGray: #FFFFFF;
+    --WhiteToDarkGray2: #FFFFFF;
+    --BlackToWhite: #000000;
+    --GrayToWhite: gray;
+    --BlackToGray: #000000;
+
 }
 
 [data-theme="dark"] {
@@ -68,6 +76,13 @@ body {
     --TableOfContentsBackground: #B3B3B3;
     --TableOfContentsBorder: #B3B3B3;
     --OtherText: #B3B3B3;
+    --WhiteToBlack: #000000;
+    --WhiteToGray: #B3B3B3;
+    --WhiteToDarkGray: #1d1d1d;
+    --WhiteToDarkGray2: #111111;
+    --BlackToWhite: #FFFFFF;
+    --GrayToWhite: #FFFFFF;
+    --BlackToGray: #B3B3B3;
 }
 
 
