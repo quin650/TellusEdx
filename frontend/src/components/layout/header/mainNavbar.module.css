@@ -1,17 +1,3 @@
-/* .outer_container_nav {              
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    width: 100%;
-    max-width: 3840px;
-    margin: 0 auto;
-    top: 0;
-    z-index: 1000;
-    background-color: #4f4f4f68;
-    transition: top 0.3ms;
-} */
 
 .inner_container_nav {
     display: flex;

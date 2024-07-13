@@ -55,8 +55,10 @@ body {
     --WhiteToGray: #FFFFFF;
     --WhiteToDarkGray: #FFFFFF;
     --WhiteToDarkGray2: #FFFFFF;
+    --WhiteToDarkGray3: #FFFFFF;
     --BlackToWhite: #000000;
     --GrayToWhite: gray;
+    --LightGrayToDarkGray: #c3c3c3;
     --BlackToGray: #000000;
 
 }
@@ -80,9 +82,11 @@ body {
     --WhiteToGray: #B3B3B3;
     --WhiteToDarkGray: #1d1d1d;
     --WhiteToDarkGray2: #111111;
+    --WhiteToDarkGray3: #505050;
     --BlackToWhite: #FFFFFF;
     --GrayToWhite: #FFFFFF;
-    --BlackToGray: #B3B3B3;
+    --LightGrayToDarkGray: #111111;
+    --BlackToGray: #131212;
 }
 
 
