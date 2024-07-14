@@ -23,6 +23,7 @@
     width: 530px;
     border-radius: 27px;
     justify-content: center;
+    border: 2px solid var(--WhiteToBlack);
     background-color: var(--WhiteToBlack);
     color: var(--Text1);
 }
@@ -40,10 +41,10 @@
 }
 .exitButton {
     padding: 10.5px 13px 10.5px 13px;
-    background-color: var(--WhiteToDarkGray);
+    background-color: var(--WhiteToDarkGray2);
 }
 .exitButton:hover {
-    background-color: var(--LightGrayToDarkGray);
+    background-color: var(--LightGrayToDarkGray2);
 }
 .exitSvg {
     width: 14px;
@@ -60,7 +61,6 @@
     width: 530px;
     border-radius: 27px;
     padding: 75px 72px 36px 72px;
-    /* background-color: white; */
     overflow-y: auto; 
 }
 .modalForm {
@@ -133,7 +133,7 @@
     color: var(--BlackToWhite);
     outline: none;
     padding: 0px 0px 0px 18px;
-    border: 2px solid var(--WhiteToDarkGray2);
+    border: 2px solid var(--BlackToDarkGray2);
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 0px;
@@ -376,7 +376,7 @@ the css wonky i.e. creates a background color based on the box-shadow
 /* ********************************************************************* or continue with */
 .orContinueWithContainer{
     width: 100%;
-    color: var(--WhiteToDarkGray3);
+    color: var(--BlackToDarkGray3);
 }
 .orContinueWithTextFormat {
     display: flex;
@@ -402,7 +402,7 @@ the css wonky i.e. creates a background color based on the box-shadow
     margin-right: auto;
 }
 .optionsText {
-    color: var(--WhiteToDarkGray3);
+    color: var(--BlackToDarkGray3);
     margin: 0px auto;
     font-size: 13px;
 }

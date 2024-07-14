@@ -23,8 +23,9 @@
     width: 430px;
     border-radius: 27px;
     justify-content: center;
-    background-color: white;
-    border: 2px solid #9da8bb;
+    border: 2px solid var(--LightBlueToBlack);
+    background-color: var(--WhiteToBlack);
+    color: var(--Text1);
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
@@ -39,16 +40,19 @@
     margin-left: calc(100% - 40px);
 }
 .exitButton {
-    padding: 10.5px 13px 10.5px 13px
+    padding: 10.5px 13px 10.5px 13px;
+    background-color: var(--WhiteToDarkGray2);
 }
 .exitButton:hover {
-    background-color: #c3c3c3;
+    background-color: var(--LightGrayToDarkGray2);
 }
 .exitSvg {
     width: 14px;
     height: 14px;
 }
-
+.exitSvg path{
+    fill: var(--Text1);
+}
 /* ********************************************************************* Modal Content */
 .languageModalContentContainer {
     box-sizing: border-box;
@@ -58,7 +62,6 @@
     min-width: 400px;
     border-radius: 27px;
     padding: 36px 36px 36px 36px;
-    background-color: white;
     overflow-y: scroll;  
     max-height: 545px ; /* Set a maximum height for the scrollable element */
     scrollbar-color: gray transparent ;/* Custom scrollbar styling for Firefox */
@@ -86,7 +89,6 @@
 }
 .modalHeader{
     display: flex;
-    color: black;
     font-size: 2rem;
     position: relative;
     align-items: flex-end;

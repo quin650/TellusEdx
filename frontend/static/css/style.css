@@ -56,11 +56,21 @@ body {
     --WhiteToDarkGray: #FFFFFF;
     --WhiteToDarkGray2: #FFFFFF;
     --WhiteToDarkGray3: #FFFFFF;
-    --BlackToWhite: #000000;
-    --GrayToWhite: gray;
-    --LightGrayToDarkGray: #c3c3c3;
-    --BlackToGray: #000000;
+    --WhiteToDarkGray4:  #FFFFFF;
+    --OffWhiteTODarkGray: #f1f1f1;
+    --OffWhiteTODarkGray2: #dddddd;
+    --OffWhiteTODarkGray3: #eeeeee;
 
+    --BlackToWhite: #000000;
+    --BlackToDarkGray2: #000000;
+    --BlackToDarkGray3: #000000;
+    --GrayToWhite: gray;
+    --LightBlueToBlack: #9da8bb;
+    --LightGrayToDarkGray: #c2c2c2;
+    --LightGrayToDarkGray2: #c2c2c2;
+    --BlackToGray: #000000;
+    --GrayToDarkGray: #c6c6c6;
+    --GrayToDarkGray2: #c6c6c6;
 }
 
 [data-theme="dark"] {
@@ -83,10 +93,21 @@ body {
     --WhiteToDarkGray: #1d1d1d;
     --WhiteToDarkGray2: #111111;
     --WhiteToDarkGray3: #505050;
+    --WhiteToDarkGray4:  #111111;
+    --OffWhiteTODarkGray: #1d1d1d;
+    --OffWhiteTODarkGray2: #131313;
+    --OffWhiteTODarkGray3: #2d2d2d;
+
     --BlackToWhite: #FFFFFF;
+    --BlackToDarkGray2: #111111;
+    --BlackToDarkGray3: #505050;
     --GrayToWhite: #FFFFFF;
+    --LightBlueToBlack:  #000000;
     --LightGrayToDarkGray: #111111;
+    --LightGrayToDarkGray2: #1d1d1d;
     --BlackToGray: #131212;
+    --GrayToDarkGray: #353535;
+    --GrayToDarkGray2: #171717;
 }
 
 

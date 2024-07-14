@@ -6,30 +6,28 @@
     color: #9E9E9E;
     text-decoration: none;
     border-radius: 8px;
-    border: 1px solid white;
-    box-shadow: 1px 2px 1px 0px rgb(255, 255, 255);
-    background-color: white;
+    border: 1px solid var(--WhiteToBlack);
+    box-shadow: 1px 2px 1px 0px var(--WhiteToBlack);
+    background-color: var(--WhiteToDarkGray2);
     transform: translateY(0px);
 }
 .languageOption:hover {
     border: 1px solid black;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: var(--WhiteToDarkGray2);
     transform: translateY(0px);
     cursor: pointer;
 }
-/* click  - press down */
-.languageOption:active {
+.languageOption:active {/* click  - press down */
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #eeeeee;
     transform: translateY(1px);
 }
-/* click  - release */
-.languageOption:focus {
+.languageOption:focus {/* click  - release */
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: var(--WhiteToDarkGray2);
     transform: translateY(0px);
 }
 .languageOption.isChecked {
@@ -46,22 +44,20 @@
     transform: translateY(0px);
     cursor: pointer;
 }
-/* click  - press down */
-.languageOption.isChecked:active{
+.languageOption.isChecked:active{/* click  - press down */
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #eeeeee;
     transform: translateY(1px);
 }
-/* click  - release */
-.languageOption.isCheckedSpanish:focus {
+.languageOption.isChecked:focus {/* click  - release */
     border: 1px solid #eeeeee;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
     background-color: #f1f1f1;
     transform: translateY(0px);
 }
 .break{
-    border: 1px solid rgb(198, 198, 198);
+    border: 1px solid var(--GrayToDarkGray2);
     margin-top: 10px;
     margin-bottom: 10px;
 }
