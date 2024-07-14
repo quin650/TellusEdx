@@ -6,55 +6,55 @@
     color: #9E9E9E;
     text-decoration: none;
     border-radius: 8px;
+    transform: translateY(0px);
     border: 1px solid var(--WhiteToBlack);
     box-shadow: 1px 2px 1px 0px var(--WhiteToBlack);
     background-color: var(--WhiteToDarkGray2);
-    transform: translateY(0px);
 }
 .languageOption:hover {
-    border: 1px solid black;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--WhiteToDarkGray2);
     transform: translateY(0px);
     cursor: pointer;
+    border: 1px solid black;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--WhiteToDarkGray);
 }
 .languageOption:active {/* click  - press down */
-    border: 1px solid #eeeeee;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #eeeeee;
     transform: translateY(1px);
+    border: 1px solid var(--OffWhiteTODarkGray3);
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--OffWhiteTODarkGray3);
 }
 .languageOption:focus {/* click  - release */
-    border: 1px solid #eeeeee;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--WhiteToDarkGray2);
     transform: translateY(0px);
+    border: 1px solid var(--WhiteToDarkGray5);
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--WhiteToDarkGray5);
 }
 .languageOption.isChecked {
+    transform: translateY(0px);
     border: 1px solid #000000;
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #f1f1f1;
-    transform: translateY(0px);
+    background-color: var(--OffWhiteTODarkGray);
     
 }
 .languageOption.isChecked:hover{
-    border: 1px solid #000000;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #dddddd;
     transform: translateY(0px);
     cursor: pointer;
+    border: 1px solid #000000;
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--OffWhiteTODarkGray4);
 }
 .languageOption.isChecked:active{/* click  - press down */
-    border: 1px solid #eeeeee;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #eeeeee;
     transform: translateY(1px);
+    border: 1px solid var(--OffWhiteTODarkGray3);
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--OffWhiteTODarkGray3);
 }
 .languageOption.isChecked:focus {/* click  - release */
-    border: 1px solid #eeeeee;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: #f1f1f1;
     transform: translateY(0px);
+    border: 1px solid var(--OffWhiteTODarkGray3);
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
+    background-color: var(--OffWhiteTODarkGray3);
 }
 .break{
     border: 1px solid var(--GrayToDarkGray2);

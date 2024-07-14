@@ -57,9 +57,12 @@ body {
     --WhiteToDarkGray2: #FFFFFF;
     --WhiteToDarkGray3: #FFFFFF;
     --WhiteToDarkGray4:  #FFFFFF;
+    --WhiteToDarkGray5:  #FFFFFF;
     --OffWhiteTODarkGray: #f1f1f1;
     --OffWhiteTODarkGray2: #dddddd;
     --OffWhiteTODarkGray3: #eeeeee;
+    --OffWhiteTODarkGray4: #dddddd;
+
 
     --BlackToWhite: #000000;
     --BlackToDarkGray2: #000000;
@@ -88,15 +91,17 @@ body {
     --TableOfContentsBackground: #B3B3B3;
     --TableOfContentsBorder: #B3B3B3;
     --OtherText: #B3B3B3;
-    --WhiteToBlack: #000000;
+    --WhiteToBlack: #000000;/* used */
     --WhiteToGray: #B3B3B3;
-    --WhiteToDarkGray: #1d1d1d;
-    --WhiteToDarkGray2: #111111;
+    --WhiteToDarkGray: #1d1d1d;/* used */
+    --WhiteToDarkGray2: #111111;/* used */
     --WhiteToDarkGray3: #505050;
     --WhiteToDarkGray4:  #111111;
+    --WhiteToDarkGray5:  #3e3e3e;/* used */
     --OffWhiteTODarkGray: #1d1d1d;
     --OffWhiteTODarkGray2: #131313;
-    --OffWhiteTODarkGray3: #2d2d2d;
+    --OffWhiteTODarkGray3: #3e3e3e;/* used */
+    --OffWhiteTODarkGray4: #292929;/* used */
 
     --BlackToWhite: #FFFFFF;
     --BlackToDarkGray2: #111111;
@@ -107,7 +112,7 @@ body {
     --LightGrayToDarkGray2: #1d1d1d;
     --BlackToGray: #131212;
     --GrayToDarkGray: #353535;
-    --GrayToDarkGray2: #171717;
+    --GrayToDarkGray2: #171717;/* used */
 }
 
 
