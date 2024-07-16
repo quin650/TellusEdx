@@ -18,6 +18,17 @@ const App = () => {
     const location = useLocation();
     const [contents, setContents] = useState([]);
     const [activePage, setActivePage] = useState('');
+
+    useEffect(()=>{
+        const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches
+        if (isDark){
+            document.querySelector("main").setAttribute("data-theme", "dark");
+        } else{
+            document.querySelector("main").setAttribute("data-theme", "light");
+        }
+        dispatch(userReducerActions.setDarkLightMode(isDark));
+    },[])
+
     useEffect(() => {
         if (location.pathname === '/demo') {
             dispatch(userReducerActions.setDemoView());

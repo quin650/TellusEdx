@@ -118,18 +118,38 @@ const NavbarMenu = () => {
     const OpenLanguageSettingsModal = () => {
         dispatch(userReducerActions.languageSettingsModalOpen());
     }
-    const toggleTheme = (e) => {
-        if (e.target.checked){
-            setDarkMode();
-        } else {
-            setLightMode();
-        }
-    };
+
+
+    const isDarkMode = useSelector(({ user }) => user.isDarkMode)
+    const [isChecked, setIsChecked] = useState(false);
+
     const setDarkMode = () =>{
         document.querySelector("main").setAttribute("data-theme", "dark");
     };
     const setLightMode = () =>{
         document.querySelector("main").setAttribute("data-theme", "light");
+    };
+
+    useEffect(()=>{
+        if (isDarkMode){
+            setDarkMode();
+            setIsChecked(true)
+        } else{
+            setLightMode();
+            setIsChecked(false)
+        }
+    },[isDarkMode]);
+
+    const toggleTheme = (e) => {
+        if (e.target.checked){
+            setDarkMode();
+            setIsChecked(true)
+            dispatch(userReducerActions.setDarkLightModeToTrue(true));
+        } else {
+            setLightMode();
+            setIsChecked(false)
+            dispatch(userReducerActions.setDarkLightModeToFalse(false));
+        }
     };
 
     useEffect(() => {
@@ -206,6 +226,7 @@ const NavbarMenu = () => {
                                         className={classes.toggleCheckBox} 
                                         type="checkbox" 
                                         id="theme-toggle"
+                                        checked={isChecked}
                                         onChange={toggleTheme}
                                     />
                                     <div className={classes.darkModeToggleButton}></div>

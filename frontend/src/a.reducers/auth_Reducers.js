@@ -9,6 +9,7 @@ const initialState = {
 	getStartedView: '',
 	languageSettingsModalStatus: false,
 	languageCurrent_rdx: '',
+	isDarkMode: false,
 	isAuthenticated: false,
 	isDemoView: false,
 	isDashboardFullScreen: true,
@@ -261,6 +262,15 @@ const userSlice = createSlice({
         },
         languageSettingsHindi(state){
             state.languageCurrent_rdx = 'Hindi';
+        },
+		setDarkLightMode(state, action){
+            state.isDarkMode = action.payload;
+        },
+		setDarkLightModeToTrue(state){
+            state.isDarkMode = true;
+        },
+		setDarkLightModeToFalse(state){
+            state.isDarkMode = false;
         },
 	},
 });
