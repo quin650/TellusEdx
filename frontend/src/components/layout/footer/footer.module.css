@@ -60,7 +60,7 @@
     font-weight: 100;
     cursor: pointer;
     margin-top: 5px;
-    color: #B3B3B3;
+    color: #b3b3b3;
 }
 .companyName:hover{
     color: var(--Blue);
@@ -128,7 +128,7 @@
     font-size: 19px;
     text-decoration: none;
     font-weight: 300;
-    color: #B3B3B3;
+    color: #b3b3b3;
     display: block;
     transition: all 0.3s ease;
     min-width: 140px;
@@ -163,7 +163,7 @@
     width: 40px;
     line-height: 40px;/* Somehow this line-height affects the positioning of the icon within the circle container */
     font-size: 32px;
-    color: #B3B3B3;
+    color: #b3b3b3;
     background-color: var(--Black);
     text-align: center;
     align-items: center;
@@ -188,7 +188,7 @@
     justify-content: center;
     text-align: center;
     background-color: black;
-    color: #B3B3B3;
+    color: #b3b3b3;
     height: 1vh;
     min-height: 12px;
     padding-top: 16px;

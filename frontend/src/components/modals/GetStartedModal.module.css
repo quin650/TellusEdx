@@ -9,7 +9,7 @@
     left: 0%;
     margin: 0;
     padding: 0;
-    background-color: rgb(175, 175, 175, 40%);
+    background-color: var(--BlurredBackground);
     justify-content: center;
     align-items: center;
     font-family: Roboto;
@@ -25,7 +25,7 @@
     justify-content: center;
     border: 2px solid var(--WhiteToBlack);
     background-color: var(--WhiteToBlack);
-    color: var(--Text1);
+    color: var(--BlackToGray);
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
@@ -51,7 +51,7 @@
     height: 14px;
 }
 .exitSvg path{
-    fill: var(--Text1);
+    fill: var(--BlackToGray);
 }
 /* ********************************************************************* Modal Content */
 .modalContentContainer {
@@ -71,7 +71,6 @@
 }
 .modalTitle{
     display: flex;
-    /* color: black; */
     font-size: 2rem;
     position: relative;
     align-items: flex-end;
@@ -79,7 +78,6 @@
 }
 .modalTitle2{
     display: flex;
-    /* color: black; */
     font-size: 2rem;
     position: relative;
     align-items: flex-end;

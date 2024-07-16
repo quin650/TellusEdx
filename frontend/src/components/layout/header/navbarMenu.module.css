@@ -61,7 +61,7 @@
     margin-left: 23px;
     font-weight:lighter;
     cursor: pointer;
-    color: var(--OtherText);
+    color: var(--WhiteToGray);
     text-decoration: none; 
 }
 .companyName:hover{

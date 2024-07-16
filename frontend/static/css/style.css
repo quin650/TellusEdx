@@ -2,11 +2,9 @@
 * {
     box-sizing: border-box;
 }
-
 html {
     font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -14,105 +12,64 @@ body {
     width: 100vw;
     height: 100vh;
 }
-
-/* previous version --light?  */
 .root {
-    --White: #ffffff;
-    --Gray: #b3b3b3;
-    --DarkGray: #ffffff33;
-    --Black: black;
-    --Darkgray: #1d1d1d;
+    --OffWhite: #dcdcdc;
     --Blue: #2755c4;
-
-    /* new  */
     --BlueHover: #3e66c4;
     --BackgroundColor: white;
-    --Text1: #000000;
-    --Text1_secondary: #757575;
-    --BlurredBackground: rgb(175, 175, 175, 40%);
-    /* modal */
-    --Modal1: #FFFFFF;
-    --Modal2: #E8EAED;
-    /* Navbar */
-    --MainNavBar_BackgroundColor1: #000000;
-    --MainNavBar_BackgroundColorText1: #F0F2F5;
-    --MainNavBar_BackgroundColorText2: #FFFFFF;
-
-    /* Navbar Menu*/
-    --NavBarMenu_MenuItem: #FFFFFF;
-    --NavBarMenu_MenuItemColor: #9E9E9E;
-    --NavBarMenu_OptionsBoxShadow1:rgba(0,0,0,0.4);
-    --NavBarMenu_OptionsBoxShadow2:rgba(255,255,255,0.4);
-    /* footer */
-    --Footer_BackgroundColor: #000000;
-    --bright: 1;
-    --toggleBoxShadow: rgba(0, 0, 0, 0.163);
-    --TableOfContentsBackground: white;
-    --TableOfContentsBorder: white;
-    --OtherText: white;
-    --OffWhite: #dcdcdc;
     --WhiteToBlack: #FFFFFF;
     --WhiteToGray: #FFFFFF;
     --WhiteToDarkGray: #FFFFFF;
     --WhiteToDarkGray2: #FFFFFF;
     --WhiteToDarkGray3: #FFFFFF;
-    --WhiteToDarkGray4:  #FFFFFF;
     --WhiteToDarkGray5:  #FFFFFF;
     --OffWhiteTODarkGray: #f1f1f1;
     --OffWhiteTODarkGray2: #dddddd;
     --OffWhiteTODarkGray3: #eeeeee;
     --OffWhiteTODarkGray4: #dddddd;
-
-
     --BlackToWhite: #000000;
+    --BlackToGray: #000000;
     --BlackToDarkGray2: #000000;
     --BlackToDarkGray3: #000000;
     --GrayToWhite: gray;
     --LightBlueToBlack: #9da8bb;
     --LightGrayToDarkGray: #c2c2c2;
     --LightGrayToDarkGray2: #c2c2c2;
-    --BlackToGray: #000000;
     --GrayToDarkGray: #c6c6c6;
     --GrayToDarkGray2: #c6c6c6;
+    --IconBrightness: 1;
+    --BlurredBackground: rgba(175, 175, 175, 0.4);
+    --toggleBoxShadow: rgba(0, 0, 0, 0.163);
+    --MainNavBar_BackgroundColor1: #000000;
+    --MainNavBar_BackgroundColorText1: #F0F2F5;
+    --MainNavBar_BackgroundColorText2: #FFFFFF;
+    --NavBarMenu_MenuItem: #FFFFFF;
+    --NavBarMenu_MenuItemColor: #9E9E9E;
+    --NavBarMenu_OptionsBoxShadow1:rgba(0,0,0,0.4);
+    --NavBarMenu_OptionsBoxShadow2:rgba(255,255,255,0.4);
 }
-
 [data-theme="dark"] {
-    /* new  */
-    --BackgroundColor: #232323;
-    --Text1: #B3B3B3;
-    --Text1_secondary: #FFFFFF;
-    --BlurredBackground: rgb(175, 175, 175, 40%);
-    /* modal */
-    --Modal1: #FFFFFF;
-    --Modal2: #E8EAED;
-
-    --bright: 0.5;
-    --toggleBoxShadow: rgba(0, 0, 0, 0.45);
-    --TableOfContentsBackground: #B3B3B3;
-    --TableOfContentsBorder: #B3B3B3;
-    --OtherText: #B3B3B3;
-    --WhiteToBlack: #000000;/* used */
-    --WhiteToGray: #B3B3B3;
-    --WhiteToDarkGray: #1d1d1d;/* used */
-    --WhiteToDarkGray2: #111111;/* used */
-    --WhiteToDarkGray3: #505050;
-    --WhiteToDarkGray4:  #111111;
-    --WhiteToDarkGray5:  #3e3e3e;/* used */
+    --BackgroundColor: #232323;      
+    --WhiteToBlack: #000000;        
+    --WhiteToGray: #B3B3B3;            
+    --WhiteToDarkGray: #1d1d1d;       
+    --WhiteToDarkGray2: #111111;        
+    --WhiteToDarkGray5:  #3e3e3e;
     --OffWhiteTODarkGray: #1d1d1d;
-    --OffWhiteTODarkGray2: #131313;
-    --OffWhiteTODarkGray3: #3e3e3e;/* used */
-    --OffWhiteTODarkGray4: #292929;/* used */
-
-    --BlackToWhite: #FFFFFF;
+    --OffWhiteTODarkGray3: #3e3e3e;
+    --OffWhiteTODarkGray4: #292929;
+    --BlackToWhite: #FFFFFF;           
+    --BlackToGray: #B3B3B3;            
     --BlackToDarkGray2: #111111;
     --BlackToDarkGray3: #505050;
     --GrayToWhite: #FFFFFF;
     --LightBlueToBlack:  #000000;
     --LightGrayToDarkGray: #111111;
     --LightGrayToDarkGray2: #1d1d1d;
-    --BlackToGray: #131212;
-    --GrayToDarkGray: #353535;
-    --GrayToDarkGray2: #171717;/* used */
+    --GrayToDarkGray2: #171717;         
+    --IconBrightness: 0.5;              
+    --BlurredBackground: rgba(35, 35, 35, 0.4);
+    --toggleBoxShadow: rgba(0, 0, 0, 0.45);
 }
 
 
@@ -145,9 +102,6 @@ main{
 ::-webkit-scrollbar-track {/* the area that the thumb moves within. */
     background: transparent;
 }
-
-
-
 header{
     scroll-snap-align: start;
     -webkit-scroll-snap-align: start;
@@ -157,10 +111,7 @@ section{
     -webkit-scroll-snap-align: start;
     height: 100vh;
 }
-
 footer{
     scroll-snap-align: start;
     -webkit-scroll-snap-align: start;
 }
-
-

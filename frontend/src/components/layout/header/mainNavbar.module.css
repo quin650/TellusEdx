@@ -8,7 +8,6 @@
     width: 100vw;
     padding: 0;
     margin: 0;
-    color: var(--MainNavBar_BackgroundColor1);
 }
 
 @media(max-width: 475px){

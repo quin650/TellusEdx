@@ -25,7 +25,7 @@
     justify-content: center;
     border: 2px solid var(--LightBlueToBlack);
     background-color: var(--WhiteToBlack);
-    color: var(--Text1);
+    color: var(--BlackToGray);
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
@@ -51,7 +51,7 @@
     height: 14px;
 }
 .exitSvg path{
-    fill: var(--Text1);
+    fill: var(--WhiteToGray);
 }
 /* ********************************************************************* Modal Content */
 .languageModalContentContainer {

@@ -39,7 +39,7 @@
     align-items: center;
     height: 80vh;
     pointer-events: none; /* Text ignores pointer events, allows for the icons to still be selected even-though they are set behind the text */
-    color: var(--Text1);
+    color: var(--BlackToGray);
 }
 .caption h1 {
     font-size: 6rem;
@@ -69,35 +69,35 @@
 
 .Logo1 { height: 119.00px;  width: 119.00px;
     position: absolute; z-index: 100; top: calc(10vh + 16px);     left: -3px;     transform: rotate(-18deg);  
-    border-radius: 2px ;  box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a; filter: brightness(var(--bright));
+    border-radius: 2px ;  box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a; filter: brightness(var(--IconBrightness));
 }
 .Logo2 { height: 71.00px;   width: 71.00px;
     position: absolute; z-index: 90;  top: calc(10vh + 24px);     left: 103px;    transform: rotate(-2deg);
-    border-radius: 2px ;  box-shadow: -6px -6px 12px #9e9ef7, 6px 6px 12px #3e41a0; filter: brightness(var(--bright));
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #9e9ef7, 6px 6px 12px #3e41a0; filter: brightness(var(--IconBrightness));
 }
 .Logo3 { height: 59.00px;   width: 59.00px;
     position: absolute; z-index: 80;  top: calc(10vh + 59px);   left: 154px;    transform: rotate(-12deg);
-    border-radius: 2px ;  box-shadow: -6px -6px 12px #fad7a2, 6px 6px 12px #a1734a; filter: brightness(var(--bright));
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #fad7a2, 6px 6px 12px #a1734a; filter: brightness(var(--IconBrightness));
 }
 .Logo4 { height: 73.00px;   width: 73.00px;
     position: absolute; z-index: 70;  top: calc(10vh + 97px);    left: 65px;     transform: rotate(8deg);
-    border-radius: 2px ; box-shadow:  -6px -6px 12px #fcff99, 6px 6px 12px #737135; filter: brightness(var(--bright));
+    border-radius: 2px ; box-shadow:  -6px -6px 12px #fcff99, 6px 6px 12px #737135; filter: brightness(var(--IconBrightness));
 }
 .Logo5 { height: 90.00px;   width: 90.00px;
     position: absolute; z-index: 95;  top: calc(10vh + 103px);    left: 280px;    transform: rotate(24deg);
-    border-radius: 2px ; box-shadow: -8px -8px 16px #b3ff99, 8px 8px 16px #4c7c39; filter: brightness(var(--bright));
+    border-radius: 2px ; box-shadow: -8px -8px 16px #b3ff99, 8px 8px 16px #4c7c39; filter: brightness(var(--IconBrightness));
 }
 .Logo6 { height: 64.00px;   width: 64.00px;
     position: absolute; z-index: 80;  top: calc(10vh + 204px);    left: 175px;    transform: rotate(0deg);
-    border-radius: 2px ;  box-shadow: -6px -6px 12px #ffff99, 6px 6px 12px #737135; filter: brightness(var(--bright));
+    border-radius: 2px ;  box-shadow: -6px -6px 12px #ffff99, 6px 6px 12px #737135; filter: brightness(var(--IconBrightness));
 }
 .Logo7 { height: 71.00px;   width: 71.00px;
     position: absolute; z-index: 20;  top: calc(10vh + 278px);    left: 317px;    transform: rotate(20deg);
-    border-radius: 2px ; box-shadow: -6px -6px 12px  #b7f99e, 6px 6px 12px #3c6d35; filter: brightness(var(--bright));
+    border-radius: 2px ; box-shadow: -6px -6px 12px  #b7f99e, 6px 6px 12px #3c6d35; filter: brightness(var(--IconBrightness));
 }
 .Logo8 { height: 40.00px;   width: 40.00px;
     position: absolute; z-index: 10;  top: calc(10vh + 363px);    left: 275px;    transform: rotate(-30deg);
-    border-radius: 2px ;  box-shadow: -4px -4px 8px #ce99ff, 4px 4px 8px #784aa1; filter: brightness(var(--bright));
+    border-radius: 2px ;  box-shadow: -4px -4px 8px #ce99ff, 4px 4px 8px #784aa1; filter: brightness(var(--IconBrightness));
 }
 
 .Logo1:hover, .Logo2:hover, .Logo3:hover, .Logo4:hover, .Logo5:hover, .Logo6:hover, .Logo7:hover, .Logo8:hover {
