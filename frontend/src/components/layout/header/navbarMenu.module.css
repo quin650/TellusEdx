@@ -192,24 +192,25 @@
     display: block;
     background: #ebebeb;
     border-radius: 30px; 
-    box-shadow: inset 0px 2.5px 7.5px rgba(0,0,0,0.4), inset 0px -2.5px 7.5px rgba(255,255,255,0.4);
     cursor: pointer;
     transition: 0.3s;
     overflow: hidden;
 }
-.toggleCheckBox {
+.toggleCheckBox{
     width: 0;
     height: 0;
     visibility: hidden;
 }
-.toggleCheckBox:checked + .darkModeToggleContainer {
-    background: #242424;
+.toggleCheckBox:checked ~ .darkModeToggleContainer {
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), inset 0px -1px 3px rgba(255, 255, 255, 0.5);
+    background: #3e3e3e; 
 }
-.toggleCheckBox:checked + .darkModeToggleButton {
+.toggleCheckBox:checked ~ .darkModeToggleContainer .darkModeToggleButton {
     left: 58px;
     transform: translateX(-100%);
-    background: linear-gradient(180deg,#777,#3a3a3a);
+    background: linear-gradient(180deg,#454545,#3a3a3a);
 }
+
 .darkModeToggleContainer:active .darkModeToggleButton{ 
     width: 40px; 
     transition: 0.3s;
@@ -223,7 +224,6 @@
     left: 2px;
     background: linear-gradient(180deg, #ffcc89, #d8860b);
     border-radius: 50%;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
     transition: 0.3s;
 }
 /* icons */
