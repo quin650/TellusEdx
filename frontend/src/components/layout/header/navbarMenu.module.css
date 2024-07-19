@@ -177,6 +177,7 @@
     height: 52px;
     width: 260px;
     cursor: pointer;
+    justify-content: center;
 }
 .darkModeMenuItem:hover {
     background-color: #1e1d1d;
@@ -184,7 +185,12 @@
 .darkModeMenuItem span {
     margin-right: auto;
 }
-/* Toggle Section */                                               /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
+/* Toggle Section */   
+                                            /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
+
+.darkModeToggleAndInputContainer{
+    display: flex;
+}
 .darkModeToggleContainer {
     width: 60px;
     height: 30px; 

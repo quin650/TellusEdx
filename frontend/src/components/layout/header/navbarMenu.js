@@ -221,19 +221,19 @@ const NavbarMenu = () => {
                             <label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>
                                 <span>Dark Mode</span>
-                                <div>
-                                    <input 
-                                        className={classes.toggleCheckBox} 
-                                        type="checkbox" 
-                                        id="theme-toggle"
-                                        checked={isChecked}
-                                        onChange={toggleTheme}
-                                    />
-                                    <div className={classes.darkModeToggleContainer}>
-                                        <div className={classes.darkModeToggleButton}></div>
-                                        {sunIcon}
-                                        {moonIcon}
-                                    </div>
+                                    <div className={classes.darkModeToggleAndInputContainer}>
+                                        <input 
+                                            className={classes.toggleCheckBox} 
+                                            type="checkbox" 
+                                            id="theme-toggle"
+                                            checked={isChecked}
+                                            onChange={toggleTheme}
+                                        />
+                                        <div className={classes.darkModeToggleContainer}>
+                                            <div className={classes.darkModeToggleButton}></div>
+                                            {sunIcon}
+                                            {moonIcon}
+                                        </div>
                                 </div>
                             </label>    
                         </div>
