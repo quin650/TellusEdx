@@ -13,7 +13,9 @@
     justify-content: center;
 }
 .authButton:active {
-    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: var(--OffWhite);
+    border: 2px solid rgb(51, 51, 51);
+
 }
 /* ********************************************************************* twitterX */
 .twitterXIcon{
