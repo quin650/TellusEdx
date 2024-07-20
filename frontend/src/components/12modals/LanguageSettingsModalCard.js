@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from '../../../src/a.reducers/auth_Reducers';
+import { userReducerActions } from '../../a.reducers/auth_Reducers';
 import classes from './LanguageSettingsModalCard.module.css';
 
 const LanguageSettingsModalCard = (props)=>{

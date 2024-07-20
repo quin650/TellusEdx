@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import SearchBar from './searchBar';
-import GetStartedButton from '../../modals/GetStartedButton';
+import GetStartedButton from '../../12modals/GetStartedButton';
 import { logout_APIAction } from '../../../a.actions/auth_Actions';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import Logo from '../../../../static/images/1Logo.png';

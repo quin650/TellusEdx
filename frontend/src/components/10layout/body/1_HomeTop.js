@@ -1,5 +1,5 @@
 import React from "react";
-import GetStartedButton from "../../modals/GetStartedButton";
+import GetStartedButton from "../../12modals/GetStartedButton";
 import Logo1 from '../../../../static/images/Logo1.png';
 import Logo2 from '../../../../static/images/Logo2.png';
 import Logo3 from '../../../../static/images/Logo3.png';

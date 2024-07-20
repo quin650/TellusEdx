@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import classes from './TableOfContents_Section.modules.css'
 
 const TableOfContents_Section = (props) => {

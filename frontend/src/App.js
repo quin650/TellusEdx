@@ -2,14 +2,14 @@ import React, { useState, Fragment, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { Route, Routes, useLocation} from 'react-router-dom';
 import { userReducerActions } from './a.reducers/auth_Reducers';
-import MainNavbar from './components/layout/header/mainNavbar';
-import Footer from './components/layout/footer/footer';
-import Home from './components/pages/home';
-import Demo from './components/pages/demo';
-import AboutUs from './components/pages/aboutUs';
-import SupportCenter from './components/pages/supportCenter';
-import Help from './components/pages/help';
-import TableOfContents from './components/features/1TableOfContents';
+import MainNavbar from './components/10layout/header/mainNavbar';
+import Footer from './components/10layout/footer/footer';
+import Home from './components/11pages/home';
+import Demo from './components/11pages/demo';
+import AboutUs from './components/11pages/aboutUs';
+import SupportCenter from './components/11pages/supportCenter';
+import Help from './components/11pages/help';
+import TableOfContents from './components/13features/1TableOfContents';
 // import { checkAuthenticated } from './a.actions/auth_Actions';
 
 const App = () => {

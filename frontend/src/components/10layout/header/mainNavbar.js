@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavbarMenuButton from './navbarMenuButton';
-import GetStartedButton from '../../modals/GetStartedButton';
+import GetStartedButton from '../../12modals/GetStartedButton';
 import Logo from '../../../../static/images/Logo_arrows.png';
 // import defaultPNG from '../../../../static/images/1Avatar.png';
 import classes from './mainNavbar.module.css';

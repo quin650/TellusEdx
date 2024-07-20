@@ -1,9 +1,9 @@
 import React , { useState, useEffect, useRef, Fragment, useCallback } from "react";
-import classes from './demo.module.css'
+import classes from './dashboard.module.css'
 import pdf from './pdf1.pdf'
-import DemoNavbar from "../layout/header/demoNavbar";
+import DashBoardNavbar from "../10layout/header/DashBoardNavbar";
 
-const Demo = () => {                
+const Dashboard = () => {                
     const [pdfState, setPdfState] = useState({
         pdfUrl: pdf,                                                    //The Document URL/File Location
         pdfDocument: null,                                              //The Document Object (before being set)
@@ -18,7 +18,6 @@ const Demo = () => {
     const [isFullScreen, setIsFullScreen] = useState(false);            //
     let pageNumIsPending = null;                                        //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
     const canvasRef = useRef(null);                                     //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
-
     //!Set pdfDocument, FullScreen Scale
     useEffect(()=>{
         //!Get Document
@@ -77,7 +76,6 @@ const Demo = () => {
             renderPage(pdfState.pageNum);                               //Render the Page (pageNum is initially set to page# 1)
         }
     }, [pdfState.pageNum, pdfState.scale, triggerRerender]);            //Removed "pdfDocument"...
-
     //!Render the page
     const renderPage = useCallback(async (num) =>{                      //Function for rendering page
         //console.log("Rendering page number:", num);
@@ -126,7 +124,6 @@ const Demo = () => {
             console.error('Error rendering page:', error);
         }
     }, [pdfState.scale, pageIsRendering, pdfState.pdfDocument]);
-
     //!Prev-Next Page
     const showNextPage = () => {                                        //if page is greater than or equal to maxPages, return and do nothing  
         let newVal = pdfState.pageNum + 1
@@ -152,7 +149,6 @@ const Demo = () => {
             }));   
         }                
     };
-
     //!Page Input Field 
     const handleInputChange = (e) => {
         const val = e.target.value;
@@ -183,7 +179,6 @@ const Demo = () => {
             clearTimeout(identifier);
         }
     }, [pdfState.inputValue])
-
     //!Zoom Functionality
     const zoomIn = () => {
         setPdfState(prevState => ({
@@ -197,7 +192,6 @@ const Demo = () => {
             scale: prevState.scale - 0.5                                // Decreasing the scale by 0.5
         }));
     }
-
     //!Event Listeners
     const handleKeyDown = (e) => {
         if (e.key =="ArrowRight"){
@@ -212,7 +206,6 @@ const Demo = () => {
             document.removeEventListener("keydown", handleKeyDown);     // Ensure to remove the event listener on component unmount or before re-adding
         };
     },[pdfState.pageNum, pdfState.pdfDocument])                         //Include pageNum and pdfDocument to ensure the listener updates
-
     //!FullScreen
     useEffect(() => {
         if (isFullScreen) {
@@ -245,7 +238,7 @@ const Demo = () => {
     }, []);
     return (
         <Fragment>
-            <DemoNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen}/>
+            <DashBoardNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen}/>
             <div id="my_pdf_viewer" className={classes.pdf_viewer}>
                 <div id="canvas_container" className={classes.canvas_container}>
                     <canvas ref={canvasRef} id="canvas"></canvas>
@@ -266,4 +259,4 @@ const Demo = () => {
         </Fragment>
     );
 };
-export default Demo;
+export default Dashboard

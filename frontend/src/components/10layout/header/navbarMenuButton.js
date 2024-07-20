@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
-import GetStartedModal from '../../modals/GetStartedModal';
-import LanguageSettingsModal from '../../modals/LanguageSettingsModal';
+import GetStartedModal from '../../12modals/GetStartedModal';
+import LanguageSettingsModal from '../../12modals/LanguageSettingsModal';
 import NavbarMenu from './navbarMenu';
 import classes from './NavbarMenuButton.module.css';
 
