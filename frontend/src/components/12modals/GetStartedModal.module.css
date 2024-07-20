@@ -39,13 +39,14 @@
     height: 40px;
     width: 40px;
     margin-left: calc(100% - 40px);
+    background-color: var(--OffWhiteTODarkGray);
 }
 .exitButton {
     padding: 10.5px 13px 10.5px 13px;
-    background-color: var(--WhiteToDarkGray2);
+    color: var(--BlackToDarkGray2);
 }
 .exitButton:hover {
-    background-color: var(--LightGrayToDarkGray2);
+    background-color: var(--GrayToDarkGray2);
 }
 .exitSvg {
     width: 14px;
