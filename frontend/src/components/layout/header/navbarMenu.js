@@ -6,12 +6,12 @@ import GetStartedButton from '../../modals/GetStartedButton';
 import { logout_APIAction } from '../../../a.actions/auth_Actions';
 import { userReducerActions } from '../../../a.reducers/auth_Reducers';
 import Logo from '../../../../static/images/1Logo.png';
-import usaFlagImg from '../../../../static/images/countries/1UnitedStates.png';
 import classes from './NavbarMenu.module.css';
 
 const NavbarMenu = () => {
     const navBarRef = useRef();
     const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
+    const activeFlag = useSelector(({ user }) => user.activeFlag);
     const dispatch = useDispatch();
     const location = useLocation();
     const [activeIcon, setActiveIcon] = useState('/');
@@ -94,7 +94,6 @@ const NavbarMenu = () => {
             <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     );
-
     // useEffects
     useEffect(() => {  
         window.addEventListener('keydown', onEscKey_ExitModal);
@@ -103,7 +102,6 @@ const NavbarMenu = () => {
     useEffect(() => {
         setActiveIcon(location.pathname);
     }, [location]);
-
     // Functions
     const LogInHandler = () => {
         dispatch(userReducerActions.getStartedModalLogIn());
@@ -118,18 +116,14 @@ const NavbarMenu = () => {
     const OpenLanguageSettingsModal = () => {
         dispatch(userReducerActions.languageSettingsModalOpen());
     }
-
-
     const isDarkMode = useSelector(({ user }) => user.isDarkMode)
     const [isChecked, setIsChecked] = useState(false);
-
     const setDarkMode = () =>{
         document.querySelector("main").setAttribute("data-theme", "dark");
     };
     const setLightMode = () =>{
         document.querySelector("main").setAttribute("data-theme", "light");
     };
-
     useEffect(()=>{
         if (isDarkMode){
             setDarkMode();
@@ -139,7 +133,6 @@ const NavbarMenu = () => {
             setIsChecked(false)
         }
     },[isDarkMode]);
-
     const toggleTheme = (e) => {
         if (e.target.checked){
             setDarkMode();
@@ -151,7 +144,6 @@ const NavbarMenu = () => {
             dispatch(userReducerActions.setDarkLightModeToFalse(false));
         }
     };
-
     useEffect(() => {
         languageSettingsModalStatusRef.current = languageSettingsModalStatus;
     }, [languageSettingsModalStatus]);
@@ -169,7 +161,6 @@ const NavbarMenu = () => {
             exitNavBarAction();
         }
     };
-
     const [navState, setNavState] = useState(false)
     useEffect(()=>{
         if (navbarMenuStatus){
@@ -216,7 +207,7 @@ const NavbarMenu = () => {
                             <Link onClick={OpenLanguageSettingsModal} to='#' className={classes.sidebarMenuOptions}>
                                 <i className={classes.languageIcon}>{languageIcon}</i>
                                 <span>Language</span>
-                                <img src={usaFlagImg} alt='Logo' className={classes.flag} tabIndex="0"></img>     
+                                <img src={activeFlag} alt='Logo' className={classes.flag} tabIndex="0"></img>     
                             </Link>
                             <label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
                                 <i className={classes.icon}>{darkModeIcon}</i>

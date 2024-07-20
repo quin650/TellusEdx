@@ -8,7 +8,8 @@ const initialState = {
 	getStartedModalStatus: false,
 	getStartedView: '',
 	languageSettingsModalStatus: false,
-	languageCurrent_rdx: '',
+	languageCurrent_rdx: 'English',
+	activeFlag:  '../../../../static/images/countries/1UnitedStates.png',
 	isDarkMode: false,
 	isAuthenticated: false,
 	isDemoView: false,
@@ -226,6 +227,46 @@ const userSlice = createSlice({
 		},
 		languageSettingsChange(state, action){
             state.languageCurrent_rdx = action.payload;
+			switch (action.payload){
+				case 'English':
+					state.activeFlag = '../../../../static/images/countries/1UnitedStates.png';
+					break;
+				case 'Spanish':
+					state.activeFlag = '../../../../static/images/countries/2Mexico.png';
+					break;
+				case 'Chinese':
+					state.activeFlag = '../../../../static/images/countries/3China.png';
+					break;
+				case 'French':
+					state.activeFlag = '../../../../static/images/countries/4France.png';
+					break;
+				case 'German':
+					state.activeFlag = '../../../../static/images/countries/5Germany.png';
+					break;
+				case 'Japanese':
+					state.activeFlag = '../../../../static/images/countries/6Japan.png';
+					break;
+				case 'Portuguese':
+					state.activeFlag = '../../../../static/images/countries/7Portugal.png';
+					break;
+				case 'Russian':
+					state.activeFlag = '../../../../static/images/countries/8Russia.png';
+					break;
+				case 'Arabic':
+					state.activeFlag = '../../../../static/images/countries/9UnitedArabEmirates.png';
+					break;
+				case 'Italian':
+					state.activeFlag = '../../../../static/images/countries/10Italy.png';
+					break;
+				case 'Korean':
+					state.activeFlag = '../../../../static/images/countries/11Korea.png';
+					break;
+				case 'Hindu':
+					state.activeFlag = '../../../../static/images/countries/12India.png';
+					break;
+				default:
+					state.activeFlag = '../../../../static/images/countries/1UnitedStates.png';
+			}
         },
         languageSettingsEnglish(state){
             state.languageCurrent_rdx = 'English';
