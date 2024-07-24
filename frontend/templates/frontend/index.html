@@ -7,44 +7,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TellusEd</title>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style1.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/pdf_viewer.css' %}" />
 
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!--Google Font Montserrat (Heading)-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap"
-			rel="stylesheet"
-		/>
-
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" />
 		<!--Google Font Roboto (SubHeading)-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-			rel="stylesheet"
-		/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
 		<!--Google Font Inter (Other)-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
-			rel="stylesheet"
-		/>
-
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" />
 		<!--Font Awesome .....where the icons are coming from-->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-		/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 	</head>
 	<body>
 		<div class="root">
 			<script src="{% static 'frontend/main.js' %}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
 			<script>
-				pdfjsLib.GlobalWorkerOptions.workerSrc =
-					"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
+				pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
 			</script>
 		</div>
 	</body>
