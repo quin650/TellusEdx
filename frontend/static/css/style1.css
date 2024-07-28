@@ -4784,9 +4784,9 @@ body {
     padding-top: 0;
 }
 
-main {
+/* main {
     display: block
-}
+} */
 
 h1 {
     font-size: 2em;
@@ -6459,9 +6459,7 @@ button,input[type=submit] {
     }
 }
 
-.page-wrapper,main.main {
-    position: relative
-}
+
 
 .page-wrapper {
     display: block;

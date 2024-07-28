@@ -1,117 +1,117 @@
-
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 html {
-    font-family: 'Montserrat','Roboto', 'Inter', sans-serif;
+	font-family: "Montserrat", "Roboto", "Inter", sans-serif;
 }
 body {
-    margin: 0;
-    padding: 0;
-    min-width: 400px;
-    width: 100vw;
-    height: 100vh;
+	margin: 0;
+	padding: 0;
+	min-width: 400px;
+	width: 100vw;
+	height: 100vh;
 }
 .root {
-    --OffWhite: #dcdcdc;
-    --Blue: #2755c4;
-    --BlueHover: #3e66c4;
-    --BackgroundColor: white;
-    --WhiteToBlack: #FFFFFF;
-    --WhiteToGray: #FFFFFF;
-    --WhiteToDarkGray: #FFFFFF;
-    --WhiteToDarkGray2: #FFFFFF;
-    --WhiteToDarkGray3: #FFFFFF;
-    --WhiteToDarkGray5:  #FFFFFF;
-    --OffWhiteTODarkGray: #f1f1f1;
-    --OffWhiteTODarkGray2: #dddddd;
-    --OffWhiteTODarkGray3: #eeeeee;
-    --OffWhiteTODarkGray4: #dddddd;
-    --BlackToWhite: #000000;
-    --BlackToGray: #000000;
-    --BlackToDarkGray2: #000000;
-    --BlackToDarkGray3: #000000;
-    --GrayToWhite: gray;
-    --LightBlueToBlack: #9da8bb;
-    --LightGrayToDarkGray: #c2c2c2;
-    --LightGrayToDarkGray2: #c2c2c2;
-    --GrayToDarkGray: #c6c6c6;
-    --GrayToDarkGray2: #c6c6c6;
-    --IconBrightness: 1;
-    --BlurredBackground: rgba(175, 175, 175, 0.4);
-    --toggleBoxShadow: rgba(0, 0, 0, 0.163);
-    --MainNavBar_BackgroundColor1: #000000;
-    --MainNavBar_BackgroundColorText1: #F0F2F5;
-    --MainNavBar_BackgroundColorText2: #FFFFFF;
-    --NavBarMenu_MenuItem: #FFFFFF;
-    --NavBarMenu_MenuItemColor: #9E9E9E;
-    --NavBarMenu_OptionsBoxShadow1:rgba(0,0,0,0.4);
-    --NavBarMenu_OptionsBoxShadow2:rgba(255,255,255,0.4);
+	--OffWhite: #dcdcdc;
+	--Blue: #2755c4;
+	--BlueHover: #3e66c4;
+	--BackgroundColor: white;
+	--WhiteToBlack: #ffffff;
+	--WhiteToGray: #ffffff;
+	--WhiteToDarkGray: #ffffff;
+	--WhiteToDarkGray2: #ffffff;
+	--WhiteToDarkGray3: #ffffff;
+	--WhiteToDarkGray5: #ffffff;
+	--OffWhiteTODarkGray: #f1f1f1;
+	--OffWhiteTODarkGray2: #dddddd;
+	--OffWhiteTODarkGray3: #eeeeee;
+	--OffWhiteTODarkGray4: #dddddd;
+	--BlackToWhite: #000000;
+	--BlackToGray: #000000;
+	--BlackToDarkGray2: #000000;
+	--BlackToDarkGray3: #000000;
+	--GrayToWhite: gray;
+	--LightBlueToBlack: #9da8bb;
+	--LightGrayToDarkGray: #c2c2c2;
+	--LightGrayToDarkGray2: #c2c2c2;
+	--GrayToDarkGray: #c6c6c6;
+	--GrayToDarkGray2: #c6c6c6;
+	--IconBrightness: 1;
+	--BlurredBackground: rgba(175, 175, 175, 0.4);
+	--toggleBoxShadow: rgba(0, 0, 0, 0.163);
+	--MainNavBar_BackgroundColor1: #000000;
+	--MainNavBar_BackgroundColorText1: #f0f2f5;
+	--MainNavBar_BackgroundColorText2: #ffffff;
+	--NavBarMenu_MenuItem: #ffffff;
+	--NavBarMenu_MenuItemColor: #9e9e9e;
+	--NavBarMenu_OptionsBoxShadow1: rgba(0, 0, 0, 0.4);
+	--NavBarMenu_OptionsBoxShadow2: rgba(255, 255, 255, 0.4);
 }
 [data-theme="dark"] {
-    --BackgroundColor: #232323;      
-    --WhiteToBlack: #000000;        
-    --WhiteToGray: #B3B3B3;            
-    --WhiteToDarkGray: #1d1d1d;       
-    --WhiteToDarkGray2: #111111;        
-    --WhiteToDarkGray5:  #3e3e3e;
-    --OffWhiteTODarkGray: #1d1d1d;
-    --OffWhiteTODarkGray3: #3e3e3e;
-    --OffWhiteTODarkGray4: #292929;
-    --BlackToWhite: #FFFFFF;           
-    --BlackToGray: #B3B3B3;            
-    --BlackToDarkGray2: #111111;
-    --BlackToDarkGray3: #505050;
-    --GrayToWhite: #FFFFFF;
-    --LightBlueToBlack:  #000000;
-    --LightGrayToDarkGray: #111111;
-    --LightGrayToDarkGray2: #1d1d1d;
-    --GrayToDarkGray2: #171717;         
-    --IconBrightness: 0.5;              
-    --BlurredBackground: rgba(35, 35, 35, 0.4);
-    --toggleBoxShadow: rgba(0, 0, 0, 0.45);
+	--BackgroundColor: #232323;
+	--WhiteToBlack: #000000;
+	--WhiteToGray: #b3b3b3;
+	--WhiteToDarkGray: #1d1d1d;
+	--WhiteToDarkGray2: #111111;
+	--WhiteToDarkGray5: #3e3e3e;
+	--OffWhiteTODarkGray: #1d1d1d;
+	--OffWhiteTODarkGray3: #3e3e3e;
+	--OffWhiteTODarkGray4: #292929;
+	--BlackToWhite: #ffffff;
+	--BlackToGray: #b3b3b3;
+	--BlackToDarkGray2: #111111;
+	--BlackToDarkGray3: #505050;
+	--GrayToWhite: #ffffff;
+	--LightBlueToBlack: #000000;
+	--LightGrayToDarkGray: #111111;
+	--LightGrayToDarkGray2: #1d1d1d;
+	--GrayToDarkGray2: #171717;
+	--IconBrightness: 0.5;
+	--BlurredBackground: rgba(35, 35, 35, 0.4);
+	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
 }
 
+main {
+	height: 100vh;
+	width: 100%;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
+	-webkit-overflow-scrolling: touch;
 
-main{
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    -webkit-scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
-    max-height: 100vh;
-    scrollbar-color: gray transparent; 
-    scrollbar-width: thin; 
-    background: var(--BackgroundColor);
+	overflow-x: hidden;
+	overflow-y: scroll;
+	max-height: 100vh;
+	scrollbar-color: gray transparent;
+	scrollbar-width: thin;
+	background: var(--BackgroundColor);
 }
 ::-webkit-scrollbar {
-    width: 6px; /* Styling the scrollbar in Chrome and Safari */
+	width: 6px; /* Styling the scrollbar in Chrome and Safari */
 }
-::-webkit-scrollbar-thumb {/* the draggable part of the scrollbar */
-    background-color: gray; 
-    border-radius: 8px;
+::-webkit-scrollbar-thumb {
+	/* the draggable part of the scrollbar */
+	background-color: gray;
+	border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;    
+	background: #555;
 }
-::-webkit-scrollbar-track {/* the area that the thumb moves within. */
-    background: transparent;
+::-webkit-scrollbar-track {
+	/* the area that the thumb moves within. */
+	background: transparent;
 }
-header{
-    scroll-snap-align: start;
-    -webkit-scroll-snap-align: start;
+header {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
 }
-section{
-    scroll-snap-align: start;
-    -webkit-scroll-snap-align: start;
-    height: 100vh;
+section {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
+	height: 100vh;
 }
-footer{
-    scroll-snap-align: start;
-    -webkit-scroll-snap-align: start;
+footer {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
 }

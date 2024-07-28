@@ -1,0 +1,84 @@
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100vw;
+}
+.temp {
+	position: fixed;
+	height: 48px;
+	width: 100%;
+	background-color: blue;
+	z-index: 1000;
+}
+.bodyContainer {
+	display: flex;
+	position: relative;
+	top: 48px;
+}
+.tocOuterContainer {
+	position: relative;
+	min-width: 325px;
+	height: 100vh;
+}
+.tocInnerContainer {
+	color: black;
+	height: 100%;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
+	-webkit-overflow-scrolling: touch;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scrollbar-color: gray transparent;
+	scrollbar-width: thin;
+	background: red;
+}
+.toc {
+	/* margin-top: 60px; */
+}
+.toc ul {
+	list-style-type: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 0;
+}
+.a_link {
+	text-decoration: none;
+	color: #000;
+}
+.x {
+	margin-right: 10px;
+}
+.handbook_container {
+	flex-grow: 1;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 10px;
+	width: 100%;
+}
+.handbook_container li,
+.handbook_container p {
+	font-size: 1.125rem;
+}
+.handbook_container h2:not(:first-of-type) {
+	margin-top: 1.875rem;
+}
+.handbook_header_section {
+	background: linear-gradient(180deg, var(--c-dmv-blue) 0, var(--c-highlight-dark-blue) 100%);
+	border-radius: 3px 3px 0 0;
+	padding: 1.875rem 1rem 3.75rem 1rem;
+	margin-bottom: 50px;
+}
+.header_section_counter {
+	font-weight: 400;
+	margin-bottom: 0;
+	text-transform: uppercase;
+	color: white;
+}
+.header_section_title {
+	margin-bottom: 0;
+	color: white;
+}
