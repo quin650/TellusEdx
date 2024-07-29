@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
+import { Link } from "react-router-dom";
+import Logo from "../static/images/Logo_arrows.png";
+import GetStartedButton from "./components/12modals/getStarted/features/GetStartedButton";
+import NavbarMenuButton from "./components/10layout/10header/features/navbarMenuButton";
 import classes from "./App.module.css";
-import MainNavbar from "./components/10layout/10header/mainNavbar";
 
 const App = () => {
 	const containerRef = useRef(null);
@@ -22,33 +25,101 @@ const App = () => {
 	}, [containerRef]);
 
 	const TableOfContents = (
-		<div className={classes.toc}>
-			<ul>
-				{headings.map((heading) => (
-					<li key={heading.id} className={classes.tocItem}>
-						<a href={`#${heading.id}`} className={classes.a_link}>
-							<span className={classes.x}>{heading.id}</span>
-							<span className={classes.x}>{heading.level}</span>
-							<span className={classes.x}>{heading.text}</span>
-						</a>
-					</li>
-				))}
-			</ul>
+		<div className={classes.tocContainer}>
+			<div className={classes.tocSideBar}>
+				<div className={classes.productItemSideBar}>
+					<nav className={classes.productNavBar}>
+						<ul className={classes.productList}>
+							{headings.map((heading) => (
+								<li key={heading.id} className={classes.productListItem}>
+									<button className={classes.productListItemButton} aria-expanded="false">
+										<div className={classes.x}>
+											<div className={classes.x}>
+												<span className={classes.x}>
+													<a href={`#${heading.id}`} className={classes.a_link}>
+														<span className={classes.x}>{heading.id}</span>
+														<span className={classes.x}>{heading.level}</span>
+														<span className={classes.x}>{heading.text}</span>
+													</a>
+												</span>
+												<span className={classes.x}></span>
+											</div>
+										</div>
+									</button>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</div>
+			</div>
 		</div>
 	);
+	const handleClickScroll = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
 
+	const authGuestNavBar = (
+		<div className={classes.inner_container_nav}>
+			<li className={classes.NavItem1}>
+				<Link to="/home" onClick={handleClickScroll}>
+					<img src={Logo} alt="Logo" className={classes.Logo}></img>
+				</Link>
+			</li>
+			<li className={classes.NavItem2}>
+				<GetStartedButton />
+			</li>
+			<li className={classes.NavItem3}>
+				<NavbarMenuButton />
+			</li>
+		</div>
+	);
+	const authGuestSubNavBar = (
+		<div className={classes.headerSubNav}>
+			<div className={classes.headerSubNav_hamburger}>
+				<button>
+					<svg aria-hidden="true" focusable="false" className={classes.octicon} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+						<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+					</svg>
+				</button>
+			</div>
+			<div className={classes.breadCrumbs}>
+				<nav className={classes.breadCrumbsHeader}>
+					<ul>
+						<li>
+							<a className={classes.breadCrumbsHeaderLink}> Get Started</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	);
+	const [val, setVal] = useState("9");
+	const handleInputChange = (e) => {
+		const val = e.target.value;
+	};
 	return (
 		<main ref={containerRef} id="main" className={classes.mainContainer} role="main">
-			<div className={classes.temp}>
-				<MainNavbar />
-			</div>
+			<nav className={classes.navContainer}>
+				{authGuestNavBar}
+				{authGuestSubNavBar}
+			</nav>
 			<div className={classes.bodyContainer}>
 				<nav className={classes.tocOuterContainer}>
-					<div className={classes.tocInnerContainer}>{TableOfContents}</div>
+					<div className={classes.tocInnerContainer}>
+						<div className={classes.tocHeader}>
+							<div className={classes.headerTopSection}>
+								<a> {"<-"} top Section</a>
+							</div>
+							<div className={classes.headerBottomSection}>
+								<a>{"<--"}Page </a> <input type="text" onChange={handleInputChange} value={val} id="current_page"></input> <a>of 22{"-->"}</a>
+							</div>
+						</div>
+						{TableOfContents}
+					</div>
 				</nav>
 				<div className={classes.handbook_container}>
 					<div className={classes.handbook_header_section}>
-						<p className={classes.header_section_counter}>Section 9 of 22 </p>
+						<p className={classes.header_section_counter}>Page 9 of 22 </p>
 						<h2 className={classes.header_section_title}>Section 6: Navigating the Roads</h2>
 					</div>
 					<h2 id="Traffic-Lanes" className="wp-block-heading">
