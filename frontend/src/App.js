@@ -18,11 +18,11 @@ const App = () => {
 			for (let i = 0; i < elements.length; i++) {
 				let currentHead = elements[i].tagName;
 				if (currentHead === "H2") {
-					headingsArray.push({ idx: i, level: currentHead, text: elements[i].textContent, children: [] });
+					headingsArray.push({ idx: i + 1, level: currentHead, text: elements[i].textContent, children: [] });
 					currentH2Index += 1;
 				} else if (currentHead === "H3") {
 					if (currentH2Index >= 0) {
-						headingsArray[currentH2Index].children.push({ idx: i, level: currentHead, text: elements[i].textContent });
+						headingsArray[currentH2Index].children.push({ idx: i + 1, level: currentHead, text: elements[i].textContent });
 					}
 				}
 			}
@@ -39,7 +39,7 @@ const App = () => {
 					<nav className={classes.productNavBar}>
 						<ul className={classes.productList}>
 							{headings.map((heading) => (
-								<TocListItem idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} />
+								<TocListItem key={heading.idx} idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} />
 							))}
 						</ul>
 					</nav>

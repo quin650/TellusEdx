@@ -10,10 +10,10 @@ const TocListItem = ({ idx, level, text, children }) => {
 		console.log("toggleMenuOpen clicked");
 	};
 
-	console.log("idx?-----: ", idx);
-	console.log("level?-----: ", level);
-	console.log("text?-----: ", text);
-	console.log("children?-----: ", children);
+	// console.log("idx: ", idx);
+	// console.log("level: ", level);
+	// console.log("text: ", text);
+	// console.log("children: ", children);
 
 	return (
 		<li key={idx} className={classes.productListItemContainer}>
@@ -22,11 +22,7 @@ const TocListItem = ({ idx, level, text, children }) => {
 					<div className={classes.productListItemLabel}>
 						<span className={classes.label}>
 							<a href={`#${text}`} className={classes.a_link}>
-								<span>
-									{idx}
-									{level}
-									{text}
-								</span>
+								<span>{text}</span>
 							</a>
 						</span>
 						<span className={classes.menuArrow}>
@@ -43,9 +39,8 @@ const TocListItem = ({ idx, level, text, children }) => {
 					</div>
 				</div>
 			</button>
-			)
 			{children.map((child) => (
-				<TocListSubItem key={idx} idx={child.idx} level={child.level} text={child.text} isVisible={isVisible} />
+				<TocListSubItem key={child.idx} idx={child.idx} level={child.level} text={child.text} isVisible={isVisible} />
 			))}
 		</li>
 	);
