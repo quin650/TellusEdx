@@ -3,26 +3,34 @@ import { Link } from "react-router-dom";
 import Logo from "../static/images/Logo_arrows.png";
 import GetStartedButton from "./components/12modals/getStarted/features/GetStartedButton";
 import NavbarMenuButton from "./components/10layout/10header/features/navbarMenuButton";
+import TocListItem from "./tocListItem";
 import classes from "./App.module.css";
 
 const App = () => {
 	const containerRef = useRef(null);
 	const [headings, setHeadings] = useState([]);
-
 	useEffect(() => {
 		if (containerRef.current) {
-			const elements = containerRef.current.querySelectorAll("h1, h2, h3, h4, h5, h6");
-			const headingsArray = Array.from(elements).map((elem, index) => {
-				const id = elem.id || `order#${index}`;
-				return {
-					id,
-					text: elem.textContent,
-					level: elem.tagName,
-				};
-			});
+			const elements = containerRef.current.querySelectorAll("h2, h3");
+			let headingsArray = [];
+			let currentH2Index = -1;
+
+			for (let i = 0; i < elements.length; i++) {
+				let currentHead = elements[i].tagName;
+				if (currentHead === "H2") {
+					headingsArray.push({ idx: i, level: currentHead, text: elements[i].textContent, children: [] });
+					currentH2Index += 1;
+				} else if (currentHead === "H3") {
+					if (currentH2Index >= 0) {
+						headingsArray[currentH2Index].children.push({ idx: i, level: currentHead, text: elements[i].textContent });
+					}
+				}
+			}
 			setHeadings(headingsArray);
 		}
 	}, [containerRef]);
+
+	console.log("headings: ", headings);
 
 	const TableOfContents = (
 		<div className={classes.tocContainer}>
@@ -31,22 +39,7 @@ const App = () => {
 					<nav className={classes.productNavBar}>
 						<ul className={classes.productList}>
 							{headings.map((heading) => (
-								<li key={heading.id} className={classes.productListItem}>
-									<button className={classes.productListItemButton} aria-expanded="false">
-										<div className={classes.x}>
-											<div className={classes.x}>
-												<span className={classes.x}>
-													<a href={`#${heading.id}`} className={classes.a_link}>
-														<span className={classes.x}>{heading.id}</span>
-														<span className={classes.x}>{heading.level}</span>
-														<span className={classes.x}>{heading.text}</span>
-													</a>
-												</span>
-												<span className={classes.x}></span>
-											</div>
-										</div>
-									</button>
-								</li>
+								<TocListItem idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} />
 							))}
 						</ul>
 					</nav>
@@ -120,7 +113,7 @@ const App = () => {
 				<div className={classes.handbook_container}>
 					<div className={classes.handbook_header_section}>
 						<p className={classes.header_section_counter}>Page 9 of 22 </p>
-						<h2 className={classes.header_section_title}>Section 6: Navigating the Roads</h2>
+						<h1 className={classes.header_section_title}>Section 6: Navigating the Roads</h1>
 					</div>
 					<h2 id="Traffic-Lanes" className="wp-block-heading">
 						<strong>Traffic Lanes</strong>
