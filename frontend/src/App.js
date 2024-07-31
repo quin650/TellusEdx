@@ -34,19 +34,15 @@ const App = () => {
 	}, [containerRef]);
 	// to iterate through headings variable and crate table of Contents
 	const TableOfContents = (
-		<div className={classes.tocContainer}>
-			<div className={classes.tocSideBar}>
-				<div className={classes.productItemSideBar}>
-					<nav className={classes.productNavBar}>
-						<ul className={classes.productList}>
-							{headings.map((heading) => (
-								<TocListItem key={heading.idx} idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} />
-							))}
-						</ul>
-					</nav>
-				</div>
+		<nav className={classes.tocOuterContainer}>
+			<div className={classes.tocInnerContainer}>
+				<ul>
+					{headings.map((heading) => (
+						<TocListItem key={heading.idx} idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} />
+					))}
+				</ul>
 			</div>
-		</div>
+		</nav>
 	);
 	const handleClickScroll = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
@@ -138,10 +134,10 @@ const App = () => {
 				{authGuestSubNavBar}
 			</nav>
 			<div className={classes.bodyContainer}>
-				<nav className={classes.tocOuterContainer}>
-					<div className={classes.tocInnerContainer}>
-						<div className={classes.tocHeaderContainer}>
-							<div className={classes.tocHeaderTopSection}>
+				<nav className={classes.sideBarOuterContainer}>
+					<div className={classes.sideBarInnerContainer}>
+						<div className={classes.sideBarHeaderSection}>
+							<div className={classes.sideBarHeaderTopSection}>
 								<span>
 									<a href={`#${sectionTitle}`}> {sectionTitle}</a>
 								</span>

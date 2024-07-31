@@ -12,8 +12,8 @@
 	line-height: 1.5;
 	font-size: 14px;
 }
-/* toc container */
-.tocOuterContainer {
+/* sideBar container ------------------------------------------------------*/
+.sideBarOuterContainer {
 	position: sticky !important;
 	/* will not display at 1399px or narrower*/
 	display: none !important;
@@ -23,27 +23,27 @@
 	top: 48px;
 }
 @media (min-width: 1400px) {
-	.tocOuterContainer {
+	.sideBarOuterContainer {
 		/* will display at 1400px or wider*/
 		display: block !important;
 	}
 }
-.tocInnerContainer {
+.sideBarInnerContainer {
 	/* Use Case: When you want elements to stack vertically and take up the full width of their container. */
 	display: block;
 }
-/* toc top */
-.tocHeaderContainer {
+/* sideBar top ------------------------------------------------------*/
+.sideBarHeaderSection {
 	display: block !important;
 	padding-right: 24px;
 	padding-left: 24px;
 	padding-bottom: 16px;
 	border-bottom: 1px solid black;
 }
-.tocHeaderTopSection {
+.sideBarHeaderTopSection {
 	margin-top: 16px !important;
 }
-.tocHeaderTopSection a {
+.sideBarHeaderTopSection a {
 	font-size: 12px !important;
 	padding-right: 32px !important;
 	padding-left: 8px !important;
@@ -54,6 +54,7 @@
 	cursor: pointer;
 	color: black;
 }
+/* navigation controls ------------------------------------------------------*/
 .navigation_container {
 	margin-top: 16px !important;
 	display: flex;
@@ -137,45 +138,29 @@
 	height: 37px; /* Adjust the size here */
 	fill: var(--Blue);
 }
-
-/* toc bottom */
-.tocContainer {
+/* toc Container------------------------------------------------------*/
+.tocOuterContainer {
 	width: 326px;
 	height: calc(100vh - 175px);
 	padding-bottom: 185px;
 	display: block !important;
 	overflow-y: auto !important;
 }
-.tocSideBar {
-	overflow-y: auto;
-}
-.productItemSideBar {
+.tocInnerContainer {
 	margin-left: 16px;
+	margin-top: 16px;
 }
-.productNavBar {
+.tocInnerContainer ul {
 	display: block;
+	margin: 0 !important;
 }
-.productList {
-	margin: 0px;
-	padding-inline-start: 0px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	padding-left: 0;
-	display: block;
-	list-style-type: disc;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	unicode-bidi: isolate;
-}
+/* toc Items ------------------------------------------------------*/
 .productListItemContainer {
 	list-style: none;
 	display: list-item;
 	text-align: -webkit-match-parent;
 	unicode-bidi: isolate;
 }
-/* TOC MainLines------------------------------------------------------*/
 .productListItemButton {
 	position: relative;
 	display: flex;
@@ -244,7 +229,7 @@
 	margin-left: 8px;
 	font-weight: initial;
 }
-/* TOC SubLines------------------------------------------------------*/
+/* toc Items ------------------------------------------------------*/
 .subLineOuterContainer.isVisible {
 	padding: 0px;
 	margin: 0px;
