@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../static/images/Logo_arrows.png";
 import GetStartedButton from "./components/12modals/getStarted/features/GetStartedButton";
@@ -9,12 +9,15 @@ import classes from "./App.module.css";
 const App = () => {
 	const containerRef = useRef(null);
 	const [headings, setHeadings] = useState([]);
+	const [sectionTitle, setSectionTitle] = useState([]);
+	// Create headings variable =  h2 headings and their h3 children
 	useEffect(() => {
 		if (containerRef.current) {
 			const elements = containerRef.current.querySelectorAll("h2, h3");
+			const secTitle = containerRef.current.querySelectorAll("h1")[0].textContent;
+			setSectionTitle(secTitle);
 			let headingsArray = [];
 			let currentH2Index = -1;
-
 			for (let i = 0; i < elements.length; i++) {
 				let currentHead = elements[i].tagName;
 				if (currentHead === "H2") {
@@ -29,9 +32,7 @@ const App = () => {
 			setHeadings(headingsArray);
 		}
 	}, [containerRef]);
-
-	console.log("headings: ", headings);
-
+	// to iterate through headings variable and crate table of Contents
 	const TableOfContents = (
 		<div className={classes.tocContainer}>
 			<div className={classes.tocSideBar}>
@@ -50,7 +51,6 @@ const App = () => {
 	const handleClickScroll = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
-
 	const authGuestNavBar = (
 		<div className={classes.inner_container_nav}>
 			<li className={classes.NavItem1}>
@@ -86,9 +86,50 @@ const App = () => {
 			</div>
 		</div>
 	);
-	const [val, setVal] = useState("9");
+	const [handbookState, setHandbookState] = useState({
+		scale: null,
+		scaleFull: null,
+		pageNum: 9,
+		section: 6,
+		inputValue: 9,
+		numPages: 22,
+	});
+	//!Prev-Next Page
+	const NextPage = () => {
+		let newVal = handbookState.pageNum + 1;
+		if (handbookState && newVal <= handbookState.numPages) {
+			setHandbookState((prevState) => ({
+				...prevState,
+				pageNum: prevState.pageNum + 1,
+				inputValue: prevState.pageNum + 1,
+			}));
+		}
+	};
+	const PrevPage = () => {
+		let newVal = handbookState.pageNum - 1;
+		if (handbookState && newVal >= 1) {
+			setHandbookState((prevState) => ({
+				...prevState,
+				pageNum: prevState.pageNum - 1,
+				inputValue: prevState.pageNum - 1,
+			}));
+		}
+	};
+	//!Page Input Field
 	const handleInputChange = (e) => {
 		const val = e.target.value;
+		setHandbookState((prevState) => ({
+			...prevState,
+			inputValue: val,
+		}));
+		if (val === "") {
+			setHandbookState((prevState) => ({
+				...prevState,
+				pageNum: "",
+				inputValue: "",
+			}));
+			return;
+		}
 	};
 	return (
 		<main ref={containerRef} id="main" className={classes.mainContainer} role="main">
@@ -99,12 +140,38 @@ const App = () => {
 			<div className={classes.bodyContainer}>
 				<nav className={classes.tocOuterContainer}>
 					<div className={classes.tocInnerContainer}>
-						<div className={classes.tocHeader}>
-							<div className={classes.headerTopSection}>
-								<a> {"<-"} top Section</a>
+						<div className={classes.tocHeaderContainer}>
+							<div className={classes.tocHeaderTopSection}>
+								<span>
+									<a href={`#${sectionTitle}`}> {sectionTitle}</a>
+								</span>
 							</div>
-							<div className={classes.headerBottomSection}>
-								<a>{"<--"}Page </a> <input type="text" onChange={handleInputChange} value={val} id="current_page"></input> <a>of 22{"-->"}</a>
+							<div className={classes.navigation_container}>
+								<div className={classes.pagination}>
+									<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
+										<svg className={classes.arrowIcon} viewBox="0 0 24 24">
+											<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+										</svg>
+									</button>
+									<div className={classes.numbersContainer}>
+										<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+											<line x1="1" y1="0" x2="1" y2="40" />
+										</svg>
+										<span id="pageNumbers">
+											<input type="text" onChange={handleInputChange} value={handbookState.inputValue} id="current_page" className={classes.pageInput} />
+											<span className={classes.pageSeparator}>|</span>
+											<span className={classes.totalPages}>665</span>
+										</span>
+										<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+											<line x1="1" y1="0" x2="1" y2="40" />
+										</svg>
+									</div>
+									<button id="next" onClick={NextPage} className={classes.arrowButton}>
+										<svg className={classes.arrowIcon} viewBox="0 0 24 24">
+											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+										</svg>
+									</button>
+								</div>
 							</div>
 						</div>
 						{TableOfContents}
@@ -113,9 +180,11 @@ const App = () => {
 				<div className={classes.handbook_container}>
 					<div className={classes.handbook_header_section}>
 						<p className={classes.header_section_counter}>Page 9 of 22 </p>
-						<h1 className={classes.header_section_title}>Section 6: Navigating the Roads</h1>
+						<h1 id="Section 6: Navigating the Roads" className={classes.header_section_title}>
+							Section 6: Navigating the Roads
+						</h1>
 					</div>
-					<h2 id="Traffic-Lanes" className="wp-block-heading">
+					<h2 id="Traffic Lanes" className="wp-block-heading">
 						<strong>Traffic Lanes</strong>
 					</h2>
 					<p>A traffic lane is a section of road for a single line of traffic.</p>

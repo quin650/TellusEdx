@@ -42,6 +42,7 @@
 }
 .tocHeaderTopSection {
 	margin-top: 16px !important;
+	/* display: block; */
 }
 .tocHeaderTopSection a {
 	font-size: 12px !important;
@@ -54,90 +55,24 @@
 	cursor: pointer;
 	color: black;
 }
-.navigation_container {
+.tocHeaderBottomSection {
 	margin-top: 16px !important;
 	display: flex;
-	margin: auto;
-	justify-content: center;
-	align-items: center;
 }
-.pagination {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	height: 40px;
-	width: 200px;
-	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
-	border: 1px solid rgb(0 0 0 / 10%);
-}
-.pagination button {
-	background: none;
-	border: none;
+.tocHeaderBottomSection a {
+	display: block !important;
+	text-decoration: none !important;
+	font-weight: 600 !important;
+	font-size: 20px !important;
+	padding-left: 4px !important;
+	margin-bottom: 8px !important;
+	background-color: transparent;
 	cursor: pointer;
-	color: var(--Blue);
 }
-.pagination button:disabled {
-	color: #ccc;
-	cursor: default;
+.tocHeaderBottomSection input {
+	width: 30px;
+	height: 30px;
 }
-.numbersContainer {
-	display: flex;
-	justify-content: space-between;
-}
-.lineSVG_L {
-	width: 2px;
-	height: 25px;
-	stroke: #dcdce6;
-	stroke-width: 2;
-	align-self: center;
-	margin-right: 10px;
-}
-.lineSVG_R {
-	width: 2px;
-	height: 25px;
-	stroke: #dcdce6;
-	stroke-width: 2;
-	align-self: center;
-	margin-left: 10px;
-}
-.pagination span {
-	display: flex;
-	align-items: center;
-	font-size: 16px;
-	flex-direction: row;
-	color: black;
-}
-.pagination input {
-	width: 35px;
-	padding: 0;
-	margin-right: 4px;
-	text-align: center; /* Center aligns the text */
-	border: 1px solid #ddd; /* Adds a border */
-	border-radius: 5px !important; /* Adds rounded corners */
-	font-size: 16px !important;
-}
-.pageSeparator {
-	margin: 0 2px !important;
-}
-.pagination .totalPages {
-	margin-left: 4px;
-	width: 27px;
-	color: black;
-}
-.arrowButton {
-	/* height: 38px; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	color: #fff;
-}
-.arrowIcon {
-	height: 37px; /* Adjust the size here */
-	fill: var(--Blue);
-}
-
 /* toc bottom */
 .tocContainer {
 	width: 326px;
