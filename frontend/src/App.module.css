@@ -1,237 +1,12 @@
-.mainContainer {
+/* .mainContainer {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	width: 100vw;
 	overflow: auto;
 	scroll-padding-top: 65px !important;
-}
-.bodyContainer {
-	display: flex !important;
-	position: relative;
-	line-height: 1.5;
-	font-size: 14px;
-}
-/* sideBar container ------------------------------------------------------*/
-.sideBarOuterContainer {
-	position: sticky !important;
-	/* will not display at 1399px or narrower*/
-	display: none !important;
-	border-right: 1px solid black !important;
-	min-width: 326px;
-	height: calc(100vh - 48px);
-	top: 48px;
-}
-@media (min-width: 1400px) {
-	.sideBarOuterContainer {
-		/* will display at 1400px or wider*/
-		display: block !important;
-	}
-}
-.sideBarInnerContainer {
-	/* Use Case: When you want elements to stack vertically and take up the full width of their container. */
-	display: block;
-}
-/* sideBar top ------------------------------------------------------*/
-.sideBarHeaderSection {
-	display: block !important;
-	padding-right: 24px;
-	padding-left: 24px;
-	padding-bottom: 16px;
-	border-bottom: 1px solid black;
-}
-.sideBarHeaderTopSection {
-	margin-top: 16px !important;
-}
-.sideBarHeaderTopSection a {
-	font-size: 12px !important;
-	padding-right: 32px !important;
-	padding-left: 8px !important;
-	padding-bottom: 4px !important;
-	margin-left: 4px !important;
-	text-decoration: none;
-	background-color: transparent;
-	cursor: pointer;
-	color: black;
-}
-/* navigation controls ------------------------------------------------------*/
-.navigation_container {
-	margin-top: 16px !important;
-	display: flex;
-	margin: auto;
-	justify-content: center;
-	align-items: center;
-}
-.pagination {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	height: 40px;
-	width: 200px;
-	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
-	border: 1px solid rgb(0 0 0 / 10%);
-}
-.pagination button {
-	background: none;
-	border: none;
-	cursor: pointer;
-	color: var(--Blue);
-}
-.pagination button:disabled {
-	color: #ccc;
-	cursor: default;
-}
-.numbersContainer {
-	display: flex;
-	justify-content: space-between;
-}
-.lineSVG_L {
-	width: 2px;
-	height: 25px;
-	stroke: #dcdce6;
-	stroke-width: 2;
-	align-self: center;
-	margin-right: 10px;
-}
-.lineSVG_R {
-	width: 2px;
-	height: 25px;
-	stroke: #dcdce6;
-	stroke-width: 2;
-	align-self: center;
-	margin-left: 10px;
-}
-.pagination span {
-	display: flex;
-	align-items: center;
-	font-size: 16px;
-	flex-direction: row;
-	color: black;
-}
-.pagination input {
-	width: 35px;
-	padding: 0;
-	margin-right: 4px;
-	text-align: center; /* Center aligns the text */
-	border: 1px solid #ddd; /* Adds a border */
-	border-radius: 5px !important; /* Adds rounded corners */
-	font-size: 16px !important;
-}
-.pageSeparator {
-	margin: 0 2px !important;
-}
-.pagination .totalPages {
-	margin-left: 4px;
-	width: 27px;
-	color: black;
-}
-.arrowButton {
-	/* height: 38px; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	color: #fff;
-}
-.arrowIcon {
-	height: 37px; /* Adjust the size here */
-	fill: var(--Blue);
-}
-/* toc Container------------------------------------------------------*/
-.tocOuterContainer {
-	width: 326px;
-	height: calc(100vh - 175px);
-	padding-bottom: 185px;
-	display: block !important;
-	overflow-y: auto !important;
-}
-.tocInnerContainer {
-	margin-left: 16px;
-	margin-top: 16px;
-}
-.tocInnerContainer ul {
-	display: block;
-	margin: 0 !important;
-}
-/* toc Parent Items ------------------------------------------------------*/
-.contentContainer {
-	list-style: none;
-}
-.parentLabelOuterContainer {
-	position: relative;
-	display: flex;
-	padding: 6px 8px;
-	margin-left: 8px;
-	margin-right: 8px;
-	background: unset;
-	border: unset;
-	width: calc(100% - 16px);
-	text-align: unset;
-	line-height: 20px;
-}
-.parentLabel {
-	flex-grow: 1;
-	word-break: break-word;
-	color: #000000;
-	cursor: pointer;
-}
-.menuArrow {
-	flex-shrink: 0;
-	color: #848d97;
-	margin-left: 8px;
-	cursor: pointer;
-}
-/* toc Child Items ------------------------------------------------------*/
-.childLabelOuterContainer.isVisible {
-	padding: 0px;
-	display: block !important;
-}
-.childLabelOuterContainer {
-	padding: 0px;
-	display: none !important;
-}
-.childLabelInnerContainer {
-	position: relative;
-	display: flex;
-	margin-left: 8px;
-}
-.childLabel {
-	padding: 6px 8px 6px 16px;
-	color: inherit;
-	font-size: 14px;
-}
-/* -------------------------------------------------------------------*/
-.handbook_container {
-	flex-grow: 1;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 10px;
-	width: 100%;
-}
-.handbook_container li,
-.handbook_container p {
-	font-size: 1.125rem;
-}
-.handbook_container h2:not(:first-of-type) {
-	margin-top: 1.875rem;
-}
-.handbook_header_section {
-	background: linear-gradient(180deg, var(--c-dmv-blue) 0, var(--c-highlight-dark-blue) 100%);
-	border-radius: 3px 3px 0 0;
-	padding: 1.875rem 1rem 3.75rem 1rem;
-	margin-bottom: 50px;
-}
-.header_section_counter {
-	font-weight: 400;
-	margin-bottom: 0;
-	text-transform: uppercase;
-	color: white;
-}
-.header_section_title {
-	margin-bottom: 0;
-	color: white;
-}
+	font-family: sans-serif;
+} */
 /* NavBar Origin------------------------------------------------------*/
 .navContainer {
 	top: 0 !important;
@@ -317,7 +92,7 @@
 	margin-right: 0.5rem;
 	align-items: center;
 }
-/* NavBar Custon------------------------------------------------------*/
+/* NavBar Custom------------------------------------------------------*/
 .headerSubNav {
 	display: flex !important;
 	align-items: center !important ;
@@ -418,4 +193,391 @@
 .breadCrumbsHeaderLink:hover,
 .breadCrumbsHeaderLink:focus {
 	text-decoration: underline;
+}
+
+/* Body ------------------------------------------------------*/
+/* .bodyContainer {
+	display: flex !important;
+	position: relative;
+	line-height: 1.5;
+	font-size: 14px;
+} */
+/* sideBar container ------------------------------------------------------*/
+.sideBarOuterContainer {
+	position: sticky !important;
+	/* will not display at 1399px or narrower*/
+	display: none !important;
+	border-right: 1px solid black !important;
+	min-width: 326px;
+	height: calc(100vh - 48px);
+	top: 48px;
+}
+@media (min-width: 1400px) {
+	.sideBarOuterContainer {
+		/* will display at 1400px or wider*/
+		display: block !important;
+	}
+}
+.sideBarInnerContainer {
+	/* Use Case: When you want elements to stack vertically and take up the full width of their container. */
+	display: block;
+}
+/* sideBar top ------------------------------------------------------*/
+.sideBarHeaderSection {
+	display: block !important;
+	padding-right: 24px;
+	padding-left: 24px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid black;
+}
+.sideBarHeaderTopSection {
+	margin-top: 16px !important;
+}
+
+.sideBarHeaderTopSection span:active {
+	text-decoration: underline;
+}
+.sideBarHeaderTopSection a {
+	font-size: 12px !important;
+	padding-right: 32px !important;
+	padding-left: 8px !important;
+	padding-bottom: 4px !important;
+	margin-left: 4px !important;
+	background-color: transparent;
+	cursor: pointer;
+	color: black;
+}
+.sideBarHeaderTopSection a:hover {
+	color: var(--Blue);
+}
+/* navigation controls ------------------------------------------------------*/
+.navigation_container {
+	margin-top: 16px !important;
+	display: flex;
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+}
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	height: 40px;
+	width: 200px;
+	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
+	border: 1px solid rgb(0 0 0 / 10%);
+}
+.pagination button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--Blue);
+}
+.pagination button:disabled {
+	color: #ccc;
+	cursor: default;
+}
+.numbersContainer {
+	display: flex;
+	justify-content: space-between;
+}
+.lineSVG_L {
+	width: 2px;
+	height: 25px;
+	stroke: #dcdce6;
+	stroke-width: 2;
+	align-self: center;
+	margin-right: 10px;
+}
+.lineSVG_R {
+	width: 2px;
+	height: 25px;
+	stroke: #dcdce6;
+	stroke-width: 2;
+	align-self: center;
+	margin-left: 10px;
+}
+.pagination span {
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	flex-direction: row;
+	color: black;
+}
+.pagination input {
+	width: 35px;
+	padding: 0;
+	margin-right: 4px;
+	text-align: center; /* Center aligns the text */
+	border: 1px solid #ddd; /* Adds a border */
+	border-radius: 5px !important; /* Adds rounded corners */
+	font-size: 16px !important;
+}
+.pageSeparator {
+	margin: 0 2px !important;
+}
+.pagination .totalPages {
+	margin-left: 4px;
+	width: 27px;
+	color: black;
+}
+.arrowButton {
+	/* height: 38px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	color: #fff;
+}
+.arrowIcon {
+	height: 37px; /* Adjust the size here */
+	fill: var(--Blue);
+}
+/* toc Container------------------------------------------------------*/
+.tocOuterContainer {
+	width: 326px;
+	height: calc(100vh - 175px);
+	padding-bottom: 185px;
+	display: block !important;
+	overflow-y: auto !important;
+}
+.tocInnerContainer {
+	margin-left: 16px;
+	margin-top: 16px;
+}
+.tocInnerContainer ul {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+/* toc Parent Items ------------------------------------------------------*/
+.contentContainer {
+	list-style: none;
+}
+.parentLabelOuterContainer {
+	position: relative;
+	display: flex;
+	/* padding: 6px 8px; */
+	margin-left: 8px;
+	margin-right: 8px;
+	background: unset;
+	border: unset;
+	width: calc(100% - 16px);
+	text-align: unset;
+	line-height: 20px;
+}
+.parentLabel {
+	flex-grow: 1;
+	word-break: break-word;
+	color: #000000;
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
+}
+.parentLabel:hover {
+	background-color: #848d97;
+	color: white;
+}
+.parentLabel:active {
+	background-color: #4f545a;
+}
+.menuArrow {
+	flex-shrink: 0;
+	color: #848d97;
+	margin-left: 8px;
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
+}
+.menuArrow:hover {
+	background-color: #848d97;
+	color: white;
+}
+.menuArrow:active {
+	background-color: #4f545a;
+}
+/* toc Child Items ------------------------------------------------------*/
+.childLabelOuterContainer.isVisible {
+	padding: 0px;
+	display: block !important;
+}
+.childLabelOuterContainer {
+	padding: 0px;
+	display: none !important;
+}
+.childLabelInnerContainer {
+	position: relative;
+	display: flex;
+	margin-left: 8px;
+	margin-right: 8px;
+	border-radius: 7px;
+}
+.childLabelInnerContainer:hover {
+	background-color: #848d97;
+	color: white;
+}
+.childLabelInnerContainer:active {
+	background-color: #4f545a;
+}
+.childLabel {
+	padding: 6px 8px 6px 16px;
+	color: inherit;
+	font-size: 14px;
+}
+
+/* Handbook-------------------------------------------------------------------*/
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100vw;
+	overflow: auto;
+	scroll-padding-top: 65px !important;
+	font-family: sans-serif !important;
+	color: #5d6c7a;
+	line-height: 1.5;
+	font-size: 14px;
+}
+.bodyContainer {
+	display: flex;
+	position: relative;
+}
+.handbook_OuterContainer {
+	padding-top: 5.625rem;
+	max-width: 1500px;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin: 0 auto;
+	line-height: 1.35;
+}
+.handbook_InnerContainer {
+	font-size: 1rem;
+	--scrollbar-width: 15px;
+}
+.page_contentContainer {
+	display: flex;
+	border: 1px solid #d6dade;
+	border-radius: 8px;
+	flex-direction: column;
+	font-weight: 400;
+}
+.handbook_header_section {
+	display: block;
+	background: linear-gradient(180deg, #0077c8, #287bba);
+	margin: 0.75rem 0.75rem 0 0.75rem;
+	padding: 1rem;
+	margin-bottom: 50px;
+	color: white;
+
+	border-radius: 3px 3px 0 0;
+	padding-top: 1.875rem;
+	padding-bottom: 3.75rem;
+}
+
+.handbook_header_section p {
+	font-size: 0.875rem !important;
+	text-transform: uppercase;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.handbook_header_section h1 {
+	margin-bottom: 0;
+	font-size: 3rem;
+	line-height: 1.15;
+	margin: 0 0 1rem;
+}
+
+.page_content {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	padding-left: 3.75rem;
+	padding-right: 3.75rem;
+	margin: 0 auto;
+}
+.page_content h2 {
+	font-size: 3rem;
+	margin-bottom: 0.5em;
+	color: #163159;
+	line-height: 1.15;
+	margin: 0 0 1rem;
+}
+.page_content h3 {
+	font-size: 1.75rem;
+	font-weight: 700;
+	line-height: 1.36;
+	color: #163159;
+	margin: 0 0 1rem;
+}
+.page_content h4 {
+	font-size: 1.5rem;
+	color: #163159;
+	font-weight: 400;
+	line-height: 1.15;
+	margin: 0 0 1rem;
+}
+
+.page_content p {
+	font-size: 1.3125rem;
+	line-height: 1.35;
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+.page_content figure {
+	margin: 0;
+}
+.imageDiv {
+	display: table;
+}
+.imageDivColContainer {
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	padding-top: 3.75rem;
+}
+.imageDivCol {
+	-webkit-box-flex: 0;
+	flex: 0 1 50%;
+	padding-right: 1.875rem;
+}
+ul {
+	margin-bottom: 2rem;
+	margin-left: 2rem;
+	padding: 0;
+}
+ul li {
+	font-size: 1.3125rem;
+	line-height: 1.19;
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+ul li:not(:first-child) {
+	padding-top: 1.875rem;
+}
+.page_content div figure {
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+}
+.page_content ul {
+	margin-bottom: 2rem;
+	margin-left: 2rem;
+	font-size: 1rem;
+	padding: 0;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	unicode-bidi: isolate;
+}
+.page_content ul li {
+	font-size: 1.3125rem;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	unicode-bidi: isolate;
 }

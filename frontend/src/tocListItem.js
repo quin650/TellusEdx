@@ -7,7 +7,6 @@ const TocListItem = ({ idx, text, children }) => {
 
 	const toggleMenuOpen = () => {
 		setIsVisible(!isVisible);
-		console.log("toggleMenuOpen clicked");
 	};
 
 	// console.log("idx --> index counter of h2, h3: ", idx);

@@ -12,8 +12,8 @@
 	line-height: 1.5;
 	font-size: 14px;
 }
-/* toc container */
-.tocOuterContainer {
+/* sideBar container ------------------------------------------------------*/
+.sideBarOuterContainer {
 	position: sticky !important;
 	/* will not display at 1399px or narrower*/
 	display: none !important;
@@ -23,242 +23,219 @@
 	top: 48px;
 }
 @media (min-width: 1400px) {
-	.tocOuterContainer {
+	.sideBarOuterContainer {
 		/* will display at 1400px or wider*/
 		display: block !important;
 	}
 }
-.tocInnerContainer {
+.sideBarInnerContainer {
 	/* Use Case: When you want elements to stack vertically and take up the full width of their container. */
 	display: block;
 }
-/* toc top */
-.tocHeaderContainer {
+/* sideBar top ------------------------------------------------------*/
+.sideBarHeaderSection {
 	display: block !important;
 	padding-right: 24px;
 	padding-left: 24px;
 	padding-bottom: 16px;
 	border-bottom: 1px solid black;
 }
-.tocHeaderTopSection {
+.sideBarHeaderTopSection {
 	margin-top: 16px !important;
-	/* display: block; */
 }
-.tocHeaderTopSection a {
+
+.sideBarHeaderTopSection span:active {
+	text-decoration: underline;
+}
+.sideBarHeaderTopSection a {
 	font-size: 12px !important;
 	padding-right: 32px !important;
 	padding-left: 8px !important;
 	padding-bottom: 4px !important;
 	margin-left: 4px !important;
-	text-decoration: none;
 	background-color: transparent;
 	cursor: pointer;
 	color: black;
 }
-.tocHeaderBottomSection {
+.sideBarHeaderTopSection a:hover {
+	color: var(--Blue);
+}
+/* navigation controls ------------------------------------------------------*/
+.navigation_container {
 	margin-top: 16px !important;
 	display: flex;
+	margin: auto;
+	justify-content: center;
+	align-items: center;
 }
-.tocHeaderBottomSection a {
-	display: block !important;
-	text-decoration: none !important;
-	font-weight: 600 !important;
-	font-size: 20px !important;
-	padding-left: 4px !important;
-	margin-bottom: 8px !important;
-	background-color: transparent;
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	height: 40px;
+	width: 200px;
+	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
+	border: 1px solid rgb(0 0 0 / 10%);
+}
+.pagination button {
+	background: none;
+	border: none;
 	cursor: pointer;
+	color: var(--Blue);
 }
-.tocHeaderBottomSection input {
-	width: 30px;
-	height: 30px;
+.pagination button:disabled {
+	color: #ccc;
+	cursor: default;
 }
-/* toc bottom */
-.tocContainer {
+.numbersContainer {
+	display: flex;
+	justify-content: space-between;
+}
+.lineSVG_L {
+	width: 2px;
+	height: 25px;
+	stroke: #dcdce6;
+	stroke-width: 2;
+	align-self: center;
+	margin-right: 10px;
+}
+.lineSVG_R {
+	width: 2px;
+	height: 25px;
+	stroke: #dcdce6;
+	stroke-width: 2;
+	align-self: center;
+	margin-left: 10px;
+}
+.pagination span {
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	flex-direction: row;
+	color: black;
+}
+.pagination input {
+	width: 35px;
+	padding: 0;
+	margin-right: 4px;
+	text-align: center; /* Center aligns the text */
+	border: 1px solid #ddd; /* Adds a border */
+	border-radius: 5px !important; /* Adds rounded corners */
+	font-size: 16px !important;
+}
+.pageSeparator {
+	margin: 0 2px !important;
+}
+.pagination .totalPages {
+	margin-left: 4px;
+	width: 27px;
+	color: black;
+}
+.arrowButton {
+	/* height: 38px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	color: #fff;
+}
+.arrowIcon {
+	height: 37px; /* Adjust the size here */
+	fill: var(--Blue);
+}
+/* toc Container------------------------------------------------------*/
+.tocOuterContainer {
 	width: 326px;
 	height: calc(100vh - 175px);
 	padding-bottom: 185px;
 	display: block !important;
 	overflow-y: auto !important;
 }
-.tocSideBar {
-	overflow-y: auto;
-}
-.productItemSideBar {
+.tocInnerContainer {
 	margin-left: 16px;
+	margin-top: 16px;
 }
-.productNavBar {
+.tocInnerContainer ul {
 	display: block;
+	margin: 0 !important;
 }
-.productList {
-	margin: 0px;
-	padding-inline-start: 0px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	padding-left: 0;
-	display: block;
-	list-style-type: disc;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	unicode-bidi: isolate;
-}
-.productListItemContainer {
+/* toc Parent Items ------------------------------------------------------*/
+.contentContainer {
 	list-style: none;
-	display: list-item;
-	text-align: -webkit-match-parent;
-	unicode-bidi: isolate;
 }
-/* TOC MainLines------------------------------------------------------*/
-.productListItemButton {
+.parentLabelOuterContainer {
 	position: relative;
 	display: flex;
-	padding: 6px 8px;
-	line-height: 20px;
-	min-height: 5px;
+	/* padding: 6px 8px; */
 	margin-left: 8px;
 	margin-right: 8px;
-	border-radius: 6px;
-	transition: background 33.333ms linear;
-	color: black;
-	cursor: pointer;
-	appearance: none;
 	background: unset;
 	border: unset;
 	width: calc(100% - 16px);
-	font-family: unset;
 	text-align: unset;
-	margin-top: unset;
-	margin-bottom: unset;
-	font-size: inherit;
-	text-transform: none;
-	overflow: visible;
-	font: inherit;
-}
-.productListItem {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	min-width: 0px;
 	line-height: 20px;
-	cursor: pointer;
 }
-.productListItem::before {
-	content: " ";
-	display: block;
-	position: absolute;
-	width: 100%;
-	top: -7px;
-	border-width: 0px;
-	border-style: solid;
-	border-image: initial;
-}
-.productListItemLabel {
-	display: flex;
-	-webkit-box-flex: 1;
+.parentLabel {
 	flex-grow: 1;
-}
-.a_link {
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	font-weight: 400;
 	word-break: break-word;
-	text-decoration: none;
-	color: #000;
+	color: #000000;
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
 }
-.x {
-	margin-right: 4px;
+.parentLabel:hover {
+	background-color: #848d97;
+	color: white;
 }
+.parentLabel:active {
+	background-color: #4f545a;
+}
+
 .menuArrow {
-	height: 20px;
 	flex-shrink: 0;
 	color: #848d97;
 	margin-left: 8px;
-	font-weight: initial;
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
 }
-/* TOC SubLines------------------------------------------------------*/
-.subLineOuterContainer.isVisible {
+.menuArrow:hover {
+	background-color: #848d97;
+	color: white;
+}
+.menuArrow:active {
+	background-color: #4f545a;
+}
+/* toc Child Items ------------------------------------------------------*/
+.childLabelOuterContainer.isVisible {
 	padding: 0px;
-	margin: 0px;
-	display: block;
+	display: block !important;
 }
-.subLineOuterContainer {
+.childLabelOuterContainer {
 	padding: 0px;
-	margin: 0px;
-	display: none;
+	display: none !important;
 }
-.subLineInnerContainer {
+.childLabelInnerContainer {
 	position: relative;
 	display: flex;
-	padding: 0px;
-	font-size: 14px;
-	line-height: 20px;
-	min-height: 5px;
 	margin-left: 8px;
 	margin-right: 8px;
-	border-radius: 6px;
-	transition: background 33.333ms linear;
-	color: inherit;
-	cursor: pointer;
-	appearance: none;
-	background: unset;
-	border: unset;
-	width: calc(100% - 16px);
-	font-family: unset;
-	text-align: unset;
-	margin-top: unset;
-	margin-bottom: unset;
+	border-radius: 7px;
 }
-.subLine {
-	text-decoration: none;
+.childLabelInnerContainer:hover {
+	background-color: #848d97;
+	color: white;
+}
+.childLabelInnerContainer:active {
+	background-color: #4f545a;
+}
+.childLabel {
 	padding: 6px 8px 6px 16px;
-	display: flex;
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	border-radius: 6px;
 	color: inherit;
-	font-size: 12px;
-	font-weight: 400;
-}
-.subProductListItem {
-	position: relative;
 	font-size: 14px;
-	display: flex;
-	flex-direction: column;
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	min-width: 0px;
-	font-weight: 400;
-	color: inherit;
-	cursor: pointer;
 }
-.subProductListItem::before {
-	content: " ";
-	display: block;
-	position: absolute;
-	width: 100%;
-	top: -7px;
-	border-width: 0px;
-	border-style: solid;
-	border-image: initial;
-	border-color: transparent;
-}
-.subProductListItemLabel {
-	font-size: 14px;
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	font-weight: 400;
-	word-break: break-word;
-	color: inherit;
-	cursor: pointer;
-	line-height: 20px;
-	font-family: unset;
-	text-align: unset;
-}
-/* -------------------------------------------------------------------*/
+/* Handbook-------------------------------------------------------------------*/
 .handbook_container {
 	flex-grow: 1;
 	margin-left: 5%;
