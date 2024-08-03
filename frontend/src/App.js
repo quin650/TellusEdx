@@ -259,8 +259,7 @@ const App = () => {
 						<div className={classes.sideBarHeaderSection}>
 							<div className={classes.sideBarHeaderTopSection}>
 								<span>
-									{/* <a href={`#${pageTitle}`}>{pageTitle}</a> */}
-									<a href={`#${generateIdFromText(pageTitle)}`}>{pageTitle}</a>
+									<a onClick={handleClickScroll}>{pageTitle}</a>
 								</span>
 							</div>
 							{navigation1}

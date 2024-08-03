@@ -40,7 +40,7 @@
 }
 .Logo {
 	display: flex;
-	height: 3.7rem;
+
 	height: 3.7rem;
 }
 .Logo:hover {
@@ -231,7 +231,8 @@
 	height: 36px;
 }
 .sideBarHeaderTopSection span:active {
-	text-decoration: underline;
+	font-weight: bolder;
+	text-decoration: none;
 }
 .sideBarHeaderTopSection a {
 	display: flex;
@@ -244,6 +245,7 @@
 }
 .sideBarHeaderTopSection a:hover {
 	color: var(--Blue);
+	text-decoration: underline;
 }
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
@@ -460,6 +462,7 @@
 	border-radius: 8px;
 	flex-direction: column;
 	font-weight: 400;
+	min-height: 850px;
 }
 .handbook_header_section {
 	display: block;
