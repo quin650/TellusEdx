@@ -5,7 +5,7 @@ const Page14 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 14 of 22 </p> <h2>Section 8: Safe Driving</h2>
+				<p> Page 14 of 22 </p> <h1>Section 8: Safe Driving</h1>
 			</div>
 			<div className={classes.page_content}>
 				<h2>Be Aware of Your Surroundings</h2> <p>To drive safely, you need to know what is around you. This helps you make good decisions and react to hazards on the road. This image shows the areas around your vehicle.</p>

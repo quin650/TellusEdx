@@ -6,7 +6,7 @@ const Page7 = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 7 of 22 </p>
-				<h2>Section 4: Changing, Replacing, and Renewing Your Driver’s License</h2>
+				<h1>Section 4: Changing, Replacing, and Renewing Your Driver’s License</h1>
 			</div>
 			<div className={classes.page_content}>
 				<h2>Changes to Your License</h2>

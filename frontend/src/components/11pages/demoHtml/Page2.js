@@ -6,7 +6,7 @@ const Page2 = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 2 of 22 </p>
-				<h2>Copyright</h2>
+				<h1>Copyright</h1>
 			</div>
 			<div className={classes.page_content}>
 				<p>© Copyright, Department of Motor Vehicles 2024</p>

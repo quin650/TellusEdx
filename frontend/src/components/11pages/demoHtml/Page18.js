@@ -5,7 +5,7 @@ const Page18 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 18 of 22 </p> <h2>Section 10: Financial Responsibility, Insurance Requirements, and Collisions</h2>
+				<p> Page 18 of 22 </p> <h1>Section 10: Financial Responsibility, Insurance Requirements, and Collisions</h1>
 			</div>
 			<div className={classes.page_content}>
 				<p>You must have your proof of financial responsibility (insurance) when you drive and for a drive test. If you get into a collision, you must show proof to the other drivers involved in the collision.</p> <h2>Insurance Requirements</h2>

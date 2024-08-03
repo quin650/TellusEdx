@@ -6,11 +6,11 @@ const Page1A = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 1 of 22 </p>
-				<h2>California Driver’s Handbook</h2>
+				<h1>California Driver’s Handbook</h1>
 			</div>
-			<div className="handbook-page-content container container--wide mt-60">
+			<div className={classes.page_content}>
 				<h3>Secretary’s Message</h3>
-				<div className="wp-block-dmv-columns content-columns colums-2-3-1-2">
+				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
 						<p>Whether traveling by car, transit, bike, scooter, skateboard or on foot, we all want to reach our destination safely. Tragically, many Californians do not.</p>
 						<p>

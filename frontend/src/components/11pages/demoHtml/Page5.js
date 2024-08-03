@@ -6,7 +6,7 @@ const Page5 = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 5 of 22 </p>
-				<h2>Section 2: Getting an Instruction Permit and Driver’s License</h2>
+				<h1>Section 2: Getting an Instruction Permit and Driver’s License</h1>
 			</div>
 			<div className={classes.page_content}>
 				<p>If you do not have a driver’s license from California or another state, you must apply for an instruction permit before taking the behind-the-wheel drive test to get your driver’s license.</p>
@@ -93,7 +93,7 @@ const Page5 = () => {
 					<li>Pass a behind-the-wheel drive test.</li>
 				</ul>
 
-				<h3>If you are under 18 years old, you will also need to:</h3>
+				<h3>If you are under 18 yrs. old, you will also need to: </h3>
 
 				<ul>
 					<li>Be at least 16 years old.</li>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TocListSubItem from "./tocListISubtem";
 import classes from "./App.module.css";
 
-const TocListItem = ({ idx, text, children }) => {
+const TocListItem = ({ idx, text, children, id }) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const toggleMenuOpen = () => {
@@ -17,23 +17,25 @@ const TocListItem = ({ idx, text, children }) => {
 	return (
 		<li key={idx} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer} aria-expanded={isVisible}>
-				<a href={`#${text}`} className={classes.parentLabel}>
+				<a href={id} className={classes.parentLabel}>
 					<span>{text}</span>
 				</a>
-				<span onClick={toggleMenuOpen} className={classes.menuArrow}>
-					{isVisible ? (
-						<svg aria-hidden="true" focusable="false" className={classes.octicon2} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
-							<path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
-						</svg>
-					) : (
-						<svg aria-hidden="true" focusable="false" className={classes.octicon} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
-							<path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
-						</svg>
-					)}
-				</span>
+				{children.length > 0 && (
+					<span onClick={toggleMenuOpen} className={classes.menuArrow}>
+						{isVisible ? (
+							<svg aria-hidden="true" focusable="false" className={classes.octicon2} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+								<path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+							</svg>
+						) : (
+							<svg aria-hidden="true" focusable="false" className={classes.octicon} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+								<path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+							</svg>
+						)}
+					</span>
+				)}
 			</div>
 			{children.map((child) => (
-				<TocListSubItem key={child.idx} idx={child.idx} level={child.level} text={child.text} isVisible={isVisible} />
+				<TocListSubItem key={child.idx} idx={child.idx} level={child.level} text={child.text} isVisible={isVisible} id={`#${child.id}`} />
 			))}
 		</li>
 	);

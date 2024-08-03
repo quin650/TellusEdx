@@ -5,7 +5,7 @@ const Page22 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 22 of 22 </p> <h2>Section 14: Glossary</h2>
+				<p> Page 22 of 22 </p> <h1>Section 14: Glossary</h1>
 			</div>
 			<div className={classes.page_content}>
 				<figure className="wp-block-table is-style-stripes">

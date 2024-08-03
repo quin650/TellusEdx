@@ -206,7 +206,7 @@
 	position: sticky !important;
 	display: none !important;
 	border-right: 1px solid black !important;
-	min-width: 326px;
+	width: 326px;
 	height: calc(100vh - 48px);
 	top: 48px;
 }
@@ -228,16 +228,15 @@
 }
 .sideBarHeaderTopSection {
 	margin-top: 16px !important;
+	height: 36px;
 }
 .sideBarHeaderTopSection span:active {
 	text-decoration: underline;
 }
 .sideBarHeaderTopSection a {
+	display: flex;
 	font-size: 12px !important;
-	padding-right: 32px !important;
-	padding-left: 8px !important;
-	padding-bottom: 4px !important;
-	margin-left: 4px !important;
+	margin: 0px 32px 4px 8px !important;
 	background-color: transparent;
 	cursor: pointer;
 	color: black;
@@ -301,7 +300,7 @@
 	flex-direction: row;
 	color: black;
 }
-.pagination input {
+.pageInput {
 	width: 35px;
 	padding: 0;
 	margin-right: 4px;
@@ -310,6 +309,7 @@
 	border-radius: 5px !important;
 	font-size: 16px !important;
 }
+
 .pageSeparator {
 	margin: 0 2px !important;
 }
@@ -325,9 +325,19 @@
 	border-radius: 50%;
 	color: #fff;
 }
-.arrowIcon {
+.arrowIconL {
 	height: 37px;
 	fill: var(--Blue);
+}
+.arrowIconR {
+	height: 37px;
+	fill: var(--Blue);
+}
+.arrowIconL.isInactive {
+	fill: gray;
+}
+.arrowIconR.isInactive {
+	fill: gray;
 }
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
@@ -349,6 +359,8 @@
 /* toc Parent Items ------------------------------------------------------*/
 .contentContainer {
 	list-style: none;
+	font-size: 14px;
+	padding-top: 0 !important;
 }
 .parentLabelOuterContainer {
 	position: relative;
@@ -426,6 +438,7 @@
 	color: inherit;
 	font-size: 14px;
 	text-decoration: none;
+	flex-grow: 1;
 }
 /* Handbook-------------------------------------------------------------------*/
 .handbook_OuterContainer {
@@ -607,4 +620,8 @@ strong {
 	margin-top: 4px;
 	padding: 0 6px;
 	text-transform: uppercase;
+}
+.bottomNavigationSpacing {
+	margin-top: 30px;
+	margin-bottom: 30px;
 }

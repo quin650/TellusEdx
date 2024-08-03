@@ -6,7 +6,7 @@ const Page1B = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 1 of 22 </p>
-				<h2>DMV Services</h2>
+				<h1>DMV Services</h1>
 			</div>
 			<div className={classes.page_content}>
 				<p>Have your driver’s license or identification (ID) card number, vehicle license plate number, or vehicle identification number (VIN) available.</p>

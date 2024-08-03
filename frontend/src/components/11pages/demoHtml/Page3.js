@@ -6,7 +6,7 @@ const Page3 = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 3 of 22 </p>
-				<h2>Disclaimer</h2>
+				<h1>Disclaimer</h1>
 			</div>
 			<div className={classes.page_content}>
 				<h2>Disclaimer</h2>

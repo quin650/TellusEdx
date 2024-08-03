@@ -5,7 +5,7 @@ const Page13 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 13 of 22 </p> <h2>Section 7: Laws and Rules of the Road (Continued)</h2>
+				<p> Page 13 of 22 </p> <h1>Section 7: Laws and Rules of the Road (Continued)</h1>
 			</div>
 			<div className={classes.page_content}>
 				<h2>Other Important Roadway Information</h2>

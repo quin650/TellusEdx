@@ -8,7 +8,7 @@ const Page12 = () => {
 				<p>Page 12 of 22 </p> <h2>Section 7: Laws and Rules of the Road (Continued)</h2>
 			</div>
 			<div className={classes.page_content}>
-				<h2>Sharing the Road</h2> <p>Drivers need to share the road with other vehicles, pedestrians, bicyclists, road workers, and large vehicles.</p> <h3>Blind Spots (the No Zone)</h3>
+				<h1>Sharing the Road</h1> <p>Drivers need to share the road with other vehicles, pedestrians, bicyclists, road workers, and large vehicles.</p> <h3>Blind Spots (the No Zone)</h3>
 				<p>
 					Large vehicle and truck drivers have a better view in front of them and bigger mirrors. But they also have large blind spots, also called No Zones. In these areas, your vehicle can disappear from a large vehicle or truck driver’s view. If you cannot see the truck’s side mirrors, the truck
 					driver cannot see you.

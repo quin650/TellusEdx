@@ -6,7 +6,7 @@ const Page6 = () => {
 		<Fragment>
 			<div className={classes.handbook_header_section}>
 				<p>Page 6 of 22 </p>
-				<h2>Section 3: The Testing Process</h2>
+				<h1>Section 3: The Testing Process</h1>
 			</div>
 			<div className={classes.page_content}>
 				<div className="large-list-block">
