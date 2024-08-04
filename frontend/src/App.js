@@ -81,8 +81,19 @@ const App = () => {
 		}
 	}, [pageNum]);
 	const memoizedHeadings = useMemo(() => headings, [headings]);
+	const handleClickScroll = () => {
+		if (mainContainerRef.current) {
+			mainContainerRef.current.scrollTo({
+				top: 0,
+				behavior: "instant",
+			});
+		}
+	};
 	const TableOfContents = (
 		<nav className={classes.tocOuterContainer}>
+			<div className={classes.titleLabel} onClick={handleClickScroll}>
+				<a>{pageTitle}</a>
+			</div>
 			<div className={classes.tocInnerContainer}>
 				<ul>
 					{memoizedHeadings.map((heading) => (
@@ -92,14 +103,6 @@ const App = () => {
 			</div>
 		</nav>
 	);
-	const handleClickScroll = () => {
-		if (mainContainerRef.current) {
-			mainContainerRef.current.scrollTo({
-				top: 0,
-				behavior: "instant",
-			});
-		}
-	};
 	useEffect(() => {
 		handleClickScroll();
 	}, [pageNum]);
@@ -257,11 +260,11 @@ const App = () => {
 				<nav className={classes.sideBarOuterContainer}>
 					<div className={classes.sideBarInnerContainer}>
 						<div className={classes.sideBarHeaderSection}>
-							<div className={classes.sideBarHeaderTopSection}>
+							{/* <div className={classes.sideBarHeaderTopSection}>
 								<span>
 									<a onClick={handleClickScroll}>{pageTitle}</a>
 								</span>
-							</div>
+							</div> */}
 							{navigation1}
 						</div>
 						{TableOfContents}

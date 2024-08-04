@@ -218,38 +218,10 @@
 .sideBarInnerContainer {
 	display: block;
 }
-/* sideBar top ------------------------------------------------------*/
-.sideBarHeaderSection {
-	display: block !important;
-	padding-right: 24px;
-	padding-left: 24px;
-	padding-bottom: 16px;
-	border-bottom: 1px solid black;
-}
-.sideBarHeaderTopSection {
-	margin-top: 16px !important;
-	height: 36px;
-}
-.sideBarHeaderTopSection span:active {
-	font-weight: bolder;
-	text-decoration: none;
-}
-.sideBarHeaderTopSection a {
-	display: flex;
-	font-size: 12px !important;
-	margin: 0px 32px 4px 8px !important;
-	background-color: transparent;
-	cursor: pointer;
-	color: black;
-	text-decoration: none;
-}
-.sideBarHeaderTopSection a:hover {
-	color: var(--Blue);
-	text-decoration: underline;
-}
+
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
-	margin-top: 16px !important;
+	margin: 16px 0 !important;
 	display: flex;
 	margin: auto;
 	justify-content: center;
@@ -278,6 +250,12 @@
 .numbersContainer {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+.numbersContainer span {
+	margin: auto;
+	display: flex;
+	align-items: center;
 }
 .lineSVG_L {
 	width: 2px;
@@ -304,21 +282,28 @@
 }
 .pageInput {
 	width: 35px;
+	height: 24px;
 	padding: 0;
 	margin-right: 4px;
 	text-align: center;
 	border: 1px solid #ddd;
 	border-radius: 5px !important;
 	font-size: 16px !important;
+	display: flex;
+	align-items: center;
 }
 
 .pageSeparator {
 	margin: 0 2px !important;
+	display: flex;
+	align-items: center;
 }
 .pagination .totalPages {
 	margin-left: 4px;
 	width: 27px;
 	color: black;
+	display: flex;
+	align-items: center;
 }
 .arrowButton {
 	display: flex;
@@ -351,13 +336,38 @@
 }
 .tocInnerContainer {
 	margin-left: 16px;
-	margin-top: 16px;
 }
 .tocInnerContainer ul {
 	display: block;
 	margin: 0 !important;
 	padding: 0 !important;
 }
+/* toc Page Titgle ------------------------------------------------------*/
+.titleLabel {
+	padding: 6px 8px 6px 12px !important;
+	border-top: 1px solid black;
+	width: 100%;
+	line-height: 1.5;
+	word-break: break-word;
+	color: white;
+	font-weight: 400;
+	text-decoration: none;
+	border-radius: 0 !important;
+	height: 55px !important;
+	background: linear-gradient(180deg, var(--Blue), #287bba);
+	cursor: pointer !important;
+}
+
+.titleLabel:hover {
+	background: #287bba !important;
+}
+.titleLabel:active {
+	background: var(--Blue) !important;
+}
+.titleLabel a {
+	margin-bottom: auto;
+}
+
 /* toc Parent Items ------------------------------------------------------*/
 .contentContainer {
 	list-style: none;
@@ -368,7 +378,7 @@
 	position: relative;
 	display: flex;
 	margin-left: 8px;
-	margin-right: 8px;
+	/* margin-right: 8px; */
 	background: unset;
 	border: unset;
 	width: calc(100% - 16px);
@@ -466,7 +476,7 @@
 }
 .handbook_header_section {
 	display: block;
-	background: linear-gradient(180deg, #0077c8, #287bba);
+	background: linear-gradient(180deg, var(--Blue), #287bba);
 	margin: 0.75rem 0.75rem 0 0.75rem;
 	padding: 1rem;
 	margin-bottom: 50px;
