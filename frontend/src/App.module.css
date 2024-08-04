@@ -16,8 +16,8 @@
 	z-index: 100;
 	position: sticky !important;
 	display: block;
-	border-bottom: 1px solid black;
-	background-color: rgb(198, 198, 198);
+	border-bottom: 1px solid #eeebee;
+	background-color: white;
 }
 .inner_container_nav {
 	display: flex !important;
@@ -205,10 +205,11 @@
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: none !important;
-	border-right: 1px solid black !important;
+	border-right: 1px solid #eeebee !important;
 	width: 326px;
 	height: calc(100vh - 48px);
 	top: 48px;
+	background-color: #f8f9fb;
 }
 @media (min-width: 1400px) {
 	.sideBarOuterContainer {
@@ -218,7 +219,6 @@
 .sideBarInnerContainer {
 	display: block;
 }
-
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
 	margin: 16px 0 !important;
@@ -292,7 +292,6 @@
 	display: flex;
 	align-items: center;
 }
-
 .pageSeparator {
 	margin: 0 2px !important;
 	display: flex;
@@ -326,6 +325,68 @@
 .arrowIconR.isInactive {
 	fill: gray;
 }
+/* Sidebar Search------------------------------------------------------*/
+.sidebarSearchInputContainer {
+	align-items: center;
+	background: #f8f9fb;
+	display: flex;
+	margin-top: 0.5rem;
+	position: relative;
+	width: 326px;
+}
+.sidebarSearchInputContainer::before {
+	background-color: #81868d;
+	content: "";
+	height: 1rem;
+	left: 27px;
+	mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/></svg>');
+	position: absolute;
+	width: 1rem;
+	z-index: 100;
+}
+
+.sidebar_search {
+	border-bottom: 0px solid #eeebee !important;
+	border-top: 1px solid #eeebee !important;
+	border-right: 1px solid #eeebee !important;
+	border-left: 0 !important;
+	box-sizing: border-box;
+	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+	z-index: 10;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+	overflow-clip-margin: 0px !important;
+	overflow: clip !important;
+	background-color: #f8f9fb !important;
+	color: #ffffff !important;
+	transition: all 0.35s ease-in-out !important;
+	padding-left: 50px !important;
+	width: 326px;
+	border-radius: 0 !important;
+}
+.sidebar_search::placeholder {
+	color: #81868d !important;
+}
+.sidebar_search:focus::placeholder {
+	opacity: 0 !important;
+}
+
+.sidebar_search:hover,
+.sidebar_search:-webkit-autofill:hover,
+.sidebar_search:focus,
+.sidebar_search:-webkit-autofill:focus,
+.sidebar_search.isFocused {
+	border-top: 1px solid #1a1c1e !important;
+	border-right: 0 !important;
+	border-left: 0 !important;
+	border-bottom: 0 !important;
+	background-color: #1a1c1e !important;
+	outline: 0px solid #1a1c1e !important;
+	box-shadow: 0 0 0px white !important;
+}
+
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	width: 326px;
@@ -342,10 +403,9 @@
 	margin: 0 !important;
 	padding: 0 !important;
 }
-/* toc Page Titgle ------------------------------------------------------*/
+/* toc Page Title ------------------------------------------------------*/
 .titleLabel {
 	padding: 6px 8px 6px 12px !important;
-	border-top: 1px solid black;
 	width: 100%;
 	line-height: 1.5;
 	word-break: break-word;
@@ -367,7 +427,6 @@
 .titleLabel a {
 	margin-bottom: auto;
 }
-
 /* toc Parent Items ------------------------------------------------------*/
 .contentContainer {
 	list-style: none;

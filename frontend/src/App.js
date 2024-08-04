@@ -47,7 +47,31 @@ const App = () => {
 	const [pageNum, setPageNum] = useState(1);
 	const [inputValue, setInputValue] = useState(1);
 	const [pagesLength, setPagesLength] = useState(0);
-	const pages = [<Page1A />, <Page1B />, <Page2 />, <Page3 />, <Page4 />, <Page5 />, <Page6 />, <Page7 />, <Page8 />, <Page9 />, <Page10 />, <Page11 />, <Page12 />, <Page13 />, <Page14 />, <Page15 />, <Page16 />, <Page17 />, <Page18 />, <Page19 />, <Page20 />, <Page21 />, <Page22 />];
+	const pages = [
+		<Page1A />,
+		<Page1B />,
+		<Page2 />,
+		<Page3 />,
+		<Page4 />,
+		<Page5 />,
+		<Page6 />,
+		<Page7 />,
+		<Page8 />,
+		<Page9 />,
+		<Page10 />,
+		<Page11 />,
+		<Page12 />,
+		<Page13 />,
+		<Page14 />,
+		<Page15 />,
+		<Page16 />,
+		<Page17 />,
+		<Page18 />,
+		<Page19 />,
+		<Page20 />,
+		<Page21 />,
+		<Page22 />,
+	];
 
 	useEffect(() => {
 		const headers = document.querySelectorAll("h1, h2, h3");
@@ -69,11 +93,22 @@ const App = () => {
 				let currentHead = elements[i].tagName;
 				const id = generateIdFromText(elements[i].textContent);
 				if (currentHead === "H2") {
-					headingsArray.push({ idx: i + 1, level: currentHead, text: elements[i].textContent, children: [], id });
+					headingsArray.push({
+						idx: i + 1,
+						level: currentHead,
+						text: elements[i].textContent,
+						children: [],
+						id,
+					});
 					currentH2Index += 1;
 				} else if (currentHead === "H3") {
 					if (currentH2Index >= 0) {
-						headingsArray[currentH2Index].children.push({ idx: i + 1, level: currentHead, text: elements[i].textContent, id });
+						headingsArray[currentH2Index].children.push({
+							idx: i + 1,
+							level: currentHead,
+							text: elements[i].textContent,
+							id,
+						});
 					}
 				}
 			}
@@ -97,7 +132,14 @@ const App = () => {
 			<div className={classes.tocInnerContainer}>
 				<ul>
 					{memoizedHeadings.map((heading) => (
-						<TocListItem key={heading.idx} idx={heading.idx} level={heading.level} text={heading.text} children={heading.children} id={`#${heading.id}`} />
+						<TocListItem
+							key={heading.idx}
+							idx={heading.idx}
+							level={heading.level}
+							text={heading.text}
+							children={heading.children}
+							id={`#${heading.id}`}
+						/>
 					))}
 				</ul>
 			</div>
@@ -125,7 +167,15 @@ const App = () => {
 		<div className={classes.headerSubNav}>
 			<div className={classes.headerSubNav_hamburger}>
 				<button>
-					<svg aria-hidden="true" focusable="false" className={classes.octicon} viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+					<svg
+						aria-hidden="true"
+						focusable="false"
+						className={classes.octicon}
+						viewBox="0 0 16 16"
+						width="16"
+						height="16"
+						fill="currentColor"
+					>
 						<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
 					</svg>
 				</button>
@@ -191,12 +241,39 @@ const App = () => {
 			clearTimeout(identifier);
 		};
 	}, [inputValue]);
+	//!Search Bar
+	const inputSearchRef = useRef(null);
+	const [isFocused, setIsFocused] = useState(false);
+	const handleSearchBarFocus = () => {
+		setIsFocused(true);
+	};
+	const handleSearchBarBlur = () => {
+		setIsFocused(false);
+	};
+	const searchBar = (
+		<div className={classes.sidebarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${isFocused ? classes.isFocused : ""}`}
+				ref={inputSearchRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder="Search"
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
 	//!Navigation GUI
 	const navigation1 = (
 		<div className={classes.navigation_container}>
 			<div className={classes.pagination}>
 				<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-					<svg className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<svg
+						className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`}
+						viewBox="0 0 24 24"
+					>
 						<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
 					</svg>
 				</button>
@@ -205,7 +282,15 @@ const App = () => {
 						<line x1="1" y1="0" x2="1" y2="40" />
 					</svg>
 					<span id="pageNumbers">
-						<input type="text" onChange={handleInputChange} value={inputValue} onFocus={handleFocus1} ref={inputRef1} id="current_page" className={classes.pageInput} />
+						<input
+							type="text"
+							onChange={handleInputChange}
+							value={inputValue}
+							onFocus={handleFocus1}
+							ref={inputRef1}
+							id="current_page"
+							className={classes.pageInput}
+						/>
 						<span className={classes.pageSeparator}>|</span>
 						<span className={classes.totalPages}>{pagesLength - 1}</span>
 					</span>
@@ -214,7 +299,12 @@ const App = () => {
 					</svg>
 				</div>
 				<button id="next" onClick={NextPage} className={classes.arrowButton}>
-					<svg className={`${classes["arrowIconR"]} ${inputValue === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<svg
+						className={`${classes["arrowIconR"]} ${
+							inputValue === pagesLength - 1 && classes.isInactive
+						}`}
+						viewBox="0 0 24 24"
+					>
 						<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 					</svg>
 				</button>
@@ -225,7 +315,10 @@ const App = () => {
 		<div className={classes.navigation_container}>
 			<div className={classes.pagination}>
 				<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-					<svg className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<svg
+						className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`}
+						viewBox="0 0 24 24"
+					>
 						<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
 					</svg>
 				</button>
@@ -234,7 +327,15 @@ const App = () => {
 						<line x1="1" y1="0" x2="1" y2="40" />
 					</svg>
 					<span id="pageNumbers">
-						<input type="text" onChange={handleInputChange} value={inputValue} onFocus={handleFocus2} ref={inputRef2} id="current_page" className={classes.pageInput} />
+						<input
+							type="text"
+							onChange={handleInputChange}
+							value={inputValue}
+							onFocus={handleFocus2}
+							ref={inputRef2}
+							id="current_page"
+							className={classes.pageInput}
+						/>
 						<span className={classes.pageSeparator}>|</span>
 						<span className={classes.totalPages}>{pagesLength - 1}</span>
 					</span>
@@ -243,13 +344,19 @@ const App = () => {
 					</svg>
 				</div>
 				<button id="next" onClick={NextPage} className={classes.arrowButton}>
-					<svg className={`${classes["arrowIconR"]} ${inputValue === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<svg
+						className={`${classes["arrowIconR"]} ${
+							inputValue === pagesLength - 1 && classes.isInactive
+						}`}
+						viewBox="0 0 24 24"
+					>
 						<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 					</svg>
 				</button>
 			</div>
 		</div>
 	);
+
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
 			<nav className={classes.navContainer}>
@@ -259,14 +366,8 @@ const App = () => {
 			<div className={classes.bodyContainer}>
 				<nav className={classes.sideBarOuterContainer}>
 					<div className={classes.sideBarInnerContainer}>
-						<div className={classes.sideBarHeaderSection}>
-							{/* <div className={classes.sideBarHeaderTopSection}>
-								<span>
-									<a onClick={handleClickScroll}>{pageTitle}</a>
-								</span>
-							</div> */}
-							{navigation1}
-						</div>
+						<div className={classes.sideBarHeaderSection}>{navigation1}</div>
+						{searchBar}
 						{TableOfContents}
 					</div>
 				</nav>
