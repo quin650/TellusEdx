@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../static/images/Logo_arrows.png";
-import GetStartedButton from "./components/12modals/getStarted/features/GetStartedButton";
 import NavbarMenuButton from "./components/10layout/10header/features/navbarMenuButton";
+import DemoNavbar from "./components/10layout/10header/demoNavbar";
 import TocListItem from "./tocListItem";
 import Page1A from "./components/11pages/demoHtml/Page1A";
 import Page1B from "./components/11pages/demoHtml/Page1B";
@@ -38,7 +36,6 @@ const generateIdFromText = (text) => {
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/(^-|-$)/g, "");
 };
-
 const App = () => {
 	const containerRef = useRef(null);
 	const mainContainerRef = useRef(null);
@@ -72,7 +69,6 @@ const App = () => {
 		<Page21 />,
 		<Page22 />,
 	];
-
 	useEffect(() => {
 		const headers = document.querySelectorAll("h1, h2, h3");
 		headers.forEach((header) => {
@@ -148,49 +144,6 @@ const App = () => {
 	useEffect(() => {
 		handleClickScroll();
 	}, [pageNum]);
-	const authGuestNavBar = (
-		<div className={classes.inner_container_nav}>
-			<li className={classes.NavItem1}>
-				<Link to="/home" onClick={handleClickScroll}>
-					<img src={Logo} alt="Logo" className={classes.Logo}></img>
-				</Link>
-			</li>
-			<li className={classes.NavItem2}>
-				<GetStartedButton />
-			</li>
-			<li className={classes.NavItem3}>
-				<NavbarMenuButton />
-			</li>
-		</div>
-	);
-	const authGuestSubNavBar = (
-		<div className={classes.headerSubNav}>
-			<div className={classes.headerSubNav_hamburger}>
-				<button>
-					<svg
-						aria-hidden="true"
-						focusable="false"
-						className={classes.octicon}
-						viewBox="0 0 16 16"
-						width="16"
-						height="16"
-						fill="currentColor"
-					>
-						<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
-					</svg>
-				</button>
-			</div>
-			<div className={classes.breadCrumbs}>
-				<nav className={classes.breadCrumbsHeader}>
-					<ul>
-						<li>
-							<a className={classes.breadCrumbsHeaderLink}> Get Started</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	);
 	//!Prev-Next Page
 	const PrevPage = () => {
 		let newVal = pageNum - 1;
@@ -360,8 +313,7 @@ const App = () => {
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
 			<nav className={classes.navContainer}>
-				{authGuestNavBar}
-				{authGuestSubNavBar}
+				<DemoNavbar />
 			</nav>
 			<div className={classes.bodyContainer}>
 				<nav className={classes.sideBarOuterContainer}>

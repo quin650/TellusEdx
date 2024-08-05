@@ -93,108 +93,6 @@
 	margin-right: 0.5rem;
 	align-items: center;
 }
-/* NavBar Custom------------------------------------------------------*/
-.headerSubNav {
-	display: flex !important;
-	align-items: center !important ;
-	margin-top: 0.5rem !important;
-}
-@media (min-width: 1400px) {
-	.headerSubNav {
-		display: none !important;
-	}
-}
-.headerSubNav_hamburger {
-	margin-right: 8px !important;
-	display: block;
-}
-.headerSubNav_hamburger button {
-	display: inline-grid;
-	padding: unset;
-	place-content: center;
-	width: 32px;
-	min-width: unset;
-
-	font-family: inherit;
-	font-weight: 500;
-	font-size: 14px;
-	cursor: pointer;
-
-	user-select: none;
-	text-align: center;
-
-	-webkit-box-align: center;
-	align-items: center;
-	-webkit-box-pack: justify;
-
-	height: 32px;
-
-	background-color: transparent;
-	box-shadow: none;
-	border-radius: 6px;
-	border-width: 1px;
-	border-style: solid;
-	border-image: initial;
-	border-color: transparent;
-	text-decoration: none;
-
-	gap: 8px;
-	transition: color 80ms cubic-bezier(0.65, 0, 0.35, 1), fill, background-color, border-color;
-	text-transform: none;
-	overflow: visible;
-	font: inherit;
-	margin: 0;
-	text-rendering: auto;
-	letter-spacing: normal;
-	word-spacing: normal;
-	text-indent: 0;
-	text-shadow: none;
-	padding-block: 1px;
-	padding-inline: 6px;
-}
-.octicon {
-	display: inline-block;
-	user-select: none;
-	vertical-align: text-bottom;
-	overflow: visible;
-}
-.octicon2 {
-	display: inline-block;
-	user-select: none;
-	vertical-align: text-bottom;
-	overflow: visible;
-	transform: rotate(180deg);
-}
-.breadCrumbs {
-	margin-right: auto !important;
-	width: 100% !important;
-	display: block;
-}
-.breadCrumbsHeader {
-	clip-path: inset(-0.5rem -0.5rem -0.5rem 0);
-	font-size: 14px !important;
-	display: block;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.breadCrumbsHeader ul {
-	list-style-type: disc;
-}
-.breadCrumbsHeader ul li {
-	display: inline-block !important;
-	text-align: -webkit-match-parent;
-}
-.breadCrumbsHeaderLink {
-	margin-right: 8px !important;
-	text-decoration: none;
-	background-color: transparent;
-	cursor: pointer;
-}
-.breadCrumbsHeaderLink:hover,
-.breadCrumbsHeaderLink:focus {
-	text-decoration: underline;
-}
 /* Body ------------------------------------------------------*/
 .bodyContainer {
 	display: flex;
@@ -513,7 +411,7 @@
 }
 /* Handbook-------------------------------------------------------------------*/
 .handbook_OuterContainer {
-	padding-top: 5.625rem;
+	padding-top: 48px;
 	padding-bottom: 5.625rem;
 	max-width: 1500px;
 	padding-left: 5%;
