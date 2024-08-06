@@ -1,43 +1,65 @@
-.hamburgerMaster {
-    order: 3;
-    margin: 0rem;
-    cursor: pointer;
-    width: 40px;
-    height: 30.5px;
+.hamburgerButton {
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+
+	cursor: pointer;
+	-webkit-appearance: button;
+
+	margin: 0;
+	border: 1px solid white;
+
+	place-content: center;
+	height: 40px;
+	width: 40px;
+	min-width: unset;
+	font-size: 14px;
+	background-color: white;
+	width: 36px;
 }
-.hamburger {
-    background-color: black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 40px;
-    height: 3.5px;
+.hamburgerButton:hover {
+	background-color: #111111;
+}
+.svgHamburger {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: black;
+	height: 21px;
 }
 
-.exitButton{
-    z-index: 2000;
-    cursor: pointer;
-    width: 35px;
-    height: 25.5px;
-    margin-right: 6px;     /* this is the size of the scroll bar which is taking over the space to th right */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.exitButton:hover{
-    background-color: #111111;
+.svgHamburger path {
+	fill: gray;
 }
 
-.svgExit{
-    width: 35px;
-    height: 25.5px;
+.exitButton {
+	z-index: 2000;
+	cursor: pointer;
+	width: 35px;
+	height: 25.5px;
+	margin-right: 6px; /* this is the size of the scroll bar which is taking over the space to th right */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.exitButton:hover {
+	background-color: #111111;
 }
 
-.svgExit path{
-    fill: #ffffff;
-    width: 35px;
-    height: 25.5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.svgExit {
+	width: 35px;
+	height: 25.5px;
+}
+
+.svgExit path {
+	fill: #ffffff;
+	width: 35px;
+	height: 25.5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

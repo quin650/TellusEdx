@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import NavbarMenuButton from "./components/10layout/10header/features/navbarMenuButton";
+import { useDispatch, useSelector } from "react-redux";
+import { userReducerActions } from "./a.reducers/auth_Reducers";
 import DemoNavbar from "./components/10layout/10header/demoNavbar";
 import TocListItem from "./tocListItem";
 import Page1A from "./components/11pages/demoHtml/Page1A";
@@ -37,6 +38,7 @@ const generateIdFromText = (text) => {
 		.replace(/(^-|-$)/g, "");
 };
 const App = () => {
+	const dispatch = useDispatch();
 	const containerRef = useRef(null);
 	const mainContainerRef = useRef(null);
 	const [headings, setHeadings] = useState([]);
@@ -120,6 +122,38 @@ const App = () => {
 			});
 		}
 	};
+	const tocStatus = useSelector(({ user }) => user.tocStatus);
+	const tocAllowWindowHandleResize_rdx = useSelector(({ user }) => user.tocAllowWindowHandleResize_rdx);
+	const [isOpen, setIsOpen] = useState(true);
+	const [tocAllowWindowHandleResize, SetTocAllowWindowHandleResize] = useState(true);
+
+	useEffect(() => {
+		setIsOpen(tocStatus);
+	}, [tocStatus]);
+
+	useEffect(() => {
+		SetTocAllowWindowHandleResize(tocAllowWindowHandleResize_rdx);
+	}, [tocAllowWindowHandleResize_rdx]);
+
+	const handleResize = () => {
+		console.log("handleResize");
+		if (window.innerWidth < 1400) {
+			setIsOpen(false);
+			dispatch(userReducerActions.toggleTocStatus(false));
+		} else {
+			setIsOpen(true);
+			dispatch(userReducerActions.toggleTocStatus(true));
+		}
+	};
+	useEffect(() => {
+		if (!tocAllowWindowHandleResize) return;
+		window.addEventListener("resize", handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, [tocAllowWindowHandleResize]);
+
 	const TableOfContents = (
 		<nav className={classes.tocOuterContainer}>
 			<div className={classes.titleLabel} onClick={handleClickScroll}>
@@ -220,114 +254,98 @@ const App = () => {
 	);
 	//!Navigation GUI
 	const navigation1 = (
-		<div className={classes.navigation_container}>
-			<div className={classes.pagination}>
-				<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-					<svg
-						className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`}
-						viewBox="0 0 24 24"
-					>
-						<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-					</svg>
-				</button>
-				<div className={classes.numbersContainer}>
-					<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-						<line x1="1" y1="0" x2="1" y2="40" />
-					</svg>
-					<span id="pageNumbers">
-						<input
-							type="text"
-							onChange={handleInputChange}
-							value={inputValue}
-							onFocus={handleFocus1}
-							ref={inputRef1}
-							id="current_page"
-							className={classes.pageInput}
-						/>
-						<span className={classes.pageSeparator}>|</span>
-						<span className={classes.totalPages}>{pagesLength - 1}</span>
-					</span>
-					<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-						<line x1="1" y1="0" x2="1" y2="40" />
-					</svg>
+		<div className={classes.sideBarHeaderSection}>
+			<div className={classes.navigation_container}>
+				<div className={classes.pagination}>
+					<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
+						<svg className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+							<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+						</svg>
+					</button>
+					<div className={classes.numbersContainer}>
+						<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+							<line x1="1" y1="0" x2="1" y2="40" />
+						</svg>
+						<span id="pageNumbers">
+							<input
+								type="text"
+								onChange={handleInputChange}
+								value={inputValue}
+								onFocus={handleFocus1}
+								ref={inputRef1}
+								id="current_page"
+								className={classes.pageInput}
+							/>
+							<span className={classes.pageSeparator}>|</span>
+							<span className={classes.totalPages}>{pagesLength - 1}</span>
+						</span>
+						<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+							<line x1="1" y1="0" x2="1" y2="40" />
+						</svg>
+					</div>
+					<button id="next" onClick={NextPage} className={classes.arrowButton}>
+						<svg className={`${classes["arrowIconR"]} ${inputValue === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
+							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+						</svg>
+					</button>
 				</div>
-				<button id="next" onClick={NextPage} className={classes.arrowButton}>
-					<svg
-						className={`${classes["arrowIconR"]} ${
-							inputValue === pagesLength - 1 && classes.isInactive
-						}`}
-						viewBox="0 0 24 24"
-					>
-						<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-					</svg>
-				</button>
 			</div>
 		</div>
 	);
 	const navigation2 = (
-		<div className={classes.navigation_container}>
-			<div className={classes.pagination}>
-				<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-					<svg
-						className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`}
-						viewBox="0 0 24 24"
-					>
-						<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-					</svg>
-				</button>
-				<div className={classes.numbersContainer}>
-					<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-						<line x1="1" y1="0" x2="1" y2="40" />
-					</svg>
-					<span id="pageNumbers">
-						<input
-							type="text"
-							onChange={handleInputChange}
-							value={inputValue}
-							onFocus={handleFocus2}
-							ref={inputRef2}
-							id="current_page"
-							className={classes.pageInput}
-						/>
-						<span className={classes.pageSeparator}>|</span>
-						<span className={classes.totalPages}>{pagesLength - 1}</span>
-					</span>
-					<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-						<line x1="1" y1="0" x2="1" y2="40" />
-					</svg>
+		<div className={classes.bottomNavigationSpacing}>
+			<div className={classes.navigation_container}>
+				<div className={classes.pagination}>
+					<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
+						<svg className={`${classes["arrowIconL"]} ${inputValue === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+							<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+						</svg>
+					</button>
+					<div className={classes.numbersContainer}>
+						<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+							<line x1="1" y1="0" x2="1" y2="40" />
+						</svg>
+						<span id="pageNumbers">
+							<input
+								type="text"
+								onChange={handleInputChange}
+								value={inputValue}
+								onFocus={handleFocus2}
+								ref={inputRef2}
+								id="current_page"
+								className={classes.pageInput}
+							/>
+							<span className={classes.pageSeparator}>|</span>
+							<span className={classes.totalPages}>{pagesLength - 1}</span>
+						</span>
+						<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+							<line x1="1" y1="0" x2="1" y2="40" />
+						</svg>
+					</div>
+					<button id="next" onClick={NextPage} className={classes.arrowButton}>
+						<svg className={`${classes["arrowIconR"]} ${inputValue === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
+							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+						</svg>
+					</button>
 				</div>
-				<button id="next" onClick={NextPage} className={classes.arrowButton}>
-					<svg
-						className={`${classes["arrowIconR"]} ${
-							inputValue === pagesLength - 1 && classes.isInactive
-						}`}
-						viewBox="0 0 24 24"
-					>
-						<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-					</svg>
-				</button>
 			</div>
 		</div>
 	);
 
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
-			<nav className={classes.navContainer}>
-				<DemoNavbar />
-			</nav>
+			<DemoNavbar isOpen={isOpen} />
 			<div className={classes.bodyContainer}>
-				<nav className={classes.sideBarOuterContainer}>
-					<div className={classes.sideBarInnerContainer}>
-						<div className={classes.sideBarHeaderSection}>{navigation1}</div>
-						{searchBar}
-						{TableOfContents}
-					</div>
+				<nav className={`${classes["sideBarOuterContainer"]} ${isOpen ? classes.open : ""}`}>
+					{navigation1}
+					{searchBar}
+					{TableOfContents}
 				</nav>
 				<div className={classes.handbook_OuterContainer} ref={containerRef}>
 					<div className={classes.handbook_InnerContainer}>
 						<div className={classes.page_contentContainer}>
 							{pages[pageNum]}
-							<div className={classes.bottomNavigationSpacing}>{navigation2}</div>
+							{navigation2}
 						</div>
 					</div>
 				</div>

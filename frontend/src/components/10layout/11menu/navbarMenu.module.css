@@ -1,276 +1,277 @@
-.blurredBackgroundContainer{
-    display: flex;
-    position: fixed;
-    z-index: 1000;
-    height: 100vh;
-    width: 100vw;
-    top: 0px;
-    justify-content: flex-end;
-    align-items: center;
-    font-family: Roboto; 
-    background-color: var(--BlurredBackground);
-    backdrop-filter: blur(6px); /* Chrome, Firefox */
-    -webkit-backdrop-filter: blur(6px); /* Safari */
-}
 .sidebar {
-    display: flex;
-    z-index: 2000;
-    position: fixed;
-    justify-content: space-between;
-    width: 0px;
-    height: 100vh;
-    background-color: black;
-    flex-direction: column;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-    transition: width 200ms ease;
+	display: flex;
+	z-index: 2000;
+	position: fixed;
+	right: 0;
+	justify-content: space-between;
+	width: 326px;
+	height: 100vh;
+	background-color: black;
+	flex-direction: column;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-top-left-radius: 14px;
+	border-bottom-left-radius: 14px;
+	padding-left: 0px !important;
+
+	transition: transform 0.3s ease;
+	transform: translateX(100%);
+	top: 0;
+	margin: 0;
 }
-.sidebar.navState {
-    width: 320px;
+.sidebar.open {
+	transform: translateX(0);
 }
 
 .outerLogoContainer {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    width: 100%;
-    margin: 0px;
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	width: 100%;
+	margin: 0px;
 }
 .Logo {
-    display: flex;
-    height: 2.448rem;
-    width: 2.358rem;
+	display: flex;
+	height: 2.448rem;
+	width: 2.358rem;
 }
 .Logo:hover {
-    cursor: pointer;
-    transform: rotate(180deg);
-    animation: around .18s ease-in forwards;
+	cursor: pointer;
+	transform: rotate(180deg);
+	animation: around 0.18s ease-in forwards;
 }
-@keyframes around {                             /*========== Animation ==========*/
-    0% {transform: rotate(22.5deg);}
-    33% {transform: rotate(45deg);}
-    66% {transform: rotate(67.5deg);}
-    100% {transform: rotate(90deg);}
+@keyframes around {
+	/*========== Animation ==========*/
+	0% {
+		transform: rotate(22.5deg);
+	}
+	33% {
+		transform: rotate(45deg);
+	}
+	66% {
+		transform: rotate(67.5deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
 }
-.companyName{
-    align-self: center;
-    font-family: Montserrat;
-    font-size: 1.4rem;
-    letter-spacing: -.5px;
-    margin-left: 23px;
-    font-weight:lighter;
-    cursor: pointer;
-    color: var(--WhiteToGray);
-    text-decoration: none; 
+.companyName {
+	align-self: center;
+	font-family: Montserrat;
+	font-size: 1.4rem;
+	letter-spacing: -0.5px;
+	margin-left: 23px;
+	font-weight: lighter;
+	cursor: pointer;
+	color: var(--WhiteToGray);
+	text-decoration: none;
 }
-.companyName:hover{
-    color: var(--Blue);
+.companyName:hover {
+	color: var(--Blue);
 }
-.top{
-    margin: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
+.top {
+	margin: 0px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
-.bottom{
-    margin-bottom: 45px;
+.bottom {
+	margin-bottom: 45px;
 }
-.subgroup{
-    padding-left: 30px;
-    padding-right: 30px;
+.subgroup {
+	padding-left: 30px;
+	padding-right: 30px;
 }
 .sidebarMenu {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 .buttonPadding {
-    padding-top: 10px 
+	padding-top: 10px;
 }
-.sidebarMenu span{
-    margin-left: 10px;
+.sidebarMenu span {
+	margin-left: 10px;
 }
-.sidebarMenu input{
-    margin-left: auto;
+.sidebarMenu input {
+	margin-left: auto;
 }
 
-.break{
-    border-bottom: .5px solid #555555;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+.break {
+	border-bottom: 0.5px solid #555555;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* General  Formatting */
 .menuItem {
-    display: flex;
-    align-items: center;
-    padding: 10px 8px;
-    color: #B3B3B3;
-    text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 8px;
-    height: 52px;
-    width: 260px;
+	display: flex;
+	align-items: center;
+	padding: 10px 8px;
+	color: #b3b3b3;
+	text-decoration: none;
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 8px;
+	height: 52px;
+	width: 260px;
 }
-.menuItem:hover{
-    background-color: #1e1d1d;
+.menuItem:hover {
+	background-color: #1e1d1d;
 }
-.menuItem span{
-    margin-right: auto;
+.menuItem span {
+	margin-right: auto;
 }
 /* General  Formatting */
 .sidebarMenuOptions {
-    display: flex;
-    align-items: center;
-    padding: 10px 8px;
-    color: #B3B3B3;
-    text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 8px;
-    height: 52px;
-    width: 260px;
+	display: flex;
+	align-items: center;
+	padding: 10px 8px;
+	color: #b3b3b3;
+	text-decoration: none;
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 8px;
+	height: 52px;
+	width: 260px;
 }
-.sidebarMenuOptions i{
-    fill: black;
+.sidebarMenuOptions i {
+	fill: black;
 }
 .sidebarMenuOptions:hover {
-    background-color: #1e1d1d;
+	background-color: #1e1d1d;
 }
 .sidebarMenuOptions:active {
-    background-color: #1e1d1d;
-    border: 1px solid #1e1d1d;
-    border-radius: 8px;
+	background-color: #1e1d1d;
+	border: 1px solid #1e1d1d;
+	border-radius: 8px;
 }
 /* Home Formatting */
 .sidebarMenuOptions.isActiveHomeIcon {
-    color: white;
+	color: white;
 }
 /* Dashboard Formatting */
 .sidebarMenuOptions.isActiveDashboardIcon {
-    color:  white;
+	color: white;
 }
 /* About Us Formatting */
 .sidebarMenuOptions.isActiveAboutUsIcon {
-    color:  white;
+	color: white;
 }
 /* Support Center Formatting */
 .sidebarMenuOptions.isActiveSupportCenterIcon {
-    color: white;
+	color: white;
 }
 /* help Formatting */
 .sidebarMenuOptions.isActiveHelpIcon {
-    color:  white;
+	color: white;
 }
-/* Dark Mode */   
+/* Dark Mode */
 .darkModeMenuItem {
-    display: flex;
-    align-items: center;
-    padding: 10px 8px;
-    color: #B3B3B3;
-    text-decoration: none;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 8px;
-    height: 52px;
-    width: 260px;
-    cursor: pointer;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	padding: 10px 8px;
+	color: #b3b3b3;
+	text-decoration: none;
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 8px;
+	height: 52px;
+	width: 260px;
+	cursor: pointer;
+	justify-content: center;
 }
 .darkModeMenuItem:hover {
-    background-color: #1e1d1d;
+	background-color: #1e1d1d;
 }
 .darkModeMenuItem span {
-    margin-right: auto;
+	margin-right: auto;
 }
-/* Toggle Section */   
-                                            /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  *//* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
+/* Toggle Section */
+/* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  */ /* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
 
-.darkModeToggleAndInputContainer{
-    display: flex;
+.darkModeToggleAndInputContainer {
+	display: flex;
 }
 .darkModeToggleContainer {
-    width: 60px;
-    height: 30px; 
-    position: relative;
-    display: block;
-    background: #ebebeb;
-    border-radius: 30px; 
-    cursor: pointer;
-    transition: 0.3s;
-    overflow: hidden;
+	width: 60px;
+	height: 30px;
+	position: relative;
+	display: block;
+	background: #ebebeb;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: 0.3s;
+	overflow: hidden;
 }
-.toggleCheckBox{
-    width: 0;
-    height: 0;
-    visibility: hidden;
+.toggleCheckBox {
+	width: 0;
+	height: 0;
+	visibility: hidden;
 }
 .toggleCheckBox:checked ~ .darkModeToggleContainer {
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), inset 0px -1px 3px rgba(255, 255, 255, 0.5);
-    background: #3e3e3e; 
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), inset 0px -1px 3px rgba(255, 255, 255, 0.5);
+	background: #3e3e3e;
 }
 .toggleCheckBox:checked ~ .darkModeToggleContainer .darkModeToggleButton {
-    left: 58px;
-    transform: translateX(-100%);
-    background: linear-gradient(180deg,#454545,#3a3a3a);
+	left: 58px;
+	transform: translateX(-100%);
+	background: linear-gradient(180deg, #454545, #3a3a3a);
 }
 
-.darkModeToggleContainer:active .darkModeToggleButton{ 
-    width: 40px; 
-    transition: 0.3s;
+.darkModeToggleContainer:active .darkModeToggleButton {
+	width: 40px;
+	transition: 0.3s;
 }
 .darkModeToggleButton {
-    content: "";
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 2px; 
-    left: 2px;
-    background: linear-gradient(180deg, #ffcc89, #d8860b);
-    border-radius: 50%;
-    transition: 0.3s;
+	content: "";
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	background: linear-gradient(180deg, #ffcc89, #d8860b);
+	border-radius: 50%;
+	transition: 0.3s;
 }
 /* icons */
 .darkModeToggleContainer svg {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 3px;  
-    transition: 0.3s;
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 3px;
+	transition: 0.3s;
 }
 .darkModeToggleContainer svg.sun {
-    left:3px;
-    fill: #FFFFFF;
+	left: 3px;
+	fill: #ffffff;
 }
 .darkModeToggleContainer svg.moon {
-    left:33px;
-    fill: #7e7e7e;
+	left: 33px;
+	fill: #7e7e7e;
 }
 .toggleCheckBox:checked + .darkModeToggleContainer svg.sun {
-    fill: #7e7e7e;
+	fill: #7e7e7e;
 }
 .toggleCheckBox:checked + .darkModeToggleContainer svg.moon {
-    fill: #FFFFFF;
+	fill: #ffffff;
 }
 .flagContainer {
-    width: 60px;
-    height: 30px; 
-    position: relative;
-    display: block;
-    cursor: pointer;
+	width: 60px;
+	height: 30px;
+	position: relative;
+	display: block;
+	cursor: pointer;
 }
-.sidebarMenuOptions:hover img{
-    border: 1px solid  white;
+.sidebarMenuOptions:hover img {
+	border: 1px solid white;
 }
-.sidebarMenuOptions:active img{
-    outline: 1px solid  white;
+.sidebarMenuOptions:active img {
+	outline: 1px solid white;
 }
 .flag {
-    height: 19px; 
-    width: 28px;
-    margin-left: auto;
-    margin-right: 16px;
+	height: 19px;
+	width: 28px;
+	margin-left: auto;
+	margin-right: 16px;
 }
