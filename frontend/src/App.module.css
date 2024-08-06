@@ -3,7 +3,7 @@
 	flex-direction: column;
 	height: 100%;
 	width: 100vw;
-	overflow: auto;
+	overflow-y: auto !important;
 	scroll-padding-top: 65px !important;
 	font-family: sans-serif !important;
 	color: #5d6c7a;
@@ -17,23 +17,73 @@
 	position: relative;
 }
 /* sideBar container ------------------------------------------------------*/
+
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: block;
 	border-right: 1px solid #eeebee !important;
-	width: 326px;
-	height: calc(100vh - 48px);
-	top: 48px;
+	width: 0;
+	height: calc(100vh - 1px);
+	top: 0;
 	background-color: #f8f9fb;
 	border-top: 1px solid #eeebee;
 
 	transition: transform 0.3s ease;
 	transform: translateX(-100%);
+	visibility: hidden;
 }
 .sideBarOuterContainer.open {
 	transform: translateX(0);
+	width: 326px;
+	visibility: visible;
 }
 
+@media (max-width: 900px) {
+	.sideBarOuterContainer {
+		position: fixed !important;
+		top: 0;
+		left: 0;
+	}
+}
+/* tab section --------------------------------------------------------------*/
+.tabsContainer {
+	display: block;
+	width: 100%;
+	margin-top: 56px;
+	padding-left: 35px;
+	padding-right: 35px;
+	color: #81868d;
+}
+.tabsSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	height: 40px;
+}
+.onThisPage {
+	font-weight: 600;
+	margin-right: 14px;
+	border-bottom: 2px solid black;
+	cursor: pointer;
+	color: black !important;
+}
+
+.all {
+	font-weight: 600;
+	margin-right: 14px;
+	cursor: pointer;
+}
+.pinned {
+	font-weight: 600;
+	margin-right: 14px;
+	cursor: pointer;
+}
+.line {
+	width: 100%;
+	border: 0;
+	height: 1px;
+	border-bottom: 1px solid #eeebee;
+}
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
 	margin: 16px 0 !important;
@@ -177,11 +227,12 @@
 	overflow: clip !important;
 	background-color: #f8f9fb !important;
 	color: #ffffff !important;
-	transition: all 0.35s ease-in-out !important;
+	transition: background-color 0.35s ease-in-out !important;
 	padding-left: 50px !important;
 	width: 326px;
 	border-radius: 0 !important;
 }
+
 .sidebar_search::placeholder {
 	color: #81868d !important;
 }
@@ -206,10 +257,10 @@
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	width: 326px;
-	height: calc(100vh - 175px);
-	padding-bottom: 185px;
 	display: block !important;
 	overflow-y: auto !important;
+	--scrollbar-width: 15px;
+	height: calc(100vh - 264px);
 }
 .tocInnerContainer {
 	margin-left: 16px;
@@ -329,8 +380,8 @@
 }
 /* Handbook-------------------------------------------------------------------*/
 .handbook_OuterContainer {
-	padding-top: 48px;
-	padding-bottom: 5.625rem;
+	padding-top: 56px;
+	padding-bottom: 56px;
 	max-width: 1500px;
 	padding-left: 5%;
 	padding-right: 5%;

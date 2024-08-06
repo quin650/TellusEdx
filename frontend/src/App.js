@@ -130,11 +130,9 @@ const App = () => {
 	useEffect(() => {
 		setIsOpen(tocStatus);
 	}, [tocStatus]);
-
 	useEffect(() => {
 		SetTocAllowWindowHandleResize(tocAllowWindowHandleResize_rdx);
 	}, [tocAllowWindowHandleResize_rdx]);
-
 	const handleResize = () => {
 		console.log("handleResize");
 		if (window.innerWidth < 1400) {
@@ -153,31 +151,10 @@ const App = () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, [tocAllowWindowHandleResize]);
-
-	const TableOfContents = (
-		<nav className={classes.tocOuterContainer}>
-			<div className={classes.titleLabel} onClick={handleClickScroll}>
-				<a>{pageTitle}</a>
-			</div>
-			<div className={classes.tocInnerContainer}>
-				<ul>
-					{memoizedHeadings.map((heading) => (
-						<TocListItem
-							key={heading.idx}
-							idx={heading.idx}
-							level={heading.level}
-							text={heading.text}
-							children={heading.children}
-							id={`#${heading.id}`}
-						/>
-					))}
-				</ul>
-			</div>
-		</nav>
-	);
 	useEffect(() => {
 		handleClickScroll();
 	}, [pageNum]);
+
 	//!Prev-Next Page
 	const PrevPage = () => {
 		let newVal = pageNum - 1;
@@ -228,28 +205,21 @@ const App = () => {
 			clearTimeout(identifier);
 		};
 	}, [inputValue]);
-	//!Search Bar
-	const inputSearchRef = useRef(null);
-	const [isFocused, setIsFocused] = useState(false);
-	const handleSearchBarFocus = () => {
-		setIsFocused(true);
-	};
-	const handleSearchBarBlur = () => {
-		setIsFocused(false);
-	};
-	const searchBar = (
-		<div className={classes.sidebarSearchInputContainer} method="get" action="#" role="search">
-			<input
-				className={`${classes["sidebar_search"]} ${isFocused ? classes.isFocused : ""}`}
-				ref={inputSearchRef}
-				onFocus={handleSearchBarFocus}
-				onBlur={handleSearchBarBlur}
-				placeholder="Search"
-				name="q"
-				aria-label="Search"
-			/>
-			<input type="hidden" name="check_keywords" value="yes" />
-			<input type="hidden" name="area" value="default" />
+	//!Tab Controls
+	const tabs = (
+		<div className={classes.tabsContainer}>
+			<div className={classes.tabsSection}>
+				<span className={classes.onThisPage}>
+					<p>On this page</p>
+				</span>
+				<span className={classes.all}>
+					<p>All</p>
+				</span>
+				<span className={classes.pinned}>
+					<p>Pinned</p>
+				</span>
+			</div>
+			<div className={classes.line}></div>
 		</div>
 	);
 	//!Navigation GUI
@@ -331,16 +301,63 @@ const App = () => {
 			</div>
 		</div>
 	);
+	//!Search Bar
+	const inputSearchRef = useRef(null);
+	const [isFocused, setIsFocused] = useState(false);
+	const handleSearchBarFocus = () => {
+		setIsFocused(true);
+	};
+	const handleSearchBarBlur = () => {
+		setIsFocused(false);
+	};
+	const searchBar = (
+		<div className={classes.sidebarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${isFocused ? classes.isFocused : ""}`}
+				ref={inputSearchRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder="Search"
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
+	const TableOfContents = (
+		<nav className={classes.tocOuterContainer}>
+			<div className={classes.titleLabel} onClick={handleClickScroll}>
+				<a>{pageTitle}</a>
+			</div>
+			<div className={classes.tocInnerContainer}>
+				<ul>
+					{memoizedHeadings.map((heading) => (
+						<TocListItem
+							key={heading.idx}
+							idx={heading.idx}
+							level={heading.level}
+							text={heading.text}
+							children={heading.children}
+							id={`#${heading.id}`}
+						/>
+					))}
+				</ul>
+			</div>
+		</nav>
+	);
 
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
 			<DemoNavbar isOpen={isOpen} />
 			<div className={classes.bodyContainer}>
-				<nav className={`${classes["sideBarOuterContainer"]} ${isOpen ? classes.open : ""}`}>
+				<div className={`${classes["sideBarOuterContainer"]} ${isOpen ? classes.open : ""}`}>
+					{tabs}
 					{navigation1}
 					{searchBar}
 					{TableOfContents}
-				</nav>
+				</div>
+
 				<div className={classes.handbook_OuterContainer} ref={containerRef}>
 					<div className={classes.handbook_InnerContainer}>
 						<div className={classes.page_contentContainer}>
