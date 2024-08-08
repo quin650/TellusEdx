@@ -8,17 +8,15 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Logo from "../../../../static/images/1Logo.png";
 import classes from "./NavbarMenu.module.css";
 
-const NavbarMenu = () => {
+const NavbarMenu = ({ demoNavBarMenuOption, exitButtonRef }) => {
 	const navBarRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
 	const activeFlag = useSelector(({ user }) => user.activeFlag);
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-
 	const { navbarMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
 	const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
-
 	// Icons
 	const homeIcon = (
 		<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,11 +192,18 @@ const NavbarMenu = () => {
 	useEffect(() => {
 		languageSettingsModalStatusRef.current = languageSettingsModalStatus;
 	}, [languageSettingsModalStatus]);
+
 	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (navBarRef.current && !navBarRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
+		if (
+			navBarRef.current &&
+			!navBarRef.current.contains(e.target) &&
+			!exitButtonRef.current.contains(e.target) &&
+			!languageSettingsModalStatusRef.current
+		) {
 			exitNavBarAction();
 		}
 	};
+
 	const exitNavBarAction = () => {
 		dispatch(userReducerActions.navBarMenuClose());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
@@ -255,6 +260,7 @@ const NavbarMenu = () => {
 					<GetStartedButton />
 				</div>
 		  ));
+
 	return (
 		<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
 			<div className={classes.top}>
@@ -276,14 +282,16 @@ const NavbarMenu = () => {
 						<i>{homeIcon}</i>
 						<span>Home</span>
 					</Link>
-					<Link
-						to="/demo"
-						onClick={CloseNavBarMenu}
-						className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
-					>
-						<i>{dashboardIcon}</i>
-						<span>Demo</span>
-					</Link>
+					{demoNavBarMenuOption && (
+						<Link
+							to="/demo"
+							onClick={CloseNavBarMenu}
+							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
+						>
+							<i>{dashboardIcon}</i>
+							<span>Demo</span>
+						</Link>
+					)}
 				</div>
 			</div>
 			<div className={classes.bottom}>

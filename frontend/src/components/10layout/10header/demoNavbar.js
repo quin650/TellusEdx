@@ -4,7 +4,7 @@ import NavbarMenuButton from "./features/navbarMenuButton";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import classes from "./demoNavbar.module.css";
 
-const DemoNavbar = ({ isOpen }) => {
+const DemoNavbar = ({ isOpen, demoNavBarMenuOption }) => {
 	const dispatch = useDispatch();
 	const toggleTOCSidebar = () => {
 		dispatch(userReducerActions.toggleTocStatus(!isOpen));
@@ -26,7 +26,7 @@ const DemoNavbar = ({ isOpen }) => {
 		<nav className={classes.navContainer}>
 			<div className={classes.inner_container_nav}>
 				{tocButton}
-				<NavbarMenuButton />
+				<NavbarMenuButton demoNavBarMenuOption={demoNavBarMenuOption} />
 			</div>
 		</nav>
 	);

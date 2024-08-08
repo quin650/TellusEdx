@@ -391,9 +391,11 @@ const App = () => {
 		</nav>
 	);
 
+	const demoNavBarMenuOption = false;
+
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
-			<DemoNavbar isOpen={isOpen} />
+			<DemoNavbar isOpen={isOpen} demoNavBarMenuOption={demoNavBarMenuOption} />
 			<div className={classes.bodyContainer}>
 				<div className={`${classes["sideBarOuterContainer"]} ${isOpen ? classes.open : ""}`}>
 					{tabs}

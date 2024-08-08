@@ -60,6 +60,9 @@ const userSlice = createSlice({
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
+		navBarMenuToggleOpenClose(state) {
+			state.navbarMenuStatus = !state.navbarMenuStatus;
+		},
 
 		// Modal
 		getStartedModalLogIn(state) {
