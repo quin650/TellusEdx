@@ -71,6 +71,12 @@ const App = () => {
 		<Page21 />,
 		<Page22 />,
 	];
+	const memoizedHeadings = useMemo(() => headings, [headings]);
+	const tocStatus = useSelector(({ user }) => user.tocStatus);
+	const [isOpen, setIsOpen] = useState(true);
+	const tocAllowWindowHandleResize_rdx = useSelector(({ user }) => user.tocAllowWindowHandleResize_rdx);
+	const [tocAllowWindowHandleResize, SetTocAllowWindowHandleResize] = useState(true);
+	//! Creates id's based on the h1, h2, h3 text
 	useEffect(() => {
 		const headers = document.querySelectorAll("h1, h2, h3");
 		headers.forEach((header) => {
@@ -78,11 +84,12 @@ const App = () => {
 			header.id = id;
 		});
 	}, [pageNum]);
+	//! set Page Title and range of pages + make a list of all the headings h2 and the corresponding children h3
 	useEffect(() => {
 		if (containerRef.current) {
 			const elements = containerRef.current.querySelectorAll("h2, h3");
 			const h1Element = containerRef.current.querySelectorAll("h1")[0];
-			setPagesLength(pages.length);
+			setPagesLength(pages.length - 1);
 			const secTitle = h1Element ? h1Element.textContent : "";
 			setPageTitle(secTitle);
 			let headingsArray = [];
@@ -113,7 +120,7 @@ const App = () => {
 			setHeadings(headingsArray);
 		}
 	}, [pageNum]);
-	const memoizedHeadings = useMemo(() => headings, [headings]);
+	// ! Controls
 	const handleClickScroll = () => {
 		if (mainContainerRef.current) {
 			mainContainerRef.current.scrollTo({
@@ -122,11 +129,9 @@ const App = () => {
 			});
 		}
 	};
-	const tocStatus = useSelector(({ user }) => user.tocStatus);
-	const tocAllowWindowHandleResize_rdx = useSelector(({ user }) => user.tocAllowWindowHandleResize_rdx);
-	const [isOpen, setIsOpen] = useState(true);
-	const [tocAllowWindowHandleResize, SetTocAllowWindowHandleResize] = useState(true);
-
+	useEffect(() => {
+		handleClickScroll();
+	}, [pageNum]);
 	useEffect(() => {
 		setIsOpen(tocStatus);
 	}, [tocStatus]);
@@ -134,7 +139,6 @@ const App = () => {
 		SetTocAllowWindowHandleResize(tocAllowWindowHandleResize_rdx);
 	}, [tocAllowWindowHandleResize_rdx]);
 	const handleResize = () => {
-		console.log("handleResize");
 		if (window.innerWidth < 1400) {
 			setIsOpen(false);
 			dispatch(userReducerActions.toggleTocStatus(false));
@@ -151,25 +155,46 @@ const App = () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, [tocAllowWindowHandleResize]);
-	useEffect(() => {
-		handleClickScroll();
-	}, [pageNum]);
-
 	//!Prev-Next Page
 	const PrevPage = () => {
+		console.log("PrevPage");
 		let newVal = pageNum - 1;
 		if (newVal >= 1) {
 			setPageNum(newVal);
 			setInputValue(newVal);
+			localStorage.setItem("page", newVal);
 		}
 	};
 	const NextPage = () => {
+		console.log("NextPage");
 		let newVal = pageNum + 1;
 		if (newVal < pagesLength) {
 			setPageNum(newVal);
 			setInputValue(newVal);
+			localStorage.setItem("page", newVal);
 		}
 	};
+	//! Event listeners -- Left(Prev)-Right(Next)
+	const handleKeyDown = (e) => {
+		switch (e.key) {
+			case "ArrowLeft":
+				console.log("Left arrow key pressed");
+				PrevPage();
+				break;
+			case "ArrowRight":
+				console.log("Right arrow key pressed");
+				NextPage();
+				break;
+			default:
+				break;
+		}
+	};
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyDown);
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [pageNum]);
 	//!Page Input Field
 	const inputRef1 = useRef(null);
 	const inputRef2 = useRef(null);
@@ -183,28 +208,40 @@ const App = () => {
 			inputRef2.current.select();
 		}
 	};
+	//!Local Storage -Page#
+	useEffect(() => {
+		let localVal = localStorage.getItem("page");
+		if (localVal) {
+			setPageNum(localVal);
+			setInputValue(localVal);
+		}
+	}, []);
+	//! Handle's any changes to the input
 	const handleInputChange = (e) => {
-		const val = e.target.value;
-		if (val === "") {
+		const parsedValue = parseInt(e.target.value, 10);
+		if (e.target.value === "") {
 			setInputValue("");
+		} else if (!isNaN(parsedValue) && parsedValue > 0 && parsedValue <= pagesLength) {
+			setInputValue(parsedValue);
 		} else {
-			const parsedValue = parseInt(val, 10);
-			if (!isNaN(parsedValue) && parsedValue > 0 && parsedValue <= pagesLength) {
-				setInputValue(parsedValue);
-			}
+			setInputValue(pageNum);
 		}
 	};
+	//! Handle's the input value, and changes the page if within range
 	useEffect(() => {
 		const identifier = setTimeout(() => {
-			var newPageNum = inputValue;
-			if (newPageNum > 0 && newPageNum <= pagesLength) {
+			var newPageNum = parseInt(inputValue, 10);
+			if (!isNaN(newPageNum) && newPageNum > 0 && newPageNum <= pagesLength) {
 				setPageNum(newPageNum);
+				localStorage.setItem("page", newPageNum);
+			} else {
+				setInputValue(pageNum);
 			}
 		}, 500);
 		return () => {
 			clearTimeout(identifier);
 		};
-	}, [inputValue]);
+	}, [inputValue, pagesLength]);
 	//!Tab Controls
 	const tabs = (
 		<div className={classes.tabsContainer}>
@@ -247,7 +284,7 @@ const App = () => {
 								className={classes.pageInput}
 							/>
 							<span className={classes.pageSeparator}>|</span>
-							<span className={classes.totalPages}>{pagesLength - 1}</span>
+							<span className={classes.totalPages}>{pagesLength}</span>
 						</span>
 						<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
 							<line x1="1" y1="0" x2="1" y2="40" />
@@ -325,6 +362,11 @@ const App = () => {
 			<input type="hidden" name="area" value="default" />
 		</div>
 	);
+	const handleItemClick = (id) => {
+		console.log(`Item clicked: ${id}`);
+		handleResize();
+	};
+
 	const TableOfContents = (
 		<nav className={classes.tocOuterContainer}>
 			<div className={classes.titleLabel} onClick={handleClickScroll}>
@@ -340,6 +382,8 @@ const App = () => {
 							text={heading.text}
 							children={heading.children}
 							id={`#${heading.id}`}
+							pageNum={pageNum}
+							handleItemClick={handleItemClick}
 						/>
 					))}
 				</ul>
@@ -357,7 +401,6 @@ const App = () => {
 					{searchBar}
 					{TableOfContents}
 				</div>
-
 				<div className={classes.handbook_OuterContainer} ref={containerRef}>
 					<div className={classes.handbook_InnerContainer}>
 						<div className={classes.page_contentContainer}>

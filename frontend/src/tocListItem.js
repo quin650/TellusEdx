@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TocListSubItem from "./tocListISubtem";
 import classes from "./App.module.css";
 
-const TocListItem = ({ idx, text, children, id }) => {
+const TocListItem = ({ idx, text, children, id, pageNum, handleItemClick }) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const toggleMenuOpen = () => {
 		setIsVisible(!isVisible);
 	};
-
-	// console.log("idx --> index counter of h2, h3: ", idx);
-	// console.log("level --> h2 or h3: ", level);
-	// console.log("text -->header h2/h3 text: ", text);
-	// console.log("children h2 of the h3 parent: ", children);
+	//! Every time the page changes, this resets the menu so that if it was open previously, is closed in new page
+	useEffect(() => {
+		setIsVisible(false);
+	}, [pageNum]);
 
 	return (
 		<li key={idx} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer} aria-expanded={isVisible}>
-				<a href={id} className={classes.parentLabel}>
+				<a href={id} onClick={(e) => handleItemClick(id)} className={classes.parentLabel}>
 					<span>{text}</span>
 				</a>
 				{children.length > 0 && (
@@ -35,7 +34,15 @@ const TocListItem = ({ idx, text, children, id }) => {
 				)}
 			</div>
 			{children.map((child) => (
-				<TocListSubItem key={child.idx} idx={child.idx} level={child.level} text={child.text} isVisible={isVisible} id={`#${child.id}`} />
+				<TocListSubItem
+					key={child.idx}
+					idx={child.idx}
+					level={child.level}
+					text={child.text}
+					isVisible={isVisible}
+					id={`#${child.id}`}
+					handleItemClick={handleItemClick}
+				/>
 			))}
 		</li>
 	);

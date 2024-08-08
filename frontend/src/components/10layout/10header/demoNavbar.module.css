@@ -1,10 +1,11 @@
 .navContainer {
 	z-index: 100;
 	display: flex !important;
-	position: absolute;
+	position: fixed;
 	top: 0 !important;
 	background-color: white;
 	width: 100%;
+	min-width: 760px;
 }
 .inner_container_nav {
 	display: flex;
@@ -12,7 +13,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	height: 56px;
+	height: 40px;
 	width: 100%;
 	padding-left: 0.75rem;
 	padding-right: 1.5rem;
