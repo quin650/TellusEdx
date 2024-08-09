@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import SearchBar from "./features/searchBar";
-import GetStartedButton from "../../12modals/getStarted/features/GetStartedButton";
+import SearchBar from "../features/searchBar";
+import GetStartedButton from "../GetStartedModal/features/GetStartedButton";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Logo from "../../../../static/images/1Logo.png";
-import classes from "./NavbarNotesMenu.module.css";
+import classes from "./SideBar_Right-SearchModal.module.css";
 
-const NavbarNotesMenu = () => {
+const NavbarSearchMenu = () => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
@@ -16,7 +16,7 @@ const NavbarNotesMenu = () => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-	const { navbarNotesMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
+	const { navbarSearchMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
 	const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
 	// Icons
 	const homeIcon = (
@@ -216,12 +216,12 @@ const NavbarNotesMenu = () => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (navbarNotesMenuStatus) {
+		if (navbarSearchMenuStatus) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [navbarNotesMenuStatus]);
+	}, [navbarSearchMenuStatus]);
 
 	// Other JSX
 	let option = (
@@ -278,7 +278,7 @@ const NavbarNotesMenu = () => {
 		</div>
 	);
 	const toggleMenu = () => {
-		dispatch(userReducerActions.navBarNotesMenuClose());
+		dispatch(userReducerActions.navBarSearchMenuClose());
 	};
 
 	let exitButton = (
@@ -299,7 +299,7 @@ const NavbarNotesMenu = () => {
 			{exitButton}
 			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
 				<div className={classes.top}>
-					{/* {search} */}
+					{search}
 					<div className={classes.sidebarMenu}>
 						<Link
 							to="/home"
@@ -307,7 +307,7 @@ const NavbarNotesMenu = () => {
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
-							<span>blahblahblah</span>
+							<span>Home</span>
 						</Link>
 					</div>
 				</div>
@@ -375,4 +375,4 @@ const NavbarNotesMenu = () => {
 	);
 };
 
-export default NavbarNotesMenu;
+export default NavbarSearchMenu;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import TocListSubItem from "./tocListISubtem";
+import TOC_Child_Item from "./SideBar_Left-TOC_Child_Item.js.js";
 import classes from "./App.module.css";
 
-const TocListItem = ({ idx, text, children, id, pageNum, handleItemClick }) => {
+const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick }) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const toggleMenuOpen = () => {
@@ -16,7 +16,7 @@ const TocListItem = ({ idx, text, children, id, pageNum, handleItemClick }) => {
 	return (
 		<li key={idx} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer} aria-expanded={isVisible}>
-				<a href={id} onClick={(e) => handleItemClick(id)} className={classes.parentLabel}>
+				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={classes.parentLabel}>
 					<span>{text}</span>
 				</a>
 				{children.length > 0 && (
@@ -34,18 +34,18 @@ const TocListItem = ({ idx, text, children, id, pageNum, handleItemClick }) => {
 				)}
 			</div>
 			{children.map((child) => (
-				<TocListSubItem
+				<TOC_Child_Item
 					key={child.idx}
 					idx={child.idx}
 					level={child.level}
 					text={child.text}
 					isVisible={isVisible}
 					id={`#${child.id}`}
-					handleItemClick={handleItemClick}
+					handleTOCItemClick={handleTOCItemClick}
 				/>
 			))}
 		</li>
 	);
 };
 
-export default TocListItem;
+export default TOC_Parent_Item;

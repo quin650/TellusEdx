@@ -9,8 +9,8 @@ const initialState = {
 
 	getStartedModalStatus: false,
 	getStartedView: "",
-	tocStatus: true,
-	tocAllowWindowHandleResize_rdx: true,
+	sideBar_Left_TOC_isOpen_Rdx: true,
+	SideBar_Left_TOC_AllowWindowResize_rdx: true,
 	languageSettingsModalStatus: false,
 	languageCurrent_rdx: "English",
 	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
@@ -243,11 +243,18 @@ const userSlice = createSlice({
 
 		//General Settings
 		toggleTocStatus(state, action) {
-			state.tocStatus = action.payload;
+			state.sideBar_Left_TOC_isOpen_Rdx = action.payload;
 		},
-		tocAllowWindowHandleResize_rdx(state) {
-			state.tocAllowWindowHandleResize_rdx = false;
+		sideBar_Left_TOC_Open(state, action) {
+			state.sideBar_Left_TOC_isOpen_Rdx = true;
 		},
+		sideBar_Left_TOC_Close(state, action) {
+			state.sideBar_Left_TOC_isOpen_Rdx = false;
+		},
+		SideBar_Left_TOC_NotAllowWindowResize(state) {
+			state.SideBar_Left_TOC_AllowWindowResize_rdx = false;
+		},
+
 		languageSettingsModalOpen(state) {
 			state.languageSettingsModalStatus = true;
 		},

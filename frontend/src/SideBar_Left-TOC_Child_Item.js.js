@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "./App.module.css";
 
-const TocListSubItem = ({ idx, text, isVisible, id, handleItemClick }) => {
+const TOC_Child_Item = ({ idx, text, isVisible, id, handleTOCItemClick }) => {
 	return (
 		<ul key={idx} className={`${classes["childLabelOuterContainer"]} ${isVisible ? classes.isVisible : ""}`}>
 			<li className={classes.childLabelInnerContainer}>
-				<a href={id} onClick={(e) => handleItemClick(id)} className={classes.childLabel}>
+				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={classes.childLabel}>
 					<span>{text}</span>
 				</a>
 			</li>
@@ -13,4 +13,4 @@ const TocListSubItem = ({ idx, text, isVisible, id, handleItemClick }) => {
 	);
 };
 
-export default TocListSubItem;
+export default TOC_Child_Item;

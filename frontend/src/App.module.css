@@ -9,14 +9,12 @@
 	line-height: 1.5;
 	font-size: 14px;
 }
-
 /* Body ------------------------------------------------------*/
 .bodyContainer {
 	display: flex;
 	position: relative;
 }
 /* sideBar container ------------------------------------------------------*/
-
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: block;
@@ -35,7 +33,6 @@
 	width: 326px;
 	visibility: visible;
 }
-
 @media (max-width: 900px) {
 	.sideBarOuterContainer {
 		position: fixed !important;
@@ -65,7 +62,6 @@
 	cursor: pointer;
 	color: black !important;
 }
-
 .all {
 	font-weight: 600;
 	margin-right: 14px;
@@ -208,7 +204,6 @@
 	width: 1rem;
 	z-index: 100;
 }
-
 .sidebar_search {
 	border-bottom: 0px solid #eeebee !important;
 	border-top: 1px solid #eeebee !important;
@@ -230,14 +225,12 @@
 	width: 326px;
 	border-radius: 0 !important;
 }
-
 .sidebar_search::placeholder {
 	color: #81868d !important;
 }
 .sidebar_search:focus::placeholder {
 	opacity: 0 !important;
 }
-
 .sidebar_search:hover,
 .sidebar_search:-webkit-autofill:hover,
 .sidebar_search:focus,
@@ -251,7 +244,6 @@
 	outline: 0px solid #1a1c1e !important;
 	box-shadow: 0 0 0px white !important;
 }
-
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	width: 326px;
@@ -282,7 +274,6 @@
 	background: linear-gradient(180deg, var(--Blue), #287bba);
 	cursor: pointer !important;
 }
-
 .titleLabel:hover {
 	background: #287bba !important;
 }
@@ -349,7 +340,6 @@
 	padding: 0px;
 	display: none !important;
 }
-
 .childLabelInnerContainer {
 	position: relative;
 	display: flex;
@@ -393,7 +383,6 @@
 	display: flex;
 	min-height: 100%;
 }
-
 .page_contentContainer {
 	display: flex;
 	border: 1px solid #d6dade;
@@ -402,7 +391,6 @@
 	font-weight: 400;
 	min-height: 850px;
 }
-
 .handbook_header_section {
 	display: block;
 	background: linear-gradient(180deg, var(--Blue), #287bba);
@@ -471,7 +459,6 @@
 .page_content p:last-of-type {
 	margin-bottom: 0;
 }
-
 .page_content figure {
 	margin: 0;
 }

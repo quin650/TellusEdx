@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import LanguageSettingsModal from "../../12modals/languageSettings/LanguageSettingsModal";
-import NavbarMenu from "../11menu/navbarMenu";
-import NavbarSearchMenu from "../11menu/NavbarSearchMenu";
-import NavbarNotesMenu from "../11menu/navbarNotesMenu";
+import LanguageSettingsModal from "../../300_modals/LanguageSettings/LanguageSettingsModal";
+import NavbarMenu from "../../300_modals/SideBar_Right-MainModal/SideBar_Right-MainModal";
+import NavbarSearchMenu from "../../300_modals/SideBar_Right-SearchModal/SideBar_Right-SearchModal";
+import NavbarNotesMenu from "../../300_modals/SideBar_Right-NotesModal/SideBar_Right-NotesModal";
 
-import classes from "./demoNavbar.module.css";
+import classes from "./2NavBar_Demo.module.css";
 
 const DemoNavbar = ({ isOpen, demoNavBarMenuOption }) => {
 	const { navbarMenuStatus, navbarSearchMenuStatus, navbarNotesMenuStatus, getStartedModalStatus, languageSettingsModalStatus } = useSelector(
@@ -15,7 +15,7 @@ const DemoNavbar = ({ isOpen, demoNavBarMenuOption }) => {
 	const dispatch = useDispatch();
 	const toggleTOCSidebar = () => {
 		dispatch(userReducerActions.toggleTocStatus(!isOpen));
-		dispatch(userReducerActions.tocAllowWindowHandleResize_rdx());
+		dispatch(userReducerActions.SideBar_Left_TOC_NotAllowWindowResize());
 	};
 	const openSearchMenu = () => {
 		dispatch(userReducerActions.navBarSearchMenuOpen());

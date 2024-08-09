@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import SearchBar from "./features/searchBar";
-import GetStartedButton from "../../12modals/getStarted/features/GetStartedButton";
+import SearchBar from "../features/searchBar";
+import GetStartedButton from "../GetStartedModal/features/GetStartedButton";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Logo from "../../../../static/images/1Logo.png";
-import classes from "./NavbarMenu.module.css";
+import classes from "./SideBar_Right-NotesModal.module.css";
 
-const NavbarMenu = ({ demoNavBarMenuOption }) => {
+const NavbarNotesMenu = () => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
@@ -16,7 +16,7 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-	const { navbarMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
+	const { navbarNotesMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
 	const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
 	// Icons
 	const homeIcon = (
@@ -216,12 +216,12 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (navbarMenuStatus) {
+		if (navbarNotesMenuStatus) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [navbarMenuStatus]);
+	}, [navbarNotesMenuStatus]);
 
 	// Other JSX
 	let option = (
@@ -262,8 +262,23 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 				</div>
 		  ));
 
+	const search = (
+		<div className={classes.searchInputContainer}>
+			<svg className={classes.searchIcon} width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z"
+					stroke="#9E9E9E"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+				/>
+				<path d="M18.6875 18.4383L14.9719 14.7227" stroke="#9E9E9E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+			</svg>
+			<input id="search" type="text" placeholder="Search" name="search"></input>
+		</div>
+	);
 	const toggleMenu = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.navBarNotesMenuClose());
 	};
 
 	let exitButton = (
@@ -284,15 +299,7 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 			{exitButton}
 			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
 				<div className={classes.top}>
-					<div className={classes.outerLogoContainer}>
-						<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
-							<img src={Logo} alt="Logo" className={classes.Logo}></img>
-						</Link>
-						<Link to="/home" onClick={CloseNavBarMenu} className={classes.companyName}>
-							TellusEd
-						</Link>
-					</div>
-					<SearchBar />
+					{/* {search} */}
 					<div className={classes.sidebarMenu}>
 						<Link
 							to="/home"
@@ -300,18 +307,8 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
-							<span>Home</span>
+							<span>blahblahblah</span>
 						</Link>
-						{demoNavBarMenuOption && (
-							<Link
-								to="/demo"
-								onClick={CloseNavBarMenu}
-								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
-							>
-								<i>{dashboardIcon}</i>
-								<span>Demo</span>
-							</Link>
-						)}
 					</div>
 				</div>
 				<div className={classes.bottom}>
@@ -378,4 +375,4 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	);
 };
 
-export default NavbarMenu;
+export default NavbarNotesMenu;
