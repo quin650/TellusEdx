@@ -8,7 +8,7 @@
 	height: 100vh;
 	background-color: black;
 	flex-direction: column;
-	padding-top: 30px;
+
 	padding-bottom: 30px;
 	border-top-left-radius: 14px;
 	border-bottom-left-radius: 14px;
@@ -23,56 +23,63 @@
 	transform: translateX(0);
 }
 
-.outerLogoContainer {
-	display: flex;
+/*! Search ----------------------------------------*/
+.searchInputContainer {
 	position: relative;
-	flex-direction: row;
-	width: 100%;
-	margin: 0px;
+	font-size: 16px;
+	margin-right: 42px;
+	margin-bottom: 10px;
+	height: 40px;
 }
-.Logo {
+.searchIcon {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	pointer-events: none;
+	z-index: 1000;
+}
+.searchInputContainer input {
+	position: relative;
 	display: flex;
-	height: 2.448rem;
-	width: 2.358rem;
+	box-sizing: border-box;
+	width: 100%;
+	height: 40px;
+	align-items: center;
+	justify-content: center;
+	background-color: #1e1d1d !important;
+	border-radius: 9px;
+	font-weight: 550;
+	color: #ffffff !important;
+	transition: all 0.3s ease-in-out;
+	border: 1px solid #292929 !important;
+	padding-left: 40px !important;
 }
-.Logo:hover {
-	cursor: pointer;
-	transform: rotate(180deg);
-	animation: around 0.18s ease-in forwards;
+.searchInputContainer input:hover,
+.searchInputContainer input:-webkit-autofill:hover {
+	background-color: #282727 !important;
 }
-@keyframes around {
-	/*========== Animation ==========*/
-	0% {
-		transform: rotate(22.5deg);
-	}
-	33% {
-		transform: rotate(45deg);
-	}
-	66% {
-		transform: rotate(67.5deg);
-	}
-	100% {
-		transform: rotate(90deg);
-	}
+.searchInputContainer input::placeholder {
+	padding-left: 0px;
+	color: #9e9e9e !important;
 }
-.companyName {
-	align-self: center;
-	font-family: Montserrat;
-	font-size: 1.4rem;
-	letter-spacing: -0.5px;
-	margin-left: 23px;
-	font-weight: lighter;
-	cursor: pointer;
-	color: var(--WhiteToGray);
-	text-decoration: none;
+.searchInputContainer input:focus::placeholder {
+	opacity: 0;
 }
-.companyName:hover {
-	color: var(--Blue);
+.searchInputContainer input:focus,
+.searchInputContainer input:-webkit-autofill:focus {
+	background-color: #282727 !important;
+	box-shadow: 0 0 0px black;
+	border: 1px solid #292929 !important;
+	outline: 0px solid black !important;
 }
+/*!-------------------------------------------------*/
+
 .top {
 	margin: 0px;
 	padding-left: 30px;
 	padding-right: 30px;
+	margin-bottom: auto;
 }
 .bottom {
 	margin-bottom: 45px;
@@ -274,6 +281,45 @@
 	width: 28px;
 	margin-left: auto;
 	margin-right: 16px;
+}
+
+/* menuOPenExit ------------------------------------------------ */
+.hamburgerButton {
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	border: 1px solid white;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	background-color: white;
+	width: 36px;
+}
+.hamburgerButton.open_NavBarMenu {
+	display: none;
+	visibility: hidden;
+}
+
+.hamburgerButton:hover {
+	background-color: #111111;
+}
+.svgHamburger {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: black;
+	height: 21px;
+}
+
+.svgHamburger path {
+	fill: gray;
 }
 
 /* exit button ------------------------------------------- */

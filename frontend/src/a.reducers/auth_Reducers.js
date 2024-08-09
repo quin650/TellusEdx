@@ -4,6 +4,9 @@ const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localS
 
 const initialState = {
 	navbarMenuStatus: false,
+	navbarSearchMenuStatus: false,
+	navbarNotesMenuStatus: false,
+
 	getStartedModalStatus: false,
 	getStartedView: "",
 	tocStatus: true,
@@ -54,14 +57,31 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView = false;
 		},
+		navBarMenuToggleOpenClose(state) {
+			state.navbarMenuStatus = !state.navbarMenuStatus;
+		},
+
 		navBarMenuOpen(state) {
 			state.navbarMenuStatus = true;
 		},
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
-		navBarMenuToggleOpenClose(state) {
-			state.navbarMenuStatus = !state.navbarMenuStatus;
+
+		navBarSearchMenuOpen(state) {
+			state.navbarSearchMenuStatus = true;
+			state.navbarMenuStatus = false;
+		},
+		navBarSearchMenuClose(state) {
+			state.navbarSearchMenuStatus = false;
+		},
+
+		navBarNotesMenuOpen(state) {
+			state.navbarNotesMenuStatus = true;
+			state.navbarMenuStatus = false;
+		},
+		navBarNotesMenuClose(state) {
+			state.navbarNotesMenuStatus = false;
 		},
 
 		// Modal

@@ -11,7 +11,8 @@
 	display: flex;
 	position: absolute;
 	flex-direction: row;
-	justify-content: space-between;
+	/* justify-content: space-between; */
+	justify-content: center;
 	align-items: center;
 	height: 40px;
 	width: 100%;
@@ -19,6 +20,51 @@
 	padding-right: 1.5rem;
 	margin: 0;
 }
+
+@media (max-width: 1200px) {
+	.inner_container_nav {
+		min-width: 450px;
+	}
+	.inner_container_nav .NavItem2 {
+		display: none;
+	}
+	.inner_container_nav .NavItem3 {
+		display: none;
+	}
+}
+.NavItem1 {
+	display: flex;
+	margin-right: auto;
+	justify-content: flex-start;
+	list-style: none;
+}
+.NavItem2 {
+	display: flex;
+	margin-left: auto;
+	justify-content: flex-end;
+	list-style: none;
+}
+.NavItem3 {
+	display: flex;
+	margin-left: 0.75rem;
+	justify-content: flex-end;
+	list-style: none;
+}
+.searchIconSVG {
+	stroke-width: 2;
+	flex-shrink: 0;
+	display: block;
+	height: 24px;
+	fill: none;
+}
+
+.NavItem4 {
+	display: flex;
+	margin-left: 0.75rem;
+	justify-content: flex-end;
+	list-style: none;
+}
+
 .toggleContainerButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
@@ -45,14 +91,91 @@
 .toggleContainerButton:hover {
 	background-color: #111111;
 }
+
 .svgMenuButton {
 	stroke-width: 2;
 	flex-shrink: 0;
 	display: block;
-
 	height: 24px;
 	fill: none;
 }
 .svgMenuButton path {
+	fill: gray;
+}
+
+/* menuOPenExit ------------------------------------------------ */
+.hamburgerButton {
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	border: 1px solid white;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	background-color: white;
+	width: 36px;
+}
+.hamburgerButton.open_NavBarMenu {
+	display: none;
+	visibility: hidden;
+}
+
+.hamburgerButton:hover {
+	background-color: #111111;
+}
+.svgHamburger {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: black;
+	height: 21px;
+}
+
+.svgHamburger path {
+	fill: gray;
+}
+
+/* exit button ------------------------------------------- */
+
+.exitButton {
+	z-index: 2000;
+	position: relative;
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	border: 1px solid white;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	background-color: white;
+	width: 36px;
+	transition: none;
+}
+
+.exitButton:hover {
+	background-color: #111111;
+}
+.svgExit {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: black;
+	height: 21px;
+}
+.svgExit path {
 	fill: gray;
 }
