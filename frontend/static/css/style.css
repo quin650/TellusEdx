@@ -46,6 +46,11 @@ body {
 	--NavBarMenu_MenuItemColor: #9e9e9e;
 	--NavBarMenu_OptionsBoxShadow1: rgba(0, 0, 0, 0.4);
 	--NavBarMenu_OptionsBoxShadow2: rgba(255, 255, 255, 0.4);
+	/* reader */
+	--Reader-Header_DarkBlue-To-LightBlue: #163159;
+	--Reader-HeaderTitle_White-To-OffWhite: #ffffff;
+	--Reader-Primary_Gray-To-LighterGray: #5d6c7a;
+	--HyperLink: #0000ee;
 }
 [data-theme="dark"] {
 	--BackgroundColor: #232323;
@@ -69,6 +74,11 @@ body {
 	--IconBrightness: 0.5;
 	--BlurredBackground: rgba(35, 35, 35, 0.4);
 	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
+	/* reader */
+	--Reader-Header_DarkBlue-To-LightBlue: #30568d;
+	--Reader-HeaderTitle_White-To-OffWhite: #dddddd;
+	--Reader-Primary_Gray-To-LighterGray: #b3b3b3;
+	--HyperLink: #87ceeb;
 }
 
 main {

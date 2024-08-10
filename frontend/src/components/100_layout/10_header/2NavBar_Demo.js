@@ -8,13 +8,13 @@ import NavbarNotesMenu from "../../300_modals/SideBar_Right-NotesModal/SideBar_R
 
 import classes from "./2NavBar_Demo.module.css";
 
-const DemoNavbar = ({ isOpen, demoNavBarMenuOption }) => {
+const DemoNavbar = ({ sideBar_Left_TOC_isOpen, demoNavBarMenuOption }) => {
 	const { navbarMenuStatus, navbarSearchMenuStatus, navbarNotesMenuStatus, getStartedModalStatus, languageSettingsModalStatus } = useSelector(
 		({ user }) => user
 	);
 	const dispatch = useDispatch();
 	const toggleTOCSidebar = () => {
-		dispatch(userReducerActions.toggleTocStatus(!isOpen));
+		dispatch(userReducerActions.toggleTocStatus(!sideBar_Left_TOC_isOpen));
 		dispatch(userReducerActions.SideBar_Left_TOC_NotAllowWindowResize());
 	};
 	const openSearchMenu = () => {

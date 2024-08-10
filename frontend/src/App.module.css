@@ -5,7 +5,7 @@
 	width: 100vw;
 	min-width: 750px;
 	font-family: sans-serif !important;
-	color: #5d6c7a;
+	color: var(--Reader-Primary_Gray-To-LighterGray);
 	line-height: 1.5;
 	font-size: 14px;
 }
@@ -409,12 +409,14 @@
 	text-transform: uppercase;
 	margin-top: 0;
 	margin-bottom: 0;
+	color: var(--Reader-HeaderTitle_White-To-OffWhite);
 }
 .handbook_header_section h1 {
 	margin-bottom: 0;
 	font-size: 3rem;
 	line-height: 1.15;
 	margin: 0 0 1rem;
+	color: var(--Reader-HeaderTitle_White-To-OffWhite);
 }
 .page_content {
 	-webkit-box-flex: 1;
@@ -427,7 +429,7 @@
 	font-size: 3rem;
 	font-weight: 400;
 	margin-bottom: 0.5em;
-	color: #163159;
+	color: var(--Reader-Header_DarkBlue-To-LightBlue);
 	line-height: 1.15;
 	margin: 0 0 1rem;
 }
@@ -440,7 +442,7 @@
 	font-size: 1.75rem;
 	font-weight: 700;
 	line-height: 1.36;
-	color: #163159;
+	color: var(--Reader-Header_DarkBlue-To-LightBlue);
 	margin: 0 0 1rem;
 }
 .page_content h4 {
@@ -455,6 +457,9 @@
 	line-height: 1.35;
 	margin-top: 0;
 	margin-bottom: 1rem;
+}
+a {
+	color: var(--HyperLink);
 }
 .page_content p:last-of-type {
 	margin-bottom: 0;
@@ -476,8 +481,17 @@
 }
 .imageDivCol {
 	-webkit-box-flex: 0;
-	flex: 0 1 50%;
-	padding-right: 1.875rem;
+	flex: 0 1 33.33%;
+	padding-right: 1.25rem;
+}
+.imageDivCol figure {
+	margin: 0 !important;
+}
+figure img {
+	box-sizing: border-box;
+	height: auto;
+	max-width: 100%;
+	vertical-align: bottom;
 }
 ul {
 	margin-bottom: 2rem;
@@ -539,7 +553,7 @@ figcaption {
 	white-space: nowrap;
 }
 strong {
-	color: #163159;
+	color: var(--Reader-Header_DarkBlue-To-LightBlue);
 	font-weight: bolder;
 	font-size: 1.3125rem;
 }

@@ -128,6 +128,7 @@ const App = () => {
 				top: 0,
 				behavior: "instant",
 			});
+			Width_Affects_to_SideBar_Left_TOC();
 		}
 	};
 	useEffect(() => {
@@ -186,7 +187,7 @@ const App = () => {
 	};
 	const NextPage = () => {
 		let newPageNum = currentPageNum + 1;
-		if (newPageNum < pagesLength) {
+		if (newPageNum <= pagesLength) {
 			setCurrentPageNum(newPageNum);
 			setInputPageNum(newPageNum);
 			localStorage.setItem("page", newPageNum);
@@ -290,7 +291,7 @@ const App = () => {
 						</svg>
 					</div>
 					<button id="next" onClick={NextPage} className={classes.arrowButton}>
-						<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
+						<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength && classes.isInactive}`} viewBox="0 0 24 24">
 							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 						</svg>
 					</button>

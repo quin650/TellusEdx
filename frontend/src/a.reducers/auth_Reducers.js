@@ -245,10 +245,10 @@ const userSlice = createSlice({
 		toggleTocStatus(state, action) {
 			state.sideBar_Left_TOC_isOpen_Rdx = action.payload;
 		},
-		sideBar_Left_TOC_Open(state, action) {
+		sideBar_Left_TOC_Open(state) {
 			state.sideBar_Left_TOC_isOpen_Rdx = true;
 		},
-		sideBar_Left_TOC_Close(state, action) {
+		sideBar_Left_TOC_Close(state) {
 			state.sideBar_Left_TOC_isOpen_Rdx = false;
 		},
 		SideBar_Left_TOC_NotAllowWindowResize(state) {

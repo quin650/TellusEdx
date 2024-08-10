@@ -12,7 +12,8 @@ const Page11 = () => {
 				<h2>Traffic Control</h2>
 
 				<p>
-					When at or approaching traffic signals or signs, yield to pedestrians, bicyclists, and other nearby vehicles that may have the right-of-way. See <a href="#rightofway">Right of Way Rules: Who Goes First</a>, in this section.
+					When at or approaching traffic signals or signs, yield to pedestrians, bicyclists, and other nearby vehicles that may have the right-of-way.
+					See <a href="#rightofway">Right of Way Rules: Who Goes First</a>, in this section.
 				</p>
 
 				<h3>Traffic Signals</h3>
@@ -20,7 +21,14 @@ const Page11 = () => {
 				<h4>Solid Red Light</h4>
 
 				<figure>
-					<img decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_light_red.gif" alt="solid red light" className="wp-image-43774" />
+					<img
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_light_red.gif"
+						alt="solid red light"
+						className="wp-image-43774"
+					/>
 				</figure>
 
 				<p>A red traffic signal light means STOP. You can turn right at a red light, if:</p>
@@ -34,7 +42,14 @@ const Page11 = () => {
 				<h4>Red Arrow</h4>
 
 				<figure>
-					<img decoding="async" width="58" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_arrow_red.gif" alt="red arrow" className="wp-image-43777" />
+					<img
+						decoding="async"
+						width="58"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_arrow_red.gif"
+						alt="red arrow"
+						className="wp-image-43777"
+					/>
 				</figure>
 
 				<p>A red arrow means STOP. Do not turn at a red arrow. Remain stopped until a green traffic signal light or green arrow appears.</p>
@@ -42,7 +57,14 @@ const Page11 = () => {
 				<h4>Flashing Red Light</h4>
 
 				<figure>
-					<img decoding="async" width="58" height="54" src="https://www.dmv.ca.gov/portal/uploads/2020/05/Redflashinglight.png" alt="flashing red light" className="wp-image-43780" />
+					<img
+						decoding="async"
+						width="58"
+						height="54"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/Redflashinglight.png"
+						alt="flashing red light"
+						className="wp-image-43780"
+					/>
 				</figure>
 
 				<p>A flashing red signal light means STOP. After stopping, you may go when it is safe.</p>
@@ -50,18 +72,40 @@ const Page11 = () => {
 				<h4>Solid Yellow Light</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_signal.gif" alt="solid yellow light" className="wp-image-43783" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_signal.gif"
+						alt="solid yellow light"
+						className="wp-image-43783"
+					/>
 				</figure>
 
-				<p>A yellow traffic signal light means CAUTION. The light is about to turn red. When you see a yellow traffic signal light, stop, if you can do so safely. If you cannot stop safely, cautiously cross the intersection.</p>
+				<p>
+					A yellow traffic signal light means CAUTION. The light is about to turn red. When you see a yellow traffic signal light, stop, if you can do
+					so safely. If you cannot stop safely, cautiously cross the intersection.
+				</p>
 
 				<h4>Yellow Arrow</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_arrow_left.gif" alt="yellow arrow" className="wp-image-43786" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_arrow_left.gif"
+						alt="yellow arrow"
+						className="wp-image-43786"
+					/>
 				</figure>
 
-				<p>A yellow arrow means the protected turning time is ending. The signal will change soon. If you cannot stop safely or you are already in the intersection, cautiously complete your turn. Pay attention to the next signal. It could be a:</p>
+				<p>
+					A yellow arrow means the protected turning time is ending. The signal will change soon. If you cannot stop safely or you are already in the
+					intersection, cautiously complete your turn. Pay attention to the next signal. It could be a:
+				</p>
 
 				<ul>
 					<li>Green or red traffic signal light.</li>
@@ -72,7 +116,15 @@ const Page11 = () => {
 				<h4>Flashing Yellow Light</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="61" height="59" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_flashing_yellow.gif" alt="flashing yellow light" className="wp-image-43789" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="61"
+						height="59"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_flashing_yellow.gif"
+						alt="flashing yellow light"
+						className="wp-image-43789"
+					/>
 				</figure>
 
 				<p>A flashing yellow traffic signal light is a warning to PROCEED WITH CAUTION. Slow down and be alert. You do not need to stop.</p>
@@ -80,40 +132,82 @@ const Page11 = () => {
 				<h4>Flashing Yellow Arrow</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="68" height="61" src="https://www.dmv.ca.gov/portal/uploads/2020/05/flashing_yellow_arrow.gif" alt="flashing yellow arrow" className="wp-image-43792" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="68"
+						height="61"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/flashing_yellow_arrow.gif"
+						alt="flashing yellow arrow"
+						className="wp-image-43792"
+					/>
 				</figure>
 
-				<p>You can turn, but your turn is not protected from other traffic. Proceed to turn left after yielding to oncoming traffic and proceed with caution.</p>
+				<p>
+					You can turn, but your turn is not protected from other traffic. Proceed to turn left after yielding to oncoming traffic and proceed with
+					caution.
+				</p>
 
 				<h4>Solid Green Light</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_light.gif" alt="solid green light" className="wp-image-43795" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_light.gif"
+						alt="solid green light"
+						className="wp-image-43795"
+					/>
 				</figure>
 
 				<p>
-					A green traffic signal light means GO. You should still stop for any vehicle, bicyclist, or pedestrian in the intersection. Only proceed if you have enough space without creating a danger to any oncoming vehicle, bicyclist, or pedestrian. Do not enter the intersection if you cannot get
-					completely across before the traffic signal light turns red.
+					A green traffic signal light means GO. You should still stop for any vehicle, bicyclist, or pedestrian in the intersection. Only proceed if
+					you have enough space without creating a danger to any oncoming vehicle, bicyclist, or pedestrian. Do not enter the intersection if you
+					cannot get completely across before the traffic signal light turns red.
 				</p>
 
 				<h4>Green Arrow</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_arrow_left.gif" alt="green arrow" className="wp-image-43798" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_arrow_left.gif"
+						alt="green arrow"
+						className="wp-image-43798"
+					/>
 				</figure>
 
-				<p>A green arrow means GO in the direction the arrow is pointing. The green arrow allows you to make a protected turn. Oncoming vehicles are stopped by a red traffic signal light.</p>
+				<p>
+					A green arrow means GO in the direction the arrow is pointing. The green arrow allows you to make a protected turn. Oncoming vehicles are
+					stopped by a red traffic signal light.
+				</p>
 
 				<h4>Traffic Light Not Working</h4>
 
-				<p>When a traffic light is not working, stop as if the intersection is controlled by STOP signs in all directions. Then proceed cautiously when it is safe to do so.</p>
+				<p>
+					When a traffic light is not working, stop as if the intersection is controlled by STOP signs in all directions. Then proceed cautiously when
+					it is safe to do so.
+				</p>
 
 				<h3>Pedestrian Signals and Signs</h3>
 
 				<h4>WALK or Walking Person</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="53" height="77" src="https://www.dmv.ca.gov/portal/uploads/2020/02/walk.png" alt="walk signals" className="wp-image-246" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="53"
+						height="77"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/walk.png"
+						alt="walk signals"
+						className="wp-image-246"
+					/>
 				</figure>
 
 				<p>You may cross the street.</p>
@@ -121,14 +215,25 @@ const Page11 = () => {
 				<h4>Don’t Walk or Raised Hand</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="52" height="78" src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotwalk.png" alt="do not walk signals" className="wp-image-244" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="52"
+						height="78"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotwalk.png"
+						alt="do not walk signals"
+						className="wp-image-244"
+					/>
 				</figure>
 
 				<p>You may not cross the street.</p>
 
 				<h4>Flashing Don’t Walk or Flashing Raised Hand</h4>
 
-				<p>Do not start crossing the street. The traffic signal light is about to change. Drivers must yield to pedestrians, even if the Don’t Walk light is flashing.</p>
+				<p>
+					Do not start crossing the street. The traffic signal light is about to change. Drivers must yield to pedestrians, even if the Don’t Walk
+					light is flashing.
+				</p>
 
 				<h4>Numbers</h4>
 
@@ -150,7 +255,10 @@ const Page11 = () => {
 					/>
 				</figure>
 
-				<p>These are crisscross and diagonal crosswalks that allow pedestrians to cross the intersection in any direction at the same time. Cross only when the walk signal allows it.</p>
+				<p>
+					These are crisscross and diagonal crosswalks that allow pedestrians to cross the intersection in any direction at the same time. Cross only
+					when the walk signal allows it.
+				</p>
 
 				<h4>Sounds</h4>
 
@@ -173,15 +281,34 @@ const Page11 = () => {
 				<h4>STOP Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_stopsign.gif" alt="stop sign" className="wp-image-43813" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_stopsign.gif"
+						alt="stop sign"
+						className="wp-image-43813"
+					/>
 				</figure>
 
-				<p>Make a full stop before entering the crosswalk or at the limit line. If there is no limit line or crosswalk, stop before entering the intersection. Check traffic in all directions before proceeding.</p>
+				<p>
+					Make a full stop before entering the crosswalk or at the limit line. If there is no limit line or crosswalk, stop before entering the
+					intersection. Check traffic in all directions before proceeding.
+				</p>
 
 				<h4>Red YIELD Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="60" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_yieldsign.gif" alt="red yield sign" className="wp-image-43816" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_yieldsign.gif"
+						alt="red yield sign"
+						className="wp-image-43816"
+					/>
 				</figure>
 
 				<p>Slow down and be ready to stop to let any vehicle, bicyclist, or pedestrian pass before you proceed.</p>
@@ -189,7 +316,15 @@ const Page11 = () => {
 				<h4>Red and White Regulatory Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="67" height="79" src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotenter.png" alt="do not enter sign" className="wp-image-242" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="67"
+						height="79"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotenter.png"
+						alt="do not enter sign"
+						className="wp-image-242"
+					/>
 				</figure>
 
 				<p>Follow the sign’s instruction. For example, DO NOT ENTER means do not enter the road or ramp where the sign is posted.</p>
@@ -197,15 +332,35 @@ const Page11 = () => {
 				<h4>WRONG WAY Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="119" height="61" src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_wrong_way_sign.gif" alt="Wrong Way sign" className="wp-image-43822" style={{ width: "85px", height: "44px" }} />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="119"
+						height="61"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_wrong_way_sign.gif"
+						alt="Wrong Way sign"
+						className="wp-image-43822"
+						style={{ width: "85px", height: "44px" }}
+					/>
 				</figure>
 
-				<p>If you enter a roadway against traffic, DO NOT ENTER and WRONG WAY signs may be posted. When it is safe, back out or turn around. If you are driving at night, you will know you are going the wrong way if the road reflectors shine red in your headlights.</p>
+				<p>
+					If you enter a roadway against traffic, DO NOT ENTER and WRONG WAY signs may be posted. When it is safe, back out or turn around. If you are
+					driving at night, you will know you are going the wrong way if the road reflectors shine red in your headlights.
+				</p>
 
 				<h4>Red Circle with a Red Line Through It</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="77" height="79" src="https://www.dmv.ca.gov/portal/uploads/2020/02/nouturn.png" alt="no u turn sign" className="wp-image-241" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="77"
+						height="79"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/nouturn.png"
+						alt="no u turn sign"
+						className="wp-image-241"
+					/>
 				</figure>
 
 				<p>The picture inside the circle shows what you cannot do and may be shown with words.</p>
@@ -213,21 +368,50 @@ const Page11 = () => {
 				<h4>Yellow and Black Circular Sign or X-shaped Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="211" height="189" src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad.png" alt="railroad crossing sign" className="wp-image-239" style={{ width: "70px", height: "63px" }} />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="211"
+						height="189"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad.png"
+						alt="railroad crossing sign"
+						className="wp-image-239"
+						style={{ width: "70px", height: "63px" }}
+					/>
 				</figure>
 
 				<p>You are approaching a railroad crossing. Look, listen, slow down, and prepare to stop. Let any trains pass before you proceed.</p>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="66" height="50" src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad2.png" alt="blue railroad sign with emergency information" className="wp-image-240" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="66"
+						height="50"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad2.png"
+						alt="blue railroad sign with emergency information"
+						className="wp-image-240"
+					/>
 				</figure>
 
-				<p>Many railroad crossings also have a blue and white sign to tell you what to do if there is an emergency on or near the tracks, or if your vehicle has stalled on the tracks.</p>
+				<p>
+					Many railroad crossings also have a blue and white sign to tell you what to do if there is an emergency on or near the tracks, or if your
+					vehicle has stalled on the tracks.
+				</p>
 
 				<h4>5-sided Sign</h4>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="183" height="176" src="https://www.dmv.ca.gov/portal/uploads/2020/02/schoolzone.png" alt="" className="wp-image-237" style={{ width: "73px", height: "71px" }} />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="183"
+						height="176"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/schoolzone.png"
+						alt=""
+						className="wp-image-237"
+						style={{ width: "73px", height: "71px" }}
+					/>
 				</figure>
 
 				<p>You are near a school. Drive slowly and stop for children in the crosswalk.</p>
@@ -245,7 +429,8 @@ const Page11 = () => {
 				<p>Warns of conditions related to pedestrians, bicyclists, schools, playgrounds, school buses, and school passenger loading zones.</p>
 
 				<p>
-					For more information about signs, visit <a href="https://dot.ca.gov/programs/safety-programs/sign-charts">dot.ca.gov/programs/safety-programs/sign-charts</a>.
+					For more information about signs, visit{" "}
+					<a href="https://dot.ca.gov/programs/safety-programs/sign-charts">dot.ca.gov/programs/safety-programs/sign-charts</a>.
 				</p>
 
 				<figure>
@@ -279,29 +464,36 @@ const Page11 = () => {
 				<h2 id="rightofway">Right-of-Way Rules: Who Goes First?</h2>
 
 				<p>
-					Right-of-way rules help you understand who goes first when vehicles, pedestrians, and bicyclists meet on the road. The vehicle that arrives to the intersection first has the right-of-way. Other vehicles, bicyclists, and pedestrians must wait for the person who has the right-of-way. Never
-					assume that other drivers will give you the right-of-way. Give up your right-of-way when it will help prevent collisions.
+					Right-of-way rules help you understand who goes first when vehicles, pedestrians, and bicyclists meet on the road. The vehicle that arrives
+					to the intersection first has the right-of-way. Other vehicles, bicyclists, and pedestrians must wait for the person who has the
+					right-of-way. Never assume that other drivers will give you the right-of-way. Give up your right-of-way when it will help prevent
+					collisions.
 				</p>
 
 				<h3>Intersections</h3>
 
 				<p>
-					An intersection is any place where one road meets another road. Controlled intersections have signs or traffic signal lights. Uncontrolled and blind intersections do not. Before entering an intersection, look left, right, and ahead to check for vehicles, bicyclists, and pedestrians. Be
-					prepared to slow down and stop if necessary. Pedestrians always have the right-of-way. Here are some right-of-way rules at intersections:
+					An intersection is any place where one road meets another road. Controlled intersections have signs or traffic signal lights. Uncontrolled
+					and blind intersections do not. Before entering an intersection, look left, right, and ahead to check for vehicles, bicyclists, and
+					pedestrians. Be prepared to slow down and stop if necessary. Pedestrians always have the right-of-way. Here are some right-of-way rules at
+					intersections:
 				</p>
 
 				<ul>
 					<li>
-						<strong>Without STOP or YIELD signs:</strong> The vehicle that arrives to the intersection first has the right-of-way. However, if a vehicle, pedestrian, or bicyclist gets to the intersection at the same time as you, give the right-of-way to the vehicle, pedestrian, or bicyclist on your
-						right. If you approach a stop sign and there is a stop sign on all four corners, stop first and proceed as above.
+						<strong>Without STOP or YIELD signs:</strong> The vehicle that arrives to the intersection first has the right-of-way. However, if a
+						vehicle, pedestrian, or bicyclist gets to the intersection at the same time as you, give the right-of-way to the vehicle, pedestrian, or
+						bicyclist on your right. If you approach a stop sign and there is a stop sign on all four corners, stop first and proceed as above.
 					</li>
 
 					<li>
-						<strong>T intersections without STOP or YIELD signs:</strong> Vehicles, bicyclists, and pedestrians on the through road (continuing to go straight) have the right-of-way.
+						<strong>T intersections without STOP or YIELD signs:</strong> Vehicles, bicyclists, and pedestrians on the through road (continuing to go
+						straight) have the right-of-way.
 					</li>
 
 					<li>
-						<strong>Turning left:</strong> Check for pedestrians. Give the right-of-way to any pedestrian or approaching vehicle that is close enough to be dangerous.
+						<strong>Turning left:</strong> Check for pedestrians. Give the right-of-way to any pedestrian or approaching vehicle that is close enough
+						to be dangerous.
 					</li>
 
 					<li>
@@ -313,8 +505,9 @@ const Page11 = () => {
 					</li>
 
 					<li>
-						<strong>Entering traffic:</strong> When entering traffic, you must proceed with caution and yield to the traffic already occupying the lanes. It is against the law to stop or block an intersection where there is not enough space to completely cross before the traffic signal light turns
-						red.
+						<strong>Entering traffic:</strong> When entering traffic, you must proceed with caution and yield to the traffic already occupying the
+						lanes. It is against the law to stop or block an intersection where there is not enough space to completely cross before the traffic
+						signal light turns red.
 					</li>
 				</ul>
 
@@ -350,7 +543,7 @@ const Page11 = () => {
 					<li>Turn left: Enter and continue driving until you reach the exit in the direction you choose (blue car).</li>
 				</ol>
 
-				<div className="wp-block-dmv-columns content-columns colums-1-3-1-3-1-3">
+				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
 						<figure>
 							<img
@@ -439,7 +632,8 @@ const Page11 = () => {
 				<p>Although pedestrians have the right-of-way, they also must follow the rules of the road.</p>
 
 				<p>
-					When there is a pedestrian crossing a roadway with or without a crosswalk, you <strong>must</strong> use caution, reduce your speed, or stop to allow the pedestrian to safely finish crossing.
+					When there is a pedestrian crossing a roadway with or without a crosswalk, you <strong>must</strong> use caution, reduce your speed, or stop
+					to allow the pedestrian to safely finish crossing.
 				</p>
 
 				<p>Other things to keep in mind:</p>
@@ -449,22 +643,32 @@ const Page11 = () => {
 
 					<li>If a pedestrian makes eye contact with you, they are ready to cross the street. Yield to the pedestrian.</li>
 
-					<li>Always allow pedestrians enough time to safely cross a street as some groups such as seniors, people with small children, and people with disabilities may require extra time.</li>
+					<li>
+						Always allow pedestrians enough time to safely cross a street as some groups such as seniors, people with small children, and people with
+						disabilities may require extra time.
+					</li>
 				</ul>
 
 				<h4>Crosswalks</h4>
 
-				<p>A crosswalk is the part of the road set aside for pedestrians to safely cross the road. They are often marked with white lines. School crossings may have yellow crosswalk lines. Not all crosswalks are marked.</p>
+				<p>
+					A crosswalk is the part of the road set aside for pedestrians to safely cross the road. They are often marked with white lines. School
+					crossings may have yellow crosswalk lines. Not all crosswalks are marked.
+				</p>
 
-				<p>Pedestrians have the right-of-way in marked or unmarked crosswalks. If there is a limit line before the crosswalk, stop at the limit line and allow pedestrians to cross the street.</p>
+				<p>
+					Pedestrians have the right-of-way in marked or unmarked crosswalks. If there is a limit line before the crosswalk, stop at the limit line
+					and allow pedestrians to cross the street.
+				</p>
 
 				<p>Some crosswalks have flashing lights. Whether or not the lights are flashing, look for pedestrians and be prepared to stop.</p>
 
 				<h4>Pedestrians who are Blind</h4>
 
 				<p>
-					Pedestrians using guide dogs or white canes have the right-of-way at all times. These pedestrians are partially or totally blind. Be careful when you are turning or backing up. This is particularly important if you are driving a hybrid or electric vehicle because blind pedestrians rely on
-					sound to know there is a vehicle nearby.
+					Pedestrians using guide dogs or white canes have the right-of-way at all times. These pedestrians are partially or totally blind. Be careful
+					when you are turning or backing up. This is particularly important if you are driving a hybrid or electric vehicle because blind pedestrians
+					rely on sound to know there is a vehicle nearby.
 				</p>
 
 				<ul>
@@ -477,7 +681,10 @@ const Page11 = () => {
 
 				<h3>Mountain Roads</h3>
 
-				<p>If two vehicles meet on a steep narrow road and neither vehicle can pass, the vehicle facing uphill has the right-of-way. The vehicle facing downhill has more control when backing up the hill. The vehicle facing downhill should back up until the vehicle going uphill can pass.</p>
+				<p>
+					If two vehicles meet on a steep narrow road and neither vehicle can pass, the vehicle facing uphill has the right-of-way. The vehicle facing
+					downhill has more control when backing up the hill. The vehicle facing downhill should back up until the vehicle going uphill can pass.
+				</p>
 			</div>
 		</Fragment>
 	);
