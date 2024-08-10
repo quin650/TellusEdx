@@ -320,7 +320,7 @@
 	text-decoration: none;
 }
 .parentLabel:hover {
-	background-color: #848d97;
+	background-color: var(--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray);
 	color: white;
 }
 .parentLabel:active {
@@ -364,7 +364,7 @@
 	width: 0;
 }
 .childLabelInnerContainer:hover {
-	background-color: #848d97;
+	background-color: var(--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray);
 	color: white;
 }
 .childLabelInnerContainer:active {

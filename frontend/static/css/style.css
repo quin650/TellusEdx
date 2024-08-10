@@ -50,10 +50,10 @@ body {
 	--SideBar-left-TOC-Background_OffWhite-To-Dark: #f8f9fb;
 	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: #eeebee;
 	--SideBar-left-TOC-Primary_Black-To-Gray: black;
-	/* sideBar_Left_TOC */
 	--SideBar-left-TOC-SearchBar-Background_White-To-Dark: white;
 	--SideBar-left-TOC-SearchBar-Background_Dark-To-White: #1a1c1e;
 	--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black: #eeebee;
+	--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray: #848d97;
 	/* reader */
 	--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black: linear-gradient(180deg, var(--Blue), #287bba);
 	--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue: #287bba;
@@ -101,10 +101,10 @@ body {
 	--SideBar-left-TOC-Background_OffWhite-To-Dark: #171717;
 	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: hsla(0, 0%, 100%, 0.2);
 	--SideBar-left-TOC-Primary_Black-To-Gray: #a0a0a0;
-	/* sideBar_Left_SearchBar_Background_White-to-Black */
 	--SideBar-left-TOC-SearchBar-Background_White-To-Dark: #232323;
 	--SideBar-left-TOC-SearchBar-Background_Dark-To-White: #f8f9fb;
 	--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black: #171717;
+	--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray: #232323;
 	/* reader */
 	--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black: linear-gradient(180deg, var(--Blue), #191919);
 	--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue: var(--Blue);
