@@ -46,12 +46,35 @@ body {
 	--NavBarMenu_MenuItemColor: #9e9e9e;
 	--NavBarMenu_OptionsBoxShadow1: rgba(0, 0, 0, 0.4);
 	--NavBarMenu_OptionsBoxShadow2: rgba(255, 255, 255, 0.4);
+	/* sideBar_Left_TOC */
+	--SideBar-left-TOC-Background_OffWhite-To-Dark: #f8f9fb;
+	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: #eeebee;
+	--SideBar-left-TOC-Primary_Black-To-Gray: black;
+	/* sideBar_Left_TOC */
+	--SideBar-left-TOC-SearchBar-Background_White-To-Dark: white;
+	--SideBar-left-TOC-SearchBar-Background_Dark-To-White: #1a1c1e;
+	--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black: #eeebee;
 	/* reader */
+	--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black: linear-gradient(180deg, var(--Blue), #287bba);
+	--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue: #287bba;
 	--Reader-Header_DarkBlue-To-LightBlue: #163159;
 	--Reader-HeaderTitle_White-To-OffWhite: #ffffff;
 	--Reader-Primary_Gray-To-LighterGray: #5d6c7a;
 	--HyperLink: #0000ee;
+	/* navigation tabs section */
+	--Navigation-tabs-section-Primary_Gray: #a0a0a0;
+	--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite: black;
+	--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite: black;
+	--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray: #eeebee;
+	/* navigation controls */
+	--Navigation-Controls-Background_White-To-Gray: #ffffff;
+	--Navigation-Controls-Buttons_Blue-To-Black: #2755c4;
+	--Navigation-Controls-InputFill_White-To-Gray: #ffffff;
+	--Navigation-Controls-InputBorder_Gray-To-Black: #ddd;
+	--Navigation-Controls-InputBorderOnFocus_Blue: var(--Blue);
+	--Navigation-Controls-LineDividers_OffWhite-To-Black: #dcdce6;
 }
+
 [data-theme="dark"] {
 	--BackgroundColor: #232323;
 	--WhiteToBlack: #000000;
@@ -74,11 +97,33 @@ body {
 	--IconBrightness: 0.5;
 	--BlurredBackground: rgba(35, 35, 35, 0.4);
 	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
+	/* sideBar_Left_TOC */
+	--SideBar-left-TOC-Background_OffWhite-To-Dark: #171717;
+	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: hsla(0, 0%, 100%, 0.2);
+	--SideBar-left-TOC-Primary_Black-To-Gray: #a0a0a0;
+	/* sideBar_Left_SearchBar_Background_White-to-Black */
+	--SideBar-left-TOC-SearchBar-Background_White-To-Dark: #232323;
+	--SideBar-left-TOC-SearchBar-Background_Dark-To-White: #f8f9fb;
+	--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black: #171717;
 	/* reader */
+	--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black: linear-gradient(180deg, var(--Blue), #191919);
+	--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue: var(--Blue);
 	--Reader-Header_DarkBlue-To-LightBlue: #30568d;
 	--Reader-HeaderTitle_White-To-OffWhite: #dddddd;
-	--Reader-Primary_Gray-To-LighterGray: #b3b3b3;
+	--Reader-Primary_Gray-To-LighterGray: #a0a0a0;
 	--HyperLink: #87ceeb;
+	/* navigation tabs section */
+	--Navigation-tabs-section-Primary_Gray: #a0a0a0;
+	--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite: #dddddd;
+	--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite: #dddddd;
+	--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray: #a0a0a0;
+	/* navigation controls */
+	--Navigation-Controls-Background_White-To-Gray: #3a3b3c;
+	--Navigation-Controls-Buttons_Blue-To-Black: black;
+	--Navigation-Controls-InputFill_White-To-Gray: #949494;
+	--Navigation-Controls-InputBorder_Gray-To-Black: black;
+	/* --Navigation-Controls-InputBorderOnFocus_Blue: var(--Blue); */
+	--Navigation-Controls-LineDividers_OffWhite-To-Black: black;
 }
 
 main {

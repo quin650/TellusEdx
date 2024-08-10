@@ -18,12 +18,12 @@
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: block;
-	border-right: 1px solid #eeebee !important;
+	border-right: 1px solid var(--ideBar-left-TOC-RightBorder_OffWhite-To-Dark) !important;
 	width: 0;
 	height: calc(100vh - 1px);
 	top: 0;
-	background-color: #f8f9fb;
-	border-top: 1px solid #eeebee;
+	background-color: var(--SideBar-left-TOC-Background_OffWhite-To-Dark);
+	/* border-top: 1px solid #eeebee; */
 	transition: transform 0.3s ease;
 	transform: translateX(-100%);
 	visibility: hidden;
@@ -47,7 +47,7 @@
 	margin-top: 56px;
 	padding-left: 35px;
 	padding-right: 35px;
-	color: #81868d;
+	color: var(--Navigation-tabs-section-Primary_Gray);
 }
 .tabsSection {
 	display: flex;
@@ -58,9 +58,9 @@
 .onThisPage {
 	font-weight: 600;
 	margin-right: 14px;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid var(--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite);
 	cursor: pointer;
-	color: black !important;
+	color: var(--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite) !important;
 }
 .all {
 	font-weight: 600;
@@ -76,7 +76,7 @@
 	width: 100%;
 	border: 0;
 	height: 1px;
-	border-bottom: 1px solid #eeebee;
+	border-bottom: 1px solid var(--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray);
 }
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
@@ -95,12 +95,12 @@
 	width: 200px;
 	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
 	border: 1px solid rgb(0 0 0 / 10%);
+	background-color: var(--Navigation-Controls-Background_White-To-Gray);
 }
 .pagination button {
 	background: none;
 	border: none;
 	cursor: pointer;
-	color: var(--Blue);
 }
 .pagination button:disabled {
 	color: #ccc;
@@ -119,7 +119,7 @@
 .lineSVG_L {
 	width: 2px;
 	height: 25px;
-	stroke: #dcdce6;
+	stroke: var(--Navigation-Controls-LineDividers_OffWhite-To-Black);
 	stroke-width: 2;
 	align-self: center;
 	margin-right: 10px;
@@ -127,7 +127,7 @@
 .lineSVG_R {
 	width: 2px;
 	height: 25px;
-	stroke: #dcdce6;
+	stroke: var(--Navigation-Controls-LineDividers_OffWhite-To-Black);
 	stroke-width: 2;
 	align-self: center;
 	margin-left: 10px;
@@ -145,12 +145,18 @@
 	padding: 0;
 	margin-right: 4px;
 	text-align: center;
-	border: 1px solid #ddd;
+	border: 1px solid var(--Navigation-Controls-InputBorder_Gray-To-Black) !important;
 	border-radius: 5px !important;
 	font-size: 16px !important;
 	display: flex;
 	align-items: center;
 	margin-bottom: 1px !important;
+	background-color: var(--Navigation-Controls-InputFill_White-To-Gray);
+}
+.numbersContainer input:focus,
+.numbersContainer input:-webkit-autofill:focus {
+	outline: 0px solid black !important;
+	border: 2px solid var(--Navigation-Controls-InputBorderOnFocus_Blue) !important;
 }
 .pageSeparator {
 	margin: 0 2px !important;
@@ -160,7 +166,6 @@
 .pagination .totalPages {
 	margin-left: 4px;
 	width: 27px;
-	color: black;
 	display: flex;
 	align-items: center;
 }
@@ -170,25 +175,27 @@
 	justify-content: center;
 	border-radius: 50%;
 	color: #fff;
+	margin: auto;
 }
 .arrowIconL {
-	height: 37px;
-	fill: var(--Blue);
+	height: 20px;
+	fill: var(--Navigation-Controls-Buttons_Blue-To-Black);
 }
 .arrowIconR {
-	height: 37px;
-	fill: var(--Blue);
+	height: 20px;
+	fill: var(--Navigation-Controls-Buttons_Blue-To-Black);
 }
 .arrowIconL.isInactive {
 	fill: gray;
+	cursor: default;
 }
 .arrowIconR.isInactive {
 	fill: gray;
+	cursor: default;
 }
 /* Sidebar Search------------------------------------------------------*/
 .sidebarSearchInputContainer {
 	align-items: center;
-	background: #f8f9fb;
 	display: flex;
 	margin-top: 0.5rem;
 	position: relative;
@@ -205,10 +212,13 @@
 	z-index: 100;
 }
 .sidebar_search {
-	border-bottom: 0px solid #eeebee !important;
-	border-top: 1px solid #eeebee !important;
-	border-right: 1px solid #eeebee !important;
-	border-left: 0 !important;
+	border-top: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-right: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-bottom: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-left: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	color: var(--BlackToWhite) !important;
+
+	background-color: var(--SideBar-left-TOC-SearchBar-Background_White-To-Dark) !important;
 	box-sizing: border-box;
 	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 	z-index: 10;
@@ -218,8 +228,6 @@
 	margin: 0;
 	overflow-clip-margin: 0px !important;
 	overflow: clip !important;
-	background-color: #f8f9fb !important;
-	color: #ffffff !important;
 	transition: background-color 0.35s ease-in-out !important;
 	padding-left: 50px !important;
 	width: 326px;
@@ -240,9 +248,10 @@
 	border-right: 0 !important;
 	border-left: 0 !important;
 	border-bottom: 0 !important;
-	background-color: #1a1c1e !important;
+	background-color: var(--SideBar-left-TOC-SearchBar-Background_Dark-To-White) !important;
 	outline: 0px solid #1a1c1e !important;
 	box-shadow: 0 0 0px white !important;
+	color: var(--WhiteToBlack) !important;
 }
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
@@ -271,17 +280,18 @@
 	text-decoration: none;
 	border-radius: 0 !important;
 	height: 55px !important;
-	background: linear-gradient(180deg, var(--Blue), #287bba);
+	background: var(--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black);
 	cursor: pointer !important;
 }
 .titleLabel:hover {
-	background: #287bba !important;
+	background: var(--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue) !important;
 }
 .titleLabel:active {
 	background: var(--Blue) !important;
 }
 .titleLabel a {
 	margin-bottom: auto;
+	color: var(--Reader-HeaderTitle_White-To-OffWhite) !important;
 }
 /* toc Parent Items ------------------------------------------------------*/
 .contentContainer {
@@ -303,7 +313,7 @@
 .parentLabel {
 	flex-grow: 1;
 	word-break: break-word;
-	color: #000000;
+	color: var(--SideBar-left-TOC-Primary_Black-To-Gray);
 	cursor: pointer;
 	border-radius: 7px;
 	padding: 6px 8px;
@@ -393,7 +403,7 @@
 }
 .handbook_header_section {
 	display: block;
-	background: linear-gradient(180deg, var(--Blue), #287bba);
+	background: var(--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black);
 	margin: 0.75rem 0.75rem 0 0.75rem;
 	padding: 1rem;
 	margin-bottom: 50px;
