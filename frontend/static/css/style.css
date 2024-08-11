@@ -46,6 +46,13 @@ body {
 	--NavBarMenu_MenuItemColor: #9e9e9e;
 	--NavBarMenu_OptionsBoxShadow1: rgba(0, 0, 0, 0.4);
 	--NavBarMenu_OptionsBoxShadow2: rgba(255, 255, 255, 0.4);
+
+	/* sideBar_Right_Main */
+	--SideBar-right-Main-Background_OffWhite-To-Dark: #f8f9fb;
+	--SideBar-right-Main-Border-Left_OffWhite-To-Dark: #eeebee;
+	--SideBar-right-Main-Primary_Black-To-Gray: #5d6c7a;
+	--SideBar-right-Main-OnHover_White-To-DarkGray: #efefef;
+
 	/* sideBar_Left_TOC */
 	--SideBar-left-TOC-Background_OffWhite-To-Dark: #f8f9fb;
 	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: #eeebee;
@@ -97,9 +104,16 @@ body {
 	--IconBrightness: 0.5;
 	--BlurredBackground: rgba(35, 35, 35, 0.4);
 	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
+
+	/* sideBar_Right_Main */
+	--SideBar-right-Main-Background_OffWhite-To-Dark: #171717;
+	--SideBar-right-Main-Border-Left_OffWhite-To-Dark: #171717;
+	--SideBar-right-Main-Primary_Black-To-Gray: #a0a0a0;
+	--SideBar-right-Main-OnHover_White-To-DarkGray: #232323;
+
 	/* sideBar_Left_TOC */
 	--SideBar-left-TOC-Background_OffWhite-To-Dark: #171717;
-	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: hsla(0, 0%, 100%, 0.2);
+	--SideBar-left-TOC-RightBorder_OffWhite-To-Dark: #171717;
 	--SideBar-left-TOC-Primary_Black-To-Gray: #a0a0a0;
 	--SideBar-left-TOC-SearchBar-Background_White-To-Dark: #232323;
 	--SideBar-left-TOC-SearchBar-Background_Dark-To-White: #f8f9fb;

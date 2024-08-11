@@ -18,7 +18,7 @@
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: block;
-	border-right: 1px solid var(--ideBar-left-TOC-RightBorder_OffWhite-To-Dark) !important;
+	border-right: 1px solid var(--SideBar-left-TOC-RightBorder_OffWhite-To-Dark) !important;
 	width: 0;
 	height: calc(100vh - 1px);
 	top: 0;

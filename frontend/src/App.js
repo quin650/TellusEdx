@@ -339,7 +339,7 @@ const App = () => {
 		</div>
 	);
 	//!Search Bar
-	const searchBarIRef = useRef(null);
+	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
 	const handleSearchBarFocus = () => {
 		setSearchBarIsFocused(true);
@@ -351,7 +351,7 @@ const App = () => {
 		<div className={classes.sidebarSearchInputContainer} method="get" action="#" role="search">
 			<input
 				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
-				ref={searchBarIRef}
+				ref={searchBarRef}
 				onFocus={handleSearchBarFocus}
 				onBlur={handleSearchBarBlur}
 				placeholder="Search"
@@ -362,11 +362,11 @@ const App = () => {
 			<input type="hidden" name="area" value="default" />
 		</div>
 	);
+	//!TOC_Contents
 	const handleTOCItemClick = (id) => {
 		console.log(`Item clicked: ${id}`);
 		Width_Affects_to_SideBar_Left_TOC();
 	};
-	//!TOC_Contents
 	const TOC_Contents = (
 		<nav className={classes.tocOuterContainer}>
 			<div className={classes.titleLabel} onClick={GoTo_TopOfPage}>

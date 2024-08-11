@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import SearchBar from "../features/searchBar";
 import GetStartedButton from "../GetStartedModal/features/GetStartedButton";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
@@ -279,20 +278,44 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 		</button>
 	);
 
+	//!Search Bar
+	const searchBarRef = useRef(null);
+	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
+	const handleSearchBarFocus = () => {
+		setSearchBarIsFocused(true);
+	};
+	const handleSearchBarBlur = () => {
+		setSearchBarIsFocused(false);
+	};
+	const RightMain_SearchBar = (
+		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
+				ref={searchBarRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder="Search"
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
 	return (
 		<Fragment>
 			{exitButton}
 			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
+				<div className={classes.outerLogoContainer}>
+					<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
+						<img src={Logo} alt="Logo" className={classes.Logo}></img>
+					</Link>
+					<Link to="/home" onClick={CloseNavBarMenu} className={classes.companyName}>
+						TellusEd
+					</Link>
+				</div>
+				{RightMain_SearchBar}
 				<div className={classes.top}>
-					<div className={classes.outerLogoContainer}>
-						<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
-							<img src={Logo} alt="Logo" className={classes.Logo}></img>
-						</Link>
-						<Link to="/home" onClick={CloseNavBarMenu} className={classes.companyName}>
-							TellusEd
-						</Link>
-					</div>
-					<SearchBar />
 					<div className={classes.sidebarMenu}>
 						<Link
 							to="/home"

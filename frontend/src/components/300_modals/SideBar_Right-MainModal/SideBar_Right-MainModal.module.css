@@ -3,17 +3,17 @@
 	z-index: 2000;
 	position: fixed;
 	right: 0;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	width: 326px;
 	height: 100vh;
-	background-color: black;
+	background-color: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
+	border-left: 1px solid var(--SideBar-right-Main-Border-Left_OffWhite-To-Dark) !important;
 	flex-direction: column;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	border-top-left-radius: 14px;
 	border-bottom-left-radius: 14px;
 	padding-left: 0px !important;
-
 	transition: transform 0.3s ease;
 	transform: translateX(100%);
 	top: 0;
@@ -22,13 +22,15 @@
 .sidebar.open {
 	transform: translateX(0);
 }
-
 .outerLogoContainer {
 	display: flex;
 	position: relative;
 	flex-direction: row;
 	width: 100%;
 	margin: 0px;
+	margin: 0px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 .Logo {
 	display: flex;
@@ -63,18 +65,85 @@
 	margin-left: 23px;
 	font-weight: lighter;
 	cursor: pointer;
-	color: var(--WhiteToGray);
+	color: var(--BlackToGray);
 	text-decoration: none;
 }
 .companyName:hover {
 	color: var(--Blue);
 }
+/* Sidebar Search------------------------------------------------------*/
+.sideBarSearchInputContainer {
+	align-items: center;
+	display: flex;
+	position: relative;
+	width: 100%;
+	line-height: 1.15;
+	font-weight: 550;
+	height: 52px;
+}
+.sideBarSearchInputContainer::before {
+	background-color: #81868d;
+	content: "";
+	height: 1rem;
+	left: 27px;
+	mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/></svg>');
+	position: absolute;
+	width: 1rem;
+	z-index: 100;
+	margin-left: 14px;
+}
+.sidebar_search {
+	border-top: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-right: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-bottom: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-left: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	color: var(--BlackToWhite) !important;
+
+	background-color: var(--SideBar-left-TOC-SearchBar-Background_White-To-Dark) !important;
+	box-sizing: border-box;
+	padding: 8px 8px 8px 40px;
+	z-index: 10;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+	overflow-clip-margin: 0px !important;
+	overflow: clip !important;
+	transition: background-color 0.35s ease-in-out !important;
+	padding-left: 50px !important;
+	width: 326px;
+	border-radius: 0 !important;
+	padding-left: 70px !important;
+}
+.sidebar_search::placeholder {
+	color: #81868d !important;
+	padding-left: 0px !important;
+}
+.sidebar_search:focus::placeholder {
+	opacity: 0 !important;
+}
+.sidebar_search:hover,
+.sidebar_search:-webkit-autofill:hover,
+.sidebar_search:focus,
+.sidebar_search:-webkit-autofill:focus,
+.sidebar_search.isFocused {
+	border-top: 1px solid #1a1c1e !important;
+	border-right: 0 !important;
+	border-left: 0 !important;
+	border-bottom: 0 !important;
+	background-color: var(--SideBar-left-TOC-SearchBar-Background_Dark-To-White) !important;
+	outline: 0px solid #1a1c1e !important;
+	box-shadow: 0 0 0px white !important;
+	color: var(--WhiteToBlack) !important;
+}
+
 .top {
 	margin: 0px;
 	padding-left: 30px;
 	padding-right: 30px;
 }
 .bottom {
+	margin-top: auto;
 	margin-bottom: 45px;
 }
 .subgroup {
@@ -93,7 +162,6 @@
 .sidebarMenu input {
 	margin-left: auto;
 }
-
 .break {
 	border-bottom: 0.5px solid #555555;
 	margin-top: 10px;
@@ -102,22 +170,21 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
 /* General  Formatting */
 .menuItem {
 	display: flex;
 	align-items: center;
 	padding: 10px 8px;
-	color: #b3b3b3;
+	color: var(--SideBar-right-Main-Primary_Black-To-Gray);
 	text-decoration: none;
-	background-color: black;
-	border: 1px solid black;
+	background-color: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
+	border: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
 	border-radius: 8px;
 	height: 52px;
 	width: 260px;
 }
 .menuItem:hover {
-	background-color: #1e1d1d;
+	background-color: var(--SideBar-right-Main-OnHover_White-To-DarkGray);
 }
 .menuItem span {
 	margin-right: auto;
@@ -127,10 +194,10 @@
 	display: flex;
 	align-items: center;
 	padding: 10px 8px;
-	color: #b3b3b3;
+	color: var(--SideBar-right-Main-Primary_Black-To-Gray);
 	text-decoration: none;
-	background-color: black;
-	border: 1px solid black;
+	background-color: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
+	border: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
 	border-radius: 8px;
 	height: 52px;
 	width: 260px;
@@ -139,7 +206,7 @@
 	fill: black;
 }
 .sidebarMenuOptions:hover {
-	background-color: #1e1d1d;
+	background-color: var(--SideBar-right-Main-OnHover_White-To-DarkGray);
 }
 .sidebarMenuOptions:active {
 	background-color: #1e1d1d;
@@ -148,33 +215,33 @@
 }
 /* Home Formatting */
 .sidebarMenuOptions.isActiveHomeIcon {
-	color: white;
+	color: var(--BlackToWhite);
 }
 /* Dashboard Formatting */
 .sidebarMenuOptions.isActiveDashboardIcon {
-	color: white;
+	color: var(--BlackToWhite);
 }
 /* About Us Formatting */
 .sidebarMenuOptions.isActiveAboutUsIcon {
-	color: white;
+	color: var(--BlackToWhite);
 }
 /* Support Center Formatting */
 .sidebarMenuOptions.isActiveSupportCenterIcon {
-	color: white;
+	color: var(--BlackToWhite);
 }
 /* help Formatting */
 .sidebarMenuOptions.isActiveHelpIcon {
-	color: white;
+	color: var(--BlackToWhite);
 }
 /* Dark Mode */
 .darkModeMenuItem {
 	display: flex;
 	align-items: center;
 	padding: 10px 8px;
-	color: #b3b3b3;
+	color: var(--SideBar-right-Main-Primary_Black-To-Gray);
 	text-decoration: none;
-	background-color: black;
-	border: 1px solid black;
+	background-color: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
+	border: var(--SideBar-right-Main-Background_OffWhite-To-Dark);
 	border-radius: 8px;
 	height: 52px;
 	width: 260px;
@@ -182,14 +249,13 @@
 	justify-content: center;
 }
 .darkModeMenuItem:hover {
-	background-color: #1e1d1d;
+	background-color: var(--SideBar-right-Main-OnHover_White-To-DarkGray);
 }
 .darkModeMenuItem span {
 	margin-right: auto;
 }
 /* Toggle Section */
 /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  */ /* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
-
 .darkModeToggleAndInputContainer {
 	display: flex;
 }
@@ -218,7 +284,6 @@
 	transform: translateX(-100%);
 	background: linear-gradient(180deg, #454545, #3a3a3a);
 }
-
 .darkModeToggleContainer:active .darkModeToggleButton {
 	width: 40px;
 	transition: 0.3s;
@@ -275,9 +340,7 @@
 	margin-left: auto;
 	margin-right: 16px;
 }
-
 /* exit button ------------------------------------------- */
-
 .exitButton {
 	z-index: 3000;
 	position: relative;
@@ -298,9 +361,8 @@
 	width: 36px;
 	transition: none;
 }
-
 .exitButton:hover {
-	background-color: #111111;
+	background-color: var(--SideBar-right-Main-OnHover_White-To-DarkGray);
 }
 .svgExit {
 	display: inline-block;
