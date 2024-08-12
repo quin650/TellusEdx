@@ -12,7 +12,6 @@ const DemoNavbar = ({ sideBar_Left_TOC_isOpen, demoNavBarMenuOption }) => {
 	const { navbarMenuStatus, navbarSearchMenuStatus, navbarNotesMenuStatus, getStartedModalStatus, languageSettingsModalStatus } = useSelector(
 		({ user }) => user
 	);
-
 	const dispatch = useDispatch();
 	const toggleTOCSidebar = () => {
 		dispatch(userReducerActions.toggleTocStatus(!sideBar_Left_TOC_isOpen));
@@ -27,7 +26,6 @@ const DemoNavbar = ({ sideBar_Left_TOC_isOpen, demoNavBarMenuOption }) => {
 	const openMainMenu = () => {
 		dispatch(userReducerActions.navBarMenuOpen());
 	};
-
 	const tocButton = (
 		<button onClick={toggleTOCSidebar} className={`${classes["toggleLeftMenuButton"]} ${sideBar_Left_TOC_isOpen ? classes.open : ""}`}>
 			<svg className={classes.svgMenuButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -39,7 +37,6 @@ const DemoNavbar = ({ sideBar_Left_TOC_isOpen, demoNavBarMenuOption }) => {
 			</svg>
 		</button>
 	);
-
 	const searchButton = (
 		<button onClick={openSearchMenu} className={`${classes["toggleSearchMenuButton"]} ${navbarSearchMenuStatus ? classes.open : ""}`}>
 			<svg className={classes.searchIconSVG} width="22" height="21" viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">

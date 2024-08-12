@@ -260,82 +260,74 @@ const App = () => {
 		}
 	};
 	//!Navigation GUI
-	const TOC_Navigation_Controls_top = (
-		<div className={classes.sideBarHeaderSection}>
-			<div className={classes.navigation_container}>
-				<div className={classes.pagination}>
-					<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-						<svg className={`${classes["arrowIconL"]} ${inputPageNum === 1 && classes.isInactive}`} viewBox="0 0 24 24">
-							<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-						</svg>
-					</button>
-					<div className={classes.numbersContainer}>
-						<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-							<line x1="1" y1="0" x2="1" y2="40" />
-						</svg>
-						<span id="currentPageNumbers">
-							<input
-								type="text"
-								onChange={handleInputChange}
-								value={inputPageNum}
-								onFocus={handlePageInputFocus_top}
-								ref={pageInputRef_top}
-								id="current_page"
-								className={classes.pageInput}
-							/>
-							<span className={classes.pageSeparator}>|</span>
-							<span className={classes.totalPages}>{pagesLength}</span>
-						</span>
-						<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-							<line x1="1" y1="0" x2="1" y2="40" />
-						</svg>
-					</div>
-					<button id="next" onClick={NextPage} className={classes.arrowButton}>
-						<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength && classes.isInactive}`} viewBox="0 0 24 24">
-							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-						</svg>
-					</button>
-				</div>
+	const Pagination_SideBar_Left = (
+		<div className={classes.paginationContainer}>
+			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL}>
+				<svg className={`${classes["arrowIconL"]} ${inputPageNum === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+				</svg>
+			</button>
+			<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+				<line x1="1" y1="0" x2="1" y2="40" />
+			</svg>
+			<div className={classes.paginationInputContainer}>
+				<input
+					type="text"
+					onChange={handleInputChange}
+					value={inputPageNum}
+					onFocus={handlePageInputFocus_top}
+					ref={pageInputRef_top}
+					id="current_page"
+					className={classes.pageInput}
+				/>
 			</div>
+			<span className={classes.pageSeparator}>|</span>
+			<div className={classes.paginationTotalPages}>
+				<span>{pagesLength}</span>
+			</div>
+			<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+				<line x1="1" y1="0" x2="1" y2="40" />
+			</svg>
+			<button id="next" onClick={NextPage} className={classes.paginationButtonR}>
+				<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength && classes.isInactive}`} viewBox="0 0 24 24">
+					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+				</svg>
+			</button>
 		</div>
 	);
-	const TOC_Navigation_Controls_bottom = (
-		<div className={classes.bottomNavigationSpacing}>
-			<div className={classes.navigation_container}>
-				<div className={classes.pagination}>
-					<button id="prev" onClick={PrevPage} className={classes.arrowButton}>
-						<svg className={`${classes["arrowIconL"]} ${inputPageNum === 1 && classes.isInactive}`} viewBox="0 0 24 24">
-							<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-						</svg>
-					</button>
-					<div className={classes.numbersContainer}>
-						<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-							<line x1="1" y1="0" x2="1" y2="40" />
-						</svg>
-						<span id="currentPageNumbers">
-							<input
-								type="text"
-								onChange={handleInputChange}
-								value={inputPageNum}
-								onFocus={handlePageInputFocus_bottom}
-								ref={pageInputRef_bottom}
-								id="current_page"
-								className={classes.pageInput}
-							/>
-							<span className={classes.pageSeparator}>|</span>
-							<span className={classes.totalPages}>{pagesLength - 1}</span>
-						</span>
-						<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
-							<line x1="1" y1="0" x2="1" y2="40" />
-						</svg>
-					</div>
-					<button id="next" onClick={NextPage} className={classes.arrowButton}>
-						<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength - 1 && classes.isInactive}`} viewBox="0 0 24 24">
-							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-						</svg>
-					</button>
-				</div>
+	const Pagination_Reader_Bottom = (
+		<div className={classes.paginationContainer}>
+			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL}>
+				<svg className={`${classes["arrowIconL"]} ${inputPageNum === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+				</svg>
+			</button>
+			<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+				<line x1="1" y1="0" x2="1" y2="40" />
+			</svg>
+			<div className={classes.paginationInputContainer}>
+				<input
+					type="text"
+					onChange={handleInputChange}
+					value={inputPageNum}
+					onFocus={handlePageInputFocus_top}
+					ref={pageInputRef_top}
+					id="current_page"
+					className={classes.pageInput}
+				/>
 			</div>
+			<span className={classes.pageSeparator}>|</span>
+			<div className={classes.paginationTotalPages}>
+				<span>{pagesLength}</span>
+			</div>
+			<svg className={classes.lineSVG_R} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
+				<line x1="1" y1="0" x2="1" y2="40" />
+			</svg>
+			<button id="next" onClick={NextPage} className={classes.paginationButtonR}>
+				<svg className={`${classes["arrowIconR"]} ${inputPageNum === pagesLength && classes.isInactive}`} viewBox="0 0 24 24">
+					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+				</svg>
+			</button>
 		</div>
 	);
 	//!Search Bar
@@ -399,7 +391,7 @@ const App = () => {
 			<div className={classes.bodyContainer}>
 				<div className={`${classes["sideBarOuterContainer"]} ${sideBar_Left_TOC_isOpen ? classes.open : ""}`}>
 					{TOC_TabOptions}
-					{TOC_Navigation_Controls_top}
+					{Pagination_SideBar_Left}
 					{TOC_SearchBar}
 					{TOC_Contents}
 				</div>
@@ -407,7 +399,7 @@ const App = () => {
 					<div className={classes.handbook_InnerContainer}>
 						<div className={classes.page_contentContainer}>
 							{ListOfPages[currentPageNum]}
-							{TOC_Navigation_Controls_bottom}
+							{Pagination_Reader_Bottom}
 						</div>
 					</div>
 				</div>

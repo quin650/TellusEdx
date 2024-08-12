@@ -192,7 +192,6 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	useEffect(() => {
 		languageSettingsModalStatusRef.current = languageSettingsModalStatus;
 	}, [languageSettingsModalStatus]);
-
 	const onClickOutsideNavBar_closeNavBar = (e) => {
 		if (
 			navBarRef.current &&
@@ -260,11 +259,9 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 					<GetStartedButton />
 				</div>
 		  ));
-
 	const toggleMenu = () => {
 		dispatch(userReducerActions.navBarMenuClose());
 	};
-
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
@@ -277,7 +274,6 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 			</svg>
 		</button>
 	);
-
 	//!Search Bar
 	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);

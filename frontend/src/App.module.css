@@ -9,12 +9,12 @@
 	line-height: 1.5;
 	font-size: 14px;
 }
-/* Body ------------------------------------------------------*/
+/*! Body ------------------------------------------------------*/
 .bodyContainer {
 	display: flex;
 	position: relative;
 }
-/* sideBar container ------------------------------------------------------*/
+/*! sideBar container ------------------------------------------------------*/
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: flex;
@@ -42,7 +42,7 @@
 		left: 0;
 	}
 }
-/* tab section --------------------------------------------------------------*/
+/*! tab section --------------------------------------------------------------*/
 .tabsContainer {
 	display: block;
 	width: 100%;
@@ -80,127 +80,166 @@
 	height: 1px;
 	border-bottom: 1px solid var(--color_pageNav_menuTabs_borderBottom_offWhite_to_gray);
 }
-/* navigation controls ------------------------------------------------------*/
-.navigation_container {
-	margin: 16px 0 !important;
+/*! Pagination Controls ------------------------------------------------------*/
+.paginationContainer {
 	display: flex;
-	margin: auto;
-	justify-content: center;
-	align-items: center;
-}
-.pagination {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	height: 40px;
-	width: 200px;
+	flex-direction: row;
 	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
 	border: 1px solid rgb(0 0 0 / 10%);
 	background-color: var(--backgroundColor_pageNav_white_to_gray);
+	border-radius: 10px;
+	height: 40px;
+	width: 200px;
+	align-items: center;
+	margin: 10px auto;
+	font-size: 16px !important;
 }
-.pagination button {
-	background: none;
+/*__First #1__-------------------------------------------------------*/
+.paginationButtonL {
+	padding: 0;
 	border: none;
+	outline: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	margin: auto;
+	height: 100%;
+	width: 50px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
-.pagination button:hover {
-	background: red;
+.paginationButtonL:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
-.pagination button:active {
+.paginationButtonL:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
 }
-.pagination button:disabled {
-	color: #ccc;
+.arrowIconL {
+	height: 20px;
+	fill: var(--Blue);
+}
+.paginationButtonL:active .arrowIconL {
+	fill: #287bba;
+}
+.arrowIconL.isInactive {
+	fill: gray;
 	cursor: default;
 }
-.numbersContainer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.numbersContainer span {
-	margin: auto;
-	display: flex;
-	align-items: center;
-}
+/*?--------------------------------------------------------------------*/
 .lineSVG_L {
 	width: 2px;
 	height: 25px;
 	stroke: var(--color_pageNav_lineDividers_offWhite_to_black);
 	stroke-width: 2;
 	align-self: center;
-	margin-right: 10px;
 }
+/*?--------------------------------------------------------------------*/
+/*__Second #2__-------------------------------------------------------*/
+.paginationInputContainer {
+	display: flex;
+	height: 100%;
+	width: 50px;
+	align-items: center;
+	justify-content: center;
+}
+.pageInput {
+	width: 35px;
+	height: 21px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border: 1px solid var(--color_pageNav_InputBorder_offWhite_to_black) !important;
+	border-radius: 5px !important;
+	display: flex;
+	align-items: center;
+	background-color: var(--color_pageNav_InputFIll_white_to_gray);
+	font-size: 16px !important;
+}
+.paginationInput input:focus,
+.paginationInput input:-webkit-autofill:focus {
+	outline: 0px solid black !important;
+	border: 2px solid var(--Blue) !important;
+}
+/*--------------------------------------------------------------------*/
+.pageSeparator {
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+/*?--------------------------------------------------------------------*/
+/*__Third #3__-------------------------------------------------------*/
+.paginationTotalPages {
+	display: flex;
+	height: 100%;
+	width: 50px;
+	align-items: center;
+	justify-content: center;
+}
+.paginationTotalPages span {
+	display: flex;
+	height: 21px;
+	width: 27px;
+	align-items: center;
+	justify-content: center;
+}
+/*?--------------------------------------------------------------------*/
 .lineSVG_R {
 	width: 2px;
 	height: 25px;
 	stroke: var(--color_pageNav_lineDividers_offWhite_to_black);
 	stroke-width: 2;
 	align-self: center;
-	margin-left: 10px;
 }
-.pagination span {
-	display: flex;
-	align-items: center;
-	font-size: 16px;
-	flex-direction: row;
-	color: black;
-}
-.pageInput {
-	width: 35px;
-	height: 21px;
+/*?--------------------------------------------------------------------*/
+/*__Fourth #4__-------------------------------------------------------*/
+.paginationButtonR {
 	padding: 0;
-	margin-right: 4px;
-	text-align: center;
-	border: 1px solid var(--color_pageNav_InputBorder_offWhite_to_black) !important;
-	border-radius: 5px !important;
-	font-size: 16px !important;
-	display: flex;
-	align-items: center;
-	margin-bottom: 1px !important;
-	background-color: var(--color_pageNav_InputFIll_white_to_gray);
-}
-.numbersContainer input:focus,
-.numbersContainer input:-webkit-autofill:focus {
-	outline: 0px solid black !important;
-	border: 2px solid var(--Blue) !important;
-}
-.pageSeparator {
-	margin: 0 2px !important;
-	display: flex;
-	align-items: center;
-}
-.pagination .totalPages {
-	margin-left: 4px;
-	width: 27px;
-	display: flex;
-	align-items: center;
-}
-.arrowButton {
+	border: none;
+	outline: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 50%;
 	color: #fff;
 	margin: auto;
+	height: 100%;
+	width: 50px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
-.arrowIconL {
-	height: 20px;
-	fill: var(--Blue);
+.paginationButtonR:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.paginationButtonR:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .arrowIconR {
 	height: 20px;
 	fill: var(--Blue);
 }
-.arrowIconL.isInactive {
-	fill: gray;
-	cursor: default;
+.paginationButtonR:active .arrowIconR {
+	fill: #287bba;
 }
 .arrowIconR.isInactive {
 	fill: gray;
 	cursor: default;
 }
-/* Sidebar Search------------------------------------------------------*/
+
+/*! Sidebar Search------------------------------------------------------*/
 .sidebarSearchInputContainer {
 	align-items: center;
 	display: flex;
@@ -262,7 +301,7 @@
 	color: var(--WhiteToBlack) !important;
 }
 
-/* toc Container------------------------------------------------------*/
+/*! toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	width: 326px;
 	display: block !important;
@@ -278,7 +317,7 @@
 	margin: 0 !important;
 	padding: 0 !important;
 }
-/* toc Page Title ------------------------------------------------------*/
+/*! toc Page Title ------------------------------------------------------*/
 .titleLabel {
 	padding: 6px 8px 6px 12px !important;
 	width: 100%;
@@ -302,7 +341,7 @@
 	margin-bottom: auto;
 	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
 }
-/* toc Parent Items ------------------------------------------------------*/
+/*! toc Parent Items ------------------------------------------------------*/
 .contentContainer {
 	list-style: none;
 	font-size: 14px;
@@ -348,7 +387,7 @@
 .menuArrow:active {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
-/* toc Child Items ------------------------------------------------------*/
+/*! toc Child Items ------------------------------------------------------*/
 .childLabelOuterContainer.isVisible {
 	padding: 0px;
 	display: block !important;
@@ -383,7 +422,7 @@
 	text-decoration: none;
 	flex-grow: 1;
 }
-/* Handbook-------------------------------------------------------------------*/
+/*! Handbook-------------------------------------------------------------------*/
 .handbook_OuterContainer {
 	padding-top: 56px;
 	padding-bottom: 56px;
