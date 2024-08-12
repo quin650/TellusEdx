@@ -20,7 +20,6 @@
 	padding-right: 1.5rem;
 	margin: 0;
 }
-
 @media (max-width: 1200px) {
 	.inner_container_nav {
 		min-width: 450px;
@@ -57,7 +56,6 @@
 	height: 24px;
 	fill: none;
 }
-
 .NavItem4 {
 	display: flex;
 	margin-left: 0.75rem;
@@ -65,6 +63,7 @@
 	list-style: none;
 }
 
+/* toc Button /Search Button / Notes Button ------------------------------------------------ */
 .toggleContainerButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
@@ -72,7 +71,6 @@
 	border-radius: 0.5rem;
 	height: 40px;
 	width: 40px;
-
 	cursor: pointer;
 	-webkit-appearance: button;
 	background-color: transparent;
@@ -86,12 +84,14 @@
 	letter-spacing: inherit;
 	line-height: inherit;
 	margin: 0;
-	border: 1px solid white;
+	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
 }
 .toggleContainerButton:hover {
-	background-color: #111111;
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-
+.toggleContainerButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
 .svgMenuButton {
 	stroke-width: 2;
 	flex-shrink: 0;
@@ -102,8 +102,7 @@
 .svgMenuButton path {
 	fill: gray;
 }
-
-/* menuOPenExit ------------------------------------------------ */
+/* hamburger Button ------------------------------------------------ */
 .hamburgerButton {
 	display: inline-grid;
 	color: #b4b4b4;
@@ -113,7 +112,7 @@
 	cursor: pointer;
 	-webkit-appearance: button;
 	margin: 0;
-	border: 1px solid white;
+	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
 	place-content: center;
 	height: 40px;
 	min-width: unset;
@@ -125,9 +124,11 @@
 	display: none;
 	visibility: hidden;
 }
-
 .hamburgerButton:hover {
-	background-color: #111111;
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.hamburgerButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
 .svgHamburger {
 	display: inline-block;
@@ -141,9 +142,7 @@
 .svgHamburger path {
 	fill: gray;
 }
-
 /* exit button ------------------------------------------- */
-
 .exitButton {
 	z-index: 2000;
 	position: relative;
@@ -155,7 +154,7 @@
 	cursor: pointer;
 	-webkit-appearance: button;
 	margin: 0;
-	border: 1px solid white;
+	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
 	place-content: center;
 	height: 40px;
 	min-width: unset;
@@ -164,7 +163,6 @@
 	width: 36px;
 	transition: none;
 }
-
 .exitButton:hover {
 	background-color: #111111;
 }

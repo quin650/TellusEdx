@@ -5,7 +5,7 @@
 	width: 100vw;
 	min-width: 750px;
 	font-family: sans-serif !important;
-	color: var(--Reader-Primary_Gray-To-LighterGray);
+	color: var(--color_primary_darkGray_to_gray);
 	line-height: 1.5;
 	font-size: 14px;
 }
@@ -18,11 +18,11 @@
 .sideBarOuterContainer {
 	position: sticky !important;
 	display: block;
-	border-right: 1px solid var(--SideBar-left-TOC-RightBorder_OffWhite-To-Dark) !important;
+	border-right: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 	width: 0;
 	height: calc(100vh - 1px);
 	top: 0;
-	background-color: var(--SideBar-left-TOC-Background_OffWhite-To-Dark);
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	/* border-top: 1px solid #eeebee; */
 	transition: transform 0.3s ease;
 	transform: translateX(-100%);
@@ -47,7 +47,7 @@
 	margin-top: 56px;
 	padding-left: 35px;
 	padding-right: 35px;
-	color: var(--Navigation-tabs-section-Primary_Gray);
+	color: var(--color_pageNav_menuTabs_primary_gray);
 }
 .tabsSection {
 	display: flex;
@@ -101,6 +101,11 @@
 	background: none;
 	border: none;
 	cursor: pointer;
+}
+.pagination button:hover {
+	background: red;
+}
+.pagination button:active {
 }
 .pagination button:disabled {
 	color: #ccc;
@@ -179,11 +184,11 @@
 }
 .arrowIconL {
 	height: 20px;
-	fill: var(--Navigation-Controls-Buttons_Blue-To-Black);
+	fill: var(--Blue);
 }
 .arrowIconR {
 	height: 20px;
-	fill: var(--Navigation-Controls-Buttons_Blue-To-Black);
+	fill: var(--Blue);
 }
 .arrowIconL.isInactive {
 	fill: gray;
@@ -212,13 +217,13 @@
 	z-index: 100;
 }
 .sidebar_search {
-	border-top: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
-	border-right: 1px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
-	border-bottom: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
-	border-left: 0px solid var(--SideBar-left-TOC-SearchBar-BorderTop-BorderRight_OffWhite-To-Black) !important;
+	border-top: 1px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-right: 1px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-bottom: 0px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-left: 0px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	color: var(--BlackToWhite) !important;
 
-	background-color: var(--SideBar-left-TOC-SearchBar-Background_White-To-Dark) !important;
+	background-color: var(--backgroundColor_main_white_to_darkGray) !important;
 	box-sizing: border-box;
 	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 	z-index: 10;
@@ -248,7 +253,7 @@
 	border-right: 0 !important;
 	border-left: 0 !important;
 	border-bottom: 0 !important;
-	background-color: var(--SideBar-left-TOC-SearchBar-Background_Dark-To-White) !important;
+	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
 	outline: 0px solid #1a1c1e !important;
 	box-shadow: 0 0 0px white !important;
 	color: var(--WhiteToBlack) !important;
@@ -280,18 +285,18 @@
 	text-decoration: none;
 	border-radius: 0 !important;
 	height: 55px !important;
-	background: var(--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black);
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	cursor: pointer !important;
 }
 .titleLabel:hover {
-	background: var(--Reader-Header-TitleLabel-onHover_LightBlue-To-Blue) !important;
+	background: var(--hover_readerHeaderTitle_lightBlue_to_blue) !important;
 }
 .titleLabel:active {
 	background: var(--Blue) !important;
 }
 .titleLabel a {
 	margin-bottom: auto;
-	color: var(--Reader-HeaderTitle_White-To-OffWhite) !important;
+	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
 }
 /* toc Parent Items ------------------------------------------------------*/
 .contentContainer {
@@ -313,18 +318,17 @@
 .parentLabel {
 	flex-grow: 1;
 	word-break: break-word;
-	color: var(--SideBar-left-TOC-Primary_Black-To-Gray);
+	color: var(--color_primary_darkGray_to_gray);
 	cursor: pointer;
 	border-radius: 7px;
 	padding: 6px 8px;
 	text-decoration: none;
 }
 .parentLabel:hover {
-	background-color: var(--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray);
-	color: white;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .parentLabel:active {
-	background-color: #4f545a;
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .menuArrow {
 	flex-shrink: 0;
@@ -335,11 +339,10 @@
 	padding: 6px 8px;
 }
 .menuArrow:hover {
-	background-color: #848d97;
-	color: white;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .menuArrow:active {
-	background-color: #4f545a;
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 /* toc Child Items ------------------------------------------------------*/
 .childLabelOuterContainer.isVisible {
@@ -364,11 +367,10 @@
 	width: 0;
 }
 .childLabelInnerContainer:hover {
-	background-color: var(--SideBar-left-TOC-LabelOnHover_Gray-To-DarkGray);
-	color: white;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .childLabelInnerContainer:active {
-	background-color: #4f545a;
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .childLabel {
 	padding: 6px 8px 6px 16px;
@@ -403,7 +405,7 @@
 }
 .handbook_header_section {
 	display: block;
-	background: var(--Reader-Header-Title_From-Blue-To-LightBlue_To-Blue-To-Black);
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	margin: 0.75rem 0.75rem 0 0.75rem;
 	padding: 1rem;
 	margin-bottom: 50px;
@@ -419,14 +421,14 @@
 	text-transform: uppercase;
 	margin-top: 0;
 	margin-bottom: 0;
-	color: var(--Reader-HeaderTitle_White-To-OffWhite);
+	color: var(--color_readerSectionTitle_white_to_offWhite);
 }
 .handbook_header_section h1 {
 	margin-bottom: 0;
 	font-size: 3rem;
 	line-height: 1.15;
 	margin: 0 0 1rem;
-	color: var(--Reader-HeaderTitle_White-To-OffWhite);
+	color: var(--color_readerSectionTitle_white_to_offWhite);
 }
 .page_content {
 	-webkit-box-flex: 1;
@@ -439,7 +441,7 @@
 	font-size: 3rem;
 	font-weight: 400;
 	margin-bottom: 0.5em;
-	color: var(--Reader-Header_DarkBlue-To-LightBlue);
+	color: var(--color_readerSecondary_darkBlue_to_lightBlue);
 	line-height: 1.15;
 	margin: 0 0 1rem;
 }
@@ -452,7 +454,7 @@
 	font-size: 1.75rem;
 	font-weight: 700;
 	line-height: 1.36;
-	color: var(--Reader-Header_DarkBlue-To-LightBlue);
+	color: var(--color_readerSecondary_darkBlue_to_lightBlue);
 	margin: 0 0 1rem;
 }
 .page_content h4 {
@@ -469,7 +471,7 @@
 	margin-bottom: 1rem;
 }
 a {
-	color: var(--HyperLink);
+	color: var(--color_readerHyperLink_brightBlue_to_skyBlue);
 }
 .page_content p:last-of-type {
 	margin-bottom: 0;
@@ -563,7 +565,7 @@ figcaption {
 	white-space: nowrap;
 }
 strong {
-	color: var(--Reader-Header_DarkBlue-To-LightBlue);
+	color: var(--color_readerSecondary_darkBlue_to_lightBlue);
 	font-weight: bolder;
 	font-size: 1.3125rem;
 }
