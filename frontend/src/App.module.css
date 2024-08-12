@@ -17,7 +17,9 @@
 /* sideBar container ------------------------------------------------------*/
 .sideBarOuterContainer {
 	position: sticky !important;
-	display: block;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 	border-right: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 	width: 0;
 	height: calc(100vh - 1px);
@@ -58,9 +60,9 @@
 .onThisPage {
 	font-weight: 600;
 	margin-right: 14px;
-	border-bottom: 2px solid var(--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite);
+	border-bottom: 2px solid var(--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite);
 	cursor: pointer;
-	color: var(--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite) !important;
+	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite) !important;
 }
 .all {
 	font-weight: 600;
@@ -76,7 +78,7 @@
 	width: 100%;
 	border: 0;
 	height: 1px;
-	border-bottom: 1px solid var(--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray);
+	border-bottom: 1px solid var(--color_pageNav_menuTabs_borderBottom_offWhite_to_gray);
 }
 /* navigation controls ------------------------------------------------------*/
 .navigation_container {
@@ -95,7 +97,7 @@
 	width: 200px;
 	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
 	border: 1px solid rgb(0 0 0 / 10%);
-	background-color: var(--Navigation-Controls-Background_White-To-Gray);
+	background-color: var(--backgroundColor_pageNav_white_to_gray);
 }
 .pagination button {
 	background: none;
@@ -124,7 +126,7 @@
 .lineSVG_L {
 	width: 2px;
 	height: 25px;
-	stroke: var(--Navigation-Controls-LineDividers_OffWhite-To-Black);
+	stroke: var(--color_pageNav_lineDividers_offWhite_to_black);
 	stroke-width: 2;
 	align-self: center;
 	margin-right: 10px;
@@ -132,7 +134,7 @@
 .lineSVG_R {
 	width: 2px;
 	height: 25px;
-	stroke: var(--Navigation-Controls-LineDividers_OffWhite-To-Black);
+	stroke: var(--color_pageNav_lineDividers_offWhite_to_black);
 	stroke-width: 2;
 	align-self: center;
 	margin-left: 10px;
@@ -150,18 +152,18 @@
 	padding: 0;
 	margin-right: 4px;
 	text-align: center;
-	border: 1px solid var(--Navigation-Controls-InputBorder_Gray-To-Black) !important;
+	border: 1px solid var(--color_pageNav_InputBorder_offWhite_to_black) !important;
 	border-radius: 5px !important;
 	font-size: 16px !important;
 	display: flex;
 	align-items: center;
 	margin-bottom: 1px !important;
-	background-color: var(--Navigation-Controls-InputFill_White-To-Gray);
+	background-color: var(--color_pageNav_InputFIll_white_to_gray);
 }
 .numbersContainer input:focus,
 .numbersContainer input:-webkit-autofill:focus {
 	outline: 0px solid black !important;
-	border: 2px solid var(--Navigation-Controls-InputBorderOnFocus_Blue) !important;
+	border: 2px solid var(--Blue) !important;
 }
 .pageSeparator {
 	margin: 0 2px !important;
@@ -202,9 +204,10 @@
 .sidebarSearchInputContainer {
 	align-items: center;
 	display: flex;
-	margin-top: 0.5rem;
 	position: relative;
-	width: 326px;
+	width: 100%;
+	line-height: 1.15;
+	font-weight: 550;
 }
 .sidebarSearchInputContainer::before {
 	background-color: #81868d;
@@ -217,15 +220,15 @@
 	z-index: 100;
 }
 .sidebar_search {
-	border-top: 1px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
-	border-right: 1px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
-	border-bottom: 0px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
-	border-left: 0px solid var(--color_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-right: 0px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
+	border-bottom: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-left: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	color: var(--BlackToWhite) !important;
 
-	background-color: var(--backgroundColor_main_white_to_darkGray) !important;
+	background-color: var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	box-sizing: border-box;
-	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+	padding: 8px 8px 8px 40px;
 	z-index: 10;
 	font-family: inherit;
 	font-size: 100%;
@@ -235,7 +238,7 @@
 	overflow: clip !important;
 	transition: background-color 0.35s ease-in-out !important;
 	padding-left: 50px !important;
-	width: 326px;
+	width: 325px;
 	border-radius: 0 !important;
 }
 .sidebar_search::placeholder {
@@ -249,7 +252,7 @@
 .sidebar_search:focus,
 .sidebar_search:-webkit-autofill:focus,
 .sidebar_search.isFocused {
-	border-top: 1px solid #1a1c1e !important;
+	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	border-right: 0 !important;
 	border-left: 0 !important;
 	border-bottom: 0 !important;
@@ -258,6 +261,7 @@
 	box-shadow: 0 0 0px white !important;
 	color: var(--WhiteToBlack) !important;
 }
+
 /* toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	width: 326px;

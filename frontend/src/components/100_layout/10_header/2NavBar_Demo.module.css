@@ -49,22 +49,15 @@
 	justify-content: flex-end;
 	list-style: none;
 }
-.searchIconSVG {
-	stroke-width: 2;
-	flex-shrink: 0;
-	display: block;
-	height: 24px;
-	fill: none;
-}
+
 .NavItem4 {
 	display: flex;
 	margin-left: 0.75rem;
 	justify-content: flex-end;
 	list-style: none;
 }
-
-/* toc Button /Search Button / Notes Button ------------------------------------------------ */
-.toggleContainerButton {
+/* toc Button------------------------------------------------ */
+.toggleLeftMenuButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -84,13 +77,19 @@
 	letter-spacing: inherit;
 	line-height: inherit;
 	margin: 0;
-	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 0px solid red;
 }
-.toggleContainerButton:hover {
+.toggleLeftMenuButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-.toggleContainerButton:active {
+.toggleLeftMenuButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.toggleLeftMenuButton.open:hover {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.toggleLeftMenuButton.open:active {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .svgMenuButton {
 	stroke-width: 2;
@@ -100,8 +99,98 @@
 	fill: none;
 }
 .svgMenuButton path {
-	fill: gray;
+	fill: #9e9e9e;
 }
+/* Search Button  ------------------------------------------------ */
+.toggleSearchMenuButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-color: transparent;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: 0px solid red;
+}
+.toggleSearchMenuButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.toggleSearchMenuButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.toggleSearchMenuButton.open:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.toggleSearchMenuButton.open:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.searchIconSVG {
+	fill: none;
+}
+.searchIconSVG path {
+	stroke: #9e9e9e;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+/* Notes Button ------------------------------------------------ */
+.toggleNotesMenuButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-color: transparent;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: 0px solid red;
+}
+.toggleNotesMenuButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.toggleNotesMenuButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.toggleNotesMenuButton.open:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.toggleNotesMenuButton.open:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.svgNotesMenuButton {
+	stroke-width: 2;
+	flex-shrink: 0;
+	display: block;
+	height: 24px;
+	fill: none;
+}
+.svgNotesMenuButton path {
+	fill: #9e9e9e;
+}
+
 /* hamburger Button ------------------------------------------------ */
 .hamburgerButton {
 	display: inline-grid;
@@ -112,13 +201,13 @@
 	cursor: pointer;
 	-webkit-appearance: button;
 	margin: 0;
-	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
 	place-content: center;
 	height: 40px;
 	min-width: unset;
 	font-size: 14px;
-	background-color: white;
+	background-color: transparent;
 	width: 36px;
+	border: 0px solid red;
 }
 .hamburgerButton.open_NavBarMenu {
 	display: none;
@@ -135,45 +224,8 @@
 	user-select: none;
 	vertical-align: text-bottom;
 	overflow: visible;
-	fill: black;
 	height: 21px;
 }
-
 .svgHamburger path {
-	fill: gray;
-}
-/* exit button ------------------------------------------- */
-.exitButton {
-	z-index: 2000;
-	position: relative;
-	display: inline-grid;
-	color: #b4b4b4;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	-webkit-appearance: button;
-	margin: 0;
-	border: 1px solid var(--backgroundColor_menu_offWhite_to_offBlack);
-	place-content: center;
-	height: 40px;
-	min-width: unset;
-	font-size: 14px;
-	background-color: white;
-	width: 36px;
-	transition: none;
-}
-.exitButton:hover {
-	background-color: #111111;
-}
-.svgExit {
-	display: inline-block;
-	user-select: none;
-	vertical-align: text-bottom;
-	overflow: visible;
-	fill: black;
-	height: 21px;
-}
-.svgExit path {
-	fill: gray;
+	fill: #9e9e9e;
 }

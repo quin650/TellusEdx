@@ -3,14 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 
 const initialState = {
+	sideBar_Left_TOC_isOpen_Rdx: true,
+	SideBar_Left_TOC_AllowWindowResize_rdx: true,
 	navbarMenuStatus: false,
 	navbarSearchMenuStatus: false,
 	navbarNotesMenuStatus: false,
 
 	getStartedModalStatus: false,
 	getStartedView: "",
-	sideBar_Left_TOC_isOpen_Rdx: true,
-	SideBar_Left_TOC_AllowWindowResize_rdx: true,
 	languageSettingsModalStatus: false,
 	languageCurrent_rdx: "English",
 	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
@@ -60,14 +60,12 @@ const userSlice = createSlice({
 		navBarMenuToggleOpenClose(state) {
 			state.navbarMenuStatus = !state.navbarMenuStatus;
 		},
-
 		navBarMenuOpen(state) {
 			state.navbarMenuStatus = true;
 		},
 		navBarMenuClose(state) {
 			state.navbarMenuStatus = false;
 		},
-
 		navBarSearchMenuOpen(state) {
 			state.navbarSearchMenuStatus = true;
 			state.navbarMenuStatus = false;
@@ -75,7 +73,6 @@ const userSlice = createSlice({
 		navBarSearchMenuClose(state) {
 			state.navbarSearchMenuStatus = false;
 		},
-
 		navBarNotesMenuOpen(state) {
 			state.navbarNotesMenuStatus = true;
 			state.navbarMenuStatus = false;
@@ -83,7 +80,6 @@ const userSlice = createSlice({
 		navBarNotesMenuClose(state) {
 			state.navbarNotesMenuStatus = false;
 		},
-
 		// Modal
 		getStartedModalLogIn(state) {
 			state.getStartedModalStatus = true;
@@ -103,7 +99,6 @@ const userSlice = createSlice({
 			state.getStartedModalStatus = false;
 			state.navbarMenuStatus = false;
 		},
-
 		// Registration
 		registerModalClose(state) {
 			state.getStartedModalStatus = false;
@@ -124,7 +119,6 @@ const userSlice = createSlice({
 		registerErrorReset(state) {
 			state.registrationError = "";
 		},
-
 		// Verify Your Account
 		verifyAccountPassCodeSuccess(state) {
 			state.getStartedView = "VerificationSuccessModal";
@@ -150,12 +144,10 @@ const userSlice = createSlice({
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus = "Failed";
 		},
-
 		// Verification Success
 		GoTo_LogInModal_rdx(state) {
 			state.getStartedView = "LogInModal";
 		},
-
 		// Log In
 		loginRequest(state) {
 			state.loading = true;
@@ -173,7 +165,6 @@ const userSlice = createSlice({
 		loginErrorReset(state) {
 			state.loginError = "";
 		},
-
 		// Log Out
 		logoutSuccess(state) {
 			state.isAuthenticated = false;
@@ -181,7 +172,6 @@ const userSlice = createSlice({
 		logoutFail(state) {
 			state;
 		},
-
 		// Authentication
 		authSuccess(state) {
 			state.isAuthenticated = true;
@@ -192,7 +182,6 @@ const userSlice = createSlice({
 		tokenSuccess(state, action) {
 			state.token = action.payload;
 		},
-
 		// Reset Password - Email PassCode
 		passwordResetPassCodeEmailSentSuccess(state, action) {
 			state.passwordResetPassCodeEmail += 1;
@@ -207,7 +196,6 @@ const userSlice = createSlice({
 		passwordResetPassCodeEmailResetStatus(state) {
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 		},
-
 		// Reset Password - Change
 		passwordResetSuccess(state) {
 			state.resetPasswordChangeStatus_rdx = true;
@@ -232,7 +220,6 @@ const userSlice = createSlice({
 		passwordResetPasswordChangeResetStatus(state) {
 			state.resetPasswordChangeStatus_rdx = true;
 		},
-
 		//Delete - User
 		deleteUserSuccess(state) {
 			state.isAuthenticated = false;
@@ -240,7 +227,6 @@ const userSlice = createSlice({
 		deleteUserFail(state) {
 			state;
 		},
-
 		//General Settings
 		toggleTocStatus(state, action) {
 			state.sideBar_Left_TOC_isOpen_Rdx = action.payload;
@@ -254,7 +240,6 @@ const userSlice = createSlice({
 		SideBar_Left_TOC_NotAllowWindowResize(state) {
 			state.SideBar_Left_TOC_AllowWindowResize_rdx = false;
 		},
-
 		languageSettingsModalOpen(state) {
 			state.languageSettingsModalStatus = true;
 		},

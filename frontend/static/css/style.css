@@ -52,38 +52,34 @@ body {
 	--backgroundColor_main_white_to_darkGray: white;
 	--backgroundColor_menu_offWhite_to_offBlack: #f8f9fb;
 	--borderColor_menu_offWhite_to_offBlack: #eeebee;
+	--hover_menuButtonOpen_gray_to_darkGray: #efefef;
+	--active_menuButtonOpen_gray_to_darkGray: #e0e0e0;
 	--hover_menuButtonClosed_gray_to_darkGray: #efefef;
 	--active_menuButtonClosed_gray_to_darkGray: #e0e0e0;
-	--hover_menuButtonOpen_gray_to_darkGray: #171717;
-	--active_menuButtonOpen_gray_to_darkGray: black;
 	--hover_menuItem_gray_to_darkGray: #efefef;
 	--active_menuItem_gray_to_darkGray: #e0e0e0;
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #1a1c1e;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
+	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #287bba);
 	--hover_readerHeaderTitle_lightBlue_to_blue: #287bba;
 	--color_readerSecondary_darkBlue_to_lightBlue: #163159;
 	--color_readerSectionTitle_white_to_offWhite: #ffffff;
 	--color_readerHyperLink_brightBlue_to_skyBlue: #0000ee;
-
-	/* navigation tabs section */
-	--color_pageNav_menuTabs_primary_gray: #a0a0a0;
-
-	--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite: black;
-	--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite: black;
-	--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray: #eeebee;
-	/* navigation controls */
-	--Navigation-Controls-Background_White-To-Gray: #ffffff;
-	--Navigation-Controls-InputFill_White-To-Gray: #ffffff;
-	--Navigation-Controls-InputBorder_Gray-To-Black: #ddd;
-	--Navigation-Controls-InputBorderOnFocus_Blue: var(--Blue);
-	--Navigation-Controls-LineDividers_OffWhite-To-Black: #dcdce6;
+	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/
+	--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite: black;
+	--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite: black;
+	--color_pageNav_menuTabs_borderBottom_offWhite_to_gray: #eeebee;
+	--backgroundColor_pageNav_white_to_gray: #ffffff;
+	--color_pageNav_InputFIll_white_to_gray: #ffffff;
+	--color_pageNav_InputBorder_offWhite_to_black: #ddd;
+	--color_pageNav_lineDividers_offWhite_to_black: #eeebee;
 }
 
 [data-theme="dark"] {
 	--BackgroundColor: #232323;
 	--BlackToWhite: white;
-	--WhiteToBlack: #ffffff;
+	--WhiteToBlack: black;
 	--WhiteToGray: #b3b3b3;
 	--WhiteToDarkGray: #1d1d1d;
 	--WhiteToDarkGray2: #111111;
@@ -104,36 +100,31 @@ body {
 	--BlurredBackground: rgba(35, 35, 35, 0.4);
 	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
 	/* General */
-	--color_primary_darkGray_to_gray: #a0a0a0;
+	--color_primary_darkGray_to_gray: #9e9e9e;
 	--backgroundColor_main_white_to_darkGray: #232323;
 	--backgroundColor_menu_offWhite_to_offBlack: #171717;
 	--borderColor_menu_offWhite_to_offBlack: #171717;
+	--hover_menuButtonOpen_gray_to_darkGray: #232323;
+	--active_menuButtonOpen_gray_to_darkGray: black;
 	--hover_menuButtonClosed_gray_to_darkGray: #171717;
 	--active_menuButtonClosed_gray_to_darkGray: black;
-	--hover_menuButtonOpen_gray_to_darkGray: #171717;
-	--active_menuButtonOpen_gray_to_darkGray: black;
 	--hover_menuItem_gray_to_darkGray: #1e1d1d;
 	--active_menuItem_gray_to_darkGray: #232323;
-	--backgroundColor_SearchBar_offBlack_to_offWhite: #f8f9fb;
+	--backgroundColor_SearchBar_offBlack_to_offWhite: #eeebee;
+	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #171717;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #191919);
 	--hover_readerHeaderTitle_lightBlue_to_blue: var(--Blue);
 	--color_readerSecondary_darkBlue_to_lightBlue: #30568d;
 	--color_readerSectionTitle_white_to_offWhite: #dddddd;
 	--color_readerHyperLink_brightBlue_to_skyBlue: #87ceeb;
-
-	/* navigation tabs section */
-	--color_pageNav_menuTabs_primary_gray: #a0a0a0; /* repetitive */
-
-	--Navigation-tabs-section-Primary-IsActive_Black-To-OffWhite: #dddddd;
-	--Navigation-tabs-section-Primary-IsActive-Border-Bottom_Black-To-OffWhite: #dddddd;
-	--Navigation-tabs-section-Primary-Border-Bottom_OffWhite-To-Gray: #a0a0a0;
-	/* navigation controls */
-	--Navigation-Controls-Background_White-To-Gray: #3a3b3c;
-	--Navigation-Controls-InputFill_White-To-Gray: #949494;
-	--Navigation-Controls-InputBorder_Gray-To-Black: black;
-	/* --Navigation-Controls-InputBorderOnFocus_Blue: var(--Blue); */
-	--Navigation-Controls-LineDividers_OffWhite-To-Black: black;
+	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/
+	--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite: #dddddd;
+	--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite: #dddddd;
+	--color_pageNav_menuTabs_borderBottom_offWhite_to_gray: #9e9e9e;
+	--backgroundColor_pageNav_white_to_gray: #3a3b3c;
+	--color_pageNav_InputBorder_offWhite_to_black: black;
+	--color_pageNav_lineDividers_offWhite_to_black: black;
 }
 
 main {

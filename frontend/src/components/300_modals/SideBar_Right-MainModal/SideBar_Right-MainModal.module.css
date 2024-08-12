@@ -94,12 +94,12 @@
 }
 .sidebar_search {
 	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
-	border-right: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-right: 0px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 	border-bottom: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	border-left: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	color: var(--BlackToWhite) !important;
 
-	background-color: var(--SideBar-left-TOC-SearchBar-Background_White-To-Dark) !important;
+	background-color: var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	box-sizing: border-box;
 	padding: 8px 8px 8px 40px;
 	z-index: 10;
@@ -111,13 +111,14 @@
 	overflow: clip !important;
 	transition: background-color 0.35s ease-in-out !important;
 	padding-left: 50px !important;
-	width: 326px;
+	width: 325px;
 	border-radius: 0 !important;
 	padding-left: 70px !important;
 }
 .sidebar_search::placeholder {
 	color: #81868d !important;
-	padding-left: 0px !important;
+	padding: 0px !important;
+	margin: 0px !important;
 }
 .sidebar_search:focus::placeholder {
 	opacity: 0 !important;
@@ -127,7 +128,7 @@
 .sidebar_search:focus,
 .sidebar_search:-webkit-autofill:focus,
 .sidebar_search.isFocused {
-	border-top: 1px solid #1a1c1e !important;
+	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	border-right: 0 !important;
 	border-left: 0 !important;
 	border-bottom: 0 !important;
@@ -356,14 +357,15 @@
 	cursor: pointer;
 	-webkit-appearance: button;
 	margin: 0;
-	border: 1px solid white;
 	place-content: center;
 	height: 40px;
 	min-width: unset;
 	font-size: 14px;
-	background-color: white;
+
 	width: 36px;
 	transition: none;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 0px solid red;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
@@ -376,9 +378,9 @@
 	user-select: none;
 	vertical-align: text-bottom;
 	overflow: visible;
-	fill: black;
+	fill: none;
 	height: 21px;
 }
 .svgExit path {
-	fill: gray;
+	fill: #9e9e9e;
 }
