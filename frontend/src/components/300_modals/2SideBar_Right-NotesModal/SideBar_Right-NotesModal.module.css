@@ -3,12 +3,13 @@
 	z-index: 2000;
 	position: fixed;
 	right: 0;
-	justify-content: space-between;
+
 	width: 326px;
 	height: 100vh;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	border-left: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 	flex-direction: column;
+	padding-top: 30px;
 	padding-bottom: 30px;
 	border-top-left-radius: 14px;
 	border-bottom-left-radius: 14px;
@@ -21,66 +22,129 @@
 .sidebar.open {
 	transform: translateX(0);
 }
-
-/*! Search ----------------------------------------*/
-.searchInputContainer {
-	position: relative;
-	font-size: 16px;
-	margin-right: 42px;
-	margin-bottom: 10px;
-	height: 40px;
-}
-.searchIcon {
-	position: absolute;
-	top: 50%;
-	left: 10px;
-	transform: translateY(-50%);
-	pointer-events: none;
-	z-index: 1000;
-}
-.searchInputContainer input {
-	position: relative;
+.outerLogoContainer {
 	display: flex;
-	box-sizing: border-box;
+	position: relative;
+	flex-direction: row;
 	width: 100%;
-	height: 40px;
+	margin: 0px;
+	margin: 0px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.Logo {
+	display: flex;
+	height: 2.448rem;
+	width: 2.358rem;
+}
+.Logo:hover {
+	cursor: pointer;
+	transform: rotate(180deg);
+	animation: around 0.18s ease-in forwards;
+}
+@keyframes around {
+	/*========== Animation ==========*/
+	0% {
+		transform: rotate(22.5deg);
+	}
+	33% {
+		transform: rotate(45deg);
+	}
+	66% {
+		transform: rotate(67.5deg);
+	}
+	100% {
+		transform: rotate(90deg);
+	}
+}
+.companyName {
+	align-self: center;
+	font-family: Montserrat;
+	font-size: 1.4rem;
+	letter-spacing: -0.5px;
+	margin-left: 23px;
+	font-weight: lighter;
+	cursor: pointer;
+	color: var(--BlackToGray);
+	text-decoration: none;
+}
+.companyName:hover {
+	color: var(--Blue);
+}
+/* Sidebar Search------------------------------------------------------*/
+.sideBarSearchInputContainer {
 	align-items: center;
-	justify-content: center;
-	background-color: #1e1d1d !important;
-	border-radius: 9px;
+	display: flex;
+	position: relative;
+	width: 100%;
+	line-height: 1.15;
 	font-weight: 550;
-	color: #ffffff !important;
-	transition: all 0.3s ease-in-out;
-	border: 1px solid #292929 !important;
-	padding-left: 40px !important;
+	height: 52px;
 }
-.searchInputContainer input:hover,
-.searchInputContainer input:-webkit-autofill:hover {
-	background-color: #282727 !important;
+.sideBarSearchInputContainer::before {
+	background-color: #81868d;
+	content: "";
+	height: 1rem;
+	left: 27px;
+	mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/></svg>');
+	position: absolute;
+	width: 1rem;
+	z-index: 100;
+	margin-left: 14px;
 }
-.searchInputContainer input::placeholder {
-	padding-left: 0px;
-	color: #9e9e9e !important;
+.sidebar_search {
+	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-right: 0px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
+	border-bottom: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-left: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	color: var(--BlackToWhite) !important;
+
+	background-color: var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	box-sizing: border-box;
+	padding: 8px 8px 8px 40px;
+	z-index: 10;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+	overflow-clip-margin: 0px !important;
+	overflow: clip !important;
+	transition: background-color 0.35s ease-in-out !important;
+	padding-left: 50px !important;
+	width: 325px;
+	border-radius: 0 !important;
+	padding-left: 70px !important;
 }
-.searchInputContainer input:focus::placeholder {
-	opacity: 0;
+.sidebar_search::placeholder {
+	color: #81868d !important;
+	padding: 0px !important;
+	margin: 0px !important;
 }
-.searchInputContainer input:focus,
-.searchInputContainer input:-webkit-autofill:focus {
-	background-color: #282727 !important;
-	box-shadow: 0 0 0px black;
-	border: 1px solid #292929 !important;
-	outline: 0px solid black !important;
+.sidebar_search:focus::placeholder {
+	opacity: 0 !important;
 }
-/*!-------------------------------------------------*/
+.sidebar_search:hover,
+.sidebar_search:-webkit-autofill:hover,
+.sidebar_search:focus,
+.sidebar_search:-webkit-autofill:focus,
+.sidebar_search.isFocused {
+	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
+	border-right: 0 !important;
+	border-left: 0 !important;
+	border-bottom: 0 !important;
+	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
+	outline: 0px solid #1a1c1e !important;
+	box-shadow: 0 0 0px white !important;
+	color: var(--WhiteToBlack) !important;
+}
 
 .top {
 	margin: 0px;
 	padding-left: 30px;
 	padding-right: 30px;
-	margin-bottom: auto;
 }
 .bottom {
+	margin-top: auto;
 	margin-bottom: 45px;
 }
 .subgroup {
@@ -99,7 +163,6 @@
 .sidebarMenu input {
 	margin-left: auto;
 }
-
 .break {
 	border-bottom: 0.5px solid #555555;
 	margin-top: 10px;
@@ -108,7 +171,6 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
 /* General  Formatting */
 .menuItem {
 	display: flex;
@@ -199,7 +261,6 @@
 }
 /* Toggle Section */
 /* https://redstapler.co/pure-css-minimal-dark-mode-toggle-button  */ /* https://www.youtube.com/watch?v=S-T9XoCMwt4&t=409s */
-
 .darkModeToggleAndInputContainer {
 	display: flex;
 }
@@ -208,7 +269,7 @@
 	height: 30px;
 	position: relative;
 	display: block;
-	background: #ebebeb;
+	background: #d5d2d2;
 	border-radius: 30px;
 	cursor: pointer;
 	transition: 0.3s;
@@ -228,7 +289,6 @@
 	transform: translateX(-100%);
 	background: linear-gradient(180deg, #454545, #3a3a3a);
 }
-
 .darkModeToggleContainer:active .darkModeToggleButton {
 	width: 40px;
 	transition: 0.3s;
@@ -285,48 +345,7 @@
 	margin-left: auto;
 	margin-right: 16px;
 }
-
-/* menuOPenExit ------------------------------------------------ */
-.hamburgerButton {
-	display: inline-grid;
-	color: #b4b4b4;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	-webkit-appearance: button;
-	margin: 0;
-	border: 1px solid white;
-	place-content: center;
-	height: 40px;
-	min-width: unset;
-	font-size: 14px;
-	background-color: white;
-	width: 36px;
-}
-.hamburgerButton.open_NavBarMenu {
-	display: none;
-	visibility: hidden;
-}
-
-.hamburgerButton:hover {
-	background-color: #111111;
-}
-.svgHamburger {
-	display: inline-block;
-	user-select: none;
-	vertical-align: text-bottom;
-	overflow: visible;
-	fill: black;
-	height: 21px;
-}
-
-.svgHamburger path {
-	fill: gray;
-}
-
 /* exit button ------------------------------------------- */
-
 .exitButton {
 	z-index: 3000;
 	position: relative;
@@ -338,14 +357,15 @@
 	cursor: pointer;
 	-webkit-appearance: button;
 	margin: 0;
-	border: 1px solid white;
 	place-content: center;
 	height: 40px;
 	min-width: unset;
 	font-size: 14px;
-	background-color: white;
+
 	width: 36px;
 	transition: none;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 0px solid red;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
@@ -358,9 +378,9 @@
 	user-select: none;
 	vertical-align: text-bottom;
 	overflow: visible;
-	fill: black;
+	fill: none;
 	height: 21px;
 }
 .svgExit path {
-	fill: gray;
+	fill: #9e9e9e;
 }

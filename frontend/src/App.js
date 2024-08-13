@@ -73,10 +73,10 @@ const App = () => {
 		<Page22 />,
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
-	const sideBar_Left_TOC_isOpen_Rdx = useSelector(({ user }) => user.sideBar_Left_TOC_isOpen_Rdx);
-	const [sideBar_Left_TOC_isOpen, setSideBar_Left_TOC_isOpen] = useState(true);
-	const SideBar_Left_TOC_AllowWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_TOC_AllowWindowResize_rdx);
-	const [sideBar_Left_TOC_AllowWindowResize, setSideBar_Left_TOC_AllowWindowResize] = useState(true);
+	const sideBar_Left_isOpen_Rdx = useSelector(({ user }) => user.sideBar_Left_isOpen_Rdx);
+	const [sideBar_Left_isOpen, setSideBar_Left_isOpen] = useState(true);
+	const SideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_AllowCollapse_OnWindowResize_rdx);
+	const [sideBar_Left_AllowCollapse_OnWindowResize, setSideBar_Left_AllowCollapse_OnWindowResize] = useState(true);
 	//! Creates id's based on the h1, h2, h3 text
 	useEffect(() => {
 		const List_of_H1_H2_H3_Headers = document.querySelectorAll("h1, h2, h3");
@@ -136,44 +136,43 @@ const App = () => {
 	}, [currentPageNum]);
 	//! TOC Status: Open/Close
 	useEffect(() => {
-		setSideBar_Left_TOC_isOpen(sideBar_Left_TOC_isOpen_Rdx);
-	}, [sideBar_Left_TOC_isOpen_Rdx]);
-	//--- Screen Width under 1400px
+		setSideBar_Left_isOpen(sideBar_Left_isOpen_Rdx);
+	}, [sideBar_Left_isOpen_Rdx]);
 	useEffect(() => {
-		setSideBar_Left_TOC_AllowWindowResize(SideBar_Left_TOC_AllowWindowResize_rdx);
-	}, [SideBar_Left_TOC_AllowWindowResize_rdx]);
+		setSideBar_Left_AllowCollapse_OnWindowResize(SideBar_Left_AllowCollapse_OnWindowResize_rdx);
+	}, [SideBar_Left_AllowCollapse_OnWindowResize_rdx]);
 	const Width_Affects_to_SideBar_Left_TOC = () => {
 		if (window.innerWidth < 1400) {
-			setSideBar_Left_TOC_isOpen(false);
-			dispatch(userReducerActions.sideBar_Left_TOC_Close());
+			setSideBar_Left_isOpen(false);
+			dispatch(userReducerActions.sideBar_Left_Close());
 		} else {
-			setSideBar_Left_TOC_isOpen(true);
-			dispatch(userReducerActions.sideBar_Left_TOC_Open());
+			setSideBar_Left_isOpen(true);
+			dispatch(userReducerActions.sideBar_Left_Open());
 		}
 	};
 	useEffect(() => {
-		if (!sideBar_Left_TOC_AllowWindowResize) return;
+		if (!sideBar_Left_AllowCollapse_OnWindowResize) return;
 		window.addEventListener("resize", Width_Affects_to_SideBar_Left_TOC);
 		Width_Affects_to_SideBar_Left_TOC();
 		return () => {
 			window.removeEventListener("resize", Width_Affects_to_SideBar_Left_TOC);
 		};
-	}, [sideBar_Left_TOC_AllowWindowResize]);
+	}, [sideBar_Left_AllowCollapse_OnWindowResize]);
 	//!Tab Options
 	const TOC_TabOptions = (
-		<div className={classes.tabsContainer}>
-			<div className={classes.tabsSection}>
-				<span className={classes.onThisPage}>
+		<div className={classes.sideBar_left_tabs_outerContainer}>
+			<div className={classes.sideBar_left_tabs_innerContainer}>
+				<span className={classes.sideBar_left_tab_Name_onThisPage}>
 					<p>On this page</p>
 				</span>
-				<span className={classes.all}>
+				<span className={classes.sideBar_left_tab_Name_all}>
 					<p>All</p>
 				</span>
-				<span className={classes.pinned}>
+				<span className={classes.sideBar_left_tab_Name_pinned}>
 					<p>Pinned</p>
 				</span>
 			</div>
-			<div className={classes.line}></div>
+			<div className={classes.sideBar_left_tabs_underline}></div>
 		</div>
 	);
 	//!Prev-Next Page
@@ -259,7 +258,7 @@ const App = () => {
 			setInputPageNum(currentPageNum);
 		}
 	};
-	//!Navigation GUI
+	//!Pagination GUI
 	const Pagination_SideBar_Left = (
 		<div className={classes.paginationContainer}>
 			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL}>
@@ -310,8 +309,8 @@ const App = () => {
 					type="text"
 					onChange={handleInputChange}
 					value={inputPageNum}
-					onFocus={handlePageInputFocus_top}
-					ref={pageInputRef_top}
+					onFocus={handlePageInputFocus_bottom}
+					ref={pageInputRef_bottom}
 					id="current_page"
 					className={classes.pageInput}
 				/>
@@ -331,21 +330,21 @@ const App = () => {
 		</div>
 	);
 	//!Search Bar
-	const searchBarRef = useRef(null);
-	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
-	const handleSearchBarFocus = () => {
-		setSearchBarIsFocused(true);
+	const TOC_SearchBarRef = useRef(null);
+	const [sideBar_Left_TOC_SearchInputIsFocused, setSideBar_Left_TOC_SearchInputIsFocused] = useState(false);
+	const handle_SideBar_Left_TOC_SearchInputFocus = () => {
+		setSideBar_Left_TOC_SearchInputIsFocused(true);
 	};
-	const handleSearchBarBlur = () => {
-		setSearchBarIsFocused(false);
+	const handle_SideBar_Left_TOC_SearchInputBlur = () => {
+		setSideBar_Left_TOC_SearchInputIsFocused(false);
 	};
 	const TOC_SearchBar = (
-		<div className={classes.sidebarSearchInputContainer} method="get" action="#" role="search">
+		<div className={classes.sideBar_Left_TOC_SearchInputContainer} method="get" action="#" role="search">
 			<input
-				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
-				ref={searchBarRef}
-				onFocus={handleSearchBarFocus}
-				onBlur={handleSearchBarBlur}
+				className={`${classes["sideBar_Left_TOC_SearchInput"]} ${sideBar_Left_TOC_SearchInputIsFocused ? classes.isFocused : ""}`}
+				ref={TOC_SearchBarRef}
+				onFocus={handle_SideBar_Left_TOC_SearchInputFocus}
+				onBlur={handle_SideBar_Left_TOC_SearchInputBlur}
 				placeholder="Search"
 				name="q"
 				aria-label="Search"
@@ -361,7 +360,7 @@ const App = () => {
 	};
 	const TOC_Contents = (
 		<nav className={classes.tocOuterContainer}>
-			<div className={classes.titleLabel} onClick={GoTo_TopOfPage}>
+			<div className={classes.tocTitleLabel} onClick={GoTo_TopOfPage}>
 				<a>{pageTitle}</a>
 			</div>
 			<div className={classes.tocInnerContainer}>
@@ -387,16 +386,16 @@ const App = () => {
 
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
-			<DemoNavbar sideBar_Left_TOC_isOpen={sideBar_Left_TOC_isOpen} demoNavBarMenuOption={demoNavBarMenuOption} />
+			<DemoNavbar sideBar_Left_isOpen={sideBar_Left_isOpen} demoNavBarMenuOption={demoNavBarMenuOption} />
 			<div className={classes.bodyContainer}>
-				<div className={`${classes["sideBarOuterContainer"]} ${sideBar_Left_TOC_isOpen ? classes.open : ""}`}>
+				<div className={`${classes["sideBar_left_outerContainer"]} ${sideBar_Left_isOpen ? classes.open : ""}`}>
 					{TOC_TabOptions}
 					{Pagination_SideBar_Left}
 					{TOC_SearchBar}
 					{TOC_Contents}
 				</div>
-				<div className={classes.handbook_OuterContainer} ref={pageContentRef}>
-					<div className={classes.handbook_InnerContainer}>
+				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
+					<div className={classes.handbook_innerContainer}>
 						<div className={classes.page_contentContainer}>
 							{ListOfPages[currentPageNum]}
 							{Pagination_Reader_Bottom}

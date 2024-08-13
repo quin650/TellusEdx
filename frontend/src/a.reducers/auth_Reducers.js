@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 
 const initialState = {
-	sideBar_Left_TOC_isOpen_Rdx: true,
-	SideBar_Left_TOC_AllowWindowResize_rdx: true,
-	navbarMenuStatus: false,
-	navbarSearchMenuStatus: false,
-	navbarNotesMenuStatus: false,
+	sideBar_Left_isOpen_Rdx: true,
+	SideBar_Left_AllowCollapse_OnWindowResize_rdx: true,
+	sideBar_Right_Main_ModalStatus_rdx: false,
+	sideBar_Right_Search_ModalStatus_rdx: false,
+	sideBar_Right_Notes_ModalStatus_rdx: false,
 
-	getStartedModalStatus: false,
+	getStarted_ModalStatus_rdx: false,
 	getStartedView: "",
-	languageSettingsModalStatus: false,
+	languageSettings_ModalStatus_rdx: false,
 	languageCurrent_rdx: "English",
 	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
 	isDarkMode: false,
@@ -57,51 +57,65 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView = false;
 		},
+		// Left Side Modal
+		sideBar_Left_Toggle_ModalVisibility(state, action) {
+			state.sideBar_Left_isOpen_Rdx = action.payload;
+		},
+		sideBar_Left_Open(state) {
+			state.sideBar_Left_isOpen_Rdx = true;
+		},
+		sideBar_Left_Close(state) {
+			state.sideBar_Left_isOpen_Rdx = false;
+		},
+		SideBar_Left_NotAllowCollapse_OnWindowResize(state) {
+			state.SideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
+		},
+		// Search Modal
+		sideBar_Right_Open_Search_Modal(state) {
+			state.sideBar_Right_Search_ModalStatus_rdx = true;
+		},
+		sideBar_Right_Close_Search_Modal(state) {
+			state.sideBar_Right_Search_ModalStatus_rdx = false;
+		},
+		// Notes Modal
+		sideBar_Right_Open_Notes_Modal(state) {
+			state.sideBar_Right_Notes_ModalStatus_rdx = true;
+		},
+		sideBar_Right_Close_Notes_Modal(state) {
+			state.sideBar_Right_Notes_ModalStatus_rdx = false;
+		},
+		// Right Main Modal
 		navBarMenuToggleOpenClose(state) {
-			state.navbarMenuStatus = !state.navbarMenuStatus;
+			state.sideBar_Right_Main_ModalStatus_rdx = !state.sideBar_Right_Main_ModalStatus_rdx;
 		},
-		navBarMenuOpen(state) {
-			state.navbarMenuStatus = true;
+		sideBar_Right_Open_Main_Modal(state) {
+			state.sideBar_Right_Main_ModalStatus_rdx = true;
 		},
-		navBarMenuClose(state) {
-			state.navbarMenuStatus = false;
+		sideBar_Right_Close_Main_Modal(state) {
+			state.sideBar_Right_Main_ModalStatus_rdx = false;
 		},
-		navBarSearchMenuOpen(state) {
-			state.navbarSearchMenuStatus = true;
-			state.navbarMenuStatus = false;
-		},
-		navBarSearchMenuClose(state) {
-			state.navbarSearchMenuStatus = false;
-		},
-		navBarNotesMenuOpen(state) {
-			state.navbarNotesMenuStatus = true;
-			state.navbarMenuStatus = false;
-		},
-		navBarNotesMenuClose(state) {
-			state.navbarNotesMenuStatus = false;
-		},
-		// Modal
+		// Get Started Modal
 		getStartedModalLogIn(state) {
-			state.getStartedModalStatus = true;
-			state.navbarMenuStatus = false;
+			state.getStarted_ModalStatus_rdx = true;
+			state.sideBar_Right_Main_ModalStatus_rdx = false;
 			state.getStartedView = "LogInModal";
 		},
 		getStartedModalCreateAccount(state) {
-			state.getStartedModalStatus = true;
-			state.navbarMenuStatus = false;
+			state.getStarted_ModalStatus_rdx = true;
+			state.sideBar_Right_Main_ModalStatus_rdx = false;
 			state.getStartedView = "CreateAccountModal";
 		},
 		getStartedModalOpen(state) {
-			state.getStartedModalStatus = true;
-			state.navbarMenuStatus = false;
+			state.getStarted_ModalStatus_rdx = true;
+			state.sideBar_Right_Main_ModalStatus_rdx = false;
 		},
 		getStartedModalClose(state) {
-			state.getStartedModalStatus = false;
-			state.navbarMenuStatus = false;
+			state.getStarted_ModalStatus_rdx = false;
+			state.sideBar_Right_Main_ModalStatus_rdx = false;
 		},
 		// Registration
 		registerModalClose(state) {
-			state.getStartedModalStatus = false;
+			state.getStarted_ModalStatus_rdx = false;
 		},
 		registerSuccess(state, action) {
 			state.registered = true;
@@ -156,7 +170,7 @@ const userSlice = createSlice({
 			state.isAuthenticated = true;
 			state.loading = false;
 			state.userInfo = action.payload;
-			state.getStartedModalStatus = false;
+			state.getStarted_ModalStatus_rdx = false;
 		},
 		loginFail(state, action) {
 			state.loading = false;
@@ -227,24 +241,12 @@ const userSlice = createSlice({
 		deleteUserFail(state) {
 			state;
 		},
-		//General Settings
-		toggleTocStatus(state, action) {
-			state.sideBar_Left_TOC_isOpen_Rdx = action.payload;
-		},
-		sideBar_Left_TOC_Open(state) {
-			state.sideBar_Left_TOC_isOpen_Rdx = true;
-		},
-		sideBar_Left_TOC_Close(state) {
-			state.sideBar_Left_TOC_isOpen_Rdx = false;
-		},
-		SideBar_Left_TOC_NotAllowWindowResize(state) {
-			state.SideBar_Left_TOC_AllowWindowResize_rdx = false;
-		},
+		// Language Modal Settings
 		languageSettingsModalOpen(state) {
-			state.languageSettingsModalStatus = true;
+			state.languageSettings_ModalStatus_rdx = true;
 		},
 		languageSettingsModalClose(state) {
-			state.languageSettingsModalStatus = false;
+			state.languageSettings_ModalStatus_rdx = false;
 		},
 		languageSettingsChange(state, action) {
 			state.languageCurrent_rdx = action.payload;
@@ -325,6 +327,7 @@ const userSlice = createSlice({
 		languageSettingsHindi(state) {
 			state.languageCurrent_rdx = "Hindi";
 		},
+		//Dark/Light Settings
 		setDarkLightMode(state, action) {
 			state.isDarkMode = action.payload;
 		},

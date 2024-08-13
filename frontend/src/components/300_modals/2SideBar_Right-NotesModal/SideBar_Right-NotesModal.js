@@ -5,18 +5,18 @@ import GetStartedButton from "../GetStartedModal/features/GetStartedButton";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Logo from "../../../../static/images/1Logo.png";
-import classes from "./SideBar_Right-MainModal.module.css";
+import classes from "./SideBar_Right-NotesModal.module.css";
 
-const NavbarMenu = ({ demoNavBarMenuOption }) => {
-	const navBarRef = useRef();
+const SideBar_Right_NotesModal = ({ demoNavBarMenuOption }) => {
+	const sideBarRightNotesRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
 	const activeFlag = useSelector(({ user }) => user.activeFlag);
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-	const { navbarMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
-	const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
+	const { sideBar_Right_Notes_ModalStatus_rdx, languageSettings_ModalStatus_rdx } = useSelector(({ user }) => user);
+	const languageSettingsModalStatusRef = useRef(languageSettings_ModalStatus_rdx);
 	// Icons
 	const homeIcon = (
 		<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,10 +153,10 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
 	};
 	const CloseNavBarMenu = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
 	};
 	const OpenLanguageSettingsModal = () => {
 		dispatch(userReducerActions.languageSettingsModalOpen());
@@ -190,12 +190,12 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 		}
 	};
 	useEffect(() => {
-		languageSettingsModalStatusRef.current = languageSettingsModalStatus;
-	}, [languageSettingsModalStatus]);
+		languageSettingsModalStatusRef.current = languageSettings_ModalStatus_rdx;
+	}, [languageSettings_ModalStatus_rdx]);
 	const onClickOutsideNavBar_closeNavBar = (e) => {
 		if (
-			navBarRef.current &&
-			!navBarRef.current.contains(e.target) &&
+			sideBarRightNotesRef.current &&
+			!sideBarRightNotesRef.current.contains(e.target) &&
 			!exitButtonRef.current.contains(e.target) &&
 			!languageSettingsModalStatusRef.current
 		) {
@@ -204,7 +204,7 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	};
 
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -214,12 +214,12 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (navbarMenuStatus) {
+		if (sideBar_Right_Notes_ModalStatus_rdx) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [navbarMenuStatus]);
+	}, [sideBar_Right_Notes_ModalStatus_rdx]);
 
 	// Other JSX
 	let option = (
@@ -260,7 +260,7 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 				</div>
 		  ));
 	const toggleMenu = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -301,7 +301,7 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
+			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRightNotesRef}>
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
@@ -397,4 +397,4 @@ const NavbarMenu = ({ demoNavBarMenuOption }) => {
 	);
 };
 
-export default NavbarMenu;
+export default SideBar_Right_NotesModal;

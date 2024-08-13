@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-
 import GetStartedButton from "../GetStartedModal/features/GetStartedButton";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Logo from "../../../../static/images/1Logo.png";
-import classes from "./SideBar_Right-NotesModal.module.css";
+import classes from "./SideBar_Right-MainModal.module.css";
 
-const NavbarNotesMenu = () => {
+const SideBar_Right_MainModal = ({ demoNavBarMenuOption }) => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
@@ -16,8 +15,8 @@ const NavbarNotesMenu = () => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-	const { navbarNotesMenuStatus, languageSettingsModalStatus } = useSelector(({ user }) => user);
-	const languageSettingsModalStatusRef = useRef(languageSettingsModalStatus);
+	const { sideBar_Right_Main_ModalStatus_rdx, languageSettings_ModalStatus_rdx } = useSelector(({ user }) => user);
+	const languageSettingsModalStatusRef = useRef(languageSettings_ModalStatus_rdx);
 	// Icons
 	const homeIcon = (
 		<svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,10 +153,10 @@ const NavbarNotesMenu = () => {
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 	};
 	const CloseNavBarMenu = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 	};
 	const OpenLanguageSettingsModal = () => {
 		dispatch(userReducerActions.languageSettingsModalOpen());
@@ -191,9 +190,8 @@ const NavbarNotesMenu = () => {
 		}
 	};
 	useEffect(() => {
-		languageSettingsModalStatusRef.current = languageSettingsModalStatus;
-	}, [languageSettingsModalStatus]);
-
+		languageSettingsModalStatusRef.current = languageSettings_ModalStatus_rdx;
+	}, [languageSettings_ModalStatus_rdx]);
 	const onClickOutsideNavBar_closeNavBar = (e) => {
 		if (
 			navBarRef.current &&
@@ -206,7 +204,7 @@ const NavbarNotesMenu = () => {
 	};
 
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.navBarMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -216,12 +214,12 @@ const NavbarNotesMenu = () => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (navbarNotesMenuStatus) {
+		if (sideBar_Right_Main_ModalStatus_rdx) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [navbarNotesMenuStatus]);
+	}, [sideBar_Right_Main_ModalStatus_rdx]);
 
 	// Other JSX
 	let option = (
@@ -261,26 +259,9 @@ const NavbarNotesMenu = () => {
 					<GetStartedButton />
 				</div>
 		  ));
-
-	const search = (
-		<div className={classes.searchInputContainer}>
-			<svg className={classes.searchIcon} width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path
-					d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z"
-					stroke="#9E9E9E"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-				/>
-				<path d="M18.6875 18.4383L14.9719 14.7227" stroke="#9E9E9E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-			</svg>
-			<input id="search" type="text" placeholder="Search" name="search"></input>
-		</div>
-	);
 	const toggleMenu = () => {
-		dispatch(userReducerActions.navBarNotesMenuClose());
+		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 	};
-
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
@@ -293,13 +274,44 @@ const NavbarNotesMenu = () => {
 			</svg>
 		</button>
 	);
-
+	//!Search Bar
+	const searchBarRef = useRef(null);
+	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
+	const handleSearchBarFocus = () => {
+		setSearchBarIsFocused(true);
+	};
+	const handleSearchBarBlur = () => {
+		setSearchBarIsFocused(false);
+	};
+	const RightMain_SearchBar = (
+		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
+				ref={searchBarRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder="Search"
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
 	return (
 		<Fragment>
 			{exitButton}
 			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
+				<div className={classes.outerLogoContainer}>
+					<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
+						<img src={Logo} alt="Logo" className={classes.Logo}></img>
+					</Link>
+					<Link to="/home" onClick={CloseNavBarMenu} className={classes.companyName}>
+						TellusEd
+					</Link>
+				</div>
+				{RightMain_SearchBar}
 				<div className={classes.top}>
-					{/* {search} */}
 					<div className={classes.sidebarMenu}>
 						<Link
 							to="/home"
@@ -307,8 +319,18 @@ const NavbarNotesMenu = () => {
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
-							<span>blahblahblah</span>
+							<span>Home</span>
 						</Link>
+						{demoNavBarMenuOption && (
+							<Link
+								to="/demo"
+								onClick={CloseNavBarMenu}
+								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
+							>
+								<i>{dashboardIcon}</i>
+								<span>Demo</span>
+							</Link>
+						)}
 					</div>
 				</div>
 				<div className={classes.bottom}>
@@ -375,4 +397,4 @@ const NavbarNotesMenu = () => {
 	);
 };
 
-export default NavbarNotesMenu;
+export default SideBar_Right_MainModal;

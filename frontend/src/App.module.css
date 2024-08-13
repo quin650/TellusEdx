@@ -15,7 +15,7 @@
 	position: relative;
 }
 /*! sideBar container ------------------------------------------------------*/
-.sideBarOuterContainer {
+.sideBar_left_outerContainer {
 	position: sticky !important;
 	display: flex;
 	flex-direction: column;
@@ -30,7 +30,7 @@
 	transform: translateX(-100%);
 	visibility: hidden;
 }
-.sideBarOuterContainer.open {
+.sideBar_left_outerContainer.open {
 	transform: translateX(0);
 	width: 326px;
 	visibility: visible;
@@ -43,7 +43,7 @@
 	}
 }
 /*! tab section --------------------------------------------------------------*/
-.tabsContainer {
+.sideBar_left_tabs_outerContainer {
 	display: block;
 	width: 100%;
 	margin-top: 56px;
@@ -51,30 +51,30 @@
 	padding-right: 35px;
 	color: var(--color_pageNav_menuTabs_primary_gray);
 }
-.tabsSection {
+.sideBar_left_tabs_innerContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	height: 40px;
 }
-.onThisPage {
+.sideBar_left_tab_Name_onThisPage {
 	font-weight: 600;
 	margin-right: 14px;
 	border-bottom: 2px solid var(--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite);
 	cursor: pointer;
 	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite) !important;
 }
-.all {
+.sideBar_left_tab_Name_all {
 	font-weight: 600;
 	margin-right: 14px;
 	cursor: pointer;
 }
-.pinned {
+.sideBar_left_tab_Name_pinned {
 	font-weight: 600;
 	margin-right: 14px;
 	cursor: pointer;
 }
-.line {
+.sideBar_left_tabs_underline {
 	width: 100%;
 	border: 0;
 	height: 1px;
@@ -94,7 +94,7 @@
 	margin: 10px auto;
 	font-size: 16px !important;
 }
-/*__First #1__-------------------------------------------------------*/
+/* Pagination Controls 1 of 4-------------------------------------------------*/
 .paginationButtonL {
 	padding: 0;
 	border: none;
@@ -142,7 +142,7 @@
 	align-self: center;
 }
 /*?--------------------------------------------------------------------*/
-/*__Second #2__-------------------------------------------------------*/
+/* Pagination Controls 2 of 4-------------------------------------------------*/
 .paginationInputContainer {
 	display: flex;
 	height: 100%;
@@ -175,7 +175,7 @@
 	align-items: center;
 }
 /*?--------------------------------------------------------------------*/
-/*__Third #3__-------------------------------------------------------*/
+/* Pagination Controls 3 of 4-------------------------------------------------*/
 .paginationTotalPages {
 	display: flex;
 	height: 100%;
@@ -199,7 +199,7 @@
 	align-self: center;
 }
 /*?--------------------------------------------------------------------*/
-/*__Fourth #4__-------------------------------------------------------*/
+/* Pagination Controls 4 of 4-------------------------------------------------*/
 .paginationButtonR {
 	padding: 0;
 	border: none;
@@ -239,8 +239,8 @@
 	cursor: default;
 }
 
-/*! Sidebar Search------------------------------------------------------*/
-.sidebarSearchInputContainer {
+/*! Sidebar-Left TOC Search------------------------------------------------------*/
+.sideBar_Left_TOC_SearchInputContainer {
 	align-items: center;
 	display: flex;
 	position: relative;
@@ -248,7 +248,7 @@
 	line-height: 1.15;
 	font-weight: 550;
 }
-.sidebarSearchInputContainer::before {
+.sideBar_Left_TOC_SearchInputContainer::before {
 	background-color: #81868d;
 	content: "";
 	height: 1rem;
@@ -258,7 +258,7 @@
 	width: 1rem;
 	z-index: 100;
 }
-.sidebar_search {
+.sideBar_Left_TOC_SearchInput {
 	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	border-right: 0px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 	border-bottom: 0px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
@@ -280,17 +280,17 @@
 	width: 325px;
 	border-radius: 0 !important;
 }
-.sidebar_search::placeholder {
+.sideBar_Left_TOC_SearchInput::placeholder {
 	color: #81868d !important;
 }
-.sidebar_search:focus::placeholder {
+.sideBar_Left_TOC_SearchInput:focus::placeholder {
 	opacity: 0 !important;
 }
-.sidebar_search:hover,
-.sidebar_search:-webkit-autofill:hover,
-.sidebar_search:focus,
-.sidebar_search:-webkit-autofill:focus,
-.sidebar_search.isFocused {
+.sideBar_Left_TOC_SearchInput:hover,
+.sideBar_Left_TOC_SearchInput:-webkit-autofill:hover,
+.sideBar_Left_TOC_SearchInput:focus,
+.sideBar_Left_TOC_SearchInput:-webkit-autofill:focus,
+.sideBar_Left_TOC_SearchInput.isFocused {
 	border-top: 1px solid var(--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack) !important;
 	border-right: 0 !important;
 	border-left: 0 !important;
@@ -317,8 +317,8 @@
 	margin: 0 !important;
 	padding: 0 !important;
 }
-/*! toc Page Title ------------------------------------------------------*/
-.titleLabel {
+/*! toc Title ------------------------------------------------------*/
+.tocTitleLabel {
 	padding: 6px 8px 6px 12px !important;
 	width: 100%;
 	line-height: 1.5;
@@ -331,13 +331,13 @@
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	cursor: pointer !important;
 }
-.titleLabel:hover {
+.tocTitleLabel:hover {
 	background: var(--hover_readerHeaderTitle_lightBlue_to_blue) !important;
 }
-.titleLabel:active {
+.tocTitleLabel:active {
 	background: var(--Blue) !important;
 }
-.titleLabel a {
+.tocTitleLabel a {
 	margin-bottom: auto;
 	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
 }
@@ -423,7 +423,7 @@
 	flex-grow: 1;
 }
 /*! Handbook-------------------------------------------------------------------*/
-.handbook_OuterContainer {
+.handbook_outerContainer {
 	padding-top: 56px;
 	padding-bottom: 56px;
 	max-width: 1500px;
@@ -433,7 +433,7 @@
 	line-height: 1.35;
 	min-height: 100%;
 }
-.handbook_InnerContainer {
+.handbook_innerContainer {
 	font-size: 1rem;
 	display: flex;
 	min-height: 100%;
@@ -629,8 +629,4 @@ strong {
 	margin-top: 4px;
 	padding: 0 6px;
 	text-transform: uppercase;
-}
-.bottomNavigationSpacing {
-	margin-top: 30px;
-	margin-bottom: 30px;
 }
