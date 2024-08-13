@@ -77,42 +77,49 @@ const App = () => {
 	const [sideBar_Left_isOpen, setSideBar_Left_isOpen] = useState(true);
 	const SideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	const [sideBar_Left_AllowCollapse_OnWindowResize, setSideBar_Left_AllowCollapse_OnWindowResize] = useState(true);
-	//! Creates id's based on the h1, h2, h3 text
+	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
-		const List_of_H1_H2_H3_Headers = document.querySelectorAll("h1, h2, h3");
-		List_of_H1_H2_H3_Headers.forEach((header) => {
-			const id = generateIdFromText(header.textContent);
-			header.id = id;
-		});
+		if (pageContentRef.current) {
+			const List_of_H1_H2_H3_Headers = document.querySelectorAll("h1, h2, h3");
+			List_of_H1_H2_H3_Headers.forEach((header) => {
+				const id = generateIdFromText(header.textContent);
+				header.id = id;
+			});
+		}
 	}, [currentPageNum]);
-	//! Get Page Title | Get Range of pages | Get list of all the headings h2 & their h3 children
+
+	//! Get Page Title | Get Range of pages
 	useEffect(() => {
 		if (pageContentRef.current) {
 			setPagesLength(ListOfPages.length - 1);
 			const H1_Element = pageContentRef.current.querySelectorAll("h1")[0];
 			const secTitle = H1_Element ? H1_Element.textContent : "";
 			setPageTitle(secTitle);
+		}
+	}, [currentPageNum]);
+
+	//! Get list of all the headings h2 & their h3 children
+	useEffect(() => {
+		if (pageContentRef.current) {
 			const H2_H3_elements = pageContentRef.current.querySelectorAll("h2, h3");
 			let headingsArray = [];
 			let currentH2Index = -1;
-
 			H2_H3_elements.forEach((element, index) => {
 				const id = element.id || generateIdFromText(element.textContent);
 				element.id = id;
-				let currentHead = element.tagName;
-				if (currentHead === "H2") {
+				if (element.tagName === "H2") {
 					headingsArray.push({
 						idx: index + 1,
-						level: currentHead,
+						level: element.tagName,
 						text: element.textContent,
 						children: [],
 						id,
 					});
 					currentH2Index += 1;
-				} else if (currentHead === "H3" && currentH2Index >= 0) {
+				} else if (element.tagName === "H3" && currentH2Index >= 0) {
 					headingsArray[currentH2Index].children.push({
 						idx: index + 1,
-						level: currentHead,
+						level: element.tagName,
 						text: element.textContent,
 						id,
 					});
@@ -121,6 +128,7 @@ const App = () => {
 			setHeadingsList(headingsArray);
 		}
 	}, [currentPageNum]);
+
 	//! GoTo_TopOfPage
 	const GoTo_TopOfPage = () => {
 		if (mainContainerRef.current) {
@@ -142,10 +150,10 @@ const App = () => {
 		setSideBar_Left_AllowCollapse_OnWindowResize(SideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	}, [SideBar_Left_AllowCollapse_OnWindowResize_rdx]);
 	const Width_Affects_to_SideBar_Left_TOC = () => {
-		if (window.innerWidth < 1400) {
+		if (window.innerWidth < 1400 && sideBar_Left_isOpen) {
 			setSideBar_Left_isOpen(false);
 			dispatch(userReducerActions.sideBar_Left_Close());
-		} else {
+		} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen) {
 			setSideBar_Left_isOpen(true);
 			dispatch(userReducerActions.sideBar_Left_Open());
 		}
@@ -157,7 +165,7 @@ const App = () => {
 		return () => {
 			window.removeEventListener("resize", Width_Affects_to_SideBar_Left_TOC);
 		};
-	}, [sideBar_Left_AllowCollapse_OnWindowResize]);
+	}, [sideBar_Left_AllowCollapse_OnWindowResize, sideBar_Left_isOpen]);
 	//!Tab Options
 	const TOC_TabOptions = (
 		<div className={classes.sideBar_left_tabs_outerContainer}>
@@ -228,8 +236,9 @@ const App = () => {
 	useEffect(() => {
 		let localStoragePageNum = localStorage.getItem("page");
 		if (localStoragePageNum) {
-			setCurrentPageNum(localStoragePageNum);
-			setInputPageNum(localStoragePageNum);
+			const parsedPageNum = parseInt(localStoragePageNum, 10);
+			setCurrentPageNum(parsedPageNum);
+			setInputPageNum(parsedPageNum);
 		}
 	}, []);
 	//Handle's any changes to the input value (Delayed)
@@ -375,6 +384,7 @@ const App = () => {
 							id={`#${heading.id}`}
 							currentPageNum={currentPageNum}
 							handleTOCItemClick={handleTOCItemClick}
+							isActive={false}
 						/>
 					))}
 				</ul>

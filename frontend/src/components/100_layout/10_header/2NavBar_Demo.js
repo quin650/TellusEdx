@@ -9,8 +9,10 @@ import SideBar_Right_MainModal from "../../300_modals/3SideBar_Right-MainModal/S
 
 import classes from "./2NavBar_Demo.module.css";
 
-const DemoNavbar = ({ sideBar_Left_isOpen, demoNavBarMenuOption }) => {
+const DemoNavbar = ({ demoNavBarMenuOption }) => {
 	const {
+		sideBar_Left_isOpen_Rdx,
+		SideBar_Left_AllowCollapse_OnWindowResize_rdx,
 		sideBar_Right_Main_ModalStatus_rdx,
 		sideBar_Right_Search_ModalStatus_rdx,
 		sideBar_Right_Notes_ModalStatus_rdx,
@@ -20,8 +22,10 @@ const DemoNavbar = ({ sideBar_Left_isOpen, demoNavBarMenuOption }) => {
 	const dispatch = useDispatch();
 	// Button onClick actions
 	const toggle_SideBar_Left_Visibility = () => {
-		dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility(!sideBar_Left_isOpen));
-		dispatch(userReducerActions.SideBar_Left_NotAllowCollapse_OnWindowResize());
+		dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility(!sideBar_Left_isOpen_Rdx));
+		if (SideBar_Left_AllowCollapse_OnWindowResize_rdx) {
+			dispatch(userReducerActions.SideBar_Left_NotAllowCollapse_OnWindowResize());
+		}
 	};
 	const open_sideBar_Right_Search_Modal = () => {
 		dispatch(userReducerActions.sideBar_Right_Open_Search_Modal());
@@ -34,7 +38,7 @@ const DemoNavbar = ({ sideBar_Left_isOpen, demoNavBarMenuOption }) => {
 	};
 	// Buttons
 	const sideBar_Left_Button = (
-		<button onClick={toggle_SideBar_Left_Visibility} className={`${classes["toggleLeftMenuButton"]} ${sideBar_Left_isOpen ? classes.open : ""}`}>
+		<button onClick={toggle_SideBar_Left_Visibility} className={`${classes["toggleLeftMenuButton"]} ${sideBar_Left_isOpen_Rdx ? classes.open : ""}`}>
 			<svg className={classes.svgMenuButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<path
 					fillRule="evenodd"

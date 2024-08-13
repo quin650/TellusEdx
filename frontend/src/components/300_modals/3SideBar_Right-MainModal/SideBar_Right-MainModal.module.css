@@ -326,13 +326,7 @@
 .toggleCheckBox:checked + .darkModeToggleContainer svg.moon {
 	fill: #ffffff;
 }
-.flagContainer {
-	width: 60px;
-	height: 30px;
-	position: relative;
-	display: block;
-	cursor: pointer;
-}
+
 .sidebarMenuOptions:hover img {
 	border: 1px solid var(--BlackToWhite);
 }

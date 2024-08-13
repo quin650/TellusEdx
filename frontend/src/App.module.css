@@ -373,6 +373,10 @@
 .parentLabel:active {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
+.parentLabel.isActive {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+
 .menuArrow {
 	flex-shrink: 0;
 	color: #848d97;
@@ -413,6 +417,9 @@
 	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .childLabelInnerContainer:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.childLabelInnerContainer.isActive {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .childLabel {

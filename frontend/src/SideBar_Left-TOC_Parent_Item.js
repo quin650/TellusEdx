@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TOC_Child_Item from "./SideBar_Left-TOC_Child_Item.js.js";
 import classes from "./App.module.css";
 
-const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick }) => {
+const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick, isActive }) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const toggleMenuOpen = () => {
@@ -16,7 +16,7 @@ const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick 
 	return (
 		<li key={idx} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer} aria-expanded={isVisible}>
-				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={classes.parentLabel}>
+				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={`${classes["parentLabel"]} ${isActive ? classes.isActive : ""}`}>
 					<span>{text}</span>
 				</a>
 				{children.length > 0 && (
@@ -42,6 +42,7 @@ const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick 
 					isVisible={isVisible}
 					id={`#${child.id}`}
 					handleTOCItemClick={handleTOCItemClick}
+					isActive={isActive}
 				/>
 			))}
 		</li>

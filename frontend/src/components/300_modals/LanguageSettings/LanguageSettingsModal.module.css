@@ -1,103 +1,109 @@
 .blurredBackgroundContainer {
-    display: flex;
-    position: fixed;
-    z-index: 3000;
-    backdrop-filter: blur(6px);
-    height: 100vh;
-    width: 100vw;
-    top: 0px;
-    left: 0%;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(175, 175, 175, 40%);
-    justify-content: center;
-    align-items: center;
-    font-family: Roboto;
+	display: flex;
+	position: fixed;
+	z-index: 3000;
+	backdrop-filter: blur(6px);
+	height: 100vh;
+	width: 100vw;
+	top: 0px;
+	left: 0%;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(175, 175, 175, 40%);
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto;
 }
 /* ********************************************************************* Modal */
 .languageModal {
-    display: flex;
-    z-index: 3000;
-    position: fixed;
-    height: 545px;
-    width: 430px;
-    border-radius: 27px;
-    justify-content: center;
-    border: 2px solid var(--LightBlueToBlack);
-    background-color: var(--WhiteToBlack);
-    color: var(--BlackToGray);
+	display: flex;
+	z-index: 3000;
+	position: fixed;
+	height: 545px;
+	width: 430px;
+	border-radius: var(--borderRadius_modal);
+	justify-content: center;
+	/* background-color: var(--WhiteToBlack); */
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	color: var(--BlackToGray);
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    z-index: 1000;
-    justify-content: flex-end;
-    align-items: center;
-    height: 40px;
-    width: 40px;
-    margin-left: calc(100% - 40px);
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	z-index: 1000;
+	justify-content: flex-end;
+	align-items: center;
+	height: 40px;
+	width: 40px;
+	margin-left: calc(100% - 40px);
 }
 .exitButton {
-    padding: 10.5px 13px 10.5px 13px;
-    background-color: var(--WhiteToDarkGray2);
+	padding: 10.5px 13px 10.5px 13px;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border-top-right-radius: 14px;
 }
 .exitButton:hover {
-    background-color: var(--LightGrayToDarkGray2);
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.exitButton:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .exitSvg {
-    width: 14px;
-    height: 14px;
+	width: 14px;
+	height: 14px;
 }
-.exitSvg path{
-    fill: var(--WhiteToGray);
+.exitSvg path {
+	fill: var(--BlackToWhite);
 }
 /* ********************************************************************* Modal Content */
 .languageModalContentContainer {
-    box-sizing: border-box;
-    position: absolute;
-    height: 545px;
-    width: 430px;
-    min-width: 400px;
-    border-radius: 27px;
-    padding: 36px 36px 36px 36px;
-    overflow-y: scroll;  
-    max-height: 545px ; /* Set a maximum height for the scrollable element */
-    scrollbar-color: gray transparent ;/* Custom scrollbar styling for Firefox */
-    scrollbar-width: thin ;/* Custom scrollbar styling for Firefox */
+	box-sizing: border-box;
+	position: absolute;
+	height: 545px;
+	width: 430px;
+	min-width: 400px;
+	border-radius: var(--borderRadius_modal);
+	padding: 36px 30px;
+	overflow-y: scroll;
+	max-height: 545px; /* Set a maximum height for the scrollable element */
+	scrollbar-color: gray transparent; /* Custom scrollbar styling for Firefox */
+	scrollbar-width: thin; /* Custom scrollbar styling for Firefox */
 }
 .languageModalContentContainer::-webkit-scrollbar {
-    width: 6px;/* Styling the scrollbar in Chrome and Safari */
+	width: 6px; /* Styling the scrollbar in Chrome and Safari */
 }
-.languageModalContentContainer::-webkit-scrollbar-thumb {/* the draggable part of the scrollbar */
-    background-color: gray; /* Set thumb color for Chrome and Safari */
-    border-radius: 8px;
+.languageModalContentContainer::-webkit-scrollbar-thumb {
+	/* the draggable part of the scrollbar */
+	background-color: gray; /* Set thumb color for Chrome and Safari */
+	border-radius: 8px;
 }
 .languageModalContentContainer::-webkit-scrollbar-thumb:hover {
-    background: #555;     
+	background: #555;
 }
-.languageModalContentContainer::-webkit-scrollbar-track {/* the area that the thumb moves within. */
-    background: transparent; /* Set track color for Chrome and Safari */
+.languageModalContentContainer::-webkit-scrollbar-track {
+	/* the area that the thumb moves within. */
+	background: transparent; /* Set track color for Chrome and Safari */
 }
 /* ********************************************************************* Header Text */
-.languageIcon{
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-    align-self: center;
+.languageIcon {
+	width: 36px;
+	height: 36px;
+	margin-right: 10px;
+	align-self: center;
 }
-.modalHeader{
-    display: flex;
-    font-size: 2rem;
-    position: relative;
-    align-items: flex-end;
-    margin: 0px auto 36px 0px;
+.modalHeader {
+	display: flex;
+	font-size: 2rem;
+	position: relative;
+	align-items: flex-end;
+	margin: 0px auto 36px 0px;
 }
 /* ********************************************************************* Width under 600px */
 @media (max-width: 600px) {
-    .languageModalContentContainer {
-        padding-left: calc(8VW);
-        padding-right: calc(8VW);
-    }
+	.languageModalContentContainer {
+		padding-left: calc(8vw);
+		padding-right: calc(8vw);
+	}
 }

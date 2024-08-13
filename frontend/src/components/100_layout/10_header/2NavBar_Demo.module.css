@@ -192,6 +192,10 @@
 }
 
 /* hamburger Button ------------------------------------------------ */
+button:focus {
+	/* border: 1px solid yellow !important; */
+	outline: none !important;
+}
 .hamburgerButton {
 	display: inline-grid;
 	color: #b4b4b4;
@@ -207,7 +211,7 @@
 	font-size: 14px;
 	background-color: transparent;
 	width: 36px;
-	border: 0px solid red;
+	border: 0px solid red !important;
 }
 .hamburgerButton.open_NavBarMenu {
 	display: none;

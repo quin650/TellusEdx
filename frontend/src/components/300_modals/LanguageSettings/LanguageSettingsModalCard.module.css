@@ -1,74 +1,56 @@
 /* ********************************************************************* Modal Content */
 .languageOption {
-    display: flex;
-    align-items: center;
-    padding: 15px 8px;
-    color: #9E9E9E;
-    text-decoration: none;
-    border-radius: 8px;
-    transform: translateY(0px);
-    border: 1px solid var(--WhiteToBlack);
-    box-shadow: 1px 2px 1px 0px var(--WhiteToBlack);
-    background-color: var(--WhiteToDarkGray2);
+	display: flex;
+	align-items: center;
+	padding: 15px 8px;
+	color: var(--color_primary_darkGray_to_gray);
+	text-decoration: none;
+	border-radius: var(--borderRadius_modalItem);
+	transform: translateY(0px);
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	height: 52px;
+	padding: 10px 8px;
 }
 .languageOption:hover {
-    transform: translateY(0px);
-    cursor: pointer;
-    border: 1px solid black;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--WhiteToDarkGray);
+	transform: translateY(0px);
+	cursor: pointer;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
-.languageOption:active {/* click  - press down */
-    transform: translateY(1px);
-    border: 1px solid var(--OffWhiteTODarkGray3);
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--OffWhiteTODarkGray3);
-}
-.languageOption:focus {/* click  - release */
-    transform: translateY(0px);
-    border: 1px solid var(--WhiteToDarkGray5);
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--WhiteToDarkGray5);
+.languageOption:active {
+	transform: translateY(1px);
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .languageOption.isChecked {
-    transform: translateY(0px);
-    border: 1px solid #000000;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--OffWhiteTODarkGray);
-    
+	transform: translateY(0px);
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
-.languageOption.isChecked:hover{
-    transform: translateY(0px);
-    cursor: pointer;
-    border: 1px solid #000000;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--OffWhiteTODarkGray4);
+.languageOption.isChecked:hover {
+	transform: translateY(0px);
+	cursor: pointer;
+	background-color: var(--active_menuItem_gray_to_darkGray);
 }
-.languageOption.isChecked:active{/* click  - press down */
-    transform: translateY(1px);
-    border: 1px solid var(--OffWhiteTODarkGray3);
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--OffWhiteTODarkGray3);
+.languageOption.isChecked:active {
+	transform: translateY(1px);
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
-.languageOption.isChecked:focus {/* click  - release */
-    transform: translateY(0px);
-    border: 1px solid var(--OffWhiteTODarkGray3);
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--OffWhiteTODarkGray3);
+.break {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
-.break{
-    border: 1px solid var(--GrayToDarkGray2);
-    margin-top: 10px;
-    margin-bottom: 10px;
+.languageOption:hover img {
+	border: 1px solid var(--BlackToWhite);
+}
+.languageOption:active img {
+	outline: 1px solid var(--BlackToWhite);
 }
 .flag {
-    height: 19px; 
-    width: 28px;
-    margin-left: auto;
-    margin-right: 16px;
-    border: 1px solid black;
+	height: 19px;
+	width: 28px;
+	margin-left: auto;
+	margin-right: 16px;
 }
-.optionInputBox{
-    height: 20px;
-    width: 20px;
+.optionInputBox {
+	height: 20px;
+	width: 20px;
 }
