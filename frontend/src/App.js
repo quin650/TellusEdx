@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
 import DemoNavbar from "./components/100_layout/10_header/2NavBar_Demo";
@@ -73,10 +73,13 @@ const App = () => {
 		<Page22 />,
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
+
 	const sideBar_Left_isOpen_Rdx = useSelector(({ user }) => user.sideBar_Left_isOpen_Rdx);
 	const [sideBar_Left_isOpen, setSideBar_Left_isOpen] = useState(true);
 	const SideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	const [sideBar_Left_AllowCollapse_OnWindowResize, setSideBar_Left_AllowCollapse_OnWindowResize] = useState(true);
+	const [activeID, setActiveID] = useState(null);
+	console.log("activeID: ", activeID);
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -87,7 +90,6 @@ const App = () => {
 			});
 		}
 	}, [currentPageNum]);
-
 	//! Get Page Title | Get Range of pages
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -97,14 +99,13 @@ const App = () => {
 			setPageTitle(secTitle);
 		}
 	}, [currentPageNum]);
-
 	//! Get list of all the headings h2 & their h3 children
 	useEffect(() => {
 		if (pageContentRef.current) {
-			const H2_H3_elements = pageContentRef.current.querySelectorAll("h2, h3");
+			const H2_H3_elements1 = pageContentRef.current.querySelectorAll("h2, h3");
 			let headingsArray = [];
 			let currentH2Index = -1;
-			H2_H3_elements.forEach((element, index) => {
+			H2_H3_elements1.forEach((element, index) => {
 				const id = element.id || generateIdFromText(element.textContent);
 				element.id = id;
 				if (element.tagName === "H2") {
@@ -128,7 +129,72 @@ const App = () => {
 			setHeadingsList(headingsArray);
 		}
 	}, [currentPageNum]);
+	//! Get closest ID to the top
+	const debounce = (func, wait) => {
+		let timeout;
+		return function (...args) {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => func.apply(this, args), wait);
+		};
+	};
+	const getClosestHeaderToTop = () => {
+		// console.log("Running getClosestHeaderToTop...");
+		const H2_H3_elements2 = pageContentRef.current.querySelectorAll("h2, h3");
+		let closestHeader = null;
+		let closestDistance = Infinity;
+		const container = mainContainerRef.current;
+		if (!container) {
+			// console.log("mainContainerRef is not set.");
+			return null;
+		}
+		const offsetValue = 10;
+		H2_H3_elements2.forEach((heading) => {
+			// console.log("Processing heading:", heading);
+			const headerElement = container.querySelector(`#${heading.id}`);
 
+			if (headerElement) {
+				const containerTop = container.getBoundingClientRect().top;
+				const headerTop = headerElement.getBoundingClientRect().top;
+				const distanceFromTop = headerTop - containerTop;
+				// console.log(`ID: ${heading.id}, Distance from top: ${distanceFromTop}`);
+
+				if (distanceFromTop >= -offsetValue && distanceFromTop < closestDistance) {
+					// console.log(`New closest header found: ${heading.id} (Distance: ${distanceFromTop})`);
+					closestDistance = distanceFromTop;
+					closestHeader = heading;
+				}
+			} else {
+				// console.log(`Element with ID ${heading.id} not found in the container.`);
+			}
+		});
+
+		if (closestHeader) {
+			console.log("Closest header ID:", closestHeader.id);
+			return closestHeader.id;
+		} else {
+			// console.log("No closest header found.");
+			return null;
+		}
+	};
+	const debouncedHandleScroll = debounce(() => {
+		// console.log("Scroll event detected (debounced).");
+		const closestHeaderId = getClosestHeaderToTop();
+		setActiveID(closestHeaderId);
+		// console.log("Closest header ID after scroll (debounced):", closestHeaderId);
+	}, 100);
+	useEffect(() => {
+		const scrollContainer = mainContainerRef.current;
+		if (scrollContainer) {
+			scrollContainer.addEventListener("scroll", debouncedHandleScroll);
+			// console.log("Scroll event listener added to mainContainerRef (debounced).");
+			return () => {
+				// console.log("Removing scroll event listener...");
+				scrollContainer.removeEventListener("scroll", debouncedHandleScroll);
+			};
+		} else {
+			// console.log("mainContainerRef is null.");
+		}
+	}, [mainContainerRef]);
 	//! GoTo_TopOfPage
 	const GoTo_TopOfPage = () => {
 		if (mainContainerRef.current) {
@@ -136,7 +202,6 @@ const App = () => {
 				top: 0,
 				behavior: "instant",
 			});
-			Width_Affects_to_SideBar_Left_TOC();
 		}
 	};
 	useEffect(() => {
@@ -149,23 +214,26 @@ const App = () => {
 	useEffect(() => {
 		setSideBar_Left_AllowCollapse_OnWindowResize(SideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	}, [SideBar_Left_AllowCollapse_OnWindowResize_rdx]);
-	const Width_Affects_to_SideBar_Left_TOC = () => {
-		if (window.innerWidth < 1400 && sideBar_Left_isOpen) {
-			setSideBar_Left_isOpen(false);
-			dispatch(userReducerActions.sideBar_Left_Close());
-		} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen) {
-			setSideBar_Left_isOpen(true);
-			dispatch(userReducerActions.sideBar_Left_Open());
-		}
-	};
+	const debouncedWidth_Affects_to_SideBar_Left_TOC = useCallback(
+		debounce(() => {
+			if (window.innerWidth < 1400 && sideBar_Left_isOpen) {
+				setSideBar_Left_isOpen(false);
+				dispatch(userReducerActions.sideBar_Left_Close());
+			} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen) {
+				setSideBar_Left_isOpen(true);
+				dispatch(userReducerActions.sideBar_Left_Open());
+			}
+		}, 50),
+		[sideBar_Left_isOpen]
+	);
 	useEffect(() => {
 		if (!sideBar_Left_AllowCollapse_OnWindowResize) return;
-		window.addEventListener("resize", Width_Affects_to_SideBar_Left_TOC);
-		Width_Affects_to_SideBar_Left_TOC();
+		window.addEventListener("resize", debouncedWidth_Affects_to_SideBar_Left_TOC);
+		debouncedWidth_Affects_to_SideBar_Left_TOC();
 		return () => {
-			window.removeEventListener("resize", Width_Affects_to_SideBar_Left_TOC);
+			window.removeEventListener("resize", debouncedWidth_Affects_to_SideBar_Left_TOC);
 		};
-	}, [sideBar_Left_AllowCollapse_OnWindowResize, sideBar_Left_isOpen]);
+	}, [sideBar_Left_AllowCollapse_OnWindowResize, sideBar_Left_isOpen, debouncedWidth_Affects_to_SideBar_Left_TOC]);
 	//!Tab Options
 	const TOC_TabOptions = (
 		<div className={classes.sideBar_left_tabs_outerContainer}>
@@ -365,7 +433,6 @@ const App = () => {
 	//!TOC_Contents
 	const handleTOCItemClick = (id) => {
 		console.log(`Item clicked: ${id}`);
-		Width_Affects_to_SideBar_Left_TOC();
 	};
 	const TOC_Contents = (
 		<nav className={classes.tocOuterContainer}>
@@ -384,7 +451,8 @@ const App = () => {
 							id={`#${heading.id}`}
 							currentPageNum={currentPageNum}
 							handleTOCItemClick={handleTOCItemClick}
-							isActive={false}
+							isActiveID={activeID === heading.id}
+							activeID={activeID}
 						/>
 					))}
 				</ul>
