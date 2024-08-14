@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "./App.module.css";
 
-const TOC_Child_Item = ({ idx, text, isVisible, id, handleTOCItemClick, isActiveID, activeID }) => {
+const TOC_Child_Item = ({ isVisible, idx, text, id, isActiveID }) => {
 	return (
 		<ul key={idx} className={`${classes["childLabelOuterContainer"]} ${isVisible ? classes.isVisible : ""}`}>
 			<li className={`${classes["childLabelInnerContainer"]} ${isActiveID ? classes.isActive : ""}`}>
-				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={classes.childLabel}>
+				<a href={id} className={classes.childLabel}>
 					<span>{text}</span>
 				</a>
 			</li>

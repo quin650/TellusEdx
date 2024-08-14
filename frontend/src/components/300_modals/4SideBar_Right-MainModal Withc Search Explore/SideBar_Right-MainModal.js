@@ -274,6 +274,30 @@ const SideBar_Right_MainModal = ({ demoNavBarMenuOption }) => {
 			</svg>
 		</button>
 	);
+	//!Search Bar
+	const searchBarRef = useRef(null);
+	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
+	const handleSearchBarFocus = () => {
+		setSearchBarIsFocused(true);
+	};
+	const handleSearchBarBlur = () => {
+		setSearchBarIsFocused(false);
+	};
+	const RightMain_SearchBar = (
+		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
+				ref={searchBarRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder="Explore"
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
 	return (
 		<Fragment>
 			{exitButton}
@@ -286,6 +310,7 @@ const SideBar_Right_MainModal = ({ demoNavBarMenuOption }) => {
 						TellusEd
 					</Link>
 				</div>
+				{RightMain_SearchBar}
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
 						<Link

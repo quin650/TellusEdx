@@ -2,21 +2,20 @@ import React, { useEffect, useState } from "react";
 import TOC_Child_Item from "./SideBar_Left-TOC_Child_Item.js.js";
 import classes from "./App.module.css";
 
-const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick, isActiveID, activeID }) => {
-	const [isVisible, setIsVisible] = useState(false);
-
+const TOC_Parent_Item = ({ idx, text, id, currentPageNum, isActiveID, activeID, children }) => {
+	const [isVisible, setIsVisible] = useState(true);
 	const toggleMenuOpen = () => {
 		setIsVisible(!isVisible);
 	};
 	//! Every time the page changes, this resets the menu so that if it was open previously, is closed in new page
 	useEffect(() => {
-		setIsVisible(false);
-	}, [pageNum]);
+		setIsVisible(true);
+	}, [currentPageNum]);
 
 	return (
 		<li key={idx} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer} aria-expanded={isVisible}>
-				<a href={id} onClick={(e) => handleTOCItemClick(id)} className={`${classes["parentLabel"]} ${isActiveID ? classes.isActive : ""}`}>
+				<a href={id} className={`${classes["parentLabel"]} ${isActiveID ? classes.isActive : ""}`}>
 					<span>{text}</span>
 				</a>
 				{children.length > 0 && (
@@ -36,14 +35,11 @@ const TOC_Parent_Item = ({ idx, text, children, id, pageNum, handleTOCItemClick,
 			{children.map((child) => (
 				<TOC_Child_Item
 					key={child.idx}
-					idx={child.idx}
-					level={child.level}
-					text={child.text}
 					isVisible={isVisible}
+					idx={child.idx}
+					text={child.text}
 					id={`#${child.id}`}
-					handleTOCItemClick={handleTOCItemClick}
 					isActiveID={activeID === child.id}
-					activeID={activeID}
 				/>
 			))}
 		</li>

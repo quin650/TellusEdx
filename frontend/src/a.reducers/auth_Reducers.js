@@ -58,8 +58,8 @@ const userSlice = createSlice({
 			state.isDemoView = false;
 		},
 		// Left Side Modal
-		sideBar_Left_Toggle_ModalVisibility(state, action) {
-			state.sideBar_Left_isOpen_Rdx = action.payload;
+		sideBar_Left_Toggle_ModalVisibility(state) {
+			state.sideBar_Left_isOpen_Rdx = !state.sideBar_Left_isOpen_Rdx;
 		},
 		sideBar_Left_Open(state) {
 			state.sideBar_Left_isOpen_Rdx = true;
@@ -71,6 +71,9 @@ const userSlice = createSlice({
 			state.SideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
 		},
 		// Search Modal
+		sideBar_Right_Toggle_Search_ModalVisibility(state) {
+			state.sideBar_Right_Search_ModalStatus_rdx = !state.sideBar_Right_Search_ModalStatus_rdx;
+		},
 		sideBar_Right_Open_Search_Modal(state) {
 			state.sideBar_Right_Search_ModalStatus_rdx = true;
 		},
@@ -78,6 +81,9 @@ const userSlice = createSlice({
 			state.sideBar_Right_Search_ModalStatus_rdx = false;
 		},
 		// Notes Modal
+		sideBar_Right_Toggle_Notes_ModalVisibility(state) {
+			state.sideBar_Right_Notes_ModalStatus_rdx = !state.sideBar_Right_Notes_ModalStatus_rdx;
+		},
 		sideBar_Right_Open_Notes_Modal(state) {
 			state.sideBar_Right_Notes_ModalStatus_rdx = true;
 		},
@@ -85,7 +91,7 @@ const userSlice = createSlice({
 			state.sideBar_Right_Notes_ModalStatus_rdx = false;
 		},
 		// Right Main Modal
-		navBarMenuToggleOpenClose(state) {
+		sideBar_Right_Toggle_Main_ModalVisibility(state) {
 			state.sideBar_Right_Main_ModalStatus_rdx = !state.sideBar_Right_Main_ModalStatus_rdx;
 		},
 		sideBar_Right_Open_Main_Modal(state) {

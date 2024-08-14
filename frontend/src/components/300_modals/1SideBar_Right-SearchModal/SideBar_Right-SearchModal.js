@@ -290,7 +290,7 @@ const SideBar_Right_SearchModal = ({ demoNavBarMenuOption }) => {
 				ref={searchBarRef}
 				onFocus={handleSearchBarFocus}
 				onBlur={handleSearchBarBlur}
-				placeholder="Search"
+				placeholder="Search Resources"
 				name="q"
 				aria-label="Search"
 			/>

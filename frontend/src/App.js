@@ -79,7 +79,7 @@ const App = () => {
 	const SideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	const [sideBar_Left_AllowCollapse_OnWindowResize, setSideBar_Left_AllowCollapse_OnWindowResize] = useState(true);
 	const [activeID, setActiveID] = useState(null);
-	console.log("activeID: ", activeID);
+
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -169,7 +169,6 @@ const App = () => {
 		});
 
 		if (closestHeader) {
-			console.log("Closest header ID:", closestHeader.id);
 			return closestHeader.id;
 		} else {
 			// console.log("No closest header found.");
@@ -221,6 +220,7 @@ const App = () => {
 				dispatch(userReducerActions.sideBar_Left_Close());
 			} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen) {
 				setSideBar_Left_isOpen(true);
+				console.log("this is the issue");
 				dispatch(userReducerActions.sideBar_Left_Open());
 			}
 		}, 50),
@@ -305,8 +305,10 @@ const App = () => {
 		let localStoragePageNum = localStorage.getItem("page");
 		if (localStoragePageNum) {
 			const parsedPageNum = parseInt(localStoragePageNum, 10);
-			setCurrentPageNum(parsedPageNum);
-			setInputPageNum(parsedPageNum);
+			if (currentPageNum !== parsedPageNum) {
+				setCurrentPageNum(parsedPageNum);
+				setInputPageNum(parsedPageNum);
+			}
 		}
 	}, []);
 	//Handle's any changes to the input value (Delayed)
@@ -422,7 +424,7 @@ const App = () => {
 				ref={TOC_SearchBarRef}
 				onFocus={handle_SideBar_Left_TOC_SearchInputFocus}
 				onBlur={handle_SideBar_Left_TOC_SearchInputBlur}
-				placeholder="Search"
+				placeholder="Search Handbook"
 				name="q"
 				aria-label="Search"
 			/>
@@ -431,9 +433,6 @@ const App = () => {
 		</div>
 	);
 	//!TOC_Contents
-	const handleTOCItemClick = (id) => {
-		console.log(`Item clicked: ${id}`);
-	};
 	const TOC_Contents = (
 		<nav className={classes.tocOuterContainer}>
 			<div className={classes.tocTitleLabel} onClick={GoTo_TopOfPage}>
@@ -445,14 +444,12 @@ const App = () => {
 						<TOC_Parent_Item
 							key={heading.idx}
 							idx={heading.idx}
-							level={heading.level}
 							text={heading.text}
-							children={heading.children}
 							id={`#${heading.id}`}
 							currentPageNum={currentPageNum}
-							handleTOCItemClick={handleTOCItemClick}
 							isActiveID={activeID === heading.id}
 							activeID={activeID}
+							children={heading.children}
 						/>
 					))}
 				</ul>
@@ -461,10 +458,36 @@ const App = () => {
 	);
 	//Prevents the demo option to be shown in the sideBar_right_MainModal
 	const demoNavBarMenuOption = false;
+	// General Event listeners -- CMD+B (Toggle SideBar_Left) CMD+SHIFT+N (Toggle SideBar_Right Notes) CMD+SHIFT+S (Toggle SideBar_Right Search)
 
+	const handleKeyCombination = (e) => {
+		switch (true) {
+			case e.ctrlKey && e.key === "b":
+				setSideBar_Left_AllowCollapse_OnWindowResize(false);
+				dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility());
+				break;
+			case e.ctrlKey && e.key === "s":
+				dispatch(userReducerActions.sideBar_Right_Toggle_Search_ModalVisibility());
+				break;
+			case e.ctrlKey && e.key === "n":
+				dispatch(userReducerActions.sideBar_Right_Toggle_Notes_ModalVisibility());
+				break;
+			case e.ctrlKey && e.key === "m":
+				dispatch(userReducerActions.sideBar_Right_Toggle_Main_ModalVisibility());
+				break;
+			default:
+				break;
+		}
+	};
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyCombination);
+		return () => {
+			document.removeEventListener("keydown", handleKeyCombination);
+		};
+	}, [currentPageNum]);
 	return (
 		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
-			<DemoNavbar sideBar_Left_isOpen={sideBar_Left_isOpen} demoNavBarMenuOption={demoNavBarMenuOption} />
+			<DemoNavbar demoNavBarMenuOption={demoNavBarMenuOption} />
 			<div className={classes.bodyContainer}>
 				<div className={`${classes["sideBar_left_outerContainer"]} ${sideBar_Left_isOpen ? classes.open : ""}`}>
 					{TOC_TabOptions}
