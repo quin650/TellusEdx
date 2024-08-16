@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./../../../App.module.css";
+import classes from "../../400_demos/demo_DMV_ClassC.module.css";
 
 const Page8 = () => {
 	return (
@@ -12,11 +12,13 @@ const Page8 = () => {
 				<p>Your health may affect your driving.</p>
 
 				<p>
-					<strong>Vision </strong>– You must be able to notice hazards in different types of lighting, judge distances, adjust to traffic speed, and read road signs.
+					<strong>Vision </strong>– You must be able to notice hazards in different types of lighting, judge distances, adjust to traffic speed, and
+					read road signs.
 				</p>
 
 				<p>
-					<strong>Hearing </strong>– You must be able to hear horns, sirens, motorcycles, or screeching tires that may alert you of hazards. It is illegal to wear a headset or earplugs in both ears while driving.&nbsp;
+					<strong>Hearing </strong>– You must be able to hear horns, sirens, motorcycles, or screeching tires that may alert you of hazards. It is
+					illegal to wear a headset or earplugs in both ears while driving.&nbsp;
 				</p>
 
 				<p>
@@ -24,15 +26,18 @@ const Page8 = () => {
 				</p>
 
 				<p>
-					<strong>Physical and Mental</strong> – You must be alert to quickly decide the correct course of action in any type of traffic situation, including unexpected ones.
+					<strong>Physical and Mental</strong> – You must be alert to quickly decide the correct course of action in any type of traffic situation,
+					including unexpected ones.
 				</p>
 
 				<p>
-					<strong>Medications</strong> – Prescription and over-the-counter medications can make you an unsafe driver. Some medicines can make you sleepy. It is your responsibility to know the effects of the medications you take.
+					<strong>Medications</strong> – Prescription and over-the-counter medications can make you an unsafe driver. Some medicines can make you
+					sleepy. It is your responsibility to know the effects of the medications you take.
 				</p>
 
 				<p>
-					<strong>Health </strong>– Physicians are required to report patients, who are at least 14 years old, to DMV if they believe you have medical conditions that may affect your ability to drive safely, such as lapse of consciousness.
+					<strong>Health </strong>– Physicians are required to report patients, who are at least 14 years old, to DMV if they believe you have medical
+					conditions that may affect your ability to drive safely, such as lapse of consciousness.
 				</p>
 
 				<h2>Controlling the Vehicle</h2>
@@ -70,7 +75,10 @@ const Page8 = () => {
 				<p>There are only two situations that may require steering with one hand:</p>
 
 				<ul>
-					<li>When you are turning while backing up to see where you are going behind you. Place your hand at the 12 o’clock position on the steering wheel.</li>
+					<li>
+						When you are turning while backing up to see where you are going behind you. Place your hand at the 12 o’clock position on the steering
+						wheel.
+					</li>
 
 					<li>When you are operating vehicle controls that require you to remove a hand from the steering wheel.</li>
 				</ul>
@@ -83,7 +91,10 @@ const Page8 = () => {
 
 				<p>Always signal when you turn, change lanes, slow down, or stop. </p>
 
-				<p>You can signal using your vehicle’s signal lights or using hand-and-arm positions. If your signal lights are not functioning, or bright sunlight makes your signal lights hard to see, use the hand-and-arm signals shown in the image below.</p>
+				<p>
+					You can signal using your vehicle’s signal lights or using hand-and-arm positions. If your signal lights are not functioning, or bright
+					sunlight makes your signal lights hard to see, use the hand-and-arm signals shown in the image below.
+				</p>
 
 				<p>Bicyclists may signal a turn with their arm held straight out, pointing in the direction they plan to turn.</p>
 
@@ -105,13 +116,31 @@ const Page8 = () => {
 						<tbody>
 							<tr>
 								<td className="has-text-align-center" data-align="center" data-title="LEFT TURN">
-									<img decoding="async" alt="left turn arm signal" src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smleftturn.jpg" width="113" height="73" />
+									<img
+										decoding="async"
+										alt="left turn arm signal"
+										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smleftturn.jpg"
+										width="113"
+										height="73"
+									/>
 								</td>
 								<td className="has-text-align-center" data-align="center" data-title="RIGHT TURN">
-									<img decoding="async" alt="right turn arm signal" src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smrightturn.jpg" width="100" height="78" />
+									<img
+										decoding="async"
+										alt="right turn arm signal"
+										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smrightturn.jpg"
+										width="100"
+										height="78"
+									/>
 								</td>
 								<td className="has-text-align-center" data-align="center" data-title="SLOW OR STOP">
-									<img decoding="async" alt="slow or stop arm signal" src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smslostop.jpg" width="117" height="76" />
+									<img
+										decoding="async"
+										alt="slow or stop arm signal"
+										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smslostop.jpg"
+										width="117"
+										height="76"
+									/>
 								</td>
 							</tr>
 						</tbody>
@@ -149,8 +178,9 @@ const Page8 = () => {
 				<h3>Using Your Headlights</h3>
 
 				<p>
-					Your vehicle’s headlights help you see what is in front of you. They also make it easier for other drivers to see your vehicle. Dim your high-beam headlights to low beams within 500 feet of a vehicle coming toward you or within 300 feet of a vehicle you are following. It is illegal to
-					drive using only parking lights. Use your headlights:
+					Your vehicle’s headlights help you see what is in front of you. They also make it easier for other drivers to see your vehicle. Dim your
+					high-beam headlights to low beams within 500 feet of a vehicle coming toward you or within 300 feet of a vehicle you are following. It is
+					illegal to drive using only parking lights. Use your headlights:
 				</p>
 
 				<ul>

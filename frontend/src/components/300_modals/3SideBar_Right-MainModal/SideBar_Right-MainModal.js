@@ -161,32 +161,16 @@ const SideBar_Right_MainModal = ({ demoNavBarMenuOption }) => {
 	const OpenLanguageSettingsModal = () => {
 		dispatch(userReducerActions.languageSettingsModalOpen());
 	};
-	const isDarkMode = useSelector(({ user }) => user.isDarkMode);
-	const [isChecked, setIsChecked] = useState(false);
-	const setDarkMode = () => {
-		document.querySelector("main").setAttribute("data-theme", "dark");
-	};
-	const setLightMode = () => {
-		document.querySelector("main").setAttribute("data-theme", "light");
-	};
-	useEffect(() => {
-		if (isDarkMode) {
-			setDarkMode();
-			setIsChecked(true);
-		} else {
-			setLightMode();
-			setIsChecked(false);
-		}
-	}, [isDarkMode]);
+	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
+	const [isChecked, setIsChecked] = useState(isDarkMode_rdx === "dark");
+
 	const toggleTheme = (e) => {
 		if (e.target.checked) {
-			setDarkMode();
+			dispatch(userReducerActions.setDarkLightModeToTrue("dark"));
 			setIsChecked(true);
-			dispatch(userReducerActions.setDarkLightModeToTrue(true));
 		} else {
-			setLightMode();
+			dispatch(userReducerActions.setDarkLightModeToFalse("light"));
 			setIsChecked(false);
-			dispatch(userReducerActions.setDarkLightModeToFalse(false));
 		}
 	};
 	useEffect(() => {

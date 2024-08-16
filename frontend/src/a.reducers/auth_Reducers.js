@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
+const systemColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+const localStorageColor = localStorage.getItem("prefers-color-scheme");
+const isDarkMode = localStorageColor ? localStorageColor : systemColor;
 
 const initialState = {
 	sideBar_Left_isOpen_Rdx: true,
@@ -8,13 +11,14 @@ const initialState = {
 	sideBar_Right_Main_ModalStatus_rdx: false,
 	sideBar_Right_Search_ModalStatus_rdx: false,
 	sideBar_Right_Notes_ModalStatus_rdx: false,
-
 	getStarted_ModalStatus_rdx: false,
 	getStartedView: "",
 	languageSettings_ModalStatus_rdx: false,
 	languageCurrent_rdx: "English",
 	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
-	isDarkMode: false,
+
+	isDarkMode_rdx: isDarkMode,
+
 	isAuthenticated: false,
 	isDemoView: false,
 	isDashboardFullScreen: true,
@@ -335,13 +339,16 @@ const userSlice = createSlice({
 		},
 		//Dark/Light Settings
 		setDarkLightMode(state, action) {
-			state.isDarkMode = action.payload;
+			state.isDarkMode_rdx = action.payload;
+			localStorage.setItem("prefers-color-scheme", action.payload);
 		},
 		setDarkLightModeToTrue(state) {
-			state.isDarkMode = true;
+			state.isDarkMode_rdx = "dark";
+			localStorage.setItem("prefers-color-scheme", "dark");
 		},
 		setDarkLightModeToFalse(state) {
-			state.isDarkMode = false;
+			state.isDarkMode_rdx = "light";
+			localStorage.setItem("prefers-color-scheme", "light");
 		},
 	},
 });

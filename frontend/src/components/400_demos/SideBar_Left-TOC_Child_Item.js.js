@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./App.module.css";
+import classes from "./demo_DMV_ClassC.module.css";
 
 const TOC_Child_Item = ({ isVisible, idx, text, id, isActiveID }) => {
 	return (

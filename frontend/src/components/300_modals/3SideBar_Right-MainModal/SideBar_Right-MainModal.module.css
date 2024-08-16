@@ -18,6 +18,9 @@
 	transform: translateX(100%);
 	top: 0;
 	margin: 0;
+	line-height: 1.5;
+	font-size: 14px;
+	font-family: sans-serif !important;
 }
 .sidebar.open {
 	transform: translateX(0);

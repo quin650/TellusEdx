@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TOC_Child_Item from "./SideBar_Left-TOC_Child_Item.js.js";
-import classes from "./App.module.css";
+import classes from "./demo_DMV_ClassC.module.css";
 
 const TOC_Parent_Item = ({ idx, text, id, currentPageNum, isActiveID, activeID, children }) => {
 	const [isVisible, setIsVisible] = useState(true);

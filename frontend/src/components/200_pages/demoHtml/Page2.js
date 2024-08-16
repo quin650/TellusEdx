@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./../../../App.module.css";
+import classes from "../../400_demos/demo_DMV_ClassC.module.css";
 
 const Page2 = () => {
 	return (
@@ -11,7 +11,10 @@ const Page2 = () => {
 			<div className={classes.page_content}>
 				<p>© Copyright, Department of Motor Vehicles 2024</p>
 				<p>All rights reserved.</p>
-				<p>This work is protected by U.S. Copyright Law. The Department of Motor Vehicles (DMV) owns the copyright to this work. Copyright Law makes it illegal to:</p>
+				<p>
+					This work is protected by U.S. Copyright Law. The Department of Motor Vehicles (DMV) owns the copyright to this work. Copyright Law makes it
+					illegal to:
+				</p>
 				<ol>
 					<li>Make a copy of any part of this handbook.</li>
 					<li>Print copies of this handbook and give them to other people.</li>

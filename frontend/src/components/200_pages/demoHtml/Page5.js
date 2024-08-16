@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./../../../App.module.css";
+import classes from "../../400_demos/demo_DMV_ClassC.module.css";
 
 const Page5 = () => {
 	return (
@@ -9,7 +9,10 @@ const Page5 = () => {
 				<h1>Section 2: Getting an Instruction Permit and Driver’s License</h1>
 			</div>
 			<div className={classes.page_content}>
-				<p>If you do not have a driver’s license from California or another state, you must apply for an instruction permit before taking the behind-the-wheel drive test to get your driver’s license.</p>
+				<p>
+					If you do not have a driver’s license from California or another state, you must apply for an instruction permit before taking the
+					behind-the-wheel drive test to get your driver’s license.
+				</p>
 
 				<h2>What You Need</h2>
 
@@ -60,7 +63,8 @@ const Page5 = () => {
 				</ol>
 
 				<p>
-					For more information, visit <a href="http://dmv.ca.gov/instructionpermit">dmv.ca.gov/instructionpermit</a> for a complete list of application steps and requirements.
+					For more information, visit <a href="http://dmv.ca.gov/instructionpermit">dmv.ca.gov/instructionpermit</a> for a complete list of
+					application steps and requirements.
 				</p>
 
 				<h3>If you are under 18 years old, you will also need to:</h3>
@@ -70,17 +74,26 @@ const Page5 = () => {
 
 					<li>Complete a driver education program.</li>
 
-					<li>Have a parent or guardian sign to approve the application and accept financial responsibility (see Section 10). If your parents or guardians share joint custody of you, both must sign.</li>
+					<li>
+						Have a parent or guardian sign to approve the application and accept financial responsibility (see Section 10). If your parents or
+						guardians share joint custody of you, both must sign.
+					</li>
 
-					<li>Wait to use your instruction permit until you start behind-the-wheel driver training with an instructor who will validate the permit.</li>
+					<li>
+						Wait to use your instruction permit until you start behind-the-wheel driver training with an instructor who will validate the permit.
+					</li>
 				</ul>
 
 				<h2>Driving Schools</h2>
 
-				<p>Driver education and driver training are offered at DMV-licensed driving schools and some high schools. Instructors must carry an instructor’s ID card. Ask to see it.</p>
+				<p>
+					Driver education and driver training are offered at DMV-licensed driving schools and some high schools. Instructors must carry an
+					instructor’s ID card. Ask to see it.
+				</p>
 
 				<p>
-					See the Driver Training Schools page at <a href="http://dmv.ca.gov/driver-ed">dmv.ca.gov/driver-ed</a> for more information about selecting a driving school.
+					See the Driver Training Schools page at <a href="http://dmv.ca.gov/driver-ed">dmv.ca.gov/driver-ed</a> for more information about selecting
+					a driving school.
 				</p>
 
 				<h2>Applying For A Driver’s License</h2>
@@ -88,7 +101,10 @@ const Page5 = () => {
 				<h3>To get your driver’s license after you have your instruction permit, you need to:</h3>
 
 				<ul>
-					<li>Practice driving with a California-licensed driver who is at least 18 years old (25 for minors). This person must sit close enough to take control of the vehicle if needed.</li>
+					<li>
+						Practice driving with a California-licensed driver who is at least 18 years old (25 for minors). This person must sit close enough to take
+						control of the vehicle if needed.
+					</li>
 
 					<li>Pass a behind-the-wheel drive test.</li>
 				</ul>
@@ -98,7 +114,10 @@ const Page5 = () => {
 				<ul>
 					<li>Be at least 16 years old.</li>
 
-					<li>Have an instruction permit from California or another state for at least 6 months (or turn 18 years old) before scheduling your behind-the-wheel drive test.</li>
+					<li>
+						Have an instruction permit from California or another state for at least 6 months (or turn 18 years old) before scheduling your
+						behind-the-wheel drive test.
+					</li>
 
 					<li>
 						Prove that you completed <strong>both </strong>driver education and driver training.
@@ -108,19 +127,24 @@ const Page5 = () => {
 				</ul>
 
 				<p>
-					See the Driver’s Licenses page at <a href="http://dmv.ca.gov/dlservices">dmv.ca.gov/dlservices</a> for the complete list of application steps, requirements, the Parent Teen Driving Contract, and Driving Performance Evaluation (DPE) Score Sheet.
+					See the Driver’s Licenses page at <a href="http://dmv.ca.gov/dlservices">dmv.ca.gov/dlservices</a> for the complete list of application
+					steps, requirements, the Parent Teen Driving Contract, and Driving Performance Evaluation (DPE) Score Sheet.
 				</p>
 
 				<h2>Minor’s Restrictions and Exceptions</h2>
 
 				<p>
-					When you are under 18 years old, your driver’s license will have the word provisional. As a provisional driver, you <strong>cannot</strong> drive:
+					When you are under 18 years old, your driver’s license will have the word provisional. As a provisional driver, you <strong>cannot</strong>{" "}
+					drive:
 				</p>
 
 				<ul>
 					<li>Between 11 p.m. and 5 a.m. during the first 12 months you have your license.</li>
 
-					<li>With passengers under 20 years old, unless your parent or guardian or other California-licensed driver (at least 25 years old) rides with you.</li>
+					<li>
+						With passengers under 20 years old, unless your parent or guardian or other California-licensed driver (at least 25 years old) rides with
+						you.
+					</li>
 
 					<li>For pay or operate vehicles that require a commercial Class A, B, or C license.</li>
 				</ul>
@@ -128,18 +152,25 @@ const Page5 = () => {
 				<p>There are exceptions to these restrictions if you:</p>
 
 				<ul>
-					<li>Have a medical need and cannot reasonably find another way to travel. You must carry a note signed by your physician. The note must have your medical condition and date you are expected to recover.</li>
+					<li>
+						Have a medical need and cannot reasonably find another way to travel. You must carry a note signed by your physician. The note must have
+						your medical condition and date you are expected to recover.
+					</li>
 
 					<li>Drive for schooling or a school activity. You must carry a note signed by your school principal, dean, or designee.</li>
 
 					<li>Must drive for work reasons. You must carry a note signed by your employer. The note must confirm your employment.</li>
 
-					<li>Must drive an immediate family member. You must carry a note signed by your parent or legal guardian. The note must state the reason you need to drive, the family member, and date when the need will end.</li>
+					<li>
+						Must drive an immediate family member. You must carry a note signed by your parent or legal guardian. The note must state the reason you
+						need to drive, the family member, and date when the need will end.
+					</li>
 				</ul>
 
 				<p>
 					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						A parent or guardian may cancel their teen’s license by completing a Request for Cancellation or Surrender of a Driver License or ID Card form.
+						A parent or guardian may cancel their teen’s license by completing a Request for Cancellation or Surrender of a Driver License or ID Card
+						form.
 					</span>
 				</p>
 

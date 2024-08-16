@@ -79,11 +79,11 @@ body {
 	--color_pageNav_lineDividers_offWhite_to_black: #eeebee;
 }
 
-[data-theme="dark"] {
+[prefers-color-scheme="dark"] {
 	--BackgroundColor: #232323;
 	--BlackToWhite: white;
 	--WhiteToBlack: black;
-	--WhiteToGray: #b3b3b3;
+	--WhiteToGray: #9e9e9e;
 	--WhiteToDarkGray: #1d1d1d;
 	--WhiteToDarkGray2: #111111;
 	--WhiteToDarkGray5: #3e3e3e;
@@ -91,7 +91,7 @@ body {
 	--OffWhiteTODarkGray3: #3e3e3e;
 	--OffWhiteTODarkGray4: #292929;
 	--BlackToWhite: #ffffff;
-	--BlackToGray: #b3b3b3;
+	--BlackToGray: #9e9e9e;
 	--BlackToDarkGray2: #111111;
 	--BlackToDarkGray3: #505050;
 	--GrayToWhite: #ffffff;
@@ -147,6 +147,7 @@ main {
 	scrollbar-color: gray transparent;
 	scrollbar-width: thin;
 	background: var(--BackgroundColor);
+	color: var(--color_primary_darkGray_to_gray);
 }
 ::-webkit-scrollbar {
 	width: 6px; /* Styling the scrollbar in Chrome and Safari */

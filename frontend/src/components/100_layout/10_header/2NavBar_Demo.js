@@ -7,7 +7,7 @@ import SideBar_Right_SearchModal from "../../300_modals/1SideBar_Right-SearchMod
 import SideBar_Right_NotesModal from "../../300_modals/2SideBar_Right-NotesModal/SideBar_Right-NotesModal";
 import SideBar_Right_MainModal from "../../300_modals/3SideBar_Right-MainModal/SideBar_Right-MainModal";
 
-import classes from "./2NavBar_Demo.module.css";
+import classes from "./NavBar.module.css";
 
 const DemoNavbar = ({ demoNavBarMenuOption }) => {
 	const {

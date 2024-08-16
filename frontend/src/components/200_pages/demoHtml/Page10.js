@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./../../../App.module.css";
+import classes from "../../400_demos/demo_DMV_ClassC.module.css";
 
 const Page10 = () => {
 	return (
@@ -16,11 +16,13 @@ const Page10 = () => {
 				<p>Parallel parking is when you park in line with the road and other parked vehicles. To parallel park:</p>
 
 				<p>
-					<strong>1. Find a space.</strong> Look for a space at least three feet longer than your vehicle. When you find a space, turn on your signal to show that you plan on parking.
+					<strong>1. Find a space.</strong> Look for a space at least three feet longer than your vehicle. When you find a space, turn on your signal
+					to show that you plan on parking.
 				</p>
 
 				<p>
-					<strong>2. Pull up alongside the vehicle in front of the space.</strong> Leave about two feet between your vehicle and the vehicle next to you. Stop once your rear bumper is aligned with the front of your parking space. Keep your signal on.
+					<strong>2. Pull up alongside the vehicle in front of the space.</strong> Leave about two feet between your vehicle and the vehicle next to
+					you. Stop once your rear bumper is aligned with the front of your parking space. Keep your signal on.
 				</p>
 
 				<figure>
@@ -59,7 +61,8 @@ const Page10 = () => {
 				</figure>
 
 				<p>
-					<strong>5. Straighten out.</strong> Begin turning the steering wheel away from the curb when your rear wheel is within 18 inches of the curb. You may need to pull forward and backward to straighten out. Your vehicle should now be parallel and within 18 inches of the curb.
+					<strong>5. Straighten out.</strong> Begin turning the steering wheel away from the curb when your rear wheel is within 18 inches of the
+					curb. You may need to pull forward and backward to straighten out. Your vehicle should now be parallel and within 18 inches of the curb.
 				</p>
 
 				<figure>
@@ -76,7 +79,8 @@ const Page10 = () => {
 				</figure>
 
 				<p>
-					<strong>6. Parking.</strong> Turn off your vehicle and set the parking brake. Before you exit your vehicle, look carefully for passing vehicles, bicycles, and motorcycles. Exit when safe.
+					<strong>6. Parking.</strong> Turn off your vehicle and set the parking brake. Before you exit your vehicle, look carefully for passing
+					vehicles, bicycles, and motorcycles. Exit when safe.
 				</p>
 
 				<h3>Straight Line Backing</h3>
@@ -97,11 +101,13 @@ const Page10 = () => {
 					</li>
 
 					<li>
-						<strong>Begin backing up.</strong> Back in a straight line for three vehicle lengths while remaining within three feet of the curb. Stay aware of what is behind you when backing up.
+						<strong>Begin backing up.</strong> Back in a straight line for three vehicle lengths while remaining within three feet of the curb. Stay
+						aware of what is behind you when backing up.
 					</li>
 
 					<li>
-						<strong>Control.</strong> To maintain control of the vehicle, back at a smooth, safe speed and adjust the steering wheel when needed. Practice until you can keep the vehicle straight. Repeat steps 1 and 2 to pull away from the curb.
+						<strong>Control.</strong> To maintain control of the vehicle, back at a smooth, safe speed and adjust the steering wheel when needed.
+						Practice until you can keep the vehicle straight. Repeat steps 1 and 2 to pull away from the curb.
 					</li>
 				</ol>
 
@@ -130,11 +136,15 @@ const Page10 = () => {
 					</figure>
 				</div>
 
-				<p>When you park on a hill, your vehicle could roll due to equipment failure. Remember to set the parking brake and leave the vehicle in park, or in gear for manual transmission. To park:</p>
+				<p>
+					When you park on a hill, your vehicle could roll due to equipment failure. Remember to set the parking brake and leave the vehicle in park,
+					or in gear for manual transmission. To park:
+				</p>
 
 				<ul>
 					<li>
-						<strong>On a sloping driveway:</strong> Turn the wheels so the vehicle will not roll into the street, leave the vehicle in park and set the parking brake.
+						<strong>On a sloping driveway:</strong> Turn the wheels so the vehicle will not roll into the street, leave the vehicle in park and set
+						the parking brake.
 					</li>
 
 					<li>
@@ -142,11 +152,13 @@ const Page10 = () => {
 					</li>
 
 					<li>
-						<strong>Headed uphill: </strong>Turn your front wheels away from the curb (left-towards the center of the road) and let your vehicle roll back a few inches. The wheel should gently touch the curb.
+						<strong>Headed uphill: </strong>Turn your front wheels away from the curb (left-towards the center of the road) and let your vehicle roll
+						back a few inches. The wheel should gently touch the curb.
 					</li>
 
 					<li>
-						<strong>Headed either uphill or downhill when there is no curb:</strong> Turn the wheels so the vehicle will roll away from the center of the road if the brakes fail.
+						<strong>Headed either uphill or downhill when there is no curb:</strong> Turn the wheels so the vehicle will roll away from the center of
+						the road if the brakes fail.
 					</li>
 				</ul>
 
@@ -179,7 +191,8 @@ const Page10 = () => {
 					</li>
 
 					<li>
-						<strong>Yellow</strong>: Load and unload passengers and freight. Do not stop longer than the time posted. If you drive a noncommercial vehicle, you are usually required to stay with your vehicle.
+						<strong>Yellow</strong>: Load and unload passengers and freight. Do not stop longer than the time posted. If you drive a noncommercial
+						vehicle, you are usually required to stay with your vehicle.
 					</li>
 
 					<li>
@@ -192,7 +205,15 @@ const Page10 = () => {
 				</ul>
 
 				<figure>
-					<img loading="lazy" decoding="async" width="132" height="158" src="/portal/uploads/2020/05/Disabledpersonparkingsign.png" alt="Disabled Person Parking" className="wp-image-43960" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="132"
+						height="158"
+						src="/portal/uploads/2020/05/Disabledpersonparkingsign.png"
+						alt="Disabled Person Parking"
+						className="wp-image-43960"
+					/>
 				</figure>
 
 				<ul>
@@ -265,7 +286,10 @@ const Page10 = () => {
 					</li>
 				</ul>
 
-				<p>If you must stop on a freeway, park completely off the pavement and stay in your vehicle with the doors locked until help arrives. A vehicle that is stopped, parked, or left standing on a freeway for more than four hours may be removed.</p>
+				<p>
+					If you must stop on a freeway, park completely off the pavement and stay in your vehicle with the doors locked until help arrives. A vehicle
+					that is stopped, parked, or left standing on a freeway for more than four hours may be removed.
+				</p>
 
 				<h3>Electric Vehicles</h3>
 
@@ -323,43 +347,67 @@ const Page10 = () => {
 				</ul>
 
 				<p>
-					Beginning January 1, 2024, law enforcement officers must state the reason for a traffic or pedestrian stop before they begin questioning related to a criminal investigation or traffic violation. An exception is made if an officer reasonably believes withholding the reason is necessary to
-					protect life or property from imminent threat. The reason for the stop must be documented on the citation issued or law enforcement report completed.
+					Beginning January 1, 2024, law enforcement officers must state the reason for a traffic or pedestrian stop before they begin questioning
+					related to a criminal investigation or traffic violation. An exception is made if an officer reasonably believes withholding the reason is
+					necessary to protect life or property from imminent threat. The reason for the stop must be documented on the citation issued or law
+					enforcement report completed.
 				</p>
 
 				<h3>Your Rights During the Enforcement Stop</h3>
 
 				<p>
-					<strong>If an officer asks your permission to do something, you have a right to say no. </strong>However, if you say no and the officer says they are going to do it anyway, you do not have a right to interfere with their actions. For example, an officer may request to search part or all of
-					your vehicle. You have a right to decline that request, but the officer may have the legal authority to search your vehicle anyway under certain circumstances. If you do not want the officer to search your vehicle, you should clearly say that you do not give your permission, but you do not
-					have a right to resist or obstruct the officer if they search your vehicle anyway.
+					<strong>If an officer asks your permission to do something, you have a right to say no. </strong>However, if you say no and the officer says
+					they are going to do it anyway, you do not have a right to interfere with their actions. For example, an officer may request to search part
+					or all of your vehicle. You have a right to decline that request, but the officer may have the legal authority to search your vehicle anyway
+					under certain circumstances. If you do not want the officer to search your vehicle, you should clearly say that you do not give your
+					permission, but you do not have a right to resist or obstruct the officer if they search your vehicle anyway.
 				</p>
 
 				<p>
-					<strong>The driver of a stopped vehicle must produce a driver’s license, proof of insurance, and vehicle registration when stopped by law enforcement.</strong> If a driver does not produce these documents, officers may conduct a limited search for them. An officer may also request the
-					names or identification of passengers. Passengers can decline that request, but under some circumstances the passengers may be required to identify themselves anyway. If passengers do not want to produce their identification, they should clearly say so. Passengers should not interfere with
-					the officer’s duties in conducting the traffic stop, and if an officer demands identification, passengers should not interfere with the officer’s actions. During a traffic stop, an officer can legally require the driver and all passengers to exit or stay inside the vehicle. If you are told
-					to exit the vehicle or stay inside, you must do so.
+					<strong>
+						The driver of a stopped vehicle must produce a driver’s license, proof of insurance, and vehicle registration when stopped by law
+						enforcement.
+					</strong>{" "}
+					If a driver does not produce these documents, officers may conduct a limited search for them. An officer may also request the names or
+					identification of passengers. Passengers can decline that request, but under some circumstances the passengers may be required to identify
+					themselves anyway. If passengers do not want to produce their identification, they should clearly say so. Passengers should not interfere
+					with the officer’s duties in conducting the traffic stop, and if an officer demands identification, passengers should not interfere with the
+					officer’s actions. During a traffic stop, an officer can legally require the driver and all passengers to exit or stay inside the vehicle.
+					If you are told to exit the vehicle or stay inside, you must do so.
 				</p>
 
 				<p>
-					<strong>In California, only federal law enforcement officers can ask you about your immigration status. </strong>California law prohibits state and local officers from asking drivers or passengers about their immigration status. If a California law enforcement officer asks you about your
-					immigration status, you can decline to answer.
+					<strong>In California, only federal law enforcement officers can ask you about your immigration status. </strong>California law prohibits
+					state and local officers from asking drivers or passengers about their immigration status. If a California law enforcement officer asks you
+					about your immigration status, you can decline to answer.
 				</p>
 
 				<p>
-					<strong>In general, the First Amendment protects the right of drivers and passengers to record interactions with law enforcement in public spaces.</strong> If you are recording, you should immediately make that clear. You do not have a right to interfere with the officer’s lawful duties
-					during the enforcement stop, and you should not reach into concealed areas to retrieve your recording device without the officer’s permission. If your recording is not interfering with the officer’s ability to lawfully do their job, an officer cannot confiscate your recording device,
-					delete the recording, or destroy the device just because you are using it to record. In general, you also have the right to deny a request to unlock a cellular phone or provide a password to it, though under some circumstances, such as if you are on parole, you may have to give permission
-					in response to such requests. Finally, no government employee can retaliate against you just because you recorded something in public.
+					<strong>
+						In general, the First Amendment protects the right of drivers and passengers to record interactions with law enforcement in public spaces.
+					</strong>{" "}
+					If you are recording, you should immediately make that clear. You do not have a right to interfere with the officer’s lawful duties during
+					the enforcement stop, and you should not reach into concealed areas to retrieve your recording device without the officer’s permission. If
+					your recording is not interfering with the officer’s ability to lawfully do their job, an officer cannot confiscate your recording device,
+					delete the recording, or destroy the device just because you are using it to record. In general, you also have the right to deny a request
+					to unlock a cellular phone or provide a password to it, though under some circumstances, such as if you are on parole, you may have to give
+					permission in response to such requests. Finally, no government employee can retaliate against you just because you recorded something in
+					public.
 				</p>
 
 				<p>
-					<strong>Even if you believe your rights were violated, you should not engage in physical resistance or violence against the officer.</strong> If an officer does something that you believe violates your rights, you can voice your objection, but you should not physically resist. Everyone has
-					the right to be safe during a traffic stop. Your safety and the officer’s safety could be jeopardized if the situation escalates with physical resistance or violence. All members of the public have a right to file a complaint against any law enforcement agency, and it is against the law
-					for any government employee to retaliate against you for doing so. You can file a complaint with the law enforcement agency that employs the officer. You have a right to be free from discrimination based on your actual or perceived race, sex, color, ethnicity, national origin, age,
-					religion, gender identity or expression, sexual orientation, mental or physical disability, medical condition, or citizenship status. You also have other rights guaranteed by the United States and California Constitutions, as well as California and federal laws. When you file a complaint,
-					the agency that employs the officer must investigate the complaint. Links to contact information for California law enforcement agencies can be found at{" "}
+					<strong>
+						Even if you believe your rights were violated, you should not engage in physical resistance or violence against the officer.
+					</strong>{" "}
+					If an officer does something that you believe violates your rights, you can voice your objection, but you should not physically resist.
+					Everyone has the right to be safe during a traffic stop. Your safety and the officer’s safety could be jeopardized if the situation
+					escalates with physical resistance or violence. All members of the public have a right to file a complaint against any law enforcement
+					agency, and it is against the law for any government employee to retaliate against you for doing so. You can file a complaint with the law
+					enforcement agency that employs the officer. You have a right to be free from discrimination based on your actual or perceived race, sex,
+					color, ethnicity, national origin, age, religion, gender identity or expression, sexual orientation, mental or physical disability, medical
+					condition, or citizenship status. You also have other rights guaranteed by the United States and California Constitutions, as well as
+					California and federal laws. When you file a complaint, the agency that employs the officer must investigate the complaint. Links to contact
+					information for California law enforcement agencies can be found at{" "}
 					<strong>
 						<a href="http://post.ca.gov/le-agencies">post.ca.gov/le-agencies</a>
 					</strong>

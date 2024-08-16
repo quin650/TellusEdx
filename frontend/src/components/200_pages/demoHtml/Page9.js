@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./../../../App.module.css";
+import classes from "../../400_demos/demo_DMV_ClassC.module.css";
 
 const Page9 = () => {
 	return (
@@ -16,7 +16,10 @@ const Page9 = () => {
 				<h3>Lane Markings</h3>
 				<p>Lane markings on road surfaces help drivers know which part of the road to use and understand traffic rules.</p>
 				<h4>Single Solid Yellow Line</h4>
-				<p>A single solid yellow line marks the center of a road with two-way traffic. Do not pass a vehicle in front of you if there is only one lane of traffic going your direction and a solid yellow line on your side of the road.</p>
+				<p>
+					A single solid yellow line marks the center of a road with two-way traffic. Do not pass a vehicle in front of you if there is only one lane
+					of traffic going your direction and a solid yellow line on your side of the road.
+				</p>
 				<h4>Double Solid Yellow Lines</h4>
 				<p>Do not pass over double solid yellow lines. Stay to the right of these lines unless you are:</p>
 				<figure>
@@ -37,15 +40,19 @@ const Page9 = () => {
 					<li>Instructed by construction or other signs to drive on the other side of the road because your side is closed or blocked.</li>
 					<li>Turning left across a single set of double yellow lines to enter or exit a driveway or private road or make a U-turn.</li>
 				</ul>
-				<p>Two sets of solid double yellow lines spaced two or more feet apart are considered a barrier. Do not drive on or over this barrier, make a left turn, or make a U-turn across it, except at designated openings.</p>
+				<p>
+					Two sets of solid double yellow lines spaced two or more feet apart are considered a barrier. Do not drive on or over this barrier, make a
+					left turn, or make a U-turn across it, except at designated openings.
+				</p>
 				<h4>Broken Yellow Line</h4>
 				<p>A broken yellow line indicates you may pass if the broken line is next to your driving lane. Only pass when it is safe.</p>
 				<h4>Single Solid White Line</h4>
 				<p>A single solid white line marks traffic lanes going in the same direction. This includes one-way streets.</p>
 				<h4>Double Solid White Lines</h4>
 				<p>
-					Double solid white lines indicate a lane barrier between a regular use and a preferential use lane, such as a carpool (HOV) lane. You may also see double solid white lines in or near freeway on and off ramps. Never change lanes over double solid white lines. Wait until you see a single
-					broken white line.
+					Double solid white lines indicate a lane barrier between a regular use and a preferential use lane, such as a carpool (HOV) lane. You may
+					also see double solid white lines in or near freeway on and off ramps. Never change lanes over double solid white lines. Wait until you see
+					a single broken white line.
 				</p>
 				<h4>Broken White Lines</h4>
 				<p>Broken white lines separate traffic lanes on roads with two or more lanes in the same direction.</p>
@@ -64,14 +71,30 @@ const Page9 = () => {
 					</figure>
 				</div>
 				<h4>End of Lane Markings</h4>
-				<p>Ending freeway and street lanes are usually marked with large broken lines. If you are driving in a lane marked with broken lines, be prepared to exit the freeway or for the lane to end. Look for a sign that tells you to exit or merge.</p>
+				<p>
+					Ending freeway and street lanes are usually marked with large broken lines. If you are driving in a lane marked with broken lines, be
+					prepared to exit the freeway or for the lane to end. Look for a sign that tells you to exit or merge.
+				</p>
 				<h4>Yield Line</h4>
-				<p>A yield line is a solid white line of triangles that shows approaching vehicles where to yield or stop. The triangles point towards approaching vehicles.</p>
+				<p>
+					A yield line is a solid white line of triangles that shows approaching vehicles where to yield or stop. The triangles point towards
+					approaching vehicles.
+				</p>
 				<figure>
-					<img decoding="async" width="273" height="189" srcSet="https://www.dmv.ca.gov/portal/uploads/2020/02/imageofyieldlines.png" alt="" className="wp-image-324" />
+					<img
+						decoding="async"
+						width="273"
+						height="189"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/02/imageofyieldlines.png"
+						alt=""
+						className="wp-image-324"
+					/>
 				</figure>
 				<h3>Choosing a Lane </h3>
-				<p>Traffic lanes are often referred to by number. The left (or fast) lane is called the Number 1 Lane. The lane to the right of the Number 1 Lane is called the Number 2 Lane. Then the Number 3 Lane, etc.</p>
+				<p>
+					Traffic lanes are often referred to by number. The left (or fast) lane is called the Number 1 Lane. The lane to the right of the Number 1
+					Lane is called the Number 2 Lane. Then the Number 3 Lane, etc.
+				</p>
 				<div className={classes.imageDiv}>
 					<figure>
 						<img
@@ -104,14 +127,18 @@ const Page9 = () => {
 					<li>Be sure there is enough space for your vehicle in the next lane. It is not necessary to slow down before a lane change.</li>
 				</ul>
 				<p>
-					Stay in one lane as much as possible. Do not weave in and out of traffic. Last minute lane or direction changes may increase the risk of collisions. Once you start moving through an intersection, keep going. If you start to make a turn, follow through. If you miss a turn, keep driving
-					until you can safely and legally turn around.
+					Stay in one lane as much as possible. Do not weave in and out of traffic. Last minute lane or direction changes may increase the risk of
+					collisions. Once you start moving through an intersection, keep going. If you start to make a turn, follow through. If you miss a turn, keep
+					driving until you can safely and legally turn around.
 				</p>
 				<h3>Types of Lanes</h3>
 				<h4>Passing Lanes</h4>
 				<p>On a multilane road, the passing lane (far left lane) is the lane closest to the center divider and is used to pass other vehicles.</p>
 				<h4>Carpool/High-Occupancy Vehicle (HOV) Lanes</h4>
-				<p>An HOV lane is a special lane reserved for carpools, buses, motorcycles, or low-emission vehicles with decals. To use an HOV lane, one of these must apply:</p>
+				<p>
+					An HOV lane is a special lane reserved for carpools, buses, motorcycles, or low-emission vehicles with decals. To use an HOV lane, one of
+					these must apply:
+				</p>
 				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
 						<figure className="wp-block-image size-full is-resized">
@@ -146,15 +173,22 @@ const Page9 = () => {
 					</div>
 				</div>
 				<ul>
-					<li>You have a certain number of people in your vehicle. There will be signs at the on-ramp or along the road to tell you the minimum number of people. Road signs also list the hours when the HOV rules apply.</li>
+					<li>
+						You have a certain number of people in your vehicle. There will be signs at the on-ramp or along the road to tell you the minimum number
+						of people. Road signs also list the hours when the HOV rules apply.
+					</li>
 					<li>You are driving a low emission or zero emission vehicle. You must display a special DMV-issued decal.</li>
 					<li>You are riding a motorcycle (unless otherwise posted).</li>
 				</ul>
-				<p>The road surface in a HOV lane is marked with a diamond symbol and the words Carpool Lane. Do not cross over double solid lines to enter or exit an HOV lane. Use designated entrances and exits.</p>
+				<p>
+					The road surface in a HOV lane is marked with a diamond symbol and the words Carpool Lane. Do not cross over double solid lines to enter or
+					exit an HOV lane. Use designated entrances and exits.
+				</p>
 				<h4>Center Left Turn Lanes</h4>
 				<p>
-					A center left turn lane is located in the middle of a two-way street. It is marked on both sides by two painted lines. The inner line is broken and the outer line is solid. Use the center left turn lane to prepare for and make a left turn or U-turn. It is not a regular traffic lane or
-					passing lane. You may only drive for 200 feet in the center left turn lane. To turn left from this lane:
+					A center left turn lane is located in the middle of a two-way street. It is marked on both sides by two painted lines. The inner line is
+					broken and the outer line is solid. Use the center left turn lane to prepare for and make a left turn or U-turn. It is not a regular traffic
+					lane or passing lane. You may only drive for 200 feet in the center left turn lane. To turn left from this lane:
 				</p>
 				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
@@ -187,11 +221,26 @@ const Page9 = () => {
 				<h4>Turnout Areas or Lanes</h4>
 				<p>Some two-lane roads have special turnout areas or lanes. Merge into these areas or lanes to allow cars behind you to pass.</p>
 				<figure>
-					<img loading="lazy" decoding="async" width="102" height="130" src="/portal/uploads/2020/05/Imageofaturnoutsign.png" srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Imageofaturnoutsign.png" alt="Slower Traffic Use Turnouts" className="wp-image-43897" />
+					<img
+						loading="lazy"
+						decoding="async"
+						width="102"
+						height="130"
+						src="/portal/uploads/2020/05/Imageofaturnoutsign.png"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Imageofaturnoutsign.png"
+						alt="Slower Traffic Use Turnouts"
+						className="wp-image-43897"
+					/>
 				</figure>
-				<p>You must use a turnout area or lane to let other vehicles pass when you are driving slowly on a two-lane road, where passing is unsafe, and there are five or more vehicles following you.</p>
+				<p>
+					You must use a turnout area or lane to let other vehicles pass when you are driving slowly on a two-lane road, where passing is unsafe, and
+					there are five or more vehicles following you.
+				</p>
 				<h4>Bicycle Lanes</h4>
-				<p>Bicycle lanes are for bicyclists only and run alongside vehicle traffic. They are typically marked by a single solid white line and signs. They are sometimes painted bright green to make them easier to see.</p>
+				<p>
+					Bicycle lanes are for bicyclists only and run alongside vehicle traffic. They are typically marked by a single solid white line and signs.
+					They are sometimes painted bright green to make them easier to see.
+				</p>
 				<div className={classes.imageDiv}>
 					<figure>
 						<img
@@ -217,35 +266,49 @@ const Page9 = () => {
 				<p>There are multiple types of bike lanes and markings:</p>
 				<ul>
 					<li>
-						<strong>Bike lane:</strong> Established along streets adjacent to vehicle traffic.&nbsp; Typically marked by a single solid white line that turns into a dash-line near an intersection.
+						<strong>Bike lane:</strong> Established along streets adjacent to vehicle traffic.&nbsp; Typically marked by a single solid white line
+						that turns into a dash-line near an intersection.
 					</li>
 					<li>
 						<strong>Buffered bike lane:</strong> Uses chevrons or diagonal markings to provide greater separation from traffic and on-street parking.
 					</li>
 					<li>
-						<strong>Bike route:</strong> Uses bike route signs and shared road markings to designate a preferred route for bicyclists on streets shared with vehicle traffic.
+						<strong>Bike route:</strong> Uses bike route signs and shared road markings to designate a preferred route for bicyclists on streets
+						shared with vehicle traffic.
 					</li>
 					<li>
 						<strong>Bicycle boulevard:</strong> Prioritizes bicycle travel on streets shared with vehicle traffic.
 					</li>
 					<li>
-						<strong>Separated bikeway:</strong> Is physically separated from motor vehicle traffic and for exclusive use of bicyclists. They are also known as a cycle track or protected bike lanes. The separation may include flexible posts, grade separation, inflexible barriers, or on-street
-						parking.
+						<strong>Separated bikeway:</strong> Is physically separated from motor vehicle traffic and for exclusive use of bicyclists. They are also
+						known as a cycle track or protected bike lanes. The separation may include flexible posts, grade separation, inflexible barriers, or
+						on-street parking.
 					</li>
 					<li>
-						<strong>Shared roadway bicycle markings:</strong> Alert drivers that bicyclists can occupy the lane and help bicyclists maintain a safe lane position in traffic.
+						<strong>Shared roadway bicycle markings:</strong> Alert drivers that bicyclists can occupy the lane and help bicyclists maintain a safe
+						lane position in traffic.
 					</li>
 				</ul>
 				<p>
 					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						Check your blind spots before entering a bike lane. If you drive a motorized bicycle, use caution to avoid other bicyclists. Travel at a reasonable speed and do not endanger the safety of other bicyclists.
+						Check your blind spots before entering a bike lane. If you drive a motorized bicycle, use caution to avoid other bicyclists. Travel at a
+						reasonable speed and do not endanger the safety of other bicyclists.
 					</span>
 				</p>
 				<h2>Turns</h2>
 				<h3>Right Turns</h3>
 				<div className={classes.imageDiv}>
 					<figure>
-						<img loading="lazy" decoding="async" width="216" height="84" src="/portal/uploads/2020/02/rightturn.png" srcSet="https://www.dmv.ca.gov/portal/uploads/2020/02/rightturn.png" alt="Image of a vehicle making a right turn" className="wp-image-357" />
+						<img
+							loading="lazy"
+							decoding="async"
+							width="216"
+							height="84"
+							src="/portal/uploads/2020/02/rightturn.png"
+							srcSet="https://www.dmv.ca.gov/portal/uploads/2020/02/rightturn.png"
+							alt="Image of a vehicle making a right turn"
+							className="wp-image-357"
+						/>
 						<figcaption>Example of a right turn.</figcaption>
 					</figure>
 				</div>
@@ -261,20 +324,30 @@ const Page9 = () => {
 					<li>Watch for pedestrians, bicyclists, or motorcyclists between your vehicle and the curb.</li>
 					<li>Start signaling about 100 feet before the turn.</li>
 					<li>Look over your right shoulder and reduce your speed.</li>
-					<li>Stop behind the limit line. A limit line is a wide white line that shows the drivers where to stop before an intersection or crosswalk. If there is no limit line, stop before you enter the crosswalk. If there is no crosswalk, stop before you enter the intersection.</li>
+					<li>
+						Stop behind the limit line. A limit line is a wide white line that shows the drivers where to stop before an intersection or crosswalk. If
+						there is no limit line, stop before you enter the crosswalk. If there is no crosswalk, stop before you enter the intersection.
+					</li>
 					<li>Look both ways (left-right-left) and turn when it is safe.</li>
 					<li>Complete your turn in the right lane. Do not turn wide into another lane.</li>
 				</ul>
 				<h4>Right Turn Against a Red Light</h4>
-				<p>You may turn right at a red light after a complete stop unless there is a No Turn on Red sign. Follow the same steps listed above for right turns.</p>
+				<p>
+					You may turn right at a red light after a complete stop unless there is a No Turn on Red sign. Follow the same steps listed above for right
+					turns.
+				</p>
 				<h4>Right Turn Against a Red Arrow</h4>
 				<p>You may not turn right if you are stopped at a red arrow light. Wait until the light changes to green before making your turn.</p>
 				<h4>Right Turn at a Public Transit Bus Lane</h4>
-				<p>It is illegal to drive, stop, park, or leave a vehicle in an area designated for public transit buses. Signs will be posted to indicate the lanes are for bus only use. However, you may cross a bus lane to make a right turn.</p>
+				<p>
+					It is illegal to drive, stop, park, or leave a vehicle in an area designated for public transit buses. Signs will be posted to indicate the
+					lanes are for bus only use. However, you may cross a bus lane to make a right turn.
+				</p>
 				<h4>Right Turn onto a Road with a Dedicated Lane</h4>
 				<p>
-					A dedicated right turn lane does not merge into another lane and allows you to make a right turn without stopping. You may make your turn even if there is a red light for vehicles going straight through the intersection. If there is a traffic light or sign on the right curb of the right
-					turn lane, you must obey that light or sign. Always yield to pedestrians in a crosswalk when turning.
+					A dedicated right turn lane does not merge into another lane and allows you to make a right turn without stopping. You may make your turn
+					even if there is a red light for vehicles going straight through the intersection. If there is a traffic light or sign on the right curb of
+					the right turn lane, you must obey that light or sign. Always yield to pedestrians in a crosswalk when turning.
 				</p>
 				<figure>
 					<img
@@ -314,27 +387,42 @@ const Page9 = () => {
 						Drive close to the center divider or into the left turn lane.
 						<ul>
 							<li>Enter a designated left turn lane at the opening. Do not cross any solid line.</li>
-							<li>Enter a two-way center left turn lane within 200 feet of the turn. Respect the right-of-way of any vehicle, bicyclist, or motorcyclist already in the lane. Always yield to pedestrians.</li>
+							<li>
+								Enter a two-way center left turn lane within 200 feet of the turn. Respect the right-of-way of any vehicle, bicyclist, or motorcyclist
+								already in the lane. Always yield to pedestrians.
+							</li>
 						</ul>
 					</li>
 					<li>Start signaling 100 feet before the turn.</li>
 					<li>Look over your left shoulder and reduce your speed.</li>
-					<li>Stop behind the limit line. If there is no limit line, stop before you enter the crosswalk. If there is no crosswalk, stop before you enter the intersection.</li>
+					<li>
+						Stop behind the limit line. If there is no limit line, stop before you enter the crosswalk. If there is no crosswalk, stop before you
+						enter the intersection.
+					</li>
 					<li>Look both ways (left-right-left) and begin your turn when it is safe.</li>
 					<li>Proceed into the intersection while turning to complete your turn in the left lane.</li>
 					<li>
 						Do not turn the steering wheel too soon and enter the lane of oncoming vehicles.
 						<ul>
-							<li>Keep your wheels pointed straight ahead until it is safe to start your turn. If your wheels are pointed to the left and a vehicle hits you from behind, you could be pushed into oncoming traffic.</li>
+							<li>
+								Keep your wheels pointed straight ahead until it is safe to start your turn. If your wheels are pointed to the left and a vehicle hits
+								you from behind, you could be pushed into oncoming traffic.
+							</li>
 						</ul>
 					</li>
 					<li>Accelerate smoothly during and after the turn.</li>
 					<li>Allow the steering wheel to straighten in the new lane.</li>
 				</ul>
 				<h4>Left Turn Against a Red Light</h4>
-				<p>You may turn left against a red light when you are turning from a one-way street onto a one-way street. Make sure there is no sign prohibiting the turn. Yield to other vehicles, pedestrians, or bicyclists who have a green light. Look both ways and turn when it is safe.</p>
+				<p>
+					You may turn left against a red light when you are turning from a one-way street onto a one-way street. Make sure there is no sign
+					prohibiting the turn. Yield to other vehicles, pedestrians, or bicyclists who have a green light. Look both ways and turn when it is safe.
+				</p>
 				<h3>U-turns</h3>
-				<p>A U-turn is when you turn your vehicle around to go back in the direction you came. To make a U-turn, signal and use the left turn lane or far-left lane. You may make a U-turn:</p>
+				<p>
+					A U-turn is when you turn your vehicle around to go back in the direction you came. To make a U-turn, signal and use the left turn lane or
+					far-left lane. You may make a U-turn:
+				</p>
 				<ul>
 					<li>Across a double yellow line.</li>
 					<li>In a residential district if no vehicles are approaching you within 200 feet.</li>
@@ -354,10 +442,14 @@ const Page9 = () => {
 					<li>In business districts (the part of a city or town where most offices and businesses are).</li>
 				</ul>
 				<h3>Examples of Turns</h3>
-				<p>The descriptions below refer to the numbers next to the cars in the images. Watch for pedestrians, motorcycles, and bicycles between your vehicle and the curb. When making turns, there may be signs or arrows that indicate you can turn from or end in more than one lane.</p>
+				<p>
+					The descriptions below refer to the numbers next to the cars in the images. Watch for pedestrians, motorcycles, and bicycles between your
+					vehicle and the curb. When making turns, there may be signs or arrows that indicate you can turn from or end in more than one lane.
+				</p>
 				<ol>
 					<li>
-						<strong>Left turn from a two-way street.</strong> Start the turn in the left lane closest to the middle of the street. To reduce the risk of collision, end the turn in the left lane closest to the middle of the street going in your vehicle’s direction.
+						<strong>Left turn from a two-way street.</strong> Start the turn in the left lane closest to the middle of the street. To reduce the risk
+						of collision, end the turn in the left lane closest to the middle of the street going in your vehicle’s direction.
 					</li>
 				</ol>
 				<div className={classes.imageDiv}>
@@ -377,10 +469,12 @@ const Page9 = () => {
 					</figure>
 				</div>
 				<p>
-					2. <strong>Right turn.</strong> Begin and end the turn in the lane closest to the right edge of the road. Do not swing wide into another lane of traffic.{" "}
+					2. <strong>Right turn.</strong> Begin and end the turn in the lane closest to the right edge of the road. Do not swing wide into another
+					lane of traffic.{" "}
 				</p>
 				<p>
-					3. <strong>Left turn from a two-way street onto a one-way street.</strong> Start the turn from the lane closest to the middle of the street (far-left lane). If there are three or more lanes in your direction of travel, you may end your turn in any lane that is open.
+					3. <strong>Left turn from a two-way street onto a one-way street.</strong> Start the turn from the lane closest to the middle of the street
+					(far-left lane). If there are three or more lanes in your direction of travel, you may end your turn in any lane that is open.
 				</p>
 				<figure>
 					<img
@@ -396,7 +490,8 @@ const Page9 = () => {
 					/>
 				</figure>
 				<p>
-					4. <strong>Left turn from a one-way street onto a two-way street. </strong>Start the turn from the far-left lane. To reduce the risk of collision, end the turn in the left lane closest to the middle of the street going in your vehicle’s direction.
+					4. <strong>Left turn from a one-way street onto a two-way street. </strong>Start the turn from the far-left lane. To reduce the risk of
+					collision, end the turn in the left lane closest to the middle of the street going in your vehicle’s direction.
 				</p>
 				<figure>
 					<img
@@ -412,8 +507,9 @@ const Page9 = () => {
 					/>
 				</figure>
 				<p>
-					5. <strong>Left turn from a one-way street onto a one-way street.</strong> Start the turn from the far-left lane. Bicyclists can legally use the left turn lane for their left turns. If there are three or more lanes in your direction of travel, you may end your turn in any lane that is
-					open.
+					5. <strong>Left turn from a one-way street onto a one-way street.</strong> Start the turn from the far-left lane. Bicyclists can legally use
+					the left turn lane for their left turns. If there are three or more lanes in your direction of travel, you may end your turn in any lane
+					that is open.
 				</p>
 				<figure>
 					<img
@@ -429,7 +525,8 @@ const Page9 = () => {
 					/>
 				</figure>
 				<p>
-					6. <strong>Right turn from a one-way street onto a one-way street.</strong> Start the turn in the far-right lane. If safe, you may end the turn in any lane.
+					6. <strong>Right turn from a one-way street onto a one-way street.</strong> Start the turn in the far-right lane. If safe, you may end the
+					turn in any lane.
 				</p>
 				<figure>
 					<img
@@ -445,7 +542,8 @@ const Page9 = () => {
 					/>
 				</figure>
 				<p>
-					7. <strong>Turn at a “T” intersection from a one-way street onto a two-way street.</strong> Traffic going straight through the intersection has the right-of-way. You may turn either right or left from the center lane.
+					7. <strong>Turn at a “T” intersection from a one-way street onto a two-way street.</strong> Traffic going straight through the intersection
+					has the right-of-way. You may turn either right or left from the center lane.
 				</p>
 				<figure>
 					<img
@@ -462,12 +560,20 @@ const Page9 = () => {
 				</figure>
 				<h3>Braking</h3>
 				<ul>
-					<li>Remove your foot from the gas pedal (accelerator) and allow the vehicle to slow down. Lightly press the brake until you come to a full stop. Give yourself enough space and time to perform this maneuver.</li>
-					<li>When stopping at a limit line, do not cross over the line. If stopping behind a vehicle, leave enough space to see their rear wheels.</li>
+					<li>
+						Remove your foot from the gas pedal (accelerator) and allow the vehicle to slow down. Lightly press the brake until you come to a full
+						stop. Give yourself enough space and time to perform this maneuver.
+					</li>
+					<li>
+						When stopping at a limit line, do not cross over the line. If stopping behind a vehicle, leave enough space to see their rear wheels.
+					</li>
 				</ul>
 				<h2>Merging And Exiting</h2>
 				<h3>Merging</h3>
-				<p>Highway traffic has the right-of-way. For more information, see Right-of-Way Rules: Who Goes First in Section 7. When you enter a highway, you will need to:</p>
+				<p>
+					Highway traffic has the right-of-way. For more information, see Right-of-Way Rules: Who Goes First in Section 7. When you enter a highway,
+					you will need to:
+				</p>
 				<ul>
 					<li>Be in the proper lane on the on-ramp.</li>
 					<li>Be at or near the speed of traffic.</li>
@@ -476,7 +582,10 @@ const Page9 = () => {
 					<li>Use your mirrors and turn signals.</li>
 					<li>Turn your head quickly to look over your shoulder before changing lanes or merging into traffic.</li>
 					<li>Make sure you can stop safely by leaving three seconds of space between you and the vehicle in front of you.</li>
-					<li>Do not cross over any solid lines when merging. If you need to cross several lanes, signal and cross them one at a time. Check your blind spots for vehicles, motorcyclists, bicyclists, and pedestrians each time.</li>
+					<li>
+						Do not cross over any solid lines when merging. If you need to cross several lanes, signal and cross them one at a time. Check your blind
+						spots for vehicles, motorcyclists, bicyclists, and pedestrians each time.
+					</li>
 				</ul>
 				<h3>Exiting</h3>
 				<p>To exit a highway safely:</p>
@@ -488,13 +597,19 @@ const Page9 = () => {
 					<li>Do not cross over any solid lines when exiting.</li>
 				</ul>
 				<h3>Crossing or Entering Traffic</h3>
-				<p>When entering traffic from a full stop, signal and leave a large enough space to get up to the speed of traffic. To merge, enter, or exit traffic, you need a space that is:</p>
+				<p>
+					When entering traffic from a full stop, signal and leave a large enough space to get up to the speed of traffic. To merge, enter, or exit
+					traffic, you need a space that is:
+				</p>
 				<ul>
 					<li>Half a block on city streets, which is about 150 feet.</li>
 					<li>A full block on the highway, which is about 300 feet.</li>
 				</ul>
 				<p>Even if you have a green light, do not start across the intersection if there are pedestrians or vehicles blocking your pathway.</p>
-				<p>When turning left, do not assume that an oncoming vehicle with its right turn signal on is turning before it reaches you. The driver may have their signal on by mistake or plan to turn just beyond you. Wait for the vehicle to start its turn before beginning the left turn.</p>
+				<p>
+					When turning left, do not assume that an oncoming vehicle with its right turn signal on is turning before it reaches you. The driver may
+					have their signal on by mistake or plan to turn just beyond you. Wait for the vehicle to start its turn before beginning the left turn.
+				</p>
 				<h2>Passing</h2>
 				<p>You must judge whether you have enough space to pass whenever you approach:</p>
 				<ul>
@@ -506,7 +621,9 @@ const Page9 = () => {
 					<strong>Do not pass:</strong>
 				</p>
 				<ul>
-					<li>If you are approaching a hill or curve and cannot see if other traffic is approaching. This is very dangerous on one and two lane roads.</li>
+					<li>
+						If you are approaching a hill or curve and cannot see if other traffic is approaching. This is very dangerous on one and two lane roads.
+					</li>
 					<li>Within 100 feet of an intersection, bridge, tunnel, railroad crossing, or other hazardous area.</li>
 					<li>At crossroads and driveways.</li>
 					<li>Unless you have enough space to return to your lane.</li>
@@ -523,12 +640,17 @@ const Page9 = () => {
 				<p>You may pass on the right only when:</p>
 				<ul>
 					<li>An open highway has two or more lanes going in your direction.</li>
-					<li>The driver ahead of you is turning left and you can safely pass on the right. Never pass on the left if the driver is signaling a left turn.</li>
+					<li>
+						The driver ahead of you is turning left and you can safely pass on the right. Never pass on the left if the driver is signaling a left
+						turn.
+					</li>
 					<li>You are on a one-way street.</li>
 				</ul>
 				<p>Never drive off the paved or main-traveled part of the road to pass.</p>
 				<h3>Being Passed</h3>
-				<p>If a vehicle is passing you or signals that they plan on passing, allow the vehicle to pass. Maintain your lane position and your speed.</p>
+				<p>
+					If a vehicle is passing you or signals that they plan on passing, allow the vehicle to pass. Maintain your lane position and your speed.
+				</p>
 			</div>
 		</Fragment>
 	);
