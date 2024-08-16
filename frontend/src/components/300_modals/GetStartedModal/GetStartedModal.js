@@ -27,24 +27,12 @@ const GetStartedModal = () => {
 	//const [modalStatus, setModalStatus] = useState("ResetPasswordChangeModal");
 	//const [modalStatus, setModalStatus] = useState("PasswordChangedSuccessfullyModal");
 	const registrationError = useSelector(({ user }) => user.registrationError);
-	const verifyAccountPassCodeStatus_rdx = useSelector(
-		({ user }) => user.verifyAccountPassCodeStatus_rdx
-	);
-	const verifyAccountPassCodeFeedback_rdx = useSelector(
-		({ user }) => user.verifyAccountPassCodeFeedback_rdx
-	);
-	const resetPasswordEmailPassCodeStatus_rdx = useSelector(
-		({ user }) => user.resetPasswordEmailPassCodeStatus_rdx
-	);
-	const resetPasswordEmailPassCodeFeedback_rdx = useSelector(
-		({ user }) => user.resetPasswordEmailPassCodeFeedback_rdx
-	);
-	const resetPasswordChangeStatus_rdx = useSelector(
-		({ user }) => user.resetPasswordChangeStatus_rdx
-	);
-	const resetPasswordChangeFeedback_rdx = useSelector(
-		({ user }) => user.resetPasswordChangeFeedback_rdx
-	);
+	const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
+	const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
+	const resetPasswordEmailPassCodeStatus_rdx = useSelector(({ user }) => user.resetPasswordEmailPassCodeStatus_rdx);
+	const resetPasswordEmailPassCodeFeedback_rdx = useSelector(({ user }) => user.resetPasswordEmailPassCodeFeedback_rdx);
+	const resetPasswordChangeStatus_rdx = useSelector(({ user }) => user.resetPasswordChangeStatus_rdx);
+	const resetPasswordChangeFeedback_rdx = useSelector(({ user }) => user.resetPasswordChangeFeedback_rdx);
 
 	const [formData, setFormData] = useState({
 		email: "",
@@ -443,17 +431,16 @@ const GetStartedModal = () => {
 	};
 	const ExitButton = (
 		<div onClick={exitGetStartedModalAction} className={classes.exitButtonContainer}>
-			<div className={classes.exitButton}>
-				<svg className={classes.exitSvg} viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+			<button className={classes.exitButton}>
+				<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 					<path
 						d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
 						fillRule="nonzero"
 						fillOpacity="1"
-						fill="#000"
 						stroke="none"
 					></path>
 				</svg>
-			</div>
+			</button>
 		</div>
 	);
 	const onEscKey_ExitModal = (e) => {
@@ -474,45 +461,25 @@ const GetStartedModal = () => {
 	let VerifyAccountHeaderSection = (
 		<div key={refresh_VerifyAccountHeader}>
 			<h1 className={classes.modalTitle2}>{headerText}</h1>
-			<h1 className={`${classes["modalSubTitle"]} ${!isValidPassCode && classes.isValidPassCode}`}>
-				{generalFeedback}
-			</h1>
+			<h1 className={`${classes["modalSubTitle"]} ${!isValidPassCode && classes.isValidPassCode}`}>{generalFeedback}</h1>
 		</div>
 	);
 	let ResetPasswordEmailPassCodeModalHeaderSection = (
 		<div key={refresh_ResetPasswordHeader}>
 			<h1 className={classes.modalTitle2}>{headerText}</h1>
-			<h1
-				className={`${classes["modalSubTitle"]} ${
-					!resetPasswordEmailPassCodeStatus && classes.isValidPassCode
-				}`}
-			>
-				{generalFeedback}
-			</h1>
+			<h1 className={`${classes["modalSubTitle"]} ${!resetPasswordEmailPassCodeStatus && classes.isValidPassCode}`}>{generalFeedback}</h1>
 		</div>
 	);
 	let ResetPasswordEnterPassCodeModalHeaderSection = (
 		<div key={refresh_ResetPasswordHeader}>
 			<h1 className={classes.modalTitle2}>{headerText}</h1>
-			<h1
-				className={`${classes["modalSubTitle"]} ${
-					!resetPasswordEmailPassCodeStatus && classes.isValidPassCode
-				}`}
-			>
-				{generalFeedback}
-			</h1>
+			<h1 className={`${classes["modalSubTitle"]} ${!resetPasswordEmailPassCodeStatus && classes.isValidPassCode}`}>{generalFeedback}</h1>
 		</div>
 	);
 	let ResetPasswordChangeHeaderSection = (
 		<div key={refresh_ResetPasswordChangeHeader}>
 			<h1 className={classes.modalTitle2}>{headerText}</h1>
-			<h1
-				className={`${classes["modalSubTitle"]} ${
-					!resetPasswordChangeStatus && classes.isValidPassCode
-				}`}
-			>
-				{generalFeedback}
-			</h1>
+			<h1 className={`${classes["modalSubTitle"]} ${!resetPasswordChangeStatus && classes.isValidPassCode}`}>{generalFeedback}</h1>
 		</div>
 	);
 	const [socialMediaSection, setSocialMediaSection] = useState(
@@ -656,9 +623,7 @@ const GetStartedModal = () => {
 			case "ResetPasswordEmailPassCodeModal":
 				setCheckEmailCommence(true);
 				if (!email) {
-					dispatch(
-						userReducerActions.passwordResetPassCodeEmailSentFailure("Email Field Required")
-					);
+					dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure("Email Field Required"));
 					return;
 				} else {
 					dispatch(resetPasswordSendPassCode_APIAction(email));
@@ -724,22 +689,12 @@ const GetStartedModal = () => {
 									name="passCode"
 									onChange={(e) => onChange(e)}
 									ref={passCodeInputRef}
-									className={`${classes["passCodeInput"]} ${
-										!isValidPassCode && classes.isValidPassCode
-									}`}
+									className={`${classes["passCodeInput"]} ${!isValidPassCode && classes.isValidPassCode}`}
 									onFocus={handleOnPassCodeFocus}
 									onBlur={handleOnPassCodeBlur}
 								/>
-								<div
-									className={`${classes["passCodeInputFeedbackContainer"]} ${
-										modalStatus === "VerifyAccountModal" && classes.VerifyAccountModal
-									}`}
-								>
-									<p
-										className={`${classes["passCodeInputFeedback"]} ${
-											!isValidPassCode && classes.isValidPassCode
-										}`}
-									></p>
+								<div className={`${classes["passCodeInputFeedbackContainer"]} ${modalStatus === "VerifyAccountModal" && classes.VerifyAccountModal}`}>
+									<p className={`${classes["passCodeInputFeedback"]} ${!isValidPassCode && classes.isValidPassCode}`}></p>
 								</div>
 							</div>
 						)}
@@ -759,17 +714,10 @@ const GetStartedModal = () => {
 								/>
 								<div
 									className={`${classes["emailInputFeedbackContainer"]} ${
-										modalStatus === "ResetPasswordEmailPassCodeModal" &&
-										classes.ResetPasswordEmailPassCodeModal
+										modalStatus === "ResetPasswordEmailPassCodeModal" && classes.ResetPasswordEmailPassCodeModal
 									}`}
 								>
-									<p
-										className={`${classes["emailInputFeedback"]} ${
-											!isValidEmail && classes.isValidEmail
-										}`}
-									>
-										{userEmailFeedback}
-									</p>
+									<p className={`${classes["emailInputFeedback"]} ${!isValidEmail && classes.isValidEmail}`}>{userEmailFeedback}</p>
 								</div>
 							</div>
 						)}
@@ -778,15 +726,11 @@ const GetStartedModal = () => {
 								<input
 									type="password"
 									id="password"
-									placeholder={
-										modalStatus === "ResetPasswordChangeModal" ? "New Password" : "Password"
-									}
+									placeholder={modalStatus === "ResetPasswordChangeModal" ? "New Password" : "Password"}
 									name="password"
 									onChange={(e) => onChange(e)}
 									ref={passwordInputRef}
-									className={`${classes["passwordInput"]} ${
-										!isValidPassword && classes.isValidPassword
-									}`}
+									className={`${classes["passwordInput"]} ${!isValidPassword && classes.isValidPassword}`}
 									autoComplete="current-password"
 									onFocus={handleOnPasswordFocus}
 									onBlur={handleOnPasswordBlur}
@@ -807,26 +751,12 @@ const GetStartedModal = () => {
 											: ""
 									} `}
 								>
-									<div
-										className={`${classes["passwordInputFeedbackContainer"]} ${
-											!isValidPassword && classes.isValidPassword
-										}`}
-									>
-										<p
-											className={`${classes["passwordInputFeedback"]} ${
-												!isValidPassword && classes.isValidPassword
-											}`}
-										>
-											{passwordFeedback}
-										</p>
+									<div className={`${classes["passwordInputFeedbackContainer"]} ${!isValidPassword && classes.isValidPassword}`}>
+										<p className={`${classes["passwordInputFeedback"]} ${!isValidPassword && classes.isValidPassword}`}>{passwordFeedback}</p>
 									</div>
 									<p
 										className={`${classes["forgotPasswordLink"]} ${
-											modalStatus === "LogInModal"
-												? !isValidPassword
-													? classes.LogInModal_isValidPassword
-													: classes.LogInModal
-												: ""
+											modalStatus === "LogInModal" ? (!isValidPassword ? classes.LogInModal_isValidPassword : classes.LogInModal) : ""
 										}`}
 									>
 										<a onClick={GoTo_ResetPasswordEmailPassCodeModal} className={classes.PageLink}>
@@ -845,23 +775,13 @@ const GetStartedModal = () => {
 									name="passwordConfirm"
 									onChange={(e) => onChange(e)}
 									ref={passwordConfirmInputRef}
-									className={`${classes["passwordInput"]} ${
-										!isValidPasswordConfirm && classes.isValidPasswordConfirm
-									}`}
+									className={`${classes["passwordInput"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}
 									autoComplete="current-password"
 									onFocus={handleOnPasswordConfirmFocus}
 								/>
 								<div className={classes.passwordConfirmInputFeedbackSection}>
-									<div
-										className={`${classes["passwordConfirmInputFeedbackContainer"]} ${
-											!isValidPasswordConfirm && classes.isValidPasswordConfirm
-										}`}
-									>
-										<p
-											className={`${classes["passwordConfirmInputFeedback"]} ${
-												!isValidPasswordConfirm && classes.isValidPasswordConfirm
-											}`}
-										>
+									<div className={`${classes["passwordConfirmInputFeedbackContainer"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
+										<p className={`${classes["passwordConfirmInputFeedback"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
 											{passwordConfirmFeedback}
 										</p>
 									</div>

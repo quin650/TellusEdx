@@ -1,36 +1,38 @@
 .blurredBackgroundContainer {
 	display: flex;
 	position: fixed;
-	z-index: 3000;
-	backdrop-filter: blur(6px);
+	z-index: 1000;
 	height: 100vh;
 	width: 100vw;
 	top: 0px;
 	left: 0%;
 	margin: 0;
 	padding: 0;
-	background-color: rgb(175, 175, 175, 40%);
 	justify-content: center;
 	align-items: center;
 	font-family: Roboto;
+	background-color: var(--BlurredBackground);
+	backdrop-filter: blur(6px); /* Chrome, Firefox */
+	-webkit-backdrop-filter: blur(6px); /* Safari */
 }
 /* ********************************************************************* Modal */
-.languageModal {
+.modal {
 	display: flex;
-	z-index: 3000;
+	z-index: 2000;
 	position: fixed;
 	height: 545px;
-	width: 430px;
-	border-radius: var(--borderRadius_modal);
+	width: 530px;
+	border-top-left-radius: var(--borderRadius_modal);
+	border-top-right-radius: 0;
+	border-bottom-left-radius: var(--borderRadius_modal);
+	border-bottom-right-radius: var(--borderRadius_modal);
 	justify-content: center;
-	/* background-color: var(--WhiteToBlack); */
-	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	background-color: var(--WhiteToBlack);
 	color: var(--BlackToGray);
 }
 /* ********************************************************************* Exit */
 .exitButtonContainer {
-	display: block;
-	cursor: pointer;
+	display: flex;
 	position: absolute;
 	z-index: 1000;
 	justify-content: flex-end;
@@ -40,52 +42,75 @@
 	margin-left: calc(100% - 40px);
 }
 .exitButton {
-	padding: 10.5px 13px 10.5px 13px;
-	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
-	border-top-right-radius: 14px;
+	display: flex;
+	all: unset;
+	cursor: pointer;
+	box-sizing: border-box;
+	height: 40px;
+	width: 40px;
+	background-color: var(--WhiteToBlack);
+	border: 2px solid var(--WhiteToBlack);
+	padding: 10.5px;
 }
 .exitButton:hover {
-	background-color: var(--hover_menuItem_gray_to_darkGray);
+	background-color: var(--hover_modalExitButton_gray_to_darkGray);
+	cursor: pointer;
 }
 .exitButton:active {
-	background-color: var(--active_menuItem_gray_to_darkGray);
+	background-color: var(--active_modalExitButton_gray_to_darkGray);
 }
-.exitSvg {
+.svgExit {
+	display: inline-block;
+	user-select: none;
+	overflow: visible;
+	fill: none;
 	width: 14px;
 	height: 14px;
 }
-.exitSvg path {
-	fill: var(--BlackToWhite);
+.svgExit path {
+	fill: #9e9e9e;
 }
 /* ********************************************************************* Modal Content */
-.languageModalContentContainer {
+.modalContentContainer {
 	box-sizing: border-box;
 	position: absolute;
-	height: 545px;
-	width: 430px;
-	min-width: 400px;
-	border-radius: var(--borderRadius_modal);
-	padding: 36px 30px;
-	overflow-y: scroll;
-	max-height: 545px; /* Set a maximum height for the scrollable element */
-	scrollbar-color: gray transparent; /* Custom scrollbar styling for Firefox */
-	scrollbar-width: thin; /* Custom scrollbar styling for Firefox */
+	height: 525px;
+	width: 530px;
+	border-radius: 27px;
+	padding: 65px 72px 26px 72px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 2px solid var(--WhiteToBlack);
 }
-.languageModalContentContainer::-webkit-scrollbar {
-	width: 6px; /* Styling the scrollbar in Chrome and Safari */
+.modalForm {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
 }
-.languageModalContentContainer::-webkit-scrollbar-thumb {
-	/* the draggable part of the scrollbar */
-	background-color: gray; /* Set thumb color for Chrome and Safari */
-	border-radius: 8px;
+.modalTitle {
+	display: flex;
+	font-size: 2rem;
+	position: relative;
+	align-items: flex-end;
+	margin: 0px auto 36px 0px;
 }
-.languageModalContentContainer::-webkit-scrollbar-thumb:hover {
+/* ************************************************************ Modal Content [Scroll Bar]*/
+/* .modalContentContainer::-webkit-scrollbar {
+	width: 6px; 
+}
+.modalContentContainer::-webkit-scrollbar-thumb {
+	background-color: red; 
+	border-bottom: 20px solid green;
+}
+.modalContentContainer::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
-.languageModalContentContainer::-webkit-scrollbar-track {
-	/* the area that the thumb moves within. */
-	background: transparent; /* Set track color for Chrome and Safari */
-}
+.modalContentContainer::-webkit-scrollbar-track {
+	background: transparent;
+} */
 /* ********************************************************************* Header Text */
 .languageIcon {
 	width: 36px;
@@ -106,4 +131,64 @@
 		padding-left: calc(8vw);
 		padding-right: calc(8vw);
 	}
+}
+/* ********************************************************************* Modal Content */
+.languageOption {
+	display: flex;
+	align-items: center;
+	padding: 15px 8px;
+	color: var(--color_primary_darkGray_to_gray);
+	text-decoration: none;
+	border-radius: var(--borderRadius_modalItem);
+	transform: translateY(0px);
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	height: 52px;
+	padding: 10px 8px;
+}
+.languageOption:hover {
+	transform: translateY(0px);
+	cursor: pointer;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.languageOption:active {
+	transform: translateY(1px);
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.languageOption.isChecked {
+	transform: translateY(0px);
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.languageOption.isChecked:hover {
+	transform: translateY(0px);
+	cursor: pointer;
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.languageOption.isChecked:active {
+	transform: translateY(1px);
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.break {
+	width: 100%;
+	border: 0;
+	height: 1px;
+	border-bottom: 0.5px solid #9e9e9e;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	transform: scaleY(0.3);
+}
+.languageOption:hover img {
+	border: 1px solid var(--BlackToWhite);
+}
+.languageOption:active img {
+	outline: 1px solid var(--BlackToWhite);
+}
+.flag {
+	height: 19px;
+	width: 28px;
+	margin-left: auto;
+	margin-right: 16px;
+}
+.optionInputBox {
+	height: 20px;
+	width: 20px;
 }

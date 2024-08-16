@@ -51,16 +51,18 @@ body {
 	--color_primary_darkGray_to_gray: #5d6c7a;
 	--backgroundColor_main_white_to_darkGray: white;
 	--backgroundColor_menu_offWhite_to_offBlack: #f8f9fb;
-	--borderRadius_modal: 14px; /* repetitive -Can be regular variable*/
-	--borderRadius_modalItem: 8px; /* repetitive -Can be regular variable*/
+	--borderRadius_modal: 27px; /* repetitive -Can be regular variable*/
+	--borderRadius_modalItem: 14px; /* repetitive -Can be regular variable*/
 	--borderColor_menu_offWhite_to_offBlack: #eeebee;
 	--hover_menuButtonOpen_gray_to_darkGray: #efefef;
 	--active_menuButtonOpen_gray_to_darkGray: #e0e0e0;
 	--hover_menuButtonClosed_gray_to_darkGray: #efefef;
 	--active_menuButtonClosed_gray_to_darkGray: #e0e0e0;
-
 	--hover_menuItem_gray_to_darkGray: #efefef;
 	--active_menuItem_gray_to_darkGray: #e0e0e0;
+	--hover_modalExitButton_gray_to_darkGray: #efefef;
+	--active_modalExitButton_gray_to_darkGray: #e0e0e0;
+
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #1a1c1e;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
@@ -115,6 +117,8 @@ body {
 	--active_menuButtonClosed_gray_to_darkGray: black;
 	--hover_menuItem_gray_to_darkGray: #1e1d1d;
 	--active_menuItem_gray_to_darkGray: #232323;
+	--hover_modalExitButton_gray_to_darkGray: #232323;
+	--active_modalExitButton_gray_to_darkGray: #1e1d1d;
 
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #eeebee;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
