@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
-import MainNavbar from "./components/100_layout/10_header/1NavBar_Main";
-import Footer from "./components/100_layout/30_footer/footer";
-import Home from "./components/200_pages/regularPages/home";
-import DemoDMVClassC from "./components/400_demos/demo_DMV_ClassC";
+import MainNavbar from "./components/100_layout/10_header/1_navBar_Main";
+import Footer from "./components/100_layout/40_footer/footer";
+import Home from "./components/200_pages/10_regularPages/0_home/0_home";
+import DemoDMVClassC from "./components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
 
-import AboutUs from "./components/200_pages/regularPages/aboutUs";
-import SupportCenter from "./components/200_pages/regularPages/supportCenter";
-import Help from "./components/200_pages/regularPages/help";
-import OnThisPageQuickView from "./components/100_layout/20_body/features/OnThisPageQuickView";
+import AboutUs from "./components/200_pages/10_regularPages/3_aboutUs";
+import SupportCenter from "./components/200_pages/10_regularPages/4_supportCenter";
+import Help from "./components/200_pages/10_regularPages/5_help";
+import OnThisPageQuickView from "./components/100_layout/20_features/1_onThisPageQuickView";
 
 const App = () => {
 	const dispatch = useDispatch();
