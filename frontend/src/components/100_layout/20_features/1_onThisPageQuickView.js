@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import OnThisPageQuickViewChild from "./1_onThisPageQuickViewChild";
 import classes from "./1_onThisPageQuickView.modules.css";
 
-const OnThisPageQuickView = ({ contents, activePage }) => {
-	// Event Listeners
+const OnThisPageQuickView = ({ divIDs, activeID }) => {
+	const [altOptionKeyPressed, setAltOptionKeyPressed] = useState(false);
+	// Event Listeners Alt or Option Key (Leads to Hover property)
 	useEffect(() => {
 		const altOptionPressedKeyDown = (event) => {
 			if (event.altKey || event.key === "Alt" || event.key === "Option") {
@@ -15,10 +16,8 @@ const OnThisPageQuickView = ({ contents, activePage }) => {
 				setAltOptionKeyPressed(false);
 			}
 		};
-
 		document.addEventListener("keydown", altOptionPressedKeyDown);
 		document.addEventListener("keyup", altOptionPressedKeyUp);
-
 		// Clean up the event listeners on component unmount
 		return () => {
 			document.removeEventListener("keydown", altOptionPressedKeyDown);
@@ -26,12 +25,10 @@ const OnThisPageQuickView = ({ contents, activePage }) => {
 		};
 	}, []);
 
-	const [altOptionKeyPressed, setAltOptionKeyPressed] = useState(false);
-
 	return (
 		<div className={`${classes["tocContainer"]} ${altOptionKeyPressed && classes.altOptionKeyPressed}`}>
-			{contents.map((content, index) => (
-				<OnThisPageQuickViewChild key={index} id={index} text={content} goto={content} status={activePage === content} />
+			{divIDs.map((content, index) => (
+				<OnThisPageQuickViewChild key={index} id={index} content={content} status={activeID === content} />
 			))}
 		</div>
 	);

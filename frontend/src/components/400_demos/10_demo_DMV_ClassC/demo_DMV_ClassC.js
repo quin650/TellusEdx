@@ -4,29 +4,29 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import DemoNavbar from "../../100_layout/10_header/2_navBar_Demo";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 
-import Page1A from "../../200_pages/20_demo_DMV_Pages/page1A";
-import Page1B from "../../200_pages/20_demo_DMV_Pages/page1B";
-import Page2 from "../../200_pages/20_demo_DMV_Pages/page2";
-import Page3 from "../../200_pages/20_demo_DMV_Pages/page3";
-import Page4 from "../../200_pages/20_demo_DMV_Pages/page4";
-import Page5 from "../../200_pages/20_demo_DMV_Pages/page5";
-import Page6 from "../../200_pages/20_demo_DMV_Pages/page6";
-import Page7 from "../../200_pages/20_demo_DMV_Pages/page7";
-import Page8 from "../../200_pages/20_demo_DMV_Pages/page8";
-import Page9 from "../../200_pages/20_demo_DMV_Pages/page9";
-import Page10 from "../../200_pages/20_demo_DMV_Pages/page10";
-import Page11 from "../../200_pages/20_demo_DMV_Pages/page11";
-import Page12 from "../../200_pages/20_demo_DMV_Pages/page12";
-import Page13 from "../../200_pages/20_demo_DMV_Pages/page13";
-import Page14 from "../../200_pages/20_demo_DMV_Pages/page14";
-import Page15 from "../../200_pages/20_demo_DMV_Pages/page15";
-import Page16 from "../../200_pages/20_demo_DMV_Pages/page16";
-import Page17 from "../../200_pages/20_demo_DMV_Pages/page17";
-import Page18 from "../../200_pages/20_demo_DMV_Pages/page18";
-import Page19 from "../../200_pages/20_demo_DMV_Pages/page19";
-import Page20 from "../../200_pages/20_demo_DMV_Pages/page20";
-import Page21 from "../../200_pages/20_demo_DMV_Pages/page21";
-import Page22 from "../../200_pages/20_demo_DMV_Pages/page22";
+import Page1A from "../../200_pages/20_demo_pages/page1A";
+import Page1B from "../../200_pages/20_demo_pages/page1B";
+import Page2 from "../../200_pages/20_demo_pages/page2";
+import Page3 from "../../200_pages/20_demo_pages/page3";
+import Page4 from "../../200_pages/20_demo_pages/page4";
+import Page5 from "../../200_pages/20_demo_pages/page5";
+import Page6 from "../../200_pages/20_demo_pages/page6";
+import Page7 from "../../200_pages/20_demo_pages/page7";
+import Page8 from "../../200_pages/20_demo_pages/page8";
+import Page9 from "../../200_pages/20_demo_pages/page9";
+import Page10 from "../../200_pages/20_demo_pages/page10";
+import Page11 from "../../200_pages/20_demo_pages/page11";
+import Page12 from "../../200_pages/20_demo_pages/page12";
+import Page13 from "../../200_pages/20_demo_pages/page13";
+import Page14 from "../../200_pages/20_demo_pages/page14";
+import Page15 from "../../200_pages/20_demo_pages/page15";
+import Page16 from "../../200_pages/20_demo_pages/page16";
+import Page17 from "../../200_pages/20_demo_pages/page17";
+import Page18 from "../../200_pages/20_demo_pages/page18";
+import Page19 from "../../200_pages/20_demo_pages/page19";
+import Page20 from "../../200_pages/20_demo_pages/page20";
+import Page21 from "../../200_pages/20_demo_pages/page21";
+import Page22 from "../../200_pages/20_demo_pages/page22";
 
 import PaginationGUI from "./0_features/pagination/paginationGUI";
 
@@ -249,7 +249,7 @@ const DemoDMVClassC = () => {
 		};
 	}, [currentPageNum_rdx]);
 	return (
-		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
+		<div className={classes.mainContainer} ref={mainContainerRef}>
 			<DemoNavbar demoNavBarMenuOption={demoNavBarMenuOption} />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
@@ -269,7 +269,7 @@ const DemoDMVClassC = () => {
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
 	);
 };
 
