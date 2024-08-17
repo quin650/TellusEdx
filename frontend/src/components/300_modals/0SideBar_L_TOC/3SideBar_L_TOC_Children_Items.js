@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./demo_DMV_ClassC.module.css";
+import classes from "./4SideBar_L_TOC.module.css";
 
-const TOC_Child_Item = ({ isVisible, idx, text, id, isActiveID }) => {
+const SideBar_L_TOC_Children_Items = ({ isVisible, idx, text, id, isActiveID }) => {
 	return (
 		<ul key={idx} className={`${classes["childLabelOuterContainer"]} ${isVisible ? classes.isVisible : ""}`}>
 			<li className={`${classes["childLabelInnerContainer"]} ${isActiveID ? classes.isActive : ""}`}>
@@ -13,4 +13,4 @@ const TOC_Child_Item = ({ isVisible, idx, text, id, isActiveID }) => {
 	);
 };
 
-export default TOC_Child_Item;
+export default SideBar_L_TOC_Children_Items;

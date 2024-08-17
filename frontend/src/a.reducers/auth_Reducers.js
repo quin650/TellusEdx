@@ -6,6 +6,11 @@ const localStorageColor = localStorage.getItem("prefers-color-scheme");
 const isDarkMode = localStorageColor ? localStorageColor : systemColor;
 
 const initialState = {
+	//Modals
+	currentPageNum_rdx: 1,
+	inputPageNum_rdx: 1,
+	pagesLength_rdx: 0,
+
 	sideBar_Left_isOpen_Rdx: true,
 	SideBar_Left_AllowCollapse_OnWindowResize_rdx: true,
 	sideBar_Right_Main_ModalStatus_rdx: false,
@@ -14,19 +19,17 @@ const initialState = {
 	getStarted_ModalStatus_rdx: false,
 	getStartedView: "",
 	languageSettings_ModalStatus_rdx: false,
-	languageCurrent_rdx: "English",
-	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
 
-	isDarkMode_rdx: isDarkMode,
-
+	//General
 	isAuthenticated: false,
+	loading: false,
+	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
+	languageCurrent_rdx: "English",
+	isDarkMode_rdx: isDarkMode,
 	isDemoView: false,
 	isDashboardFullScreen: true,
-	registered: false,
-	registrationError: "",
-	verificationEmail: 0,
-	verificationEmailFailureStatus: "",
-	loading: false,
+
+	//User Info
 	loginError: "",
 	profile_id: "",
 	username: "",
@@ -34,8 +37,17 @@ const initialState = {
 	name: "",
 	isAdmin: "",
 	token: "",
-	passwordResetPassCodeEmail: 0,
 	userInfo: userInfoFromStorage,
+
+	//Registration
+	passwordResetPassCodeEmail: 0,
+	registered: false,
+	registrationError: "",
+	verificationEmail: 0,
+	verificationEmailFailureStatus: "",
+	registered: false,
+	registrationError: "",
+	verificationEmail: 0,
 
 	//Verify Account
 	verifyAccountPassCodeStatus_rdx: true,
@@ -61,7 +73,18 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView = false;
 		},
+
 		// Left Side Modal
+		setDemoCurrentPageNum(state, action) {
+			state.currentPageNum_rdx = action.payload;
+		},
+		setDemoInputPageNum(state, action) {
+			state.inputPageNum_rdx = action.payload;
+		},
+		setDemoPageLength(state, action) {
+			state.pagesLength_rdx = action.payload;
+		},
+
 		sideBar_Left_Toggle_ModalVisibility(state) {
 			state.sideBar_Left_isOpen_Rdx = !state.sideBar_Left_isOpen_Rdx;
 		},

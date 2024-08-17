@@ -66,7 +66,18 @@ const App = () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
 	}, [location]);
-
+	// General Event listeners -- CMD+B (Toggle SideBar_Left) CMD+SHIFT+N (Toggle SideBar_Right Notes) CMD+SHIFT+S (Toggle SideBar_Right Search)
+	const handleKeyCombination = (e) => {
+		if (e.ctrlKey && e.key === "m") {
+			dispatch(userReducerActions.sideBar_Right_Toggle_Main_ModalVisibility());
+		}
+	};
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyCombination);
+		return () => {
+			document.removeEventListener("keydown", handleKeyCombination);
+		};
+	}, [location]);
 	return (
 		<main>
 			<header>{!isDemoView ? <MainNavbar /> : ""}</header>
