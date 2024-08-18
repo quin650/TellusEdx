@@ -5,7 +5,6 @@
 	top: 0 !important;
 	background-color: white;
 	width: 100%;
-	min-width: 760px;
 }
 .inner_container_nav {
 	display: flex;
@@ -21,23 +20,20 @@
 	margin: 0;
 }
 @media (max-width: 1200px) {
-	.inner_container_nav {
-		min-width: 450px;
-	}
 	.inner_container_nav .NavItem2 {
+		/* GetStartedButton or sideBar_Right_Search_Button or */
 		display: none;
 	}
 	.inner_container_nav .NavItem3 {
+		/* sideBar_Right_Notes_Button */
 		display: none;
 	}
 }
+
 @media (max-width: 475px) {
 	.outer_container_nav {
 		width: 100%;
 		min-width: 375px;
-	}
-	.inner_container_nav .NavItem2 {
-		display: none;
 	}
 }
 .Logo {

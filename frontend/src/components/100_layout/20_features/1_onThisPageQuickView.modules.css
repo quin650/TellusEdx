@@ -1,157 +1,156 @@
-.tocContainer{
-    z-index: 101;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    top: 180px;
-    left: 15px;
-    width: 14px;
+.tocContainer {
+	z-index: 101;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	top: 180px;
+	left: 15px;
+	width: 14px;
 
-    margin-bottom: auto;
-    margin-right: auto;
-    border-radius: 4px;
-    background-color: var(--WhiteToGray);
+	margin-bottom: auto;
+	margin-right: auto;
+	border-radius: 4px;
+	background-color: var(--WhiteToGray);
 }
-.tocContainer.altOptionKeyPressed{
-    z-index: 101;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    top: 180px;
-    left: 15px;
-    width: 14px;
+.tocContainer.altOptionKeyPressed {
+	z-index: 101;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	top: 180px;
+	left: 15px;
+	width: 14px;
 
-    margin-bottom: auto;
-    margin-right: auto;
-    border-radius: 4px;
+	margin-bottom: auto;
+	margin-right: auto;
+	border-radius: 4px;
 }
 
 /* alt or option pressed */
 .tocContainer.altOptionKeyPressed .tocSectionContainer {
-    position: relative;
-    align-self: center;
-    width: 10px;
-    height: 30px;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    border-radius: 4px;
-    border: 2px solid var(--WhiteToGray);
-    background-color: black;
+	position: relative;
+	align-self: center;
+	width: 10px;
+	height: 30px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	border-radius: 4px;
+	border: 2px solid var(--WhiteToGray);
+	background-color: black;
 }
 .tocContainer.altOptionKeyPressed .tocSectionContainer .theTextContainer {
-    display: none;
+	display: none;
 }
 .tocContainer.altOptionKeyPressed:hover .tocSectionContainer .theTextContainer {
-    display: block;
+	display: block;
 }
-.tocContainer.altOptionKeyPressed .tocSectionContainer:active .theTextContainer{
-    display: none;
+.tocContainer.altOptionKeyPressed .tocSectionContainer:active .theTextContainer {
+	display: none;
 }
-.tocContainer.altOptionKeyPressed .tocSectionContainer:focus .theTextContainer{
-    display: none;
-}   
+.tocContainer.altOptionKeyPressed .tocSectionContainer:focus .theTextContainer {
+	display: none;
+}
 .tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent {
-    background-color: blue;
+	background-color: blue;
 }
 .tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:active {
-    border: 3px solid blue;
+	border: 3px solid blue;
 }
-.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:active .theTextContainer{
-    display: none;
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:active .theTextContainer {
+	display: none;
 }
-.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:focus .theTextContainer{
-    display: none;
+.tocContainer.altOptionKeyPressed .tocSectionContainer.isCurrent:focus .theTextContainer {
+	display: none;
 }
 .tocContainer.altOptionKeyPressed .theTextContainer {
-    z-index: 301;
-    display: block;
-    position: fixed;
-    margin-left: 20px;
-    border-radius: 4px;
-    background-color: rgb(242, 242, 242);
-    border: 1px solid rgb(233, 233, 233);    
+	z-index: 301;
+	display: block;
+	position: fixed;
 
+	border-radius: 4px;
+	background-color: rgb(242, 242, 242);
+	border: 1px solid rgb(233, 233, 233);
+	height: 20px;
+	margin: 3px 3px 3px 15px;
 }
 .tocContainer.altOptionKeyPressed .theText {
-    font-size: 12px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: black;
+	font-size: 10px;
+	padding: 3px;
+	color: black;
+	margin: 0;
 }
-
 
 /* Not related to alt or option pressed */
 .tocSectionContainer {
-    position: relative;
-    align-self: center;
-    width: 10px;
-    height: 30px;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    border-radius: 4px;
-    border: 2px solid var(--WhiteToGray);
-    background-color: black;
+	position: relative;
+	align-self: center;
+	width: 10px;
+	height: 30px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	border-radius: 4px;
+	border: 2px solid var(--WhiteToGray);
+	background-color: black;
 }
 .tocSectionContainer .theTextContainer {
-    display: none;
+	display: none;
 }
 .tocSectionContainer:hover {
-    outline: 3px solid black;
-    cursor: pointer;
+	outline: 3px solid black;
+	cursor: pointer;
 }
 .tocSectionContainer:hover .theTextContainer {
-    display: block;
+	display: block;
 }
 .tocSectionContainer:active {
-    border: 3px solid black;
+	border: 3px solid black;
 }
-.tocSectionContainer:active .theTextContainer{
-    display: none;
+.tocSectionContainer:active .theTextContainer {
+	display: none;
 }
-.tocSectionContainer:focus .theTextContainer{
-    display: none;
+.tocSectionContainer:focus .theTextContainer {
+	display: none;
 }
 .tocSectionContainer.isCurrent {
-    background-color: blue;
+	background-color: blue;
 }
 .tocSectionContainer.isCurrent .theTextContainer {
-    display: none;
+	display: none;
 }
 .tocSectionContainer.isCurrent:hover {
-    outline: 3px solid blue;
-    cursor: pointer;
+	outline: 3px solid blue;
+	cursor: pointer;
 }
 .tocSectionContainer.isCurrent:hover .theTextContainer {
-    display: block;
+	display: block;
 }
 .tocSectionContainer.isCurrent:active {
-    border: 3px solid blue;
+	border: 3px solid blue;
 }
-.tocSectionContainer.isCurrent:active .theTextContainer{
-    display: none;
+.tocSectionContainer.isCurrent:active .theTextContainer {
+	display: none;
 }
-.tocSectionContainer.isCurrent:focus .theTextContainer{
-    display: none;
+.tocSectionContainer.isCurrent:focus .theTextContainer {
+	display: none;
 }
 .theTextContainer {
-    z-index: 301;
-    display: block;
-    position: fixed;
-    margin-left: 20px;
-    border-radius: 4px;
-    background-color: rgb(242, 242, 242);
-    border: 1px solid rgb(233, 233, 233);    
-
+	z-index: 301;
+	display: block;
+	position: fixed;
+	border-radius: 4px;
+	background-color: rgb(242, 242, 242);
+	border: 1px solid rgb(233, 233, 233);
+	height: 20px;
+	margin: 3px 3px 3px 20px;
 }
 .theText {
-    font-size: 12px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: black;
+	font-size: 10px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	color: black;
+	margin: 0;
 }

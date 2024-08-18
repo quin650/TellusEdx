@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 
@@ -9,44 +9,47 @@ const PaginationGUI = () => {
 	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
 	const inputPageNum_rdx = useSelector(({ user }) => user.inputPageNum_rdx);
 	const pagesLength_rdx = useSelector(({ user }) => user.pagesLength_rdx);
-
 	//!Prev-Next Page
-	const PrevPage = () => {
+	const PrevPage = useCallback(() => {
+		console.log("PrevPage");
 		let newPageNum = currentPageNum_rdx - 1;
 		if (newPageNum >= 1) {
 			dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));
 			dispatch(userReducerActions.setDemoInputPageNum(newPageNum));
 			localStorage.setItem("page", newPageNum);
 		}
-	};
-	const NextPage = () => {
+	}, [currentPageNum_rdx, dispatch]);
+	const NextPage = useCallback(() => {
+		console.log("NextPage");
 		let newPageNum = currentPageNum_rdx + 1;
 		if (newPageNum <= pagesLength_rdx) {
 			dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));
 			dispatch(userReducerActions.setDemoInputPageNum(newPageNum));
 			localStorage.setItem("page", newPageNum);
 		}
-	};
+	}, [currentPageNum_rdx, pagesLength_rdx, dispatch]);
 	// Event listeners -- Left(Prev)-Right(Next)
-	const handleKeyDown = (e) => {
-		switch (e.key) {
-			case "ArrowLeft":
-				PrevPage();
-				break;
-			case "ArrowRight":
-				NextPage();
-				break;
-			default:
-				break;
-		}
-	};
+	const handleKeyDown = useCallback(
+		(e) => {
+			switch (e.key) {
+				case "ArrowLeft":
+					PrevPage();
+					break;
+				case "ArrowRight":
+					NextPage();
+					break;
+				default:
+					break;
+			}
+		},
+		[PrevPage, NextPage]
+	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
 		};
-	}, [currentPageNum_rdx]);
-
+	}, [handleKeyDown]);
 	//!Page Input Number
 	const pageInputRef_top = useRef(null);
 	const handlePageInputFocus_top = () => {
@@ -91,7 +94,6 @@ const PaginationGUI = () => {
 			dispatch(userReducerActions.setDemoInputPageNum(currentPageNum_rdx));
 		}
 	};
-
 	return (
 		<div className={classes.paginationContainer}>
 			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL}>

@@ -81,8 +81,8 @@
 	background-color: var(--color_pageNav_InputFIll_white_to_gray);
 	font-size: 16px !important;
 }
-.paginationInput input:focus,
-.paginationInput input:-webkit-autofill:focus {
+.paginationInputContainer input:focus,
+.paginationInputContainer input:-webkit-autofill:focus {
 	outline: 0px solid black !important;
 	border: 2px solid var(--Blue) !important;
 }
@@ -91,6 +91,7 @@
 	margin: 0;
 	display: flex;
 	align-items: center;
+	color: var(--color_pageNav_lineDividers_offWhite_to_black);
 }
 /*?--------------------------------------------------------------------*/
 /* Pagination Controls 3 of 4-------------------------------------------------*/

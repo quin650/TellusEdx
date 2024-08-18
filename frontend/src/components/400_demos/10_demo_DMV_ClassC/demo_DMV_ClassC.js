@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import { throttle } from "lodash";
 import DemoNavbar from "../../100_layout/10_header/2_navBar_Demo";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 
@@ -74,9 +75,7 @@ const DemoDMVClassC = () => {
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
 	const sideBar_Left_isOpen_Rdx = useSelector(({ user }) => user.sideBar_Left_isOpen_Rdx);
-
-	const SideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.SideBar_Left_AllowCollapse_OnWindowResize_rdx);
-	const [sideBar_Left_AllowCollapse_OnWindowResize, setSideBar_Left_AllowCollapse_OnWindowResize] = useState(true);
+	const sideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.sideBar_Left_AllowCollapse_OnWindowResize_rdx);
 	const [activeID, setActiveID] = useState(null);
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
@@ -201,12 +200,8 @@ const DemoDMVClassC = () => {
 		GoTo_TopOfPage();
 	}, [currentPageNum_rdx]);
 	//! TOC Status: Open/Close
-
-	useEffect(() => {
-		setSideBar_Left_AllowCollapse_OnWindowResize(SideBar_Left_AllowCollapse_OnWindowResize_rdx);
-	}, [SideBar_Left_AllowCollapse_OnWindowResize_rdx]);
-	const debouncedWidth_Affects_to_SideBar_Left_TOC = useCallback(
-		debounce(() => {
+	const width_Affects_to_SideBar_Left_TOC = useCallback(
+		throttle(() => {
 			if (window.innerWidth < 1400 && sideBar_Left_isOpen_Rdx) {
 				dispatch(userReducerActions.sideBar_Left_Close());
 			} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen_Rdx) {
@@ -216,20 +211,18 @@ const DemoDMVClassC = () => {
 		[sideBar_Left_isOpen_Rdx]
 	);
 	useEffect(() => {
-		if (!sideBar_Left_AllowCollapse_OnWindowResize) return;
-		window.addEventListener("resize", debouncedWidth_Affects_to_SideBar_Left_TOC);
-		debouncedWidth_Affects_to_SideBar_Left_TOC();
+		if (!sideBar_Left_AllowCollapse_OnWindowResize_rdx) return;
+		window.addEventListener("resize", width_Affects_to_SideBar_Left_TOC);
+		width_Affects_to_SideBar_Left_TOC();
 		return () => {
-			window.removeEventListener("resize", debouncedWidth_Affects_to_SideBar_Left_TOC);
+			window.removeEventListener("resize", width_Affects_to_SideBar_Left_TOC);
 		};
-	}, [sideBar_Left_AllowCollapse_OnWindowResize, sideBar_Left_isOpen_Rdx, debouncedWidth_Affects_to_SideBar_Left_TOC]);
+	}, [sideBar_Left_AllowCollapse_OnWindowResize_rdx, sideBar_Left_isOpen_Rdx, width_Affects_to_SideBar_Left_TOC]);
 	//Prevents the demo option to be shown in the sideBar_right_MainModal
-	const demoNavBarMenuOption = false;
 	// General Event listeners -- CMD+B (Toggle SideBar_Left) CMD+SHIFT+N (Toggle SideBar_Right Notes) CMD+SHIFT+S (Toggle SideBar_Right Search)
 	const handleKeyCombination = (e) => {
 		switch (true) {
 			case e.ctrlKey && e.key === "b":
-				setSideBar_Left_AllowCollapse_OnWindowResize(false);
 				dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility());
 				break;
 			case e.ctrlKey && e.key === "s":
@@ -250,7 +243,7 @@ const DemoDMVClassC = () => {
 	}, [currentPageNum_rdx]);
 	return (
 		<div className={classes.mainContainer} ref={mainContainerRef}>
-			<DemoNavbar demoNavBarMenuOption={demoNavBarMenuOption} />
+			<DemoNavbar />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
 					sideBar_Left_isOpen={sideBar_Left_isOpen_Rdx}

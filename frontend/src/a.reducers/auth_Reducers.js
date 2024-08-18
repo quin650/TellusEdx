@@ -12,7 +12,7 @@ const initialState = {
 	pagesLength_rdx: 0,
 
 	sideBar_Left_isOpen_Rdx: true,
-	SideBar_Left_AllowCollapse_OnWindowResize_rdx: true,
+	sideBar_Left_AllowCollapse_OnWindowResize_rdx: true,
 	sideBar_Right_Main_ModalStatus_rdx: false,
 	sideBar_Right_Search_ModalStatus_rdx: false,
 	sideBar_Right_Notes_ModalStatus_rdx: false,
@@ -94,8 +94,8 @@ const userSlice = createSlice({
 		sideBar_Left_Close(state) {
 			state.sideBar_Left_isOpen_Rdx = false;
 		},
-		SideBar_Left_NotAllowCollapse_OnWindowResize(state) {
-			state.SideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
+		sideBar_Left_NotAllowCollapse_OnWindowResize(state) {
+			state.sideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
 		},
 		// Search Modal
 		sideBar_Right_Toggle_Search_ModalVisibility(state) {

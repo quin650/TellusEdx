@@ -78,7 +78,7 @@ body {
 	--backgroundColor_pageNav_white_to_gray: #ffffff;
 	--color_pageNav_InputFIll_white_to_gray: #ffffff;
 	--color_pageNav_InputBorder_offWhite_to_black: #ddd;
-	--color_pageNav_lineDividers_offWhite_to_black: #eeebee;
+	--color_pageNav_lineDividers_offWhite_to_black: #ddd;
 }
 
 [prefers-color-scheme="dark"] {
@@ -133,8 +133,9 @@ body {
 	--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite: #dddddd;
 	--color_pageNav_menuTabs_borderBottom_offWhite_to_gray: #9e9e9e;
 	--backgroundColor_pageNav_white_to_gray: #3a3b3c;
-	--color_pageNav_InputBorder_offWhite_to_black: black;
-	--color_pageNav_lineDividers_offWhite_to_black: black;
+	--color_pageNav_InputFIll_white_to_gray: #9e9e9e;
+	--color_pageNav_InputBorder_offWhite_to_black: #4f4e4e;
+	--color_pageNav_lineDividers_offWhite_to_black: #4f4e4e;
 }
 
 main {

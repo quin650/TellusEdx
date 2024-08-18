@@ -1,17 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import LanguageSettingsModal from "../../300_modals/20_languageSettings/1_languageSettingsModal";
+
 import SideBar_R_SearchModal from "../30_sideBars/1_sideBar_R_SearchModal/sideBar_R_SearchModal";
 import SideBar_R_NotesModal from "../30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal";
 import SideBar_R_MainModal from "../30_sideBars/3_sideBar_R_MainModal/sideBar_R_MainModal";
+import GetStartedModal from "../../300_modals/10_getStartedModal/getStartedModal";
+import LanguageSettingsModal from "../../300_modals/20_languageSettings/1_languageSettingsModal";
 
 import classes from "./navBar.module.css";
 
-const DemoNavbar = ({ demoNavBarMenuOption }) => {
+const DemoNavbar = () => {
 	const {
 		sideBar_Left_isOpen_Rdx,
-		SideBar_Left_AllowCollapse_OnWindowResize_rdx,
+		sideBar_Left_AllowCollapse_OnWindowResize_rdx,
 		sideBar_Right_Main_ModalStatus_rdx,
 		sideBar_Right_Search_ModalStatus_rdx,
 		sideBar_Right_Notes_ModalStatus_rdx,
@@ -22,8 +24,8 @@ const DemoNavbar = ({ demoNavBarMenuOption }) => {
 	// Button onClick actions
 	const toggle_SideBar_Left_Visibility = () => {
 		dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility(!sideBar_Left_isOpen_Rdx));
-		if (SideBar_Left_AllowCollapse_OnWindowResize_rdx) {
-			dispatch(userReducerActions.SideBar_Left_NotAllowCollapse_OnWindowResize());
+		if (sideBar_Left_AllowCollapse_OnWindowResize_rdx) {
+			dispatch(userReducerActions.sideBar_Left_NotAllowCollapse_OnWindowResize());
 		}
 	};
 	const open_sideBar_Right_Search_Modal = () => {
@@ -69,7 +71,12 @@ const DemoNavbar = ({ demoNavBarMenuOption }) => {
 		</button>
 	);
 	const sideBar_Right_Main_Button = (
-		<button onClick={open_sideBar_Right_Main_Modal} className={classes.hamburgerButton}>
+		<button
+			onClick={open_sideBar_Right_Main_Modal}
+			className={`${classes["hamburgerButton"]} ${
+				(sideBar_Right_Search_ModalStatus_rdx || sideBar_Right_Notes_ModalStatus_rdx || sideBar_Right_Main_ModalStatus_rdx) && classes.open_NavBarMenu
+			}`}
+		>
 			<svg className={classes.svgHamburger} focusable="false" viewBox="0 0 16 16">
 				<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
 			</svg>
@@ -83,9 +90,9 @@ const DemoNavbar = ({ demoNavBarMenuOption }) => {
 				<li className={classes.NavItem2}>{sideBar_Right_Search_Button}</li>
 				<li className={classes.NavItem3}>{sideBar_Right_Notes_Button}</li>
 				<li className={classes.NavItem4}>{sideBar_Right_Main_Button}</li>
-				{sideBar_Right_Search_ModalStatus_rdx && <SideBar_R_SearchModal demoNavBarMenuOption={demoNavBarMenuOption} />}
-				{sideBar_Right_Notes_ModalStatus_rdx && <SideBar_R_NotesModal demoNavBarMenuOption={demoNavBarMenuOption} />}
-				{sideBar_Right_Main_ModalStatus_rdx && <SideBar_R_MainModal demoNavBarMenuOption={demoNavBarMenuOption} />}
+				{sideBar_Right_Search_ModalStatus_rdx && <SideBar_R_SearchModal />}
+				{sideBar_Right_Notes_ModalStatus_rdx && <SideBar_R_NotesModal />}
+				{sideBar_Right_Main_ModalStatus_rdx && <SideBar_R_MainModal />}
 				{getStarted_ModalStatus_rdx && <GetStartedModal />}
 				{languageSettings_ModalStatus_rdx && <LanguageSettingsModal />}
 			</div>

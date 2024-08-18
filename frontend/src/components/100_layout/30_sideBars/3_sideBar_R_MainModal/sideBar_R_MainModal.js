@@ -7,7 +7,7 @@ import GetStartedButton from "../../../300_modals/10_getStartedModal/features/1_
 import Logo from "../../../../../static/images/1Logo.png";
 import classes from "./sideBar_R_MainModal.module.css";
 
-const SideBar_R_MainModal = ({ demoNavBarMenuOption }) => {
+const SideBar_R_MainModal = () => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
@@ -303,16 +303,14 @@ const SideBar_R_MainModal = ({ demoNavBarMenuOption }) => {
 							<i>{homeIcon}</i>
 							<span>Home</span>
 						</Link>
-						{demoNavBarMenuOption && (
-							<Link
-								to="/demo"
-								onClick={CloseNavBarMenu}
-								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
-							>
-								<i>{dashboardIcon}</i>
-								<span>Demo</span>
-							</Link>
-						)}
+						<Link
+							to="/demo"
+							onClick={CloseNavBarMenu}
+							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
+						>
+							<i>{dashboardIcon}</i>
+							<span>Demo</span>
+						</Link>
 					</div>
 				</div>
 				<div className={classes.bottom}>

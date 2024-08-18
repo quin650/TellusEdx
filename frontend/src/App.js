@@ -18,12 +18,8 @@ const App = () => {
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView = useSelector(({ user }) => user.isDemoView);
-
 	const [divIDs, setDivIDs] = useState([]);
 	const [activeID, setActiveID] = useState("");
-	console.log("location: ", location.pathname);
-	console.log("divIDs: ", divIDs);
-	console.log("activeID: ", activeID);
 	// Set Dark/Light Mode
 	useEffect(() => {
 		document.querySelector("main").setAttribute("prefers-color-scheme", isDarkMode_rdx === "dark" ? "dark" : "light");
@@ -36,7 +32,6 @@ const App = () => {
 			dispatch(userReducerActions.setRegularView());
 		}
 	}, [location, dispatch, isDemoView]);
-
 	// List of div's with ID's
 	useEffect(() => {
 		setDivIDs([]);
@@ -56,7 +51,6 @@ const App = () => {
 
 		return () => clearTimeout(timer);
 	}, [location]);
-
 	// Find active ID (i.e. currently scrolled to)
 	useEffect(() => {
 		const handleScroll = throttle(() => {
@@ -71,7 +65,6 @@ const App = () => {
 			});
 			setActiveID(currentActiveID);
 			divElements = [];
-			console.log("divElements: ", divElements);
 		}, 350);
 		const scrollContainer = document.querySelector("main");
 		scrollContainer.addEventListener("scroll", handleScroll);
@@ -80,7 +73,6 @@ const App = () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
 	}, [location]);
-
 	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
 	const handleKeyCombination = (e) => {
 		if (e.ctrlKey && e.key === "m") {
