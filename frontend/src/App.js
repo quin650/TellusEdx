@@ -18,6 +18,8 @@ const App = () => {
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView = useSelector(({ user }) => user.isDemoView);
+	const sideBar_Right_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_Right_Main_ModalStatus_rdx);
+
 	const [divIDs, setDivIDs] = useState([]);
 	const [activeID, setActiveID] = useState("");
 	// Set Dark/Light Mode
@@ -74,17 +76,27 @@ const App = () => {
 		};
 	}, [location]);
 	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
-	const handleKeyCombination = (e) => {
-		if (e.ctrlKey && e.key === "m") {
-			dispatch(userReducerActions.sideBar_Right_Toggle_Main_ModalVisibility());
-		}
-	};
+
 	useEffect(() => {
-		document.addEventListener("keydown", handleKeyCombination);
+		const handleKeyCombination = (e) => {
+			if (location.pathname !== "/demo" && e.ctrlKey && e.key === "m") {
+				if (sideBar_Right_Main_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+				} else {
+					dispatch(userReducerActions.sideBar_Right_Open_Main_Modal());
+				}
+			}
+		};
+
+		if (location.pathname !== "/demo") {
+			document.addEventListener("keydown", handleKeyCombination);
+		}
+
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [location]);
+	}, [location.pathname, sideBar_Right_Main_ModalStatus_rdx]);
+
 	return (
 		<main>
 			{!isDemoView && (

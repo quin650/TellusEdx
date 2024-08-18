@@ -47,6 +47,13 @@ const DemoDMVClassC = () => {
 	const pageContentRef = useRef(null);
 	const [pageTitle, setPageTitle] = useState([]);
 	const [headingsList, setHeadingsList] = useState([]);
+	const {
+		sideBar_Left_isOpen_Rdx,
+		sideBar_Left_AllowCollapse_OnWindowResize_rdx,
+		sideBar_Right_Search_ModalStatus_rdx,
+		sideBar_Right_Notes_ModalStatus_rdx,
+		sideBar_Right_Main_ModalStatus_rdx,
+	} = useSelector(({ user }) => user);
 	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
 	const ListOfPages = [
 		<Page1A />,
@@ -74,8 +81,7 @@ const DemoDMVClassC = () => {
 		<Page22 />,
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
-	const sideBar_Left_isOpen_Rdx = useSelector(({ user }) => user.sideBar_Left_isOpen_Rdx);
-	const sideBar_Left_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.sideBar_Left_AllowCollapse_OnWindowResize_rdx);
+
 	const [activeID, setActiveID] = useState(null);
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
@@ -218,29 +224,62 @@ const DemoDMVClassC = () => {
 			window.removeEventListener("resize", width_Affects_to_SideBar_Left_TOC);
 		};
 	}, [sideBar_Left_AllowCollapse_OnWindowResize_rdx, sideBar_Left_isOpen_Rdx, width_Affects_to_SideBar_Left_TOC]);
-	//Prevents the demo option to be shown in the sideBar_right_MainModal
-	// General Event listeners -- CMD+B (Toggle SideBar_Left) CMD+SHIFT+N (Toggle SideBar_Right Notes) CMD+SHIFT+S (Toggle SideBar_Right Search)
+
 	const handleKeyCombination = (e) => {
 		switch (true) {
 			case e.ctrlKey && e.key === "b":
-				dispatch(userReducerActions.sideBar_Left_Toggle_ModalVisibility());
+				if (sideBar_Left_isOpen_Rdx) {
+					dispatch(userReducerActions.sideBar_Left_Close());
+					if (sideBar_Left_AllowCollapse_OnWindowResize_rdx) {
+						dispatch(userReducerActions.sideBar_Left_NotAllowCollapse_OnWindowResize());
+					}
+				} else {
+					dispatch(userReducerActions.sideBar_Left_Open());
+				}
 				break;
+
 			case e.ctrlKey && e.key === "s":
-				dispatch(userReducerActions.sideBar_Right_Toggle_Search_ModalVisibility());
+				if (sideBar_Right_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+				if (sideBar_Right_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+				if (!sideBar_Right_Search_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_Right_Open_Search_Modal());
+				} else {
+					dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+				}
 				break;
+
 			case e.ctrlKey && e.key === "n":
-				dispatch(userReducerActions.sideBar_Right_Toggle_Notes_ModalVisibility());
+				if (sideBar_Right_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+				if (sideBar_Right_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+				if (!sideBar_Right_Notes_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_Right_Open_Notes_Modal());
+				} else {
+					dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+				}
 				break;
+
+			case e.ctrlKey && e.key === "m":
+				if (sideBar_Right_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+				if (sideBar_Right_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+				if (!sideBar_Right_Main_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_Right_Open_Main_Modal());
+				} else {
+					dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+				}
+				break;
+
 			default:
 				break;
 		}
 	};
+
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyCombination);
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [currentPageNum_rdx]);
+	}, [sideBar_Left_isOpen_Rdx, sideBar_Right_Search_ModalStatus_rdx, sideBar_Right_Notes_ModalStatus_rdx, sideBar_Right_Main_ModalStatus_rdx]);
+
 	return (
 		<div className={classes.mainContainer} ref={mainContainerRef}>
 			<DemoNavbar />

@@ -14,9 +14,9 @@ const DemoNavbar = () => {
 	const {
 		sideBar_Left_isOpen_Rdx,
 		sideBar_Left_AllowCollapse_OnWindowResize_rdx,
-		sideBar_Right_Main_ModalStatus_rdx,
 		sideBar_Right_Search_ModalStatus_rdx,
 		sideBar_Right_Notes_ModalStatus_rdx,
+		sideBar_Right_Main_ModalStatus_rdx,
 		getStarted_ModalStatus_rdx,
 		languageSettings_ModalStatus_rdx,
 	} = useSelector(({ user }) => user);
@@ -29,12 +29,30 @@ const DemoNavbar = () => {
 		}
 	};
 	const open_sideBar_Right_Search_Modal = () => {
+		if (sideBar_Right_Notes_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		}
+		if (sideBar_Right_Main_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		}
 		dispatch(userReducerActions.sideBar_Right_Open_Search_Modal());
 	};
 	const open_sideBar_Right_Notes_Modal = () => {
-		dispatch(userReducerActions.sideBar_Right_Open_Notes_Modal());
+		if (sideBar_Right_Search_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		}
+		if (sideBar_Right_Main_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		}
+		dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
 	};
 	const open_sideBar_Right_Main_Modal = () => {
+		if (sideBar_Right_Notes_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		}
+		if (sideBar_Right_Search_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		}
 		dispatch(userReducerActions.sideBar_Right_Open_Main_Modal());
 	};
 	// Buttons

@@ -97,6 +97,9 @@ const userSlice = createSlice({
 		sideBar_Left_NotAllowCollapse_OnWindowResize(state) {
 			state.sideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
 		},
+		sideBar_Left_YesAllowCollapse_OnWindowResize(state) {
+			state.sideBar_Left_AllowCollapse_OnWindowResize_rdx = true;
+		},
 		// Search Modal
 		sideBar_Right_Toggle_Search_ModalVisibility(state) {
 			state.sideBar_Right_Search_ModalStatus_rdx = !state.sideBar_Right_Search_ModalStatus_rdx;
