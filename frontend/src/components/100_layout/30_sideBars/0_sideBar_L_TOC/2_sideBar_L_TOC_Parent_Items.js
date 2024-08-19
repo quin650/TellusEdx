@@ -40,6 +40,7 @@ const SideBar_L_TOC_Parent_Items = ({ idx, text, id, currentPageNum, isActiveID,
 					text={child.text}
 					id={`#${child.id}`}
 					isActiveID={activeID === child.id}
+					activeID={activeID}
 				/>
 			))}
 		</li>

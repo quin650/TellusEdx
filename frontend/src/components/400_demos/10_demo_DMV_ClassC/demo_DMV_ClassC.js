@@ -4,7 +4,7 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 import DemoNavbar from "../../100_layout/10_header/2_navBar_Demo";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
-
+import PaginationGUI from "./0_features/pagination/paginationGUI";
 import Page1A from "../../200_pages/20_demo_pages/page1A";
 import Page1B from "../../200_pages/20_demo_pages/page1B";
 import Page2 from "../../200_pages/20_demo_pages/page2";
@@ -29,8 +29,6 @@ import Page20 from "../../200_pages/20_demo_pages/page20";
 import Page21 from "../../200_pages/20_demo_pages/page21";
 import Page22 from "../../200_pages/20_demo_pages/page22";
 
-import PaginationGUI from "./0_features/pagination/paginationGUI";
-
 import classes from "./demo_DMV_ClassC.module.css";
 const generateIdFromText = (text) => {
 	if (typeof text !== "string") {
@@ -53,8 +51,8 @@ const DemoDMVClassC = () => {
 		sideBar_Right_Search_ModalStatus_rdx,
 		sideBar_Right_Notes_ModalStatus_rdx,
 		sideBar_Right_Main_ModalStatus_rdx,
+		currentPageNum_rdx,
 	} = useSelector(({ user }) => user);
-	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
 	const ListOfPages = [
 		<Page1A />,
 		<Page1B />,
@@ -81,8 +79,8 @@ const DemoDMVClassC = () => {
 		<Page22 />,
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
-
 	const [activeID, setActiveID] = useState(null);
+
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -179,20 +177,26 @@ const DemoDMVClassC = () => {
 		}
 	};
 	const debouncedHandleScroll = debounce(() => {
+		// console.log("Scroll event detected (debounced).");
 		const closestHeaderId = getClosestHeaderToTop();
 		setActiveID(closestHeaderId);
+		// console.log("Closest header ID after scroll (debounced):", closestHeaderId);
 	}, 100);
+
 	useEffect(() => {
 		const scrollContainer = mainContainerRef.current;
 		if (scrollContainer) {
 			scrollContainer.addEventListener("scroll", debouncedHandleScroll);
+			// console.log("Scroll event listener added to mainContainerRef (debounced).");
 			return () => {
+				// console.log("Removing scroll event listener...");
 				scrollContainer.removeEventListener("scroll", debouncedHandleScroll);
 			};
 		} else {
 			// console.log("mainContainerRef is null.");
 		}
 	}, [mainContainerRef]);
+
 	//! GoTo_TopOfPage
 	const GoTo_TopOfPage = () => {
 		if (mainContainerRef.current) {
@@ -224,7 +228,7 @@ const DemoDMVClassC = () => {
 			window.removeEventListener("resize", width_Affects_to_SideBar_Left_TOC);
 		};
 	}, [sideBar_Left_AllowCollapse_OnWindowResize_rdx, sideBar_Left_isOpen_Rdx, width_Affects_to_SideBar_Left_TOC]);
-
+	// Hot-Key Combinations
 	const handleKeyCombination = (e) => {
 		switch (true) {
 			case e.ctrlKey && e.key === "b":
@@ -272,7 +276,6 @@ const DemoDMVClassC = () => {
 				break;
 		}
 	};
-
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyCombination);
 		return () => {
@@ -281,7 +284,7 @@ const DemoDMVClassC = () => {
 	}, [sideBar_Left_isOpen_Rdx, sideBar_Right_Search_ModalStatus_rdx, sideBar_Right_Notes_ModalStatus_rdx, sideBar_Right_Main_ModalStatus_rdx]);
 
 	return (
-		<div className={classes.mainContainer} ref={mainContainerRef}>
+		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
 			<DemoNavbar />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
@@ -301,7 +304,7 @@ const DemoDMVClassC = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 };
 
