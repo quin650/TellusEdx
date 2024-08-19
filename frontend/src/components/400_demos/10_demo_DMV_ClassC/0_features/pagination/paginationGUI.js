@@ -11,7 +11,6 @@ const PaginationGUI = () => {
 	const pagesLength_rdx = useSelector(({ user }) => user.pagesLength_rdx);
 	//!Prev-Next Page
 	const PrevPage = useCallback(() => {
-		console.log("PrevPage");
 		let newPageNum = currentPageNum_rdx - 1;
 		if (newPageNum >= 1) {
 			dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));
@@ -20,7 +19,6 @@ const PaginationGUI = () => {
 		}
 	}, [currentPageNum_rdx, dispatch]);
 	const NextPage = useCallback(() => {
-		console.log("NextPage");
 		let newPageNum = currentPageNum_rdx + 1;
 		if (newPageNum <= pagesLength_rdx) {
 			dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));

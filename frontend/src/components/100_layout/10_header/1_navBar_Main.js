@@ -13,7 +13,7 @@ import classes from "./navBar.module.css";
 const MainNavbar = () => {
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
 	const goToTOp = () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
+		document.querySelector("main").scrollTo(0, 0);
 	};
 	const { sideBar_Right_Main_ModalStatus_rdx, getStarted_ModalStatus_rdx, languageSettings_ModalStatus_rdx } = useSelector(({ user }) => user);
 	const dispatch = useDispatch();

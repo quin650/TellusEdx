@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Logo from "../../../../static/images/Logo_arrows.png";
 import classes from "./footer.module.css";
 
@@ -13,14 +12,14 @@ const Footer = () => {
 			<div className={classes.outerContainer_Top}>
 				<ul className={classes.innerContainer_Top}>
 					<li>
-						<Link to="/home" onClick={handleClickScroll} className={classes.LogoContainer}>
+						<div onClick={handleClickScroll} className={classes.LogoContainer}>
 							<img src={Logo} alt="Logo" className={classes.Logo}></img>
-						</Link>
+						</div>
 					</li>
 					<li>
-						<span to="/home" onClick={handleClickScroll} className={classes.companyName}>
+						<div onClick={handleClickScroll} className={classes.companyName}>
 							TellusEd
-						</span>
+						</div>
 					</li>
 				</ul>
 			</div>

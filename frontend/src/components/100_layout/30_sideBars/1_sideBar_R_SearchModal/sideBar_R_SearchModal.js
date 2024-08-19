@@ -54,8 +54,12 @@ const SideBar_R_SearchModal = () => {
 	//!Search Bar
 	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
+	useEffect(() => {
+		handleSearchBarFocus();
+	}, []);
 	const handleSearchBarFocus = () => {
 		setSearchBarIsFocused(true);
+		searchBarRef.current.focus();
 	};
 	const handleSearchBarBlur = () => {
 		setSearchBarIsFocused(false);

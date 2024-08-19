@@ -7,7 +7,7 @@ import GetStartedButton from "../../../300_modals/10_getStartedModal/features/1_
 import Logo from "../../../../../static/images/1Logo.png";
 import classes from "./sideBar_R_MainModal.module.css";
 
-const SideBar_R_MainModal = () => {
+const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Right_Notes_Modal }) => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
@@ -31,6 +31,11 @@ const SideBar_R_MainModal = () => {
 				d="M0.75 1.14062C0.75 0.786818 1.03682 0.5 1.39062 0.5H9.55859C9.9124 0.5 10.1992 0.786818 10.1992 1.14063V12.1914C10.1992 12.5452 9.9124 12.832 9.55859 12.832H1.39062C1.03682 12.832 0.75 12.5452 0.75 12.1914V1.14062ZM2.35156 2.10156V11.2305H8.59766V2.10156H2.35156ZM11.8008 1.14062C11.8008 0.786818 12.0876 0.5 12.4414 0.5H20.6094C20.9632 0.5 21.25 0.786818 21.25 1.14063V6.42578C21.25 6.77959 20.9632 7.06641 20.6094 7.06641H12.4414C12.0876 7.06641 11.8008 6.77959 11.8008 6.42578V1.14062ZM13.4023 2.10156V5.46484H19.6484V2.10156H13.4023ZM11.8008 9.30859C11.8008 8.95479 12.0876 8.66797 12.4414 8.66797H20.6094C20.9632 8.66797 21.25 8.95479 21.25 9.30859V20.3594C21.25 20.7132 20.9632 21 20.6094 21H12.4414C12.0876 21 11.8008 20.7132 11.8008 20.3594V9.30859ZM13.4023 10.2695V19.3984H19.6484V10.2695H13.4023ZM0.75 15.0742C0.75 14.7204 1.03682 14.4336 1.39062 14.4336H9.55859C9.9124 14.4336 10.1992 14.7204 10.1992 15.0742V20.3594C10.1992 20.7132 9.9124 21 9.55859 21H1.39062C1.03682 21 0.75 20.7132 0.75 20.3594V15.0742ZM2.35156 16.0352V19.3984H8.59766V16.0352H2.35156Z"
 				fill="currentColor"
 			/>
+		</svg>
+	);
+	const NotesIcon = (
+		<svg className={classes.svgNotesMenuButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			<path d="M15.673 3.913a3.121 3.121 0 1 1 4.414 4.414l-5.937 5.937a5 5 0 0 1-2.828 1.415l-2.18.31a1 1 0 0 1-1.132-1.13l.311-2.18A5 5 0 0 1 9.736 9.85zm3 1.414a1.12 1.12 0 0 0-1.586 0l-5.937 5.937a3 3 0 0 0-.849 1.697l-.123.86.86-.122a3 3 0 0 0 1.698-.849l5.937-5.937a1.12 1.12 0 0 0 0-1.586M11 4A1 1 0 0 1 10 5c-.998 0-1.702.008-2.253.06-.54.052-.862.141-1.109.267a3 3 0 0 0-1.311 1.311c-.134.263-.226.611-.276 1.216C5.001 8.471 5 9.264 5 10.4v3.2c0 1.137 0 1.929.051 2.546.05.605.142.953.276 1.216a3 3 0 0 0 1.311 1.311c.263.134.611.226 1.216.276.617.05 1.41.051 2.546.051h3.2c1.137 0 1.929 0 2.546-.051.605-.05.953-.142 1.216-.276a3 3 0 0 0 1.311-1.311c.126-.247.215-.569.266-1.108.053-.552.06-1.256.06-2.255a1 1 0 1 1 2 .002c0 .978-.006 1.78-.069 2.442-.064.673-.192 1.27-.475 1.827a5 5 0 0 1-2.185 2.185c-.592.302-1.232.428-1.961.487C15.6 21 14.727 21 13.643 21h-3.286c-1.084 0-1.958 0-2.666-.058-.728-.06-1.369-.185-1.96-.487a5 5 0 0 1-2.186-2.185c-.302-.592-.428-1.233-.487-1.961C3 15.6 3 14.727 3 13.643v-3.286c0-1.084 0-1.958.058-2.666.06-.729.185-1.369.487-1.961A5 5 0 0 1 5.73 3.545c.556-.284 1.154-.411 1.827-.475C8.22 3.007 9.021 3 10 3A1 1 0 0 1 11 4"></path>
 		</svg>
 	);
 	const aboutUsIcon = (
@@ -146,6 +151,11 @@ const SideBar_R_MainModal = () => {
 	}, []);
 	useEffect(() => {
 		setActiveIcon(location.pathname);
+		if (location.pathname !== "/demo") {
+			setSearchPlaceholder("Explore");
+		} else {
+			setSearchPlaceholder("Search Resources");
+		}
 	}, [location]);
 	// Functions
 	const LogInHandler = () => {
@@ -155,15 +165,27 @@ const SideBar_R_MainModal = () => {
 		dispatch(logout_APIAction());
 		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 	};
-	const CloseNavBarMenu = () => {
+	const CloseNavBarMenu_and_ScrollSmoothly = () => {
 		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		setTimeout(() => {
+			document.querySelector("main").scrollTo({
+				top: 0,
+				behavior: "instant",
+			});
+		}, 0);
+	};
+	const CloseNavBarMenu_and_ScrollQuickly = () => {
+		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		document.querySelector("main").scrollTo({
+			top: 0,
+			behavior: "instant",
+		});
 	};
 	const OpenLanguageSettingsModal = () => {
 		dispatch(userReducerActions.languageSettingsModalOpen());
 	};
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const [isChecked, setIsChecked] = useState(isDarkMode_rdx === "dark");
-
 	const toggleTheme = (e) => {
 		if (e.target.checked) {
 			dispatch(userReducerActions.setDarkLightModeToTrue("dark"));
@@ -177,12 +199,7 @@ const SideBar_R_MainModal = () => {
 		languageSettingsModalStatusRef.current = languageSettings_ModalStatus_rdx;
 	}, [languageSettings_ModalStatus_rdx]);
 	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (
-			navBarRef.current &&
-			!navBarRef.current.contains(e.target) &&
-			!exitButtonRef.current.contains(e.target) &&
-			!languageSettingsModalStatusRef.current
-		) {
+		if (navBarRef.current && !navBarRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
 			exitNavBarAction();
 		}
 	};
@@ -260,11 +277,19 @@ const SideBar_R_MainModal = () => {
 	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
 	const handleSearchBarFocus = () => {
-		setSearchBarIsFocused(true);
+		if (location.pathname !== "/demo") {
+			setSearchBarIsFocused(true);
+		} else {
+			open_sideBar_Right_Search_Modal();
+		}
 	};
+
 	const handleSearchBarBlur = () => {
 		setSearchBarIsFocused(false);
 	};
+
+	const [searchPlaceholder, setSearchPlaceholder] = useState("Explore");
+
 	const RightMain_SearchBar = (
 		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
 			<input
@@ -272,7 +297,7 @@ const SideBar_R_MainModal = () => {
 				ref={searchBarRef}
 				onFocus={handleSearchBarFocus}
 				onBlur={handleSearchBarBlur}
-				placeholder="Explore"
+				placeholder={searchPlaceholder}
 				name="q"
 				aria-label="Search"
 			/>
@@ -285,10 +310,10 @@ const SideBar_R_MainModal = () => {
 			{exitButton}
 			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
 				<div className={classes.outerLogoContainer}>
-					<Link to="/home" onClick={CloseNavBarMenu} className={classes.Logo}>
+					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
 					</Link>
-					<Link to="/home" onClick={CloseNavBarMenu} className={classes.companyName}>
+					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.companyName}>
 						TellusEd
 					</Link>
 				</div>
@@ -297,7 +322,7 @@ const SideBar_R_MainModal = () => {
 					<div className={classes.sidebarMenu}>
 						<Link
 							to="/home"
-							onClick={CloseNavBarMenu}
+							onClick={CloseNavBarMenu_and_ScrollSmoothly}
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
@@ -305,20 +330,28 @@ const SideBar_R_MainModal = () => {
 						</Link>
 						<Link
 							to="/demo"
-							onClick={CloseNavBarMenu}
+							onClick={CloseNavBarMenu_and_ScrollQuickly}
 							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
 						>
 							<i>{dashboardIcon}</i>
 							<span>Demo</span>
 						</Link>
+
+						{location.pathname === "/demo" && (
+							<Link onClick={open_sideBar_Right_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
+								<i>{NotesIcon}</i>
+								<span>Notes</span>
+							</Link>
+						)}
 					</div>
 				</div>
+
 				<div className={classes.bottom}>
 					<div className={classes.subgroup}>
 						<div className={classes.sidebarMenu}>
 							<Link
 								to="/aboutus"
-								onClick={CloseNavBarMenu}
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/aboutus" && classes.isActiveAboutUsIcon}`}
 							>
 								<i>{aboutUsIcon}</i>
@@ -326,7 +359,7 @@ const SideBar_R_MainModal = () => {
 							</Link>
 							<Link
 								to="/supportcenter"
-								onClick={CloseNavBarMenu}
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/supportcenter" && classes.isActiveSupportCenterIcon}`}
 							>
 								<i>{supportCenterIcon}</i>
@@ -334,7 +367,7 @@ const SideBar_R_MainModal = () => {
 							</Link>
 							<Link
 								to="/help"
-								onClick={CloseNavBarMenu}
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/help" && classes.isActiveHelpIcon}`}
 							>
 								<i>{helpIcon}</i>

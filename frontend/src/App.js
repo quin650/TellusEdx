@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
@@ -14,6 +14,7 @@ import Help from "./components/200_pages/10_pages/5_help";
 import OnThisPageQuickView from "./components/100_layout/20_features/1_onThisPageQuickView";
 
 const App = () => {
+	const mainAppContainerRef = useRef();
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
@@ -98,7 +99,7 @@ const App = () => {
 	}, [location.pathname, sideBar_Right_Main_ModalStatus_rdx]);
 
 	return (
-		<main>
+		<main id="main" role="main" ref={mainAppContainerRef}>
 			{!isDemoView && (
 				<header>
 					<MainNavbar />

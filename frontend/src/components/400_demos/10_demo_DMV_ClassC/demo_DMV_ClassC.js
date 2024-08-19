@@ -284,7 +284,7 @@ const DemoDMVClassC = () => {
 	}, [sideBar_Left_isOpen_Rdx, sideBar_Right_Search_ModalStatus_rdx, sideBar_Right_Notes_ModalStatus_rdx, sideBar_Right_Main_ModalStatus_rdx]);
 
 	return (
-		<main className={classes.mainContainer} id="main" role="main" ref={mainContainerRef}>
+		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
 			<DemoNavbar />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
