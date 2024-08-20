@@ -71,7 +71,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	);
 
 	return (
-		<div className={`${classes["sideBar_l_outerContainer"]} ${sideBar_L_isOpen ? classes.open : ""}`}>
+		<div className={`${classes["sideBar_L_outerContainer"]} ${sideBar_L_isOpen ? classes.open : ""}`}>
 			{TOC_TabOptions}
 			<PaginationGUI />
 			{TOC_SearchBar}

@@ -85,7 +85,7 @@
 	list-style: none;
 }
 /* toc Button------------------------------------------------ */
-.toggleLeftMenuButton {
+.toggleLMenuButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -107,16 +107,16 @@
 	margin: 0;
 	border: 0px solid red;
 }
-.toggleLeftMenuButton:hover {
+.toggleLMenuButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-.toggleLeftMenuButton:active {
+.toggleLMenuButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-.toggleLeftMenuButton.open:hover {
+.toggleLMenuButton.open:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
-.toggleLeftMenuButton.open:active {
+.toggleLMenuButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .svgMenuButton {

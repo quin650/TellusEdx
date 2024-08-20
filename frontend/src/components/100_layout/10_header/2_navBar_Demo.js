@@ -24,7 +24,7 @@ const DemoNavbar = () => {
 	const dispatch = useDispatch();
 	// Button onClick actions
 	const toggle_SideBar_L_Visibility = () => {
-		dispatch(userReducerActions.sideBar_L_Toggle_ModalVisibility(!sideBar_L_isOpen_Rdx));
+		dispatch(userReducerActions.sideBar_L_Toggle_ModalVisibility());
 		if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
 			dispatch(userReducerActions.sideBar_L_NotAllowCollapse_OnWindowResize());
 		}

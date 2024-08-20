@@ -46,11 +46,11 @@ const DemoDMVClassC = () => {
 	const [pageTitle, setPageTitle] = useState([]);
 	const [headingsList, setHeadingsList] = useState([]);
 	const {
-		sideBar_Left_isOpen_Rdx,
-		sideBar_Left_AllowCollapse_OnWindowResize_rdx,
-		sideBar_Right_Search_ModalStatus_rdx,
-		sideBar_Right_Notes_ModalStatus_rdx,
-		sideBar_Right_Main_ModalStatus_rdx,
+		sideBar_L_isOpen_Rdx,
+		sideBar_L_AllowCollapse_OnWindowResize_rdx,
+		sideBar_R_Search_ModalStatus_rdx,
+		sideBar_R_Notes_ModalStatus_rdx,
+		sideBar_R_Main_ModalStatus_rdx,
 		currentPageNum_rdx,
 	} = useSelector(({ user }) => user);
 	const ListOfPages = [
@@ -210,65 +210,65 @@ const DemoDMVClassC = () => {
 		GoTo_TopOfPage();
 	}, [currentPageNum_rdx]);
 	//! TOC Status: Open/Close
-	const width_Affects_to_SideBar_Left_TOC = useCallback(
+	const width_Affects_to_SideBar_L_TOC = useCallback(
 		throttle(() => {
-			if (window.innerWidth < 1400 && sideBar_Left_isOpen_Rdx) {
-				dispatch(userReducerActions.sideBar_Left_Close());
-			} else if (window.innerWidth >= 1400 && !sideBar_Left_isOpen_Rdx) {
-				dispatch(userReducerActions.sideBar_Left_Open());
+			if (window.innerWidth < 1400 && sideBar_L_isOpen_Rdx) {
+				dispatch(userReducerActions.sideBar_L_Close());
+			} else if (window.innerWidth >= 1400 && !sideBar_L_isOpen_Rdx) {
+				dispatch(userReducerActions.sideBar_L_Open());
 			}
 		}, 50),
-		[sideBar_Left_isOpen_Rdx]
+		[sideBar_L_isOpen_Rdx]
 	);
 	useEffect(() => {
-		if (!sideBar_Left_AllowCollapse_OnWindowResize_rdx) return;
-		window.addEventListener("resize", width_Affects_to_SideBar_Left_TOC);
-		width_Affects_to_SideBar_Left_TOC();
+		if (!sideBar_L_AllowCollapse_OnWindowResize_rdx) return;
+		window.addEventListener("resize", width_Affects_to_SideBar_L_TOC);
+		width_Affects_to_SideBar_L_TOC();
 		return () => {
-			window.removeEventListener("resize", width_Affects_to_SideBar_Left_TOC);
+			window.removeEventListener("resize", width_Affects_to_SideBar_L_TOC);
 		};
-	}, [sideBar_Left_AllowCollapse_OnWindowResize_rdx, sideBar_Left_isOpen_Rdx, width_Affects_to_SideBar_Left_TOC]);
+	}, [sideBar_L_AllowCollapse_OnWindowResize_rdx, sideBar_L_isOpen_Rdx, width_Affects_to_SideBar_L_TOC]);
 	// Hot-Key Combinations
 	const handleKeyCombination = (e) => {
 		switch (true) {
 			case e.ctrlKey && e.key === "b":
-				if (sideBar_Left_isOpen_Rdx) {
-					dispatch(userReducerActions.sideBar_Left_Close());
-					if (sideBar_Left_AllowCollapse_OnWindowResize_rdx) {
-						dispatch(userReducerActions.sideBar_Left_NotAllowCollapse_OnWindowResize());
+				if (sideBar_L_isOpen_Rdx) {
+					dispatch(userReducerActions.sideBar_L_Close());
+					if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
+						dispatch(userReducerActions.sideBar_L_NotAllowCollapse_OnWindowResize());
 					}
 				} else {
-					dispatch(userReducerActions.sideBar_Left_Open());
+					dispatch(userReducerActions.sideBar_L_Open());
 				}
 				break;
 
 			case e.ctrlKey && e.key === "s":
-				if (sideBar_Right_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
-				if (sideBar_Right_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
-				if (!sideBar_Right_Search_ModalStatus_rdx) {
-					dispatch(userReducerActions.sideBar_Right_Open_Search_Modal());
+				if (sideBar_R_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+				if (sideBar_R_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+				if (!sideBar_R_Search_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_R_Open_Search_Modal());
 				} else {
-					dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+					dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 				}
 				break;
 
 			case e.ctrlKey && e.key === "n":
-				if (sideBar_Right_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
-				if (sideBar_Right_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
-				if (!sideBar_Right_Notes_ModalStatus_rdx) {
-					dispatch(userReducerActions.sideBar_Right_Open_Notes_Modal());
+				if (sideBar_R_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
+				if (sideBar_R_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+				if (!sideBar_R_Notes_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_R_Open_Notes_Modal());
 				} else {
-					dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+					dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
 				}
 				break;
 
 			case e.ctrlKey && e.key === "m":
-				if (sideBar_Right_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
-				if (sideBar_Right_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
-				if (!sideBar_Right_Main_ModalStatus_rdx) {
-					dispatch(userReducerActions.sideBar_Right_Open_Main_Modal());
+				if (sideBar_R_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
+				if (sideBar_R_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+				if (!sideBar_R_Main_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_R_Open_Main_Modal());
 				} else {
-					dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+					dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 				}
 				break;
 
@@ -281,14 +281,14 @@ const DemoDMVClassC = () => {
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [sideBar_Left_isOpen_Rdx, sideBar_Right_Search_ModalStatus_rdx, sideBar_Right_Notes_ModalStatus_rdx, sideBar_Right_Main_ModalStatus_rdx]);
+	}, [sideBar_L_isOpen_Rdx, sideBar_R_Search_ModalStatus_rdx, sideBar_R_Notes_ModalStatus_rdx, sideBar_R_Main_ModalStatus_rdx]);
 
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
 			<DemoNavbar />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
-					sideBar_Left_isOpen={sideBar_Left_isOpen_Rdx}
+					sideBar_L_isOpen={sideBar_L_isOpen_Rdx}
 					pageTitle={pageTitle}
 					memoizedHeadings={memoizedHeadings}
 					currentPageNum={currentPageNum_rdx}
