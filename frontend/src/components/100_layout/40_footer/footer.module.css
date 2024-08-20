@@ -41,6 +41,7 @@
 	height: 3.2rem;
 	background-color: var(--WhiteToGray);
 	border-radius: 50%;
+	cursor: pointer;
 }
 .Logo {
 	display: flex;

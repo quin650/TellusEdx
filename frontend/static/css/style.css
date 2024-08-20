@@ -68,7 +68,9 @@ body {
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #287bba);
 	--hover_readerHeaderTitle_lightBlue_to_blue: #287bba;
+	--color_readerSecondary_darkBlue_to_offWhite: #163159;
 	--color_readerSecondary_darkBlue_to_lightBlue: #163159;
+	--color_readerSecondary_darkBlue_to_lightBlue_h4: #163159;
 	--color_readerSectionTitle_white_to_offWhite: #ffffff;
 	--color_readerHyperLink_brightBlue_to_skyBlue: #0000ee;
 	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/
@@ -125,7 +127,9 @@ body {
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #171717;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #191919);
 	--hover_readerHeaderTitle_lightBlue_to_blue: var(--Blue);
+	--color_readerSecondary_darkBlue_to_offWhite: #dddddd;
 	--color_readerSecondary_darkBlue_to_lightBlue: #30568d;
+	--color_readerSecondary_darkBlue_to_lightBlue_h4: #556986;
 	--color_readerSectionTitle_white_to_offWhite: #dddddd;
 	--color_readerHyperLink_brightBlue_to_skyBlue: #87ceeb;
 	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/

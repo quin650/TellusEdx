@@ -22,7 +22,6 @@
 	top: 180px;
 	left: 15px;
 	width: 14px;
-
 	margin-bottom: auto;
 	margin-right: auto;
 	border-radius: 4px;
@@ -68,7 +67,6 @@
 	z-index: 301;
 	display: block;
 	position: fixed;
-
 	border-radius: 4px;
 	background-color: rgb(242, 242, 242);
 	border: 1px solid rgb(233, 233, 233);
@@ -80,6 +78,10 @@
 	padding: 3px;
 	color: black;
 	margin: 0;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 /* Not related to alt or option pressed */
@@ -143,7 +145,7 @@
 	background-color: rgb(242, 242, 242);
 	border: 1px solid rgb(233, 233, 233);
 	height: 20px;
-	margin: 3px 3px 3px 20px;
+	margin: 3px 3px 3px 15px;
 }
 .theText {
 	font-size: 10px;

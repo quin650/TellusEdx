@@ -81,7 +81,7 @@
 	padding: 65px 72px 26px 72px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	border: 2px solid var(--WhiteToBlack);
 }

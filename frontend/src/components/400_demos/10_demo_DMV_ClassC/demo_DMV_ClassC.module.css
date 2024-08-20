@@ -76,7 +76,7 @@
 	font-size: 3rem;
 	font-weight: 400;
 	margin-bottom: 0.5em;
-	color: var(--color_readerSecondary_darkBlue_to_lightBlue);
+	color: var(--color_readerSecondary_darkBlue_to_offWhite);
 	line-height: 1.15;
 	margin: 0 0 1rem;
 }
@@ -94,7 +94,7 @@
 }
 .page_content h4 {
 	font-size: 1.5rem;
-	color: #163159;
+	color: var(--color_readerSecondary_darkBlue_to_lightBlue_h4);
 	font-weight: 400;
 	line-height: 1.15;
 	margin: 0 0 1rem;

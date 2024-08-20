@@ -16,6 +16,7 @@ const initialState = {
 	sideBar_Right_Main_ModalStatus_rdx: false,
 	sideBar_Right_Search_ModalStatus_rdx: false,
 	sideBar_Right_Notes_ModalStatus_rdx: false,
+
 	getStarted_ModalStatus_rdx: false,
 	getStartedView: "",
 	languageSettings_ModalStatus_rdx: false,
