@@ -4,10 +4,10 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "./sideBar_R_SearchModal.module.css";
 
 const SideBar_R_SearchModal = () => {
-	const sideBarRIghtSearchRef = useRef();
+	const sideBarRSearchRef = useRef();
 	const exitButtonRef = useRef();
 	const dispatch = useDispatch();
-	const sideBar_Right_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_Right_Search_ModalStatus_rdx);
+	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
 	// useEffects
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -15,12 +15,12 @@ const SideBar_R_SearchModal = () => {
 	}, []);
 	// Functions
 	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (sideBarRIghtSearchRef.current && !sideBarRIghtSearchRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target)) {
+		if (sideBarRSearchRef.current && !sideBarRSearchRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target)) {
 			exitNavBarAction();
 		}
 	};
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -30,14 +30,14 @@ const SideBar_R_SearchModal = () => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (sideBar_Right_Search_ModalStatus_rdx) {
+		if (sideBar_R_Search_ModalStatus_rdx) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [sideBar_Right_Search_ModalStatus_rdx]);
+	}, [sideBar_R_Search_ModalStatus_rdx]);
 	const toggleMenu = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Search_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -64,7 +64,7 @@ const SideBar_R_SearchModal = () => {
 	const handleSearchBarBlur = () => {
 		setSearchBarIsFocused(false);
 	};
-	const RightMain_SearchBar = (
+	const RMain_SearchBar = (
 		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
 			<input
 				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
@@ -82,8 +82,8 @@ const SideBar_R_SearchModal = () => {
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRIghtSearchRef}>
-				{RightMain_SearchBar}
+			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRSearchRef}>
+				{RMain_SearchBar}
 				<div className={classes.top}></div>
 				<div className={classes.bottom}>
 					<div className={classes.break}></div>

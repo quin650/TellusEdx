@@ -4,10 +4,10 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "./sideBar_R_NotesModal.module.css";
 
 const SideBar_R_NotesModal = () => {
-	const sideBarRightNotesRef = useRef();
+	const sideBarRNotesRef = useRef();
 	const exitButtonRef = useRef();
 	const dispatch = useDispatch();
-	const sideBar_Right_Notes_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_Right_Notes_ModalStatus_rdx);
+	const sideBar_R_Notes_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Notes_ModalStatus_rdx);
 
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -15,8 +15,8 @@ const SideBar_R_NotesModal = () => {
 	}, []);
 	const onClickOutsideNavBar_closeNavBar = (e) => {
 		if (
-			sideBarRightNotesRef.current &&
-			!sideBarRightNotesRef.current.contains(e.target) &&
+			sideBarRNotesRef.current &&
+			!sideBarRNotesRef.current.contains(e.target) &&
 			!exitButtonRef.current.contains(e.target) &&
 			!languageSettingsModalStatusRef.current
 		) {
@@ -24,7 +24,7 @@ const SideBar_R_NotesModal = () => {
 		}
 	};
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -34,14 +34,14 @@ const SideBar_R_NotesModal = () => {
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (sideBar_Right_Notes_ModalStatus_rdx) {
+		if (sideBar_R_Notes_ModalStatus_rdx) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [sideBar_Right_Notes_ModalStatus_rdx]);
+	}, [sideBar_R_Notes_ModalStatus_rdx]);
 	const toggleMenu = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Notes_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -59,7 +59,7 @@ const SideBar_R_NotesModal = () => {
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRightNotesRef}>
+			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRNotesRef}>
 				<div className={classes.top}></div>
 				<div className={classes.bottom}>
 					<div className={classes.break}></div>

@@ -11,52 +11,50 @@ const initialState = {
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
 
-	sideBar_Left_isOpen_Rdx: true,
-	sideBar_Left_AllowCollapse_OnWindowResize_rdx: true,
-	sideBar_Right_Main_ModalStatus_rdx: false,
-	sideBar_Right_Search_ModalStatus_rdx: false,
-	sideBar_Right_Notes_ModalStatus_rdx: false,
+	sideBar_L_isOpen_Rdx: true,
+	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
+	sideBar_R_Main_ModalStatus_rdx: false,
+	sideBar_R_Search_ModalStatus_rdx: false,
+	sideBar_R_Notes_ModalStatus_rdx: false,
 
 	getStarted_ModalStatus_rdx: false,
-	getStartedView: "",
+	getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
 
 	//General
-	isAuthenticated: false,
-	loading: false,
-	activeFlag: "../../../../static/images/countries/1UnitedStates.png",
+	isAuthenticated_rdx: false,
+	loading_rdx: false,
+	activeFlag_rdx: "../../../../static/images/countries/1UnitedStates.png",
 	languageCurrent_rdx: "English",
 	isDarkMode_rdx: isDarkMode,
-	isDemoView: false,
-	isDashboardFullScreen: true,
+	isDemoView_rdx: false,
+	isDashboardFullScreen_rdx: true,
 
 	//User Info
-	loginError: "",
-	profile_id: "",
-	username: "",
-	email: "",
-	name: "",
-	isAdmin: "",
-	token: "",
-	userInfo: userInfoFromStorage,
+	loginError_rdx: "",
+	profile_id_rdx: "",
+	username_rdx: "",
+	email_rdx: "",
+	name_rdx: "",
+	isAdmin_rdx: "",
+	token_rdx: "",
+	userInfo_rdx: userInfoFromStorage,
 
 	//Registration
-	passwordResetPassCodeEmail: 0,
-	registered: false,
-	registrationError: "",
-	verificationEmail: 0,
-	verificationEmailFailureStatus: "",
-	registered: false,
-	registrationError: "",
-	verificationEmail: 0,
+	passwordResetPassCodeEmail_rdx: 0,
+	registered_rdx: false,
+	registrationError_rdx: "",
+	verificationEmail_rdx: 0,
+	verificationEmailFailureStatus_rdx: "",
+	generalFeedback_rdx: "",
 
 	//Verify Account
 	verifyAccountPassCodeStatus_rdx: true,
-	verifyAccountPassCodeFeedback_rdx: "Verification Code sent to your email.",
+	verifyAccountPassCodeFeedback_rdx: "Verification Code sent to your email_rdx.",
 
 	//Reset Password Email PassCode
 	resetPasswordEmailPassCodeStatus_rdx: true,
-	resetPasswordEmailPassCodeFeedback_rdx: "Enter your email to receive a reset code.",
+	resetPasswordEmailPassCodeFeedback_rdx: "Enter your email_rdx to receive a reset code.",
 
 	//Reset Your Password
 	resetPasswordChangeStatus_rdx: true,
@@ -69,13 +67,13 @@ const userSlice = createSlice({
 	reducers: {
 		// NavBar
 		setDemoView(state) {
-			state.isDemoView = true;
+			state.isDemoView_rdx = true;
 		},
 		setRegularView(state) {
-			state.isDemoView = false;
+			state.isDemoView_rdx = false;
 		},
 
-		// Left Side Modal
+		// L Side Modal
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 		},
@@ -86,93 +84,94 @@ const userSlice = createSlice({
 			state.pagesLength_rdx = action.payload;
 		},
 
-		sideBar_Left_Toggle_ModalVisibility(state) {
-			state.sideBar_Left_isOpen_Rdx = !state.sideBar_Left_isOpen_Rdx;
+		sideBar_L_Toggle_ModalVisibility(state) {
+			state.sideBar_L_isOpen_Rdx = !state.sideBar_L_isOpen_Rdx;
 		},
-		sideBar_Left_Open(state) {
-			state.sideBar_Left_isOpen_Rdx = true;
+		sideBar_L_Open(state) {
+			state.sideBar_L_isOpen_Rdx = true;
 		},
-		sideBar_Left_Close(state) {
-			state.sideBar_Left_isOpen_Rdx = false;
+		sideBar_L_Close(state) {
+			state.sideBar_L_isOpen_Rdx = false;
 		},
-		sideBar_Left_NotAllowCollapse_OnWindowResize(state) {
-			state.sideBar_Left_AllowCollapse_OnWindowResize_rdx = false;
+		sideBar_L_NotAllowCollapse_OnWindowResize(state) {
+			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
 		},
-		sideBar_Left_YesAllowCollapse_OnWindowResize(state) {
-			state.sideBar_Left_AllowCollapse_OnWindowResize_rdx = true;
+		sideBar_L_YesAllowCollapse_OnWindowResize(state) {
+			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
+		// R Side Modals
 		// Search Modal
-		sideBar_Right_Toggle_Search_ModalVisibility(state) {
-			state.sideBar_Right_Search_ModalStatus_rdx = !state.sideBar_Right_Search_ModalStatus_rdx;
+		sideBar_R_Toggle_Search_ModalVisibility(state) {
+			state.sideBar_R_Search_ModalStatus_rdx = !state.sideBar_R_Search_ModalStatus_rdx;
 		},
-		sideBar_Right_Open_Search_Modal(state) {
-			state.sideBar_Right_Search_ModalStatus_rdx = true;
+		sideBar_R_Open_Search_Modal(state) {
+			state.sideBar_R_Search_ModalStatus_rdx = true;
 		},
-		sideBar_Right_Close_Search_Modal(state) {
-			state.sideBar_Right_Search_ModalStatus_rdx = false;
+		sideBar_R_Close_Search_Modal(state) {
+			state.sideBar_R_Search_ModalStatus_rdx = false;
 		},
 		// Notes Modal
-		sideBar_Right_Toggle_Notes_ModalVisibility(state) {
-			state.sideBar_Right_Notes_ModalStatus_rdx = !state.sideBar_Right_Notes_ModalStatus_rdx;
+		sideBar_R_Toggle_Notes_ModalVisibility(state) {
+			state.sideBar_R_Notes_ModalStatus_rdx = !state.sideBar_R_Notes_ModalStatus_rdx;
 		},
-		sideBar_Right_Open_Notes_Modal(state) {
-			state.sideBar_Right_Notes_ModalStatus_rdx = true;
+		sideBar_R_Open_Notes_Modal(state) {
+			state.sideBar_R_Notes_ModalStatus_rdx = true;
 		},
-		sideBar_Right_Close_Notes_Modal(state) {
-			state.sideBar_Right_Notes_ModalStatus_rdx = false;
+		sideBar_R_Close_Notes_Modal(state) {
+			state.sideBar_R_Notes_ModalStatus_rdx = false;
 		},
-		// Right Main Modal
-		sideBar_Right_Toggle_Main_ModalVisibility(state) {
-			state.sideBar_Right_Main_ModalStatus_rdx = !state.sideBar_Right_Main_ModalStatus_rdx;
+		// R Main Modal
+		sideBar_R_Toggle_Main_ModalVisibility(state) {
+			state.sideBar_R_Main_ModalStatus_rdx = !state.sideBar_R_Main_ModalStatus_rdx;
 		},
-		sideBar_Right_Open_Main_Modal(state) {
-			state.sideBar_Right_Main_ModalStatus_rdx = true;
+		sideBar_R_Open_Main_Modal(state) {
+			state.sideBar_R_Main_ModalStatus_rdx = true;
 		},
-		sideBar_Right_Close_Main_Modal(state) {
-			state.sideBar_Right_Main_ModalStatus_rdx = false;
+		sideBar_R_Close_Main_Modal(state) {
+			state.sideBar_R_Main_ModalStatus_rdx = false;
 		},
 		// Get Started Modal
 		getStartedModalLogIn(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_Right_Main_ModalStatus_rdx = false;
-			state.getStartedView = "LogInModal";
+			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.getStartedView_rdx = "LogInModal";
 		},
 		getStartedModalCreateAccount(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_Right_Main_ModalStatus_rdx = false;
-			state.getStartedView = "CreateAccountModal";
+			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.getStartedView_rdx = "CreateAccountModal";
 		},
 		getStartedModalOpen(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_Right_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_ModalStatus_rdx = false;
 		},
 		getStartedModalClose(state) {
 			state.getStarted_ModalStatus_rdx = false;
-			state.sideBar_Right_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_ModalStatus_rdx = false;
 		},
 		// Registration
 		registerModalClose(state) {
 			state.getStarted_ModalStatus_rdx = false;
 		},
 		registerSuccess(state, action) {
-			state.registered = true;
-			state.isAuthenticated = false;
-			state.loading = false;
-			state.getStartedView = "VerifyAccountModal";
-			state.userInfo = action.payload;
+			state.registered_rdx = true;
+			state.isAuthenticated_rdx = false;
+			state.loading_rdx = false;
+			state.getStartedView_rdx = "VerifyAccountModal";
+			state.userInfo_rdx = action.payload;
 		},
 		registerFail(state, action) {
-			state.registered = false;
-			state.isAuthenticated = false;
-			state.loading = false;
-			state.registrationError = action.payload;
+			state.registered_rdx = false;
+			state.isAuthenticated_rdx = false;
+			state.loading_rdx = false;
+			state.registrationError_rdx = action.payload;
 		},
 		registerErrorReset(state) {
-			state.registrationError = "";
+			state.registrationError_rdx = "";
 		},
 		// Verify Your Account
 		verifyAccountPassCodeSuccess(state) {
-			state.getStartedView = "VerificationSuccessModal";
+			state.getStartedView_rdx = "VerificationSuccessModal";
 			state.generalFeedback_rdx = "";
 		},
 		verifyAccountPassCodeFail(state, action) {
@@ -187,58 +186,58 @@ const userSlice = createSlice({
 			state.verifyAccountPassCodeStatus_rdx = true;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
-			state.verificationEmail += 1;
+			state.verificationEmail_rdx += 1;
 		},
 		verifyAccountPassCodeResentFailure(state) {
 			state.verifyAccountPassCodeStatus_rdx = false;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
-			state.verificationEmailFailureStatus = "Failed";
+			state.verificationEmailFailureStatus_rdx = "Failed";
 		},
 		// Verification Success
 		GoTo_LogInModal_rdx(state) {
-			state.getStartedView = "LogInModal";
+			state.getStartedView_rdx = "LogInModal";
 		},
 		// Log In
 		loginRequest(state) {
-			state.loading = true;
+			state.loading_rdx = true;
 		},
 		loginSuccess(state, action) {
-			state.isAuthenticated = true;
-			state.loading = false;
-			state.userInfo = action.payload;
+			state.isAuthenticated_rdx = true;
+			state.loading_rdx = false;
+			state.userInfo_rdx = action.payload;
 			state.getStarted_ModalStatus_rdx = false;
 		},
 		loginFail(state, action) {
-			state.loading = false;
-			state.loginError = action.payload;
+			state.loading_rdx = false;
+			state.loginError_rdx = action.payload;
 		},
-		loginErrorReset(state) {
-			state.loginError = "";
+		loginError_rdxReset(state) {
+			state.loginError_rdx = "";
 		},
 		// Log Out
 		logoutSuccess(state) {
-			state.isAuthenticated = false;
+			state.isAuthenticated_rdx = false;
 		},
 		logoutFail(state) {
 			state;
 		},
 		// Authentication
 		authSuccess(state) {
-			state.isAuthenticated = true;
+			state.isAuthenticated_rdx = true;
 		},
 		authFail(state) {
-			state.isAuthenticated = false;
+			state.isAuthenticated_rdx = false;
 		},
-		tokenSuccess(state, action) {
-			state.token = action.payload;
+		token_rdxSuccess(state, action) {
+			state.token_rdx = action.payload;
 		},
 		// Reset Password - Email PassCode
 		passwordResetPassCodeEmailSentSuccess(state, action) {
-			state.passwordResetPassCodeEmail += 1;
+			state.passwordResetPassCodeEmail_rdx += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
-			state.getStartedView = "ResetPasswordEnterPassCodeModal";
+			state.getStartedView_rdx = "ResetPasswordEnterPassCodeModal";
 		},
 		passwordResetPassCodeEmailSentFailure(state, action) {
 			state.resetPasswordEmailPassCodeStatus_rdx = false;
@@ -253,7 +252,7 @@ const userSlice = createSlice({
 			state.resetPasswordChangeFeedback_rdx = "";
 			state.passCodeStatus_rdx = true;
 			state.passCodeFeedback_rdx = "";
-			state.getStartedView = "PasswordChangedSuccessfullyModal";
+			state.getStartedView_rdx = "PasswordChangedSuccessfullyModal";
 		},
 		passwordResetFailurePasswordIssue(state, action) {
 			state.resetPasswordChangeStatus_rdx = false;
@@ -273,7 +272,7 @@ const userSlice = createSlice({
 		},
 		//Delete - User
 		deleteUserSuccess(state) {
-			state.isAuthenticated = false;
+			state.isAuthenticated_rdx = false;
 		},
 		deleteUserFail(state) {
 			state;
@@ -289,43 +288,43 @@ const userSlice = createSlice({
 			state.languageCurrent_rdx = action.payload;
 			switch (action.payload) {
 				case "English":
-					state.activeFlag = "../../../../static/images/countries/1UnitedStates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/1UnitedStates.png";
 					break;
 				case "Spanish":
-					state.activeFlag = "../../../../static/images/countries/2Mexico.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/2Mexico.png";
 					break;
 				case "Chinese":
-					state.activeFlag = "../../../../static/images/countries/3China.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/3China.png";
 					break;
 				case "French":
-					state.activeFlag = "../../../../static/images/countries/4France.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/4France.png";
 					break;
 				case "German":
-					state.activeFlag = "../../../../static/images/countries/5Germany.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/5Germany.png";
 					break;
 				case "Japanese":
-					state.activeFlag = "../../../../static/images/countries/6Japan.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/6Japan.png";
 					break;
 				case "Portuguese":
-					state.activeFlag = "../../../../static/images/countries/7Portugal.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/7Portugal.png";
 					break;
 				case "Russian":
-					state.activeFlag = "../../../../static/images/countries/8Russia.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/8Russia.png";
 					break;
 				case "Arabic":
-					state.activeFlag = "../../../../static/images/countries/9UnitedArabEmirates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/9UnitedArabEmirates.png";
 					break;
 				case "Italian":
-					state.activeFlag = "../../../../static/images/countries/10Italy.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/10Italy.png";
 					break;
 				case "Korean":
-					state.activeFlag = "../../../../static/images/countries/11Korea.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/11Korea.png";
 					break;
 				case "Hindu":
-					state.activeFlag = "../../../../static/images/countries/12India.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/12India.png";
 					break;
 				default:
-					state.activeFlag = "../../../../static/images/countries/1UnitedStates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries/1UnitedStates.png";
 			}
 		},
 		languageSettingsEnglish(state) {

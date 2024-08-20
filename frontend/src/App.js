@@ -18,7 +18,7 @@ const App = () => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
-	const isDemoView = useSelector(({ user }) => user.isDemoView);
+	const isDemoView_rdx = useSelector(({ user }) => user.isDemoView_rdx);
 	const sideBar_Right_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_Right_Main_ModalStatus_rdx);
 
 	const [divIDs, setDivIDs] = useState([]);
@@ -31,10 +31,10 @@ const App = () => {
 	useEffect(() => {
 		if (location.pathname === "/demo") {
 			dispatch(userReducerActions.setDemoView());
-		} else if (isDemoView && location.pathname !== "/demo") {
+		} else if (isDemoView_rdx && location.pathname !== "/demo") {
 			dispatch(userReducerActions.setRegularView());
 		}
-	}, [location, dispatch, isDemoView]);
+	}, [location, dispatch, isDemoView_rdx]);
 	// List of div's with ID's
 	useEffect(() => {
 		setDivIDs([]);
@@ -100,7 +100,7 @@ const App = () => {
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
-			{!isDemoView && (
+			{!isDemoView_rdx && (
 				<header>
 					<MainNavbar />
 				</header>
@@ -114,7 +114,7 @@ const App = () => {
 				<Route path="/supportcenter" element={<SupportCenter />} />
 				<Route path="/help" element={<Help />} />
 			</Routes>
-			{!isDemoView && (
+			{!isDemoView_rdx && (
 				<footer>
 					<Footer />
 				</footer>
@@ -124,7 +124,7 @@ const App = () => {
 };
 export default App;
 
-// const isAuthenticated = useSelector(({ user }) => user.isAuthenticated)
+// const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx)
 // useEffect(()=>{
 //     dispatch(checkAuthenticated());
 // },[])

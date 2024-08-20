@@ -17,9 +17,10 @@ import PasswordSubModal from "./features/2_passwordSubModal";
 import classes from "./getStartedModal.module.css";
 const GetStartedModal = () => {
 	const dispatch = useDispatch();
-	const getStartedView = useSelector(({ user }) => user.getStartedView);
-	const [modalStatus, setModalStatus] = useState(getStartedView);
-	const registrationError = useSelector(({ user }) => user.registrationError);
+	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
+
+	const [modalStatus, setModalStatus] = useState(getStartedView_rdx);
+	const registrationError_rdx = useSelector(({ user }) => user.registrationError_rdx);
 	const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
 	const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
 	const resetPasswordEmailPassCodeStatus_rdx = useSelector(({ user }) => user.resetPasswordEmailPassCodeStatus_rdx);
@@ -93,9 +94,9 @@ const GetStartedModal = () => {
 					setIsValidEmail(false);
 					setUserEmailFeedback("Invalid Email Format");
 					emailInputRef.current.focus();
-				} else if (emailPattern.test(email) && registrationError != "") {
+				} else if (emailPattern.test(email) && registrationError_rdx != "") {
 					return;
-				} else if (emailPattern.test(email) && registrationError === "") {
+				} else if (emailPattern.test(email) && registrationError_rdx === "") {
 					setIsValidEmail(true);
 					setUserEmailFeedback("");
 					setCheckEmailCommence(false);
@@ -105,22 +106,22 @@ const GetStartedModal = () => {
 				clearTimeout(identifier);
 			};
 		}
-	}, [email, checkEmailCommence, registrationError]);
+	}, [email, checkEmailCommence, registrationError_rdx]);
 	useEffect(() => {
 		if (checkBackendCredentialsCommence) {
-			if (registrationError != "") {
+			if (registrationError_rdx != "") {
 				setIsValidEmail(false);
-				setUserEmailFeedback(registrationError);
+				setUserEmailFeedback(registrationError_rdx);
 			}
 		}
-	}, [checkBackendCredentialsCommence, registrationError]);
+	}, [checkBackendCredentialsCommence, registrationError_rdx]);
 
 	// !Actions
 	useEffect(() => {
-		if (getStartedView !== modalStatus) {
-			setModalStatus(getStartedView);
+		if (getStartedView_rdx !== modalStatus) {
+			setModalStatus(getStartedView_rdx);
 		}
-	}, [getStartedView]);
+	}, [getStartedView_rdx]);
 	useEffect(() => {
 		switch (modalStatus) {
 			case "CreateAccountModal":
@@ -382,7 +383,7 @@ const GetStartedModal = () => {
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
 		document.addEventListener("mousedown", onClickOutsideModal_closeModal);
-		setUserEmailFeedback(registrationError);
+		setUserEmailFeedback(registrationError_rdx);
 	}, []);
 	const disableScroll = () => {
 		window.addEventListener("scroll", preventDefaultScroll, { passive: false });
@@ -554,15 +555,7 @@ const GetStartedModal = () => {
 				clearTimeout(identifier);
 			};
 		}
-	}, [
-		password,
-		passwordConfirm,
-		checkPasswordCommence,
-		checkPasswordSubModalCommence,
-		checkPassCodeCommence,
-		checkPasswordConfirmCommence,
-		passCode,
-	]);
+	}, [password, passwordConfirm, checkPasswordCommence, checkPasswordSubModalCommence, checkPassCodeCommence, checkPasswordConfirmCommence, passCode]);
 	switch (modalStatus) {
 		case "VerifyAccountModal":
 			HeaderSection = VerifyAccountHeaderSection;
@@ -706,9 +699,7 @@ const GetStartedModal = () => {
 									onBlur={handleOnEmailBlur}
 								/>
 								<div
-									className={`${classes["emailInputFeedbackContainer"]} ${
-										modalStatus === "ResetPasswordEmailPassCodeModal" && classes.ResetPasswordEmailPassCodeModal
-									}`}
+									className={`${classes["emailInputFeedbackContainer"]} ${modalStatus === "ResetPasswordEmailPassCodeModal" && classes.ResetPasswordEmailPassCodeModal}`}
 								>
 									<p className={`${classes["emailInputFeedback"]} ${!isValidEmail && classes.isValidEmail}`}>{userEmailFeedback}</p>
 								</div>
@@ -774,9 +765,7 @@ const GetStartedModal = () => {
 								/>
 								<div className={classes.passwordConfirmInputFeedbackSection}>
 									<div className={`${classes["passwordConfirmInputFeedbackContainer"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
-										<p className={`${classes["passwordConfirmInputFeedback"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>
-											{passwordConfirmFeedback}
-										</p>
+										<p className={`${classes["passwordConfirmInputFeedback"]} ${!isValidPasswordConfirm && classes.isValidPasswordConfirm}`}>{passwordConfirmFeedback}</p>
 									</div>
 								</div>
 							</div>

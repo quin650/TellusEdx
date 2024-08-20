@@ -3,40 +3,40 @@ import PaginationGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagi
 import SideBar_L_TOC_Parent_Items from "./2_sideBar_L_TOC_Parent_Items";
 import classes from "./4_sideBar_L_TOC.module.css";
 
-const SideBar_L_TOC = ({ sideBar_Left_isOpen, pageTitle, memoizedHeadings, currentPageNum, activeID, GoTo_TopOfPage }) => {
+const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentPageNum, activeID, GoTo_TopOfPage }) => {
 	//!Tab Options
 	const TOC_TabOptions = (
-		<div className={classes.sideBar_left_tabs_outerContainer}>
-			<div className={classes.sideBar_left_tabs_innerContainer}>
-				<span className={classes.sideBar_left_tab_Name_onThisPage}>
+		<div className={classes.sideBar_L_tabs_outerContainer}>
+			<div className={classes.sideBar_L_tabs_innerContainer}>
+				<span className={classes.sideBar_L_tab_Name_onThisPage}>
 					<p>On this page</p>
 				</span>
-				<span className={classes.sideBar_left_tab_Name_all}>
+				<span className={classes.sideBar_L_tab_Name_all}>
 					<p>All</p>
 				</span>
-				<span className={classes.sideBar_left_tab_Name_pinned}>
+				<span className={classes.sideBar_L_tab_Name_pinned}>
 					<p>Pinned</p>
 				</span>
 			</div>
-			<div className={classes.sideBar_left_tabs_underline}></div>
+			<div className={classes.sideBar_L_tabs_underline}></div>
 		</div>
 	);
 	//!Search Bar
 	const TOC_SearchBarRef = useRef(null);
-	const [sideBar_Left_TOC_SearchInputIsFocused, setSideBar_Left_TOC_SearchInputIsFocused] = useState(false);
-	const handle_SideBar_Left_TOC_SearchInputFocus = () => {
-		setSideBar_Left_TOC_SearchInputIsFocused(true);
+	const [sideBar_L_TOC_SearchInputIsFocused, setSideBar_L_TOC_SearchInputIsFocused] = useState(false);
+	const handle_SideBar_L_TOC_SearchInputFocus = () => {
+		setSideBar_L_TOC_SearchInputIsFocused(true);
 	};
-	const handle_SideBar_Left_TOC_SearchInputBlur = () => {
-		setSideBar_Left_TOC_SearchInputIsFocused(false);
+	const handle_SideBar_L_TOC_SearchInputBlur = () => {
+		setSideBar_L_TOC_SearchInputIsFocused(false);
 	};
 	const TOC_SearchBar = (
-		<div className={classes.sideBar_Left_TOC_SearchInputContainer} method="get" action="#" role="search">
+		<div className={classes.sideBar_L_TOC_SearchInputContainer} method="get" action="#" role="search">
 			<input
-				className={`${classes["sideBar_Left_TOC_SearchInput"]} ${sideBar_Left_TOC_SearchInputIsFocused ? classes.isFocused : ""}`}
+				className={`${classes["sideBar_L_TOC_SearchInput"]} ${sideBar_L_TOC_SearchInputIsFocused ? classes.isFocused : ""}`}
 				ref={TOC_SearchBarRef}
-				onFocus={handle_SideBar_Left_TOC_SearchInputFocus}
-				onBlur={handle_SideBar_Left_TOC_SearchInputBlur}
+				onFocus={handle_SideBar_L_TOC_SearchInputFocus}
+				onBlur={handle_SideBar_L_TOC_SearchInputBlur}
 				placeholder="Search Handbook"
 				name="q"
 				aria-label="Search"
@@ -71,7 +71,7 @@ const SideBar_L_TOC = ({ sideBar_Left_isOpen, pageTitle, memoizedHeadings, curre
 	);
 
 	return (
-		<div className={`${classes["sideBar_left_outerContainer"]} ${sideBar_Left_isOpen ? classes.open : ""}`}>
+		<div className={`${classes["sideBar_l_outerContainer"]} ${sideBar_L_isOpen ? classes.open : ""}`}>
 			{TOC_TabOptions}
 			<PaginationGUI />
 			{TOC_SearchBar}

@@ -7,15 +7,17 @@ import GetStartedButton from "../../../300_modals/10_getStartedModal/features/1_
 import Logo from "../../../../../static/images/1Logo.png";
 import classes from "./sideBar_R_MainModal.module.css";
 
-const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Right_Notes_Modal }) => {
+const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes_Modal }) => {
 	const navBarRef = useRef();
 	const exitButtonRef = useRef();
-	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
-	const activeFlag = useSelector(({ user }) => user.activeFlag);
+	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
+	const activeFlag_rdx = useSelector(({ user }) => user.activeFlag_rdx);
+	const sideBar_R_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Main_ModalStatus_rdx);
+	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-	const { sideBar_Right_Main_ModalStatus_rdx, languageSettings_ModalStatus_rdx } = useSelector(({ user }) => user);
+
 	const languageSettingsModalStatusRef = useRef(languageSettings_ModalStatus_rdx);
 	// Icons
 	const homeIcon = (
@@ -163,10 +165,10 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
-		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 	};
 	const CloseNavBarMenu_and_ScrollSmoothly = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 		setTimeout(() => {
 			document.querySelector("main").scrollTo({
 				top: 0,
@@ -175,7 +177,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 		}, 0);
 	};
 	const CloseNavBarMenu_and_ScrollQuickly = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 		document.querySelector("main").scrollTo({
 			top: 0,
 			behavior: "instant",
@@ -204,7 +206,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 		}
 	};
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -214,12 +216,12 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 	};
 	const [navState, setNavState] = useState(false);
 	useEffect(() => {
-		if (sideBar_Right_Main_ModalStatus_rdx) {
+		if (sideBar_R_Main_ModalStatus_rdx) {
 			setNavState(true);
 		} else {
 			setNavState(false);
 		}
-	}, [sideBar_Right_Main_ModalStatus_rdx]);
+	}, [sideBar_R_Main_ModalStatus_rdx]);
 	// Other JSX
 	let option = (
 		<a href="#" onClick={LogInHandler} className={classes.menuItem}>
@@ -229,7 +231,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 			<span>Log in</span>
 		</a>
 	);
-	isAuthenticated
+	isAuthenticated_rdx
 		? (option = (
 				<a href="#" onClick={LogOutHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogOutHandler}>
@@ -251,7 +253,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 			<GetStartedButton />
 		</div>
 	);
-	isAuthenticated
+	isAuthenticated_rdx
 		? (content = null)
 		: (content = (
 				<div className={classes.buttonPadding}>
@@ -259,7 +261,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 				</div>
 		  ));
 	const toggleMenu = () => {
-		dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -280,7 +282,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 		if (location.pathname !== "/demo") {
 			setSearchBarIsFocused(true);
 		} else {
-			open_sideBar_Right_Search_Modal();
+			open_sideBar_R_Search_Modal();
 		}
 	};
 
@@ -290,7 +292,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 
 	const [searchPlaceholder, setSearchPlaceholder] = useState("Explore");
 
-	const RightMain_SearchBar = (
+	const RMain_SearchBar = (
 		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
 			<input
 				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
@@ -305,6 +307,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 			<input type="hidden" name="area" value="default" />
 		</div>
 	);
+	console.log("navState: ", navState);
 	return (
 		<Fragment>
 			{exitButton}
@@ -317,7 +320,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 						TellusEd
 					</Link>
 				</div>
-				{RightMain_SearchBar}
+				{RMain_SearchBar}
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
 						<Link
@@ -338,7 +341,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 						</Link>
 
 						{location.pathname === "/demo" && (
-							<Link onClick={open_sideBar_Right_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
+							<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
 								<i>{NotesIcon}</i>
 								<span>Notes</span>
 							</Link>
@@ -381,7 +384,7 @@ const SideBar_R_MainModal = ({ open_sideBar_Right_Search_Modal, open_sideBar_Rig
 							<Link onClick={OpenLanguageSettingsModal} to="#" className={classes.sidebarMenuOptions}>
 								<i className={classes.languageIcon}>{languageIcon}</i>
 								<span>Language</span>
-								<img src={activeFlag} alt="Logo" className={classes.flag} tabIndex="0"></img>
+								<img src={activeFlag_rdx} alt="Logo" className={classes.flag} tabIndex="0"></img>
 							</Link>
 							<label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
 								<i className={classes.icon}>{darkModeIcon}</i>
