@@ -16,6 +16,7 @@ const initialState = {
 	sideBar_R_Main_ModalStatus_rdx: false,
 	sideBar_R_Search_ModalStatus_rdx: false,
 	sideBar_R_Notes_ModalStatus_rdx: false,
+	sideBar_R_Questions_ModalStatus_rdx: false,
 
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
@@ -130,6 +131,18 @@ const userSlice = createSlice({
 		sideBar_R_Close_Main_Modal(state) {
 			state.sideBar_R_Main_ModalStatus_rdx = false;
 		},
+
+		// R Questions Modal
+		sideBar_R_Toggle_Questions_ModalVisibility(state) {
+			state.sideBar_R_Questions_ModalStatus_rdx = !state.sideBar_R_Questions_ModalStatus_rdx;
+		},
+		sideBar_R_Open_Questions_Modal(state) {
+			state.sideBar_R_Questions_ModalStatus_rdx = true;
+		},
+		sideBar_R_Close_Questions_Modal(state) {
+			state.sideBar_R_Questions_ModalStatus_rdx = false;
+		},
+
 		// Get Started Modal
 		getStartedModalLogIn(state) {
 			state.getStarted_ModalStatus_rdx = true;

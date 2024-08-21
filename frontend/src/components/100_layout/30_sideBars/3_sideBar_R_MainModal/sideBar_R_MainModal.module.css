@@ -3,7 +3,6 @@
 	z-index: 2000;
 	position: fixed;
 	right: 0;
-
 	width: 326px;
 	height: 100vh;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);

@@ -200,6 +200,7 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 	useEffect(() => {
 		languageSettingsModalStatusRef.current = languageSettings_ModalStatus_rdx;
 	}, [languageSettings_ModalStatus_rdx]);
+	// Exit Functionality
 	const onClickOutsideNavBar_closeNavBar = (e) => {
 		if (navBarRef.current && !navBarRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
 			exitNavBarAction();
@@ -214,14 +215,6 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 			exitNavBarAction();
 		}
 	};
-	const [navState, setNavState] = useState(false);
-	useEffect(() => {
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			setNavState(true);
-		} else {
-			setNavState(false);
-		}
-	}, [sideBar_R_Main_ModalStatus_rdx]);
 	// Other JSX
 	let option = (
 		<a href="#" onClick={LogInHandler} className={classes.menuItem}>
@@ -307,11 +300,11 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 			<input type="hidden" name="area" value="default" />
 		</div>
 	);
-	console.log("navState: ", navState);
+
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={navBarRef}>
+			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_ModalStatus_rdx ? classes.open : ""}`} ref={navBarRef}>
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
