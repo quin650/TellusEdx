@@ -280,10 +280,10 @@ strong {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
 .toggleQuestionsButton.open:hover {
-	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
 .toggleQuestionsButton.open:active {
-	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .svgQuestionsButton {
 	stroke-width: 2;
