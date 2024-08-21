@@ -13,11 +13,13 @@
 	transition: transform 0.3s ease;
 	transform: translateX(-100%);
 	visibility: hidden;
+	flex-grow: 0;
 }
 .sideBar_L_outerContainer.open {
 	transform: translateX(0);
 	width: 326px;
 	visibility: visible;
+	flex-grow: 0;
 }
 @media (max-width: 900px) {
 	.sideBarOuterContainer {

@@ -4,7 +4,6 @@
 	z-index: 1000;
 	position: sticky !important;
 	right: 0;
-	width: 0;
 	height: calc(100vh - 1px);
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	border-left: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
@@ -22,13 +21,32 @@
 	font-size: 14px;
 	font-family: sans-serif !important;
 	visibility: hidden;
+	flex-grow: 0;
+	width: 0;
 }
 .sideBar_R_outerContainer.open {
 	transform: translateX(0);
-	width: 326px;
-	min-width: 326px;
+	/* width: 326px; */
+	width: 25%;
+	max-width: 700px;
+	/* min-width: 326px; */
 	visibility: visible;
+	overflow-x: hidden;
+	position: relative;
+	flex-grow: 3;
 }
+
+/* resizer ------------------------------------------- */
+.resizer {
+	width: 3px;
+	top: 0;
+	left: 0;
+	cursor: col-resize;
+	height: 100%;
+	position: absolute;
+	background-color: #42b362;
+}
+
 /* exit button ------------------------------------------- */
 .exitButton {
 	z-index: 3000;

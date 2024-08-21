@@ -24,6 +24,9 @@
 	margin: 0 auto;
 	line-height: 1.35;
 	min-height: 100%;
+	/* new */
+	flex-grow: 1;
+	width: 80%;
 }
 .handbook_innerContainer {
 	font-size: 1rem;
