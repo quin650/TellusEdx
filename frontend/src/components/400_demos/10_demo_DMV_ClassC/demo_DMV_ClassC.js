@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 import DemoNavbar from "../../100_layout/10_header/2_navBar_Demo";
+import SideBar_R_SearchModal from "../../100_layout/30_sideBars/1_sideBar_R_SearchModal/sideBar_R_SearchModal";
+import SideBar_R_NotesModal from "../../100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_QuestionsModal from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
@@ -285,27 +287,6 @@ const DemoDMVClassC = () => {
 		};
 	}, [sideBar_L_isOpen_Rdx, sideBar_R_Search_ModalStatus_rdx, sideBar_R_Notes_ModalStatus_rdx, sideBar_R_Main_ModalStatus_rdx, sideBar_R_Questions_ModalStatus_rdx]);
 
-	const open_sideBar_R_Questions_Modal = () => {
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
-		}
-		dispatch(userReducerActions.sideBar_R_Toggle_Questions_ModalVisibility());
-	};
-	const sideBar_R_Questions_Button = (
-		<button onClick={open_sideBar_R_Questions_Modal} className={`${classes["toggleQuestionsButton"]} ${sideBar_R_Questions_ModalStatus_rdx ? classes.open : ""}`}>
-			<svg className={classes.svgQuestionsButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-				<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-			</svg>
-		</button>
-	);
-	let bottomContent = (
-		<div className={classes.questionContainer}>
-			<div className={classes.inner_question_container}>
-				<li className={classes.questionItem}>{sideBar_R_Questions_Button}</li>
-			</div>
-		</div>
-	);
-
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
 			<DemoNavbar />
@@ -326,11 +307,20 @@ const DemoDMVClassC = () => {
 						</div>
 					</div>
 				</div>
-				<SideBar_R_QuestionsModal />
+				{sideBar_R_Search_ModalStatus_rdx && <SideBar_R_SearchModal />}
+				{sideBar_R_Notes_ModalStatus_rdx && <SideBar_R_NotesModal />}
+				{sideBar_R_Questions_ModalStatus_rdx && <SideBar_R_QuestionsModal pageContentRef={pageContentRef}/>}
 			</div>
-			{bottomContent}
 		</main>
 	);
 };
 
 export default DemoDMVClassC;
+
+
+// const minWidthPixels = 155; 
+// if (newWidthPercent < minWidthPercent || newSideBarWidth < minWidthPixels) {
+// 	exitAction();
+// 	stopResizing();
+// 	return;
+// }

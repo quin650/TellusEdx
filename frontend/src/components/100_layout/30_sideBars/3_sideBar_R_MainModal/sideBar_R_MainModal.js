@@ -7,11 +7,14 @@ import GetStartedButton from "../../../300_modals/10_getStartedModal/features/1_
 import Logo from "../../../../../static/images/1Logo.png";
 import classes from "./sideBar_R_MainModal.module.css";
 
-const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes_Modal }) => {
-	const navBarRef = useRef();
+const SideBar_R_MainModal = () => {
+	const sideBarMainRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
 	const activeFlag_rdx = useSelector(({ user }) => user.activeFlag_rdx);
+
+	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
+	const sideBar_R_Notes_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Notes_ModalStatus_rdx);
 	const sideBar_R_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Main_ModalStatus_rdx);
 	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
 	const dispatch = useDispatch();
@@ -150,6 +153,10 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
 		document.addEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
+		return () => {
+			window.removeEventListener("keydown", onEscKey_ExitModal);
+			document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
+		};
 	}, []);
 	useEffect(() => {
 		setActiveIcon(location.pathname);
@@ -202,7 +209,7 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 	}, [languageSettings_ModalStatus_rdx]);
 	// Exit Functionality
 	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (navBarRef.current && !navBarRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
+		if (sideBarMainRef.current && !sideBarMainRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
 			exitNavBarAction();
 		}
 	};
@@ -232,7 +239,7 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 					</i>
 					<span>Log in</span>
 				</a>
-		  ))
+		))
 		: (option = (
 				<a href="#" onClick={LogInHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogInHandler}>
@@ -240,7 +247,7 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 					</i>
 					<span>Log in</span>
 				</a>
-		  ));
+		));
 	let content = (
 		<div className={classes.buttonPadding}>
 			<GetStartedButton />
@@ -268,6 +275,24 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 			</svg>
 		</button>
 	);
+	const open_sideBar_R_Search_Modal = () => {
+		if (sideBar_R_Notes_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		}
+		if (sideBar_R_Main_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Search_Modal());
+	};
+	const open_sideBar_R_Notes_Modal = () => {
+		if (sideBar_R_Search_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		}
+		if (sideBar_R_Main_ModalStatus_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Notes_Modal());
+	};
 	//!Search Bar
 	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
@@ -304,7 +329,7 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_ModalStatus_rdx ? classes.open : ""}`} ref={navBarRef}>
+			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
@@ -316,24 +341,20 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 				{RMain_SearchBar}
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
-						<Link
-							to="/home"
-							onClick={CloseNavBarMenu_and_ScrollSmoothly}
+						<Link onClick={CloseNavBarMenu_and_ScrollSmoothly} to="/home"
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
 							<span>Home</span>
 						</Link>
-						<Link
-							to="/demo"
-							onClick={CloseNavBarMenu_and_ScrollQuickly}
+						<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/demo"
 							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
 						>
 							<i>{dashboardIcon}</i>
 							<span>Demo</span>
 						</Link>
 
-						{location.pathname === "/demo" && (
+						{sideBar_R_Search_ModalStatus_rdx && (
 							<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
 								<i>{NotesIcon}</i>
 								<span>Notes</span>
@@ -345,25 +366,19 @@ const SideBar_R_MainModal = ({ open_sideBar_R_Search_Modal, open_sideBar_R_Notes
 				<div className={classes.bottom}>
 					<div className={classes.subgroup}>
 						<div className={classes.sidebarMenu}>
-							<Link
-								to="/aboutus"
-								onClick={CloseNavBarMenu_and_ScrollQuickly}
+							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/aboutus"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/aboutus" && classes.isActiveAboutUsIcon}`}
 							>
 								<i>{aboutUsIcon}</i>
 								<span>About Us</span>
 							</Link>
-							<Link
-								to="/supportcenter"
-								onClick={CloseNavBarMenu_and_ScrollQuickly}
+							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/supportcenter"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/supportcenter" && classes.isActiveSupportCenterIcon}`}
 							>
 								<i>{supportCenterIcon}</i>
 								<span>Support Center</span>
 							</Link>
-							<Link
-								to="/help"
-								onClick={CloseNavBarMenu_and_ScrollQuickly}
+							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/help"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/help" && classes.isActiveHelpIcon}`}
 							>
 								<i>{helpIcon}</i>

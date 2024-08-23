@@ -6,41 +6,27 @@ import classes from "./sideBar_R_SearchModal.module.css";
 const SideBar_R_SearchModal = () => {
 	const sideBarRSearchRef = useRef();
 	const exitButtonRef = useRef();
-	const dispatch = useDispatch();
+	const resizerRef = useRef();
 	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
-	// useEffects
+	const dispatch = useDispatch();
+	// Exit Functionality
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
-		document.addEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
+		return () => {
+			window.removeEventListener("keydown", onEscKey_ExitModal);
+		};
 	}, []);
-	// Functions
-	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (sideBarRSearchRef.current && !sideBarRSearchRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target)) {
-			exitNavBarAction();
-		}
-	};
-	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
-		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
-	};
+
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			exitNavBarAction();
+			exitAction();
 		}
 	};
-	const [navState, setNavState] = useState(false);
-	useEffect(() => {
-		if (sideBar_R_Search_ModalStatus_rdx) {
-			setNavState(true);
-		} else {
-			setNavState(false);
-		}
-	}, [sideBar_R_Search_ModalStatus_rdx]);
-	const toggleMenu = () => {
+	const exitAction = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 	};
 	let exitButton = (
-		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
+		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
@@ -51,6 +37,71 @@ const SideBar_R_SearchModal = () => {
 			</svg>
 		</button>
 	);
+
+	// Resizer functionality
+	useEffect(() => {
+		const sidebar = sideBarRSearchRef.current;
+		if (sidebar && sideBar_R_Search_ModalStatus_rdx) {
+			sidebar.style.width = "700px";
+		}
+		const resizer = resizerRef.current;
+		if (!resizer || !sidebar) return;
+		if (!sideBar_R_Search_ModalStatus_rdx) {
+			sidebar.style.width = "0px";
+			return; // Exit early if the modal is closed
+		}
+		let x;
+		let w;
+		const rs_mousedownHandler = (e) => {
+			x = e.clientX;
+			w = sidebar.getBoundingClientRect().width;
+			document.body.style.userSelect = "none"; // Disable text selection
+			console.log("Initial sidebar width: ", w);
+			document.addEventListener("mousemove", rs_mousemoveHandler);
+			document.addEventListener("mouseup", rs_mouseupHandler);
+		};
+
+		const rs_mousemoveHandler = (e) => {
+			e.preventDefault(); // Prevent text selection
+			const dx = x - e.clientX;
+			let newWidth = w + dx; // Calculate new width
+			// console.log("Resized width: ", newWidth);
+
+			// If width exceeds 700px, stop further resizing and remove the mousedown event listener
+			if (newWidth > 700) {
+				// console.log("Width out of bounds, stopping resize.");
+				sidebar.style.width = newWidth > 700 ? "700px" : "326px"; // Cap the width
+				document.removeEventListener("mousemove", rs_mousemoveHandler);
+				document.removeEventListener("mousedown", rs_mousedownHandler); // Remove mousedown listener
+				document.removeEventListener("mouseup", rs_mouseupHandler);
+				document.body.style.userSelect = ""; // Re-enable text selection
+				return;
+			}
+			// Set new width if within the range
+			sidebar.style.width = `${newWidth}px`;
+
+			// Check if width is below 326px, if so, call exitAction
+			if (newWidth < 150) {
+				exitAction();
+				console.log("Width out of bounds, stopping resize.");
+				sidebar.style.width = 0; // Cap the width
+				document.removeEventListener("mousemove", rs_mousemoveHandler);
+				document.removeEventListener("mousedown", rs_mousedownHandler); // Remove mousedown listener
+				document.removeEventListener("mouseup", rs_mouseupHandler);
+				document.body.style.userSelect = ""; // Re-enable text selection
+				return;
+			}
+		};
+		const rs_mouseupHandler = () => {
+			document.removeEventListener("mouseup", rs_mouseupHandler);
+			document.removeEventListener("mousemove", rs_mousemoveHandler);
+		};
+		resizer.addEventListener("mousedown", rs_mousedownHandler);
+		return () => {
+			resizer.removeEventListener("mousedown", rs_mousedownHandler);
+		};
+	}, [sideBar_R_Search_ModalStatus_rdx]);
+
 	//!Search Bar
 	const searchBarRef = useRef(null);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
@@ -82,12 +133,9 @@ const SideBar_R_SearchModal = () => {
 	return (
 		<Fragment>
 			{exitButton}
-			<menu className={`${classes["sidebar"]} ${navState ? classes.open : ""}`} ref={sideBarRSearchRef}>
+			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Search_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarRSearchRef}>
 				{RMain_SearchBar}
-				<div className={classes.top}></div>
-				<div className={classes.bottom}>
-					<div className={classes.break}></div>
-				</div>
+				<div className={classes.resizer} ref={resizerRef}></div>
 			</menu>
 		</Fragment>
 	);

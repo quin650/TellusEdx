@@ -3,31 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "./4_sideBar_R_QuestionsModal.module.css";
 
-const SideBar_R_QuestionsModal = () => {
+const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 	const sideBarQuestionsRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
 	const sideBar_R_Questions_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Questions_ModalStatus_rdx);
+	const sideBar_L_isOpen_Rdx = useSelector(({ user }) => user.sideBar_L_isOpen_Rdx);
 	const dispatch = useDispatch();
 	// Exit Functionality
+	useEffect(() => {
+		window.addEventListener("keydown", onEscKey_ExitModal);
+		return () => {
+			window.removeEventListener("keydown", onEscKey_ExitModal);
+		};
+	}, []);
 
-	const onClickOutsideNavBar_closeNavBar = (e) => {
-		if (navBarRef.current && !navBarRef.current.contains(e.target) && !exitButtonRef.current.contains(e.target) && !languageSettingsModalStatusRef.current) {
-			exitNavBarAction();
-		}
-	};
-	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
-		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
-	};
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			exitNavBarAction();
+			exitAction();
 		}
 	};
 	const exitAction = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
-		sideBarQuestionsRef.current.style.width = "0px";
 	};
 	let exitButton = (
 		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
@@ -44,27 +41,70 @@ const SideBar_R_QuestionsModal = () => {
 
 	// Resizer functionality
 	useEffect(() => {
-		const resizer = resizerRef.current;
 		const sidebar = sideBarQuestionsRef.current;
-		if (!resizer || !sidebar) return;
-		let x, w;
+		const pageContent = pageContentRef.current;
+		const resizer = resizerRef.current;
+		if (!resizer || !sidebar || !pageContent) return;
+
+	
+		if (!sideBar_R_Questions_ModalStatus_rdx) {
+			sidebar.style.width = "0%";
+			return; 
+		}
+
+		let firstX_Width;
+		let newX_Width;
+		let sideBarRWidth;
+
 		const rs_mousedownHandler = (e) => {
-			x = e.clientX;
-			// w = parseInt(window.getComputedStyle(sidebar).width, 10);
-			w = sidebar.getBoundingClientRect().width;
-			console.log("Initial sidebar width: ", w);
+			firstX_Width = e.clientX;
+			sideBarRWidth = sidebar.getBoundingClientRect().width;
+			document.body.style.userSelect = "none";
+
 			document.addEventListener("mousemove", rs_mousemoveHandler);
 			document.addEventListener("mouseup", rs_mouseupHandler);
 		};
 
 		const rs_mousemoveHandler = (e) => {
-			const dx = x - e.clientX;
-			let newWidth = w + dx; // new width
-			console.log("Resized width: ", newWidth);
-			if (newWidth < 700) {
-				sidebar.style.width = `${newWidth}px`;
+			e.preventDefault(); 
+			newX_Width = e.clientX
+			const changeInX = firstX_Width - newX_Width;
+			const newSideBarWidth = sideBarRWidth + changeInX;
+		
+			const viewportWidth = document.documentElement.clientWidth;
+			const sideBarLWidth = sideBar_L_isOpen_Rdx ? 326 : 0;
+			const availableWidth = viewportWidth - pageContent.getBoundingClientRect().width - sideBarLWidth;
+			console.log("availableWidth: ", availableWidth)
+			const minWidthPercent = 5; 
+			const maxWidthPercent = 40; 
+			const newWidthPercent = (newSideBarWidth / viewportWidth) * 100;
+			const availableWidthPercent = (availableWidth / availableWidth) * 100
+
+			if (newWidthPercent > availableWidthPercent) {
+				sidebar.style.width = `${availableWidthPercent}%`;
+				stopResizing();
+				return;
 			}
+		
+			if (newWidthPercent > maxWidthPercent) {
+				sidebar.style.width = `${maxWidthPercent}%`;
+				stopResizing();
+				return;
+			}
+			if (newWidthPercent < minWidthPercent) {
+				exitAction();
+				stopResizing();
+				return;
+			}
+			sidebar.style.width = `${newWidthPercent}%`;
 		};
+		
+		const stopResizing = () => {
+			document.removeEventListener("mouseup", rs_mouseupHandler);
+			document.removeEventListener("mousemove", rs_mousemoveHandler);
+			document.body.style.userSelect = "";
+		};
+		
 		const rs_mouseupHandler = () => {
 			document.removeEventListener("mouseup", rs_mouseupHandler);
 			document.removeEventListener("mousemove", rs_mousemoveHandler);
@@ -73,11 +113,11 @@ const SideBar_R_QuestionsModal = () => {
 		return () => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
-	}, []);
+	}, [sideBar_R_Questions_ModalStatus_rdx, sideBar_L_isOpen_Rdx]);
 
 	return (
 		<Fragment>
-			{sideBar_R_Questions_ModalStatus_rdx ? exitButton : ""}
+			{exitButton}
 			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 				<div className={classes.resizer} ref={resizerRef}></div>
 			</menu>
