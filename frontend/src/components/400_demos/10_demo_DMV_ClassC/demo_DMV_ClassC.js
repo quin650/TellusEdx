@@ -299,7 +299,7 @@ const DemoDMVClassC = () => {
 					activeID={activeID}
 					GoTo_TopOfPage={GoTo_TopOfPage}
 				/>
-				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
+				<div className={`${classes["handbook_outerContainer"]} ${sideBar_L_isOpen_Rdx ? classes.sideBarLisOpen : ""}`}  ref={pageContentRef}>
 					<div className={classes.handbook_innerContainer}>
 						<div className={classes.page_contentContainer}>
 							{ListOfPages[currentPageNum_rdx]}

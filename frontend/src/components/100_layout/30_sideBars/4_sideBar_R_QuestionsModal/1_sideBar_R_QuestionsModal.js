@@ -60,7 +60,6 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 			firstX_Width = e.clientX;
 			sideBarRWidth = sidebar.getBoundingClientRect().width;
 			document.body.style.userSelect = "none";
-
 			document.addEventListener("mousemove", rs_mousemoveHandler);
 			document.addEventListener("mouseup", rs_mouseupHandler);
 		};
@@ -68,13 +67,13 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		const rs_mousemoveHandler = (e) => {
 			e.preventDefault(); 
 			newX_Width = e.clientX
-			const changeInX = firstX_Width - newX_Width;
+			let changeInX = firstX_Width - newX_Width;
 			const newSideBarWidth = sideBarRWidth + changeInX;
 		
 			const viewportWidth = document.documentElement.clientWidth;
 			const sideBarLWidth = sideBar_L_isOpen_Rdx ? 326 : 0;
-			const availableWidth = viewportWidth - pageContent.getBoundingClientRect().width - sideBarLWidth;
-			console.log("availableWidth: ", availableWidth)
+			const pageContentEstimatedWidth = 1500  // based on max-width (handbook_outerContainer) 		const pageContentCalculatedWidth = pageContent.getBoundingClientRect().width
+			const availableWidth = viewportWidth - pageContentEstimatedWidth - sideBarLWidth;
 			const minWidthPercent = 5; 
 			const maxWidthPercent = 40; 
 			const newWidthPercent = (newSideBarWidth / viewportWidth) * 100;

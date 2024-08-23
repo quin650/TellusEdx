@@ -16,19 +16,66 @@
 }
 /*! Handbook-------------------------------------------------------------------*/
 .handbook_outerContainer {
+	max-width: 1500px;
 	padding-top: 56px;
 	padding-bottom: 56px;
-	max-width: 1500px;
-	padding-left: 5%;
-	padding-right: 5%;
+	/* padding-left: 5%;
+	padding-right: 5%; */
 	margin: 0 auto;
 	line-height: 1.35;
 	min-height: 100%;
-	/* new */
 	flex-grow: 1;
 	width: 60%;
-	transition: width 1s ease; /* Updated to transition width */
+	transition: width 1s ease; 
 }
+@media (min-width: 2600px) {
+	/* Height over 2600px */
+	.handbook_outerContainer {
+		max-width: 2420px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+@media (max-width: 2600px) {
+	/* Height under 2600px */
+	.handbook_outerContainer {
+		max-width: 1500px;
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+.handbook_outerContainer.sideBarLisOpen {
+	max-width: 1190px;
+	padding-top: 56px;
+	padding-bottom: 56px;
+	padding-left: 1%;
+	padding-right: 1%;
+	margin: 0 auto;
+	line-height: 1.35;
+	min-height: 100%;
+	flex-grow: 1;
+	width: 60%;
+	transition: width 1s ease; 
+}
+
+@media (min-width: 2600px) {
+	/* Height over 2600px */
+	.handbook_outerContainer.sideBarLisOpen {
+		max-width: 1830px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+@media (max-width: 2600px) {
+	/* Height under 2600px */
+	.handbook_outerContainer.sideBarLisOpen {
+		max-width: 1500px;
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+
+
 .handbook_innerContainer {
 	font-size: 1rem;
 	display: flex;
