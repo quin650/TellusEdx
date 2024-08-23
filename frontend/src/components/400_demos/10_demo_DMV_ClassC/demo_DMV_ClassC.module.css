@@ -29,15 +29,8 @@
 	flex-shrink: 1;
 	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/ 
 	flex-basis: 1150px;
+	max-width: 1830px;
 }
-@media (min-width: 2600px) {
-	.handbook_outerContainer {
-		max-width: 1830px;
-	}
-}
-
-
-
 .handbook_innerContainer {
 	font-size: 1rem;
 	display: flex;
