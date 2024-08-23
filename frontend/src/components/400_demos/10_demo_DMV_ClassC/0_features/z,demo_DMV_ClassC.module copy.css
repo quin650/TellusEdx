@@ -15,28 +15,69 @@
 	position: relative;
 }
 /*! Handbook-------------------------------------------------------------------*/
+/* The below marked as "to compensate" relates to an issue with the "max-width and padding left and padding right is affecting the code for the resizer, in order to compensate for this issue, i used a work around, hence the "to compensate*/
 .handbook_outerContainer {
+	max-width: 1500px;
 	padding-top: 56px;
 	padding-bottom: 56px;
+	/* padding-left: 5%;
+	padding-right: 5%; */
 	margin: 0 auto;
 	line-height: 1.35;
 	min-height: 100%;
-	transition: width 1s ease;
-
-	padding-left: 3%;
-	padding-right: 3%;
 	flex-grow: 1;
-	flex-shrink: 1;
-	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/ 
-	flex-basis: 1150px;
+	width: 60%;
+	transition: width 1s ease; 
 }
+
 @media (min-width: 2600px) {
+	/* Height over 2600px */
 	.handbook_outerContainer {
-		max-width: 1830px;
+		max-width: 2420px;
+		padding-left: 5%;
+		padding-right: 5%;
 	}
 }
-
-
+@media (max-width: 2600px) {
+	/* Height under 2600px */
+	.handbook_outerContainer {
+		max-width: 1500px;
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+/* To compensate-------------------------------------------------------------------*/
+.handbook_outerContainer.sideBarLisOpen {
+	max-width: 1190px;
+	padding-top: 56px;
+	padding-bottom: 56px;
+	padding-left: 1%;
+	padding-right: 1%;
+	margin: 0 auto;
+	line-height: 1.35;
+	min-height: 100%;
+	flex-grow: 1;
+	width: 60%;
+	transition: width 1s ease; 
+}
+/* To compensate-------------------------------------------------------------------*/
+@media (min-width: 2600px) {
+	/* Height over 2600px */
+	.handbook_outerContainer.sideBarLisOpen {
+		max-width: 1830px;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+@media (max-width: 2600px) {
+	/* Height under 2600px */
+	.handbook_outerContainer.sideBarLisOpen {
+		max-width: 1500px;
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+/* To compensate-------------------------------------------------------------------*/
 
 .handbook_innerContainer {
 	font-size: 1rem;
@@ -50,7 +91,6 @@
 	flex-direction: column;
 	font-weight: 400;
 	min-height: 850px;
-	margin: auto;
 }
 .handbook_header_section {
 	display: block;

@@ -72,8 +72,8 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		
 			const viewportWidth = document.documentElement.clientWidth;
 			const sideBarLWidth = sideBar_L_isOpen_Rdx ? 326 : 0;
-			const pageContentEstimatedWidth = 1500  // based on max-width (handbook_outerContainer) 		
-			// const pageContentCalculatedWidth = pageContent.getBoundingClientRect().width
+			const pageContentEstimatedWidth = 1500  // based on max-width (handbook_outerContainer) --
+			//const pageContentCalculatedWidth = pageContent.getBoundingClientRect().width //Used to be this (dynamic)
 			const availableWidth = viewportWidth - pageContentEstimatedWidth - sideBarLWidth;
 			const minWidthPercent = 5; 
 			const maxWidthPercent = 40; 
