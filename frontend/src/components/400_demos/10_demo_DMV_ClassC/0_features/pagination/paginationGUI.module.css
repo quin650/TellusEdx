@@ -75,7 +75,7 @@
 	border-radius: 5px !important;
 	background-color: var(--color_pageNav_InputFIll_white_to_gray);
 	font-size: 15.5px !important;
-	margin-bottom: 1px;
+	margin-bottom: 2px;
 }
 .paginationInputContainer input:focus,
 .paginationInputContainer input:-webkit-autofill:focus {

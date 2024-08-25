@@ -74,7 +74,7 @@ const userSlice = createSlice({
 			state.isDemoView_rdx = false;
 		},
 
-		// L Side Modal
+		
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 		},
@@ -84,7 +84,8 @@ const userSlice = createSlice({
 		setDemoPageLength(state, action) {
 			state.pagesLength_rdx = action.payload;
 		},
-
+		// SideBars
+		// SideBar L
 		sideBar_L_Toggle_ModalVisibility(state) {
 			state.sideBar_L_isOpen_Rdx = !state.sideBar_L_isOpen_Rdx;
 		},
@@ -100,8 +101,8 @@ const userSlice = createSlice({
 		sideBar_L_YesAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
-		// R Side Modals
-		// Search Modal
+
+		// Search SideBar
 		sideBar_R_Toggle_Search_ModalVisibility(state) {
 			state.sideBar_R_Search_ModalStatus_rdx = !state.sideBar_R_Search_ModalStatus_rdx;
 		},
@@ -111,7 +112,7 @@ const userSlice = createSlice({
 		sideBar_R_Close_Search_Modal(state) {
 			state.sideBar_R_Search_ModalStatus_rdx = false;
 		},
-		// Notes Modal
+		// Notes SideBar
 		sideBar_R_Toggle_Notes_ModalVisibility(state) {
 			state.sideBar_R_Notes_ModalStatus_rdx = !state.sideBar_R_Notes_ModalStatus_rdx;
 		},
@@ -121,7 +122,7 @@ const userSlice = createSlice({
 		sideBar_R_Close_Notes_Modal(state) {
 			state.sideBar_R_Notes_ModalStatus_rdx = false;
 		},
-		// R Main Modal
+		// R Main SideBar
 		sideBar_R_Toggle_Main_ModalVisibility(state) {
 			state.sideBar_R_Main_ModalStatus_rdx = !state.sideBar_R_Main_ModalStatus_rdx;
 		},
@@ -132,7 +133,7 @@ const userSlice = createSlice({
 			state.sideBar_R_Main_ModalStatus_rdx = false;
 		},
 
-		// R Questions Modal
+		// R Questions SideBar
 		sideBar_R_Toggle_Questions_ModalVisibility(state) {
 			state.sideBar_R_Questions_ModalStatus_rdx = !state.sideBar_R_Questions_ModalStatus_rdx;
 		},
@@ -142,6 +143,9 @@ const userSlice = createSlice({
 		sideBar_R_Close_Questions_Modal(state) {
 			state.sideBar_R_Questions_ModalStatus_rdx = false;
 		},
+
+
+
 
 		// Get Started Modal
 		getStartedModalLogIn(state) {
