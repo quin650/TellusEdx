@@ -15,8 +15,10 @@ const SideBar_R_MainModal = () => {
 
 	const sideBar_R_Search_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Search_isOpen_rdx);
 	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
-	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
+	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);	
+	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
+	
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
@@ -159,7 +161,11 @@ const SideBar_R_MainModal = () => {
 			/>
 		</svg>
 	);
-
+	const QuestionsIcon = (
+		<svg className={classes.svgQuestionsButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+				<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+			</svg>
+	);
 	// useEffects
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -293,6 +299,9 @@ const SideBar_R_MainModal = () => {
 		if (sideBar_R_Main_isOpen_rdx) {
 			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
+		if (sideBar_R_Questions_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		}
 		dispatch(userReducerActions.sideBar_R_Open_Search());
 	};
 	const open_sideBar_R_Notes_Modal = () => {
@@ -302,7 +311,22 @@ const SideBar_R_MainModal = () => {
 		if (sideBar_R_Main_isOpen_rdx) {
 			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
+		if (sideBar_R_Questions_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		}
 		dispatch(userReducerActions.sideBar_R_Open_Notes());
+	};
+	const open_sideBar_R_Questions_Modal = () => {
+		if (sideBar_R_Search_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
+		}
+		if (sideBar_R_Notes_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
+		}
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
 	//!Search Bar
 	const searchBarRef = useRef(null);
@@ -361,10 +385,16 @@ const SideBar_R_MainModal = () => {
 							<span>Demo</span>
 						</Link>
 						{location.pathname === "/demo" && (
-							<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
-								<i>{NotesIcon}</i>
-								<span>Notes</span>
-							</Link>
+							<>
+								<Link onClick={open_sideBar_R_Notes_Modal} className={classes.sidebarMenuOptions}>
+									<i>{NotesIcon}</i>
+									<span>Notes</span>
+								</Link>
+								<Link onClick={open_sideBar_R_Questions_Modal} className={classes.sidebarMenuOptions}>
+									<i>{QuestionsIcon}</i>
+									<span>Quiz ?'s</span>
+								</Link>
+							</>
 						)}
 					</div>
 				</div>
