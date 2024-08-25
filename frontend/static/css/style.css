@@ -62,6 +62,8 @@ body {
 	--active_menuItem_gray_to_darkGray: #e0e0e0;
 	--hover_modalExitButton_gray_to_darkGray: #efefef;
 	--active_modalExitButton_gray_to_darkGray: #e0e0e0;
+	--borderColor_searchMenuItem_gray_to_darkGray: #efefef;
+	--backgroundColor_searchMenuItem_white_to_darkGray: white;
 
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #1a1c1e;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
@@ -121,6 +123,8 @@ body {
 	--active_menuItem_gray_to_darkGray: #232323;
 	--hover_modalExitButton_gray_to_darkGray: #232323;
 	--active_modalExitButton_gray_to_darkGray: #1e1d1d;
+	--borderColor_searchMenuItem_gray_to_darkGray: #252525;
+	--backgroundColor_searchMenuItem_white_to_darkGray: #1b1b1b;
 
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #eeebee;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;

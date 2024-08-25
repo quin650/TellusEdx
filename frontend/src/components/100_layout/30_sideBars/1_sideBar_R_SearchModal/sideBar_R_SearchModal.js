@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "./sideBar_R_SearchModal.module.css";
 
-const SideBar_R_SearchModal = () => {
+const SideBar_R_SearchModal = ({pageContentRef}) => {
 	const sideBarRSearchRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
 	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
+	const sideBar_L_isOpen_Rdx = useSelector(({ user }) => user.sideBar_L_isOpen_Rdx);
 	const dispatch = useDispatch();
 	// Exit Functionality
 	useEffect(() => {
@@ -38,69 +39,81 @@ const SideBar_R_SearchModal = () => {
 		</button>
 	);
 
-	// Resizer functionality
-	useEffect(() => {
-		const sidebar = sideBarRSearchRef.current;
-		if (sidebar && sideBar_R_Search_ModalStatus_rdx) {
-			sidebar.style.width = "700px";
-		}
-		const resizer = resizerRef.current;
-		if (!resizer || !sidebar) return;
-		if (!sideBar_R_Search_ModalStatus_rdx) {
-			sidebar.style.width = "0px";
-			return; // Exit early if the modal is closed
-		}
-		let x;
-		let w;
-		const rs_mousedownHandler = (e) => {
-			x = e.clientX;
-			w = sidebar.getBoundingClientRect().width;
-			document.body.style.userSelect = "none"; // Disable text selection
-			console.log("Initial sidebar width: ", w);
-			document.addEventListener("mousemove", rs_mousemoveHandler);
-			document.addEventListener("mouseup", rs_mouseupHandler);
-		};
-
-		const rs_mousemoveHandler = (e) => {
-			e.preventDefault(); // Prevent text selection
-			const dx = x - e.clientX;
-			let newWidth = w + dx; // Calculate new width
-			// console.log("Resized width: ", newWidth);
-
-			// If width exceeds 700px, stop further resizing and remove the mousedown event listener
-			if (newWidth > 700) {
-				// console.log("Width out of bounds, stopping resize.");
-				sidebar.style.width = newWidth > 700 ? "700px" : "326px"; // Cap the width
-				document.removeEventListener("mousemove", rs_mousemoveHandler);
-				document.removeEventListener("mousedown", rs_mousedownHandler); // Remove mousedown listener
-				document.removeEventListener("mouseup", rs_mouseupHandler);
-				document.body.style.userSelect = ""; // Re-enable text selection
-				return;
+		// Resizer functionality
+		useEffect(() => {
+			const sidebar = sideBarRSearchRef.current;
+			const pageContent = pageContentRef.current;
+			const resizer = resizerRef.current;
+			if (!resizer || !sidebar || !pageContent) return;
+	
+		
+			if (!sideBar_R_Search_ModalStatus_rdx) {
+				sidebar.style.width = "0%";
+				return; 
 			}
-			// Set new width if within the range
-			sidebar.style.width = `${newWidth}px`;
-
-			// Check if width is below 326px, if so, call exitAction
-			if (newWidth < 150) {
-				exitAction();
-				console.log("Width out of bounds, stopping resize.");
-				sidebar.style.width = 0; // Cap the width
-				document.removeEventListener("mousemove", rs_mousemoveHandler);
-				document.removeEventListener("mousedown", rs_mousedownHandler); // Remove mousedown listener
+	
+			let firstX_Width;
+			let newX_Width;
+			let sideBarRWidth;
+	
+			const rs_mousedownHandler = (e) => {
+				firstX_Width = e.clientX;
+				sideBarRWidth = sidebar.getBoundingClientRect().width;
+				document.body.style.userSelect = "none";
+				document.addEventListener("mousemove", rs_mousemoveHandler);
+				document.addEventListener("mouseup", rs_mouseupHandler);
+			};
+	
+			const rs_mousemoveHandler = (e) => {
+				e.preventDefault(); 
+				newX_Width = e.clientX
+				let changeInX = firstX_Width - newX_Width;
+				const newSideBarWidth = sideBarRWidth + changeInX;
+			
+				const viewportWidth = document.documentElement.clientWidth;
+				const sideBarLWidth = sideBar_L_isOpen_Rdx ? 326 : 0;
+				const pageContentEstimatedWidth = 1500  // based on max-width (handbook_outerContainer) 		
+				// const pageContentCalculatedWidth = pageContent.getBoundingClientRect().width
+				const availableWidth = viewportWidth - pageContentEstimatedWidth - sideBarLWidth;
+				const minWidthPercent = 5; 
+				const maxWidthPercent = 40; 
+				const newWidthPercent = (newSideBarWidth / viewportWidth) * 100;
+				const availableWidthPercent = (availableWidth / availableWidth) * 100
+	
+				if (newWidthPercent > availableWidthPercent) {
+					sidebar.style.width = `${availableWidthPercent}%`;
+					stopResizing();
+					return;
+				}
+			
+				if (newWidthPercent > maxWidthPercent) {
+					sidebar.style.width = `${maxWidthPercent}%`;
+					stopResizing();
+					return;
+				}
+				if (newWidthPercent < minWidthPercent) {
+					exitAction();
+					stopResizing();
+					return;
+				}
+				sidebar.style.width = `${newWidthPercent}%`;
+			};
+			
+			const stopResizing = () => {
 				document.removeEventListener("mouseup", rs_mouseupHandler);
-				document.body.style.userSelect = ""; // Re-enable text selection
-				return;
-			}
-		};
-		const rs_mouseupHandler = () => {
-			document.removeEventListener("mouseup", rs_mouseupHandler);
-			document.removeEventListener("mousemove", rs_mousemoveHandler);
-		};
-		resizer.addEventListener("mousedown", rs_mousedownHandler);
-		return () => {
-			resizer.removeEventListener("mousedown", rs_mousedownHandler);
-		};
-	}, [sideBar_R_Search_ModalStatus_rdx]);
+				document.removeEventListener("mousemove", rs_mousemoveHandler);
+				document.body.style.userSelect = "";
+			};
+			
+			const rs_mouseupHandler = () => {
+				document.removeEventListener("mouseup", rs_mouseupHandler);
+				document.removeEventListener("mousemove", rs_mousemoveHandler);
+			};
+			resizer.addEventListener("mousedown", rs_mousedownHandler);
+			return () => {
+				resizer.removeEventListener("mousedown", rs_mousedownHandler);
+			};
+		}, [sideBar_R_Search_ModalStatus_rdx, sideBar_L_isOpen_Rdx]);
 
 	//!Search Bar
 	const searchBarRef = useRef(null);
@@ -132,8 +145,8 @@ const SideBar_R_SearchModal = () => {
 	);
 	return (
 		<Fragment>
-			{exitButton}
 			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Search_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarRSearchRef}>
+				{exitButton}
 				{RMain_SearchBar}
 				<div className={classes.resizer} ref={resizerRef}></div>
 			</menu>

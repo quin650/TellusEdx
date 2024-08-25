@@ -174,7 +174,6 @@ const Page5 = () => {
 					</span>
 				</p>
 
-				<p>.</p>
 			</div>
 		</Fragment>
 	);

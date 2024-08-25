@@ -149,17 +149,6 @@ const SideBar_R_MainModal = () => {
 			/>
 		</svg>
 	);
-	const SearchIcon = (
-		<svg className={classes.searchIcon} xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none">
-			<path
-				d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z"
-			/>
-			<path
-				d="M18.6875 18.4383L14.9719 14.7227"
-			/>
-		</svg>
-	);
-
 	// useEffects
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -310,15 +299,32 @@ const SideBar_R_MainModal = () => {
 	const handleSearchBarFocus = () => {
 		if (location.pathname !== "/demo") {
 			setSearchBarIsFocused(true);
-			searchBarRef.current.select();
 		} else {
 			open_sideBar_R_Search_Modal();
 		}
 	};
+
 	const handleSearchBarBlur = () => {
 		setSearchBarIsFocused(false);
 	};
+
 	const [searchPlaceholder, setSearchPlaceholder] = useState("Explore");
+
+	const RMain_SearchBar = (
+		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
+			<input
+				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
+				ref={searchBarRef}
+				onFocus={handleSearchBarFocus}
+				onBlur={handleSearchBarBlur}
+				placeholder={searchPlaceholder}
+				name="q"
+				aria-label="Search"
+			/>
+			<input type="hidden" name="check_keywords" value="yes" />
+			<input type="hidden" name="area" value="default" />
+		</div>
+	);
 
 	return (
 		<Fragment>
@@ -332,22 +338,9 @@ const SideBar_R_MainModal = () => {
 						TellusEd
 					</Link>
 				</div>
+				{RMain_SearchBar}
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
-						<div className={classes.searchMenuOptions}>
-							<i className={`${classes["searchIconContainer"]} ${searchBarIsFocused ? classes.isFocused : ""}`}>
-								{SearchIcon}
-							</i>
-							<input
-								className={`${classes["searchInput"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
-								ref={searchBarRef}
-								onFocus={handleSearchBarFocus}
-								onBlur={handleSearchBarBlur}
-								placeholder={searchPlaceholder}
-								name="q"
-								aria-label="Search"
-							/>
-						</div>
 						<Link onClick={CloseNavBarMenu_and_ScrollSmoothly} to="/home"
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
@@ -360,7 +353,8 @@ const SideBar_R_MainModal = () => {
 							<i>{dashboardIcon}</i>
 							<span>Demo</span>
 						</Link>
-						{location.pathname === "/demo" && (
+
+						{sideBar_R_Search_ModalStatus_rdx && (
 							<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
 								<i>{NotesIcon}</i>
 								<span>Notes</span>
@@ -368,6 +362,7 @@ const SideBar_R_MainModal = () => {
 						)}
 					</div>
 				</div>
+
 				<div className={classes.bottom}>
 					<div className={classes.subgroup}>
 						<div className={classes.sidebarMenu}>

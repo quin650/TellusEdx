@@ -245,37 +245,46 @@ const DemoDMVClassC = () => {
 					dispatch(userReducerActions.sideBar_L_Open());
 				}
 				break;
-
 			case e.ctrlKey && e.key === "s":
 				if (sideBar_R_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
 				if (sideBar_R_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+				if (sideBar_R_Questions_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
 				if (!sideBar_R_Search_ModalStatus_rdx) {
 					dispatch(userReducerActions.sideBar_R_Open_Search_Modal());
 				} else {
 					dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 				}
 				break;
-
 			case e.ctrlKey && e.key === "n":
 				if (sideBar_R_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 				if (sideBar_R_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+				if (sideBar_R_Questions_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
 				if (!sideBar_R_Notes_ModalStatus_rdx) {
 					dispatch(userReducerActions.sideBar_R_Open_Notes_Modal());
 				} else {
 					dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
 				}
 				break;
-
 			case e.ctrlKey && e.key === "m":
 				if (sideBar_R_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
 				if (sideBar_R_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+				if (sideBar_R_Questions_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
 				if (!sideBar_R_Main_ModalStatus_rdx) {
 					dispatch(userReducerActions.sideBar_R_Open_Main_Modal());
 				} else {
 					dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
 				}
 				break;
-
+			case e.ctrlKey && e.key === "q":
+				if (sideBar_R_Search_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Search_Modal());
+				if (sideBar_R_Notes_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+				if (sideBar_R_Main_ModalStatus_rdx) dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+				if (!sideBar_R_Questions_ModalStatus_rdx) {
+					dispatch(userReducerActions.sideBar_R_Open_Questions_Modal());
+				} else {
+					dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
+				}
+				break;
 			default:
 				break;
 		}
@@ -307,8 +316,8 @@ const DemoDMVClassC = () => {
 						</div>
 					</div>
 				</div>
-				{sideBar_R_Search_ModalStatus_rdx && <SideBar_R_SearchModal />}
-				{sideBar_R_Notes_ModalStatus_rdx && <SideBar_R_NotesModal />}
+				{sideBar_R_Search_ModalStatus_rdx && <SideBar_R_SearchModal pageContentRef={pageContentRef}/>}
+				{sideBar_R_Notes_ModalStatus_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef}/>}
 				{sideBar_R_Questions_ModalStatus_rdx && <SideBar_R_QuestionsModal pageContentRef={pageContentRef}/>}
 			</div>
 		</main>
@@ -316,11 +325,3 @@ const DemoDMVClassC = () => {
 };
 
 export default DemoDMVClassC;
-
-
-// const minWidthPixels = 155; 
-// if (newWidthPercent < minWidthPercent || newSideBarWidth < minWidthPixels) {
-// 	exitAction();
-// 	stopResizing();
-// 	return;
-// }
