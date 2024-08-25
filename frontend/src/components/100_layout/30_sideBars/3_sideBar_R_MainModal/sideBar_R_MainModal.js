@@ -13,9 +13,9 @@ const SideBar_R_MainModal = () => {
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
 	const activeFlag_rdx = useSelector(({ user }) => user.activeFlag_rdx);
 
-	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
-	const sideBar_R_Notes_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Notes_ModalStatus_rdx);
-	const sideBar_R_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Main_ModalStatus_rdx);
+	const sideBar_R_Search_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Search_isOpen_rdx);
+	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
+	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
 	const dispatch = useDispatch();
 	const location = useLocation();
@@ -183,10 +183,10 @@ const SideBar_R_MainModal = () => {
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
 	const CloseNavBarMenu_and_ScrollSmoothly = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		setTimeout(() => {
 			document.querySelector("main").scrollTo({
 				top: 0,
@@ -195,7 +195,7 @@ const SideBar_R_MainModal = () => {
 		}, 0);
 	};
 	const CloseNavBarMenu_and_ScrollQuickly = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		document.querySelector("main").scrollTo({
 			top: 0,
 			behavior: "instant",
@@ -225,7 +225,7 @@ const SideBar_R_MainModal = () => {
 		}
 	};
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -272,7 +272,7 @@ const SideBar_R_MainModal = () => {
 				</div>
 		  ));
 	const toggleMenu = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -287,22 +287,22 @@ const SideBar_R_MainModal = () => {
 		</button>
 	);
 	const open_sideBar_R_Search_Modal = () => {
-		if (sideBar_R_Notes_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		if (sideBar_R_Notes_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
 		}
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
-		dispatch(userReducerActions.sideBar_R_Open_Search_Modal());
+		dispatch(userReducerActions.sideBar_R_Open_Search());
 	};
 	const open_sideBar_R_Notes_Modal = () => {
-		if (sideBar_R_Search_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		if (sideBar_R_Search_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
 		}
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
-		dispatch(userReducerActions.sideBar_R_Open_Notes_Modal());
+		dispatch(userReducerActions.sideBar_R_Open_Notes());
 	};
 	//!Search Bar
 	const searchBarRef = useRef(null);
@@ -322,7 +322,7 @@ const SideBar_R_MainModal = () => {
 
 	return (
 		<Fragment>
-			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
+			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_isOpen_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
 				{exitButton}
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>

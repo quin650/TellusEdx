@@ -11,12 +11,12 @@ const initialState = {
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
 
-	sideBar_L_isOpen_Rdx: true,
+	sideBar_L_isOpen_rdx: true,
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
-	sideBar_R_Main_ModalStatus_rdx: false,
-	sideBar_R_Search_ModalStatus_rdx: false,
-	sideBar_R_Notes_ModalStatus_rdx: false,
-	sideBar_R_Questions_ModalStatus_rdx: false,
+	sideBar_R_Main_isOpen_rdx: false,
+	sideBar_R_Search_isOpen_rdx: false,
+	sideBar_R_Notes_isOpen_rdx: false,
+	sideBar_R_Questions_isOpen_rdx: false,
 
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
@@ -86,14 +86,14 @@ const userSlice = createSlice({
 		},
 		// SideBars
 		// SideBar L
-		sideBar_L_Toggle_ModalVisibility(state) {
-			state.sideBar_L_isOpen_Rdx = !state.sideBar_L_isOpen_Rdx;
+		sideBar_L_Toggle_Visibility(state) {
+			state.sideBar_L_isOpen_rdx = !state.sideBar_L_isOpen_rdx;
 		},
 		sideBar_L_Open(state) {
-			state.sideBar_L_isOpen_Rdx = true;
+			state.sideBar_L_isOpen_rdx = true;
 		},
 		sideBar_L_Close(state) {
-			state.sideBar_L_isOpen_Rdx = false;
+			state.sideBar_L_isOpen_rdx = false;
 		},
 		sideBar_L_NotAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
@@ -103,45 +103,33 @@ const userSlice = createSlice({
 		},
 
 		// Search SideBar
-		sideBar_R_Toggle_Search_ModalVisibility(state) {
-			state.sideBar_R_Search_ModalStatus_rdx = !state.sideBar_R_Search_ModalStatus_rdx;
+		sideBar_R_Open_Search(state) {
+			state.sideBar_R_Search_isOpen_rdx = true;
 		},
-		sideBar_R_Open_Search_Modal(state) {
-			state.sideBar_R_Search_ModalStatus_rdx = true;
-		},
-		sideBar_R_Close_Search_Modal(state) {
-			state.sideBar_R_Search_ModalStatus_rdx = false;
+		sideBar_R_Close_Search(state) {
+			state.sideBar_R_Search_isOpen_rdx = false;
 		},
 		// Notes SideBar
-		sideBar_R_Toggle_Notes_ModalVisibility(state) {
-			state.sideBar_R_Notes_ModalStatus_rdx = !state.sideBar_R_Notes_ModalStatus_rdx;
+		sideBar_R_Open_Notes(state) {
+			state.sideBar_R_Notes_isOpen_rdx = true;
 		},
-		sideBar_R_Open_Notes_Modal(state) {
-			state.sideBar_R_Notes_ModalStatus_rdx = true;
-		},
-		sideBar_R_Close_Notes_Modal(state) {
-			state.sideBar_R_Notes_ModalStatus_rdx = false;
+		sideBar_R_Close_Notes(state) {
+			state.sideBar_R_Notes_isOpen_rdx = false;
 		},
 		// R Main SideBar
-		sideBar_R_Toggle_Main_ModalVisibility(state) {
-			state.sideBar_R_Main_ModalStatus_rdx = !state.sideBar_R_Main_ModalStatus_rdx;
+		sideBar_R_Open_Main(state) {
+			state.sideBar_R_Main_isOpen_rdx = true;
 		},
-		sideBar_R_Open_Main_Modal(state) {
-			state.sideBar_R_Main_ModalStatus_rdx = true;
-		},
-		sideBar_R_Close_Main_Modal(state) {
-			state.sideBar_R_Main_ModalStatus_rdx = false;
+		sideBar_R_Close_Main(state) {
+			state.sideBar_R_Main_isOpen_rdx = false;
 		},
 
 		// R Questions SideBar
-		sideBar_R_Toggle_Questions_ModalVisibility(state) {
-			state.sideBar_R_Questions_ModalStatus_rdx = !state.sideBar_R_Questions_ModalStatus_rdx;
+		sideBar_R_Open_Questions(state) {
+			state.sideBar_R_Questions_isOpen_rdx = true;
 		},
-		sideBar_R_Open_Questions_Modal(state) {
-			state.sideBar_R_Questions_ModalStatus_rdx = true;
-		},
-		sideBar_R_Close_Questions_Modal(state) {
-			state.sideBar_R_Questions_ModalStatus_rdx = false;
+		sideBar_R_Close_Questions(state) {
+			state.sideBar_R_Questions_isOpen_rdx = false;
 		},
 
 
@@ -150,21 +138,21 @@ const userSlice = createSlice({
 		// Get Started Modal
 		getStartedModalLogIn(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_isOpen_rdx = false;
 			state.getStartedView_rdx = "LogInModal";
 		},
 		getStartedModalCreateAccount(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_isOpen_rdx = false;
 			state.getStartedView_rdx = "CreateAccountModal";
 		},
 		getStartedModalOpen(state) {
 			state.getStarted_ModalStatus_rdx = true;
-			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_isOpen_rdx = false;
 		},
 		getStartedModalClose(state) {
 			state.getStarted_ModalStatus_rdx = false;
-			state.sideBar_R_Main_ModalStatus_rdx = false;
+			state.sideBar_R_Main_isOpen_rdx = false;
 		},
 		// Registration
 		registerModalClose(state) {

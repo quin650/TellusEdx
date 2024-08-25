@@ -7,8 +7,8 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 	const sideBarQuestionsRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
-	const sideBar_R_Questions_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Questions_ModalStatus_rdx);
-	const sideBar_L_isOpen_Rdx = useSelector(({ user }) => user.sideBar_L_isOpen_Rdx);
+	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
+	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const dispatch = useDispatch();
 	// Exit Functionality
 	useEffect(() => {
@@ -24,7 +24,7 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		}
 	};
 	const exitAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Questions_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Questions());
 	};
 	let exitButton = (
 		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
@@ -47,7 +47,7 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		if (!resizer || !sidebar || !pageContent) return;
 
 	
-		if (!sideBar_R_Questions_ModalStatus_rdx) {
+		if (!sideBar_R_Questions_isOpen_rdx) {
 			sidebar.style.width = "0%";
 			return; 
 		}
@@ -71,7 +71,7 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 			const newSideBarWidth = sideBarRWidth + changeInX;
 		
 			const viewportWidth = document.documentElement.clientWidth;
-			const sideBarLWidth = sideBar_L_isOpen_Rdx ? 326 : 0;
+			const sideBarLWidth = sideBar_L_isOpen_rdx ? 326 : 0;
 			const pageContentEstimatedWidth = 1500  // based on max-width (handbook_outerContainer) 		
 			// const pageContentCalculatedWidth = pageContent.getBoundingClientRect().width
 			const availableWidth = viewportWidth - pageContentEstimatedWidth - sideBarLWidth;
@@ -113,12 +113,12 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		return () => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
-	}, [sideBar_R_Questions_ModalStatus_rdx, sideBar_L_isOpen_Rdx]);
+	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
 
 	return (
 		<Fragment>
 			
-			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
+			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 			{exitButton}
 				<div className={classes.resizer} ref={resizerRef}></div>
 			</menu>
