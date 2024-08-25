@@ -70,16 +70,12 @@
 }
 .pageInput {
 	width: 35px;
-	height: 21px;
-	padding: 0;
-	margin: 0;
 	text-align: center;
 	border: 1px solid var(--color_pageNav_InputBorder_offWhite_to_black) !important;
 	border-radius: 5px !important;
-	display: flex;
-	align-items: center;
 	background-color: var(--color_pageNav_InputFIll_white_to_gray);
-	font-size: 16px !important;
+	font-size: 15.5px !important;
+	margin-bottom: 1px;
 }
 .paginationInputContainer input:focus,
 .paginationInputContainer input:-webkit-autofill:focus {
