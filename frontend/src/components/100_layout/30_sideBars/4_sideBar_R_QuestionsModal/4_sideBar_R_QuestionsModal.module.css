@@ -29,18 +29,6 @@
 	width: 40%;
 	flex-grow: 0;
 }
-
-/* resizer ------------------------------------------- */
-.resizer {
-	width: 3px;
-	top: 0;
-	left: 0;
-	cursor: col-resize;
-	height: 100%;
-	position: absolute;
-	background-color: #42b362;
-}
-
 /* exit button ------------------------------------------- */
 .exitButton {
 	z-index: 3000;
@@ -82,4 +70,167 @@
 }
 .svgExit path {
 	fill: #9e9e9e;
+}
+/* resizer ------------------------------------------- */
+.resizer {
+	width: 3px;
+	top: 0;
+	left: 0;
+	cursor: col-resize;
+	height: 100%;
+	position: absolute;
+	background-color: var(--Blue);
+}
+/* Container ------------------------------------------- */
+.handbook_outerContainer {
+	padding-top: 56px;
+	padding-bottom: 56px;
+	margin: 0 auto;
+	line-height: 1.35;
+	/* min-height: 100%; */
+	/* transition: width 1s ease; */
+	padding-left: 3%;
+	padding-right: 3%;
+	flex-grow: 0;
+	/* flex-shrink: 1; */
+	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/ 
+	/* flex-basis: 1150px; */
+	/* max-width: 1830px; */
+	overflow-y: hidden;
+	display: flex;
+    position: sticky;
+    top: 0;
+    /* height: calc(100vh - 1px); */
+	width: 100%;
+	margin-left: 3px;
+	height: 100vh;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+}
+@media (max-width: 1700px) {
+	.handbook_outerContainer {
+		padding-left: 1%;
+		padding-right: 1%;
+		flex-basis: 600px;
+	}
+}
+.handbook_innerContainer {
+	font-size: 1rem;
+	display: flex;
+	/* min-height: 100%; */
+
+
+}
+.page_contentContainer {
+	display: flex;
+	border: 1px solid #d6dade;
+	border-radius: 8px;
+	flex-direction: column;
+	font-weight: 400;
+	/* min-height: 850px; */
+
+}
+
+/* Question ------------------------------------------- */
+.handbook_header_section {
+	display: block;
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
+	margin: 0.75rem 0.75rem 0 0.75rem;
+	padding: 1rem;
+	margin-bottom: 50px;
+	color: white;
+
+	border-radius: 3px 3px 0 0;
+	padding-top: 30px;
+	padding-bottom: 60px;
+	height: 181px !important;
+}
+.handbook_header_section p {
+	font-size: 0.875rem !important;
+	text-transform: uppercase;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: var(--color_readerSectionTitle_white_to_offWhite);
+	
+}
+.handbook_header_section h2 {
+	margin-bottom: 0;
+	font-size: 24px;
+	line-height: 1.4;
+	margin: 4px 0 1rem 0;
+	color: var(--color_readerSectionTitle_white_to_offWhite);
+	font-weight: 300;
+}
+/* Answers ------------------------------------------- */
+.page_content {
+	-webkit-box-flex: 1;
+	margin: 0 12px auto 12px;
+	padding: 0 16px 60px 16px;
+}
+.page_content ul{
+	font-size: 16px;
+	margin: 0 !important;
+}
+.page_content ul li{
+	list-style-type: none; 
+	margin: 0 !important;
+}
+.answerLabel{
+	font-size: 24px;
+}
+.answerLabel h2{
+	margin: 0 !important;
+}
+/* CheckBox and question */
+.answerLabel{
+	display: flex;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	font-size: 18px;
+	align-items: center;
+}
+.answerLabel input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+.checkBox {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: white;
+	border-radius: 4px;
+	border: 2px solid var(--Blue);
+}
+.answerLabel:hover .checkBox {
+	background-color: #ccc;
+}
+.answerLabel.isChecked:hover .checkBox {
+	background-color: #ccc;
+}
+.answerLabel p {
+	margin: 0 0 0 1rem;
+}
+
+/* Hide CheckMark */
+.checkBox:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+/* Un-hide CheckMark */
+.checkBox.isChecked:after {
+	display: block;
+	left: 9px;
+	top: 5px;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}  
+.checkBox.isChecked {
+	background-color: var(--Blue);
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import PaginationGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI";
 import classes from "./4_sideBar_R_QuestionsModal.module.css";
 
 const SideBar_R_QuestionsModal = ({pageContentRef}) => {
@@ -115,14 +116,70 @@ const SideBar_R_QuestionsModal = ({pageContentRef}) => {
 		};
 	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
 
+	const question = (
+		<h2>What should you do when traffic is slow and heavy, and you must cross railroad tracks before reaching the upcoming intersection? </h2>
+	)
+	const answer1 = (
+		<p>Begin crossing when the vehicle in front of you is crossing the tracks.</p>
+	)
+	const answer2 = (
+		<p>Wait on the tracks until the stoplight at the intersection turns green.</p>
+	)
+	const answer3 = (
+		<p>Wait until you can completely cross the tracks before proceeding.</p>
+	)
+	const answer4 = (
+		<p></p>
+	)
+	const [isChecked, setIsChecked] = useState(false);
+	const handleCheckboxChange = (event) => {
+		setIsChecked(event.target.checked);
+	};
+
 	return (
-		<Fragment>
-			
 			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
-			{exitButton}
+				{exitButton}
 				<div className={classes.resizer} ref={resizerRef}></div>
+				<div className={classes.handbook_outerContainer}>
+					<div className={classes.handbook_innerContainer}>
+						<div className={classes.page_contentContainer}>
+
+							<div className={classes.handbook_header_section}>
+								<p>1 of 8 </p>
+								{question}
+							</div>
+
+							<div className={classes.page_content}>
+								<ul>
+									<li>
+										<label className={`${classes["answerLabel"]} ${isChecked ? classes.isChecked : ""}`}>
+											<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+											<span className={`${classes["checkBox"]} ${isChecked ? classes.isChecked : ""}`}></span>
+											{answer1}
+										</label>
+									</li>
+									<li>
+									<label className={`${classes["answerLabel"]} ${isChecked ? classes.isChecked : ""}`}>
+											<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+											<span className={`${classes["checkBox"]} ${isChecked ? classes.isChecked : ""}`}></span>
+											{answer2}
+										</label>
+									</li>
+									<li>
+									<label className={`${classes["answerLabel"]} ${isChecked ? classes.isChecked : ""}`}>
+											<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+											<span className={`${classes["checkBox"]} ${isChecked ? classes.isChecked : ""}`}></span>
+											{answer3}
+									</label>
+									</li>
+								</ul>
+								
+							</div>
+							<PaginationGUI />
+						</div>
+					</div>
+				</div>
 			</menu>
-		</Fragment>
 	);
 };
 

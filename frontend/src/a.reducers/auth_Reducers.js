@@ -11,12 +11,12 @@ const initialState = {
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
 
-	sideBar_L_isOpen_rdx: true,
-	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
+	sideBar_L_isOpen_rdx: false,
+	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Search_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
-	sideBar_R_Questions_isOpen_rdx: false,
+	sideBar_R_Questions_isOpen_rdx: true,
 
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
