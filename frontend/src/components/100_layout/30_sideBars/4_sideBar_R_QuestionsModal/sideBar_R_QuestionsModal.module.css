@@ -117,6 +117,7 @@
 	font-size: 1rem;
 	display: flex;
 	/* min-height: 100%; */
+	width: 100%;
 }
 .page_contentContainer {
 	display: flex;
@@ -125,6 +126,7 @@
 	flex-direction: column;
 	font-weight: 400;
 	/* min-height: 850px; */
+	width: 100%;
 }
 
 /* Question ------------------------------------------- */
@@ -160,8 +162,7 @@
 /* page general */
 .page_content {
 	-webkit-box-flex: 1;
-	margin: 0 12px auto 12px;
-	padding-bottom: 60px;
+	margin: 0 12px;
 }
 .page_content ul {
 	font-size: 16px;
@@ -260,4 +261,74 @@
 	border: solid white;
 	border-width: 0 3px 3px 0;
 	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/*! Cancel Submit Buttons ---------------------------------------------------*/
+.buttonSection {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	justify-content: flex-end;
+	margin: 0 5% auto auto;
+	padding: 10px 0 10px 16px;
+}
+/* cancel button */
+.button_formatCancel {
+	font-size: 15px;
+	font-weight: 500;
+	color: black;
+	background-color: transparent;
+	width: 80.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: pointer;
+	border: solid 1px var(--Blue);
+}
+.button_formatCancel:hover {
+	background-color: var(--BlueHover);
+}
+.button_formatCancel:active {
+	background-color: var(--Blue);
+	border: solid 2px var(--Blue);
+}
+
+/* submit button */
+.button_formatSubmit:disabled {
+	font-size: 15px;
+	font-weight: 500;
+	color: rgb(102, 102, 102);
+	background-color: gray;
+	width: 150.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: default;
+	border: solid 1px gray;
+	margin-left: 12px;
+}
+.button_formatSubmit:disabled:hover {
+	background-color: gray;
+}
+.button_formatSubmit:disabled:active {
+	background-color: gray;
+	border: solid 1px gray;
+}
+.button_formatSubmit {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--WhiteToGray);
+	background-color: var(--Blue);
+	width: 150.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: pointer;
+	border: solid 1px var(--Blue);
+	margin-left: 12px;
+}
+.button_formatSubmit:hover {
+	background-color: var(--BlueHover);
+}
+.button_formatSubmit:active {
+	background-color: var(--Blue);
+	border: solid 2px var(--Blue);
 }

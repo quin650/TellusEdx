@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsParent from "./2_sideBar_R_QuestionsParent";
 import PaginationQuestionsGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
@@ -118,6 +119,20 @@ const SideBar_R_QuestionsModal = ({ pageContentRef }) => {
 
 	const [questionID, setQuestionID] = useState(1);
 	const questionData = data.questions[questionID - 1];
+
+	// Exit & Submit Buttons
+	const [submitIsActive, setSubmitIsActive] = useState(false);
+	const oneIsChecked = (status) => {
+		setSubmitIsActive(status);
+	};
+	console.log("submitIsActive: ", submitIsActive);
+
+	const cancelButtonAction = () => {
+		console.log("cancel Button clicked");
+	};
+	const submitButtonAction = () => {
+		console.log("submit Button clicked");
+	};
 	return (
 		<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 			{exitButton}
@@ -125,7 +140,15 @@ const SideBar_R_QuestionsModal = ({ pageContentRef }) => {
 			<div className={classes.handbook_outerContainer}>
 				<div className={classes.handbook_innerContainer}>
 					<div className={classes.page_contentContainer}>
-						<SideBar_R_QuestionsParent questionData={questionData} />
+						<SideBar_R_QuestionsParent questionData={questionData} oneIsChecked={oneIsChecked} />
+						<div className={classes.buttonSection}>
+							<button className={classes.button_formatCancel} onClick={cancelButtonAction} type="submit">
+								Cancel
+							</button>
+							<button className={classes.button_formatSubmit} onClick={submitButtonAction} type="submit" disabled={!submitIsActive}>
+								Submit
+							</button>
+						</div>
 						<PaginationQuestionsGUI />
 					</div>
 				</div>

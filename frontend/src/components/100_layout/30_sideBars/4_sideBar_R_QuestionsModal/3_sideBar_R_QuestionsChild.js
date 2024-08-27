@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "./sideBar_R_QuestionsModal.module.css";
 
-const SideBar_R_QuestionsChild = ({ id, text, isCorrect }) => {
+const SideBar_R_QuestionsChild = ({ id, text, isCorrect, newlyCheckedID, uncheck }) => {
 	const [isChecked, setIsChecked] = useState(false);
+
 	const handleCheckboxChange = (event) => {
 		setIsChecked(event.target.checked);
+		newlyCheckedID(id, event.target.checked);
 	};
+	useEffect(() => {
+		if (uncheck) {
+			setIsChecked(false);
+		}
+	}, [uncheck]);
 
 	return (
 		<li key={id}>
