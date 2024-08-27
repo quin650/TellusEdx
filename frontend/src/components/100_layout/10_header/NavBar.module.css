@@ -306,13 +306,26 @@ button:focus {
 .toggleQuestionsButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
-.svgQuestionsButton {
-	stroke-width: 2;
-	flex-shrink: 0;
-	display: block;
-	height: 24px;
-	fill: none;
+
+.svgQuestionsButton2 {
+	width: 20px;
+	height: 20px;
+	stroke: var(--color_primary_darkGray_to_gray);
 }
-.svgQuestionsButton path {
-	fill: #9e9e9e;
+
+.svgQuestionsButton2 .checkmark {
+	fill: none;
+	stroke-width: 1.3px; /* Controls the width of the checkmark line */
+	transform-origin: 4px 4px; /* Adjust based on the path coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
+}
+
+.svgQuestionsButton2 .xmark {
+	stroke-width: 1.3px; /* Controls the width of the X mark lines */
+	transform-origin: 4px 16px; /* Adjust based on the line coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
+}
+
+.svgQuestionsButton2 .horizontalline {
+	stroke-width: 1.6px; /* Controls the width of the horizontal lines */
 }

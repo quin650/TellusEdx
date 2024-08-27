@@ -308,7 +308,7 @@ const DemoDMVClassC = () => {
 					activeID={activeID}
 					GoTo_TopOfPage={GoTo_TopOfPage}
 				/>
-				<div className={classes.handbook_outerContainer}  ref={pageContentRef}>
+				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
 					<div className={classes.handbook_innerContainer}>
 						<div className={classes.page_contentContainer}>
 							{ListOfPages[currentPageNum_rdx]}
@@ -316,9 +316,9 @@ const DemoDMVClassC = () => {
 						</div>
 					</div>
 				</div>
-				{sideBar_R_Search_isOpen_rdx && <SideBar_R_SearchModal pageContentRef={pageContentRef}/>}
-				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef}/>}
-				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_QuestionsModal pageContentRef={pageContentRef}/>}
+				{sideBar_R_Search_isOpen_rdx && <SideBar_R_SearchModal pageContentRef={pageContentRef} />}
+				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef} />}
+				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_QuestionsModal pageContentRef={pageContentRef} />}
 			</div>
 		</main>
 	);

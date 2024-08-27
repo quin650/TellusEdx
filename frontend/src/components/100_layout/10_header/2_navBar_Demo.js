@@ -88,9 +88,7 @@ const DemoNavbar = () => {
 	const sideBar_R_Main_Button = (
 		<button
 			onClick={open_sideBar_R_Main_Modal}
-			className={`${classes["hamburgerButton"]} ${
-				(sideBar_R_Search_isOpen_rdx || sideBar_R_Notes_isOpen_rdx || sideBar_R_Main_isOpen_rdx) && classes.open_NavBarMenu
-			}`}
+			className={`${classes["hamburgerButton"]} ${(sideBar_R_Search_isOpen_rdx || sideBar_R_Notes_isOpen_rdx || sideBar_R_Main_isOpen_rdx) && classes.open_NavBarMenu}`}
 		>
 			<svg className={classes.svgHamburger} focusable="false" viewBox="0 0 16 16">
 				<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
@@ -99,12 +97,22 @@ const DemoNavbar = () => {
 	);
 	const sideBar_R_Questions_Button = (
 		<button onClick={open_sideBar_R_Questions_Modal} className={`${classes["toggleQuestionsButton"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
-			<svg className={classes.svgQuestionsButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-				<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+			<svg className={classes.svgQuestionsButton2} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+				{/* Checkmark */}
+				<path d="M2 4 L4 6 L7 3" className={classes.checkmark} />
+
+				{/* X mark */}
+				<line x1="2" y1="14" x2="6" y2="18" className={classes.xmark} />
+				<line x1="2" y1="18" x2="6" y2="14" className={classes.xmark} />
+
+				{/* First horizontal line */}
+				<line x1="10" y1="5" x2="20" y2="5" className={classes.horizontalline} />
+
+				{/* Second horizontal line */}
+				<line x1="10" y1="15" x2="20" y2="15" className={classes.horizontalline} />
 			</svg>
 		</button>
 	);
-
 
 	return (
 		<nav className={classes.navContainer}>

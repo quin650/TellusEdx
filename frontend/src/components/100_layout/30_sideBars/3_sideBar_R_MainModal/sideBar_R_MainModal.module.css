@@ -81,20 +81,31 @@
 	fill: none;
 }
 .svgNotesMenuButton path {
-	fill: #9e9e9e;
+	fill: var(--color_primary_darkGray_to_gray);
 }
 
-.svgQuestionsButton {
-	stroke-width: 2;
-	flex-shrink: 0;
-	display: block;
-	height: 24px;
+.svgQuestionsButton2 {
+	width: 20px;
+	height: 20px;
+	stroke: var(--color_primary_darkGray_to_gray);
+}
+
+.svgQuestionsButton2 .checkmark {
 	fill: none;
-}
-.svgQuestionsButton path {
-	fill: #9e9e9e;
+	stroke-width: 1.3px; /* Controls the width of the checkmark line */
+	transform-origin: 4px 4px; /* Adjust based on the path coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
 }
 
+.svgQuestionsButton2 .xmark {
+	stroke-width: 1.3px; /* Controls the width of the X mark lines */
+	transform-origin: 4px 16px; /* Adjust based on the line coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
+}
+
+.svgQuestionsButton2 .horizontalline {
+	stroke-width: 1.6px; /* Controls the width of the horizontal lines */
+}
 
 /* Search------------------------------------------------------*/
 .searchMenuOptions {
@@ -120,13 +131,13 @@
 	height: 21px;
 	fill: none;
 }
-.searchIcon path{
+.searchIcon path {
 	stroke: #9e9e9e;
 	stroke-width: 2;
 	stroke-linecap: round;
 	stroke-linejoin: round;
 }
-.searchIconContainer.isFocused .searchIcon{
+.searchIconContainer.isFocused .searchIcon {
 	opacity: 0 !important;
 }
 /* Search Input------------------------------------------------------*/
@@ -136,9 +147,9 @@
 	height: 50px;
 	width: 263px;
 	padding: 0 !important;
-    border: 0 !important;
+	border: 0 !important;
 	margin: 0 !important;
-    border-radius: 8px !important;
+	border-radius: 8px !important;
 	font-size: 16px;
 	position: absolute;
 	padding-left: 39px !important;

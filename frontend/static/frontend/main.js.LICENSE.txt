@@ -706,6 +706,10 @@
   !*** ./src/components/300_modals/10_getStartedModal/getStartedModal.js ***!
   \*************************************************************************/
 
+/*!*************************************************************************!*\
+  !*** ./src/components/400_demos/10_demo_DMV_ClassC/data/questions.json ***!
+  \*************************************************************************/
+
 /*!***************************************************************************!*\
   !*** ./src/components/200_pages/10_pages/0_home/2c_homeMiddle.module.css ***!
   \***************************************************************************/
@@ -834,6 +838,10 @@
   !*** ./src/components/300_modals/10_getStartedModal/features/SocialAuthLogos/3_gitHubAuthButton.js ***!
   \*****************************************************************************************************/
 
+/*!*****************************************************************************************************!*\
+  !*** ./src/components/400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI.js ***!
+  \*****************************************************************************************************/
+
 /*!******************************************************************************************************!*\
   !*** ./src/components/100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal.module.css ***!
   \******************************************************************************************************/
@@ -854,6 +862,14 @@
   !*** ./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal.js ***!
   \********************************************************************************************************/
 
+/*!********************************************************************************************************!*\
+  !*** ./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/3_sideBar_R_QuestionsChild.js ***!
+  \********************************************************************************************************/
+
+/*!*********************************************************************************************************!*\
+  !*** ./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/2_sideBar_R_QuestionsParent.js ***!
+  \*********************************************************************************************************/
+
 /*!***********************************************************************************************************!*\
   !*** ./src/components/300_modals/10_getStartedModal/features/SocialAuthLogos/socialAuthButton.module.css ***!
   \***********************************************************************************************************/
@@ -862,93 +878,93 @@
   !*** ./node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js ***!
   \************************************************************************************************************/
 
-/*!****************************************************************************************************************!*\
-  !*** ./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/4_sideBar_R_QuestionsModal.module.css ***!
-  \****************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** ./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/sideBar_R_QuestionsModal.module.css ***!
+  \**************************************************************************************************************/
 
 /*!***********************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/components/100_layout/20_features/1_onThisPageQuickView.modules.css ***!
   \***********************************************************************************************************************/
 
 /*!*******************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/200_pages/10_pages/5_help.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/200_pages/10_pages/5_help.module.css ***!
   \*******************************************************************************************************************************/
 
 /*!*********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/10_header/navBar.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/10_header/navBar.module.css ***!
   \*********************************************************************************************************************************/
 
 /*!*********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/40_footer/footer.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/40_footer/footer.module.css ***!
   \*********************************************************************************************************************************/
 
 /*!**********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/200_pages/10_pages/3_aboutUs.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/200_pages/10_pages/3_aboutUs.module.css ***!
   \**********************************************************************************************************************************/
 
 /*!****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/200_pages/10_pages/4_supportCenter.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/200_pages/10_pages/4_supportCenter.module.css ***!
   \****************************************************************************************************************************************/
 
 /*!*****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/200_pages/10_pages/0_home/1_homeTop.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/200_pages/10_pages/0_home/1_homeTop.module.css ***!
   \*****************************************************************************************************************************************/
 
 /*!*******************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/20_features/2_toggleButton.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/20_features/2_toggleButton.module.css ***!
   \*******************************************************************************************************************************************/
 
 /*!*********************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/200_pages/10_pages/0_home/2c_homeMiddle.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/200_pages/10_pages/0_home/2c_homeMiddle.module.css ***!
   \*********************************************************************************************************************************************/
 
 /*!**************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css ***!
   \**************************************************************************************************************************************************/
 
 /*!***************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/300_modals/10_getStartedModal/getStartedModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/300_modals/10_getStartedModal/getStartedModal.module.css ***!
   \***************************************************************************************************************************************************/
 
 /*!**********************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/300_modals/20_languageSettings/languageSettingsModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/300_modals/20_languageSettings/languageSettingsModal.module.css ***!
   \**********************************************************************************************************************************************************/
 
 /*!************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/30_sideBars/0_sideBar_L_TOC/4_sideBar_L_TOC.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/30_sideBars/0_sideBar_L_TOC/4_sideBar_L_TOC.module.css ***!
   \************************************************************************************************************************************************************/
 
 /*!***************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/300_modals/10_getStartedModal/features/1_getStartedButton.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/300_modals/10_getStartedModal/features/1_getStartedButton.module.css ***!
   \***************************************************************************************************************************************************************/
 
 /*!***************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/300_modals/10_getStartedModal/features/2_passwordSubModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/300_modals/10_getStartedModal/features/2_passwordSubModal.module.css ***!
   \***************************************************************************************************************************************************************/
 
 /*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/30_sideBars/3_sideBar_R_MainModal/sideBar_R_MainModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/30_sideBars/3_sideBar_R_MainModal/sideBar_R_MainModal.module.css ***!
   \**********************************************************************************************************************************************************************/
 
 /*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI.module.css ***!
   \**********************************************************************************************************************************************************************/
 
 /*!************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal.module.css ***!
   \************************************************************************************************************************************************************************/
 
 /*!**************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/30_sideBars/1_sideBar_R_SearchModal/sideBar_R_SearchModal.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/30_sideBars/1_sideBar_R_SearchModal/sideBar_R_SearchModal.module.css ***!
   \**************************************************************************************************************************************************************************/
 
 /*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/300_modals/10_getStartedModal/features/SocialAuthLogos/socialAuthButton.module.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/300_modals/10_getStartedModal/features/SocialAuthLogos/socialAuthButton.module.css ***!
   \*****************************************************************************************************************************************************************************/
 
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/4_sideBar_R_QuestionsModal.module.css ***!
-  \**********************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./src/components/100_layout/30_sideBars/4_sideBar_R_QuestionsModal/sideBar_R_QuestionsModal.module.css ***!
+  \********************************************************************************************************************************************************************************/
 
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/></svg> ***!

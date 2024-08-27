@@ -93,14 +93,14 @@
 	padding-right: 3%;
 	flex-grow: 0;
 	/* flex-shrink: 1; */
-	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/ 
+	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/
 	/* flex-basis: 1150px; */
 	/* max-width: 1830px; */
 	overflow-y: hidden;
 	display: flex;
-    position: sticky;
-    top: 0;
-    /* height: calc(100vh - 1px); */
+	position: sticky;
+	top: 0;
+	/* height: calc(100vh - 1px); */
 	width: 100%;
 	margin-left: 3px;
 	height: 100vh;
@@ -117,8 +117,6 @@
 	font-size: 1rem;
 	display: flex;
 	/* min-height: 100%; */
-
-
 }
 .page_contentContainer {
 	display: flex;
@@ -127,7 +125,6 @@
 	flex-direction: column;
 	font-weight: 400;
 	/* min-height: 850px; */
-
 }
 
 /* Question ------------------------------------------- */
@@ -150,7 +147,6 @@
 	margin-top: 0;
 	margin-bottom: 0;
 	color: var(--color_readerSectionTitle_white_to_offWhite);
-	
 }
 .handbook_header_section h2 {
 	margin-bottom: 0;
@@ -166,22 +162,22 @@
 	margin: 0 12px auto 12px;
 	padding: 0 16px 60px 16px;
 }
-.page_content ul{
+.page_content ul {
 	font-size: 16px;
 	margin: 0 !important;
 }
-.page_content ul li{
-	list-style-type: none; 
+.page_content ul li {
+	list-style-type: none;
 	margin: 0 !important;
 }
-.answerLabel{
+.answerLabel {
 	font-size: 24px;
 }
-.answerLabel h2{
+.answerLabel h2 {
 	margin: 0 !important;
 }
 /* CheckBox and question */
-.answerLabel{
+.answerLabel {
 	display: flex;
 	position: relative;
 	cursor: pointer;
@@ -198,8 +194,8 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	height: 25px;
-	width: 25px;
+	height: 23px;
+	width: 23px;
 	background-color: white;
 	border-radius: 4px;
 	border: 2px solid var(--Blue);
@@ -223,14 +219,14 @@
 /* Un-hide CheckMark */
 .checkBox.isChecked:after {
 	display: block;
-	left: 9px;
-	top: 5px;
+	left: 52%;
+	top: 38%;
 	width: 6px;
 	height: 12px;
 	border: solid white;
 	border-width: 0 3px 3px 0;
-	transform: rotate(45deg);
-}  
+	transform: translate(-50%, -50%) rotate(45deg);
+}
 .checkBox.isChecked {
 	background-color: var(--Blue);
 }
