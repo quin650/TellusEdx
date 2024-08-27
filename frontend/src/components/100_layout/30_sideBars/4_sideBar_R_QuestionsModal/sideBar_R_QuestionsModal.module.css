@@ -156,11 +156,12 @@
 	color: var(--color_readerSectionTitle_white_to_offWhite);
 	font-weight: 300;
 }
-/* Answers ------------------------------------------- */
+/*! Test CSS ---------------------------------------------------*/
+/* page general */
 .page_content {
 	-webkit-box-flex: 1;
 	margin: 0 12px auto 12px;
-	padding: 0 16px 60px 16px;
+	padding-bottom: 60px;
 }
 .page_content ul {
 	font-size: 16px;
@@ -168,15 +169,14 @@
 }
 .page_content ul li {
 	list-style-type: none;
-	margin: 0 !important;
+	margin-bottom: 16px;
+	padding-top: 0 !important;
 }
-.answerLabel {
-	font-size: 24px;
+/* Answer  */
+.answerLabel p {
+	margin: 0 0 0 1rem;
 }
-.answerLabel h2 {
-	margin: 0 !important;
-}
-/* CheckBox and question */
+/* Questions */
 .answerLabel {
 	display: flex;
 	position: relative;
@@ -184,12 +184,25 @@
 	user-select: none;
 	font-size: 18px;
 	align-items: center;
+	width: 100%;
+	padding: 10px 0 10px 16px;
+	border-radius: 7px;
+	color: var(--color_primary_darkGray_to_gray);
 }
-.answerLabel input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
+
+.answerLabel:hover {
+	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
+.answerLabel:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.answerLabel.isChecked:hover {
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.answerLabel.isChecked:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+/* checkbox */
 .checkBox {
 	position: relative;
 	top: 0;
@@ -200,16 +213,37 @@
 	border-radius: 4px;
 	border: 2px solid var(--Blue);
 }
+.checkBox.isChecked {
+	background-color: var(--Blue);
+}
 .answerLabel:hover .checkBox {
-	background-color: #ccc;
+	background-color: var(--Blue);
+}
+.answerLabel:active .checkBox {
+	background-color: #287bba;
+}
+.answerLabel:active .checkBox:after {
+	display: block;
+	left: 52%;
+	top: 38%;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: translate(-50%, -50%) rotate(45deg);
 }
 .answerLabel.isChecked:hover .checkBox {
-	background-color: #ccc;
+	background-color: var(--Blue);
 }
-.answerLabel p {
-	margin: 0 0 0 1rem;
+.answerLabel.isChecked:active .checkBox {
+	background-color: #287bba;
 }
 
+.answerLabel input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
 /* Hide CheckMark */
 .checkBox:after {
 	content: "";
@@ -226,7 +260,4 @@
 	border: solid white;
 	border-width: 0 3px 3px 0;
 	transform: translate(-50%, -50%) rotate(45deg);
-}
-.checkBox.isChecked {
-	background-color: var(--Blue);
 }

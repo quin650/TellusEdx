@@ -159,7 +159,7 @@ const SideBar_R_MainModal = () => {
 	);
 
 	const QuestionsIcon = (
-		<svg className={classes.svgQuestionsButton2} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+		<svg className={classes.svgQuestionsButton} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 			{/* Checkmark */}
 			<path d="M2 4 L4 6 L7 3" className={classes.checkmark} />
 
