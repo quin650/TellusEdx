@@ -94,7 +94,7 @@ const PaginationQuestionsGUI = () => {
 	};
 	return (
 		<div className={classes.paginationContainer}>
-			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL}>
+			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL} disabled={inputPageNum_rdx === 1}>
 				<svg className={`${classes["arrowIconL"]} ${inputPageNum_rdx === 1 && classes.isInactive}`} viewBox="0 0 24 24">
 					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
 				</svg>
@@ -102,7 +102,7 @@ const PaginationQuestionsGUI = () => {
 			<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
 				<line x1="1" y1="0" x2="1" y2="40" />
 			</svg>
-			<button id="next" onClick={NextPage} className={classes.paginationButtonR}>
+			<button id="next" onClick={NextPage} className={classes.paginationButtonR} disabled={inputPageNum_rdx === pagesLength_rdx}>
 				<svg className={`${classes["arrowIconR"]} ${inputPageNum_rdx === pagesLength_rdx && classes.isInactive}`} viewBox="0 0 24 24">
 					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 				</svg>

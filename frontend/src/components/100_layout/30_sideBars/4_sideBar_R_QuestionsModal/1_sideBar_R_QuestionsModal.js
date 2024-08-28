@@ -125,7 +125,6 @@ const SideBar_R_QuestionsModal = ({ pageContentRef }) => {
 	const oneIsChecked = (status) => {
 		setSubmitIsActive(status);
 	};
-	console.log("submitIsActive: ", submitIsActive);
 
 	const cancelButtonAction = () => {
 		console.log("cancel Button clicked");
