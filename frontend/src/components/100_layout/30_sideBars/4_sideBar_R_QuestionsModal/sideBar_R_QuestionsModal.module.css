@@ -305,13 +305,16 @@
 	cursor: default;
 	border: solid 1px gray;
 	margin-left: 12px;
+	transition: background-color 0.6s ease, border 0.6s ease;
 }
 .button_formatSubmit:disabled:hover {
 	background-color: gray;
+	transition: none;
 }
 .button_formatSubmit:disabled:active {
 	background-color: gray;
 	border: solid 1px gray;
+	transition: none;
 }
 .button_formatSubmit {
 	font-size: 15px;
@@ -324,11 +327,14 @@
 	cursor: pointer;
 	border: solid 1px var(--Blue);
 	margin-left: 12px;
+	transition: background-color 0.6s ease, border 0.6s ease;
 }
 .button_formatSubmit:hover {
 	background-color: var(--BlueHover);
+	transition: none;
 }
 .button_formatSubmit:active {
 	background-color: var(--Blue);
 	border: solid 2px var(--Blue);
+	transition: none;
 }

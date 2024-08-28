@@ -147,7 +147,8 @@ a {
 }
 .imageDivCol {
 	-webkit-box-flex: 0;
-	flex: 0 1 33.33%;
+	/* flex: flex-grow | flex-shrink | flex-basis% */
+	/* flex: 0 1 33.33%; */
 	padding-right: 1.25rem;
 }
 .imageDivCol figure {
@@ -158,6 +159,10 @@ figure img {
 	height: auto;
 	max-width: 100%;
 	vertical-align: bottom;
+}
+figure .image0 {
+	min-width: 200px !important;
+	max-width: 300px !important;
 }
 ul {
 	margin-bottom: 2rem;
