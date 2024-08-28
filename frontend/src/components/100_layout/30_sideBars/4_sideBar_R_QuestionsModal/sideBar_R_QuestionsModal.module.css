@@ -32,7 +32,7 @@
 /* exit button ------------------------------------------- */
 .exitButton {
 	z-index: 3000;
-	position: fixed; /* Not in Original */
+	position: sticky; /* Not in Original */
 	display: inline-grid;
 	color: #b4b4b4;
 	padding-left: 0.5rem;
@@ -53,6 +53,8 @@
 
 	right: 0; /* Not in Original */
 	margin-right: 1.5rem; /* Not in Original */
+	top: 0;
+	margin-left: auto;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
@@ -83,7 +85,7 @@
 }
 /* Container ------------------------------------------- */
 .handbook_outerContainer {
-	padding-top: 56px;
+	/* padding-top: 56px; */
 	padding-bottom: 56px;
 	margin: 0 auto;
 	line-height: 1.35;
@@ -99,11 +101,11 @@
 	overflow-y: hidden;
 	display: flex;
 	position: sticky;
-	top: 0;
+	top: 56px;
 	/* height: calc(100vh - 1px); */
 	width: 100%;
 	margin-left: 3px;
-	height: 100vh;
+	height: calc(100vh - 56px) !important;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 }
 @media (max-width: 1700px) {
