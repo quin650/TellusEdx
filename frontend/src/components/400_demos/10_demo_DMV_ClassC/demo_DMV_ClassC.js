@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
-import DemoNavbar from "../../100_layout/10_header/2_navBar_Demo";
-import SideBar_R_SearchModal from "../../100_layout/30_sideBars/1_sideBar_R_SearchModal/sideBar_R_SearchModal";
 import SideBar_R_NotesModal from "../../100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_QuestionsModal from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal";
@@ -186,7 +184,6 @@ const DemoDMVClassC = () => {
 		setActiveID(closestHeaderId);
 		// console.log("Closest header ID after scroll (debounced):", closestHeaderId);
 	}, 100);
-
 	useEffect(() => {
 		const scrollContainer = mainContainerRef.current;
 		if (scrollContainer) {
@@ -200,7 +197,6 @@ const DemoDMVClassC = () => {
 			// console.log("mainContainerRef is null.");
 		}
 	}, [mainContainerRef]);
-
 	//! GoTo_TopOfPage
 	const GoTo_TopOfPage = () => {
 		if (mainContainerRef.current) {
@@ -298,7 +294,6 @@ const DemoDMVClassC = () => {
 
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
-			<DemoNavbar />
 			<div className={classes.bodyContainer}>
 				<SideBar_L_TOC
 					sideBar_L_isOpen={sideBar_L_isOpen_rdx}

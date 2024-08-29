@@ -15,21 +15,19 @@
 	align-items: center;
 	height: 40px;
 	width: 100%;
-	padding-left: 0.75rem;
-	padding-right: 1.5rem;
+	padding-left: 12px;
+	padding-right: 24px;
 	margin: 0;
 }
 @media (max-width: 1200px) {
-	.inner_container_nav .NavItem2 {
-		/* GetStartedButton or sideBar_Right_Search_Button or */
+	.inner_container_nav .SearchItem {
 		display: none;
 	}
-	.inner_container_nav .NavItem3 {
+	.inner_container_nav .SearchItem {
 		/* sideBar_Right_Notes_Button */
 		display: none;
 	}
 }
-
 @media (max-width: 475px) {
 	.outer_container_nav {
 		width: 100%;
@@ -60,31 +58,18 @@
 		transform: rotate(180deg);
 	}
 }
-.NavItem1 {
+button:focus {
+	/* border: 1px solid yellow !important; */
+	border: none !important;
+	outline: none !important;
+}
+/*! SideBar L Button------------------------------------------------ */
+.topLeft {
 	display: flex;
 	margin-right: auto;
 	justify-content: flex-start;
 	list-style: none;
 }
-.NavItem2 {
-	display: flex;
-	margin-left: auto;
-	justify-content: flex-end;
-	list-style: none;
-}
-.NavItem3 {
-	display: flex;
-	margin-left: 0.75rem;
-	justify-content: flex-end;
-	list-style: none;
-}
-.NavItem4 {
-	display: flex;
-	margin-left: 0.75rem;
-	justify-content: flex-end;
-	list-style: none;
-}
-/* toc Button------------------------------------------------ */
 .toggleLMenuButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
@@ -105,7 +90,7 @@
 	letter-spacing: inherit;
 	line-height: inherit;
 	margin: 0;
-	border: 0px solid red;
+	border: none !important;
 }
 .toggleLMenuButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
@@ -129,45 +114,84 @@
 .svgMenuButton path {
 	fill: #9e9e9e;
 }
-/* Search Button  ------------------------------------------------ */
-.toggleSearchMenuButton {
+/*! Get Started  ----------------------------------------------------*/
+.getStartedButtonContainer {
+	display: flex;
+	margin-left: 0.75rem;
+	justify-content: flex-end;
+	list-style: none;
+	margin-right: 90px;
+}
+/*! Search  ---------------------------------------------------------*/
+/* Search Container--------------------------------------------------*/
+.searchContainer {
+	display: flex;
+	margin-left: auto;
+	list-style: none;
+	background-color: transparent;
+	border: none !important;
+	outline: none !important;
+	position: absolute;
+	align-items: center;
+	justify-content: flex-start;
+	transition: width 0s, background-color 0s;
+	width: 36px;
+	overflow: hidden;
+	right: 64px;
+}
+.searchContainer.searchBarIsOpened {
+	width: 300px;
+	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
+	border: none !important;
+	border-radius: 4px;
+	margin-top: 2px;
+	transition: width 0.5s ease, background-color 0.5s ease;
+	outline: none !important;
+	overflow: hidden;
+}
+.searchContainer.searchBarIsOpened:hover {
+	background-color: #26282a !important;
+}
+/* Search Button------------------------------------------------------*/
+.searchButton {
+	display: inline-grid;
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	border-radius: 0.5rem;
-	height: 40px;
-	width: 40px;
 	cursor: pointer;
 	-webkit-appearance: button;
-	background-color: transparent;
-	background-image: none;
-	text-transform: none;
-	font-feature-settings: inherit;
-	font-family: inherit;
-	font-size: 100%;
-	font-variation-settings: inherit;
-	font-weight: inherit;
-	letter-spacing: inherit;
-	line-height: inherit;
 	margin: 0;
-	border: 0px solid red;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	background-color: transparent;
+	width: 36px;
+	border: none !important;
+	transition: transform 0.5s ease;
+	z-index: 2;
 }
-.toggleSearchMenuButton:hover {
+.searchButton.searchBarIsOpened {
+	pointer-events: none;
+}
+.searchButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-.toggleSearchMenuButton:active {
+.searchButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-.toggleSearchMenuButton.open:hover {
-	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+.searchButton.searchBarIsOpened:hover {
+	background-color: transparent;
 }
-.toggleSearchMenuButton.open:active {
-	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+.searchButton.searchBarIsOpened:active {
+	background-color: transparent;
 }
 .searchIconSVG {
 	width: 22px;
 	height: 21px;
 	fill: none;
+	margin-bottom: 3px;
 }
 .searchIconSVG path {
 	stroke: #9e9e9e;
@@ -175,55 +199,114 @@
 	stroke-linecap: round;
 	stroke-linejoin: round;
 }
-/* Notes Button ------------------------------------------------ */
-.toggleNotesMenuButton {
+/* Search Input------------------------------------------------------*/
+.searchInput {
+	width: 0;
+	padding: 0;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: transparent;
+	color: #000000;
+	opacity: 0 !important;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: width 0.5s ease, opacity 0.5s ease;
+}
+.searchContainer.searchBarIsOpened .searchInput::placeholder {
+	opacity: 1 !important;
+	color: #81868d !important;
+}
+.searchInput::placeholder {
+	opacity: 0 !important;
+}
+.searchContainer.searchBarIsOpened .searchInput {
+	padding-left: 35px !important;
+	width: 300px;
+	position: absolute;
+
+	outline: none !important;
+	box-shadow: none !important;
+	color: var(--WhiteToBlack) !important;
+	padding: 10px 10px 10px 5px;
+	background-color: transparent;
+	border: none !important;
+	outline: none !important;
+	opacity: 1 !important;
+}
+.searchInput.isFocused {
+	border: none !important;
+	opacity: 1;
+	outline: none !important;
+}
+.searchInput.isFocused:hover,
+.searchInput.isFocused:-webkit-autofill:hover,
+.searchInput.isFocused:focus,
+.searchInput.isFocused:-webkit-autofill:focus,
+.searchInput.isFocused {
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+/* exit button ------------------------------------------- */
+.searchContainer .exitButton {
+	z-index: 10;
+	position: absolute;
+	display: inline-grid;
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	border-radius: 0.5rem;
-	height: 40px;
-	width: 40px;
 	cursor: pointer;
 	-webkit-appearance: button;
-	background-color: transparent;
-	background-image: none;
-	text-transform: none;
-	font-feature-settings: inherit;
-	font-family: inherit;
-	font-size: 100%;
-	font-variation-settings: inherit;
-	font-weight: inherit;
-	letter-spacing: inherit;
-	line-height: inherit;
 	margin: 0;
+	place-content: center;
+	height: 38px;
+	min-width: unset;
+	font-size: 14px;
+
+	width: 36px;
+	transition: none;
+	background-color: transparent;
 	border: 0px solid red;
+
+	right: 0px;
+	top: 50%;
+	transform: translateY(-50%);
+	opacity: 0;
+	pointer-events: none;
 }
-.toggleNotesMenuButton:hover {
-	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+.searchContainer.searchBarIsOpened .exitButton.inputHasText {
+	opacity: 1;
+	right: 0px;
+	pointer-events: auto;
 }
-.toggleNotesMenuButton:active {
-	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+.searchContainer.searchBarIsOpened .exitButton.inputHasText:hover {
+	background-color: rgb(50, 50, 50);
 }
-.toggleNotesMenuButton.open:hover {
-	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+.searchContainer.searchBarIsOpened .exitButton.inputHasText:active {
+	background-color: rgb(65, 65, 65);
 }
-.toggleNotesMenuButton.open:active {
-	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
-}
-.svgNotesMenuButton {
-	stroke-width: 2;
-	flex-shrink: 0;
-	display: block;
-	height: 24px;
+.svgExit {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
 	fill: none;
+	height: 21px;
 }
-.svgNotesMenuButton path {
+.svgExit path {
 	fill: #9e9e9e;
 }
-/* hamburger Button ------------------------------------------------ */
-button:focus {
-	/* border: 1px solid yellow !important; */
-	outline: none !important;
+/*! Main Button ------------------------------------------------ */
+.topRight {
+	display: flex;
+	margin-left: 7px;
+	justify-content: flex-end;
+	list-style: none;
+	position: absolute;
+	right: 24px;
 }
 .hamburgerButton {
 	display: inline-grid;
@@ -240,17 +323,17 @@ button:focus {
 	font-size: 14px;
 	background-color: transparent;
 	width: 36px;
-	border: 0px solid red !important;
+	border: none !important;
 }
 .hamburgerButton.open_NavBarMenu {
 	display: none;
 	visibility: hidden;
 }
-.hamburgerButton:hover {
-	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
-}
 .hamburgerButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.hamburgerButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
 .svgHamburger {
 	display: inline-block;
@@ -262,14 +345,12 @@ button:focus {
 .svgHamburger path {
 	fill: #9e9e9e;
 }
-
 /*! Questions Button-------------------------------------------------------------------*/
-.quesItem {
+.bottomRightAbove {
 	z-index: 1001;
 	position: fixed;
 	right: 24px;
-	bottom: 0px !important;
-	margin-left: 0.75rem;
+	bottom: 45px !important;
 	list-style: none;
 }
 .toggleQuestionsButton {
@@ -292,7 +373,7 @@ button:focus {
 	letter-spacing: inherit;
 	line-height: inherit;
 	margin: 0;
-	border: 0px solid red;
+	border: none !important;
 }
 .toggleQuestionsButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
@@ -306,26 +387,74 @@ button:focus {
 .toggleQuestionsButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
-
-.svgQuestionsButton2 {
+.svgQuestionsButton {
 	width: 20px;
 	height: 20px;
-	stroke: var(--color_primary_darkGray_to_gray);
+	stroke: #9e9e9e;
 }
-
-.svgQuestionsButton2 .checkmark {
+.svgQuestionsButton .checkMark {
 	fill: none;
 	stroke-width: 1.3px; /* Controls the width of the checkmark line */
 	transform-origin: 4px 4px; /* Adjust based on the path coordinates */
 	transform: scale(1.4); /* Controls the size of the X mark */
 }
-
-.svgQuestionsButton2 .xmark {
+.svgQuestionsButton .xMark {
 	stroke-width: 1.3px; /* Controls the width of the X mark lines */
 	transform-origin: 4px 16px; /* Adjust based on the line coordinates */
 	transform: scale(1.4); /* Controls the size of the X mark */
 }
-
-.svgQuestionsButton2 .horizontalline {
+.svgQuestionsButton .horizontalLine {
 	stroke-width: 1.6px; /* Controls the width of the horizontal lines */
+}
+/*! Note Button ------------------------------------------------ */
+.bottomRight {
+	z-index: 1001;
+	position: fixed;
+	right: 24px;
+	bottom: 0px !important;
+	list-style: none;
+}
+.notesButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-color: transparent;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+}
+.notesButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton.open:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton.open:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.svgNotesButton {
+	stroke-width: 2;
+	flex-shrink: 0;
+	display: block;
+	height: 24px;
+	fill: none;
+}
+.svgNotesButton path {
+	fill: #9e9e9e;
 }

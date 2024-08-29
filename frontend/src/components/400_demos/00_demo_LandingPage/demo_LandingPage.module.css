@@ -1,0 +1,17 @@
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100vw;
+	min-width: 750px;
+	font-family: sans-serif !important;
+	color: var(--color_primary_darkGray_to_gray);
+	line-height: 1.5;
+	font-size: 14px;
+	overflow-y: scroll;
+}
+/*! Body ------------------------------------------------------*/
+.bodyContainer {
+	display: flex;
+	position: relative;
+}

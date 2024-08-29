@@ -6,6 +6,7 @@ import { throttle } from "lodash";
 import MainNavbar from "./components/100_layout/10_header/1_navBar_Main";
 import Footer from "./components/100_layout/40_footer/footer";
 import Home from "./components/200_pages/10_pages/0_home/0_home";
+import Demo_LandingPage from "./components/400_demos/00_demo_LandingPage/demo_LandingPage";
 import DemoDMVClassC from "./components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
 
 import AboutUs from "./components/200_pages/10_pages/3_aboutUs";
@@ -100,15 +101,14 @@ const App = () => {
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
-			{!isDemoView_rdx && (
-				<header>
-					<MainNavbar />
-				</header>
-			)}
+			<header>
+				<MainNavbar />
+			</header>
 			{divIDs.length > 0 ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} /> : ""}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/home" element={<Home />} />
+				<Route path="/demoLandingPage" element={<Demo_LandingPage />} />
 				<Route path="/demo" element={<DemoDMVClassC />} />
 				<Route path="/aboutus" element={<AboutUs />} />
 				<Route path="/supportcenter" element={<SupportCenter />} />

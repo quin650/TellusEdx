@@ -14,9 +14,8 @@ const initialState = {
 	sideBar_L_isOpen_rdx: false,
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
 	sideBar_R_Main_isOpen_rdx: false,
-	sideBar_R_Search_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
-	sideBar_R_Questions_isOpen_rdx: true,
+	sideBar_R_Questions_isOpen_rdx: false,
 
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
@@ -74,7 +73,6 @@ const userSlice = createSlice({
 			state.isDemoView_rdx = false;
 		},
 
-		
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 		},
@@ -102,13 +100,6 @@ const userSlice = createSlice({
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
 
-		// Search SideBar
-		sideBar_R_Open_Search(state) {
-			state.sideBar_R_Search_isOpen_rdx = true;
-		},
-		sideBar_R_Close_Search(state) {
-			state.sideBar_R_Search_isOpen_rdx = false;
-		},
 		// Notes SideBar
 		sideBar_R_Open_Notes(state) {
 			state.sideBar_R_Notes_isOpen_rdx = true;
@@ -131,9 +122,6 @@ const userSlice = createSlice({
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
 		},
-
-
-
 
 		// Get Started Modal
 		getStartedModalLogIn(state) {

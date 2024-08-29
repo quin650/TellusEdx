@@ -13,10 +13,12 @@ const SideBar_R_MainModal = () => {
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
 	const activeFlag_rdx = useSelector(({ user }) => user.activeFlag_rdx);
 
-	const sideBar_R_Search_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Search_ModalStatus_rdx);
-	const sideBar_R_Notes_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Notes_ModalStatus_rdx);
-	const sideBar_R_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_R_Main_ModalStatus_rdx);
+	const sideBar_R_Search_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Search_isOpen_rdx);
+	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
+	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
+	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
+
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
@@ -149,6 +151,29 @@ const SideBar_R_MainModal = () => {
 			/>
 		</svg>
 	);
+	const SearchIcon = (
+		<svg className={classes.searchIcon} xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none">
+			<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
+			<path d="M18.6875 18.4383L14.9719 14.7227" />
+		</svg>
+	);
+	const QuestionsIcon = (
+		<svg className={classes.svgQuestionsButton} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+			{/* Checkmark */}
+			<path d="M2 4 L4 6 L7 3" className={classes.checkmark} />
+
+			{/* X mark */}
+			<line x1="2" y1="14" x2="6" y2="18" className={classes.xmark} />
+			<line x1="2" y1="18" x2="6" y2="14" className={classes.xmark} />
+
+			{/* First horizontal line */}
+			<line x1="10" y1="5" x2="20" y2="5" className={classes.horizontalline} />
+
+			{/* Second horizontal line */}
+			<line x1="10" y1="15" x2="20" y2="15" className={classes.horizontalline} />
+		</svg>
+	);
+
 	// useEffects
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -172,10 +197,10 @@ const SideBar_R_MainModal = () => {
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
 	const CloseNavBarMenu_and_ScrollSmoothly = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		setTimeout(() => {
 			document.querySelector("main").scrollTo({
 				top: 0,
@@ -184,7 +209,7 @@ const SideBar_R_MainModal = () => {
 		}, 0);
 	};
 	const CloseNavBarMenu_and_ScrollQuickly = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		document.querySelector("main").scrollTo({
 			top: 0,
 			behavior: "instant",
@@ -214,7 +239,7 @@ const SideBar_R_MainModal = () => {
 		}
 	};
 	const exitNavBarAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 		document.removeEventListener("mousedown", onClickOutsideNavBar_closeNavBar);
 	};
 	const onEscKey_ExitModal = (e) => {
@@ -239,7 +264,7 @@ const SideBar_R_MainModal = () => {
 					</i>
 					<span>Log in</span>
 				</a>
-		))
+		  ))
 		: (option = (
 				<a href="#" onClick={LogInHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogInHandler}>
@@ -247,7 +272,7 @@ const SideBar_R_MainModal = () => {
 					</i>
 					<span>Log in</span>
 				</a>
-		));
+		  ));
 	let content = (
 		<div className={classes.buttonPadding}>
 			<GetStartedButton />
@@ -261,7 +286,7 @@ const SideBar_R_MainModal = () => {
 				</div>
 		  ));
 	const toggleMenu = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
 	let exitButton = (
 		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
@@ -276,22 +301,40 @@ const SideBar_R_MainModal = () => {
 		</button>
 	);
 	const open_sideBar_R_Search_Modal = () => {
-		if (sideBar_R_Notes_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		if (sideBar_R_Notes_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
 		}
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
-		dispatch(userReducerActions.sideBar_R_Open_Search_Modal());
+		if (sideBar_R_Questions_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Search());
 	};
 	const open_sideBar_R_Notes_Modal = () => {
-		if (sideBar_R_Search_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Notes_Modal());
+		if (sideBar_R_Search_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
 		}
-		if (sideBar_R_Main_ModalStatus_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main_Modal());
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
 		}
-		dispatch(userReducerActions.sideBar_R_Open_Notes_Modal());
+		if (sideBar_R_Questions_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Notes());
+	};
+	const open_sideBar_R_Questions_Modal = () => {
+		if (sideBar_R_Search_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
+		}
+		if (sideBar_R_Notes_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Notes());
+		}
+		if (sideBar_R_Main_isOpen_rdx) {
+			dispatch(userReducerActions.sideBar_R_Close_Main());
+		}
+		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
 	//!Search Bar
 	const searchBarRef = useRef(null);
@@ -299,36 +342,19 @@ const SideBar_R_MainModal = () => {
 	const handleSearchBarFocus = () => {
 		if (location.pathname !== "/demo") {
 			setSearchBarIsFocused(true);
+			searchBarRef.current.select();
 		} else {
 			open_sideBar_R_Search_Modal();
 		}
 	};
-
 	const handleSearchBarBlur = () => {
 		setSearchBarIsFocused(false);
 	};
-
 	const [searchPlaceholder, setSearchPlaceholder] = useState("Explore");
-
-	const RMain_SearchBar = (
-		<div className={classes.sideBarSearchInputContainer} method="get" action="#" role="search">
-			<input
-				className={`${classes["sidebar_search"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
-				ref={searchBarRef}
-				onFocus={handleSearchBarFocus}
-				onBlur={handleSearchBarBlur}
-				placeholder={searchPlaceholder}
-				name="q"
-				aria-label="Search"
-			/>
-			<input type="hidden" name="check_keywords" value="yes" />
-			<input type="hidden" name="area" value="default" />
-		</div>
-	);
 
 	return (
 		<Fragment>
-			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_ModalStatus_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
+			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_isOpen_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
 				{exitButton}
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
@@ -338,47 +364,72 @@ const SideBar_R_MainModal = () => {
 						TellusEd
 					</Link>
 				</div>
-				{RMain_SearchBar}
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
-						<Link onClick={CloseNavBarMenu_and_ScrollSmoothly} to="/home"
+						<div className={classes.searchMenuOptions}>
+							<i className={`${classes["searchIconContainer"]} ${searchBarIsFocused ? classes.isFocused : ""}`}>{SearchIcon}</i>
+							<input
+								className={`${classes["searchInput"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
+								ref={searchBarRef}
+								onFocus={handleSearchBarFocus}
+								onBlur={handleSearchBarBlur}
+								placeholder={searchPlaceholder}
+								name="q"
+								aria-label="Search"
+							/>
+						</div>
+						<Link
+							onClick={CloseNavBarMenu_and_ScrollSmoothly}
+							to="/home"
 							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
 							<span>Home</span>
 						</Link>
-						<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/demo"
+						<Link
+							onClick={CloseNavBarMenu_and_ScrollQuickly}
+							to="/demo"
 							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
 						>
 							<i>{dashboardIcon}</i>
 							<span>Demo</span>
 						</Link>
-
-						{sideBar_R_Search_ModalStatus_rdx && (
-							<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/notes" && classes.isActiveDashboardIcon}`}>
-								<i>{NotesIcon}</i>
-								<span>Notes</span>
-							</Link>
+						{location.pathname === "/demo" && (
+							<>
+								<Link onClick={open_sideBar_R_Notes_Modal} className={classes.sidebarMenuOptions}>
+									<i>{NotesIcon}</i>
+									<span>Notes</span>
+								</Link>
+								<Link onClick={open_sideBar_R_Questions_Modal} className={classes.sidebarMenuOptions}>
+									<i>{QuestionsIcon}</i>
+									<span>Test</span>
+								</Link>
+							</>
 						)}
 					</div>
 				</div>
-
 				<div className={classes.bottom}>
 					<div className={classes.subgroup}>
 						<div className={classes.sidebarMenu}>
-							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/aboutus"
+							<Link
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
+								to="/aboutus"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/aboutus" && classes.isActiveAboutUsIcon}`}
 							>
 								<i>{aboutUsIcon}</i>
 								<span>About Us</span>
 							</Link>
-							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/supportcenter"
+							<Link
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
+								to="/supportcenter"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/supportcenter" && classes.isActiveSupportCenterIcon}`}
 							>
 								<i>{supportCenterIcon}</i>
 								<span>Support Center</span>
 							</Link>
-							<Link onClick={CloseNavBarMenu_and_ScrollQuickly} to="/help"
+							<Link
+								onClick={CloseNavBarMenu_and_ScrollQuickly}
+								to="/help"
 								className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/help" && classes.isActiveHelpIcon}`}
 							>
 								<i>{helpIcon}</i>

@@ -151,13 +151,6 @@ const SideBar_R_MainModal = () => {
 			/>
 		</svg>
 	);
-	const SearchIcon = (
-		<svg className={classes.searchIcon} xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" fill="none">
-			<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
-			<path d="M18.6875 18.4383L14.9719 14.7227" />
-		</svg>
-	);
-
 	const QuestionsIcon = (
 		<svg className={classes.svgQuestionsButton} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 			{/* Checkmark */}
@@ -367,18 +360,6 @@ const SideBar_R_MainModal = () => {
 				</div>
 				<div className={classes.top}>
 					<div className={classes.sidebarMenu}>
-						<div className={classes.searchMenuOptions}>
-							<i className={`${classes["searchIconContainer"]} ${searchBarIsFocused ? classes.isFocused : ""}`}>{SearchIcon}</i>
-							<input
-								className={`${classes["searchInput"]} ${searchBarIsFocused ? classes.isFocused : ""}`}
-								ref={searchBarRef}
-								onFocus={handleSearchBarFocus}
-								onBlur={handleSearchBarBlur}
-								placeholder={searchPlaceholder}
-								name="q"
-								aria-label="Search"
-							/>
-						</div>
 						<Link
 							onClick={CloseNavBarMenu_and_ScrollSmoothly}
 							to="/home"
