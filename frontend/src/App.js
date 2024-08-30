@@ -78,7 +78,6 @@ const App = () => {
 		};
 	}, [location]);
 	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
-
 	useEffect(() => {
 		const handleKeyCombination = (e) => {
 			if (location.pathname !== "/demo" && e.ctrlKey && e.key === "m") {
@@ -89,11 +88,9 @@ const App = () => {
 				}
 			}
 		};
-
 		if (location.pathname !== "/demo") {
 			document.addEventListener("keydown", handleKeyCombination);
 		}
-
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
@@ -114,7 +111,7 @@ const App = () => {
 				<Route path="/supportcenter" element={<SupportCenter />} />
 				<Route path="/help" element={<Help />} />
 			</Routes>
-			{!isDemoView_rdx && (
+			{location.pathname !== "/demo" && location.pathname !== "/demoLandingPage" && (
 				<footer>
 					<Footer />
 				</footer>

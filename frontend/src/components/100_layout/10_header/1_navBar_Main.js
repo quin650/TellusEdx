@@ -267,7 +267,7 @@ const MainNavbar = () => {
 	return (
 		<nav className={classes.navContainer}>
 			<div className={classes.inner_container_nav}>
-				{location.pathname !== "/demo" && regularContent}
+				{(location.pathname !== "/demo" || location.pathname === "demoLandingPage") && regularContent}
 				{location.pathname === "/demo" && demoContent}
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainModal />}
