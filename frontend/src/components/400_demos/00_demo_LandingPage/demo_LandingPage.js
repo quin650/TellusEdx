@@ -117,9 +117,6 @@ const Demo_LandingPage = () => {
 				<div className={classes.rowContainer}>
 					<div className={classes.rowContent}>
 						<div className={classes.slider}>
-							<span className={classes.handlePrev} tabIndex="0" role="button">
-								<b className={classes.indicatorIcon}></b>
-							</span>
 							<div className={classes.sliderMask}>
 								<div className={classes.sliderContent}>
 									{sliderItem}
@@ -130,11 +127,9 @@ const Demo_LandingPage = () => {
 									{sliderItem}
 									{sliderItem}
 									{sliderItem}
+									{sliderItem}
 								</div>
 							</div>
-							<span className={classes.handleNext} tabIndex="0" role="button" aria-label="See more titles">
-								<b className={classes.indicatorIcon}></b>
-							</span>
 						</div>
 					</div>
 				</div>
