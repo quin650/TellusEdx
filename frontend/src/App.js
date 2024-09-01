@@ -105,13 +105,13 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/home" element={<Home />} />
-				<Route path="/demoLandingPage" element={<Demo_LandingPage />} />
-				<Route path="/demo" element={<DemoDMVClassC />} />
+				<Route path="/demos" element={<Demo_LandingPage />} />
+				<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 				<Route path="/aboutus" element={<AboutUs />} />
 				<Route path="/supportcenter" element={<SupportCenter />} />
 				<Route path="/help" element={<Help />} />
 			</Routes>
-			{location.pathname !== "/demo" && location.pathname !== "/demoLandingPage" && (
+			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && (
 				<footer>
 					<Footer />
 				</footer>

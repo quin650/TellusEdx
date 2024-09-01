@@ -49,7 +49,6 @@ const DemoDMVClassC = () => {
 	const {
 		sideBar_L_isOpen_rdx,
 		sideBar_L_AllowCollapse_OnWindowResize_rdx,
-		sideBar_R_Search_isOpen_rdx,
 		sideBar_R_Notes_isOpen_rdx,
 		sideBar_R_Main_isOpen_rdx,
 		currentPageNum_rdx,
@@ -241,18 +240,7 @@ const DemoDMVClassC = () => {
 					dispatch(userReducerActions.sideBar_L_Open());
 				}
 				break;
-			case e.ctrlKey && e.key === "s":
-				if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
-				if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
-				if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
-				if (!sideBar_R_Search_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_R_Open_Search());
-				} else {
-					dispatch(userReducerActions.sideBar_R_Close_Search());
-				}
-				break;
 			case e.ctrlKey && e.key === "n":
-				if (sideBar_R_Search_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Search());
 				if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
 				if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
 				if (!sideBar_R_Notes_isOpen_rdx) {
@@ -262,7 +250,6 @@ const DemoDMVClassC = () => {
 				}
 				break;
 			case e.ctrlKey && e.key === "m":
-				if (sideBar_R_Search_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Search());
 				if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
 				if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
 				if (!sideBar_R_Main_isOpen_rdx) {
@@ -272,7 +259,6 @@ const DemoDMVClassC = () => {
 				}
 				break;
 			case e.ctrlKey && e.key === "q":
-				if (sideBar_R_Search_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Search());
 				if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
 				if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
 				if (!sideBar_R_Questions_isOpen_rdx) {
@@ -290,7 +276,7 @@ const DemoDMVClassC = () => {
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [sideBar_L_isOpen_rdx, sideBar_R_Search_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx]);
+	}, [sideBar_L_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx]);
 
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
@@ -311,7 +297,6 @@ const DemoDMVClassC = () => {
 						</div>
 					</div>
 				</div>
-				{sideBar_R_Search_isOpen_rdx && <SideBar_R_SearchModal pageContentRef={pageContentRef} />}
 				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef} />}
 				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_QuestionsModal pageContentRef={pageContentRef} />}
 			</div>

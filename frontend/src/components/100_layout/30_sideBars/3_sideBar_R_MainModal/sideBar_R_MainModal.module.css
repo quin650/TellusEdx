@@ -272,7 +272,7 @@
 	position: absolute;
 	top: 2px;
 	left: 2px;
-	background: linear-gradient(180deg, #ffcc89, #d8860b);
+	background: linear-gradient(180deg, #f3ce9d, #fffaf2);
 	border-radius: 50%;
 	transition: 0.3s;
 }

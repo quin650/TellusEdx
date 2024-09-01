@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import SliderItem from "./sliderItem";
 import classes from "./demo_LandingPage.module.css";
 // DMV1
@@ -17,6 +18,9 @@ import Originals_5 from "./../../../../static/images/DemoOptions/TellusBaby.png"
 import Originals_6 from "./../../../../static/images/DemoOptions/Tellus.png";
 
 const Demo_LandingPage = () => {
+	const goto_demo_dmvClassC = () => {
+		console.log("clicked  goto_demo_dmvClassC");
+	};
 	// DMV
 	const DMV = (
 		<div className={classes.lolomoRow}>
@@ -44,7 +48,6 @@ const Demo_LandingPage = () => {
 			</div>
 		</div>
 	);
-
 	// School TextBooks
 	const ShoolTextBook_1 = "https://m.media-amazon.com/images/I/81Ydh8xspTL._AC_UF1000,1000_QL80_.jpg";
 	const ShoolTextBook_2 = "https://cdn11.bigcommerce.com/s-zzukzwlrsj/images/stencil/1280x1280/products/19023/47141/9781259275388__37981.1597941408.jpg?c=2";
@@ -55,7 +58,6 @@ const Demo_LandingPage = () => {
 	const ShoolTextBook_7 = "https://images.routledge.com/common/jackets/crclarge/978036725/9780367253202.jpg";
 	const ShoolTextBook_8 = "https://m.media-amazon.com/images/I/51r4wVo07CL._SX342_SY445_.jpg";
 	const ShoolTextBook_9 = "https://prod-cat-files.macmillan.cloud/MediaResources/Jackets/258W/9781319218508.jpg";
-
 	const SchoolTextBooks = (
 		<div className={classes.lolomoRow}>
 			<h2 className={classes.rowHeader}>
@@ -86,8 +88,8 @@ const Demo_LandingPage = () => {
 	);
 	// Professional Licenses
 	const testPrepThumbnail_1 = "https://chs-psfa.org/wp-content/uploads/2024/06/Online-SAT-Prep-Course.jpeg";
-	const testPrepThumbnail_2 = "https://www.slcolibrary.org/core/fileparse.php/746/urlt/ACTPrep_email.jpg";
-	const testPrepThumbnail_3 = "https://www.classcentral.com/report/wp-content/uploads/2021/05/toefl.jpg";
+	const testPrepThumbnail_2 = "https://phsprowl.com/wp-content/uploads/2024/04/Streeter-ACT.jpg";
+	const testPrepThumbnail_3 = "https://images.shiksha.com/mediadata/images/articles/1705904852phpNX9uwq.jpeg";
 	const testPrepThumbnail_4 =
 		"https://static.wixstatic.com/media/70216d_9308a4898647470b9f191eb5ec233cbb~mv2.png/v1/fill/w_614,h_432,al_c,lg_1,q_85,enc_auto/70216d_9308a4898647470b9f191eb5ec233cbb~mv2.png";
 	const testPrepThumbnail_5 = "https://testprep.byu.edu/sites/testprep.ce.byu.edu/files/new_hero_gre.png";
@@ -95,7 +97,6 @@ const Demo_LandingPage = () => {
 	const testPrepThumbnail_7 = "https://www.approvedcourse.com/wp-content/uploads/2021/01/LSAT-Prep-Course.png";
 	const testPrepThumbnail_8 = "https://leah4sci.com/wp-content/uploads/2014/05/leah4sci-mcat.jpg";
 	const testPrepThumbnail_9 = "https://cdn-another71.pressidium.com/wp-content/uploads/2023/03/cpa-exam-test-banks-600x338.png";
-
 	const TestPrep = (
 		<div className={classes.lolomoRow}>
 			<h2 className={classes.rowHeader}>
@@ -171,7 +172,6 @@ const Demo_LandingPage = () => {
 	const DIY_5 = "https://i.ytimg.com/vi/UpdSw9JhWM0/maxresdefault.jpg";
 	const DIY_6 = "https://www.100daysofrealfood.com/wp-content/uploads/2018/12/DIY-Candles-1-5--1200x1600.jpg";
 	const DIY_7 = "https://theownerbuildernetwork.co/wp-content/uploads/2014/03/Garage-Ceiling-Storage-03.jpg";
-
 	const DIY = (
 		<div className={classes.lolomoRow}>
 			<h2 className={classes.rowHeader}>
@@ -208,7 +208,6 @@ const Demo_LandingPage = () => {
 	// const Originals_5 [Img]
 	// const Originals_6 [Img]
 	const Originals_7 = "https://m.media-amazon.com/images/I/51069S9aq7L._SY445_SX342_.jpg";
-
 	const Originals = (
 		<div className={classes.lolomoRow}>
 			<h2 className={classes.rowHeader}>
@@ -269,7 +268,7 @@ const Demo_LandingPage = () => {
 											</div>
 										</div>
 										<div className={classes.billboardLinks}>
-											<button className={classes.startButton}>
+											<Link to="/demo_dmvClassC" className={classes.startButton}>
 												<div className={classes.playButtonIconOuterContainer}>
 													<div className={classes.playButtonIconInnerContainer}>
 														<svg
@@ -291,7 +290,7 @@ const Demo_LandingPage = () => {
 												</div>
 												<div className={classes.playButtonSpacer}></div>
 												<span className={classes.playText}>Start</span>
-											</button>
+											</Link>
 											<button className={classes.moreInfoButton}>
 												<div className={classes.moreInfoButtonIconOuterContainer}>
 													<div className={classes.moreInfoButtonIconInnerContainer}>

@@ -179,11 +179,6 @@ const SideBar_R_MainModal = () => {
 	}, []);
 	useEffect(() => {
 		setActiveIcon(location.pathname);
-		if (location.pathname !== "/demo") {
-			setSearchPlaceholder("Explore");
-		} else {
-			setSearchPlaceholder("Search Resources");
-		}
 	}, [location]);
 	// Functions
 	const LogInHandler = () => {
@@ -330,21 +325,6 @@ const SideBar_R_MainModal = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
-	//!Search Bar
-	const searchBarRef = useRef(null);
-	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
-	const handleSearchBarFocus = () => {
-		if (location.pathname !== "/demo") {
-			setSearchBarIsFocused(true);
-			searchBarRef.current.select();
-		} else {
-			open_sideBar_R_Search_Modal();
-		}
-	};
-	const handleSearchBarBlur = () => {
-		setSearchBarIsFocused(false);
-	};
-	const [searchPlaceholder, setSearchPlaceholder] = useState("Explore");
 
 	return (
 		<Fragment>
@@ -370,13 +350,13 @@ const SideBar_R_MainModal = () => {
 						</Link>
 						<Link
 							onClick={CloseNavBarMenu_and_ScrollQuickly}
-							to="/demo"
-							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo" && classes.isActiveDashboardIcon}`}
+							to="/demos"
+							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demos" && classes.isActiveDashboardIcon}`}
 						>
 							<i>{dashboardIcon}</i>
-							<span>Demo</span>
+							<span>Demos</span>
 						</Link>
-						{location.pathname === "/demo" && (
+						{location.pathname === "/demos" && (
 							<>
 								<Link onClick={open_sideBar_R_Notes_Modal} className={classes.sidebarMenuOptions}>
 									<i>{NotesIcon}</i>

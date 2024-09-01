@@ -264,8 +264,8 @@ const MainNavbar = () => {
 	return (
 		<nav className={classes.navContainer}>
 			<div className={classes.inner_container_nav}>
-				{(location.pathname !== "/demo" || location.pathname === "demoLandingPage") && regularContent}
-				{location.pathname === "/demo" && demoContent}
+				{(location.pathname !== "/demo_dmvClassC" || location.pathname === "demoLandingPage") && regularContent}
+				{location.pathname === "/demo_dmvClassC" && demoContent}
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainModal />}
 				{getStarted_ModalStatus_rdx && <GetStartedModal />}
