@@ -356,7 +356,7 @@ const SideBar_R_MainModal = () => {
 							<i>{dashboardIcon}</i>
 							<span>Demos</span>
 						</Link>
-						{location.pathname === "/demos" && (
+						{location.pathname === "/demo_dmvClassC" && (
 							<>
 								<Link onClick={open_sideBar_R_Notes_Modal} className={classes.sidebarMenuOptions}>
 									<i>{NotesIcon}</i>

@@ -6,8 +6,9 @@ import SideBar_R_NotesModal from "../../100_layout/30_sideBars/2_sideBar_R_Notes
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_QuestionsModal from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
-import Page1A from "../../200_pages/20_demo_pages/page1A";
-import Page1B from "../../200_pages/20_demo_pages/page1B";
+
+import Page0 from "../../200_pages/20_demo_pages/page0";
+import Page1 from "../../200_pages/20_demo_pages/page1";
 import Page2 from "../../200_pages/20_demo_pages/page2";
 import Page3 from "../../200_pages/20_demo_pages/page3";
 import Page4 from "../../200_pages/20_demo_pages/page4";
@@ -55,8 +56,8 @@ const DemoDMVClassC = () => {
 		sideBar_R_Questions_isOpen_rdx,
 	} = useSelector(({ user }) => user);
 	const ListOfPages = [
-		<Page1A />,
-		<Page1B />,
+		<Page0 />,
+		<Page1 />,
 		<Page2 />,
 		<Page3 />,
 		<Page4 />,

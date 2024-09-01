@@ -254,7 +254,7 @@ const Demo_LandingPage = () => {
 									<div className={classes.logoAndText}>
 										<div className={classes.titleWrapper}>
 											<div className={classes.billboardTitle}>
-												<h1 className={classes.billboardTitleText}>DMV Driver's License Prep</h1>
+												<h1 className={classes.billboardTitleText}>CALIFORNIA DRIVER'S HANDBOOK</h1>
 											</div>
 										</div>
 										<div className={classes.infoWrapper}>
