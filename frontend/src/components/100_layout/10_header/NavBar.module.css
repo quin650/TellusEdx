@@ -70,7 +70,7 @@ button:focus {
 	justify-content: flex-start;
 	list-style: none;
 }
-.toggleLMenuButton {
+.tocButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -79,7 +79,6 @@ button:focus {
 	width: 40px;
 	cursor: pointer;
 	-webkit-appearance: button;
-	background-color: transparent;
 	background-image: none;
 	text-transform: none;
 	font-feature-settings: inherit;
@@ -91,17 +90,20 @@ button:focus {
 	line-height: inherit;
 	margin: 0;
 	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
-.toggleLMenuButton:hover {
+.tocButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-.toggleLMenuButton:active {
+.tocButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-.toggleLMenuButton.open:hover {
+.tocButton.open:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
-.toggleLMenuButton.open:active {
+.tocButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .svgMenuButton {
@@ -139,7 +141,7 @@ button:focus {
 	overflow: hidden;
 	right: 64px;
 }
-.searchContainer.searchBarIsOpened {
+.searchContainer.open {
 	width: 300px;
 	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
 	border: none !important;
@@ -149,7 +151,7 @@ button:focus {
 	outline: none !important;
 	overflow: hidden;
 }
-.searchContainer.searchBarIsOpened:hover {
+.searchContainer.open:hover {
 	background-color: #26282a !important;
 }
 /* Search Button------------------------------------------------------*/
@@ -166,14 +168,19 @@ button:focus {
 	height: 40px;
 	min-width: unset;
 	font-size: 14px;
-	background-color: transparent;
 	width: 36px;
 	border: none !important;
 	transition: transform 0.5s ease;
 	z-index: 2;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
-.searchButton.searchBarIsOpened {
+.searchButton.open {
 	pointer-events: none;
+	background-color: transparent;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
 }
 .searchButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
@@ -181,10 +188,10 @@ button:focus {
 .searchButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-.searchButton.searchBarIsOpened:hover {
+.searchButton.open:hover {
 	background-color: transparent;
 }
-.searchButton.searchBarIsOpened:active {
+.searchButton.open:active {
 	background-color: transparent;
 }
 .searchIconSVG {
@@ -214,14 +221,14 @@ button:focus {
 	transform: translateY(-50%);
 	transition: width 0.5s ease, opacity 0.5s ease;
 }
-.searchContainer.searchBarIsOpened .searchInput::placeholder {
+.searchContainer.open .searchInput::placeholder {
 	opacity: 1 !important;
 	color: #81868d !important;
 }
 .searchInput::placeholder {
 	opacity: 0 !important;
 }
-.searchContainer.searchBarIsOpened .searchInput {
+.searchContainer.open .searchInput {
 	padding-left: 35px !important;
 	width: 300px;
 	position: absolute;
@@ -277,15 +284,15 @@ button:focus {
 	opacity: 0;
 	pointer-events: none;
 }
-.searchContainer.searchBarIsOpened .exitButton.inputHasText {
+.searchContainer.open .exitButton.inputHasText {
 	opacity: 1;
 	right: 0px;
 	pointer-events: auto;
 }
-.searchContainer.searchBarIsOpened .exitButton.inputHasText:hover {
+.searchContainer.open .exitButton.inputHasText:hover {
 	background-color: rgb(50, 50, 50);
 }
-.searchContainer.searchBarIsOpened .exitButton.inputHasText:active {
+.searchContainer.open .exitButton.inputHasText:active {
 	background-color: rgb(65, 65, 65);
 }
 .svgExit {
@@ -321,11 +328,13 @@ button:focus {
 	height: 40px;
 	min-width: unset;
 	font-size: 14px;
-	background-color: transparent;
 	width: 36px;
 	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
-.hamburgerButton.open_NavBarMenu {
+.hamburgerButton.open {
 	display: none;
 	visibility: hidden;
 }
@@ -353,7 +362,7 @@ button:focus {
 	bottom: 45px !important;
 	list-style: none;
 }
-.toggleQuestionsButton {
+.questionsButton {
 	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -362,7 +371,6 @@ button:focus {
 	width: 40px;
 	cursor: pointer;
 	-webkit-appearance: button;
-	background-color: transparent;
 	background-image: none;
 	text-transform: none;
 	font-feature-settings: inherit;
@@ -374,17 +382,20 @@ button:focus {
 	line-height: inherit;
 	margin: 0;
 	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
-.toggleQuestionsButton:hover {
+.questionsButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
-.toggleQuestionsButton:active {
+.questionsButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-.toggleQuestionsButton.open:hover {
+.questionsButton.open:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
-.toggleQuestionsButton.open:active {
+.questionsButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
 .svgQuestionsButton {
@@ -424,7 +435,6 @@ button:focus {
 	cursor: pointer;
 	-webkit-appearance: button;
 	background-color: transparent;
-	background-image: none;
 	text-transform: none;
 	font-feature-settings: inherit;
 	font-family: inherit;
@@ -435,6 +445,9 @@ button:focus {
 	line-height: inherit;
 	margin: 0;
 	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 }
 .notesButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);

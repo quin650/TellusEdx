@@ -56,7 +56,7 @@ const MainNavbar = () => {
 	};
 	// Buttons
 	const sideBar_L_Button = (
-		<button onClick={toggle_SideBar_L_Visibility} className={`${classes["toggleLMenuButton"]} ${sideBar_L_isOpen_Rdx ? classes.open : ""}`}>
+		<button onClick={toggle_SideBar_L_Visibility} className={`${classes["tocButton"]} ${sideBar_L_isOpen_Rdx ? classes.open : ""}`}>
 			<svg className={classes.svgMenuButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<path
 					fillRule="evenodd"
@@ -74,17 +74,14 @@ const MainNavbar = () => {
 		</button>
 	);
 	const sideBar_R_Main_Button = (
-		<button
-			onClick={open_sideBar_R_Main_Modal}
-			className={`${classes["hamburgerButton"]} ${(sideBar_R_Notes_isOpen_rdx || sideBar_R_Main_isOpen_rdx) && classes.open_NavBarMenu}`}
-		>
+		<button onClick={open_sideBar_R_Main_Modal} className={`${classes["hamburgerButton"]} ${(sideBar_R_Notes_isOpen_rdx || sideBar_R_Main_isOpen_rdx) && classes.open}`}>
 			<svg className={classes.svgHamburger} focusable="false" viewBox="0 0 16 16">
 				<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
 			</svg>
 		</button>
 	);
 	const sideBar_R_Questions_Button = (
-		<button onClick={open_sideBar_R_Questions_Modal} className={`${classes["toggleQuestionsButton"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
+		<button onClick={open_sideBar_R_Questions_Modal} className={`${classes["questionsButton"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
 			<svg className={classes.svgQuestionsButton} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 				<path d="M2 4 L4 6 L7 3" className={classes.checkMark} />
 				<line x1="2" y1="14" x2="6" y2="18" className={classes.xMark} />
@@ -141,8 +138,8 @@ const MainNavbar = () => {
 	let demoContent = (
 		<Fragment>
 			<li className={classes.topLeft}>{sideBar_L_Button}</li>
-			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
-				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
+			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
+				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
 					<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
 						<path d="M18.6875 18.4383L14.9719 14.7227" />
@@ -185,8 +182,8 @@ const MainNavbar = () => {
 					<img src={Logo} alt="Logo" className={classes.Logo}></img>
 				</Link>
 			</li>
-			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
-				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
+			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
+				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
 					<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
 						<path d="M18.6875 18.4383L14.9719 14.7227" />
@@ -228,8 +225,8 @@ const MainNavbar = () => {
 			<li className={classes.getStartedButtonContainer}>
 				<GetStartedButton />
 			</li>
-			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
-				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.searchBarIsOpened : ""}`}>
+			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
+				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
 					<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
 						<path d="M18.6875 18.4383L14.9719 14.7227" />
