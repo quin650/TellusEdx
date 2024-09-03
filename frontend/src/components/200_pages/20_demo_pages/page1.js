@@ -58,13 +58,6 @@ const Page1A = () => {
 									</li>
 									<li className={classes.contentContainer}>
 										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(2))}>
-												<span>DMV Services</span>
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
 											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(3))}>
 												<span>Copyright</span>
 											</a>
