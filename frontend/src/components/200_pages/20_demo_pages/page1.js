@@ -23,7 +23,7 @@ const Page1A = () => {
 								</p>
 							</div>
 						</div>
-						<div className={classes.options}>
+						{/* <div className={classes.options}>
 							<h2>Where to Start?</h2>
 							<div className={classes.sectionContent}>
 								<p>
@@ -34,6 +34,30 @@ const Page1A = () => {
 									<span className={classes.sectionSection}>Sections 5-14:</span> Information to <span className={classes.italicSpan}>pass</span> the DMV knowledge test.
 								</p>
 							</div>
+						</div> */}
+
+						<div className={classes.options}>
+							<h2>Where to Start?</h2>
+							<ul className={classes.whereToStart}>
+								<li className={classes.contentContainerWhereToStart}>
+									<div className={classes.parentLabelOuterContainer}>
+										<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}>
+											<span>
+												<span className={classes.sectionSection}>Sections 1-4:</span> Information about the licensing process.
+											</span>
+										</a>
+									</div>
+								</li>
+								<li className={classes.contentContainerWhereToStart}>
+									<div className={classes.parentLabelOuterContainer}>
+										<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}>
+											<span>
+												<span className={classes.sectionSection}>Sections 5-14:</span> Information to pass the DMV knowledge test.
+											</span>
+										</a>
+									</div>
+								</li>
+							</ul>
 						</div>
 						<nav className={classes.tocOuterContainer}>
 							<div className={classes.tocTitleLabel}>

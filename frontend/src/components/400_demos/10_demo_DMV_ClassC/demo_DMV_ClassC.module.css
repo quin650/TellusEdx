@@ -276,33 +276,11 @@ strong {
 .welcome {
 	margin-bottom: 20px;
 }
-.sectionContent {
-	margin-left: 20px;
-}
-.sectionSection {
-	display: inline-block; /* Ensures the width is respected */
-	min-width: 110px;
-	width: 110px;
-	font-weight: 700;
-	margin-right: 0.5rem;
-}
-.spacer {
-	height: 6px;
-	padding: 0;
-	margin: 0;
-}
 .welcome p {
 	margin: 0;
 }
-.italicSpan {
-	font-style: italic;
-}
 .options {
 	margin-bottom: 20px;
-}
-.options p {
-	margin: 0;
-	font-size: 16px;
 }
 .rightSide {
 	display: flex;
@@ -332,7 +310,6 @@ strong {
 .rightSide .imageDiv a:hover {
 	color: #004499; /* Darken on hover */
 }
-
 /*! toc Container------------------------------------------------------*/
 .tocOuterContainer {
 	display: flex;
@@ -365,7 +342,22 @@ strong {
 .handbookTOC_header_section H2 {
 	margin-bottom: auto;
 }
-/*! toc Parent Items ------------------------------------------------------*/
+/*! where to start &&  toc Parent Items-----------------------------------*/
+.options ul {
+	margin-left: 0 !important;
+}
+.contentContainerWhereToStart {
+	list-style: none;
+	font-size: 16px;
+	padding-top: 0 !important;
+}
+.sectionSection {
+	display: inline-block; /* Ensures the width is respected */
+	min-width: 110px;
+	width: 110px;
+	font-weight: 700;
+	margin-right: 0.5rem;
+}
 .contentContainer {
 	list-style: none;
 	font-size: 14px;
@@ -402,7 +394,6 @@ strong {
 .parentLabel.isActive {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
-
 .sectionNUm {
 	font-weight: 700;
 }
