@@ -149,7 +149,7 @@
 	width: 100%;
 	line-height: 1.5;
 	word-break: break-word;
-	color: white;
+	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
 	font-weight: 400;
 	text-decoration: none;
 	border-radius: 0 !important;
@@ -165,7 +165,6 @@
 }
 .tocTitleLabel a {
 	margin-bottom: auto;
-	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
 }
 /*! toc Parent Items ------------------------------------------------------*/
 .contentContainer {

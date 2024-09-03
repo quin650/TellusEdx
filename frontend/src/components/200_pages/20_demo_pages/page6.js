@@ -1,197 +1,81 @@
 import React, { Fragment } from "react";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const Page6 = () => {
+const Page4 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p>Page 6 of 22 </p>
-				<h1>Section 3: The Testing Process</h1>
+				<p>Page 6 of 24 </p>
+				<h1>Section 1: The California Driver’s License</h1>
 			</div>
 			<div className={classes.page_content}>
-				<div className="large-list-block">
-					<div className="large-list-block__inner">
-						<h2 className="large-list-block__title">Driver’s License Tests </h2>
-						<ol className="large-list-block__list ">
-							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
-								<p>
-									<strong>Vision Test</strong>
-								</p>
-
-								<p>
-									DMV tests all applicants to ensure they can see well enough to drive safely. If you take your vision test with corrective or contact
-									lenses, your driver’s license will have a corrective lenses restriction. If you do not pass your vision test, you will be asked to
-									have your eye doctor complete a Report of Vision Examination form.
-								</p>
-							</li>
-
-							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
-								<p>
-									<strong>Knowledge Test</strong>
-								</p>
-
-								<p>
-									When you apply for an original driver’s license, you must pass a knowledge test with multiple choice questions. You are allowed
-									three attempts to pass before you must reapply. Minors must wait seven days to retake a failed knowledge test, not including the day
-									of the failure.
-								</p>
-
-								<p>
-									Testing options will be available once you complete your application at <a href="http://dmv.ca.gov/dl">dmv.ca.gov/dl</a>.
-								</p>
-
-								<p>
-									<span role="region" aria-label="Important" className="format-label--important">
-										You are not allowed to use any testing aids during knowledge tests, such as a California Driver’s Handbook or cell phone.
-									</span>
-								</p>
-							</li>
-
-							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
-								<p>
-									<strong>Behind-the-Wheel Drive Test</strong>
-								</p>
-
-								<p>
-									When you apply for an original driver’s license, you will be tested on your ability to safely drive a vehicle. Upon renewal, drivers
-									with a vision or medical condition may be required to take a behind-the-wheel test. The examiner may give two or more instructions
-									at one time to determine whether you can understand and properly follow both directions. For example, “At the next street, make a
-									left turn, and then at the first intersection make another left turn.”
-								</p>
-
-								<p>
-									Visit <a href="http://dmv.ca.gov/make-an-appointment">dmv.ca.gov/make-an-appointment</a> to schedule a behind-the-wheel drive test
-									appointment.
-								</p>
-							</li>
-						</ol>
-					</div>
-				</div>
-
-				<h3>On the day of your behind-the-wheel test, you must bring:</h3>
-
-				<ol>
-					<li>Your instruction permit or driver’s license (if you have one).</li>
-
-					<li>Another California-licensed driver who is at least 18 years old (25 for minors), unless you are already licensed to drive.</li>
-
-					<li>A vehicle that is safe to drive for your test.</li>
-
-					<li>Valid proof of insurance and vehicle registration.</li>
-
-					<li>
-						If you plan to use a rental vehicle for your drive test, your name must be listed on the rental contract. The contract must not exclude
-						behind-the-wheel drive tests.
-					</li>
-				</ol>
+				<p>A California driver’s license allows you to drive on public roads.</p>
 
 				<p>
-					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						Minors must wait 14 days to retake a failed behind-the-wheel drive test, not including the day of the failure.
-					</span>
+					Before you can get a driver’s license in California, you are required to pass the knowledge and behind-the-wheel drive tests based on information in this
+					handbook.
 				</p>
 
-				<h3>Before you begin, the DMV examiner will ask you to locate and demonstrate the following:</h3>
+				<p>
+					You must have the correct license to drive your vehicle type. Most people need a noncommercial Class C driver’s license. To operate commercial vehicles,
+					motorcycles, and other types of vehicles, you must have a different class of license.
+				</p>
+
+				<p>
+					For information on vehicles covered by a Class C, visit <a href="http://dmv.ca.gov/dl">dmv.ca.gov/dl</a>.
+				</p>
+
+				<h2>Card Designations</h2>
+
+				<h3>REAL ID Driver’s License</h3>
+
+				<p>Beginning May 2025, your driver’s license or identification (ID) card must be REAL ID compliant if you use it to:</p>
 
 				<ul>
-					<li>
-						<strong>Driver window</strong> – The window on the driver side must open.
-					</li>
+					<li>Board an airplane for domestic flights.</li>
 
-					<li>
-						<strong>Windshield </strong>– The windshield must allow a full, clear, unblocked view for you and the DMV examiner. Windshield cracks may
-						postpone your test.
-					</li>
+					<li>Enter military bases.</li>
 
-					<li>
-						<strong>Rear-view mirrors</strong> – At least two rearview mirrors. One of them must be on the left side of your vehicle.
-					</li>
-
-					<li>
-						<strong>Brake lights</strong> – The right and left brake lights must be operational.
-					</li>
-
-					<li>
-						<strong>Tires </strong>– The tires must have at least 1/32-inch of uniformed tread depth. The use of a donut tire is not allowed during a
-						drive test.
-					</li>
-
-					<li>
-						<strong>Foot brake</strong> – There must be at least one inch of clearance between the bottom of the brake pedal and the floorboard when
-						depressed.
-					</li>
-
-					<li>
-						<strong>Horn </strong>– Designed for the vehicle, in proper working condition, and loud enough to be heard from a distance of at least 200
-						feet.
-					</li>
-
-					<li>
-						<strong>Emergency (parking brake)</strong> – How to set and release the parking brake.
-					</li>
-
-					<li>
-						<strong>Turn/Arm signals</strong>
-						<ul>
-							<li>Left turn.</li>
-
-							<li>Right turn.</li>
-
-							<li>Slowing down or stopping.</li>
-						</ul>
-					</li>
-
-					<li>
-						<strong>Windshield wipers: control arm or switch</strong> – You may be required to show they function.
-					</li>
-
-					<li>
-						<strong>Seat belts</strong> – All seat belts must work properly and be used by the individual(s) in the vehicle.
-					</li>
-
-					<li>
-						<strong>Recording Device</strong> – All interior recording devices must be powered off or disabled.
-					</li>
+					<li>Enter most federal facilities.</li>
 				</ul>
 
 				<p>
-					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						If your vehicle does not meet the requirements, your drive test will be rescheduled.<span></span>
-					</span>
+					Visit <a href="http://dmv.ca.gov/realid">dmv.ca.gov/realid</a> to learn more about applying for a REAL ID.
+				</p>
+
+				<h3>Driver’s Licenses for Undocumented Residents</h3>
+
+				<p>
+					California offers driver’s licenses for all residents regardless of immigration status. For more information, visit{" "}
+					<a href="http://dmv.ca.gov/dl">dmv.ca.gov/dl</a>.
+				</p>
+
+				<h3>Organ and Tissue Donor</h3>
+
+				<p>
+					For information, visit <a href="http://donateLIFEcalifornia.org">donateLIFEcalifornia.org</a>.
+				</p>
+
+				<h3>Veterans</h3>
+
+				<p>
+					Visit <a href="http://dmv.ca.gov/veterans">dmv.ca.gov/veterans</a> to learn more about the requirements and benefits of a Veteran designation.
+				</p>
+
+				<h3>ID Cards</h3>
+
+				<p>
+					ID cards are issued for identification purposes to eligible persons of any age. They do not permit you to drive. To get an ID, you must provide your identity
+					document, residency documents, and social security number.
 				</p>
 
 				<p>
-					Interpreters may be used during the pre-drive inspection for the identification and use of certain controls in the vehicle but may not
-					accompany you during the drive test.
-				</p>
-
-				<p>
-					Only the examiner is allowed to accompany you during the drive test. Exceptions are made for training, service animals, and certain law
-					enforcement situations.
-				</p>
-
-				<p>
-					The use of a recording device, including a video/audio recorder, is prohibited during a behind-the-wheel drive test. If the recording device
-					cannot be powered off or disabled, the applicant must block it so there is no visual or audio recording during the drive test.
-				</p>
-
-				<h2>Other Things to Know for Your Behind-the-Wheel Test</h2>
-
-				<p>
-					The drive test is intended to determine your skill in operating a motor vehicle in most road situations and evaluate your abilities, not the
-					vehicle’s technology. Therefore, advanced driver assistance systems technologies, such as automated parallel parking, lane departure, and
-					adaptive cruise control, are not permitted during the drive test. Vehicle safety technology, such as backup cameras and blind spot monitors,
-					may be used on the drive test, but are not a replacement for an actual visual check of your mirrors and blind spots.
-				</p>
-
-				<p>
-					To view a sample of the Driving Performance Evaluation (DPE) Score Sheet, visit{" "}
-					<a href="/portal/driver-education-and-safety/special-interest-driver-guides/teen-drivers/">dmv.ca.gov/teendriver</a>. For a sample of the
-					Supplemental/Area DPE Score Sheet, visit <a href="http://dmv.ca.gov/seniors">dmv.ca.gov/seniors</a>.
+					Visit <a href="http://dmv.ca.gov/id-cards">dmv.ca.gov/id-cards</a> to complete an ID card application and get information on current acceptable documents and
+					reduced-fee, no-fee, or senior ID cards.
 				</p>
 			</div>
 		</Fragment>
 	);
 };
 
-export default Page6;
+export default Page4;

@@ -1,472 +1,409 @@
 import React, { Fragment } from "react";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const Page12 = () => {
+const Page10 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p>Page 12 of 22 </p>
-				<h1>Section 7: Laws and Rules of the Road (Continued)</h1>
+				<p>Page 12 of 24 </p>
+				<h1>Section 6: Navigating the Roads (Continued)</h1>
 			</div>
 			<div className={classes.page_content}>
-				<h2>Sharing the Road</h2>
-				<p>Drivers need to share the road with other vehicles, pedestrians, bicyclists, road workers, and large vehicles.</p>
-				<h3>Blind Spots (the No Zone)</h3>
+				<h2>Parking</h2>
+
+				<h3>Parallel Parking</h3>
+
+				<p>Parallel parking is when you park in line with the road and other parked vehicles. To parallel park:</p>
+
 				<p>
-					Large vehicle and truck drivers have a better view in front of them and bigger mirrors. But they also have large blind spots, also called No
-					Zones. In these areas, your vehicle can disappear from a large vehicle or truck driver’s view. If you cannot see the truck’s side mirrors,
-					the truck driver cannot see you.
+					<strong>1. Find a space.</strong> Look for a space at least three feet longer than your vehicle. When you find a space, turn on your signal to show that you
+					plan on parking.
 				</p>
+
+				<p>
+					<strong>2. Pull up alongside the vehicle in front of the space.</strong> Leave about two feet between your vehicle and the vehicle next to you. Stop once your
+					rear bumper is aligned with the front of your parking space. Keep your signal on.
+				</p>
+
 				<figure>
 					<img
 						fetchpriority="high"
 						decoding="async"
-						width="216"
-						height="339"
-						src="https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1.png"
-						alt=""
-						className="wp-image-222692"
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1.png 216w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-191x300.png 191w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-180x283.png 180w"
-						sizes="(max-width: 216px) 100vw, 216px"
+						width="230"
+						height="306"
+						src="/portal/uploads/2023/02/Find_a_Space-edited.png"
+						alt="Find a parallel parking space"
+						className="wp-image-179304"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Find_a_Space-edited.png 230w, https://www.dmv.ca.gov/portal/uploads/2023/02/Find_a_Space-edited-225x300.png 225w, https://www.dmv.ca.gov/portal/uploads/2023/02/Find_a_Space-edited-9x12.png 9w, https://www.dmv.ca.gov/portal/uploads/2023/02/Find_a_Space-edited-213x283.png 213w"
+						sizes="(max-width: 230px) 100vw, 230px"
 					/>
-					<figcaption>The shaded areas in this image are the truck driver’s blind spots.</figcaption>
 				</figure>
-				<h3>Braking</h3>
+
 				<p>
-					Large vehicles and commercial trucks take longer to stop than passenger vehicles traveling at the same speed. When traveling, they create
-					extra space in front of their vehicle to use if they need to stop suddenly. The average passenger vehicle traveling at 55 mph can stop
-					within 300 feet. A large vehicle traveling at the same speed can take up to 400 feet to stop. The heavier the vehicle and the faster it is
-					moving, the longer it takes to safely stop, so a loaded truck will take longer to stop than an empty truck. Do not move in front of a large
-					vehicle and suddenly slow down or stop. The large vehicle will not be able to stop fast enough to avoid crashing into you.
+					<strong>3. Check your blind spots.</strong> Look in your rearview mirror and over your shoulder for approaching vehicles and pedestrians.
 				</p>
-				<h3>Turning</h3>
+
 				<p>
-					When a vehicle turns, the rear wheels follow a shorter path than the front wheels. The longer the vehicle, the greater the difference in the
-					length of the turning path. This is why large vehicles and truck drivers must often swing wide to complete a turn. When you follow a large
-					vehicle, look at its turn signals before you start to pass. It may appear to be turning one direction but instead is swinging wide in the
-					opposite direction in order to turn.
+					<strong>4. Begin backing up. </strong>Turn your steering wheel to back into the space at about a 45-degree angle.
 				</p>
-				<h3>Maneuvering</h3>
+
+				<figure>
+					<img
+						decoding="async"
+						width="218"
+						height="290"
+						src="/portal/uploads/2023/02/Check_Blind_Spots-edited.png"
+						alt="Parallel Parking: Checking Blind Spots"
+						className="wp-image-179310"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Check_Blind_Spots-edited.png 218w, https://www.dmv.ca.gov/portal/uploads/2023/02/Check_Blind_Spots-edited-9x12.png 9w, https://www.dmv.ca.gov/portal/uploads/2023/02/Check_Blind_Spots-edited-213x283.png 213w"
+						sizes="(max-width: 218px) 100vw, 218px"
+					/>
+				</figure>
+
 				<p>
-					Large vehicles and trucks are not as easy to maneuver as passenger vehicles. On a divided highway with four or more traffic lanes in one
-					direction, they may be driven in the two lanes farthest to the right. When driving near large vehicles and trucks, do not:
+					<strong>5. Straighten out.</strong> Begin turning the steering wheel away from the curb when your rear wheel is within 18 inches of the curb. You may need to
+					pull forward and backward to straighten out. Your vehicle should now be parallel and within 18 inches of the curb.
 				</p>
-				<ul>
-					<li>Change lanes directly in front of them to reach an exit or turn.</li>
+
+				<figure>
+					<img
+						decoding="async"
+						width="255"
+						height="305"
+						src="/portal/uploads/2020/05/Parallel_Parking.png"
+						alt="Parallel Parking"
+						className="wp-image-179295"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Parallel_Parking.png 255w, https://www.dmv.ca.gov/portal/uploads/2020/05/Parallel_Parking-251x300.png 251w, https://www.dmv.ca.gov/portal/uploads/2020/05/Parallel_Parking-10x12.png 10w, https://www.dmv.ca.gov/portal/uploads/2020/05/Parallel_Parking-237x283.png 237w"
+						sizes="(max-width: 255px) 100vw, 255px"
+					/>
+				</figure>
+
+				<p>
+					<strong>6. Parking.</strong> Turn off your vehicle and set the parking brake. Before you exit your vehicle, look carefully for passing vehicles, bicycles, and
+					motorcycles. Exit when safe.
+				</p>
+
+				<h3>Straight Line Backing</h3>
+
+				<p>To back up in a straight line:</p>
+
+				<ol>
 					<li>
-						Drive next to them longer than you need to. Always pass a large vehicle on the left side. After you pass the large vehicle or truck, move
-						ahead of it. Driving alongside a large vehicle makes it hard for the driver to avoid dangers in the road.
+						<strong>Traffic check. </strong>Observe traffic and check appropriate blind spots.
 					</li>
-					<li>Follow too closely. Tailgating decreases a vehicle’s safety distance.</li>{" "}
-					<li>Underestimate their size and speed as they often appear to be traveling slower.</li>
-				</ul>
-				<h3>Buses, Streetcars, Trolleys</h3>
-				<p>
-					Safety zones are spaces set aside for pedestrians waiting for buses, streetcars, and trolleys. Safety zones are marked by raised buttons or
-					markers on a road. Do not drive through a safety zone under any condition.
-				</p>
-				<p>When a bus, streetcar, or trolley is stopped at a safety zone or traffic light, you may pass at no more than 10 mph.</p>
-				<figure>
-					<img
-						decoding="async"
-						width="460"
-						height="307"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1.png"
-						alt="Trolley next to demarked safe zone."
-						className="wp-image-179448"
-						style={{ width: "386px", height: "258px" }}
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1.png 460w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-300x200.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-424x283.png 424w"
-						sizes="(max-width: 460px) 100vw, 460px"
-					/>
-					<figcaption>Safe Zones are marked by dotted white lines.</figcaption>
-				</figure>
-				<p>Do not overtake and pass a light rail vehicle or streetcar on the left side, whether it is moving or standing, unless:</p>
-				<ul>
-					<li>When the tracks are so close to the right side that the passenger vehicle cannot pass on the right.</li>{" "}
-					<li>You are on a one-way street.</li> <li>A traffic officer directs you to pass on the left.</li>
-				</ul>
-				<h3>Light Rail Vehicles</h3>{" "}
-				<p>
-					On public roads, light rail vehicles have the same rights and responsibilities as other vehicles. To safely share the road with light rail
-					vehicles:
-				</p>
-				<ul>
-					<li>Be aware of where they operate. Buildings, trees, and other items can cause blind spots for the operator.</li>{" "}
-					<li>Never turn in front of an approaching light rail vehicle.</li> <li>Maintain a safe distance.</li>
+
 					<li>
-						Check for approaching light rail vehicles before you turn across the tracks. Complete your turn only when the traffic light indicates you
-						may proceed. Be aware they can interrupt traffic lights.
+						<strong>Signal</strong>. Activate the turn signal before pulling up to the curb. Cancel the turn signal once completed.
 					</li>
-				</ul>
-				<figure>
-					<img
-						decoding="async"
-						width="467"
-						height="356"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1.png"
-						alt="Light rail travelling down street. One car drives parallel to the train, while another car turns directly into the train's path."
-						className="wp-image-179451"
-						style={{ width: "334px", height: "255px" }}
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1.png 467w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-300x229.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-16x12.png 16w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-371x283.png 371w"
-						sizes="(max-width: 467px) 100vw, 467px"
-					/>
-					<figcaption>Do not turn in front of light rail vehicles.</figcaption>
-				</figure>
-				<h3>Motorcycles</h3>{" "}
-				<p>Motorcyclists have the same rights and responsibilities as other vehicles. To safely share the road with motorcyclists:</p>
-				<ul>
+
 					<li>
-						Check for motorcycles and use your mirrors when you change lanes or enter a road. Motorcycles are smaller in size and harder to see so
-						they easily disappear in vehicle blind spots.
+						<strong>Check your blind spots.</strong> Look in your rearview mirror and over your shoulder for approaching vehicles and pedestrians.
 					</li>
-					<li>Allow a safe three-second following distance. This space will help you avoid hitting a motorcyclist if they brake suddenly or fall.</li>{" "}
-					<li>Whenever possible, give a motorcycle the full lane. It is legal to share lanes with motorcycles, this is known as lane splitting.</li>
-					<li>Never try to pass a motorcycle in the same lane as you.</li> <li>Check for motorcyclists before you open your door next to traffic.</li>{" "}
-					<li>When possible, move to one side of your lane to give motorcyclists more room to pass.</li>
-				</ul>
-				<p>Road conditions can cause motorcyclists to suddenly change speed or direction.</p> <h3>Emergency Vehicles</h3>
-				<p>
-					Give the right-of-way to any law enforcement vehicle, fire engine, ambulance, or other emergency vehicle using a siren and red lights.
-					Failure to pull over may result in a ticket. Drive to the right edge of the road and stop until the emergency vehicle(s) have passed.
-				</p>
-				<figure>
-					<img
-						loading="lazy"
-						decoding="async"
-						width="615"
-						height="249"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1.png"
-						alt="Car pulling over to let fire truck pass."
-						className="wp-image-179460"
-						style={{ width: "483px", height: "196px" }}
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1.png 615w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-300x121.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-18x7.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-450x182.png 450w"
-						sizes="(max-width: 615px) 100vw, 615px"
-					/>
-					<figcaption>Yield to emergency vehicles.</figcaption>
-				</figure>
-				<p>When approaching a stationary emergency vehicle with flashing emergency signal lights (hazard lights), move over and slow down.</p>
-				<p>
-					If you are in an intersection when you see an emergency vehicle, continue through the intersection. Drive to the right as soon as it is safe
-					and stop.
-				</p>
-				<p>
-					Obey any direction, order, or signal given by a law enforcement officer, or firefighter. Follow their orders even if they conflict with
-					existing signs, signals, or laws.
-				</p>
-				<p>
-					It is against the law to follow within 300 feet of any fire engine, law enforcement vehicle, ambulance, or other emergency vehicle when
-					their siren or flashing lights are on.
-				</p>
-				<p>
-					You can be arrested if you drive to the scene of a fire, collision, or other disaster. When you do this, you are getting in the way of
-					firefighters, ambulance crews, or other rescue and emergency personnel.
-				</p>{" "}
-				<h3>Slow-moving Vehicles</h3>
-				<p>
-					They can take longer to get up to speed when entering traffic. Large trucks, bicycles, and some cars lose speed on long or steep hills. Some
-					slow-moving vehicles have an orange and red triangle on their back, such as road maintenance vehicles, which usually travel at 25 mph or
-					less.
-				</p>
-				<figure>
-					<img
-						loading="lazy"
-						decoding="async"
-						width="406"
-						height="195"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1.png"
-						alt='Bulldozer with orange-red "slow vehicle" triangle.'
-						className="wp-image-179463"
-						style={{ width: "318px", height: "153px" }}
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1.png 406w, https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1-300x144.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1-18x9.png 18w"
-						sizes="(max-width: 406px) 100vw, 406px"
-					/>
-					<figcaption>An example of a slow-moving vehicle.</figcaption>
-				</figure>
-				<p>Other types of slow-moving motorized vehicles that may operate on public roads include:</p>
-				<ul>
-					<li>Scooters</li> <li>Neighborhood electric vehicles</li> <li>Golf carts</li>
-				</ul>
-				<p>Adjust your speed to share the road with these vehicles.</p> <h3>Neighborhood Electric Vehicles (NEV) and Low-speed Vehicles (LSV)</h3>{" "}
-				<p>Watch for slow-moving vehicles when you see these signs or markings:</p>
-				<ul>
-					<li>NEV USE ONLY</li> <li>NEV ROUTE</li>
-				</ul>
-				<p>NEVs and LSVs reach a maximum speed of 25 mph. They are restricted from roads where the speed limit is greater than 35 mph.</p>{" "}
-				<h3>Animal-drawn Vehicles</h3>
-				<p>
-					Horse-drawn vehicles and people riding horses or other animals are allowed to share the road with motor vehicles. It is against the law to
-					intentionally scare horses or livestock.
-				</p>{" "}
-				<h3>Near Animals</h3>
-				<p>
-					If you see a sign with a picture of an animal, watch for animals on or near the road. If you see animals or livestock near the road, slow
-					down or stop and proceed when it is safe. Be sure to follow directions from the person in charge of the animals.
-				</p>
-				<h3>Bicycles</h3> <p>Bicyclists have the same rights and responsibilities as other drivers.</p> <p>Bicyclists may:</p>
-				<ul>
-					<li>Legally ride on certain sections of freeways where there is no alternate route and bicycling is not forbidden by law.</li>{" "}
-					<li>Move left to avoid hazards. These may include parked or moving vehicles, bicycles, animals, or trash.</li>
-					<li>Choose to ride near the left curb or edge of a one-way street.</li>{" "}
-					<li>Choose to use crosswalks by stopping and crossing as a pedestrian.</li>
-				</ul>
-				<h4>Bicyclist Responsibilities</h4> <p>As a bicyclist, you must:</p>
-				<div className={classes.imageDivColContainer}>
-					<div className={classes.imageDivCol}>
-						<ul>
-							<li>Obey all traffic signs, signal lights, and basic right-of-way rules.</li> <li>Ride in the same direction as traffic.</li>{" "}
-							<li>Always look over your shoulder to make sure the lane is clear before turning or changing lanes.</li> <li>Yield to pedestrians.</li>
-							<li>Wear a helmet (if under 18 years old).</li> <li>Stay visible (for example, never weave between parked vehicles).</li>{" "}
-							<li>Ride as near to the right curb or edge of the roadway as possible.</li>{" "}
-							<li>Not ride on the sidewalk (unless allowed by the city).</li>
-							<li>Make left and right turns in the same way drivers do, using hand signals and turn lanes.</li>{" "}
-							<li>Use a bike lane, whenever possible, or use a through traffic lane.</li> <li>Have fully functional brakes.</li>
-						</ul>
-					</div>
-					<div className={classes.imageDivCol}>
-						<figure>
-							<img
-								loading="lazy"
-								decoding="async"
-								width="479"
-								height="315"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1.png"
-								alt="Intersection showing left and right turn options for a bicyclist. The bicyclist uses the left lane to turn left, and the right shoulder to turn right."
-								className="wp-image-179466"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1.png 479w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-300x197.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-430x283.png 430w"
-								sizes="(max-width: 479px) 100vw, 479px"
-							/>
-							<figcaption>Examples of turns for bicyclist.</figcaption>
-						</figure>
-						<figure>
-							<img
-								loading="lazy"
-								decoding="async"
-								width="487"
-								height="323"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1.png"
-								alt="Intersection showing options for bicyclist to turn left or go straight. The bicyclist uses the left lane to turn left. To go straight, the cyclist used the inside line of the right lane to enter the intersection, then shifts to the bike lane as they exit the intersection."
-								className="wp-image-179469"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1.png 487w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-300x199.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-427x283.png 427w"
-								sizes="(max-width: 487px) 100vw, 487px"
-							/>
-							<figcaption>Intersection with special lanes for bicyclists.</figcaption>
-						</figure>
-					</div>
+
+					<li>
+						<strong>Begin backing up.</strong> Back in a straight line for three vehicle lengths while remaining within three feet of the curb. Stay aware of what is
+						behind you when backing up.
+					</li>
+
+					<li>
+						<strong>Control.</strong> To maintain control of the vehicle, back at a smooth, safe speed and adjust the steering wheel when needed. Practice until you can
+						keep the vehicle straight. Repeat steps 1 and 2 to pull away from the curb.
+					</li>
+				</ol>
+
+				<h3>Parking on a Hill</h3>
+
+				<div className={classes.imageDiv}>
+					<figure>
+						<img
+							loading="lazy"
+							decoding="async"
+							width="346"
+							height="147"
+							src="/portal/uploads/2020/05/Parking_On_a_Hill.png"
+							alt="Parking on a Hill"
+							className="wp-image-179322"
+							srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Parking_On_a_Hill.png 346w, https://www.dmv.ca.gov/portal/uploads/2020/05/Parking_On_a_Hill-300x127.png 300w, https://www.dmv.ca.gov/portal/uploads/2020/05/Parking_On_a_Hill-18x8.png 18w"
+							sizes="(max-width: 346px) 100vw, 346px"
+						/>
+						<figcaption>
+							<strong>Downhill:</strong> turn the wheels toward the curb.
+							<br />
+							<strong>Uphill</strong>: turn the wheels away from the curb.
+							<br />
+							<strong>No Curb</strong>: turn the wheels toward the shoulder of the road.
+						</figcaption>
+					</figure>
 				</div>
-				<h4>Bicycling at Night</h4>{" "}
-				<p>When it is dark out, bicyclists should avoid wearing dark clothing. Your bicycle must have the following equipment:</p>
+
+				<p>
+					When you park on a hill, your vehicle could roll due to equipment failure. Remember to set the parking brake and leave the vehicle in park, or in gear for
+					manual transmission. To park:
+				</p>
+
 				<ul>
-					<li>A front lamp with a white light visible from 300 feet.</li>{" "}
-					<li>A built-in rear red reflector, solid red light, or flashing red light. This must be visible from 500 feet.</li>
-					<li>A white or yellow reflector on each pedal, the bicyclist’s shoes, or their ankles. These must be visible from 200 feet.</li>{" "}
-					<li>A white or yellow reflector on the front wheel, a white or red reflector on the rear wheel, or reflectorized tires.</li>
-				</ul>
-				<h4>Bicycling in Travel Lanes</h4>
-				<p>
-					Bicyclists traveling slower than the flow of traffic must ride as close as possible to the right curb or edge of the road,{" "}
-					<strong>unless</strong>:
-				</p>
-				<ul>
-					<li>Passing a vehicle or another bicycle in the same direction.</li> <li>Preparing to make a left turn.</li>{" "}
-					<li>Avoiding a hazard or road condition.</li>{" "}
-					<li>A lane is too narrow for a bicycle and a vehicle to safely travel side-by-side in the lane.</li>
-					<li>Approaching a right turn.</li>{" "}
-					<li>On a one-way road with two or more lanes. In this case, a bicyclist may ride near the left curb or edge of the road.</li>
-				</ul>
-				<p>Drivers should follow at a safe distance. When it is safe, the bicyclist should move to a position that allows vehicles to pass.</p>{" "}
-				<h4>Passing a Bicyclist</h4>
-				<p>
-					To safely pass a bicyclist that is in the travel lane, you may need to change to another lane. In this case, pass safely, then return to
-					your original lane. Leave space between your vehicle and the bicyclist.
-				</p>
-				<div className={classes.imageDivColContainer}>
-					<div className={classes.imageDivCol}>
-						<figure>
-							<img
-								loading="lazy"
-								decoding="async"
-								width="211"
-								height="314"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right.png"
-								className="wp-image-179472"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right.png 211w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-202x300.png 202w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-190x283.png 190w"
-								sizes="(max-width: 211px) 100vw, 211px"
-							/>
-							<figcaption>Right</figcaption>
-						</figure>
-					</div>
-					<div className={classes.imageDivCol}>
-						<figure>
-							<img
-								loading="lazy"
-								decoding="async"
-								width="210"
-								height="313"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong.png"
-								alt="Car attempting to pass a cyclist without leaving any room. The car hits the cyclist."
-								className="wp-image-179475"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong.png 210w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-201x300.png 201w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-190x283.png 190w"
-								sizes="(max-width: 210px) 100vw, 210px"
-							/>
-							<figcaption>Wrong</figcaption>
-						</figure>
-					</div>
-				</div>
-				<p>
-					When you cannot change lanes to pass a bicyclist, allow at least three feet between your vehicle and the bicyclist. If you cannot give three
-					feet of space, do not pass the cyclist until three feet of clearance can be given. This will help you avoid putting the bicyclist in danger.
-					Remember to:
-				</p>
-				<ul>
-					<li>Give bicyclists enough space so they are not forced into parked vehicles or open vehicle doors.</li>{" "}
-					<li>Only merge toward the curb or into the bike lane when it is safe.</li>{" "}
-					<li>Merge safely behind a bicyclist when preparing to make a turn.</li>
-					<li>Enter a bike lane no more than 200 feet before starting a turn.</li>{" "}
-					<li>Check for bicyclists when changing lanes or entering traffic. They may be hidden in a vehicle’s blind spots.</li>{" "}
-					<li>Be careful when approaching or passing a bicyclist on a two-lane road.</li>
-				</ul>
-				<h3>Road Workers and Work Zones</h3>{" "}
-				<p>You will see warning signs and message boards when there are workers, slow-moving equipment, and closed lanes ahead.</p>{" "}
-				<p>Go through the work zone carefully by:</p>
-				<ul>
-					<li>Slowing down.</li> <li>Allowing extra space between vehicles.</li> <li>Expecting sudden slowing or stopping.</li>{" "}
-					<li>Watching for drivers changing lanes.</li> <li>Avoiding distractions.</li>
-				</ul>
-				<p>
-					Cones, drums, or other barriers will guide you through the work zone. Prepare to slow down or stop for highway equipment. Merge as soon as
-					it is safe without crossing the cones or drums. Watch for bicycles if lanes are narrow or the shoulder is closed. Obey special signs or
-					instructions from workers such as flaggers.
-				</p>
-				<h4>Fines and Double Fine Zones</h4>{" "}
-				<p>
-					Fines for traffic violations in a work zone can be $1,000 or more. Anyone convicted of assaulting a highway worker faces fines of up to
-					$2,000 and imprisonment for up to one year.
-				</p>
-				<p>
-					Certain roads are chosen as Safety Enhanced-Double Fine Zones. This is due to increased collision-related injuries and fatalities. Fines are
-					doubled in these zones.
-				</p>{" "}
-				<p>Fines are also doubled in highway construction or maintenance zones when workers are present.</p>
-				<h4>Move Over and Slow Down</h4> <p>Drivers must move over and slow down for emergency and road work vehicles. These include:</p>
-				<ul>
-					<li>Stationary emergency vehicles or tow trucks displaying flashing amber warning lights.</li>{" "}
-					<li>Stopped road work vehicles displaying emergency flashing or amber warning lights.</li>
-				</ul>
-				<h3>Vehicles with Hazardous Loads</h3>
-				<p>
-					A diamond-shaped sign on a truck means that the truck’s load may be dangerous (gas, explosives, etc.). Vehicles with these signs{" "}
-					<strong>must</strong> stop before crossing railroad tracks.
-				</p>
-				<figure>
-					<img
-						loading="lazy"
-						decoding="async"
-						width="466"
-						height="117"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1.png"
-						alt='Hazard symbols for "Flammable," "Radioactive," "Explosives," and "Poison."'
-						className="wp-image-179478"
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1.png 466w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-300x75.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-18x5.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-450x113.png 450w"
-						sizes="(max-width: 466px) 100vw, 466px"
-					/>
-					<figcaption>Examples of hazardous load placards.</figcaption>
-				</figure>
-				<h3>Heavy Traffic or Bad Weather</h3>
-				<p>
-					You must drive slower when there is heavy traffic or bad weather. At the same time, you should not block normal and reasonable traffic flow
-					by driving too slowly. If you drive faster or slower than the speed limit, you may be cited. When another driver is close behind you and
-					wishes to drive faster, move to the right. If you choose to drive slower than other traffic, drive in the right lane. Refer to Choosing a
-					Lane in Section 6 for more information.
-				</p>
-				<h3>Towing</h3> <p>You must drive in the far-right lane or a lane marked for slower vehicles when you:</p>
-				<ul>
-					<li>Tow a vehicle or trailer.</li> <li>Drive a truck with three or more axles.</li>
-				</ul>
-				<p>
-					If no lanes are marked and there are four or more lanes in your direction, you may only drive in the two lanes closest to the right edge of
-					the road.
-				</p>{" "}
-				<h3>Around Children</h3>
-				<figure>
-					<img
-						loading="lazy"
-						decoding="async"
-						width="502"
-						height="264"
-						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1.png"
-						alt="School bus with red lights flashing and a crossing guard next to it. Students are near the bus. Cars are stopped around the bus."
-						className="wp-image-179481"
-						style={{ width: "414px", height: "218px" }}
-						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1.png 502w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-300x158.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-18x9.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-450x237.png 450w"
-						sizes="(max-width: 502px) 100vw, 502px"
-					/>
-					<figcaption>All vehicles must stop for school buses.</figcaption>
-				</figure>
-				<p>
-					The speed limit is 25 mph within 500 feet of a school while children are outside or crossing the street. Some school zones may have speed
-					limits as low as 15 mph. When near schools, look for:
-				</p>
-				<ul>
-					<li>Bicyclists and pedestrians.</li> <li>School safety patrols or crossing guards. Be sure to obey their directions at all times.</li>
 					<li>
-						Stopped school buses and children crossing the street.
+						<strong>On a sloping driveway:</strong> Turn the wheels so the vehicle will not roll into the street, leave the vehicle in park and set the parking brake.
+					</li>
+
+					<li>
+						<strong>Headed downhill:</strong> Turn your front wheels into the curb or right toward the side of the road.
+					</li>
+
+					<li>
+						<strong>Headed uphill: </strong>Turn your front wheels away from the curb (left-towards the center of the road) and let your vehicle roll back a few inches.
+						The wheel should gently touch the curb.
+					</li>
+
+					<li>
+						<strong>Headed either uphill or downhill when there is no curb:</strong> Turn the wheels so the vehicle will roll away from the center of the road if the
+						brakes fail.
+					</li>
+				</ul>
+
+				<h3>Parking at Colored Curbs</h3>
+
+				<p>Painted colored curbs have special parking rules.</p>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="479"
+						height="333"
+						src="/portal/uploads/2020/05/Coloredcurbs.png"
+						alt="Parking at Colored Curbs"
+						className="wp-image-43957"
+						style={{ width: "368px", height: "256px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Coloredcurbs.png 479w, https://www.dmv.ca.gov/portal/uploads/2020/05/Coloredcurbs-300x209.png 300w, https://www.dmv.ca.gov/portal/uploads/2020/05/Coloredcurbs-407x283.png 407w"
+						sizes="(max-width: 479px) 100vw, 479px"
+					/>
+				</figure>
+
+				<ul>
+					<li>
+						<strong>White</strong>: Stop only long enough to pick up or drop off passengers.
+					</li>
+
+					<li>
+						<strong>Green</strong>: Park for a limited time. The time limit may be posted on signs or painted on the curb.
+					</li>
+
+					<li>
+						<strong>Yellow</strong>: Load and unload passengers and freight. Do not stop longer than the time posted. If you drive a noncommercial vehicle, you are
+						usually required to stay with your vehicle.
+					</li>
+
+					<li>
+						<strong>Red</strong>: No stopping, standing, or parking. Buses may stop at a red zone marked for buses only.
+					</li>
+
+					<li>
+						<strong>Blue</strong>: Parking for a disabled person or someone driving a disabled person with a special placard or special license plate.
+					</li>
+				</ul>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="132"
+						height="158"
+						src="/portal/uploads/2020/05/Disabledpersonparkingsign.png"
+						alt="Disabled Person Parking"
+						className="wp-image-43960"
+					/>
+				</figure>
+
+				<ul>
+					<li>
+						To learn more about disabled parking placards and license plates, visit{" "}
+						<strong>
+							<a href="/disabled-person-parking">dmv.ca.gov/disabled-person-parking</a>.&nbsp;
+						</strong>
+					</li>
+				</ul>
+
+				<div className={classes.imageDiv}>
+					<figure className="alignleft size-full is-resized">
+						<img
+							loading="lazy"
+							decoding="async"
+							width="489"
+							height="297"
+							src="/portal/uploads/2020/05/Crosshatchedlines.png"
+							alt="Example of crosshatched (diagonal lines) area."
+							className="wp-image-43963"
+							style={{ width: "311px", height: "189px" }}
+							srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Crosshatchedlines.png 489w, https://www.dmv.ca.gov/portal/uploads/2020/05/Crosshatchedlines-300x182.png 300w, https://www.dmv.ca.gov/portal/uploads/2020/05/Crosshatchedlines-450x273.png 450w"
+							sizes="(max-width: 489px) 100vw, 489px"
+						/>
+						<figcaption>Example of crosshatched (diagonal lines) area.</figcaption>
+					</figure>
+				</div>
+
+				<h3>Illegal Parking</h3>
+
+				<p>
+					<strong>Never </strong>park or leave your vehicle:
+				</p>
+
+				<ul>
+					<li>Where a No Parking sign is posted.</li>
+
+					<li>On a marked or unmarked crosswalk.</li>
+
+					<li>On a sidewalk, partially blocking a sidewalk, or in front of a driveway.</li>
+
+					<li>Within three feet of a sidewalk ramp for disabled persons.</li>
+
+					<li>In front of or on a curb that provides wheelchair access to a sidewalk.</li>
+
+					<li>In the crosshatched (diagonal lines) area next to a designated disabled parking space.</li>
+
+					<li>In a space designated for parking or fueling zero-emission vehicles, unless you are driving a zero-emission vehicle.</li>
+
+					<li>In a tunnel or on a bridge, unless permitted by signs.</li>
+
+					<li>Within 15 feet of a fire hydrant or fire station driveway.</li>
+
+					<li>Within 20 feet of an unmarked or marked crosswalk, or within 15 feet of a crosswalk where a curb extension is present.</li>
+
+					<li>Between a safety zone and curb.</li>
+
+					<li>Double parked.</li>
+
+					<li>
+						On the wrong side of the street or on a freeway, except:
 						<ul>
-							<li>
-								Some school buses flash yellow lights when preparing to stop to let children off the bus. The yellow flashing lights warn you to slow
-								down and prepare to stop.
-							</li>
-							<li>
-								When the bus flashes red lights (located at the top, front, and back of the bus), you must stop from either direction until the
-								children are safely across the street and the lights stop flashing. Remain stopped while the red lights are flashing. If you fail to
-								stop, you may be fined up to $1,000 and your driving privilege could be suspended for one year.
-							</li>
-							<li>
-								If the school bus is on the other side of a divided or multilane highway (two or more lanes in each direction), you do not need to
-								stop.
-							</li>
+							<li>In an emergency.</li>
+
+							<li>When a law enforcement officer requires a stop.</li>
+
+							<li>Where a stop is specifically permitted.</li>
 						</ul>
 					</li>
 				</ul>
-				<h3>Blind Intersections</h3> <p>An intersection is considered blind if it has no stop signs at any corner.</p>{" "}
-				<p>If your view is blocked, move slowly forward until you can see. The speed limit for a blind intersection is 15 mph.</p>
-				<h3>Alleys</h3>
+
 				<p>
-					An alley is any road no wider than 25 feet that is used to access the rear or side entrances of buildings or properties. You may drive on or
-					cross a sidewalk to enter or exit a driveway or alley. The speed limit in an alley is 15 mph.
+					If you must stop on a freeway, park completely off the pavement and stay in your vehicle with the doors locked until help arrives. A vehicle that is stopped,
+					parked, or left standing on a freeway for more than four hours may be removed.
 				</p>
-				<h3>Near Railroad or Light Rail Tracks</h3>
-				<p>
-					The speed limit is 15 mph within 100 feet of a railroad crossing and you cannot see the tracks for 400 feet in both directions. You may
-					drive faster than 15 mph if the crossing is controlled by gates, a warning signal, or a flagman. At railroad or train crossings:
-				</p>
+
+				<h3>Electric Vehicles</h3>
+
+				<p>Local authorities can reserve parking spaces on public streets for electric vehicle charging.</p>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="113"
+						height="111"
+						src="/portal/uploads/2023/02/Electric_Vehicles.png"
+						alt="Electric Vehicles"
+						className="wp-image-179340"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Electric_Vehicles.png 113w, https://www.dmv.ca.gov/portal/uploads/2023/02/Electric_Vehicles-12x12.png 12w"
+						sizes="(max-width: 113px) 100vw, 113px"
+					/>
+				</figure>
+
+				<h2>Driving Green</h2>
+
+				<p>Maximize your fuel efficiency while helping to lower emissions by following these practices:</p>
+
 				<ul>
-					<li>
-						Flashing red warning lights indicate you must stop and wait. Do not proceed over the railroad tracks until the red lights stop flashing,
-						even if the gate rises.
-					</li>
-					<li>When the crossing devices or a person warns you a train is coming, stop at least 15 feet from the nearest track.</li>
-					<li>
-						Do not go under lowering gates or around lowered gates. If the gates are lowered and you do not see a train approaching, call the posted
-						railroad emergency toll-free number or 911.
-					</li>
-					<li>
-						Stop, look, and listen. If you see a train coming or hear a horn or bell, do not cross. Many crossings have multiple tracks. Look in both
-						directions and only cross when it is safe.
-					</li>{" "}
-					<li>Expect a train on any track, at any time, traveling in either direction.</li>
-					<li>
-						Never stop on the railroad tracks. Wait and do not begin proceeding if you do not have enough room to completely cross the tracks. If you
-						are on the tracks, you risk injury or death.
-					</li>
-					<li>
-						Watch for vehicles that must stop before they cross train tracks. These vehicles include buses, school buses, and vehicles marked with a
-						hazardous materials placard.
-					</li>
+					<li>Speed up and slow down smoothly. Drive at a steady speed.</li>
+
+					<li>Regularly inflate your tires, get oil changes, and check filters.</li>
+
+					<li>Get rid of extra weight in your vehicle.</li>
 				</ul>
-				<h3>Business or Residential Districts</h3> <p>The speed limit is 25 mph, unless otherwise posted.</p>
+
+				<p>
+					For more information, visit{" "}
+					<strong>
+						<a href="http://fueleconomy.gov">fueleconomy.gov</a>.
+					</strong>
+				</p>
+
+				<h2>Law Enforcement Stops</h2>
+
+				<h3>During a Law Enforcement Stop</h3>
+
+				<ul>
+					<li>Turn on your right turn signal to acknowledge that you see the officer.</li>
+
+					<li>Move completely onto the right shoulder, even if in the carpool/HOV lane. Stop in a well-lit area when possible.</li>
+
+					<li>Turn off your radio.</li>
+
+					<li>Remain inside your vehicle unless directed to get out by the officer.</li>
+
+					<li>Roll down your window after stopping your vehicle and before the officer makes contact with you.</li>
+
+					<li>The driver and all passengers should place their hands in clear view before the officer makes contact with them.</li>
+				</ul>
+
+				<p>
+					Beginning January 1, 2024, law enforcement officers must state the reason for a traffic or pedestrian stop before they begin questioning related to a criminal
+					investigation or traffic violation. An exception is made if an officer reasonably believes withholding the reason is necessary to protect life or property from
+					imminent threat. The reason for the stop must be documented on the citation issued or law enforcement report completed.
+				</p>
+
+				<h3>Your Rights During the Enforcement Stop</h3>
+
+				<p>
+					<strong>If an officer asks your permission to do something, you have a right to say no. </strong>However, if you say no and the officer says they are going to
+					do it anyway, you do not have a right to interfere with their actions. For example, an officer may request to search part or all of your vehicle. You have a
+					right to decline that request, but the officer may have the legal authority to search your vehicle anyway under certain circumstances. If you do not want the
+					officer to search your vehicle, you should clearly say that you do not give your permission, but you do not have a right to resist or obstruct the officer if
+					they search your vehicle anyway.
+				</p>
+
+				<p>
+					<strong>The driver of a stopped vehicle must produce a driver’s license, proof of insurance, and vehicle registration when stopped by law enforcement.</strong>{" "}
+					If a driver does not produce these documents, officers may conduct a limited search for them. An officer may also request the names or identification of
+					passengers. Passengers can decline that request, but under some circumstances the passengers may be required to identify themselves anyway. If passengers do not
+					want to produce their identification, they should clearly say so. Passengers should not interfere with the officer’s duties in conducting the traffic stop, and
+					if an officer demands identification, passengers should not interfere with the officer’s actions. During a traffic stop, an officer can legally require the
+					driver and all passengers to exit or stay inside the vehicle. If you are told to exit the vehicle or stay inside, you must do so.
+				</p>
+
+				<p>
+					<strong>In California, only federal law enforcement officers can ask you about your immigration status. </strong>California law prohibits state and local
+					officers from asking drivers or passengers about their immigration status. If a California law enforcement officer asks you about your immigration status, you
+					can decline to answer.
+				</p>
+
+				<p>
+					<strong>In general, the First Amendment protects the right of drivers and passengers to record interactions with law enforcement in public spaces.</strong> If
+					you are recording, you should immediately make that clear. You do not have a right to interfere with the officer’s lawful duties during the enforcement stop,
+					and you should not reach into concealed areas to retrieve your recording device without the officer’s permission. If your recording is not interfering with the
+					officer’s ability to lawfully do their job, an officer cannot confiscate your recording device, delete the recording, or destroy the device just because you are
+					using it to record. In general, you also have the right to deny a request to unlock a cellular phone or provide a password to it, though under some
+					circumstances, such as if you are on parole, you may have to give permission in response to such requests. Finally, no government employee can retaliate against
+					you just because you recorded something in public.
+				</p>
+
+				<p>
+					<strong>Even if you believe your rights were violated, you should not engage in physical resistance or violence against the officer.</strong> If an officer does
+					something that you believe violates your rights, you can voice your objection, but you should not physically resist. Everyone has the right to be safe during a
+					traffic stop. Your safety and the officer’s safety could be jeopardized if the situation escalates with physical resistance or violence. All members of the
+					public have a right to file a complaint against any law enforcement agency, and it is against the law for any government employee to retaliate against you for
+					doing so. You can file a complaint with the law enforcement agency that employs the officer. You have a right to be free from discrimination based on your
+					actual or perceived race, sex, color, ethnicity, national origin, age, religion, gender identity or expression, sexual orientation, mental or physical
+					disability, medical condition, or citizenship status. You also have other rights guaranteed by the United States and California Constitutions, as well as
+					California and federal laws. When you file a complaint, the agency that employs the officer must investigate the complaint. Links to contact information for
+					California law enforcement agencies can be found at{" "}
+					<strong>
+						<a href="http://post.ca.gov/le-agencies">post.ca.gov/le-agencies</a>
+					</strong>
+					.
+				</p>
 			</div>
 		</Fragment>
 	);
 };
 
-export default Page12;
+export default Page10;

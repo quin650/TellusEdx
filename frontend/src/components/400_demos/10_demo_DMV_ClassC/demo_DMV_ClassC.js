@@ -7,7 +7,6 @@ import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBa
 import SideBar_R_QuestionsModal from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
 
-import Page0 from "../../200_pages/20_demo_pages/page0";
 import Page1 from "../../200_pages/20_demo_pages/page1";
 import Page2 from "../../200_pages/20_demo_pages/page2";
 import Page3 from "../../200_pages/20_demo_pages/page3";
@@ -30,6 +29,8 @@ import Page19 from "../../200_pages/20_demo_pages/page19";
 import Page20 from "../../200_pages/20_demo_pages/page20";
 import Page21 from "../../200_pages/20_demo_pages/page21";
 import Page22 from "../../200_pages/20_demo_pages/page22";
+import Page23 from "../../200_pages/20_demo_pages/page23";
+import Page24 from "../../200_pages/20_demo_pages/page24";
 
 import classes from "./demo_DMV_ClassC.module.css";
 const generateIdFromText = (text) => {
@@ -56,7 +57,6 @@ const DemoDMVClassC = () => {
 		sideBar_R_Questions_isOpen_rdx,
 	} = useSelector(({ user }) => user);
 	const ListOfPages = [
-		<Page0 />,
 		<Page1 />,
 		<Page2 />,
 		<Page3 />,
@@ -79,6 +79,8 @@ const DemoDMVClassC = () => {
 		<Page20 />,
 		<Page21 />,
 		<Page22 />,
+		<Page23 />,
+		<Page24 />,
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
 	const [activeID, setActiveID] = useState(null);
@@ -96,7 +98,7 @@ const DemoDMVClassC = () => {
 	//! Get Page Title | Get Range of pages
 	useEffect(() => {
 		if (pageContentRef.current) {
-			dispatch(userReducerActions.setDemoPageLength(ListOfPages.length - 1));
+			dispatch(userReducerActions.setDemoPageLength(ListOfPages.length));
 			const H1_Element = pageContentRef.current.querySelectorAll("h1")[0];
 			const secTitle = H1_Element ? H1_Element.textContent : "";
 			setPageTitle(secTitle);
@@ -293,7 +295,7 @@ const DemoDMVClassC = () => {
 				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
 					<div className={classes.handbook_innerContainer}>
 						<div className={classes.page_contentContainer}>
-							{ListOfPages[currentPageNum_rdx]}
+							{ListOfPages[currentPageNum_rdx - 1]}
 							<PaginationGUI />
 						</div>
 					</div>

@@ -75,6 +75,7 @@ const userSlice = createSlice({
 
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
+			state.inputPageNum_rdx = action.payload;
 		},
 		setDemoInputPageNum(state, action) {
 			state.inputPageNum_rdx = action.payload;

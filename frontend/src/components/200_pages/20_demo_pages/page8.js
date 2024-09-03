@@ -1,234 +1,190 @@
 import React, { Fragment } from "react";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const Page8 = () => {
+const Page6 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p>Page 8 of 22 </p>
-				<h1>Section 5: An Introduction to Driving</h1>
+				<p>Page 8 of 24 </p>
+				<h1>Section 3: The Testing Process</h1>
 			</div>
 			<div className={classes.page_content}>
-				<p>Your health may affect your driving.</p>
+				<div className="large-list-block">
+					<div className="large-list-block__inner">
+						<h2 className="large-list-block__title">Driver’s License Tests </h2>
+						<ol className="large-list-block__list ">
+							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
+								<p>
+									<strong>Vision Test</strong>
+								</p>
 
-				<p>
-					<strong>Vision </strong>– You must be able to notice hazards in different types of lighting, judge distances, adjust to traffic speed, and
-					read road signs.
-				</p>
+								<p>
+									DMV tests all applicants to ensure they can see well enough to drive safely. If you take your vision test with corrective or contact lenses, your
+									driver’s license will have a corrective lenses restriction. If you do not pass your vision test, you will be asked to have your eye doctor complete a
+									Report of Vision Examination form.
+								</p>
+							</li>
 
-				<p>
-					<strong>Hearing </strong>– You must be able to hear horns, sirens, motorcycles, or screeching tires that may alert you of hazards. It is
-					illegal to wear a headset or earplugs in both ears while driving.&nbsp;
-				</p>
+							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
+								<p>
+									<strong>Knowledge Test</strong>
+								</p>
 
-				<p>
-					<strong>Fatigue and Drowsiness</strong> – Can affect your vision and increase reaction time to hazards.
-				</p>
+								<p>
+									When you apply for an original driver’s license, you must pass a knowledge test with multiple choice questions. You are allowed three attempts to pass
+									before you must reapply. Minors must wait seven days to retake a failed knowledge test, not including the day of the failure.
+								</p>
 
-				<p>
-					<strong>Physical and Mental</strong> – You must be alert to quickly decide the correct course of action in any type of traffic situation,
-					including unexpected ones.
-				</p>
+								<p>
+									Testing options will be available once you complete your application at <a href="http://dmv.ca.gov/dl">dmv.ca.gov/dl</a>.
+								</p>
 
-				<p>
-					<strong>Medications</strong> – Prescription and over-the-counter medications can make you an unsafe driver. Some medicines can make you
-					sleepy. It is your responsibility to know the effects of the medications you take.
-				</p>
+								<p>
+									<span role="region" aria-label="Important" className="format-label--important">
+										You are not allowed to use any testing aids during knowledge tests, such as a California Driver’s Handbook or cell phone.
+									</span>
+								</p>
+							</li>
 
-				<p>
-					<strong>Health </strong>– Physicians are required to report patients, who are at least 14 years old, to DMV if they believe you have medical
-					conditions that may affect your ability to drive safely, such as lapse of consciousness.
-				</p>
+							<li className="wp-block-dmv-large-list-content large-list-block__list-item">
+								<p>
+									<strong>Behind-the-Wheel Drive Test</strong>
+								</p>
 
-				<h2>Controlling the Vehicle</h2>
+								<p>
+									When you apply for an original driver’s license, you will be tested on your ability to safely drive a vehicle. Upon renewal, drivers with a vision or
+									medical condition may be required to take a behind-the-wheel test. The examiner may give two or more instructions at one time to determine whether you
+									can understand and properly follow both directions. For example, “At the next street, make a left turn, and then at the first intersection make another
+									left turn.”
+								</p>
 
-				<p>To control your vehicle, it is critical to keep both hands on the wheel whenever possible.</p>
+								<p>
+									Visit <a href="http://dmv.ca.gov/make-an-appointment">dmv.ca.gov/make-an-appointment</a> to schedule a behind-the-wheel drive test appointment.
+								</p>
+							</li>
+						</ol>
+					</div>
+				</div>
 
-				<h3>Hand-to-Hand Steering (Push/Pull)</h3>
-
-				<p>To use this steering wheel method:</p>
+				<h3>On the day of your behind-the-wheel test, you must bring:</h3>
 
 				<ol>
-					<li>Start with your hands at 9 and 3 o’clock or 8 and 4 o’clock.</li>
+					<li>Your instruction permit or driver’s license (if you have one).</li>
 
-					<li>Do not cross your hands over the middle of the steering wheel.</li>
+					<li>Another California-licensed driver who is at least 18 years old (25 for minors), unless you are already licensed to drive.</li>
 
-					<li>Keep your hands in these positions, even when making turns.</li>
+					<li>A vehicle that is safe to drive for your test.</li>
+
+					<li>Valid proof of insurance and vehicle registration.</li>
+
+					<li>
+						If you plan to use a rental vehicle for your drive test, your name must be listed on the rental contract. The contract must not exclude behind-the-wheel drive
+						tests.
+					</li>
 				</ol>
 
-				<h3>Hand-Over-Hand Steering</h3>
+				<p>
+					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
+						Minors must wait 14 days to retake a failed behind-the-wheel drive test, not including the day of the failure.
+					</span>
+				</p>
 
-				<p>Use this steering wheel method when you turn at low speeds, park, or need to recover from a skid. To use this method:</p>
-
-				<ol>
-					<li>Start with your hands at 8 and 4 o’clock.</li>
-
-					<li>Reach across the steering wheel to grasp the opposite side.</li>
-
-					<li>Let go of the steering wheel with your other hand.</li>
-
-					<li>Reach across the arm still holding the wheel, grip the wheel, and pull up.</li>
-				</ol>
-
-				<h3>One-Hand Steering</h3>
-
-				<p>There are only two situations that may require steering with one hand:</p>
+				<h3>Before you begin, the DMV examiner will ask you to locate and demonstrate the following:</h3>
 
 				<ul>
 					<li>
-						When you are turning while backing up to see where you are going behind you. Place your hand at the 12 o’clock position on the steering
-						wheel.
+						<strong>Driver window</strong> – The window on the driver side must open.
 					</li>
 
-					<li>When you are operating vehicle controls that require you to remove a hand from the steering wheel.</li>
+					<li>
+						<strong>Windshield </strong>– The windshield must allow a full, clear, unblocked view for you and the DMV examiner. Windshield cracks may postpone your test.
+					</li>
+
+					<li>
+						<strong>Rear-view mirrors</strong> – At least two rearview mirrors. One of them must be on the left side of your vehicle.
+					</li>
+
+					<li>
+						<strong>Brake lights</strong> – The right and left brake lights must be operational.
+					</li>
+
+					<li>
+						<strong>Tires </strong>– The tires must have at least 1/32-inch of uniformed tread depth. The use of a donut tire is not allowed during a drive test.
+					</li>
+
+					<li>
+						<strong>Foot brake</strong> – There must be at least one inch of clearance between the bottom of the brake pedal and the floorboard when depressed.
+					</li>
+
+					<li>
+						<strong>Horn </strong>– Designed for the vehicle, in proper working condition, and loud enough to be heard from a distance of at least 200 feet.
+					</li>
+
+					<li>
+						<strong>Emergency (parking brake)</strong> – How to set and release the parking brake.
+					</li>
+
+					<li>
+						<strong>Turn/Arm signals</strong>
+						<ul>
+							<li>Left turn.</li>
+
+							<li>Right turn.</li>
+
+							<li>Slowing down or stopping.</li>
+						</ul>
+					</li>
+
+					<li>
+						<strong>Windshield wipers: control arm or switch</strong> – You may be required to show they function.
+					</li>
+
+					<li>
+						<strong>Seat belts</strong> – All seat belts must work properly and be used by the individual(s) in the vehicle.
+					</li>
+
+					<li>
+						<strong>Recording Device</strong> – All interior recording devices must be powered off or disabled.
+					</li>
 				</ul>
-
-				<h2>Signals, Horns, And Headlights</h2>
-
-				<p>Your signals, horn, and headlights are important for communicating with other drivers, pedestrians, and bicyclists.</p>
-
-				<h3>Signaling</h3>
-
-				<p>Always signal when you turn, change lanes, slow down, or stop. </p>
 
 				<p>
-					You can signal using your vehicle’s signal lights or using hand-and-arm positions. If your signal lights are not functioning, or bright
-					sunlight makes your signal lights hard to see, use the hand-and-arm signals shown in the image below.
+					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
+						If your vehicle does not meet the requirements, your drive test will be rescheduled.<span></span>
+					</span>
 				</p>
-
-				<p>Bicyclists may signal a turn with their arm held straight out, pointing in the direction they plan to turn.</p>
-
-				<figure className="wp-block-table">
-					<table>
-						<thead>
-							<tr>
-								<th className="has-text-align-center" data-align="center">
-									LEFT TURN
-								</th>
-								<th className="has-text-align-center" data-align="center">
-									RIGHT TURN
-								</th>
-								<th className="has-text-align-center" data-align="center">
-									SLOW OR STOP
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td className="has-text-align-center" data-align="center" data-title="LEFT TURN">
-									<img
-										decoding="async"
-										alt="left turn arm signal"
-										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smleftturn.jpg"
-										width="113"
-										height="73"
-									/>
-								</td>
-								<td className="has-text-align-center" data-align="center" data-title="RIGHT TURN">
-									<img
-										decoding="async"
-										alt="right turn arm signal"
-										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smrightturn.jpg"
-										width="100"
-										height="78"
-									/>
-								</td>
-								<td className="has-text-align-center" data-align="center" data-title="SLOW OR STOP">
-									<img
-										decoding="async"
-										alt="slow or stop arm signal"
-										src="https://wsi2uat.dmv.ca.gov/imageserver/dmv/images/dlhdbk/29_smslostop.jpg"
-										width="117"
-										height="76"
-									/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</figure>
-
-				<p>You should signal:</p>
-
-				<ul>
-					<li>At least 100 feet before you turn.</li>
-
-					<li>Before every lane change.</li>
-
-					<li>At least five seconds before you change lanes on a freeway.</li>
-
-					<li>Before pulling next to the curb or away from the curb.</li>
-
-					<li>Even when you do not see other vehicles around you.</li>
-
-					<li>When you are almost through the intersection if you plan to turn shortly after crossing the intersection.</li>
-				</ul>
-
-				<p>Remember to turn off your signal when you no longer need it.</p>
-
-				<h3>Using Your Horn</h3>
-
-				<p>Use your vehicle’s horn to let other drivers know you are there or warn others of a hazard. Use your horn to:</p>
-
-				<ul>
-					<li>Avoid collisions.</li>
-
-					<li>Alert oncoming traffic on narrow mountain roads where you cannot see at least 200 feet ahead.</li>
-				</ul>
-
-				<h3>Using Your Headlights</h3>
 
 				<p>
-					Your vehicle’s headlights help you see what is in front of you. They also make it easier for other drivers to see your vehicle. Dim your
-					high-beam headlights to low beams within 500 feet of a vehicle coming toward you or within 300 feet of a vehicle you are following. It is
-					illegal to drive using only parking lights. Use your headlights:
+					Interpreters may be used during the pre-drive inspection for the identification and use of certain controls in the vehicle but may not accompany you during the
+					drive test.
 				</p>
 
-				<ul>
-					<li>When it is too dark to see from 1,000 feet away.</li>
+				<p>
+					Only the examiner is allowed to accompany you during the drive test. Exceptions are made for training, service animals, and certain law enforcement situations.
+				</p>
 
-					<li>Beginning 30 minutes after sunset.</li>
+				<p>
+					The use of a recording device, including a video/audio recorder, is prohibited during a behind-the-wheel drive test. If the recording device cannot be powered
+					off or disabled, the applicant must block it so there is no visual or audio recording during the drive test.
+				</p>
 
-					<li>Until 30 minutes before sunrise.</li>
+				<h2>Other Things to Know for Your Behind-the-Wheel Test</h2>
 
-					<li>In adverse weather. If you need to use your windshield wipers due to fog, rain, or snow, you must turn on your low-beam headlights.</li>
+				<p>
+					The drive test is intended to determine your skill in operating a motor vehicle in most road situations and evaluate your abilities, not the vehicle’s
+					technology. Therefore, advanced driver assistance systems technologies, such as automated parallel parking, lane departure, and adaptive cruise control, are not
+					permitted during the drive test. Vehicle safety technology, such as backup cameras and blind spot monitors, may be used on the drive test, but are not a
+					replacement for an actual visual check of your mirrors and blind spots.
+				</p>
 
-					<li>When conditions (such as clouds, dust, smoke, or fog) prevent you from seeing other vehicles.</li>
-
-					<li>On mountain roads and tunnels (even on sunny days).</li>
-
-					<li>When a road sign states that headlights must be on.</li>
-
-					<li>To help other drivers see your vehicle, especially when the sun is low on the horizon.</li>
-				</ul>
-
-				<h3>Using Your Emergency Flashers</h3>
-
-				<p>If you can see a collision or hazard ahead, warn drivers behind you using these methods:</p>
-
-				<ul>
-					<li>Turn on your emergency flashers.</li>
-
-					<li>Lightly tap your brake pedal three or four times.</li>
-
-					<li>Use a hand signal when slowing and stopping.</li>
-				</ul>
-
-				<p>If you need to stop because of vehicle trouble:</p>
-
-				<ul>
-					<li>Turn on your emergency flashers. If your vehicle does not have emergency flashers, use your turn signals.</li>
-
-					<li>If possible, pull off the road away from all traffic.</li>
-
-					<li>If you cannot get completely off the road, stop where people can see you and your vehicle from behind.</li>
-
-					<li>Do not stop just over a hill or just around a curve. Other drivers may not see your vehicle in time to avoid a collision.</li>
-
-					<li>Call for emergency roadside assistance and stay in your vehicle until help arrives.</li>
-				</ul>
+				<p>
+					To view a sample of the Driving Performance Evaluation (DPE) Score Sheet, visit{" "}
+					<a href="/portal/driver-education-and-safety/special-interest-driver-guides/teen-drivers/">dmv.ca.gov/teendriver</a>. For a sample of the Supplemental/Area DPE
+					Score Sheet, visit <a href="http://dmv.ca.gov/seniors">dmv.ca.gov/seniors</a>.
+				</p>
 			</div>
 		</Fragment>
 	);
 };
 
-export default Page8;
+export default Page6;

@@ -1,214 +1,675 @@
 import React, { Fragment } from "react";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
-const Page13 = () => {
+
+const Page11 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 13 of 22 </p> <h1>Section 7: Laws and Rules of the Road (Continued)</h1>
+				<p>Page 13 of 24 </p>
+				<h1>Section 7: Laws and Rules of the Road</h1>
 			</div>
 			<div className={classes.page_content}>
-				<h2>Other Important Roadway Information</h2>
+				<h2>Traffic Control</h2>
+
 				<p>
-					<strong>You must:</strong>
+					When at or approaching traffic signals or signs, yield to pedestrians, bicyclists, and other nearby vehicles that may have the right-of-way. See{" "}
+					<a href="#rightofway">Right of Way Rules: Who Goes First</a>, in this section.
 				</p>
+
+				<h3>Traffic Signals</h3>
+
+				<h4>Solid Red Light</h4>
+
+				<figure>
+					<img
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_light_red.gif"
+						alt="solid red light"
+						className="wp-image-43774"
+					/>
+				</figure>
+
+				<p>A red traffic signal light means STOP. You can turn right at a red light, if:</p>
+
+				<ul>
+					<li>There is not a NO TURN ON RED sign posted.</li>
+
+					<li>You stop at the stop or limit line, yield for pedestrians, and turn when it is safe.</li>
+				</ul>
+
+				<h4>Red Arrow</h4>
+
+				<figure>
+					<img decoding="async" width="58" height="58" src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_arrow_red.gif" alt="red arrow" className="wp-image-43777" />
+				</figure>
+
+				<p>A red arrow means STOP. Do not turn at a red arrow. Remain stopped until a green traffic signal light or green arrow appears.</p>
+
+				<h4>Flashing Red Light</h4>
+
+				<figure>
+					<img
+						decoding="async"
+						width="58"
+						height="54"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/Redflashinglight.png"
+						alt="flashing red light"
+						className="wp-image-43780"
+					/>
+				</figure>
+
+				<p>A flashing red signal light means STOP. After stopping, you may go when it is safe.</p>
+
+				<h4>Solid Yellow Light</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_signal.gif"
+						alt="solid yellow light"
+						className="wp-image-43783"
+					/>
+				</figure>
+
+				<p>
+					A yellow traffic signal light means CAUTION. The light is about to turn red. When you see a yellow traffic signal light, stop, if you can do so safely. If you
+					cannot stop safely, cautiously cross the intersection.
+				</p>
+
+				<h4>Yellow Arrow</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_yellow_arrow_left.gif"
+						alt="yellow arrow"
+						className="wp-image-43786"
+					/>
+				</figure>
+
+				<p>
+					A yellow arrow means the protected turning time is ending. The signal will change soon. If you cannot stop safely or you are already in the intersection,
+					cautiously complete your turn. Pay attention to the next signal. It could be a:
+				</p>
+
+				<ul>
+					<li>Green or red traffic signal light.</li>
+
+					<li>Red Arrow.</li>
+				</ul>
+
+				<h4>Flashing Yellow Light</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="61"
+						height="59"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_flashing_yellow.gif"
+						alt="flashing yellow light"
+						className="wp-image-43789"
+					/>
+				</figure>
+
+				<p>A flashing yellow traffic signal light is a warning to PROCEED WITH CAUTION. Slow down and be alert. You do not need to stop.</p>
+
+				<h4>Flashing Yellow Arrow</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="68"
+						height="61"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/flashing_yellow_arrow.gif"
+						alt="flashing yellow arrow"
+						className="wp-image-43792"
+					/>
+				</figure>
+
+				<p>You can turn, but your turn is not protected from other traffic. Proceed to turn left after yielding to oncoming traffic and proceed with caution.</p>
+
+				<h4>Solid Green Light</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_light.gif"
+						alt="solid green light"
+						className="wp-image-43795"
+					/>
+				</figure>
+
+				<p>
+					A green traffic signal light means GO. You should still stop for any vehicle, bicyclist, or pedestrian in the intersection. Only proceed if you have enough
+					space without creating a danger to any oncoming vehicle, bicyclist, or pedestrian. Do not enter the intersection if you cannot get completely across before the
+					traffic signal light turns red.
+				</p>
+
+				<h4>Green Arrow</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/14_green_arrow_left.gif"
+						alt="green arrow"
+						className="wp-image-43798"
+					/>
+				</figure>
+
+				<p>
+					A green arrow means GO in the direction the arrow is pointing. The green arrow allows you to make a protected turn. Oncoming vehicles are stopped by a red
+					traffic signal light.
+				</p>
+
+				<h4>Traffic Light Not Working</h4>
+
+				<p>
+					When a traffic light is not working, stop as if the intersection is controlled by STOP signs in all directions. Then proceed cautiously when it is safe to do
+					so.
+				</p>
+
+				<h3>Pedestrian Signals and Signs</h3>
+
+				<h4>WALK or Walking Person</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="53"
+						height="77"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/walk.png"
+						alt="walk signals"
+						className="wp-image-246"
+					/>
+				</figure>
+
+				<p>You may cross the street.</p>
+
+				<h4>Don’t Walk or Raised Hand</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="52"
+						height="78"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotwalk.png"
+						alt="do not walk signals"
+						className="wp-image-244"
+					/>
+				</figure>
+
+				<p>You may not cross the street.</p>
+
+				<h4>Flashing Don’t Walk or Flashing Raised Hand</h4>
+
+				<p>Do not start crossing the street. The traffic signal light is about to change. Drivers must yield to pedestrians, even if the Don’t Walk light is flashing.</p>
+
+				<h4>Numbers</h4>
+
+				<p>The numbers count down the seconds left for crossing the street.</p>
+
+				<h4>Diagonal Crossing</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="75"
+						height="74"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/Diagonal-Crossing.png"
+						alt="Diagonal Crossing OK sign"
+						className="wp-image-179190"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Diagonal-Crossing.png 75w, https://www.dmv.ca.gov/portal/uploads/2020/05/Diagonal-Crossing-12x12.png 12w"
+						sizes="(max-width: 75px) 100vw, 75px"
+					/>
+				</figure>
+
+				<p>
+					These are crisscross and diagonal crosswalks that allow pedestrians to cross the intersection in any direction at the same time. Cross only when the walk signal
+					allows it.
+				</p>
+
+				<h4>Sounds</h4>
+
+				<p>Sounds such as beeping, chirping, or verbal messages help blind or visually impaired pedestrians cross the street.</p>
+
+				<h4>Pedestrian Push Button</h4>
+
+				<p>This is used to activate the Walk or Walking Person signal.</p>
+
+				<h4>No Pedestrian Signals</h4>
+
+				<p>If there are no pedestrian signals, obey the vehicle traffic signals.</p>
+
+				<h3>Signs</h3>
+
+				<p>
+					<strong>Obey all warning signs regardless of their shape or color.</strong>
+				</p>
+
+				<h4>STOP Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_stopsign.gif"
+						alt="stop sign"
+						className="wp-image-43813"
+					/>
+				</figure>
+
+				<p>
+					Make a full stop before entering the crosswalk or at the limit line. If there is no limit line or crosswalk, stop before entering the intersection. Check
+					traffic in all directions before proceeding.
+				</p>
+
+				<h4>Red YIELD Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="60"
+						height="58"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_yieldsign.gif"
+						alt="red yield sign"
+						className="wp-image-43816"
+					/>
+				</figure>
+
+				<p>Slow down and be ready to stop to let any vehicle, bicyclist, or pedestrian pass before you proceed.</p>
+
+				<h4>Red and White Regulatory Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="67"
+						height="79"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/donotenter.png"
+						alt="do not enter sign"
+						className="wp-image-242"
+					/>
+				</figure>
+
+				<p>Follow the sign’s instruction. For example, DO NOT ENTER means do not enter the road or ramp where the sign is posted.</p>
+
+				<h4>WRONG WAY Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="119"
+						height="61"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/16_wrong_way_sign.gif"
+						alt="Wrong Way sign"
+						className="wp-image-43822"
+						style={{ width: "85px", height: "44px" }}
+					/>
+				</figure>
+
+				<p>
+					If you enter a roadway against traffic, DO NOT ENTER and WRONG WAY signs may be posted. When it is safe, back out or turn around. If you are driving at night,
+					you will know you are going the wrong way if the road reflectors shine red in your headlights.
+				</p>
+
+				<h4>Red Circle with a Red Line Through It</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="77"
+						height="79"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/nouturn.png"
+						alt="no u turn sign"
+						className="wp-image-241"
+					/>
+				</figure>
+
+				<p>The picture inside the circle shows what you cannot do and may be shown with words.</p>
+
+				<h4>Yellow and Black Circular Sign or X-shaped Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="211"
+						height="189"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad.png"
+						alt="railroad crossing sign"
+						className="wp-image-239"
+						style={{ width: "70px", height: "63px" }}
+					/>
+				</figure>
+
+				<p>You are approaching a railroad crossing. Look, listen, slow down, and prepare to stop. Let any trains pass before you proceed.</p>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="66"
+						height="50"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/railroad2.png"
+						alt="blue railroad sign with emergency information"
+						className="wp-image-240"
+					/>
+				</figure>
+
+				<p>
+					Many railroad crossings also have a blue and white sign to tell you what to do if there is an emergency on or near the tracks, or if your vehicle has stalled on
+					the tracks.
+				</p>
+
+				<h4>5-sided Sign</h4>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="183"
+						height="176"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/02/schoolzone.png"
+						alt=""
+						className="wp-image-237"
+						style={{ width: "73px", height: "71px" }}
+					/>
+				</figure>
+
+				<p>You are near a school. Drive slowly and stop for children in the crosswalk.</p>
+
+				<h4>Diamond-shaped Sign</h4>
+
+				<p>Warns you of specific road conditions and dangers ahead.</p>
+
+				<h4>White Rectangular Sign</h4>
+
+				<p>Communicates many important rules you must obey.</p>
+
+				<h4>Warning Signs</h4>
+
+				<p>Warns of conditions related to pedestrians, bicyclists, schools, playgrounds, school buses, and school passenger loading zones.</p>
+
+				<p>
+					For more information about signs, visit <a href="https://dot.ca.gov/programs/safety-programs/sign-charts">dot.ca.gov/programs/safety-programs/sign-charts</a>.
+				</p>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="433"
+						height="731"
+						src="https://www.dmv.ca.gov/portal/uploads/2020/05/Sign-Sample-1.png"
+						alt="Examples of Red and White Regulatory Signs, White Regulatory Signs, Highway Construction and Maintenance Signs, Guide Signs, Hazardous Loads Placards, and Slow Moving Vehicle Placard"
+						className="wp-image-179199"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/Sign-Sample-1.png 433w, https://www.dmv.ca.gov/portal/uploads/2020/05/Sign-Sample-1-178x300.png 178w, https://www.dmv.ca.gov/portal/uploads/2020/05/Sign-Sample-1-7x12.png 7w, https://www.dmv.ca.gov/portal/uploads/2020/05/Sign-Sample-1-168x283.png 168w"
+						sizes="(max-width: 433px) 100vw, 433px"
+					/>
+				</figure>
+
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="420"
+						height="658"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Sign-Sample-2.png"
+						alt="Examples of Warning Signs. For more information, visit dot.ca.gov."
+						className="wp-image-179202"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Sign-Sample-2.png 420w, https://www.dmv.ca.gov/portal/uploads/2023/02/Sign-Sample-2-191x300.png 191w, https://www.dmv.ca.gov/portal/uploads/2023/02/Sign-Sample-2-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2023/02/Sign-Sample-2-181x283.png 181w"
+						sizes="(max-width: 420px) 100vw, 420px"
+					/>
+				</figure>
+
+				<h2 id="rightofway">Right-of-Way Rules: Who Goes First?</h2>
+
+				<p>
+					Right-of-way rules help you understand who goes first when vehicles, pedestrians, and bicyclists meet on the road. The vehicle that arrives to the intersection
+					first has the right-of-way. Other vehicles, bicyclists, and pedestrians must wait for the person who has the right-of-way. Never assume that other drivers will
+					give you the right-of-way. Give up your right-of-way when it will help prevent collisions.
+				</p>
+
+				<h3>Intersections</h3>
+
+				<p>
+					An intersection is any place where one road meets another road. Controlled intersections have signs or traffic signal lights. Uncontrolled and blind
+					intersections do not. Before entering an intersection, look left, right, and ahead to check for vehicles, bicyclists, and pedestrians. Be prepared to slow down
+					and stop if necessary. Pedestrians always have the right-of-way. Here are some right-of-way rules at intersections:
+				</p>
+
 				<ul>
 					<li>
-						<strong>Not</strong> smoke when a minor is in the vehicle. You can be fined.
+						<strong>Without STOP or YIELD signs:</strong> The vehicle that arrives to the intersection first has the right-of-way. However, if a vehicle, pedestrian, or
+						bicyclist gets to the intersection at the same time as you, give the right-of-way to the vehicle, pedestrian, or bicyclist on your right. If you approach a
+						stop sign and there is a stop sign on all four corners, stop first and proceed as above.
 					</li>
+
 					<li>
-						<strong>Not</strong> dump or abandon animals on a highway. This crime is punishable by a fine of up to $1,000, six months in jail, or
-						both.
+						<strong>T intersections without STOP or YIELD signs:</strong> Vehicles, bicyclists, and pedestrians on the through road (continuing to go straight) have the
+						right-of-way.
 					</li>
+
 					<li>
-						<strong>Not</strong> drive a vehicle so overloaded that you cannot control it, see ahead, or see to the sides of your vehicle.
+						<strong>Turning left:</strong> Check for pedestrians. Give the right-of-way to any pedestrian or approaching vehicle that is close enough to be dangerous.
 					</li>
+
 					<li>
-						<strong>Not</strong> drive a vehicle with an unsecured load that is a safety hazard.
+						<strong>Turning right:</strong> Always check for pedestrians crossing the street, and motorcycles and bicycles riding next to you.
 					</li>
+
 					<li>
-						<strong>Not</strong> carry anything in or on a passenger vehicle which extends beyond the fenders on the left side or more than 6-inches
-						beyond the fenders on the right side.
-						<ul>
-							<li>
-								Cargo that extends more than 4 feet from the back-rear bumper of the vehicle must display a 12-inch red or fluorescent orange square
-								flag.
-							</li>{" "}
-							<li>At night, this cargo must be marked with two red lights.</li>
-						</ul>
+						<strong>Green traffic signal light:</strong> Proceed with caution. Pedestrians have the right-of-way.
 					</li>
+
 					<li>
-						<strong>Not</strong> allow a person to ride in the back of a pickup or other truck unless the vehicle has secure seats and seat (safety)
-						belts.
-					</li>
-					<li>
-						<strong>Not</strong> transport animals in the back of a pickup or other truck unless the animal is properly secured. This prevents the
-						animal from falling, jumping, or being thrown from the vehicle.
-					</li>
-					<li>
-						<strong>Not</strong> drive a vehicle equipped with a video monitor visible to the driver, unless it only displays vehicle information,
-						navigation system, media player, or radio.
-					</li>
-					<li>
-						<strong>Not</strong> throw a cigarette, cigar, or other flaming or glowing substance from your vehicle.
-					</li>
-					<li>
-						<strong>Not</strong> put signs or other objects on the front windshield or side rear windows that block your view. Do not hang objects on
-						the mirror. Objects may only be affixed in these locations:
-						<ul>
-							<li>A 7-inch square on the lower corner of the passenger’s side windshield or the lower corner of the rear window.</li>{" "}
-							<li>A 5-inch square on the lower corner of the driver’s side window.</li>
-							<li>A 5-inch square located in the center uppermost portion of your windshield for an electronic toll payment device.</li>{" "}
-							<li>On the side windows behind the driver.</li>
-						</ul>
-					</li>
-					<li>
-						<strong>Not</strong> interfere with a funeral procession. A funeral procession is led by a traffic officer and has the right-of-way. All
-						vehicles taking part in the procession have windshield markers to identify them and have their headlights on. You can be ticketed if you
-						interrupt a funeral procession.
-					</li>
-					<li>
-						<strong>Not</strong> operate a vehicle with an illegible license plate.
-					</li>
-					<li>
-						<strong>Not</strong> alter a license plate in any way.
+						<strong>Entering traffic:</strong> When entering traffic, you must proceed with caution and yield to the traffic already occupying the lanes. It is against
+						the law to stop or block an intersection where there is not enough space to completely cross before the traffic signal light turns red.
 					</li>
 				</ul>
-				<h3>Evading Law Enforcement</h3>{" "}
-				<p>
-					It is a misdemeanor to use a motor vehicle to flee or attempt to evade law enforcement performing their duties. This is punishable by
-					imprisonment in a county jail for one year or less.
-				</p>
-				<p>
-					A person convicted of causing serious bodily injury during a law enforcement pursuit is subject to imprisonment in a state prison for up to
-					seven years, or a county jail for one year or less.
-				</p>
-				<p>
-					A person convicted of manslaughter resulting from evading law enforcement during a pursuit is subject to imprisonment in a state prison for
-					a minimum of 4 to 10 years.
-				</p>{" "}
-				<p>If an unlicensed person is caught driving your vehicle, it may be impounded for 30 days.</p>
-				<h3>Speed Contests and Reckless Driving</h3>{" "}
-				<p>
-					A person convicted of reckless driving or engaging in a speed contest that causes injury to another person is subject to imprisonment, a
-					fine, or both.
-				</p>
-				<h3>Points on Your Driver’s Record</h3>
-				<p>
-					DMV monitors your driver’s record. If you are stopped by a law enforcement officer and cited (ticketed) for a traffic violation, you sign
-					the ticket as a promise to appear in traffic court. As an adult or minor, if you get a traffic ticket and fail to appear (FTA) in court, DMV
-					may suspend your driving privilege until you appear. If you do not keep your promise to appear in court, the FTA goes on your driver record.
-				</p>
-				<p>
-					Each time you are convicted of a moving traffic violation, the court notifies DMV. The conviction is placed on your driver’s record.
-					Convictions reported by other states and juvenile court are also added to your driver’s record. Traffic convictions and collisions stay on
-					your record for 36 months or longer, depending on the type of conviction. As an adult, your license may be suspended if your driver’s record
-					shows one of the following point totals:
-				</p>
+
+				<h3>Roundabouts</h3>
+
+				<p>In a roundabout, traffic travels in one direction around a central island.</p>
+
+				<p>How to use a roundabout:</p>
+
+				<ol>
+					<li>Slow down as you approach.</li>
+
+					<li>Yield to all traffic already in the roundabout.</li>
+
+					<li>Enter heading to the right when there is a big enough gap in traffic to merge safely.</li>
+
+					<li>Watch for signs and lane markings that guide you.</li>
+
+					<li>Travel in a counter-clockwise direction. Do not stop or pass.</li>
+
+					<li>Signal when you change lanes or exit.</li>
+
+					<li>If you miss your exit, continue around until you return to your exit.</li>
+				</ol>
+
+				<p>If the roundabout has multiple lanes, choose your entry or exit lane based on your destination. This is shown in the image below. To:</p>
+
+				<ol>
+					<li>Turn right (yellow car): Choose the right lane and exit in the right lane.</li>
+
+					<li>Go straight (red car): Choose either lane. Exit in the lane you entered.</li>
+
+					<li>Turn left: Enter and continue driving until you reach the exit in the direction you choose (blue car).</li>
+				</ol>
+
+				<div className={classes.imageDivColContainer}>
+					<div className={classes.imageDivCol}>
+						<figure>
+							<img
+								loading="lazy"
+								decoding="async"
+								width="289"
+								height="284"
+								src="https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-right.png"
+								alt="Overhead view of yellow car making a right turn at a roundabout."
+								className="wp-image-179430"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-right.png 289w, https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-right-12x12.png 12w"
+								sizes="(max-width: 289px) 100vw, 289px"
+							/>
+							<figcaption>Right Turn</figcaption>
+						</figure>
+					</div>
+
+					<div className={classes.imageDivCol}>
+						<figure>
+							<img
+								loading="lazy"
+								decoding="async"
+								width="291"
+								height="290"
+								src="https://www.dmv.ca.gov/portal/uploads/2023/02/roundabout-straight.png"
+								alt="Overhead view of a red car going straight at a roundabout."
+								className="wp-image-179421"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/roundabout-straight.png 291w, https://www.dmv.ca.gov/portal/uploads/2023/02/roundabout-straight-150x150.png 150w, https://www.dmv.ca.gov/portal/uploads/2023/02/roundabout-straight-12x12.png 12w, https://www.dmv.ca.gov/portal/uploads/2023/02/roundabout-straight-284x283.png 284w"
+								sizes="(max-width: 291px) 100vw, 291px"
+							/>
+							<figcaption>Straight</figcaption>
+						</figure>
+					</div>
+
+					<div className={classes.imageDivCol}>
+						<figure>
+							<img
+								loading="lazy"
+								decoding="async"
+								width="286"
+								height="289"
+								src="https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-left.png"
+								alt="Overhead view of a blue car turning left at a roundabout."
+								className="wp-image-179436"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-left.png 286w, https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-left-12x12.png 12w, https://www.dmv.ca.gov/portal/uploads/2020/05/roundabout-left-280x283.png 280w"
+								sizes="(max-width: 286px) 100vw, 286px"
+							/>
+							<figcaption>Left Turn</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<h3>Pedestrians</h3>
+
+				<p>These are considered pedestrians or vulnerable road users:</p>
+
 				<ul>
-					<li>4 points in 12 months.</li> <li>6 points in 24 months.</li> <li>8 points in 36 months.</li>
+					<li>A person walking.</li>
+
+					<li>A person traveling on something other than a vehicle or bicycle. This includes roller skates, a skateboard, etc.</li>
+
+					<li>
+						A person with a{" "}
+						<strong>
+							<em>disability</em>
+						</strong>{" "}
+						using a tricycle, quadricycle, or wheelchair for transportation.
+					</li>
 				</ul>
-				<h3>Traffic Violator School</h3>
+
+				<figure className="wp-block-image size-large">
+					<img
+						loading="lazy"
+						decoding="async"
+						width="1024"
+						height="206"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-1024x206.png"
+						alt="Tricycle, Quadricycle, Standard Wheelchair, and Electric Wheelchair next to each other."
+						className="wp-image-179439"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-1024x206.png 1024w, https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-300x60.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-768x154.png 768w, https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-18x4.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices-450x90.png 450w, https://www.dmv.ca.gov/portal/uploads/2023/02/Mobility-Devices.png 1050w"
+						sizes="(max-width: 1024px) 100vw, 1024px"
+					/>
+					<figcaption>From left to right: Tricycle, Quadricycle, Standard Wheelchair, Electric Wheelchair.</figcaption>
+				</figure>
+
+				<p>Although pedestrians have the right-of-way, they also must follow the rules of the road.</p>
+
 				<p>
-					If you are given a one-point traffic violation, the judge may offer you the choice to attend a traffic violator school to have the citation
-					not reported to your insurance company but remain on your driving record. You can do this once in any 18-month period. The school will
-					report your course completion to the court. You will also get a completion receipt.
+					When there is a pedestrian crossing a roadway with or without a crosswalk, you <strong>must</strong> use caution, reduce your speed, or stop to allow the
+					pedestrian to safely finish crossing.
 				</p>
-				<p>
-					If you are a commercial driver cited in a noncommercial vehicle, see the <em>California Commercial Driver Handbook</em>.
-				</p>
-				<h3>Suspension or Revocation</h3>
-				<p>
-					If you have too many points on your driver’s record, you will be considered a negligent driver. DMV will place you on probation, suspend, or
-					revoke your driving privilege. When this happens, you have the right to a hearing. DMV will notify you in writing of any action taken
-					against your driving privilege and inform you of your legal rights, including your right to a hearing.
-				</p>
-				<p>
-					DMV will revoke your driving privilege if you are convicted of a hit-and-run or reckless driving that resulted in injury. Courts also have
-					the authority to suspend a person’s driving privilege.
-				</p>
-				<p>
-					At the end of your suspension or revocation, you may apply for a replacement driver’s license. You must show proof of financial
-					responsibility (such as SR 22/SR 1P).
-				</p>{" "}
-				<h3>Maintaining Your Minor’s (Provisional) Driver’s License</h3>
-				<p>
-					If you get into collisions or commit traffic violations within the first 12 months of obtaining your minor’s driver’s license, DMV may
-					restrict or suspend your driving privilege. You cannot drive if your driving privilege is suspended or revoked.
-				</p>
-				<p>As a minor, DMV may take action against your license if you have:</p>
+
+				<p>Other things to keep in mind:</p>
+
 				<ul>
-					<li>One at fault collision or traffic violation conviction: An at fault collision means you were found responsible.</li>
+					<li>Do not pass a vehicle stopped at a crosswalk. You may not be able to see a pedestrian crossing the street.</li>
+
+					<li>If a pedestrian makes eye contact with you, they are ready to cross the street. Yield to the pedestrian.</li>
+
 					<li>
-						Two at fault collisions, two traffic violation convictions, or one of each: You cannot drive for 30 days unless a licensed adult, at least
-						25 years old, rides with you.
-					</li>
-					<li>
-						Three at fault collisions, three traffic violation convictions, or a combination: Your driving privilege will be suspended for six months.
-						You will be on probation for one year.
-						<ul>
-							<li>If you have more at fault collisions or traffic violation convictions while on probation, your license will be suspended again.</li>
-						</ul>
-					</li>
-					<li>
-						A conviction of using alcohol or a controlled substance, or both and are 15-20 years old: The court will order DMV to suspend your driving
-						privilege for one year or delay your eligibility to apply for a driver’s license.
+						Always allow pedestrians enough time to safely cross a street as some groups such as seniors, people with small children, and people with disabilities may
+						require extra time.
 					</li>
 				</ul>
+
+				<h4>Crosswalks</h4>
+
 				<p>
-					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						Turning 18 years old does not erase or end existing restrictions, suspensions, or probation sentences.
-					</span>
+					A crosswalk is the part of the road set aside for pedestrians to safely cross the road. They are often marked with white lines. School crossings may have yellow
+					crosswalk lines. Not all crosswalks are marked.
 				</p>
-				<h3>Administrative Hearing</h3>
+
 				<p>
-					Administrative hearings are conducted by DMV. If you received notification that a proposed action is being taken against your driving
-					privilege, you must request a hearing within 10 days of being served or 14 days from the date the notice is mailed. If you do not make a
-					timely request, your right to a hearing will be lost.
+					Pedestrians have the right-of-way in marked or unmarked crosswalks. If there is a limit line before the crosswalk, stop at the limit line and allow pedestrians
+					to cross the street.
 				</p>
+
+				<p>Some crosswalks have flashing lights. Whether or not the lights are flashing, look for pedestrians and be prepared to stop.</p>
+
+				<h4>Pedestrians who are Blind</h4>
+
 				<p>
-					This hearing provides you with an opportunity to be heard before an action is taken against your driving privilege. You may also have to
-					appear in court for the same reason. Any action taken by the court is independent of the action taken by DMV.
+					Pedestrians using guide dogs or white canes have the right-of-way at all times. These pedestrians are partially or totally blind. Be careful when you are
+					turning or backing up. This is particularly important if you are driving a hybrid or electric vehicle because blind pedestrians rely on sound to know there is a
+					vehicle nearby.
 				</p>
-				<h3>Your Hearing Rights</h3> <p>You have the right to:</p>
+
 				<ul>
-					<li>Present relevant evidence and witnesses on your behalf.</li>{" "}
-					<li>
-						Testify on your behalf or be represented by an attorney or other representative at your expense. Representation by an attorney is not
-						required.
-					</li>
-					<li>
-						Review the evidence and cross examine the testimony of any witness. DMV bases its case only on written documents. If you wish to question
-						someone who prepared a document or is listed on a document used as evidence, it is your responsibility to acquire a subpoena.
-					</li>
+					<li>Do not stop in the middle of a crosswalk. This could force a blind pedestrian to walk into traffic outside of the crosswalk.</li>
+
+					<li>Do not honk your horn at a blind person.</li>
+
+					<li>When a blind person pulls in their cane and steps away from the intersection, this gesture usually means you may go.</li>
 				</ul>
+
+				<h3>Mountain Roads</h3>
+
 				<p>
-					For more information regarding Administrative Hearings, visit{" "}
-					<a href="/portal/driver-education-and-safety/educational-materials/fast-facts/driver-safety-administrative-hearings-process-ffdl-26/">
-						dmv.ca.gov/driversafety
-					</a>
-					.
-				</p>
-				<h3>Unsafe Driver</h3>
-				<p>
-					If you know someone who no longer drives safely, you may submit a Request for Driver Reexamination to DMV to review their driving
-					qualifications. To obtain a form, visit
-					<a href="/portal/driver-education-and-safety/educational-materials/fast-facts/dmvs-reexamination-process-ffdl-27/">
-						dmv.ca.gov/reexamination
-					</a>
-					.
-				</p>
-				<h2>Record Confidentiality</h2>{" "}
-				<p>
-					Most information in your driver’s record is available to the public, except physical or mental conditions, address, and social security
-					number.
-				</p>
-				<p>
-					You can get a copy of your driver’s record online or at a kiosk. For more information on record requests, visit{" "}
-					<a href="/portal/customer-service/request-vehicle-or-driver-records/">dmv.ca.gov/record-requests</a>.
+					If two vehicles meet on a steep narrow road and neither vehicle can pass, the vehicle facing uphill has the right-of-way. The vehicle facing downhill has more
+					control when backing up the hill. The vehicle facing downhill should back up until the vehicle going uphill can pass.
 				</p>
 			</div>
 		</Fragment>
 	);
 };
 
-export default Page13;
+export default Page11;

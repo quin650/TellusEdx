@@ -12,7 +12,7 @@ const PaginationGUI = () => {
 	//!Prev-Next Page
 	const PrevPage = useCallback(() => {
 		let newPageNum = currentPageNum_rdx - 1;
-		if (newPageNum >= 0) {
+		if (newPageNum >= 1) {
 			dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));
 			dispatch(userReducerActions.setDemoInputPageNum(newPageNum));
 			localStorage.setItem("page", newPageNum);
@@ -70,7 +70,7 @@ const PaginationGUI = () => {
 	useEffect(() => {
 		const identifier = setTimeout(() => {
 			var newPageNum = parseInt(inputPageNum_rdx, 10);
-			if (!isNaN(newPageNum) && newPageNum >= 0 && newPageNum <= pagesLength_rdx) {
+			if (!isNaN(newPageNum) && newPageNum >= 1 && newPageNum <= pagesLength_rdx) {
 				dispatch(userReducerActions.setDemoCurrentPageNum(newPageNum));
 				localStorage.setItem("page", newPageNum);
 			} else {
@@ -86,7 +86,7 @@ const PaginationGUI = () => {
 		const inputPageValue = parseInt(e.target.value, 10);
 		if (e.target.value === "") {
 			dispatch(userReducerActions.setDemoInputPageNum(""));
-		} else if (!isNaN(inputPageValue) && inputPageValue >= 0 && inputPageValue <= pagesLength_rdx) {
+		} else if (!isNaN(inputPageValue) && inputPageValue >= 1 && inputPageValue <= pagesLength_rdx) {
 			dispatch(userReducerActions.setDemoInputPageNum(inputPageValue));
 		} else {
 			dispatch(userReducerActions.setDemoInputPageNum(currentPageNum_rdx));

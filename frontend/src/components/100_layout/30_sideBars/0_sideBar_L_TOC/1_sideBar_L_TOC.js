@@ -37,7 +37,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 				ref={TOC_SearchBarRef}
 				onFocus={handle_SideBar_L_TOC_SearchInputFocus}
 				onBlur={handle_SideBar_L_TOC_SearchInputBlur}
-				placeholder="Search Handbook"
+				placeholder="Search Index"
 				name="q"
 				aria-label="Search"
 			/>

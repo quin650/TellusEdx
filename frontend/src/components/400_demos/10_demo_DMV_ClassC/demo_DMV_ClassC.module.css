@@ -124,7 +124,7 @@
 	margin-top: 0;
 	margin-bottom: 1rem;
 }
-a {
+.handbook_outerContainer a {
 	color: var(--color_readerHyperLink_brightBlue_to_skyBlue);
 }
 .page_content p:last-of-type {
@@ -245,4 +245,164 @@ strong {
 	margin-top: 4px;
 	padding: 0 6px;
 	text-transform: uppercase;
+}
+/*! Landing Page--------------------------------------------------*/
+.DemoDMVClassCLandingPage {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	padding-left: 3.75rem;
+	padding-right: 3.75rem;
+	margin: 0 auto auto 0;
+	min-height: 67.4vh;
+	display: flex;
+	flex-direction: row;
+	font-size: 16px;
+}
+.DemoDMVClassCLandingPage h1 {
+	margin: 0;
+}
+.DemoDMVClassCLandingPage h2 {
+	margin-top: 0;
+}
+.leftSide {
+	display: flex;
+	flex-basis: 65%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	padding-right: 1rem;
+}
+.top {
+}
+.welcome {
+	margin-bottom: 20px;
+}
+.sectionContent {
+	margin-left: 20px;
+}
+.sectionSection {
+	display: inline-block; /* Ensures the width is respected */
+	min-width: 110px;
+	width: 110px;
+	font-weight: 700;
+	margin-right: 0.5rem;
+}
+.spacer {
+	height: 6px;
+	padding: 0;
+	margin: 0;
+}
+.welcome p {
+	margin: 0;
+}
+.italicSpan {
+	font-style: italic;
+}
+.options {
+	margin-bottom: 20px;
+}
+.options p {
+	margin: 0;
+	font-size: 16px;
+}
+.rightSide {
+	display: flex;
+	flex-basis: 35%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-direction: column;
+	padding-left: 1rem;
+}
+.imageDiv figure {
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+}
+.imageDiv figure img {
+	width: 100%;
+	object-fit: cover; /* Ensures the image covers its container while preserving aspect ratio */
+	border-radius: 5px; /* Optional: Adds some visual appeal */
+}
+.rightSide .imageDiv a {
+	margin-left: 0;
+	font-size: 12px;
+	text-decoration: underline;
+	color: #0066cc; /* Update with your preferred link color */
+	margin-top: 1rem;
+}
+.rightSide .imageDiv a:hover {
+	color: #004499; /* Darken on hover */
+}
+
+/*! toc Container------------------------------------------------------*/
+.tocOuterContainer {
+	display: flex;
+	position: relative;
+	width: 100%;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
+}
+.tocInnerContainer {
+	display: flex;
+	flex-direction: row;
+	margin-left: 16px;
+}
+/*! toc Title ------------------------------------------------------*/
+.tocTitleLabel {
+	padding: 6px 8px 6px 12px !important;
+	width: 100%;
+	line-height: 1.5;
+	word-break: break-word;
+	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
+	font-weight: 400;
+	text-decoration: none;
+	border-radius: 0 !important;
+	height: 55px !important;
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
+	cursor: pointer !important;
+}
+.handbookTOC_header_section H2 {
+	margin-bottom: auto;
+}
+/*! toc Parent Items ------------------------------------------------------*/
+.contentContainer {
+	list-style: none;
+	font-size: 14px;
+	padding-top: 0 !important;
+}
+.parentLabelOuterContainer {
+	position: relative;
+	display: flex;
+	margin-left: 8px;
+	background: unset;
+	border: unset;
+	width: calc(100% - 16px);
+	text-align: unset;
+	line-height: 20px;
+}
+.parentLabel {
+	flex-grow: 1;
+	word-break: break-word;
+	color: var(--color_primary_darkGray_to_gray);
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
+	text-decoration: none;
+}
+.parentLabelOuterContainer .parentLabel {
+	color: var(--color_primary_darkGray_to_gray) !important;
+}
+.parentLabel:hover {
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.parentLabel:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.parentLabel.isActive {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+
+.sectionNUm {
+	font-weight: 700;
 }

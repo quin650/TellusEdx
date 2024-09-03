@@ -1,328 +1,444 @@
 import React, { Fragment } from "react";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const Page14 = () => {
+const Page12 = () => {
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
-				<p> Page 14 of 22 </p> <h1>Section 8: Safe Driving</h1>
+				<p>Page 14 of 24 </p>
+				<h1>Section 7: Laws and Rules of the Road (Continued)</h1>
 			</div>
 			<div className={classes.page_content}>
-				<h2>Be Aware of Your Surroundings</h2>{" "}
+				<h2>Sharing the Road</h2>
+				<p>Drivers need to share the road with other vehicles, pedestrians, bicyclists, road workers, and large vehicles.</p>
+				<h3>Blind Spots (the No Zone)</h3>
 				<p>
-					To drive safely, you need to know what is around you. This helps you make good decisions and react to hazards on the road. This image shows
-					the areas around your vehicle.
+					Large vehicle and truck drivers have a better view in front of them and bigger mirrors. But they also have large blind spots, also called No Zones. In these
+					areas, your vehicle can disappear from a large vehicle or truck driver’s view. If you cannot see the truck’s side mirrors, the truck driver cannot see you.
 				</p>
+				<figure>
+					<img
+						fetchpriority="high"
+						decoding="async"
+						width="216"
+						height="339"
+						src="https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1.png"
+						alt=""
+						className="wp-image-222692"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1.png 216w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-191x300.png 191w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2024/01/Truck_Driver_Blind_Spots-1-180x283.png 180w"
+						sizes="(max-width: 216px) 100vw, 216px"
+					/>
+					<figcaption>The shaded areas in this image are the truck driver’s blind spots.</figcaption>
+				</figure>
+				<h3>Braking</h3>
+				<p>
+					Large vehicles and commercial trucks take longer to stop than passenger vehicles traveling at the same speed. When traveling, they create extra space in front
+					of their vehicle to use if they need to stop suddenly. The average passenger vehicle traveling at 55 mph can stop within 300 feet. A large vehicle traveling at
+					the same speed can take up to 400 feet to stop. The heavier the vehicle and the faster it is moving, the longer it takes to safely stop, so a loaded truck will
+					take longer to stop than an empty truck. Do not move in front of a large vehicle and suddenly slow down or stop. The large vehicle will not be able to stop fast
+					enough to avoid crashing into you.
+				</p>
+				<h3>Turning</h3>
+				<p>
+					When a vehicle turns, the rear wheels follow a shorter path than the front wheels. The longer the vehicle, the greater the difference in the length of the
+					turning path. This is why large vehicles and truck drivers must often swing wide to complete a turn. When you follow a large vehicle, look at its turn signals
+					before you start to pass. It may appear to be turning one direction but instead is swinging wide in the opposite direction in order to turn.
+				</p>
+				<h3>Maneuvering</h3>
+				<p>
+					Large vehicles and trucks are not as easy to maneuver as passenger vehicles. On a divided highway with four or more traffic lanes in one direction, they may be
+					driven in the two lanes farthest to the right. When driving near large vehicles and trucks, do not:
+				</p>
+				<ul>
+					<li>Change lanes directly in front of them to reach an exit or turn.</li>
+					<li>
+						Drive next to them longer than you need to. Always pass a large vehicle on the left side. After you pass the large vehicle or truck, move ahead of it. Driving
+						alongside a large vehicle makes it hard for the driver to avoid dangers in the road.
+					</li>
+					<li>Follow too closely. Tailgating decreases a vehicle’s safety distance.</li>{" "}
+					<li>Underestimate their size and speed as they often appear to be traveling slower.</li>
+				</ul>
+				<h3>Buses, Streetcars, Trolleys</h3>
+				<p>
+					Safety zones are spaces set aside for pedestrians waiting for buses, streetcars, and trolleys. Safety zones are marked by raised buttons or markers on a road.
+					Do not drive through a safety zone under any condition.
+				</p>
+				<p>When a bus, streetcar, or trolley is stopped at a safety zone or traffic light, you may pass at no more than 10 mph.</p>
+				<figure>
+					<img
+						decoding="async"
+						width="460"
+						height="307"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1.png"
+						alt="Trolley next to demarked safe zone."
+						className="wp-image-179448"
+						style={{ width: "386px", height: "258px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1.png 460w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-300x200.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bus-Safety-Zone-1-424x283.png 424w"
+						sizes="(max-width: 460px) 100vw, 460px"
+					/>
+					<figcaption>Safe Zones are marked by dotted white lines.</figcaption>
+				</figure>
+				<p>Do not overtake and pass a light rail vehicle or streetcar on the left side, whether it is moving or standing, unless:</p>
+				<ul>
+					<li>When the tracks are so close to the right side that the passenger vehicle cannot pass on the right.</li> <li>You are on a one-way street.</li>{" "}
+					<li>A traffic officer directs you to pass on the left.</li>
+				</ul>
+				<h3>Light Rail Vehicles</h3>{" "}
+				<p>On public roads, light rail vehicles have the same rights and responsibilities as other vehicles. To safely share the road with light rail vehicles:</p>
+				<ul>
+					<li>Be aware of where they operate. Buildings, trees, and other items can cause blind spots for the operator.</li>{" "}
+					<li>Never turn in front of an approaching light rail vehicle.</li> <li>Maintain a safe distance.</li>
+					<li>
+						Check for approaching light rail vehicles before you turn across the tracks. Complete your turn only when the traffic light indicates you may proceed. Be
+						aware they can interrupt traffic lights.
+					</li>
+				</ul>
+				<figure>
+					<img
+						decoding="async"
+						width="467"
+						height="356"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1.png"
+						alt="Light rail travelling down street. One car drives parallel to the train, while another car turns directly into the train's path."
+						className="wp-image-179451"
+						style={{ width: "334px", height: "255px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1.png 467w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-300x229.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-16x12.png 16w, https://www.dmv.ca.gov/portal/uploads/2023/02/Light-Rail-1-371x283.png 371w"
+						sizes="(max-width: 467px) 100vw, 467px"
+					/>
+					<figcaption>Do not turn in front of light rail vehicles.</figcaption>
+				</figure>
+				<h3>Motorcycles</h3> <p>Motorcyclists have the same rights and responsibilities as other vehicles. To safely share the road with motorcyclists:</p>
+				<ul>
+					<li>
+						Check for motorcycles and use your mirrors when you change lanes or enter a road. Motorcycles are smaller in size and harder to see so they easily disappear
+						in vehicle blind spots.
+					</li>
+					<li>Allow a safe three-second following distance. This space will help you avoid hitting a motorcyclist if they brake suddenly or fall.</li>{" "}
+					<li>Whenever possible, give a motorcycle the full lane. It is legal to share lanes with motorcycles, this is known as lane splitting.</li>
+					<li>Never try to pass a motorcycle in the same lane as you.</li> <li>Check for motorcyclists before you open your door next to traffic.</li>{" "}
+					<li>When possible, move to one side of your lane to give motorcyclists more room to pass.</li>
+				</ul>
+				<p>Road conditions can cause motorcyclists to suddenly change speed or direction.</p> <h3>Emergency Vehicles</h3>
+				<p>
+					Give the right-of-way to any law enforcement vehicle, fire engine, ambulance, or other emergency vehicle using a siren and red lights. Failure to pull over may
+					result in a ticket. Drive to the right edge of the road and stop until the emergency vehicle(s) have passed.
+				</p>
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="615"
+						height="249"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1.png"
+						alt="Car pulling over to let fire truck pass."
+						className="wp-image-179460"
+						style={{ width: "483px", height: "196px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1.png 615w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-300x121.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-18x7.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Firetruck-Pullover-1-450x182.png 450w"
+						sizes="(max-width: 615px) 100vw, 615px"
+					/>
+					<figcaption>Yield to emergency vehicles.</figcaption>
+				</figure>
+				<p>When approaching a stationary emergency vehicle with flashing emergency signal lights (hazard lights), move over and slow down.</p>
+				<p>If you are in an intersection when you see an emergency vehicle, continue through the intersection. Drive to the right as soon as it is safe and stop.</p>
+				<p>
+					Obey any direction, order, or signal given by a law enforcement officer, or firefighter. Follow their orders even if they conflict with existing signs, signals,
+					or laws.
+				</p>
+				<p>
+					It is against the law to follow within 300 feet of any fire engine, law enforcement vehicle, ambulance, or other emergency vehicle when their siren or flashing
+					lights are on.
+				</p>
+				<p>
+					You can be arrested if you drive to the scene of a fire, collision, or other disaster. When you do this, you are getting in the way of firefighters, ambulance
+					crews, or other rescue and emergency personnel.
+				</p>{" "}
+				<h3>Slow-moving Vehicles</h3>
+				<p>
+					They can take longer to get up to speed when entering traffic. Large trucks, bicycles, and some cars lose speed on long or steep hills. Some slow-moving
+					vehicles have an orange and red triangle on their back, such as road maintenance vehicles, which usually travel at 25 mph or less.
+				</p>
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="406"
+						height="195"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1.png"
+						alt='Bulldozer with orange-red "slow vehicle" triangle.'
+						className="wp-image-179463"
+						style={{ width: "318px", height: "153px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1.png 406w, https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1-300x144.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bulldozer-1-18x9.png 18w"
+						sizes="(max-width: 406px) 100vw, 406px"
+					/>
+					<figcaption>An example of a slow-moving vehicle.</figcaption>
+				</figure>
+				<p>Other types of slow-moving motorized vehicles that may operate on public roads include:</p>
+				<ul>
+					<li>Scooters</li> <li>Neighborhood electric vehicles</li> <li>Golf carts</li>
+				</ul>
+				<p>Adjust your speed to share the road with these vehicles.</p> <h3>Neighborhood Electric Vehicles (NEV) and Low-speed Vehicles (LSV)</h3>{" "}
+				<p>Watch for slow-moving vehicles when you see these signs or markings:</p>
+				<ul>
+					<li>NEV USE ONLY</li> <li>NEV ROUTE</li>
+				</ul>
+				<p>NEVs and LSVs reach a maximum speed of 25 mph. They are restricted from roads where the speed limit is greater than 35 mph.</p> <h3>Animal-drawn Vehicles</h3>
+				<p>
+					Horse-drawn vehicles and people riding horses or other animals are allowed to share the road with motor vehicles. It is against the law to intentionally scare
+					horses or livestock.
+				</p>{" "}
+				<h3>Near Animals</h3>
+				<p>
+					If you see a sign with a picture of an animal, watch for animals on or near the road. If you see animals or livestock near the road, slow down or stop and
+					proceed when it is safe. Be sure to follow directions from the person in charge of the animals.
+				</p>
+				<h3>Bicycles</h3> <p>Bicyclists have the same rights and responsibilities as other drivers.</p> <p>Bicyclists may:</p>
+				<ul>
+					<li>Legally ride on certain sections of freeways where there is no alternate route and bicycling is not forbidden by law.</li>{" "}
+					<li>Move left to avoid hazards. These may include parked or moving vehicles, bicycles, animals, or trash.</li>
+					<li>Choose to ride near the left curb or edge of a one-way street.</li> <li>Choose to use crosswalks by stopping and crossing as a pedestrian.</li>
+				</ul>
+				<h4>Bicyclist Responsibilities</h4> <p>As a bicyclist, you must:</p>
 				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
 						<ul>
-							<li>Green: Ahead of you.</li> <li>Blue: Next to you.</li> <li>Yellow: Blinds spots. </li> <li>Red: Behind you.</li>
+							<li>Obey all traffic signs, signal lights, and basic right-of-way rules.</li> <li>Ride in the same direction as traffic.</li>{" "}
+							<li>Always look over your shoulder to make sure the lane is clear before turning or changing lanes.</li> <li>Yield to pedestrians.</li>
+							<li>Wear a helmet (if under 18 years old).</li> <li>Stay visible (for example, never weave between parked vehicles).</li>{" "}
+							<li>Ride as near to the right curb or edge of the roadway as possible.</li> <li>Not ride on the sidewalk (unless allowed by the city).</li>
+							<li>Make left and right turns in the same way drivers do, using hand signals and turn lanes.</li>{" "}
+							<li>Use a bike lane, whenever possible, or use a through traffic lane.</li> <li>Have fully functional brakes.</li>
 						</ul>
 					</div>
 					<div className={classes.imageDivCol}>
 						<figure>
 							<img
-								fetchpriority="high"
+								loading="lazy"
 								decoding="async"
-								width="263"
-								height="255"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/Be-Aware-of-Your-Surroundings.png"
-								alt="Image showing a driver's field of vision."
-								className="wp-image-179235"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Be-Aware-of-Your-Surroundings.png 263w, https://www.dmv.ca.gov/portal/uploads/2023/02/Be-Aware-of-Your-Surroundings-12x12.png 12w"
-								sizes="(max-width: 263px) 100vw, 263px"
+								width="479"
+								height="315"
+								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1.png"
+								alt="Intersection showing left and right turn options for a bicyclist. The bicyclist uses the left lane to turn left, and the right shoulder to turn right."
+								className="wp-image-179466"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1.png 479w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-300x197.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-intersection-1-430x283.png 430w"
+								sizes="(max-width: 479px) 100vw, 479px"
 							/>
+							<figcaption>Examples of turns for bicyclist.</figcaption>
+						</figure>
+						<figure>
+							<img
+								loading="lazy"
+								decoding="async"
+								width="487"
+								height="323"
+								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1.png"
+								alt="Intersection showing options for bicyclist to turn left or go straight. The bicyclist uses the left lane to turn left. To go straight, the cyclist used the inside line of the right lane to enter the intersection, then shifts to the bike lane as they exit the intersection."
+								className="wp-image-179469"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1.png 487w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-300x199.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-18x12.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-turn-1-427x283.png 427w"
+								sizes="(max-width: 487px) 100vw, 487px"
+							/>
+							<figcaption>Intersection with special lanes for bicyclists.</figcaption>
 						</figure>
 					</div>
 				</div>
-				<h3>Scan Your Surroundings</h3>{" "}
-				<p>
-					To give yourself time to react, avoid last minute moves and hazards, always keep your eyes moving and scan the road at least 10 seconds
-					ahead of your vehicle.&nbsp;
-				</p>
-				<h3>Tailgating (Following Too Closely)</h3>
-				<p>
-					Tailgating makes it harder for you to see the road ahead because the vehicle in front of you blocks your view. You will not have enough time
-					to react if the driver in front of you brakes suddenly. Use the three-second rule to ensure a safe following distance and avoid a collision.
-					Following other vehicles at a safe distance gives you enough time to react if another driver makes a mistake.
-				</p>
-				<p>
-					If a vehicle merges in front of you too closely, take your foot off the accelerator. This creates space between you and the vehicle ahead.
-				</p>{" "}
-				<p>Create more space in front of your vehicle when:</p>
+				<h4>Bicycling at Night</h4> <p>When it is dark out, bicyclists should avoid wearing dark clothing. Your bicycle must have the following equipment:</p>
 				<ul>
-					<li>
-						A tailgater is behind you. Maintain your course and speed. Then, when safe to do so, merge right to change into another lane and allow the
-						tailgater to pass.
-					</li>{" "}
-					<li>Following motorcyclists on metal surfaces (bridge gratings, railroad tracks, etc.), and gravel.</li>
+					<li>A front lamp with a white light visible from 300 feet.</li>{" "}
+					<li>A built-in rear red reflector, solid red light, or flashing red light. This must be visible from 500 feet.</li>
+					<li>A white or yellow reflector on each pedal, the bicyclist’s shoes, or their ankles. These must be visible from 200 feet.</li>{" "}
+					<li>A white or yellow reflector on the front wheel, a white or red reflector on the rear wheel, or reflectorized tires.</li>
 				</ul>
-				<h3>Know What is At Your Side</h3>
+				<h4>Bicycling in Travel Lanes</h4>
 				<p>
-					Be aware of what is on each side of you. To maintain enough space to
-					<br />
-					maneuver safely and react to other drivers:
+					Bicyclists traveling slower than the flow of traffic must ride as close as possible to the right curb or edge of the road, <strong>unless</strong>:
 				</p>
 				<ul>
-					<li>Do not stay in another driver’s blind spot.</li> <li>Avoid driving directly alongside other vehicles.</li>{" "}
-					<li>
-						Make space for vehicles entering freeways, even if you have the rightof-way. Be ready for rapid changes and watch for signals from other
-						drivers.
-					</li>
-					<li>Keep space between your vehicle and parked vehicles.</li>{" "}
-					<li>Look both ways, even at intersections where traffic has a red light or stop sign.</li>
+					<li>Passing a vehicle or another bicycle in the same direction.</li> <li>Preparing to make a left turn.</li> <li>Avoiding a hazard or road condition.</li>{" "}
+					<li>A lane is too narrow for a bicycle and a vehicle to safely travel side-by-side in the lane.</li>
+					<li>Approaching a right turn.</li> <li>On a one-way road with two or more lanes. In this case, a bicyclist may ride near the left curb or edge of the road.</li>
 				</ul>
-				<h3>Blind Spots</h3>{" "}
+				<p>Drivers should follow at a safe distance. When it is safe, the bicyclist should move to a position that allows vehicles to pass.</p>{" "}
+				<h4>Passing a Bicyclist</h4>
 				<p>
-					Every vehicle has blind spots. These are areas around the vehicle that a driver cannot see when looking straight ahead or using the mirrors.
-					For most vehicles, the blinds spots are at the sides, slightly behind the driver.
-				</p>
-				<p>
-					To check your blind spots, look over your right and left shoulders out of your side windows. Only turn your head when you look. Do not turn
-					your whole body or steering wheel. Check your blind spots before you:
+					To safely pass a bicyclist that is in the travel lane, you may need to change to another lane. In this case, pass safely, then return to your original lane.
+					Leave space between your vehicle and the bicyclist.
 				</p>
 				<div className={classes.imageDivColContainer}>
 					<div className={classes.imageDivCol}>
-						<ul>
-							<li>Change lanes.</li> <li>Turn at an intersection.</li> <li>Merge with traffic.</li> <li>Back up.</li> <li>Leave a parking space.</li>{" "}
-							<li>Parallel park.</li> <li>Pull out from the curb.</li> <li>Open your car door.</li>
-						</ul>
+						<figure>
+							<img
+								loading="lazy"
+								decoding="async"
+								width="211"
+								height="314"
+								src="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right.png"
+								className="wp-image-179472"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right.png 211w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-202x300.png 202w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2023/02/bike-right-190x283.png 190w"
+								sizes="(max-width: 211px) 100vw, 211px"
+							/>
+							<figcaption>Right</figcaption>
+						</figure>
 					</div>
 					<div className={classes.imageDivCol}>
 						<figure>
 							<img
+								loading="lazy"
 								decoding="async"
-								width="481"
-								height="242"
-								src="https://www.dmv.ca.gov/portal/uploads/2023/02/Blind-Spots.png"
-								alt="Image depicting a driver's blind spots."
-								className="wp-image-179268"
-								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Blind-Spots.png 481w, https://www.dmv.ca.gov/portal/uploads/2023/02/Blind-Spots-300x151.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Blind-Spots-18x9.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Blind-Spots-450x226.png 450w"
-								sizes="(max-width: 481px) 100vw, 481px"
+								width="210"
+								height="313"
+								src="https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong.png"
+								alt="Car attempting to pass a cyclist without leaving any room. The car hits the cyclist."
+								className="wp-image-179475"
+								srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong.png 210w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-201x300.png 201w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-8x12.png 8w, https://www.dmv.ca.gov/portal/uploads/2023/02/Bike-wrong-190x283.png 190w"
+								sizes="(max-width: 210px) 100vw, 210px"
 							/>
-							<figcaption>
-								<strong>The shaded areas are your blind spots</strong>
-							</figcaption>
+							<figcaption>Wrong</figcaption>
 						</figure>
 					</div>
 				</div>
-				<h3>Know What is Behind You</h3>{" "}
 				<p>
-					Knowing what is behind you can help you avoid rear-end collisions. Check traffic behind you often by using your rearview mirror, side
-					mirrors, and turning your head when you:
+					When you cannot change lanes to pass a bicyclist, allow at least three feet between your vehicle and the bicyclist. If you cannot give three feet of space, do
+					not pass the cyclist until three feet of clearance can be given. This will help you avoid putting the bicyclist in danger. Remember to:
 				</p>
 				<ul>
-					<li>Change lanes.</li> <li>Check your blind spots.</li> <li>Reduce your speed.</li> <li>Turn into a side road or driveway.</li>{" "}
-					<li>Stop to pull into a parking space.</li> <li>Pull up to and away from the curb.</li> <li>Back up.</li>
+					<li>Give bicyclists enough space so they are not forced into parked vehicles or open vehicle doors.</li>{" "}
+					<li>Only merge toward the curb or into the bike lane when it is safe.</li> <li>Merge safely behind a bicyclist when preparing to make a turn.</li>
+					<li>Enter a bike lane no more than 200 feet before starting a turn.</li>{" "}
+					<li>Check for bicyclists when changing lanes or entering traffic. They may be hidden in a vehicle’s blind spots.</li>{" "}
+					<li>Be careful when approaching or passing a bicyclist on a two-lane road.</li>
 				</ul>
-				<h2>Understand the Road Conditions</h2> <h3>Darkness</h3>
+				<h3>Road Workers and Work Zones</h3> <p>You will see warning signs and message boards when there are workers, slow-moving equipment, and closed lanes ahead.</p>{" "}
+				<p>Go through the work zone carefully by:</p>
+				<ul>
+					<li>Slowing down.</li> <li>Allowing extra space between vehicles.</li> <li>Expecting sudden slowing or stopping.</li>{" "}
+					<li>Watching for drivers changing lanes.</li> <li>Avoiding distractions.</li>
+				</ul>
 				<p>
-					When driving at night, use your high-beam headlights on open country roads or dark city streets. Make sure you can stop in the distance lit
-					by your headlights. Do not use high-beam headlights in areas where they are illegal. Dim your high-beam headlights to avoid blinding the
-					driver of an oncoming vehicle. If another vehicle’s lights are too bright:
+					Cones, drums, or other barriers will guide you through the work zone. Prepare to slow down or stop for highway equipment. Merge as soon as it is safe without
+					crossing the cones or drums. Watch for bicycles if lanes are narrow or the shoulder is closed. Obey special signs or instructions from workers such as flaggers.
+				</p>
+				<h4>Fines and Double Fine Zones</h4>{" "}
+				<p>
+					Fines for traffic violations in a work zone can be $1,000 or more. Anyone convicted of assaulting a highway worker faces fines of up to $2,000 and imprisonment
+					for up to one year.
+				</p>
+				<p>
+					Certain roads are chosen as Safety Enhanced-Double Fine Zones. This is due to increased collision-related injuries and fatalities. Fines are doubled in these
+					zones.
+				</p>{" "}
+				<p>Fines are also doubled in highway construction or maintenance zones when workers are present.</p>
+				<h4>Move Over and Slow Down</h4> <p>Drivers must move over and slow down for emergency and road work vehicles. These include:</p>
+				<ul>
+					<li>Stationary emergency vehicles or tow trucks displaying flashing amber warning lights.</li>{" "}
+					<li>Stopped road work vehicles displaying emergency flashing or amber warning lights.</li>
+				</ul>
+				<h3>Vehicles with Hazardous Loads</h3>
+				<p>
+					A diamond-shaped sign on a truck means that the truck’s load may be dangerous (gas, explosives, etc.). Vehicles with these signs <strong>must</strong> stop
+					before crossing railroad tracks.
+				</p>
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="466"
+						height="117"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1.png"
+						alt='Hazard symbols for "Flammable," "Radioactive," "Explosives," and "Poison."'
+						className="wp-image-179478"
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1.png 466w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-300x75.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-18x5.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Hazard-Marks-1-450x113.png 450w"
+						sizes="(max-width: 466px) 100vw, 466px"
+					/>
+					<figcaption>Examples of hazardous load placards.</figcaption>
+				</figure>
+				<h3>Heavy Traffic or Bad Weather</h3>
+				<p>
+					You must drive slower when there is heavy traffic or bad weather. At the same time, you should not block normal and reasonable traffic flow by driving too
+					slowly. If you drive faster or slower than the speed limit, you may be cited. When another driver is close behind you and wishes to drive faster, move to the
+					right. If you choose to drive slower than other traffic, drive in the right lane. Refer to Choosing a Lane in Section 6 for more information.
+				</p>
+				<h3>Towing</h3> <p>You must drive in the far-right lane or a lane marked for slower vehicles when you:</p>
+				<ul>
+					<li>Tow a vehicle or trailer.</li> <li>Drive a truck with three or more axles.</li>
+				</ul>
+				<p>If no lanes are marked and there are four or more lanes in your direction, you may only drive in the two lanes closest to the right edge of the road.</p>{" "}
+				<h3>Around Children</h3>
+				<figure>
+					<img
+						loading="lazy"
+						decoding="async"
+						width="502"
+						height="264"
+						src="https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1.png"
+						alt="School bus with red lights flashing and a crossing guard next to it. Students are near the bus. Cars are stopped around the bus."
+						className="wp-image-179481"
+						style={{ width: "414px", height: "218px" }}
+						srcSet="https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1.png 502w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-300x158.png 300w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-18x9.png 18w, https://www.dmv.ca.gov/portal/uploads/2023/02/Schoolbus-Loading-1-450x237.png 450w"
+						sizes="(max-width: 502px) 100vw, 502px"
+					/>
+					<figcaption>All vehicles must stop for school buses.</figcaption>
+				</figure>
+				<p>
+					The speed limit is 25 mph within 500 feet of a school while children are outside or crossing the street. Some school zones may have speed limits as low as 15
+					mph. When near schools, look for:
 				</p>
 				<ul>
-					<li>Do not look directly into the oncoming headlights.</li> <li>Look toward the right edge of your lane.</li>{" "}
-					<li>Watch the oncoming vehicle out of the corner of your eye.</li>
-					<li>Do not react to the other driver by keeping your high-beam headlights on. This only makes it harder for both of you to see.</li>
-				</ul>
-				<p>When it is raining, use your low-beam headlights. Do not drive using only your parking lights. When you drive at night, remember:</p>
-				<ul>
-					<li>Motorcycles, pedestrians, and bicyclists are much harder to see.</li>{" "}
-					<li>Highway construction can take place at night. Reduce your speed in highway construction zones.</li>{" "}
-					<li>When you leave a brightly lit place, drive slowly until your eyes adjust to the darkness.</li>
+					<li>Bicyclists and pedestrians.</li> <li>School safety patrols or crossing guards. Be sure to obey their directions at all times.</li>
 					<li>
-						When a vehicle with one light drives toward you, drive as far to the right as possible. It could be a bicyclist, motorcyclist, or vehicle
-						with a missing headlight.
-					</li>
-				</ul>
-				<h3>Sun Glare</h3> <p>To help manage sun glare:</p>
-				<ul>
-					<li>Keep the inside and outside of your windshield clean.</li> <li>Wear polarized sunglasses.</li>{" "}
-					<li>Maintain enough space between your vehicle and the vehicles around you.</li>{" "}
-					<li>Make sure your car visor works and is free of anything that would restrict use.</li>
-					<li>Be aware of pedestrians. You may have difficulty seeing them.</li> <li>Try to avoid driving during sunrise and sunset.</li>
-				</ul>
-				<h3>Skids</h3>{" "}
-				<p>
-					A skid is when one or more of the tires lose traction with the road and the vehicle starts to slip. You may not be able to control your
-					vehicle. There are a few different types of skids.
-				</p>
-				<h4>Slippery Surface Skids</h4>
-				<p>
-					Ice and packed snow on the road can cause your vehicle to skid. This is even more likely if you are driving too fast or going downhill.
-					Drive slowly and leave space between your vehicle and the vehicle ahead of you. To prevent skidding on slippery surfaces:
-				</p>
-				<ul>
-					<li>Slow down as you approach intersections and curves. For sharp curves, slow down as you approach and move through.</li>{" "}
-					<li>Avoid fast turns and quick stops.</li> <li>Shift to low gear before going down a steep hill.</li>
-					<li>Avoid areas like ice patches, wet leaves, oil, or standing water.</li>
-				</ul>
-				<p>If you start to skid, follow these steps:</p>
-				<ol>
-					<li>Slowly remove your foot from the accelerator</li> <li>Do not use the brakes.</li>{" "}
-					<li>Turn the steering wheel in the direction of the skid.</li> <li>Try to get a wheel on dry pavement.</li>
-				</ol>
-				<h4>Locked Wheel Skids</h4>
-				<p>
-					A locked wheel skid is usually caused by braking too hard when you are going too fast. If this happens, your vehicle will skid no matter
-					which way the steering wheel is turned. To get out of a locked wheel skid if your vehicle is equipped with:
-				</p>
-				<ul>
-					<li>Four-wheel antilock braking system (ABS), apply firm pressure on the brake pedal.</li>
-					<li>
-						Rear-wheel ABS (common in light trucks):
+						Stopped school buses and children crossing the street.
 						<ul>
-							<li>Ease up on the brake pedal while maintaining just enough pressure to allow the front wheels to roll again so you can steer.</li>{" "}
-							<li>Stop braking and turn the steering wheel into the direction of the skid.</li>
+							<li>
+								Some school buses flash yellow lights when preparing to stop to let children off the bus. The yellow flashing lights warn you to slow down and prepare to
+								stop.
+							</li>
+							<li>
+								When the bus flashes red lights (located at the top, front, and back of the bus), you must stop from either direction until the children are safely across
+								the street and the lights stop flashing. Remain stopped while the red lights are flashing. If you fail to stop, you may be fined up to $1,000 and your
+								driving privilege could be suspended for one year.
+							</li>
+							<li>If the school bus is on the other side of a divided or multilane highway (two or more lanes in each direction), you do not need to stop.</li>
 						</ul>
 					</li>
-					<li>
-						Front-wheel ABS, remove your foot from the brake pedal to unlock the wheels. Steer in the direction you want to go and straighten the
-						front wheels as the vehicle begins to straighten out.
-					</li>
 				</ul>
+				<h3>Blind Intersections</h3> <p>An intersection is considered blind if it has no stop signs at any corner.</p>{" "}
+				<p>If your view is blocked, move slowly forward until you can see. The speed limit for a blind intersection is 15 mph.</p>
+				<h3>Alleys</h3>
 				<p>
-					<span role="region" aria-label="Note" className={classes.formatLabelNote}>
-						To determine if your vehicle has ABS, refer to the vehicle owner’s manual.
-					</span>
+					An alley is any road no wider than 25 feet that is used to access the rear or side entrances of buildings or properties. You may drive on or cross a sidewalk to
+					enter or exit a driveway or alley. The speed limit in an alley is 15 mph.
 				</p>
-				<p>If your vehicle is not equipped with ABS and begins to skid, quickly pump your brakes until you are at a safe speed. If you:</p>
+				<h3>Near Railroad or Light Rail Tracks</h3>
+				<p>
+					The speed limit is 15 mph within 100 feet of a railroad crossing and you cannot see the tracks for 400 feet in both directions. You may drive faster than 15 mph
+					if the crossing is controlled by gates, a warning signal, or a flagman. At railroad or train crossings:
+				</p>
 				<ul>
 					<li>
-						Press the brake pedal and it sinks to the floor, quickly pump the brakes by gently applying and releasing pressure on your brake pedal.
+						Flashing red warning lights indicate you must stop and wait. Do not proceed over the railroad tracks until the red lights stop flashing, even if the gate
+						rises.
+					</li>
+					<li>When the crossing devices or a person warns you a train is coming, stop at least 15 feet from the nearest track.</li>
+					<li>
+						Do not go under lowering gates or around lowered gates. If the gates are lowered and you do not see a train approaching, call the posted railroad emergency
+						toll-free number or 911.
+					</li>
+					<li>
+						Stop, look, and listen. If you see a train coming or hear a horn or bell, do not cross. Many crossings have multiple tracks. Look in both directions and only
+						cross when it is safe.
 					</li>{" "}
-					<li>Pump the brakes, down shift your vehicle into a lower or neutral gear to slow down. Then try using your emergency brake to stop.</li>
-				</ul>
-				<p>
-					If your brakes get wet, you can dry them by lightly pressing the accelerator and brake pedals at the same time. Only do this until the
-					brakes dry.
-				</p>{" "}
-				<h3>Slippery Roads</h3>
-				<p>
-					Rain, snow, or mud can make the roads slippery. Drive more slowly than you would on a dry road. Adjust your speed for different conditions:
-				</p>
-				<ul>
+					<li>Expect a train on any track, at any time, traveling in either direction.</li>
 					<li>
-						<strong>Wet road: </strong>Reduce your speed by 5 to 10 mph.
+						Never stop on the railroad tracks. Wait and do not begin proceeding if you do not have enough room to completely cross the tracks. If you are on the tracks,
+						you risk injury or death.
 					</li>
 					<li>
-						<strong>Packed snow:</strong> Reduce your speed by half.
-					</li>
-					<li>
-						<strong>Ice:</strong> Reduce your speed to no more than 5 mph.
+						Watch for vehicles that must stop before they cross train tracks. These vehicles include buses, school buses, and vehicles marked with a hazardous materials
+						placard.
 					</li>
 				</ul>
-				<p>
-					Some road surfaces are more slippery than others when wet. These usually have warning signs posted. Here are situations where the road may
-					be more slippery:
-				</p>
-				<ul>
-					<li>Shade from trees or buildings can hide icy spots on cold, wet days. These areas freeze first and dry out last.</li>{" "}
-					<li>Bridges and overpasses tend to freeze before the rest of the road. They can have icy spots.</li>
-					<li>When it starts to rain, the pavement can be very slippery.</li>
-				</ul>
-				<p>
-					Slow down at the first sign of rain, drizzle, or snow on the road. This is especially true if it has been dry and hot for some time, because
-					oil and dust on the road’s surface have not been washed away.
-				</p>
-				<p>
-					Turn on your windshield wipers, low-beam headlights, and defroster. In a heavy rainstorm or snowstorm, you may not be able to see more than
-					100 feet in front of your vehicle. If you cannot see farther than 100 feet, it is not safe to drive faster than 30 mph. You may have to stop
-					from time to time to wipe mud or snow off your windshield, headlights, and taillights. If you drive in snowy areas, carry snow chains for
-					your tires. Snow chains give your tires more traction. Carry the correct number and type of chains for your vehicle.
-				</p>
-				<h3>Hydroplaning</h3>
-				<p>
-					Hydroplaning occurs when driving in wet or rainy conditions. Hydroplaning is a vehicle riding on water because the tires lose all contact
-					with the road. A slight change of direction, applying the brakes, or a gust of wind could throw the vehicle into a skid. To avoid
-					hydroplaning:
-				</p>
-				<ul>
-					<li>Drive slowly.</li> <li>Steer around standing water, if possible.</li> <li>Slow down if you hear sloshing sounds from the tires.</li>{" "}
-					<li>Slow down when changing lanes or direction.</li>
-				</ul>
-				<p>If your vehicle starts to hydroplane:</p>
-				<ul>
-					<li>Slow down gradually.</li> <li>Do not use the brakes. Sudden braking may cause you to lose control of your vehicle.</li>
-				</ul>
-				<h3>Stuck in Snow or Mud</h3> <p>If stuck in the snow or mud, follow these steps:</p>
-				<ol>
-					<li>Shift into a low gear and keep the front wheels straight.</li> <li>Gently step on the accelerator. Avoid spinning the wheels.</li>{" "}
-					<li>Drive slowly forward as far as possible.</li> <li>Shift into reverse and slowly back up as far as possible. Do not spin the wheels.</li>
-					<li>Shift into a low gear again and drive forward.</li> <li>Repeat a forward-backward motion until the vehicle rolls free.</li>{" "}
-					<li>In deep mud or snow, put boards, tree branches, etc., under the tires. Only take this action when the vehicle is stopped.</li>
-				</ol>
-				<h3>Flooded Roads</h3>{" "}
-				<p>
-					Excessive water on a road may cause flooding. This can happen gradually or suddenly. It is important to understand the dangers of water on
-					the road, including:
-				</p>
-				<ul>
-					<li>Being swept off the road.</li> <li>Floating debris and unseen hazards.</li> <li>The road collapsing.</li> <li>Vehicle malfunction.</li>{" "}
-					<li>Electrocution if there are fallen power lines.</li>
-				</ul>
-				<p>
-					It may not be possible to determine the depth of the flood by looking. If the water is deep, the road may be too dangerous to cross. It is
-					best to find another route. If you have no other option but to drive through a flooded road, drive slowly. After you make it through the
-					water, test your brakes to make sure they work correctly.
-				</p>
-				<h3>High Winds</h3>{" "}
-				<p>
-					High winds can be a hazard while driving. This is especially true for larger vehicles such as trucks, campers, and vehicles with trailers.
-					When driving in high winds:
-				</p>
-				<ul>
-					<li>
-						Reduce your speed. This gives you better control over your vehicle. You will have more time to react if your vehicle gets hit by a strong
-						gust of wind.
-					</li>
-					<li>
-						Maintain a firm hand position on the steering wheel. Strong wind gusts are unpredictable. If you are not holding the wheel properly and a
-						gust hits, you can lose control of the vehicle.
-					</li>
-					<li>Be alert. Look ahead and watch for any debris on the road. Give yourself enough time to react to road hazards.</li>{" "}
-					<li>Do not use cruise control. Maintain maximum control of the accelerator if a gust occurs.</li>
-					<li>Be proactive. It may be safer to pull over and wait for the storm to pass.</li>
-				</ul>
-				<h3>Fog or Heavy Smoke</h3>{" "}
-				<p>
-					It is best to avoid driving in heavy fog or smoke. Consider postponing your trip until the fog clears. If you must drive in heavy fog or
-					smoke:
-				</p>
-				<ul>
-					<li>Drive slowly.</li> <li>Use your low-beam headlights. High-beam headlights will reflect back and cause glare.</li>{" "}
-					<li>Never drive using only your parking or fog lights.</li> <li>Make sure you can stop within the space you can see ahead.</li>
-					<li>Increase your following distance.</li> <li>Use your windshield wipers and defroster as necessary.</li>{" "}
-					<li>Avoid crossing lanes or passing traffic unless absolutely necessary.</li> <li>Listen for traffic you cannot see.</li>
-				</ul>
-				<p>
-					If the fog becomes too thick to drive safely, consider pulling off the road. Activate your emergency flashers and wait for conditions to
-					improve.
-				</p>{" "}
-				<h3>Law Enforcement Traffic Breaks</h3>
-				<p>
-					During a traffic break, the officer turns on their emergency lights and slowly weaves across lanes. Law enforcement uses traffic breaks to:
-				</p>
-				<ul>
-					<li>Slow or stop traffic to remove hazards from the road.</li> <li>Slow or stop traffic during heavy fog or unusual traffic conditions.</li>{" "}
-					<li>Prevent collisions during unusual conditions.</li>
-				</ul>
-				<p>You should:</p>
-				<ul>
-					<li>Turn on your emergency flashers to warn other drivers.</li>{" "}
-					<li>
-						Slowly decrease your speed to the same speed as the officer. Do not brake suddenly unless necessary to avoid a collision. Keep a safe
-						distance from the patrol vehicle ahead of you.
-					</li>
-					<li>
-						Not drive past the patrol vehicle. Do not speed up until the officer turns off their emergency lights and traffic conditions allow you to
-						return to your normal speed.
-					</li>
-				</ul>
+				<h3>Business or Residential Districts</h3> <p>The speed limit is 25 mph, unless otherwise posted.</p>
 			</div>
 		</Fragment>
 	);
 };
 
-export default Page14;
+export default Page12;
