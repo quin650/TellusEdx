@@ -10,12 +10,66 @@
 	font-size: 14px;
 	overflow-y: scroll;
 }
-/*! Body ------------------------------------------------------*/
 .bodyContainer {
 	display: flex;
 	position: relative;
 }
-/*! Handbook-------------------------------------------------------------------*/
+/*! Demo Landing Page----------------------------------------------------------*/
+.DemoDMVClassCLandingPage {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	padding-left: 3.75rem;
+	padding-right: 3.75rem;
+	margin: 0 auto auto 0;
+	min-height: 67.4vh;
+	display: flex;
+	flex-direction: row;
+	font-size: 16px;
+}
+.DemoDMVClassCLandingPage h1 {
+	margin: 0;
+}
+.DemoDMVClassCLandingPage h2 {
+	margin-top: 0;
+}
+.leftSide {
+	display: flex;
+	flex-basis: 65%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	padding-right: 1rem;
+}
+.top {
+}
+.rightSide {
+	display: flex;
+	flex-basis: 35%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-direction: column;
+	padding-left: 1rem;
+}
+.imageDiv figure {
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+}
+.imageDiv figure img {
+	width: 100%;
+	object-fit: cover; /* Ensures the image covers its container while preserving aspect ratio */
+	border-radius: 5px; /* Optional: Adds some visual appeal */
+}
+.rightSide .imageDiv a {
+	margin-left: 0;
+	font-size: 12px;
+	text-decoration: underline;
+	color: #0066cc; /* Update with your preferred link color */
+	margin-top: 1rem;
+}
+.rightSide .imageDiv a:hover {
+	color: #004499; /* Darken on hover */
+}
+/*! Handbook----------------------------------------------------------------------*/
 .handbook_outerContainer {
 	padding-top: 56px;
 	padding-bottom: 56px;
@@ -23,12 +77,10 @@
 	line-height: 1.35;
 	min-height: 100%;
 	transition: width 1s ease;
-
 	padding-left: 3%;
 	padding-right: 3%;
 	flex-grow: 1;
 	flex-shrink: 1;
-	/* flex-basis: 60%;  This was a huge issue that caused the rezier to jump*/
 	flex-basis: 1150px;
 	max-width: 1830px;
 }
@@ -53,6 +105,8 @@
 	font-weight: 400;
 	min-height: 850px;
 	margin: 0 0 auto 0;
+	/* new */
+	width: 100%;
 }
 .handbook_header_section {
 	display: block;
@@ -246,86 +300,25 @@ strong {
 	padding: 0 6px;
 	text-transform: uppercase;
 }
-/*! Landing Page--------------------------------------------------*/
-.DemoDMVClassCLandingPage {
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	padding-left: 3.75rem;
-	padding-right: 3.75rem;
-	margin: 0 auto auto 0;
-	min-height: 67.4vh;
-	display: flex;
-	flex-direction: row;
-	font-size: 16px;
-}
-.DemoDMVClassCLandingPage h1 {
-	margin: 0;
-}
-.DemoDMVClassCLandingPage h2 {
-	margin-top: 0;
-}
-.leftSide {
-	display: flex;
-	flex-basis: 65%;
-	flex-grow: 1;
-	flex-shrink: 1;
-	padding-right: 1rem;
-}
-.top {
-}
-.welcome {
-	margin-bottom: 20px;
-}
-.welcome p {
-	margin: 0;
-}
-.options {
-	margin-bottom: 20px;
-}
-.rightSide {
-	display: flex;
-	flex-basis: 35%;
-	flex-grow: 1;
-	flex-shrink: 1;
-	flex-direction: column;
-	padding-left: 1rem;
-}
-.imageDiv figure {
-	margin: 0;
-	padding: 0;
-	max-width: 100%;
-}
-.imageDiv figure img {
-	width: 100%;
-	object-fit: cover; /* Ensures the image covers its container while preserving aspect ratio */
-	border-radius: 5px; /* Optional: Adds some visual appeal */
-}
-.rightSide .imageDiv a {
-	margin-left: 0;
-	font-size: 12px;
-	text-decoration: underline;
-	color: #0066cc; /* Update with your preferred link color */
-	margin-top: 1rem;
-}
-.rightSide .imageDiv a:hover {
-	color: #004499; /* Darken on hover */
-}
-/*! toc Container------------------------------------------------------*/
+/*! TOC-------------------------------------------------------------------------*/
 .tocOuterContainer {
 	display: flex;
 	position: relative;
 	width: 100%;
 	flex-direction: column;
 	justify-content: flex-start;
-	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack) !important;
 	border: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 }
 .tocInnerContainer {
 	display: flex;
 	flex-direction: row;
-	margin-left: 16px;
+	/* margin-left: 16px; */
 }
-/*! toc Title ------------------------------------------------------*/
+.tocInnerContainer ul {
+	width: 50%;
+}
+/* toc Title ------------------------------------------------------*/
 .tocTitleLabel {
 	padding: 6px 8px 6px 12px !important;
 	width: 100%;
@@ -342,7 +335,17 @@ strong {
 .handbookTOC_header_section H2 {
 	margin-bottom: auto;
 }
-/*! where to start &&  toc Parent Items-----------------------------------*/
+/*! handbook landing page ------------------------------------------------------*/
+/* where to start &&  toc Parent Items-----------------------------*/
+.welcome {
+	margin-bottom: 20px;
+}
+.sectionContent {
+	margin-left: 8px;
+}
+.options {
+	margin-bottom: 20px;
+}
 .options ul {
 	margin-left: 0 !important;
 }
@@ -396,4 +399,304 @@ strong {
 }
 .sectionNUm {
 	font-weight: 700;
+}
+/*!sideBar Question  -------------------------------------------------------------*/
+.sideBar_R_outerContainer {
+	display: flex;
+	z-index: 1000;
+	position: relative;
+	right: 0;
+	height: 100%;
+	flex-direction: column;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-top-left-radius: 14px;
+	border-bottom-left-radius: 14px;
+	padding-left: 0px !important;
+	transition: transform 0.5s ease;
+	transform: translateX(100%);
+	top: 0;
+	margin: 0;
+	line-height: 1.5;
+	font-size: 14px;
+	font-family: sans-serif !important;
+
+	flex-grow: 0;
+	width: 0;
+}
+.sideBar_R_outerContainer.open {
+	transform: translateX(0);
+	width: 40%;
+	flex-grow: 0;
+}
+/* ref .handbook_outerContainer  */
+.handbook_outerContainer2 {
+	padding-top: 56px;
+	padding-bottom: 56px;
+	margin: 0 auto;
+	line-height: 1.35;
+	min-height: 100%;
+	transition: width 1s ease;
+	padding-left: 3%;
+	padding-right: 3%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100%;
+	max-width: 1200px;
+	min-width: 90%;
+}
+@media (max-width: 1700px) {
+	.handbook_outerContainer2 {
+		padding-left: 1%;
+		padding-right: 1%;
+		flex-basis: 600px;
+	}
+}
+/* exit button ----------------------------------------------------- */
+.exitButton {
+	z-index: 3000;
+	position: absolute;
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+
+	width: 36px;
+	transition: none;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 0px solid red;
+
+	right: 14px;
+	top: 0;
+	margin-left: auto;
+}
+.exitButton:hover {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.exitButton:active {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.svgExit {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	height: 21px;
+}
+.svgExit path {
+	fill: #9e9e9e;
+}
+/* resizer ---------------------------------------------------------- */
+.resizer {
+	width: 3px;
+	top: 0;
+	left: 0;
+	cursor: col-resize;
+	height: 100%;
+	position: absolute;
+	background-color: var(--Blue);
+}
+/* Questions landing page --------------------------------------------*/
+.DemoDMVClassCQuestionsLandingPage {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	padding-left: 3.75rem;
+	padding-right: 3.75rem;
+	/* margin: 0 auto auto 0; */
+	min-height: 67.4vh;
+	display: flex;
+	flex-direction: column;
+	font-size: 16px;
+}
+.DemoDMVClassCQuestionsLandingPage h1 {
+	margin: 0;
+}
+.DemoDMVClassCQuestionsLandingPage h2 {
+	margin-top: 0;
+}
+/* Actual Questions --------------------------------------------------*/
+/* page general */
+.page_content {
+	-webkit-box-flex: 1;
+	margin: 0 12px;
+}
+.page_content ul {
+	font-size: 16px;
+	margin: 0 !important;
+}
+.page_content ul li {
+	list-style-type: none;
+	margin-bottom: 16px;
+	padding-top: 0 !important;
+}
+/* Answer  */
+.answerLabel p {
+	margin: 0 0 0 1rem;
+}
+/* Questions */
+.answerLabel {
+	display: flex;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	font-size: 18px;
+	align-items: center;
+	width: 100%;
+	padding: 10px 0 10px 16px;
+	border-radius: 7px;
+	color: var(--color_primary_darkGray_to_gray);
+}
+.answerLabel:hover {
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.answerLabel:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.answerLabel.isChecked:hover {
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.answerLabel.isChecked:active {
+	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+/* checkbox */
+.checkBox {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 23px;
+	width: 23px;
+	background-color: white;
+	border-radius: 4px;
+	border: 2px solid var(--Blue);
+}
+.checkBox.isChecked {
+	background-color: var(--Blue);
+}
+.answerLabel:hover .checkBox {
+	background-color: var(--Blue);
+}
+.answerLabel:active .checkBox {
+	background-color: #287bba;
+}
+.answerLabel:active .checkBox:after {
+	display: block;
+	left: 52%;
+	top: 38%;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+.answerLabel.isChecked:hover .checkBox {
+	background-color: var(--Blue);
+}
+.answerLabel.isChecked:active .checkBox {
+	background-color: #287bba;
+}
+.answerLabel input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+/* Hide CheckMark */
+.checkBox:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+/* Un-hide CheckMark */
+.checkBox.isChecked:after {
+	display: block;
+	left: 52%;
+	top: 38%;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+/* Cancel Submit Buttons ------------------------------------------------*/
+.buttonSection {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	justify-content: flex-end;
+	margin: 0 5% auto auto;
+	padding: 10px 0 10px 16px;
+}
+/* cancel button */
+.button_formatCancel {
+	font-size: 15px;
+	font-weight: 500;
+	color: black;
+	background-color: transparent;
+	width: 80.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: pointer;
+	border: solid 1px var(--Blue);
+	transition: background-color 0.3s ease;
+}
+.button_formatCancel:hover {
+	background-color: #ffcccc;
+}
+.button_formatCancel:active {
+	background-color: #ff9999;
+	border: solid 2px #ff9999;
+}
+/* submit button */
+.button_formatSubmit:disabled {
+	font-size: 15px;
+	font-weight: 500;
+	color: rgb(102, 102, 102);
+	background-color: gray;
+	width: 150.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: default;
+	border: solid 1px gray;
+	margin-left: 12px;
+	transition: background-color 0.6s ease, border 0.6s ease;
+}
+.button_formatSubmit:disabled:hover {
+	background-color: gray;
+	transition: none;
+}
+.button_formatSubmit:disabled:active {
+	background-color: gray;
+	border: solid 1px gray;
+	transition: none;
+}
+.button_formatSubmit {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--WhiteToGray);
+	background-color: var(--Blue);
+	width: 150.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: pointer;
+	border: solid 1px var(--Blue);
+	margin-left: 12px;
+	transition: background-color 0.6s ease, border 0.6s ease;
+}
+.button_formatSubmit:hover {
+	background-color: var(--BlueHover);
+	transition: none;
+}
+.button_formatSubmit:active {
+	background-color: var(--Blue);
+	border: solid 2px var(--Blue);
+	transition: none;
 }

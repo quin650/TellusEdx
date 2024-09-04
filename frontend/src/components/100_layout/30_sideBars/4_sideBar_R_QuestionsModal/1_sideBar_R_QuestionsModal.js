@@ -5,7 +5,7 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsParent from "./2_sideBar_R_QuestionsParent";
 import PaginationQuestionsGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
 import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
-import classes from "./sideBar_R_QuestionsModal.module.css";
+import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsModal = ({ pageContentRef }) => {
 	const sideBarQuestionsRef = useRef();

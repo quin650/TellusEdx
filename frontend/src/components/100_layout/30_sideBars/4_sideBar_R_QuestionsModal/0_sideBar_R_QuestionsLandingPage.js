@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import classes from "./sideBar_R_QuestionsModal.module.css";
+import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsLandingPage = () => {
+const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
 	const sideBarQuestionsRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
@@ -112,18 +112,72 @@ const SideBar_R_QuestionsLandingPage = () => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
 	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
-
+	const testClicked = () => {
+		console.log("testClicked");
+	};
 	return (
 		<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 			{exitButton}
 			<div className={classes.resizer} ref={resizerRef}></div>
-			<div className={classes.handbook_outerContainer}>
-				<h2>Regular driver</h2>
-				<p>DMV Class C</p>
-				<p>DMV Class M</p>
-				<h2>Commercial driver</h2>
-				<p>DMV Class A</p>
-				<p>DMV Class B</p>
+			<div className={classes.handbook_outerContainer2}>
+				<div className={classes.handbook_innerContainer}>
+					<div className={classes.page_contentContainer}>
+						<div className={classes.handbook_header_section}>
+							<p>Starting Page</p>
+							<h1>Questions</h1>
+						</div>
+						<div className={classes.DemoDMVClassCQuestionsLandingPage}>
+							<div className={classes.welcome}>
+								<h2>Questions On This Page Section</h2>
+							</div>
+							<nav className={classes.tocOuterContainer}>
+								<div className={classes.tocTitleLabel}>
+									<h2>Sample Driver's License Tests</h2>
+								</div>
+								<div className={classes.tocInnerContainer}>
+									<ul>
+										<li className={classes.contentContainer}>
+											<div className={classes.parentLabelOuterContainer}>
+												<a className={classes.parentLabel} onClick={testClicked}>
+													<span className={classes.sectionNUm}>Practice Test 1</span>
+												</a>
+											</div>
+										</li>
+										<li className={classes.contentContainer}>
+											<div className={classes.parentLabelOuterContainer}>
+												<a className={classes.parentLabel} onClick={testClicked}>
+													<span className={classes.sectionNUm}>Practice Test 2</span>
+												</a>
+											</div>
+										</li>
+									</ul>
+									<ul>
+										<li className={classes.contentContainer}>
+											<div className={classes.parentLabelOuterContainer}>
+												<a className={classes.parentLabel} onClick={testClicked}>
+													<span className={classes.sectionNUm}>Practice Test 3</span>
+												</a>
+											</div>
+										</li>
+										<li className={classes.contentContainer}>
+											<div className={classes.parentLabelOuterContainer}>
+												<a className={classes.parentLabel} onClick={testClicked}>
+													<span className={classes.sectionNUm}>Practice Test 4</span>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</nav>
+							<div>
+								<p>Probability of Passing Section</p>
+								<div>
+									<p>Retake failed questions</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</menu>
 	);

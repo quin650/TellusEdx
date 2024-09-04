@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import classes from "./sideBar_R_QuestionsModal.module.css";
+import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsChild = ({ id, text, isCorrect, newlyCheckedID, uncheck }) => {
 	const [isChecked, setIsChecked] = useState(false);

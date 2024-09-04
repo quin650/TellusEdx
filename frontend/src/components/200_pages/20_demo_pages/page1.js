@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const Page1A = () => {
 	const dispatch = useDispatch();
@@ -23,22 +22,10 @@ const Page1A = () => {
 								</p>
 							</div>
 						</div>
-						{/* <div className={classes.options}>
-							<h2>Where to Start?</h2>
-							<div className={classes.sectionContent}>
-								<p>
-									<span className={classes.sectionSection}>Sections 1-4:</span> Information about the licensing process.
-								</p>
-								<div className={classes.spacer}></div>
-								<p>
-									<span className={classes.sectionSection}>Sections 5-14:</span> Information to <span className={classes.italicSpan}>pass</span> the DMV knowledge test.
-								</p>
-							</div>
-						</div> */}
 
 						<div className={classes.options}>
 							<h2>Where to Start?</h2>
-							<ul className={classes.whereToStart}>
+							<ul>
 								<li className={classes.contentContainerWhereToStart}>
 									<div className={classes.parentLabelOuterContainer}>
 										<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./3_sideBar_R_QuestionsChild";
-import classes from "./sideBar_R_QuestionsModal.module.css";
+import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked }) => {
 	const question = questionData.question;
