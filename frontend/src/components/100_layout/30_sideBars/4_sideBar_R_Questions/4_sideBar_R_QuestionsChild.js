@@ -22,7 +22,7 @@ const SideBar_R_QuestionsChild = ({ id, text, isCorrect, newlyCheckedID, uncheck
 				<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
 				<span className={`${classes["checkBox"]} ${isChecked ? classes.isChecked : ""}`}></span>
 				<p>{text}</p>
-				{isCorrect && <p>&lt;-- Correct Answer w/ id#: {id}</p>}
+				{isCorrect && <p>&lt;-- Correct id#: {id}</p>}
 			</label>
 		</li>
 	);

@@ -4,8 +4,7 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 import SideBar_R_NotesModal from "../../100_layout/30_sideBars/2_sideBar_R_NotesModal/sideBar_R_NotesModal";
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
-import SideBar_R_QuestionsModal from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/1_sideBar_R_QuestionsModal";
-import SideBar_R_QuestionsLandingPage from "../../100_layout/30_sideBars/4_sideBar_R_QuestionsModal/0_SideBar_R_QuestionsLandingPage";
+import SideBar_R_Questions from "../../100_layout/30_sideBars/4_sideBar_R_Questions/0_sideBar_R_Questions";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
 
 import Page1 from "../../200_pages/20_demo_pages/page1";
@@ -302,7 +301,7 @@ const DemoDMVClassC = () => {
 					</div>
 				</div>
 				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef} />}
-				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_QuestionsLandingPage pageContentRef={pageContentRef} />}
+				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_Questions pageContentRef={pageContentRef} />}
 			</div>
 		</main>
 	);

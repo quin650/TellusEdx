@@ -6,20 +6,25 @@ const localStorageColor = localStorage.getItem("prefers-color-scheme");
 const isDarkMode = localStorageColor ? localStorageColor : systemColor;
 
 const initialState = {
-	//Modals
+	//SideBars
 	currentPageNum_rdx: 1,
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
+
+	// change this back to "QuestionsLanding"
+	sideBar_R_QuestionsStatus_rdx: "Questions",
 
 	// change this back to true
 	sideBar_L_isOpen_rdx: false,
 	// change this back to true
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
+
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
 	// change this back to false
 	sideBar_R_Questions_isOpen_rdx: true,
 
+	//Modals
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
@@ -125,6 +130,13 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
+		},
+
+		sideBar_R_Questions_GoTo_Landing(state) {
+			state.sideBar_R_QuestionsStatus_rdx = "QuestionsLanding";
+		},
+		sideBar_R_Questions_GoTo_Test1(state) {
+			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 		},
 
 		// Get Started Modal

@@ -1,16 +1,21 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+
+import SideBar_R_QuestionsLandingPage from "./1_sideBar_R_QuestionsLandingPage";
+import SideBar_R_QuestionNumber from "./2_sideBar_R_QuestionNumber";
+
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
+const SideBar_R_Questions = ({ pageContentRef }) => {
 	const sideBarQuestionsRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
 	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const dispatch = useDispatch();
+
+	//! General -----------------------------------------------
 	// Exit Functionality
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -23,7 +28,7 @@ const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
 			exitAction();
 		}
 	};
-	const exitAction = () => {
+	let exitAction = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Questions());
 	};
 	let exitButton = (
@@ -112,87 +117,31 @@ const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
 	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
-	const testClicked = () => {
-		console.log("testClicked");
-	};
-	const next = () => {
-		console.log("nextClicked");
-	};
-	const [isInactive, setIsInactive] = useState(false);
+	//! Component Control---------------------------------------
+
+	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
+	const [content, setContent] = useState(<SideBar_R_QuestionsLandingPage />);
+
+	useEffect(() => {
+		switch (sideBar_R_QuestionsStatus_rdx) {
+			case "QuestionsLanding":
+				setContent(<SideBar_R_QuestionsLandingPage />);
+				break;
+			case "Questions":
+				setContent(<SideBar_R_QuestionNumber />);
+				break;
+			default:
+				setContent(<SideBar_R_QuestionsLandingPage />);
+		}
+	}, [sideBar_R_QuestionsStatus_rdx]);
+
 	return (
 		<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 			{exitButton}
 			<div className={classes.resizer} ref={resizerRef}></div>
-			<div className={classes.handbook_outerContainer2}>
-				<div className={classes.handbook_innerContainer}>
-					<div className={classes.page_contentContainer}>
-						<div className={classes.handbook_header_section}>
-							<p>Starting Page</p>
-							<h1>Questions</h1>
-						</div>
-						<div className={classes.questionsLandingPageBody}>
-							<div className={classes.quadrantContainer}>
-								<div className={classes.topLeft}>
-									<h2>Questions On This Page</h2>
-									<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-										</svg>
-									</button>
-								</div>
-							</div>
-							<div className={classes.quadrantContainer}>
-								<div className={classes.topLeft}>
-									<h2>Sample Driver's License Tests</h2>
-									<div className={classes.testButtonsContainer}>
-										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-											<p>Test #1 </p>
-											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-											</svg>
-										</button>
-										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-											<p>Test #2 </p>
-											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-											</svg>
-										</button>
-										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-											<p>Test #3 </p>
-											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-											</svg>
-										</button>
-										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-											<p>Test #4 </p>
-											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-											</svg>
-										</button>
-									</div>
-								</div>
-							</div>
-							<div className={classes.quadrantContainer}>
-								<div className={classes.topLeft}>
-									<h2>Retake failed questions</h2>
-									<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
-										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
-											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-										</svg>
-									</button>
-								</div>
-							</div>
-							<div className={classes.quadrantContainer}>
-								<div className={classes.topLeft}>
-									<h2>Probability of Passing</h2>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			{content}
 		</menu>
 	);
 };
 
-export default SideBar_R_QuestionsLandingPage;
+export default SideBar_R_Questions;
