@@ -115,6 +115,10 @@ const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
 	const testClicked = () => {
 		console.log("testClicked");
 	};
+	const next = () => {
+		console.log("nextClicked");
+	};
+	const [isInactive, setIsInactive] = useState(false);
 	return (
 		<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 			{exitButton}
@@ -126,53 +130,61 @@ const SideBar_R_QuestionsLandingPage = ({ pageContentRef }) => {
 							<p>Starting Page</p>
 							<h1>Questions</h1>
 						</div>
-						<div className={classes.DemoDMVClassCQuestionsLandingPage}>
-							<div className={classes.welcome}>
-								<h2>Questions On This Page Section</h2>
+						<div className={classes.questionsLandingPageBody}>
+							<div className={classes.quadrantContainer}>
+								<div className={classes.topLeft}>
+									<h2>Questions On This Page</h2>
+									<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+										</svg>
+									</button>
+								</div>
 							</div>
-							<nav className={classes.tocOuterContainer}>
-								<div className={classes.tocTitleLabel}>
+							<div className={classes.quadrantContainer}>
+								<div className={classes.topLeft}>
 									<h2>Sample Driver's License Tests</h2>
+									<div className={classes.testButtonsContainer}>
+										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+											<p>Test #1 </p>
+											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+											</svg>
+										</button>
+										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+											<p>Test #2 </p>
+											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+											</svg>
+										</button>
+										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+											<p>Test #3 </p>
+											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+											</svg>
+										</button>
+										<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+											<p>Test #4 </p>
+											<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+												<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+											</svg>
+										</button>
+									</div>
 								</div>
-								<div className={classes.tocInnerContainer}>
-									<ul>
-										<li className={classes.contentContainer}>
-											<div className={classes.parentLabelOuterContainer}>
-												<a className={classes.parentLabel} onClick={testClicked}>
-													<span className={classes.sectionNUm}>Practice Test 1</span>
-												</a>
-											</div>
-										</li>
-										<li className={classes.contentContainer}>
-											<div className={classes.parentLabelOuterContainer}>
-												<a className={classes.parentLabel} onClick={testClicked}>
-													<span className={classes.sectionNUm}>Practice Test 2</span>
-												</a>
-											</div>
-										</li>
-									</ul>
-									<ul>
-										<li className={classes.contentContainer}>
-											<div className={classes.parentLabelOuterContainer}>
-												<a className={classes.parentLabel} onClick={testClicked}>
-													<span className={classes.sectionNUm}>Practice Test 3</span>
-												</a>
-											</div>
-										</li>
-										<li className={classes.contentContainer}>
-											<div className={classes.parentLabelOuterContainer}>
-												<a className={classes.parentLabel} onClick={testClicked}>
-													<span className={classes.sectionNUm}>Practice Test 4</span>
-												</a>
-											</div>
-										</li>
-									</ul>
+							</div>
+							<div className={classes.quadrantContainer}>
+								<div className={classes.topLeft}>
+									<h2>Retake failed questions</h2>
+									<button id="next" onClick={next} className={classes.paginationButtonR} disabled={isInactive}>
+										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+										</svg>
+									</button>
 								</div>
-							</nav>
-							<div>
-								<p>Probability of Passing Section</p>
-								<div>
-									<p>Retake failed questions</p>
+							</div>
+							<div className={classes.quadrantContainer}>
+								<div className={classes.topLeft}>
+									<h2>Probability of Passing</h2>
 								</div>
 							</div>
 						</div>

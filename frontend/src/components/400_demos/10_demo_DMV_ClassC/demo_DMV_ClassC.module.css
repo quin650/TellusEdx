@@ -23,8 +23,8 @@
 	margin: 0 auto auto 0;
 	min-height: 67.4vh;
 	display: flex;
-	flex-direction: row;
 	font-size: 16px;
+	flex-direction: row;
 }
 .DemoDMVClassCLandingPage h1 {
 	margin: 0;
@@ -34,12 +34,61 @@
 }
 .leftSide {
 	display: flex;
+	position: relative;
 	flex-basis: 65%;
 	flex-grow: 1;
 	flex-shrink: 1;
 	padding-right: 1rem;
+	flex-direction: column;
 }
 .top {
+	display: flex;
+	flex-direction: row;
+}
+.demoIntroTopLeft {
+	display: flex;
+	flex-direction: column;
+}
+
+.topRight {
+	display: none;
+}
+.topRight.open {
+	display: none;
+}
+@media (max-width: 1100px) {
+	.topRight {
+		display: flex;
+		margin: auto;
+	}
+	.topRight .imageDiv figure {
+		margin: auto;
+	}
+	.topRight .imageDiv figure img {
+		height: 250px;
+		width: 155px;
+	}
+
+	.topRight .imageDiv a {
+		font-size: 10px;
+	}
+}
+@media (max-width: 2200px) {
+	.topRight.open {
+		display: flex;
+		margin: auto;
+	}
+	.topRight .imageDiv figure {
+		margin: auto;
+	}
+	.topRight .imageDiv figure img {
+		height: 250px;
+		width: 155px;
+	}
+
+	.topRight .imageDiv a {
+		font-size: 10px;
+	}
 }
 .rightSide {
 	display: flex;
@@ -49,15 +98,26 @@
 	flex-direction: column;
 	padding-left: 1rem;
 }
+@media (max-width: 1100px) {
+	.rightSide {
+		display: none;
+	}
+}
 .imageDiv figure {
 	margin: 0;
 	padding: 0;
 	max-width: 100%;
 }
+.imageDiv figure:hover img {
+	transform: scale(1.1);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
 .imageDiv figure img {
 	width: 100%;
 	object-fit: cover; /* Ensures the image covers its container while preserving aspect ratio */
 	border-radius: 5px; /* Optional: Adds some visual appeal */
+	transition: transform 0.5s ease;
 }
 .rightSide .imageDiv a {
 	margin-left: 0;
@@ -69,6 +129,30 @@
 .rightSide .imageDiv a:hover {
 	color: #004499; /* Darken on hover */
 }
+.rightSide.open {
+	display: flex;
+	flex-basis: 35%;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-direction: column;
+	padding-left: 1rem;
+}
+@media (max-width: 2200px) {
+	.rightSide.open {
+		display: none;
+	}
+}
+.rightSide.open .imageDiv a {
+	margin-left: 0;
+	font-size: 12px;
+	text-decoration: underline;
+	color: #0066cc; /* Update with your preferred link color */
+	margin-top: 1rem;
+}
+.rightSide.open .imageDiv a:hover {
+	color: #004499; /* Darken on hover */
+}
+
 /*! Handbook----------------------------------------------------------------------*/
 .handbook_outerContainer {
 	padding-top: 56px;
@@ -301,7 +385,7 @@ strong {
 	text-transform: uppercase;
 }
 /*! TOC-------------------------------------------------------------------------*/
-.tocOuterContainer {
+.bottom {
 	display: flex;
 	position: relative;
 	width: 100%;
@@ -506,12 +590,12 @@ strong {
 	background-color: var(--Blue);
 }
 /* Questions landing page --------------------------------------------*/
+/* old */
 .DemoDMVClassCQuestionsLandingPage {
 	-webkit-box-flex: 1;
 	flex-grow: 1;
 	padding-left: 3.75rem;
 	padding-right: 3.75rem;
-	/* margin: 0 auto auto 0; */
 	min-height: 67.4vh;
 	display: flex;
 	flex-direction: column;
@@ -523,7 +607,218 @@ strong {
 .DemoDMVClassCQuestionsLandingPage h2 {
 	margin-top: 0;
 }
-/* Actual Questions --------------------------------------------------*/
+/* new */
+.questionsLandingPageBody {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	min-height: 67.4vh;
+	display: flex;
+	flex-direction: column;
+	font-size: 16px;
+	max-height: 75vh;
+	height: calc(100vh - 363px);
+}
+.quadrantContainer {
+	display: flex;
+	height: 16vh;
+	width: 100%;
+	border: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
+	transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+	transform-origin: center center;
+	z-index: 1;
+	overflow: hidden; /* Hides the border overflow */
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-radius: 14px;
+	min-height: 110px;
+	margin-bottom: 20px;
+	background: linear-gradient(45deg, #1b26be, transparent);
+	color: white;
+}
+.quadrantContainer:hover {
+	transform: scale(1.1);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack) !important;
+}
+.topLeft {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	height: 16vh;
+	width: 100%;
+}
+.topLeft h2 {
+	margin: auto auto 60px 20px;
+}
+.topLeft button {
+	margin: auto 0 25px 25px;
+	background: transparent;
+	border-radius: 30%;
+	border: 2px solid white;
+	position: absolute !important;
+	width: 50%;
+	overflow: hidden;
+	right: -5%;
+	top: 3%;
+	max-height: 20vh;
+	max-width: 30vh;
+}
+.topLeft .testButtonsContainer button {
+	background: transparent;
+	border-radius: 30%;
+	border: 2px solid white;
+	flex-grow: 0;
+	height: 6vh;
+	margin: 0.3vh;
+	width: 6vh;
+	display: flex;
+	flex-direction: column;
+	position: relative !important;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 4px;
+	right: 0 !important;
+}
+.topLeft .testButtonsContainer button:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+	transform-origin: right center;
+}
+.topLeft .testButtonsContainer button:hover .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.4);
+	transition: transform 0.3s ease-out;
+}
+.topLeft .testButtonsContainer button:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.topLeft .testButtonsContainer button:active .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.6);
+}
+.topLeft .testButtonsContainer button:hover p {
+	color: #287bba;
+	transition: color 0.3s ease-out;
+}
+.topLeft .testButtonsContainer button svg {
+	height: 40px;
+	position: absolute;
+}
+.testButtonsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	position: relative;
+	padding: 10px;
+	margin: auto;
+}
+
+.questionsLandingPageBody .quadrantContainer:nth-child(1) {
+	background: linear-gradient(45deg, #6495ed, transparent); /* Cornflower Blue */
+}
+.questionsLandingPageBody .quadrantContainer:nth-child(2) {
+	background: linear-gradient(45deg, #2fcafc, #00b4ee24);
+}
+.questionsLandingPageBody .quadrantContainer:nth-child(3) {
+	background: linear-gradient(45deg, #1e90ff, transparent); /* Dodger Blue */
+}
+.questionsLandingPageBody .quadrantContainer:nth-child(4) {
+	background: linear-gradient(45deg, #00008b, transparent); /* Dark Blue */
+}
+
+/* Pagination Controls 4 of 4-------------------------------------------------*/
+/*? disabled */
+.paginationButtonR:disabled {
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
+	cursor: default;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: auto;
+	height: 100%;
+	width: 120px;
+	border-radius: 10px;
+	flex-grow: 1;
+	padding: 4px;
+}
+.paginationButtonR:disabled:hover {
+	background: transparent;
+}
+.paginationButtonR:disabled:hover .arrowIconR {
+	fill: gray;
+}
+.paginationButtonR:disabled:active {
+	background: transparent;
+}
+.arrowIconR.isInactive {
+	fill: gray;
+	cursor: default;
+}
+
+/*? enabled */
+.paginationButtonR {
+	outline: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 120px;
+	flex-grow: 1;
+	padding: 4px;
+}
+.paginationButtonR p {
+	width: 100px;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-bottom: auto;
+	margin-top: 0;
+	margin-left: 48px;
+}
+.paginationButtonR:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+	transform-origin: right center;
+}
+.paginationButtonR:hover .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.4);
+	transition: transform 0.3s ease-out;
+}
+.paginationButtonR:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.arrowIconR {
+	fill: var(--Blue);
+	transform-origin: center center;
+	transition: transform 0.3s ease-out, fill 0.3s ease-out;
+}
+.paginationButtonR:active .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.6);
+}
+
+/*! Actual Questions --------------------------------------------------*/
 /* page general */
 .page_content {
 	-webkit-box-flex: 1;
