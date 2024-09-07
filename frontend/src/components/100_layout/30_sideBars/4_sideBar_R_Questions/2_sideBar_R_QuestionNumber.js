@@ -8,14 +8,28 @@ import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionNumber = () => {
-	const dispatch = useDispatch();
-
-	const [questionID, setQuestionID] = useState(1);
-	const questionData = data.questions[questionID - 1];
-
-	//! Questions  --------------------------------------------
 	// State
 	const [submitIsActive, setSubmitIsActive] = useState(false);
+	const [commenceCheckIfCorrect, setCommenceCheckIfCorrect] = useState(false);
+	const dispatch = useDispatch();
+
+	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
+	const [question, setQuestion] = useState(null);
+
+	useEffect(() => {
+		const questionData = data.questions.find(
+			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
+		);
+		setQuestion(<SideBar_R_QuestionsParent questionData={questionData} oneIsChecked={oneIsChecked} commenceCheckIfCorrect={commenceCheckIfCorrect} />);
+	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx, commenceCheckIfCorrect]);
+
+	useEffect(() => {
+		setCommenceCheckIfCorrect(false);
+		setSubmitIsActive(false);
+	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx]);
+	//! Questions  --------------------------------------------
+
 	const oneIsChecked = (status) => {
 		setSubmitIsActive(status);
 	};
@@ -25,12 +39,14 @@ const SideBar_R_QuestionNumber = () => {
 	};
 	const submitButtonAction = () => {
 		console.log("submit Button clicked");
+		setCommenceCheckIfCorrect(true);
 	};
+
 	return (
 		<div className={classes.handbook_outerContainer2}>
 			<div className={classes.handbook_innerContainer}>
 				<div className={classes.page_contentContainer}>
-					<SideBar_R_QuestionsParent questionData={questionData} oneIsChecked={oneIsChecked} />
+					{question}
 					<div className={classes.buttonSection}>
 						<button className={classes.button_formatCancel} onClick={cancelButtonAction} type="submit">
 							Cancel
@@ -39,7 +55,7 @@ const SideBar_R_QuestionNumber = () => {
 							Submit
 						</button>
 					</div>
-					<PaginationQuestionsGUI />
+					<PaginationQuestionsGUI commenceCheckIfCorrect={commenceCheckIfCorrect} />
 				</div>
 			</div>
 		</div>

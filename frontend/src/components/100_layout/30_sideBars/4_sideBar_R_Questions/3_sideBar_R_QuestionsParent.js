@@ -4,7 +4,7 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked }) => {
+const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked, commenceCheckIfCorrect }) => {
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
@@ -37,9 +37,13 @@ const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked }) => {
 							isCorrect={answer.isCorrect}
 							newlyCheckedID={newlyCheckedID}
 							uncheck={answer.id === toUncheckID}
+							commenceCheckIfCorrect={commenceCheckIfCorrect}
 						/>
 					))}
 				</ul>
+			</div>
+			<div className={`${classes["reasonCorrect"]} ${commenceCheckIfCorrect && classes.commenceCheckIfCorrect}`}>
+				<p>Reason for the correct answer here</p>
 			</div>
 		</Fragment>
 	);

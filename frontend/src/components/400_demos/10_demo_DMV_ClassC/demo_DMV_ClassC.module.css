@@ -819,17 +819,15 @@ strong {
 }
 
 /*! Actual Questions --------------------------------------------------*/
-
 /* page general */
-
 .question_content,
 .question_content.sideBar_L_isOpen {
 	-webkit-box-flex: 1;
-	flex-grow: 1;
+	/* flex-grow: 1; */
 	padding-left: 3.75rem;
 	padding-right: 3.75rem;
 	margin: 0 auto auto 0;
-	min-height: 67.4vh;
+	/* min-height: 67.4vh; */
 	margin: 0 12px;
 }
 @media (max-width: 1500px) {
@@ -844,7 +842,6 @@ strong {
 		padding-right: 1%;
 	}
 }
-
 .question_content ul,
 .question_content.sideBar_L_isOpen ul {
 	font-size: 16px;
@@ -948,6 +945,107 @@ strong {
 	border: solid white;
 	border-width: 0 3px 3px 0;
 	transform: translate(-50%, -50%) rotate(45deg);
+}
+/*!? Answer Submitted -----------------------------------------*/
+/*? color the checkbox green or red */
+.answerListItem.isCorrect .answerLabel {
+	color: green;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.answerListItem.isCorrect .answerLabel .checkBox {
+	background-color: green;
+	border: 2px solid green;
+}
+.answerListItem.isCorrect .answerLabel.isChecked {
+	color: green;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+.answerListItem.isIncorrect .answerLabel.isChecked {
+	color: red;
+	background-color: var(--hover_menuItem_gray_to_darkGray);
+}
+/*? green bordered checkbox*/
+.answerListItem.isIncorrect .answerLabel .checkBox.isChecked {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 23px;
+	min-height: 23px;
+	width: 23px;
+	min-width: 23px;
+	background-color: white;
+	border-radius: 4px;
+	border: 2px solid red;
+}
+/*? add check-mark if correct */
+.answerListItem.isCorrect .answerLabel .checkBox:after {
+	display: block;
+	left: 52%;
+	top: 38%;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+/*? red checkbox with X check-mark*/
+.answerListItem.isIncorrect .answerLabel .checkBox.isChecked:before {
+	content: "";
+	position: absolute;
+	width: 3px; /* Adjust as needed */
+	height: 18px; /* Consistent thickness */
+	background-color: white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+.answerListItem.isIncorrect .answerLabel .checkBox.isChecked:after {
+	content: "";
+	position: absolute;
+	width: 0px;
+	height: 16px;
+	background-color: white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+.answerListItem.isIncorrect .answerLabel .checkBox.isChecked {
+	background-color: red;
+}
+/*? no pointer events once submitted */
+.answerListItem.isCorrect * {
+	pointer-events: none;
+	cursor: default;
+}
+.answerListItem.isCorrect * {
+	pointer-events: none;
+	cursor: default;
+}
+.answerListItem.isIncorrect * {
+	pointer-events: none;
+	cursor: default;
+}
+
+/* Reason for answer correctness -----------------------------------------*/
+.reasonCorrect {
+	-webkit-box-flex: 1;
+	/* flex-grow: 1; */
+	padding-left: 5%;
+	padding-right: 5%;
+	border: 1px solid #d6dade;
+	border-radius: 8px;
+	margin: 5%;
+	visibility: hidden;
+}
+.reasonCorrect.commenceCheckIfCorrect {
+	-webkit-box-flex: 1;
+	/* flex-grow: 1; */
+	padding-left: 5%;
+	padding-right: 5%;
+	border: 1px solid #d6dade;
+	border-radius: 8px;
+	margin: 5%;
+	visibility: visible;
 }
 /* Cancel Submit Buttons ------------------------------------------------*/
 .buttonSection {

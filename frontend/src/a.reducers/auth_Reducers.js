@@ -12,17 +12,20 @@ const initialState = {
 	pagesLength_rdx: 0,
 
 	// change this back to "QuestionsLanding"
-	sideBar_R_QuestionsStatus_rdx: "Questions",
+	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
+	sideBar_R_Questions_CurrentTestNumber_rdx: null,
+	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
+	sideBar_R_QuestionSelectedPageNum_rdx: 1,
 
 	// change this back to true
-	sideBar_L_isOpen_rdx: false,
+	sideBar_L_isOpen_rdx: true,
 	// change this back to true
-	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
+	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
 
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
 	// change this back to false
-	sideBar_R_Questions_isOpen_rdx: true,
+	sideBar_R_Questions_isOpen_rdx: false,
 
 	//Modals
 	getStarted_ModalStatus_rdx: false,
@@ -135,8 +138,21 @@ const userSlice = createSlice({
 		sideBar_R_Questions_GoTo_Landing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsLanding";
 		},
-		sideBar_R_Questions_GoTo_Test1(state) {
+		sideBar_R_Questions_GoTo_Test(state, action) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
+			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
+		},
+		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
+			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
+		},
+
+		sideBar_R_Questions_setQuestionNumber(state, action) {
+			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
+			state.sideBar_R_QuestionSelectedPageNum_rdx = action.payload;
+		},
+
+		sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
+			state.sideBar_R_QuestionSelectedPageNum_rdx = action.payload;
 		},
 
 		// Get Started Modal

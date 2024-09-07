@@ -16,9 +16,27 @@ const SideBar_R_QuestionsLandingPage = () => {
 
 	const test1 = () => {
 		console.log("test1 clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test1());
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
 
+	const test2 = () => {
+		console.log("test2 clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
+	};
+
+	const test3 = () => {
+		console.log("test3 clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
+	};
+
+	const test4 = () => {
+		console.log("test4 clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
+	};
+	const test5 = () => {
+		console.log("test5 clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
+	};
 	return (
 		<div className={classes.handbook_outerContainer2}>
 			<div className={classes.handbook_innerContainer}>
@@ -48,20 +66,26 @@ const SideBar_R_QuestionsLandingPage = () => {
 											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 										</svg>
 									</button>
-									<button onClick={generalButtonClick} className={classes.paginationButtonR} disabled={isInactive}>
+									<button onClick={test2} className={classes.paginationButtonR} disabled={isInactive}>
 										<p>Test #2 </p>
 										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 										</svg>
 									</button>
-									<button onClick={generalButtonClick} className={classes.paginationButtonR} disabled={isInactive}>
+									<button onClick={test3} className={classes.paginationButtonR} disabled={isInactive}>
 										<p>Test #3 </p>
 										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 										</svg>
 									</button>
-									<button onClick={generalButtonClick} className={classes.paginationButtonR} disabled={isInactive}>
+									<button onClick={test4} className={classes.paginationButtonR} disabled={isInactive}>
 										<p>Test #4 </p>
+										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+										</svg>
+									</button>
+									<button onClick={test5} className={classes.paginationButtonR} disabled={isInactive}>
+										<p>Test #5 </p>
 										<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 											<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 										</svg>
