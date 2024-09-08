@@ -8,47 +8,68 @@ import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionNumber = () => {
+	// State
 	const [submitIsActive, setSubmitIsActive] = useState(false);
 	const [commenceCheckIfCorrect, setCommenceCheckIfCorrect] = useState(false);
 	const [questionComponent, setQuestionComponent] = useState(null);
-	const [chosenAnswerID, setChosenAnswerID] = useState(null);
+	const [newQuestion, setNewQuestion] = useState(false);
 
 	const dispatch = useDispatch();
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 
-	const theChosenAnswerID = (id) => {
-		setChosenAnswerID(id);
-		setSubmitIsActive(id > 0);
-	};
+	useEffect(() => {
+		const questionsSubmittedData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[sideBar_R_Questions_CurrentQuestionNumber_rdx] || null;
+		const questionData = data.questions.find(
+			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
+		);
+
+		if (questionsSubmittedData) {
+			console.log("setting commenceCheckIfCorrect to true");
+			setCommenceCheckIfCorrect(true);
+			setChosenAnswerID(questionsSubmittedData[1]);
+		} else {
+			console.log("setting commenceCheckIfCorrect to false");
+			setCommenceCheckIfCorrect(false);
+			setChosenAnswerID(null);
+		}
+
+		if (questionData || questionsSubmittedData) {
+			setQuestionComponent(
+				<SideBar_R_QuestionsParent
+					questionData={questionData}
+					theChosenAnswerID={theChosenAnswerID}
+					commenceCheckIfCorrect={commenceCheckIfCorrect}
+					questionsSubmittedData={questionsSubmittedData}
+				/>
+			);
+		}
+	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 
 	useEffect(() => {
 		const questionsSubmittedData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[sideBar_R_Questions_CurrentQuestionNumber_rdx] || null;
 		const questionData = data.questions.find(
 			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
 		);
-		let internalCheck = commenceCheckIfCorrect;
-		if (questionsSubmittedData) {
-			setCommenceCheckIfCorrect(true);
-			internalCheck = true;
-			setChosenAnswerID(questionsSubmittedData[1]);
-		} else {
-			setCommenceCheckIfCorrect(false);
-			internalCheck = false;
-			setChosenAnswerID(null);
-		}
+
 		if (questionData || questionsSubmittedData) {
 			setQuestionComponent(
 				<SideBar_R_QuestionsParent
 					questionData={questionData}
 					theChosenAnswerID={theChosenAnswerID}
-					commenceCheckIfCorrect={internalCheck}
+					commenceCheckIfCorrect={commenceCheckIfCorrect}
 					questionsSubmittedData={questionsSubmittedData}
 				/>
 			);
 		}
-	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx, commenceCheckIfCorrect]);
+	}, [commenceCheckIfCorrect]);
+
+	const [chosenAnswerID, setChosenAnswerID] = useState(null);
+	const theChosenAnswerID = (id) => {
+		setChosenAnswerID(id);
+		setSubmitIsActive(id > 0);
+	};
 
 	// Button Actions
 	const cancelButtonAction = () => {
@@ -64,6 +85,7 @@ const SideBar_R_QuestionNumber = () => {
 				answerData: [currentQuestionNumber, chosenAnswerID],
 			})
 		);
+
 		setCommenceCheckIfCorrect(true);
 	};
 

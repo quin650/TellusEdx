@@ -4,23 +4,20 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked, commenceCheckIfCorrect }) => {
+const SideBar_R_QuestionsParent = ({ questionData, theChosenAnswerID, commenceCheckIfCorrect, questionsSubmittedData }) => {
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
-	const [checkedID, setCheckedID] = useState(null);
-	const [toUncheckID, setToUncheckID] = useState(null);
+	const [previousAnswerID, setPreviousAnswerID] = useState(null);
+	const [answerIDToUncheck, setAnswerIDToUncheck] = useState(null);
 
-	const newlyCheckedID = (id, status) => {
-		if (checkedID && id !== checkedID) {
-			setToUncheckID(checkedID);
+	const newlyCheckedAnswerID = (newAnswerID) => {
+		if (previousAnswerID && newAnswerID !== previousAnswerID) {
+			setAnswerIDToUncheck(previousAnswerID);
 		}
-		setCheckedID(id);
-		if (id) {
-			oneIsChecked(status);
-		}
+		setPreviousAnswerID(newAnswerID);
+		theChosenAnswerID(newAnswerID);
 	};
-
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -35,14 +32,15 @@ const SideBar_R_QuestionsParent = ({ questionData, oneIsChecked, commenceCheckIf
 							id={answer.id}
 							text={answer.text}
 							isCorrect={answer.isCorrect}
-							newlyCheckedID={newlyCheckedID}
-							uncheck={answer.id === toUncheckID}
+							newlyCheckedAnswerID={newlyCheckedAnswerID}
+							uncheck={answer.id === answerIDToUncheck}
 							commenceCheckIfCorrect={commenceCheckIfCorrect}
+							previouslyChecked={questionsSubmittedData && questionsSubmittedData[1] ? answer.id === questionsSubmittedData[1] : false}
 						/>
 					))}
 				</ul>
 			</div>
-			<div className={`${classes["reasonCorrect"]} ${commenceCheckIfCorrect && classes.commenceCheckIfCorrect}`}>
+			<div className={`${classes["reasonCorrect"]} ${commenceCheckIfCorrect ? classes.commenceCheckIfCorrect : ""}`}>
 				<p>Reason for the correct answer here</p>
 			</div>
 		</Fragment>
