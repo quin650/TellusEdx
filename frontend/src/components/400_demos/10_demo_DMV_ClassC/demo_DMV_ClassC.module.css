@@ -1037,7 +1037,7 @@ strong {
 	margin: 5%;
 	visibility: hidden;
 }
-.reasonCorrect.commenceCheckIfCorrect {
+.reasonCorrect.startGradingTest {
 	-webkit-box-flex: 1;
 	/* flex-grow: 1; */
 	padding-left: 5%;

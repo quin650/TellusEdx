@@ -164,22 +164,16 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
 
-		// Update Question Results Reducer
 		updateQuestionResults(state, action) {
-			// Update the Redux state
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {
 				state.sideBar_R_QuestionTestResults_rdx[testNumber] = {};
 			}
 			state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber] = answerData;
-
-			// Sync with localStorage
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 		},
 
-		// Reset Question Results Reducer
 		resetQuestionResults(state) {
-			// Reset Redux state and clear localStorage
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");
 		},
