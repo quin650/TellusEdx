@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
@@ -25,7 +25,6 @@ const SideBar_R_QuestionNumber = () => {
 		setSubmitButtonIsActive(id > 0);
 	};
 
-	// console.log("previouslyCheckedID: ", previouslyCheckedID);
 	useEffect(() => {
 		const questionData = data.questions.find(
 			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
@@ -40,6 +39,8 @@ const SideBar_R_QuestionNumber = () => {
 				setStartGradingTest(false);
 				setQuestionComponent(
 					<SideBar_R_QuestionsParent
+						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
 						questionData={questionData}
 						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
 						get_ChosenAnswerID={get_ChosenAnswerID}
@@ -50,13 +51,27 @@ const SideBar_R_QuestionNumber = () => {
 				setPreviouslyCheckedID(null);
 				setSubmitButtonIsActive(false);
 				setQuestionComponent(
-					<SideBar_R_QuestionsParent questionData={questionData} previouslyCheckedID={null} get_ChosenAnswerID={get_ChosenAnswerID} startGradingTest={false} />
+					<SideBar_R_QuestionsParent
+						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+						questionData={questionData}
+						previouslyCheckedID={null}
+						get_ChosenAnswerID={get_ChosenAnswerID}
+						startGradingTest={false}
+					/>
 				);
 			} else {
 				setPreviouslyCheckedID(null);
 				setSubmitButtonIsActive(true);
 				setQuestionComponent(
-					<SideBar_R_QuestionsParent questionData={questionData} previouslyCheckedID={null} get_ChosenAnswerID={get_ChosenAnswerID} startGradingTest={startGradingTest} />
+					<SideBar_R_QuestionsParent
+						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+						questionData={questionData}
+						previouslyCheckedID={null}
+						get_ChosenAnswerID={get_ChosenAnswerID}
+						startGradingTest={startGradingTest}
+					/>
 				);
 			}
 		}

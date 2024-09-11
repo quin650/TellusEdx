@@ -39,8 +39,10 @@
 	background: transparent;
 }
 .paginationButtonL:disabled:hover .arrowIconL {
-	height: 20px;
-	fill: gray;
+	pointer-events: none;
+	scale: 1;
+	fill: var(--color_pageNav_arrow_white_to_gray);
+	cursor: default;
 }
 .paginationButtonL:disabled:active {
 	background: transparent;
@@ -72,8 +74,9 @@
 }
 .paginationButtonL:hover .arrowIconL {
 	fill: #287bba;
-	height: 25px;
+	/* height: 25px; */
 	transition: height 0.1s ease;
+	scale: 1.25;
 }
 .paginationButtonL:active {
 	background: var(--active_menuButtonOpen_gray_to_darkGray);
@@ -84,10 +87,13 @@
 }
 .paginationButtonL:active .arrowIconL {
 	fill: #287bba;
-	height: 25px;
+	/* height: 25px; */
+	scale: 1.25;
 }
 .arrowIconL.isInactive {
-	fill: gray;
+	pointer-events: none;
+	height: 20px;
+	fill: var(--color_pageNav_arrow_white_to_gray);
 	cursor: default;
 }
 
@@ -181,8 +187,10 @@
 	background: transparent;
 }
 .paginationButtonR:disabled:hover .arrowIconR {
-	height: 20px;
-	fill: gray;
+	pointer-events: none;
+	scale: 1;
+	fill: var(--color_pageNav_arrow_white_to_gray);
+	cursor: default;
 }
 .paginationButtonR:disabled:active {
 	background: transparent;
@@ -214,7 +222,8 @@
 }
 .paginationButtonR:hover .arrowIconR {
 	fill: #287bba;
-	height: 25px;
+	/* height: 25px; */
+	scale: 1.25;
 	transition: height 0.1s ease;
 }
 .paginationButtonR:active {
@@ -226,9 +235,12 @@
 }
 .paginationButtonR:active .arrowIconR {
 	fill: #287bba;
-	height: 25px;
+	/* height: 25px; */
+	scale: 1.25;
 }
 .arrowIconR.isInactive {
-	fill: gray;
+	pointer-events: none;
+	height: 20px;
+	fill: var(--color_pageNav_arrow_white_to_gray);
 	cursor: default;
 }
