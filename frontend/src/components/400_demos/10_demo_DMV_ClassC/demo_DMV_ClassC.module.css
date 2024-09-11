@@ -760,6 +760,93 @@ strong {
 	background: linear-gradient(45deg, #00008b, transparent); /* Dark Blue */
 }
 
+/* Questions Landing Page buttons-------------------------------------------------*/
+/*? disabled */
+.paginationButtonR:disabled {
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
+	cursor: default;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: auto;
+	height: 100%;
+	width: 120px;
+	border-radius: 10px;
+	flex-grow: 1;
+	padding: 4px;
+}
+.paginationButtonR:disabled:hover {
+	background: transparent;
+}
+.paginationButtonR:disabled:hover .arrowIconR {
+	fill: gray;
+}
+.paginationButtonR:disabled:active {
+	background: transparent;
+}
+.arrowIconR.isInactive {
+	pointer-events: none;
+	height: 20px;
+	fill: var(--color_pageNav_arrow_white_to_gray);
+	cursor: default;
+}
+
+/*? enabled */
+.paginationButtonR {
+	outline: none;
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+	appearance: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 120px;
+	flex-grow: 1;
+	padding: 4px;
+}
+.paginationButtonR p {
+	width: 100px;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-bottom: auto;
+	margin-top: 0;
+	margin-left: 48px;
+}
+.paginationButtonR:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+	transform-origin: right center;
+}
+.paginationButtonR:hover .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.4);
+	transition: transform 0.3s ease-out;
+}
+.paginationButtonR:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.arrowIconR {
+	fill: var(--Blue);
+	transform-origin: center center;
+	transition: transform 0.3s ease-out, fill 0.3s ease-out;
+}
+.paginationButtonR:active .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.6);
+}
+
 /*! Actual Questions --------------------------------------------------*/
 /* page general */
 .question_content,
@@ -1023,23 +1110,23 @@ strong {
 .button_formatSubmit:disabled {
 	font-size: 15px;
 	font-weight: 500;
-	color: rgb(160 160 160);
-	background-color: #d3d3d3;
+	color: rgb(239 236 236);
+	background-color: #d0d0d0;
 	width: 150.4px;
 	height: 36.8px;
 	border-radius: 18px;
 	cursor: default;
-	border: solid 1px #c5bcbc;
+	border: solid 1px #e8e7e7;
 	margin-left: 12px;
 	transition: background-color 0.6s ease, border 0.6s ease;
 }
 .button_formatSubmit:disabled:hover {
-	background-color: #d3d3d3;
+	background-color: #d0d0d0;
 	transition: none;
 }
 .button_formatSubmit:disabled:active {
-	background-color: #d3d3d3;
-	border: solid 1px #c5bcbc;
+	background-color: #d0d0d0;
+	border: solid 1px #e8e7e7;
 	transition: none;
 }
 .button_formatSubmit {
