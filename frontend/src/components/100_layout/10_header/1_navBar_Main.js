@@ -19,16 +19,13 @@ const MainNavbar = () => {
 	};
 
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
-	const {
-		sideBar_L_isOpen_Rdx,
-		sideBar_L_AllowCollapse_OnWindowResize_rdx,
-		sideBar_R_Notes_isOpen_rdx,
-		sideBar_R_Questions_isOpen_rdx,
-		sideBar_R_Main_isOpen_rdx,
-		getStarted_ModalStatus_rdx,
-		languageSettings_ModalStatus_rdx,
-	} = useSelector(({ user }) => user);
-
+	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
+	const sideBar_L_AllowCollapse_OnWindowResize_rdx = useSelector(({ user }) => user.sideBar_L_AllowCollapse_OnWindowResize_rdx);
+	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
+	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
+	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
+	const getStarted_ModalStatus_rdx = useSelector(({ user }) => user.getStarted_ModalStatus_rdx);
+	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
 	// Button onClick actions
 	const toggle_SideBar_L_Visibility = () => {
 		dispatch(userReducerActions.sideBar_L_Toggle_Visibility());
@@ -56,7 +53,7 @@ const MainNavbar = () => {
 	};
 	// Buttons
 	const sideBar_L_Button = (
-		<button onClick={toggle_SideBar_L_Visibility} className={`${classes["tocButton"]} ${sideBar_L_isOpen_Rdx ? classes.open : ""}`}>
+		<button onClick={toggle_SideBar_L_Visibility} className={`${classes["tocButton"]} ${sideBar_L_isOpen_rdx ? classes.open : ""}`}>
 			<svg className={classes.svgMenuButton} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<path
 					fillRule="evenodd"

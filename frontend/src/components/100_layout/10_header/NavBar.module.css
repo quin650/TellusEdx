@@ -100,12 +100,37 @@ button:focus {
 .tocButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
+.tocButton.open {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
 .tocButton.open:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
 .tocButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
+
 .svgMenuButton {
 	stroke-width: 2;
 	flex-shrink: 0;
@@ -338,12 +363,13 @@ button:focus {
 	display: none;
 	visibility: hidden;
 }
-.hamburgerButton:active {
-	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
-}
 .hamburgerButton:hover {
 	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
 }
+.hamburgerButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+
 .svgHamburger {
 	display: inline-block;
 	user-select: none;
