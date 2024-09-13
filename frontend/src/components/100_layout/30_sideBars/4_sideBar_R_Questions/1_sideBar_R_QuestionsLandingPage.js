@@ -56,31 +56,31 @@ const SideBar_R_QuestionsLandingPage = () => {
 							<h2>Sample Driver's License Tests</h2>
 							<div className={classes.testButtonsContainer}>
 								<button onClick={test1} className={classes.paginationButtonR} disabled={isInactive}>
-									<p>Test #1 </p>
+									<p>#1 </p>
 									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
 								<button onClick={test2} className={classes.paginationButtonR} disabled={isInactive}>
-									<p>Test #2 </p>
+									<p>#2 </p>
 									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
 								<button onClick={test3} className={classes.paginationButtonR} disabled={isInactive}>
-									<p>Test #3 </p>
+									<p>#3 </p>
 									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
 								<button onClick={test4} className={classes.paginationButtonR} disabled={isInactive}>
-									<p>Test #4 </p>
+									<p>#4 </p>
 									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
 								<button onClick={test5} className={classes.paginationButtonR} disabled={isInactive}>
-									<p>Test #5 </p>
+									<p>#5 </p>
 									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>

@@ -642,8 +642,8 @@ strong {
 	display: flex;
 	box-sizing: border-box;
 	position: relative !important;
-	flex-direction: column;
-	justify-content: center;
+	/* flex-direction: column; */
+	/* justify-content: center; */
 	align-items: center;
 	height: 5vh;
 	margin: 0.3vh;
@@ -654,7 +654,9 @@ strong {
 	border-radius: 30%;
 	background: transparent;
 	cursor: pointer;
+	padding: 0;
 }
+
 .topLeft .testButtonsContainer button:hover {
 	background: var(--hover_menuButtonOpen_gray_to_darkGray);
 	transform-origin: right center;
@@ -671,6 +673,15 @@ strong {
 	fill: #287bba;
 	transform: scale(1.6);
 }
+.topLeft .testButtonsContainer button p {
+	width: 3vw;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: auto;
+	font-size: 2vh;
+	z-index: 10;
+}
 .topLeft .testButtonsContainer button:hover p {
 	color: #287bba;
 	transition: color 0.3s ease-out;
@@ -678,6 +689,7 @@ strong {
 .topLeft .testButtonsContainer button svg {
 	height: 5vh;
 	position: absolute;
+	left: 0.5vw;
 }
 .testButtonsContainer {
 	display: flex;
