@@ -292,7 +292,7 @@
 	flex-direction: row;
 	-webkit-box-pack: justify;
 	justify-content: space-between;
-	padding-top: 3.75rem;
+	padding-top: 1.75rem;
 }
 .imageDivCol {
 	-webkit-box-flex: 0;
