@@ -293,11 +293,9 @@ const DemoDMVClassC = () => {
 					GoTo_TopOfPage={GoTo_TopOfPage}
 				/>
 				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
-					<div className={classes.handbook_innerContainer}>
-						<div className={classes.page_contentContainer}>
-							{ListOfPages[currentPageNum_rdx - 1]}
-							<PaginationGUI />
-						</div>
+					<div className={classes.page_contentContainer}>
+						{ListOfPages[currentPageNum_rdx - 1]}
+						<PaginationGUI />
 					</div>
 				</div>
 				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_NotesModal pageContentRef={pageContentRef} />}
