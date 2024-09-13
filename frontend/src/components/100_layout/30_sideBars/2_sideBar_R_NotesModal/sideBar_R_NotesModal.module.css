@@ -44,27 +44,18 @@
 /* exit button ------------------------------------------- */
 .exitButton {
 	z-index: 3000;
-	position: fixed; /* Not in Original */
-	display: inline-grid;
-	color: #b4b4b4;
+	position: absolute;
+	right: 0;
+	width: 36px;
+	height: 40px;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	-webkit-appearance: button;
-	margin: 0;
-	place-content: center;
-	height: 40px;
-	min-width: unset;
-	font-size: 14px;
-
-	width: 36px;
-	transition: none;
+	margin-right: 0.84rem;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	border: 0px solid red;
-
-	right: 0; /* Not in Original */
-	margin-right: 1.5rem; /* Not in Original */
+	border-radius: 0.5rem;
+	color: #b4b4b4;
+	cursor: pointer;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
