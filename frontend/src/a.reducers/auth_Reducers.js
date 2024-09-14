@@ -36,6 +36,8 @@ const initialState = {
 	//! change this back to false
 	sideBar_R_Questions_isOpen_rdx: true,
 
+	sideBar_R_SearchBar_isActive_rdx: false,
+
 	//Modals
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
@@ -49,6 +51,7 @@ const initialState = {
 	isDarkMode_rdx: isDarkMode,
 	isDemoView_rdx: false,
 	isDashboardFullScreen_rdx: true,
+	activePanel: "main",
 
 	//User Info
 	loginError_rdx: "",
@@ -92,7 +95,6 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView_rdx = false;
 		},
-
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 			state.inputPageNum_rdx = action.payload;
@@ -103,7 +105,10 @@ const userSlice = createSlice({
 		setDemoPageLength(state, action) {
 			state.pagesLength_rdx = action.payload;
 		},
-		// SideBars
+		//General
+		setActivePanel(state, action) {
+			state.activePanel = action.payload;
+		},
 		// SideBar L
 		sideBar_L_Toggle_Visibility(state) {
 			state.sideBar_L_isOpen_rdx = !state.sideBar_L_isOpen_rdx;
@@ -120,7 +125,6 @@ const userSlice = createSlice({
 		sideBar_L_YesAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
-
 		// Notes SideBar
 		sideBar_R_Open_Notes(state) {
 			state.sideBar_R_Notes_isOpen_rdx = true;
@@ -135,7 +139,6 @@ const userSlice = createSlice({
 		sideBar_R_Close_Main(state) {
 			state.sideBar_R_Main_isOpen_rdx = false;
 		},
-
 		// R Questions SideBar
 		sideBar_R_Open_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = true;
@@ -143,7 +146,6 @@ const userSlice = createSlice({
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
 		},
-
 		sideBar_R_Questions_GoTo_Landing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsLanding";
 		},
@@ -154,16 +156,13 @@ const userSlice = createSlice({
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 		},
-
 		sideBar_R_Questions_setQuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
-
 		sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
-
 		updateQuestionResults(state, action) {
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {
@@ -172,10 +171,12 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber] = answerData;
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 		},
-
 		resetQuestionResults(state) {
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");
+		},
+		sideBar_R_SearchBar_isActive(state, action) {
+			state.sideBar_R_SearchBar_isActive_rdx = action.payload;
 		},
 
 		// Get Started Modal

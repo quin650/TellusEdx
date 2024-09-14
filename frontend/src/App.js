@@ -78,9 +78,10 @@ const App = () => {
 		};
 	}, [location]);
 	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
+	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 	useEffect(() => {
 		const handleKeyCombination = (e) => {
-			if (location.pathname !== "/demo" && e.ctrlKey && e.key === "m") {
+			if (location.pathname !== "/demo" && !sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
 				if (sideBar_Right_Main_ModalStatus_rdx) {
 					dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
 				} else {
@@ -94,7 +95,7 @@ const App = () => {
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [location.pathname, sideBar_Right_Main_ModalStatus_rdx]);
+	}, [location.pathname, sideBar_Right_Main_ModalStatus_rdx, sideBar_R_SearchBar_isActive_rdx]);
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>

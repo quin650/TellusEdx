@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
@@ -91,9 +91,12 @@ const SideBar_R_QuestionNumber = () => {
 		);
 		setStartGradingTest(true);
 	};
-
+	const questionContentRef = useRef(null);
+	const handleQuestionSideBarClick = () => {
+		dispatch(userReducerActions.setActivePanel("questions"));
+	};
 	return (
-		<div className={classes.handbook_outerContainer2}>
+		<div className={classes.handbook_outerContainer2} ref={questionContentRef} onClick={handleQuestionSideBarClick}>
 			<div className={classes.handbook_innerContainer}>
 				<div className={classes.page_contentContainer}>
 					{questionComponent}

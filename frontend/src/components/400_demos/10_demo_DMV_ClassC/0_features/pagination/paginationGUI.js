@@ -27,20 +27,23 @@ const PaginationGUI = () => {
 		}
 	}, [currentPageNum_rdx, pagesLength_rdx, dispatch]);
 	// Event listeners -- Left(Prev)-Right(Next)
+	const activePanel = useSelector(({ user }) => user.activePanel);
 	const handleKeyDown = useCallback(
 		(e) => {
-			switch (e.key) {
-				case "ArrowLeft":
-					PrevPage();
-					break;
-				case "ArrowRight":
-					NextPage();
-					break;
-				default:
-					break;
+			if (activePanel === "main") {
+				switch (e.key) {
+					case "ArrowLeft":
+						PrevPage();
+						break;
+					case "ArrowRight":
+						NextPage();
+						break;
+					default:
+						break;
+				}
 			}
 		},
-		[PrevPage, NextPage]
+		[PrevPage, NextPage, activePanel]
 	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);

@@ -22,7 +22,7 @@ const PaginationQuestionsGUI = () => {
 		const questionNumbers = Object.keys(testResultsForCurrentTest).map(Number);
 		return questionNumbers.length > 0 ? Math.max(...questionNumbers) : 0;
 	}, [sideBar_R_QuestionTestResults_rdx, sideBar_R_Questions_CurrentTestNumber_rdx]);
-
+	const [nextIsActive, setNextIsActive] = useState(false);
 	useEffect(() => {
 		const latest = getLastSubmittedQuestionNumber();
 		setLatestSubmittedQuestion(latest);
@@ -51,27 +51,30 @@ const PaginationQuestionsGUI = () => {
 
 	const NextQuestion = useCallback(() => {
 		let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
-		if (newQuestionNum <= 36) {
+		if (newQuestionNum <= 36 && nextIsActive) {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
 			dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
 			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
-	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]);
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive]);
 	// Event listeners -- Left(Prev)-Right(Next)
+	const activePanel = useSelector(({ user }) => user.activePanel);
 	const handleKeyDown = useCallback(
 		(e) => {
-			switch (e.key) {
-				case "ArrowLeft":
-					PrevQuestion();
-					break;
-				case "ArrowRight":
-					NextQuestion();
-					break;
-				default:
-					break;
+			if (activePanel === "questions") {
+				switch (e.key) {
+					case "ArrowLeft":
+						PrevQuestion();
+						break;
+					case "ArrowRight":
+						NextQuestion();
+						break;
+					default:
+						break;
+				}
 			}
 		},
-		[PrevQuestion, NextQuestion]
+		[PrevQuestion, NextQuestion, activePanel]
 	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
@@ -80,7 +83,6 @@ const PaginationQuestionsGUI = () => {
 		};
 	}, [handleKeyDown]);
 
-	const [nextIsActive, setNextIsActive] = useState(false);
 	useEffect(() => {
 		if (sideBar_R_Questions_SelectedQuestionNum_rdx !== 36) {
 			if (sideBar_R_Questions_CurrentQuestionNumber_rdx <= latestSubmittedQuestion) {

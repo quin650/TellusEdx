@@ -114,10 +114,12 @@ const MainNavbar = () => {
 	const [searchBarIsOpened, setSearchBarIsOpened] = useState(false);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
 	const handleSearchBarFocus = () => {
+		dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
 		setSearchBarIsFocused(true);
 		searchBarRef.current.focus();
 	};
 	const handleSearchBarBlur = () => {
+		dispatch(userReducerActions.sideBar_R_SearchBar_isActive(false));
 		if (searchText) {
 			return;
 		}

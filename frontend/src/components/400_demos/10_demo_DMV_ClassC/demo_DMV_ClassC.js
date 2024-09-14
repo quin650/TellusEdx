@@ -143,7 +143,6 @@ const DemoDMVClassC = () => {
 		};
 	};
 	const getClosestHeaderToTop = () => {
-		// console.log("Running getClosestHeaderToTop...");
 		const H2_H3_elements2 = pageContentRef.current.querySelectorAll("h2, h3");
 		let closestHeader = null;
 		let closestDistance = Infinity;
@@ -181,18 +180,14 @@ const DemoDMVClassC = () => {
 		}
 	};
 	const debouncedHandleScroll = debounce(() => {
-		// console.log("Scroll event detected (debounced).");
 		const closestHeaderId = getClosestHeaderToTop();
 		setActiveID(closestHeaderId);
-		// console.log("Closest header ID after scroll (debounced):", closestHeaderId);
 	}, 100);
 	useEffect(() => {
 		const scrollContainer = mainContainerRef.current;
 		if (scrollContainer) {
 			scrollContainer.addEventListener("scroll", debouncedHandleScroll);
-			// console.log("Scroll event listener added to mainContainerRef (debounced).");
 			return () => {
-				// console.log("Removing scroll event listener...");
 				scrollContainer.removeEventListener("scroll", debouncedHandleScroll);
 			};
 		} else {
@@ -231,47 +226,50 @@ const DemoDMVClassC = () => {
 		};
 	}, [sideBar_L_AllowCollapse_OnWindowResize_rdx, sideBar_L_isOpen_rdx, width_Affects_to_SideBar_L_TOC]);
 	// Hot-Key Combinations
+	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 	const handleKeyCombination = (e) => {
-		switch (true) {
-			case e.ctrlKey && e.key === "b":
-				if (sideBar_L_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_L_Close());
-					if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
-						dispatch(userReducerActions.sideBar_L_NotAllowCollapse_OnWindowResize());
+		if (!sideBar_R_SearchBar_isActive_rdx) {
+			switch (true) {
+				case e.key === "b":
+					if (sideBar_L_isOpen_rdx) {
+						dispatch(userReducerActions.sideBar_L_Close());
+						if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
+							dispatch(userReducerActions.sideBar_L_NotAllowCollapse_OnWindowResize());
+						}
+					} else {
+						dispatch(userReducerActions.sideBar_L_Open());
 					}
-				} else {
-					dispatch(userReducerActions.sideBar_L_Open());
-				}
-				break;
-			case e.ctrlKey && e.key === "n":
-				if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
-				if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
-				if (!sideBar_R_Notes_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_R_Open_Notes());
-				} else {
-					dispatch(userReducerActions.sideBar_R_Close_Notes());
-				}
-				break;
-			case e.ctrlKey && e.key === "m":
-				if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
-				if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
-				if (!sideBar_R_Main_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_R_Open_Main());
-				} else {
-					dispatch(userReducerActions.sideBar_R_Close_Main());
-				}
-				break;
-			case e.ctrlKey && e.key === "q":
-				if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
-				if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
-				if (!sideBar_R_Questions_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_R_Open_Questions());
-				} else {
-					dispatch(userReducerActions.sideBar_R_Close_Questions());
-				}
-				break;
-			default:
-				break;
+					break;
+				case e.key === "n":
+					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
+					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
+					if (!sideBar_R_Notes_isOpen_rdx) {
+						dispatch(userReducerActions.sideBar_R_Open_Notes());
+					} else {
+						dispatch(userReducerActions.sideBar_R_Close_Notes());
+					}
+					break;
+				case e.key === "m":
+					if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
+					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
+					if (!sideBar_R_Main_isOpen_rdx) {
+						dispatch(userReducerActions.sideBar_R_Open_Main());
+					} else {
+						dispatch(userReducerActions.sideBar_R_Close_Main());
+					}
+					break;
+				case e.key === "q":
+					if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
+					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
+					if (!sideBar_R_Questions_isOpen_rdx) {
+						dispatch(userReducerActions.sideBar_R_Open_Questions());
+					} else {
+						dispatch(userReducerActions.sideBar_R_Close_Questions());
+					}
+					break;
+				default:
+					break;
+			}
 		}
 	};
 	useEffect(() => {
@@ -279,7 +277,10 @@ const DemoDMVClassC = () => {
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [sideBar_L_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx]);
+	}, [sideBar_L_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx]);
+	const handleMainClick = () => {
+		dispatch(userReducerActions.setActivePanel("main"));
+	};
 
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
@@ -292,7 +293,7 @@ const DemoDMVClassC = () => {
 					activeID={activeID}
 					GoTo_TopOfPage={GoTo_TopOfPage}
 				/>
-				<div className={classes.handbook_outerContainer} ref={pageContentRef}>
+				<div className={classes.handbook_outerContainer} ref={pageContentRef} onClick={handleMainClick}>
 					<div className={classes.page_contentContainer}>
 						{ListOfPages[currentPageNum_rdx - 1]}
 						<PaginationGUI />

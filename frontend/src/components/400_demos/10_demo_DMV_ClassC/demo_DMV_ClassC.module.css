@@ -18,8 +18,8 @@
 .DemoDMVClassCLandingPage {
 	-webkit-box-flex: 1;
 	flex-grow: 1;
-	padding-left: 3.75rem;
-	padding-right: 3.75rem;
+	padding-left: 3vw;
+	padding-right: 3vw;
 	margin: 0 0 auto 0;
 	/* new */
 	/* height: calc(72vh - 60px); */
@@ -59,21 +59,13 @@
 .topRight.open {
 	display: none;
 }
+.topRight .imageDiv {
+	overflow: visible;
+}
 @media (max-width: 1100px) {
 	.topRight {
 		display: flex;
 		margin-left: auto;
-	}
-	.topRight .imageDiv figure {
-		margin: auto;
-	}
-	.topRight .imageDiv figure img {
-		height: 250px;
-		width: 155px;
-	}
-
-	.topRight .imageDiv a {
-		font-size: 10px;
 	}
 }
 @media (max-width: 2200px) {
@@ -85,12 +77,12 @@
 		margin: auto;
 	}
 	.topRight .imageDiv figure img {
-		height: 250px;
-		width: 155px;
+		width: 13vw;
+		min-width: 118px;
 	}
-
 	.topRight .imageDiv a {
-		font-size: 10px;
+		font-size: 8px;
+		text-wrap: nowrap;
 	}
 }
 .rightSide {
@@ -100,6 +92,7 @@
 	flex-shrink: 1;
 	flex-direction: column;
 	padding-left: 1rem;
+	max-width: 440px;
 }
 @media (max-width: 1100px) {
 	.rightSide {
@@ -206,7 +199,7 @@
 	justify-content: space-between;
 }
 .questionNumber {
-	font-size: 0.875rem !important;
+	font-size: 1.5vh !important;
 	text-transform: uppercase;
 	line-height: 1;
 	margin: 0 0 0 0;
@@ -228,7 +221,7 @@
 	color: var(--color_readerSectionTitle_white_to_offWhite);
 }
 .handbook_header_section h2 {
-	font-size: 1.8rem;
+	font-size: 3vh;
 	text-transform: none;
 	line-height: 1.15;
 	margin: 0 0 0 0;
@@ -258,7 +251,7 @@
 	font-weight: 700;
 	line-height: 1.36;
 	color: var(--color_readerSecondary_darkBlue_to_lightBlue);
-	margin: 0 0 1rem;
+	margin: 0;
 }
 .page_content h4 {
 	font-size: 1.5rem;
@@ -433,16 +426,17 @@ strong {
 /*! handbook landing page ------------------------------------------------------*/
 /* where to start &&  toc Parent Items-----------------------------*/
 .welcome {
-	margin-bottom: 20px;
+	margin: 0;
 }
 .sectionContent {
 	margin-left: 8px;
 }
 .options {
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
+	margin: 0;
 }
 .options ul {
-	margin-left: 0 !important;
+	margin: 0;
 }
 .contentContainerWhereToStart {
 	list-style: none;
@@ -539,12 +533,13 @@ strong {
 	height: 40px;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
-	margin-right: 0.84rem;
+
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	border: 0px solid red;
 	border-radius: 0.5rem;
 	color: #b4b4b4;
 	cursor: pointer;
+	right: 1.5rem;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
@@ -578,8 +573,8 @@ strong {
 .DemoDMVClassCQuestionsLandingPage {
 	-webkit-box-flex: 1;
 	flex-grow: 1;
-	padding-left: 3.75rem;
-	padding-right: 3.75rem;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	min-height: 67.4vh;
 	display: flex;
 	flex-direction: column;
@@ -800,8 +795,8 @@ strong {
 .question_content.sideBar_L_isOpen {
 	-webkit-box-flex: 1;
 	/* flex-grow: 1; */
-	padding-left: 3.75rem;
-	padding-right: 3.75rem;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	margin: 0 auto auto 0;
 	/* min-height: 67.4vh; */
 	height: 30vh;
