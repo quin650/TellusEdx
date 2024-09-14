@@ -232,6 +232,7 @@
 	flex-direction: column;
 	padding-left: 2vw;
 	padding-right: 2vw;
+	margin-bottom: auto;
 }
 .page_content h2 {
 	font-size: 3rem;
@@ -632,29 +633,42 @@ strong {
 	right: -5%;
 	top: 3%;
 	max-height: 20vh;
+	cursor: pointer;
 }
+
+@media (min-width: 1300px) {
+	.topLeft button svg {
+		margin-top: -1.5vw;
+		/* transform: translateY(-5px);  */
+	}
+	.topLeft .testButtonsContainer button svg {
+		margin-top: 0;
+	}
+}
+
 .topLeft .testButtonsContainer button {
 	display: flex;
 	box-sizing: border-box;
 	position: relative !important;
 	/* flex-direction: column; */
-	/* justify-content: center; */
+	justify-content: space-between;
 	align-items: center;
 	height: 5vh;
 	margin: 0.3vh;
 	width: 5vh;
 	flex-grow: 0;
 	right: 0 !important;
-	border: 0.2vh solid white;
+	border: 0.2vh solid white !important;
 	border-radius: 30%;
 	background: transparent;
 	cursor: pointer;
 	padding: 0;
+	transform-origin: center center;
 }
 
 .topLeft .testButtonsContainer button:hover {
 	background: var(--hover_menuButtonOpen_gray_to_darkGray);
-	transform-origin: right center;
+	transform-origin: center center;
 }
 .topLeft .testButtonsContainer button:hover .arrowIconR {
 	fill: #287bba;
@@ -669,13 +683,14 @@ strong {
 	transform: scale(1.6);
 }
 .topLeft .testButtonsContainer button p {
-	width: 3vw;
+	width: 1px;
 	position: relative;
 	top: 0;
 	left: 0;
-	margin: auto;
+	margin: auto auto auto 0;
 	font-size: 2vh;
 	z-index: 10;
+	transform-origin: center center;
 }
 .topLeft .testButtonsContainer button:hover p {
 	color: #287bba;
@@ -684,7 +699,7 @@ strong {
 .topLeft .testButtonsContainer button svg {
 	height: 5vh;
 	position: absolute;
-	left: 0.5vw;
+	left: 20%;
 }
 .testButtonsContainer {
 	display: flex;

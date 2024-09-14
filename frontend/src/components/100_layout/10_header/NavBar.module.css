@@ -177,7 +177,7 @@ button:focus {
 	overflow: hidden;
 }
 .searchContainer.open:hover {
-	background-color: #26282a !important;
+	background-color: var(--hover_backgroundColor_SearchBar_offBlack_to_offWhite) !important;
 }
 /* Search Button------------------------------------------------------*/
 .searchButton {

@@ -92,7 +92,10 @@ const MainNavbar = () => {
 	//!Search Bar
 	const [searchText, setSearchText] = useState("");
 	const exitSearchBarAction = () => {
+		dispatch(userReducerActions.sideBar_R_SearchBar_isActive(false));
 		setSearchBarIsOpened(false);
+		setSearchBarIsFocused(false);
+		searchBarRef.current.blur();
 		setSearchText("");
 	};
 	useEffect(() => {
@@ -113,6 +116,12 @@ const MainNavbar = () => {
 	const searchBarRef = useRef(null);
 	const [searchBarIsOpened, setSearchBarIsOpened] = useState(false);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
+	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
+	useEffect(() => {
+		if (sideBar_R_SearchBar_isActive_rdx) {
+			openSearchBar();
+		}
+	}, [sideBar_R_SearchBar_isActive_rdx]);
 	const handleSearchBarFocus = () => {
 		dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
 		setSearchBarIsFocused(true);
@@ -125,6 +134,7 @@ const MainNavbar = () => {
 		}
 		setSearchBarIsOpened(false);
 		setSearchBarIsFocused(false);
+		searchBarRef.current.blur();
 	};
 	const openSearchBar = () => {
 		if (!searchBarIsOpened) {

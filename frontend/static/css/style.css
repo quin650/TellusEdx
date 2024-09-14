@@ -86,6 +86,7 @@ body {
 	--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray: #ffffffa6;
 
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #1a1c1e;
+	--hover_backgroundColor_SearchBar_offBlack_to_offWhite: #26282a;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #287bba);
@@ -169,6 +170,7 @@ body {
 	--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray: ##232323a6;
 
 	--backgroundColor_SearchBar_offBlack_to_offWhite: #eeebee;
+	--hover_backgroundColor_SearchBar_offBlack_to_offWhite: #c0c0c0;
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #171717;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #191919);

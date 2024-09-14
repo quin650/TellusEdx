@@ -20,7 +20,8 @@ const App = () => {
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView_rdx = useSelector(({ user }) => user.isDemoView_rdx);
-	const sideBar_Right_Main_ModalStatus_rdx = useSelector(({ user }) => user.sideBar_Right_Main_ModalStatus_rdx);
+	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
+	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 
 	const [divIDs, setDivIDs] = useState([]);
 	const [activeID, setActiveID] = useState("");
@@ -78,14 +79,19 @@ const App = () => {
 		};
 	}, [location]);
 	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
-	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
+
 	useEffect(() => {
 		const handleKeyCombination = (e) => {
-			if (location.pathname !== "/demo" && !sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
-				if (sideBar_Right_Main_ModalStatus_rdx) {
-					dispatch(userReducerActions.sideBar_Right_Close_Main_Modal());
+			if (!sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
+				if (sideBar_R_Main_isOpen_rdx) {
+					dispatch(userReducerActions.sideBar_R_Close_Main());
 				} else {
-					dispatch(userReducerActions.sideBar_Right_Open_Main_Modal());
+					dispatch(userReducerActions.sideBar_R_Open_Main());
+				}
+			} else if (!sideBar_R_SearchBar_isActive_rdx) {
+				if (e.key === "s") {
+					e.preventDefault();
+					dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
 				}
 			}
 		};
@@ -95,7 +101,7 @@ const App = () => {
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [location.pathname, sideBar_Right_Main_ModalStatus_rdx, sideBar_R_SearchBar_isActive_rdx]);
+	}, [location.pathname, sideBar_R_Main_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx]);
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
