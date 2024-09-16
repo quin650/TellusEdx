@@ -7,8 +7,6 @@ import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.modul
 const SideBar_R_QuestionsLandingPage = () => {
 	const dispatch = useDispatch();
 	//! Questions Landing Page ---------------------------------
-	// State
-	const [isInactive, setIsInactive] = useState(false);
 	// Button Actions
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");
@@ -41,65 +39,65 @@ const SideBar_R_QuestionsLandingPage = () => {
 					<h1>Questions</h1>
 				</div>
 				<div className={classes.questionsLandingPageBody}>
-					<div className={classes.quadrantContainer}>
-						<div className={classes.topLeft}>
+					<div className={classes.quadrant_OuterContainer}>
+						<div className={classes.quadrant_InnerContainer}>
 							<h2>Questions On This Page</h2>
-							<button onClick={generalButtonClick} className={classes.paginationButtonR} disabled={isInactive}>
-								<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
+								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 								</svg>
 							</button>
 						</div>
 					</div>
-					<div className={classes.quadrantContainer}>
-						<div className={classes.topLeft}>
+					<div className={classes.quadrant_OuterContainer}>
+						<div className={classes.quadrant_InnerContainer}>
 							<h2>Sample Driver's License Tests</h2>
 							<div className={classes.testButtonsContainer}>
-								<button onClick={test1} className={classes.paginationButtonR} disabled={isInactive}>
+								<button onClick={test1} className={`${classes["paginationButtonR"]} ${false ? classes.isInactive : ""}`} disabled={false}>
 									<p>#1 </p>
-									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+									<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
-								<button onClick={test2} className={classes.paginationButtonR} disabled={isInactive}>
+								<button onClick={test2} className={`${classes["paginationButtonR"]} ${true && classes.isInactive}`} disabled={true}>
 									<p>#2 </p>
-									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+									<svg className={`${classes["arrowIconR"]} ${true ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
-								<button onClick={test3} className={classes.paginationButtonR} disabled={isInactive}>
+								<button onClick={test3} className={`${classes["paginationButtonR"]} ${true && classes.isInactive}`} disabled={true}>
 									<p>#3 </p>
-									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+									<svg className={`${classes["arrowIconR"]} ${true ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
-								<button onClick={test4} className={classes.paginationButtonR} disabled={isInactive}>
+								<button onClick={test4} className={`${classes["paginationButtonR"]} ${true && classes.isInactive}`} disabled={true}>
 									<p>#4 </p>
-									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+									<svg className={`${classes["arrowIconR"]} ${true ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
-								<button onClick={test5} className={classes.paginationButtonR} disabled={isInactive}>
+								<button onClick={test5} className={`${classes["paginationButtonR"]} ${true && classes.isInactive}`} disabled={true}>
 									<p>#5 </p>
-									<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+									<svg className={`${classes["arrowIconR"]} ${true ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 								</button>
 							</div>
 						</div>
 					</div>
-					<div className={classes.quadrantContainer}>
-						<div className={classes.topLeft}>
+					<div className={classes.quadrant_OuterContainer}>
+						<div className={classes.quadrant_InnerContainer}>
 							<h2>Retake failed questions</h2>
-							<button onClick={generalButtonClick} className={classes.paginationButtonR} disabled={isInactive}>
-								<svg className={`${classes["arrowIconR"]} ${isInactive && classes.isInactive}`} viewBox="0 0 24 24">
+							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
+								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 								</svg>
 							</button>
 						</div>
 					</div>
-					<div className={classes.quadrantContainer}>
-						<div className={classes.topLeft}>
+					<div className={classes.quadrant_OuterContainer}>
+						<div className={classes.quadrant_InnerContainer}>
 							<h2>Probability of Passing</h2>
 						</div>
 					</div>

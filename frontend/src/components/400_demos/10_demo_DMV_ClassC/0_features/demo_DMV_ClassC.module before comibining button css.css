@@ -648,81 +648,59 @@ strong {
 	font-size: 2.3vh;
 }
 /*! [ General ] buttons --------------------------------------------------------*/
-.quadrant_InnerContainer .paginationButtonR {
-	position: absolute;
+.quadrant_InnerContainer button {
+	background: transparent;
+	position: absolute !important;
+
 	top: 3%;
 	right: -5%;
+
 	width: 50%;
 	max-height: 20vh;
-	border-radius: 30%;
-	color: inherit;
-	overflow: hidden;
 
+	border-radius: 30%;
 	border: 0.3vh solid white;
-	background-color: transparent;
-}
-.quadrant_InnerContainer .paginationButtonR:hover,
-.quadrant_InnerContainer .paginationButtonR:active {
-	background: var(--hover_menuButtonOpen_gray_to_darkGray);
-	transform-origin: center center;
+
+	color: inherit;
+
 	cursor: pointer;
+	overflow: hidden;
 }
-.quadrant_InnerContainer .paginationButtonR.isInactive,
-.quadrant_InnerContainer .paginationButtonR.isInactive:hover,
-.quadrant_InnerContainer .paginationButtonR.isInactive:active {
-	border: 0.2vh solid #80808040;
-	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
-	cursor: default;
-}
-.quadrant_InnerContainer .paginationButtonR p {
-	width: 1px;
+.quadrant_InnerContainer button p {
+	width: 3vw;
 	position: relative;
 	top: 0;
 	left: 0;
-	margin: auto auto auto 0;
-	font-size: 2vh;
-	z-index: 10;
-	transform-origin: center center;
+	margin-bottom: auto;
+	margin-top: 0;
+	margin-left: 0.5vw;
+	font-size: 1vh;
 }
-.quadrant_InnerContainer .paginationButtonR:hover p,
-.quadrant_InnerContainer .paginationButtonR:active p {
-	color: #287bba;
-	transition: color 0.3s ease-out;
+.quadrant_InnerContainer button:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+	transform-origin: right center;
 }
-.quadrant_InnerContainer .paginationButtonR.isInactive p,
-.quadrant_InnerContainer .paginationButtonR.isInactive:hover p,
-.quadrant_InnerContainer .paginationButtonR.isInactive:active p {
-	transform-origin: 50% 50%;
-	color: #80808040;
-}
-.arrowIconR {
-	transform-origin: center center;
-	transition: transform 0.3s ease-out, fill 0.3s ease-out;
-
-	fill: var(--Blue);
-}
-.quadrant_InnerContainer .paginationButtonR:hover .arrowIconR {
+.quadrant_InnerContainer button:hover .arrowIconR {
 	fill: #287bba;
 	transform: scale(1.4);
 	transition: transform 0.3s ease-out;
 }
-.quadrant_InnerContainer .paginationButtonR:active .arrowIconR {
+.quadrant_InnerContainer button:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.arrowIconR {
+	fill: var(--Blue);
+	transform-origin: center center;
+	transition: transform 0.3s ease-out, fill 0.3s ease-out;
+}
+.quadrant_InnerContainer button:active .arrowIconR {
 	fill: #287bba;
 	transform: scale(1.6);
 }
-.quadrant_InnerContainer .paginationButtonR.isInactive .arrowIconR,
-.quadrant_InnerContainer .paginationButtonR.isInactive:hover .arrowIconR,
-.quadrant_InnerContainer .paginationButtonR.isInactive:active .arrowIconR {
-	transform-origin: center center;
-	transition: transform 0.3s ease-out, fill 0.3s ease-out;
-
-	fill: #80808040;
-	transform: scale(1);
-}
-
 @media (min-width: 1300px) {
 	.quadrant_InnerContainer button svg {
 		margin-top: -1.5vw;
+		/* transform: translateY(-5px);  */
 	}
 	.quadrant_InnerContainer .testButtonsContainer button svg {
 		margin-top: 0;
@@ -741,45 +719,96 @@ strong {
 .testButtonsContainer .paginationButtonR {
 	display: flex;
 	box-sizing: border-box;
-	position: relative;
+	position: relative !important;
 	justify-content: space-between;
 	align-items: center;
 	right: 0 !important;
+
 	height: 5vh;
 	width: 5vh;
+
 	margin: 0.3vh;
 	padding: 0;
-	border: 0.2vh solid white;
+	border: 0.2vh solid white !important;
+
 	transform-origin: center center;
 }
-.testButtonsContainer .paginationButtonR.isInactive {
-	display: flex;
-	box-sizing: border-box;
-	position: relative;
-	justify-content: space-between;
-	align-items: center;
-	right: 0;
-	height: 5vh;
-	width: 5vh;
-	margin: 0.3vh;
-	padding: 0;
-
-	border: 0.2vh solid #80808040;
+.testButtonsContainer .paginationButtonR:hover,
+.testButtonsContainer .paginationButtonR:active {
 	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+	transform-origin: center center;
 }
 .testButtonsContainer .paginationButtonR .arrowIconR {
 	height: 5vh;
 	position: absolute;
 	left: 20%;
 }
+.testButtonsContainer .paginationButtonR:hover .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.4);
+	transition: transform 0.3s ease-out;
+}
+.testButtonsContainer .paginationButtonR:active .arrowIconR {
+	fill: #287bba;
+	transform: scale(1.6);
+}
+.testButtonsContainer .paginationButtonR p {
+	width: 1px;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: auto auto auto 0;
+	font-size: 2vh;
+	z-index: 10;
+	transform-origin: center center;
+}
+.testButtonsContainer .paginationButtonR:hover p {
+	color: #287bba;
+	transition: color 0.3s ease-out;
+}
+
+/*? inactive */
+.testButtonsContainer .paginationButtonR.isInactive {
+	display: flex;
+	box-sizing: border-box;
+	position: relative !important;
+	justify-content: space-between;
+	align-items: center;
+	height: 5vh;
+	margin: 0.3vh;
+	width: 5vh;
+	right: 0 !important;
+	border: 0.2vh solid #80808040 !important;
+	border-radius: 30%;
+	cursor: default;
+	padding: 0;
+	transform-origin: center center;
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.testButtonsContainer .paginationButtonR.isInactive:hover,
+.testButtonsContainer .paginationButtonR.isInactive:active {
+	border-color: gray;
+}
 .testButtonsContainer .paginationButtonR.isInactive .arrowIconR {
 	height: 5vh;
 	position: absolute;
 	left: 20%;
-
 	fill: #80808040;
 }
-
+.testButtonsContainer .paginationButtonR.isInactive:hover .arrowIconR,
+.testButtonsContainer .paginationButtonR.isInactive:active .arrowIconR {
+	transform: scale(1);
+}
+.testButtonsContainer .paginationButtonR.isInactive p {
+	width: 1px;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: auto auto auto 0;
+	font-size: 2vh;
+	z-index: 10;
+	color: #80808040;
+}
 /*? disabled */
 /* .testButtonsContainer .paginationButtonR:disabled {
 	display: flex;
