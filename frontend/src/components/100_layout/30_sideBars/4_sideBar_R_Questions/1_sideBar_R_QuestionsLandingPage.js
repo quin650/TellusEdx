@@ -32,7 +32,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
 	};
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
-	// const [test1Status, setTest1Status] = useState(false);
+
 	const [test2Status, setTest2Status] = useState(false);
 	const [test3Status, setTest3Status] = useState(false);
 	const [test4Status, setTest4Status] = useState(false);
@@ -41,25 +41,22 @@ const SideBar_R_QuestionsLandingPage = () => {
 	useEffect(() => {
 		if (sideBar_R_QuestionTestResults_rdx) {
 			// Check if the values are available before updating state
-			// const test1Completed = !!sideBar_R_QuestionTestResults_rdx[1]?.[36];
+			const test1Completed = !!sideBar_R_QuestionTestResults_rdx[1]?.[36];
 			const test2Completed = !!sideBar_R_QuestionTestResults_rdx[2]?.[36];
 			const test3Completed = !!sideBar_R_QuestionTestResults_rdx[3]?.[36];
 			const test4Completed = !!sideBar_R_QuestionTestResults_rdx[4]?.[36];
-			const test5Completed = !!sideBar_R_QuestionTestResults_rdx[5]?.[36];
 
 			// Update each test status only if the values exist
-			// setTest1Status(test1Completed);
-			setTest2Status(test2Completed);
-			setTest3Status(test3Completed);
-			setTest4Status(test4Completed);
-			setTest5Status(test5Completed);
+			setTest2Status(test1Completed);
+			setTest3Status(test2Completed);
+			setTest4Status(test3Completed);
+			setTest5Status(test4Completed);
 
 			// Log after each update to ensure the state is correctly reflected
 			// console.log("Test 1 Completed: ", test1Completed);
 			// console.log("Test 2 Completed: ", test2Completed);
 			// console.log("Test 3 Completed: ", test3Completed);
 			// console.log("Test 4 Completed: ", test4Completed);
-			// console.log("Test 5 Completed: ", test5Completed);
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
 
