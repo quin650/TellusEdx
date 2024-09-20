@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
@@ -7,9 +8,6 @@ const Page1A = () => {
 	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const dispatch = useDispatch();
 
-	const gotoHandBookPDFReader = () => {
-		console.log("clicked handbook reader 1.0");
-	};
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -54,10 +52,14 @@ const Page1A = () => {
 						</div>
 						<div className={`${classes["topRight"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
 							<div className={classes.imageDiv}>
-								<figure>
-									<img loading="lazy" decoding="async" src="https://cdn.dmv-test-pro.com/handbook/ca-drivers-handbook.jpg" />
-								</figure>
-								<a href="#">California Driver’s Handbook 1.0</a>
+								<Link to="/PDFViewer" target="_blank" rel="noopener noreferrer">
+									<figure>
+										<img loading="lazy" decoding="async" src="https://cdn.dmv-test-pro.com/handbook/ca-drivers-handbook.jpg" />
+									</figure>
+								</Link>
+								<Link to="/PDFViewer" target="_blank" rel="noopener noreferrer">
+									California Driver’s Handbook 1.0
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -237,12 +239,14 @@ const Page1A = () => {
 
 				<div className={`${classes["rightSide"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
 					<div className={classes.imageDiv}>
-						<figure onClick={gotoHandBookPDFReader}>
-							<img loading="lazy" decoding="async" src="https://cdn.dmv-test-pro.com/handbook/ca-drivers-handbook.jpg" />
-						</figure>
-						<a href="#" onClick={gotoHandBookPDFReader}>
+						<Link to="/PDFViewer" target="_blank" rel="noopener noreferrer">
+							<figure>
+								<img loading="lazy" decoding="async" src="https://cdn.dmv-test-pro.com/handbook/ca-drivers-handbook.jpg" />
+							</figure>
+						</Link>
+						<Link to="/PDFViewer" target="_blank" rel="noopener noreferrer">
 							California Driver’s Handbook 1.0
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

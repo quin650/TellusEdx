@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from "react";
-import classes from "./demo.module.css";
+import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
 import DemoNavbar from "./0_features/demoNavbar";
 
-const Demo = () => {
+const PDFViewer = () => {
 	const [pdfState, setPdfState] = useState({
 		pdfUrl: pdf, //The Document URL/File Location
 		pdfDocument: null, //The Document Object (before being set)
@@ -286,4 +286,4 @@ const Demo = () => {
 		</Fragment>
 	);
 };
-export default Demo;
+export default PDFViewer;

@@ -8,6 +8,7 @@ import Footer from "./components/100_layout/40_footer/footer";
 import Home from "./components/200_pages/10_pages/0_home/0_home";
 import Demo_LandingPage from "./components/400_demos/00_demo_LandingPage/demo_LandingPage";
 import DemoDMVClassC from "./components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
+import PDFViewer from "./components/400_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
 
 import AboutUs from "./components/200_pages/10_pages/3_aboutUs";
 import SupportCenter from "./components/200_pages/10_pages/4_supportCenter";
@@ -114,6 +115,7 @@ const App = () => {
 				<Route path="/home" element={<Home />} />
 				<Route path="/demos" element={<Demo_LandingPage />} />
 				<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
+				<Route path="/PDFViewer" element={<PDFViewer />} />
 				<Route path="/aboutus" element={<AboutUs />} />
 				<Route path="/supportcenter" element={<SupportCenter />} />
 				<Route path="/help" element={<Help />} />
