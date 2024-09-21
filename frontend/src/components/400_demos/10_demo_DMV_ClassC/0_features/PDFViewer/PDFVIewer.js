@@ -18,6 +18,7 @@ const PDFViewer = () => {
 	const [isFullScreen, setIsFullScreen] = useState(false); //
 	let pageNumIsPending = null; //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
 	const canvasRef = useRef(null); //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
+	const textLayerRef = useRef(null);
 
 	//!Set pdfDocument, FullScreen Scale
 	useEffect(() => {
@@ -115,7 +116,7 @@ const PDFViewer = () => {
 				setPageIsRendering(false); //Once the page is rendered, set rendering state to false
 				const textContent = await page.getTextContent(); //Once page is rendered, extract text content
 				//!Create the textLayer                                      //Text layer (allows text selection/accessibility features)
-				const textLayerDiv = document.getElementById("textLayer"); //??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
+				const textLayerDiv = textLayerRef.current; //??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
 				textLayerDiv.className = "textLayer"; //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
 				const textLayer = pdfjsLib.renderTextLayer({
 					//Create text layer
@@ -258,10 +259,10 @@ const PDFViewer = () => {
 	return (
 		<Fragment>
 			<DemoNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen} />
-			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
-				<div id="canvas_container" className={classes.canvas_container}>
+			<div className={classes.pdf_viewer}>
+				<div className={classes.canvas_container}>
 					<canvas ref={canvasRef} id="canvas"></canvas>
-					<div id="textLayer" className={classes.textLayer}></div>
+					<div ref={textLayerRef} className={classes.textLayer}></div>
 					<div className={classes.navigation_container}>
 						<div className={classes.navigation_controls}>
 							<button onClick={showPrevPage} id="go_previous">

@@ -106,9 +106,11 @@ const App = () => {
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
-			<header>
-				<MainNavbar />
-			</header>
+			{location.pathname !== "/PDFViewer" && (
+				<header>
+					<MainNavbar />
+				</header>
+			)}
 			{divIDs.length > 0 ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} /> : ""}
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -120,7 +122,7 @@ const App = () => {
 				<Route path="/supportcenter" element={<SupportCenter />} />
 				<Route path="/help" element={<Help />} />
 			</Routes>
-			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && (
+			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && location.pathname !== "/PDFViewer" && (
 				<footer>
 					<Footer />
 				</footer>
