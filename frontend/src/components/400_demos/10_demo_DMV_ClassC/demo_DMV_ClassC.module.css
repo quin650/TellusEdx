@@ -52,7 +52,6 @@
 	display: flex;
 	flex-direction: column;
 }
-
 .topRight {
 	display: none;
 }
@@ -169,7 +168,6 @@
 	line-height: 1.35;
 	transition: width 1s ease;
 }
-
 .page_contentContainer {
 	display: flex;
 	flex-direction: column;
@@ -679,7 +677,7 @@ strong {
 	position: relative;
 	top: 0;
 	left: 0;
-	margin: auto auto auto 0;
+	margin: 0;
 	font-size: 2vh;
 	z-index: 10;
 	transform-origin: center center;
@@ -779,59 +777,14 @@ strong {
 
 	fill: #80808040;
 }
-
-/*? disabled */
-/* .testButtonsContainer .paginationButtonR:disabled {
-	display: flex;
-	box-sizing: border-box;
-	position: relative !important;
-	justify-content: space-between;
-	align-items: center;
-	height: 5vh;
-	margin: 0.3vh;
-	width: 5vh;
-	right: 0 !important;
-	border: 0.2vh solid white !important;
-	border-radius: 30%;
-	cursor: pointer;
-	padding: 0;
-	transform-origin: center center;
+.testButtonsContainer .paginationButtonR span {
+	font-size: 1vh;
+	margin: auto auto 2px auto;
+	color: var(--Blue);
 }
-.testButtonsContainer .paginationButtonR:disabled:hover {
-	background: var(--hover_menuButtonOpen_gray_to_darkGray);
-	transform-origin: center center;
+.testButtonsContainer .paginationButtonR.isInactive span {
+	color: gray;
 }
-.testButtonsContainer .paginationButtonR:disabled:hover .arrowIconR {
-	fill: #287bba;
-	transform: scale(1.4);
-	transition: transform 0.3s ease-out;
-}
-.testButtonsContainer .paginationButtonR:disabled:active {
-	background: var(--active_menuButtonOpen_gray_to_darkGray);
-}
-.testButtonsContainer .paginationButtonR:disabled:active .arrowIconR {
-	fill: #287bba;
-	transform: scale(1.6);
-}
-.testButtonsContainer .paginationButtonR:disabled p {
-	width: 1px;
-	position: relative;
-	top: 0;
-	left: 0;
-	margin: auto auto auto 0;
-	font-size: 2vh;
-	z-index: 10;
-	transform-origin: center center;
-}
-.testButtonsContainer .paginationButtonR:disabled:hover p {
-	color: #287bba;
-	transition: color 0.3s ease-out;
-}
-.testButtonsContainer .paginationButtonR:disabled svg {
-	height: 5vh;
-	position: absolute;
-	left: 20%;
-} */
 /*! Actual Questions --------------------------------------------------*/
 /* page general */
 .question_content,

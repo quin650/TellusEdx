@@ -1,9 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest }) => {
+const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, testIsComplete }) => {
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
@@ -17,6 +17,16 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		setPreviousAnswerID(newAnswerID);
 		get_ChosenAnswerID(newAnswerID);
 	};
+	const [viewTestResults, setViewTestResults] = useState("");
+
+	useEffect(() => {
+		console.log("testIsComplete: ", testIsComplete);
+		if (testIsComplete) {
+			setViewTestResults(<p>View Test Results -- </p>);
+		} else {
+			setViewTestResults("");
+		}
+	}, [testIsComplete]);
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -46,6 +56,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
 				<p>Reason for the correct answer here</p>
 			</div>
+			{viewTestResults}
 		</Fragment>
 	);
 };

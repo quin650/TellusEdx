@@ -24,7 +24,16 @@ const SideBar_R_QuestionNumber = () => {
 		setChosenAnswerID(id);
 		setSubmitButtonIsActive(id > 0);
 	};
+	// Find if Test is Complete
+	const [testIsComplete, setTestIsComplete] = useState(false);
+	useEffect(() => {
+		if (sideBar_R_QuestionTestResults_rdx) {
+			setTestIsComplete(!!sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[36]);
+		}
+	}, [sideBar_R_QuestionTestResults_rdx]);
+	console.log("testIsComplete: ", testIsComplete);
 
+	// Render Question Component
 	useEffect(() => {
 		const questionData = data.questions.find(
 			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
@@ -45,6 +54,7 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={true}
+						testIsComplete={testIsComplete}
 					/>
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
@@ -55,9 +65,10 @@ const SideBar_R_QuestionNumber = () => {
 						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
 						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
 						questionData={questionData}
-						previouslyCheckedID={null}
+						previouslyCheckedID={null} //--------------------diff
 						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={false}
+						startGradingTest={false} //---------------------diff
+						testIsComplete={testIsComplete}
 					/>
 				);
 			} else {
@@ -71,12 +82,12 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={null}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={startGradingTest}
+						testIsComplete={testIsComplete}
 					/>
 				);
 			}
 		}
-	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx, startGradingTest]);
-
+	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx, startGradingTest, testIsComplete]);
 	// Button Actions
 	const cancelButtonAction = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());

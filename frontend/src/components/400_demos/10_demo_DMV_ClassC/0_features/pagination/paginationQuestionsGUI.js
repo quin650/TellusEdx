@@ -28,23 +28,23 @@ const PaginationQuestionsGUI = () => {
 		setLatestSubmittedQuestion(latest);
 	}, [getLastSubmittedQuestionNumber, sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_QuestionTestResults_rdx]);
 	//Local Storage -Page# sync
-	useEffect(() => {
-		let localStorageQuestionNum = localStorage.getItem("currentQuestionNumber");
-		if (localStorageQuestionNum) {
-			const parsedQuestionNum = parseInt(localStorageQuestionNum, 10);
-			if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== parsedQuestionNum) {
-				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(parsedQuestionNum));
-				dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(parsedQuestionNum));
-			}
-		}
-	}, []);
+	// useEffect(() => {
+	// 	let localStorageQuestionNum = localStorage.getItem("currentQuestionNumber");
+	// 	if (localStorageQuestionNum) {
+	// 		const parsedQuestionNum = parseInt(localStorageQuestionNum, 10);
+	// 		if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== parsedQuestionNum) {
+	// 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(parsedQuestionNum));
+	// 			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(parsedQuestionNum));
+	// 		}
+	// 	}
+	// }, []);
 
 	//!Prev-Next Page
 	const PrevQuestion = useCallback(() => {
 		let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx - 1;
 		if (newQuestionNum >= 1) {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-			dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
+			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
 			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]);
@@ -53,7 +53,7 @@ const PaginationQuestionsGUI = () => {
 		let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
 		if (newQuestionNum <= 36 && nextIsActive) {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-			dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
+			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
 			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive]);
