@@ -1,9 +1,11 @@
-import React, { useState, Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, testIsComplete }) => {
+	const dispatch = useDispatch();
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
@@ -18,6 +20,9 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		get_ChosenAnswerID(newAnswerID);
 	};
 
+	const gotoTestREsults = () => {
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResults());
+	};
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -25,7 +30,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					<p className={classes.questionNumber}>Question {questionNumber} of 36</p>
 					<p className={classes.testNumber}>Test {testNumber}</p>
 				</span>
-
 				<h2>{question}</h2>
 			</div>
 			<div className={`${classes["question_content"]} ${sideBar_L_isOpen_rdx && classes.sideBar_L_isOpen}`}>
@@ -47,7 +51,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
 				<p>Reason for the correct answer here</p>
 			</div>
-			<div className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
+			<div onClick={gotoTestREsults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
 				<p>View Test Results </p>
 				<svg className={classes.arrowIconR} viewBox="0 0 24 24">
 					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />

@@ -4,6 +4,7 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
 import SideBar_R_QuestionsLandingPage from "./1_sideBar_R_QuestionsLandingPage";
 import SideBar_R_QuestionNumber from "./2_sideBar_R_QuestionNumber";
+import SideBar_R_TestResults from "./5_sideBar_R_TestResults";
 
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
@@ -129,6 +130,9 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 				break;
 			case "Questions":
 				setContent(<SideBar_R_QuestionNumber />);
+				break;
+			case "TestResults":
+				setContent(<SideBar_R_TestResults />);
 				break;
 			default:
 				setContent(<SideBar_R_QuestionsLandingPage />);

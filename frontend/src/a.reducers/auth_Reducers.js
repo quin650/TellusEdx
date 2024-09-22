@@ -153,6 +153,9 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
 		},
+		sideBar_R_Questions_GoTo_TestResults(state, action) {
+			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
+		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 		},
