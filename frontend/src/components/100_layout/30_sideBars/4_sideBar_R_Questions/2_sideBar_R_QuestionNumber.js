@@ -31,7 +31,6 @@ const SideBar_R_QuestionNumber = () => {
 			setTestIsComplete(!!sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[36]);
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
-	console.log("testIsComplete: ", testIsComplete);
 
 	// Render Question Component
 	useEffect(() => {

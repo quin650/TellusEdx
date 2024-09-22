@@ -17,16 +17,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		setPreviousAnswerID(newAnswerID);
 		get_ChosenAnswerID(newAnswerID);
 	};
-	const [viewTestResults, setViewTestResults] = useState("");
 
-	useEffect(() => {
-		console.log("testIsComplete: ", testIsComplete);
-		if (testIsComplete) {
-			setViewTestResults(<p>View Test Results -- </p>);
-		} else {
-			setViewTestResults("");
-		}
-	}, [testIsComplete]);
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -56,7 +47,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
 				<p>Reason for the correct answer here</p>
 			</div>
-			{viewTestResults}
+			<div className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
+				<p>View Test Results </p>
+				<svg className={classes.arrowIconR} viewBox="0 0 24 24">
+					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+				</svg>
+			</div>
 		</Fragment>
 	);
 };

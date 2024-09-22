@@ -1003,6 +1003,56 @@ strong {
 	margin: 5%;
 	visibility: visible;
 }
+/* View Test Results -----------------------------------------*/
+.viewTestResults {
+	margin: 0 5% 0 auto;
+	padding: 1vh 1vw 1vh 2vw;
+	visibility: hidden;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	border-radius: 6px;
+}
+.viewTestResults:hover {
+	background: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.viewTestResults:active {
+	background: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.viewTestResults p {
+	margin: 0 40px 0 0;
+	color: var(--color_readerHyperLink_brightBlue_to_skyBlue);
+	transform: scale(1);
+	transition: transform 400ms ease;
+}
+.viewTestResults svg {
+	width: 40px;
+	position: absolute;
+	transform: scale(1);
+	transition: transform 400ms ease;
+}
+.viewTestResults:hover p {
+	transform: scale(1.1);
+	transform-origin: center center;
+}
+.viewTestResults:hover svg {
+	transform: scale(1.2);
+	transform-origin: center center;
+}
+.viewTestResults:active p {
+	transform: scale(1.15);
+	transform-origin: center center;
+}
+.viewTestResults:active svg {
+	transform: scale(1.25);
+	transform-origin: center center;
+}
+.viewTestResults.testIsComplete {
+	visibility: visible;
+}
+
 /* Cancel Submit Buttons ------------------------------------------------*/
 .buttonSection {
 	position: relative;

@@ -221,7 +221,6 @@
 }
 .paginationButtonR:hover .arrowIconR {
 	fill: #287bba;
-	/* height: 25px; */
 	scale: 1.25;
 	transition: height 0.1s ease;
 }
@@ -234,7 +233,6 @@
 }
 .paginationButtonR:active .arrowIconR {
 	fill: #287bba;
-	/* height: 25px; */
 	scale: 1.25;
 }
 .arrowIconR.isInactive {
