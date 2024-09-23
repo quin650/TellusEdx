@@ -13,27 +13,24 @@ const initialState = {
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
 
-	//! "Questions -> QuestionsLanding"
+	//! change back -> "QuestionsLanding"
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
 
-	//!  "1 -> null"
 	sideBar_R_Questions_CurrentTestNumber_rdx: null,
-	sideBar_R_Questions_CurrentQuestionNumber_rdx: null,
-	sideBar_R_Questions_SelectedQuestionNum_rdx: null,
-	//! "0"
+	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
+	sideBar_R_Questions_SelectedQuestionNum_rdx: 1,
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	submittedQuestionsList_rdx: [],
 
-	//! false -> true
+	//! change back --> true
 	sideBar_L_isOpen_rdx: true,
-	//! false -> true
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
 
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
-	//! false -> true
+	//! change back to --> false
 	sideBar_R_Questions_isOpen_rdx: false,
 
 	sideBar_R_SearchBar_isActive_rdx: false,

@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 
 import SideBar_R_QuestionsParent from "./3_sideBar_R_QuestionsParent";
-import PaginationQuestionsGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
+import PaginationQuestionsGUI from "../../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
 
-import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
+import data from "../../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionNumber = () => {
 	const [questionComponent, setQuestionComponent] = useState(null);
 	const [chosenAnswerID, setChosenAnswerID] = useState(null);
-	const [chosenAnswerIsCorrectOrIncorrect, setChosenAnswerIsCorrectOrIncorrect] = useState(null);
 	const [previouslyCheckedID, setPreviouslyCheckedID] = useState(null);
 	const [startGradingTest, setStartGradingTest] = useState(false);
 	const [submitButtonIsActive, setSubmitButtonIsActive] = useState(false);
@@ -21,10 +20,9 @@ const SideBar_R_QuestionNumber = () => {
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 
-	const get_ChosenAnswerID = (id, correctOrIncorrect) => {
+	const get_ChosenAnswerID = (id) => {
 		setChosenAnswerID(id);
 		setSubmitButtonIsActive(id > 0);
-		setChosenAnswerIsCorrectOrIncorrect(correctOrIncorrect);
 	};
 	// Find if Test is Complete
 	const [testIsComplete, setTestIsComplete] = useState(false);
@@ -98,7 +96,7 @@ const SideBar_R_QuestionNumber = () => {
 			userReducerActions.updateQuestionResults({
 				testNumber: sideBar_R_Questions_CurrentTestNumber_rdx,
 				questionNumber: sideBar_R_Questions_CurrentQuestionNumber_rdx,
-				answerData: [sideBar_R_Questions_CurrentQuestionNumber_rdx, chosenAnswerID, chosenAnswerIsCorrectOrIncorrect],
+				answerData: [sideBar_R_Questions_CurrentQuestionNumber_rdx, chosenAnswerID],
 			})
 		);
 		setStartGradingTest(true);

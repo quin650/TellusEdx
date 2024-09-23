@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
@@ -12,12 +12,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const [previousAnswerID, setPreviousAnswerID] = useState(null);
 	const [answerIDToUncheck, setAnswerIDToUncheck] = useState(null);
 
-	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
+	const get_newlyCheckedID = (newAnswerID) => {
 		if (previousAnswerID && newAnswerID !== previousAnswerID) {
 			setAnswerIDToUncheck(previousAnswerID);
 		}
 		setPreviousAnswerID(newAnswerID);
-		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
+		get_ChosenAnswerID(newAnswerID);
 	};
 
 	const gotoTestREsults = () => {

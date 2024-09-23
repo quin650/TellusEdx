@@ -14,10 +14,10 @@ const SideBar_R_QuestionsChild = ({ id, text, isCorrect, isPreviouslyChecked, ge
 	const handleCheckboxChange = (event) => {
 		if (event.target.checked) {
 			setIsChecked(true);
-			get_newlyCheckedID(id, isCorrect);
+			get_newlyCheckedID(id);
 		} else {
 			setIsChecked(false);
-			get_newlyCheckedID(null, false);
+			get_newlyCheckedID(null);
 		}
 	};
 

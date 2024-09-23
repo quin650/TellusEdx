@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsLandingPage = () => {
@@ -10,6 +10,48 @@ const SideBar_R_QuestionsLandingPage = () => {
 	// Button Actions
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");
+	};
+	const test1 = () => {
+		if (test1Status === "Done") {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+		} else {
+			console.log("test");
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
+	};
+	const test2 = () => {
+		if (test2Status === "Done") {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+		} else {
+			console.log("test");
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
+	};
+	const test3 = () => {
+		if (test3Status === "Done") {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+		} else {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
+	};
+	const test4 = () => {
+		if (test4Status === "Done") {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+		} else {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
+	};
+	const test5 = () => {
+		if (test5Status === "Done") {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+		} else {
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const [lastQuestionSubmitted, setLastQuestionSubmitted] = useState(null);
@@ -40,23 +82,21 @@ const SideBar_R_QuestionsLandingPage = () => {
 			setTest3Status(test2Completed ? (test3Completed ? "Done" : !test3Started ? "Start" : "Continue") : "n/a yet");
 			setTest4Status(test3Completed ? (test4Completed ? "Done" : !test4Started ? "Start" : "Continue") : "n/a yet");
 			setTest5Status(test4Completed ? (test5Completed ? "Done" : !test5Started ? "Start" : "Continue") : "n/a yet");
-		}
-		if (Object.keys(sideBar_R_QuestionTestResults_rdx).length > 0) {
+
 			const testKeys = Object.keys(sideBar_R_QuestionTestResults_rdx);
 			const lastTest = testKeys[testKeys.length - 1];
-			if (sideBar_R_QuestionTestResults_rdx[lastTest]) {
-				const lastQuestionKeys = Object.keys(sideBar_R_QuestionTestResults_rdx[lastTest]);
-				const lastQuestion = lastQuestionKeys[lastQuestionKeys.length - 1];
-				if (lastQuestion) {
-					setLastQuestionSubmitted(Number(lastQuestion));
-				}
-			}
+			const lastQuestionKeys = Object.keys(sideBar_R_QuestionTestResults_rdx[lastTest]);
+			const lastQuestion = lastQuestionKeys[lastQuestionKeys.length - 1];
+
+			setLastQuestionSubmitted(Number(lastQuestion));
 			// Log after each update to ensure the state is correctly reflected
+
 			// console.log("test1Started: ", test1Started);
 			// console.log("test2Started: ", test2Started);
 			// console.log("test3Started: ", test3Started);
 			// console.log("test4Started: ", test4Started);
 			// console.log("test5Started: ", test5Started);
+
 			// console.log("test1Completed: ", test1Completed);
 			// console.log("test2Completed: ", test2Completed);
 			// console.log("test3Completed: ", test3Completed);
@@ -65,57 +105,6 @@ const SideBar_R_QuestionsLandingPage = () => {
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
 
-	console.log("test1Status: ", test1Status);
-	const test1 = () => {
-		if (test1Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
-		} else if (test1Status === "Start" || test1Status === "") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
-		}
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
-	};
-	const test2 = () => {
-		if (test2Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
-		} else if (test2Status === "Start" || test2Status === "") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
-		}
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
-	};
-	const test3 = () => {
-		if (test3Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
-		} else if (test3Status === "Start" || test3Status === "") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
-		}
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
-	};
-	const test4 = () => {
-		if (test4Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
-		} else if (test4Status === "Start" || test4Status === "") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
-		}
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
-	};
-	const test5 = () => {
-		if (test5Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
-		} else if (test5Status === "Start" || test5Status === "") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
-		}
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
-	};
 	return (
 		<div className={classes.handbook_outerContainer2}>
 			<div className={classes.page_contentContainer}>
