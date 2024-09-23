@@ -65,7 +65,6 @@ const SideBar_R_QuestionsLandingPage = () => {
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
 
-	console.log("test1Status: ", test1Status);
 	const test1 = () => {
 		if (test1Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));

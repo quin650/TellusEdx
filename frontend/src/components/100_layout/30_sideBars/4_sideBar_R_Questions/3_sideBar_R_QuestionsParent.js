@@ -20,9 +20,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
 	};
 
-	const gotoTestREsults = () => {
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResults());
-	};
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -50,12 +47,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			</div>
 			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
 				<p>Reason for the correct answer here</p>
-			</div>
-			<div onClick={gotoTestREsults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
-				<p>View Test Results </p>
-				<svg className={classes.arrowIconR} viewBox="0 0 24 24">
-					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-				</svg>
 			</div>
 		</Fragment>
 	);

@@ -172,7 +172,7 @@ const Page1A = () => {
 								<li className={classes.contentContainer}>
 									<div className={classes.parentLabelOuterContainer}>
 										<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(16))}>
-											<span className={classes.sectionNUm}>Section 3:</span> Safe Driving
+											<span className={classes.sectionNUm}>Section 8:</span> Safe Driving
 										</a>
 									</div>
 								</li>

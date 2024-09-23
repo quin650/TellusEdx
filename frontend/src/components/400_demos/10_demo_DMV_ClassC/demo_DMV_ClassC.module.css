@@ -18,13 +18,9 @@
 .DemoDMVClassCLandingPage {
 	-webkit-box-flex: 1;
 	flex-grow: 1;
-	padding-left: 3vw;
-	padding-right: 3vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	margin: 0 0 auto 0;
-	/* new */
-	/* height: calc(72vh - 60px); */
-
-	/* min-height: 67.4vh; */
 	display: flex;
 	font-size: 16px;
 	flex-direction: row;
@@ -219,6 +215,13 @@
 	margin: 0 0 0 0;
 	color: var(--color_readerSectionTitle_white_to_offWhite);
 }
+.questionNumber.isPassed {
+	color: #00df00;
+}
+.questionNumber.failed {
+	color: #ff6a6a;
+}
+
 .testNumber {
 	font-size: 1.5vh !important;
 	text-transform: uppercase;
@@ -398,6 +401,9 @@ strong {
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack) !important;
 	border: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
 }
+.bottom h2 {
+	margin-top: 0;
+}
 .tocInnerContainer {
 	display: flex;
 	flex-direction: row;
@@ -420,7 +426,7 @@ strong {
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	cursor: pointer !important;
 }
-.handbookTOC_header_section H2 {
+.handbookTOC_header_section h2 {
 	margin-bottom: auto;
 }
 /*! handbook landing page ------------------------------------------------------*/
@@ -430,6 +436,7 @@ strong {
 }
 .welcome h2 {
 	margin: 0;
+	font-size: 24px !important;
 }
 .sectionContent {
 	margin-left: 0;
@@ -447,6 +454,7 @@ strong {
 }
 .options h2 {
 	margin: 0;
+	font-size: 24px !important;
 }
 .contentContainerWhereToStart {
 	list-style: none;
@@ -481,15 +489,17 @@ strong {
 .parentLabel {
 	flex-grow: 1;
 	word-break: break-word;
-	color: var(--color_primary_darkGray_to_gray);
+	color: var(--color_primary_darkGray_to_gray) !important;
 	cursor: pointer;
 	border-radius: 7px;
 	padding: 6px 8px;
 	text-decoration: none;
 }
-.parentLabelOuterContainer .parentLabel {
-	color: var(--color_primary_darkGray_to_gray) !important;
-	padding-left: 0;
+.parentLabel.isPassed {
+	color: #00df00 !important;
+}
+.parentLabel.failed {
+	color: #ff6a6a !important;
 }
 .parentLabel:hover {
 	background-color: var(--hover_menuItem_gray_to_darkGray);
@@ -501,7 +511,9 @@ strong {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .sectionNUm {
+	color: var(--color_primary_darkGray_to_gray) !important;
 	font-weight: 700;
+	min-width: 32px;
 }
 /*!sideBar Question  -------------------------------------------------------------*/
 .sideBar_R_outerContainer {
@@ -790,13 +802,10 @@ strong {
 .question_content,
 .question_content.sideBar_L_isOpen {
 	-webkit-box-flex: 1;
-	/* flex-grow: 1; */
 	padding-left: 2vw;
 	padding-right: 2vw;
-	margin: 0 auto auto 0;
-	/* min-height: 67.4vh; */
+	margin: 0 0 auto 0;
 	height: 30vh;
-	margin: 0 12px;
 }
 .question_content ul,
 .question_content.sideBar_L_isOpen ul {
@@ -905,19 +914,19 @@ strong {
 /*!? Answer Submitted -----------------------------------------*/
 /*? color the checkbox green or red */
 .answerListItem.isCorrect .answerLabel {
-	color: green;
+	color: #00df00;
 	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .answerListItem.isCorrect .answerLabel .checkBox {
-	background-color: green;
-	border: 2px solid green;
+	background-color: #00df00;
+	border: 2px solid #00df00;
 }
 .answerListItem.isCorrect .answerLabel.isChecked {
-	color: green;
+	color: #00df00;
 	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 .answerListItem.isIncorrect .answerLabel.isChecked {
-	color: red;
+	color: #ff6a6a;
 	background-color: var(--hover_menuItem_gray_to_darkGray);
 }
 /*? green bordered checkbox*/
@@ -931,7 +940,7 @@ strong {
 	min-width: 23px;
 	background-color: white;
 	border-radius: 4px;
-	border: 2px solid red;
+	border: 2px solid #ff6a6a;
 }
 /*? add check-mark if correct */
 .answerListItem.isCorrect .answerLabel .checkBox:after {
@@ -966,7 +975,7 @@ strong {
 	transform: translate(-50%, -50%) rotate(-45deg);
 }
 .answerListItem.isIncorrect .answerLabel .checkBox.isChecked {
-	background-color: red;
+	background-color: #ff6a6a;
 }
 /*? no pointer events once submitted */
 .answerListItem.isCorrect * {
@@ -990,17 +999,10 @@ strong {
 	padding-right: 5%;
 	border: 1px solid #d6dade;
 	border-radius: 8px;
-	margin: 5%;
+	margin: 5% 5% 5% 5%;
 	visibility: hidden;
 }
 .reasonCorrect.startGradingTest {
-	-webkit-box-flex: 1;
-	/* flex-grow: 1; */
-	padding-left: 5%;
-	padding-right: 5%;
-	border: 1px solid #d6dade;
-	border-radius: 8px;
-	margin: 5%;
 	visibility: visible;
 }
 /* View Test Results -----------------------------------------*/
@@ -1054,17 +1056,32 @@ strong {
 }
 
 /* Cancel Submit Buttons ------------------------------------------------*/
+.bottomSection {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+}
 .buttonSection {
 	position: relative;
 	display: flex;
+	flex-direction: row;
 	align-items: flex-start;
 	justify-content: center;
 	justify-content: flex-end;
-	/* margin: 0 5% auto auto; */
-	margin: auto 5% 100px auto;
+	margin: 10px 5% 10px auto;
 	padding: 10px 0 10px 16px;
 }
 /* cancel button */
+.buttonCancelSection {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	justify-content: flex-end;
+	margin: 10px 5% 70px auto;
+	padding: 10px 0 10px 16px;
+}
 .button_formatCancel {
 	font-size: 15px;
 	font-weight: 500;
@@ -1083,6 +1100,25 @@ strong {
 .button_formatCancel:active {
 	background-color: #ff9999;
 	border: solid 2px #ff9999;
+}
+.button_formatBack {
+	font-size: 15px;
+	font-weight: 500;
+	color: black;
+	background-color: transparent;
+	width: 80.4px;
+	height: 36.8px;
+	border-radius: 18px;
+	cursor: pointer;
+	border: solid 1px var(--Blue);
+	transition: background-color 0.3s ease;
+}
+.button_formatBack:hover {
+	background-color: var(--BlueHover);
+}
+.button_formatBack:active {
+	background-color: var(--Blue);
+	border: solid 2px var(--Blue);
 }
 /* submit button */
 .button_formatSubmit:disabled {
@@ -1128,4 +1164,45 @@ strong {
 	background-color: var(--Blue);
 	border: solid 2px var(--Blue);
 	transition: none;
+}
+
+/* Test Results Page */
+.refreshButtonArrow {
+	stroke: var(--Blue);
+	stroke-width: 2;
+}
+.refreshButtonCircle {
+	stroke: var(--Blue);
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.score_section {
+	-webkit-box-flex: 1;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	margin: 0 auto auto 0;
+	height: 30vh;
+	margin: 0 12px auto 12px;
+	display: flex;
+	flex-direction: column;
+}
+.score_content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 8px 0 16px 0;
+}
+.score_content div {
+	display: block;
+	padding: 6px 0;
+	text-align: center;
+}
+
+.score_content h3 {
+	margin: 0;
+	padding-bottom: 8px;
+}
+.score_content p {
+	margin: 0;
+	padding-bottom: 8px;
 }

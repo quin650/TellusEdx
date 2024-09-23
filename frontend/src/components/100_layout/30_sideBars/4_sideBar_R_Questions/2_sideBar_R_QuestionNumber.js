@@ -107,11 +107,22 @@ const SideBar_R_QuestionNumber = () => {
 	const handleQuestionSideBarClick = () => {
 		dispatch(userReducerActions.setActivePanel("questions"));
 	};
+	const gotoTestResults = () => {
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResults());
+	};
+	console.log("startGradingTest: ", startGradingTest);
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef} onClick={handleQuestionSideBarClick}>
-			<div className={classes.handbook_innerContainer}>
-				<div className={classes.page_contentContainer}>
-					{questionComponent}
+			<div className={classes.page_contentContainer}>
+				{questionComponent}
+
+				<div className={classes.bottomSection}>
+					<div onClick={gotoTestResults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
+						<p>View Test Results </p>
+						<svg className={classes.arrowIconR} viewBox="0 0 24 24">
+							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+						</svg>
+					</div>
 					<div className={classes.buttonSection}>
 						<button className={classes.button_formatCancel} onClick={cancelButtonAction} type="submit">
 							Cancel
@@ -120,8 +131,8 @@ const SideBar_R_QuestionNumber = () => {
 							Submit
 						</button>
 					</div>
-					<PaginationQuestionsGUI />
 				</div>
+				<PaginationQuestionsGUI />
 			</div>
 		</div>
 	);
