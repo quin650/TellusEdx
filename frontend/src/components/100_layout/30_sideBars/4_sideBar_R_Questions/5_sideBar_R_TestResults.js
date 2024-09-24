@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import SideBar_R_TestResultsListOfQuestions from "./6_sideBar_R_TestResultsListOfQuestions";
+import ResetThisTestModal from "../../../300_modals/30_resetThisTestModal/resetThisTestModal";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResults = () => {
@@ -9,7 +11,8 @@ const SideBar_R_TestResults = () => {
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const testData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
-	const [isPassed, setIsPassed] = useState(true);
+	const [isPassed, setIsPassed] = useState(null);
+	const [answeredCorrectly, setAnsweredCorrectly] = useState(null);
 	const [status, setStatus] = useState(null);
 	const [statusResponse, setStatusResponse] = useState(null);
 
@@ -22,22 +25,67 @@ const SideBar_R_TestResults = () => {
 			setStatusResponse("Please attempt additional tests. You can proceed by clicking 'Next Test' below or select 'Reset this Test' to retry.");
 		}
 	}, [isPassed]);
-	console.log("testData: ", testData);
 
 	// Button Actions
 	const backButtonAction = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx));
 	};
-	const gotoResetResults = () => {
-		console.log("Are you sure you want to reset this test?");
-	};
+
 	const gotoNexTest = () => {
 		console.log("Are you sure you want to reset this test?");
+	};
+	const [ul1, setUl1] = useState([]);
+	const [ul2, setUl2] = useState([]);
+	const [ul3, setUl3] = useState([]);
+
+	useEffect(() => {
+		const testDataEntries = Object.entries(testData);
+		let numberAnsweredCorrectly = 0;
+		setUl1(
+			testDataEntries
+				.filter(([key]) => Number(key) >= 1 && Number(key) <= 12)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
+		);
+		setUl2(
+			testDataEntries
+				.filter(([key]) => Number(key) >= 13 && Number(key) <= 24)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
+		);
+		setUl3(
+			testDataEntries
+				.filter(([key]) => Number(key) >= 25 && Number(key) <= 36)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
+		);
+
+		setAnsweredCorrectly(numberAnsweredCorrectly);
+		setIsPassed(numberAnsweredCorrectly >= 30);
+	}, [testData]);
+
+	const [resetThisTestModal, setResetThisTestModal] = useState(false);
+
+	const exitResetResults = () => {
+		setResetThisTestModal(false);
+	};
+	const gotoResetThisTestModal = () => {
+		setResetThisTestModal(true);
 	};
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef}>
 			<div className={classes.handbook_innerContainer}>
 				<div className={classes.page_contentContainer}>
+					{resetThisTestModal && <ResetThisTestModal testNum={sideBar_R_Questions_CurrentTestNumber_rdx} exitResetResults={exitResetResults} />}
 					<div className={classes.handbook_header_section}>
 						<span className={classes.headerTop}>
 							<p className={`${classes["questionNumber"]} ${isPassed ? classes.isPassed : classes.failed}`}>{status}</p>
@@ -58,7 +106,7 @@ const SideBar_R_TestResults = () => {
 								<div className={classes.score_content}>
 									<div>
 										<h3>Your Score</h3>
-										<p>22/36</p>
+										<p>{answeredCorrectly}/36</p>
 									</div>
 									<div>
 										<h3>Required to Pass</h3>
@@ -73,283 +121,13 @@ const SideBar_R_TestResults = () => {
 								<h2>List of Questions</h2>
 							</div>
 							<div className={classes.tocInnerContainer2}>
-								<ul>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a
-												onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
-												className={`${classes["parentLabel"]} ${isPassed ? classes.isPassed : classes.failed}`}
-											>
-												<span className={classes.sectionNUm}>Q1:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a
-												onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
-												className={`${classes["parentLabel"]} ${isPassed ? classes.isPassed : classes.failed}`}
-											>
-												<span className={classes.sectionNUm}>Q2:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a
-												onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
-												className={`${classes["parentLabel"]} ${false ? classes.isPassed : classes.failed}`}
-											>
-												<span className={classes.sectionNUm}>Q3:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a
-												onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
-												className={`${classes["parentLabel"]} ${false ? classes.isPassed : classes.failed}`}
-											>
-												<span className={classes.sectionNUm}>Q4:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a
-												onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
-												className={`${classes["parentLabel"]} ${false ? classes.isPassed : classes.failed}`}
-											>
-												<span className={classes.sectionNUm}>Q5:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}>
-												<span className={classes.sectionNUm}>Q6:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}>
-												<span className={classes.sectionNUm}>Q7:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}>
-												<span className={classes.sectionNUm}>Q8:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}>
-												<span className={classes.sectionNUm}>Q9:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}>
-												<span className={classes.sectionNUm}>Q10:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}>
-												<span className={classes.sectionNUm}>Q11:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}>
-												<span className={classes.sectionNUm}>Q12:</span> Correct
-											</a>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}>
-												<span className={classes.sectionNUm}>Q1:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}>
-												<span className={classes.sectionNUm}>Q2:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}>
-												<span className={classes.sectionNUm}>Q3:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}>
-												<span className={classes.sectionNUm}>Q4:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}>
-												<span className={classes.sectionNUm}>Q5:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}>
-												<span className={classes.sectionNUm}>Q6:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}>
-												<span className={classes.sectionNUm}>Q7:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}>
-												<span className={classes.sectionNUm}>Q8:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}>
-												<span className={classes.sectionNUm}>Q9:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}>
-												<span className={classes.sectionNUm}>Q10:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}>
-												<span className={classes.sectionNUm}>Q11:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}>
-												<span className={classes.sectionNUm}>Q12:</span> Correct
-											</a>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}>
-												<span className={classes.sectionNUm}>Q1:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}>
-												<span className={classes.sectionNUm}>Q2:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}>
-												<span className={classes.sectionNUm}>Q3:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}>
-												<span className={classes.sectionNUm}>Q4:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}>
-												<span className={classes.sectionNUm}>Q5:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}>
-												<span className={classes.sectionNUm}>Q6:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}>
-												<span className={classes.sectionNUm}>Q7:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}>
-												<span className={classes.sectionNUm}>Q8:</span> Incorrect
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}>
-												<span className={classes.sectionNUm}>Q9:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}>
-												<span className={classes.sectionNUm}>Q10:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}>
-												<span className={classes.sectionNUm}>Q11:</span> Correct
-											</a>
-										</div>
-									</li>
-									<li className={classes.contentContainer}>
-										<div className={classes.parentLabelOuterContainer}>
-											<a className={classes.parentLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}>
-												<span className={classes.sectionNUm}>Q12:</span> Correct
-											</a>
-										</div>
-									</li>
-								</ul>
+								<ul>{ul1}</ul>
+								<ul>{ul2}</ul>
+								<ul>{ul3}</ul>
 							</div>
 						</nav>
 					</div>
-					<div onClick={gotoResetResults} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
+					<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
 						<p>Reset this test</p>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 							<path className={classes.refreshButtonArrow} d="M14 15L10 19L14 23" />
