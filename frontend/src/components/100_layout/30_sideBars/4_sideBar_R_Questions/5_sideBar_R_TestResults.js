@@ -39,6 +39,9 @@ const SideBar_R_TestResults = () => {
 	const [ul3, setUl3] = useState([]);
 
 	useEffect(() => {
+		if (!testData) {
+			return;
+		}
 		const testDataEntries = Object.entries(testData);
 		let numberAnsweredCorrectly = 0;
 		setUl1(

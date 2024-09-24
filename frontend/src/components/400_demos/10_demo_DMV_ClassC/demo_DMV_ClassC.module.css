@@ -551,6 +551,7 @@ strong {
 	height: 100vh;
 	flex-grow: 0;
 	transform: translateX(0);
+	margin-right: -20px;
 }
 /* ref .handbook_outerContainer  */
 .handbook_outerContainer2 {
@@ -571,7 +572,7 @@ strong {
 .exitButton {
 	z-index: 3000;
 	position: absolute;
-	right: 0;
+
 	width: 36px;
 	height: 40px;
 	padding-left: 0.5rem;
@@ -582,7 +583,7 @@ strong {
 	border-radius: 0.5rem;
 	color: #b4b4b4;
 	cursor: pointer;
-	right: 1.5rem;
+	right: 0;
 }
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
@@ -1247,8 +1248,8 @@ strong {
 	display: flex;
 	z-index: 2000;
 	position: fixed;
-	height: 545px;
-	width: 530px;
+	height: 300px;
+	width: 400px;
 	border-top-left-radius: var(--borderRadius_modal);
 	border-top-right-radius: 0;
 	border-bottom-left-radius: var(--borderRadius_modal);
@@ -1261,12 +1262,12 @@ strong {
 .modalContentContainer {
 	box-sizing: border-box;
 	position: absolute;
-	height: 525px;
-	width: 530px;
+	height: 100%;
+	width: 100%;
 	border-radius: 27px;
-	padding: 65px 72px 26px 72px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	padding: 55px 45px 26px 45px;
+	margin-top: 0;
+	margin-bottom: 0;
 	overflow-y: hidden;
 	overflow-x: hidden;
 	border: 2px solid var(--WhiteToBlack);
@@ -1276,4 +1277,13 @@ strong {
 	justify-content: center;
 	flex-direction: column;
 	width: 100%;
+}
+
+.modalForm h2 {
+	color: red;
+	padding-bottom: 25px;
+	font-weight: 500;
+}
+.modalForm button {
+	margin: auto;
 }

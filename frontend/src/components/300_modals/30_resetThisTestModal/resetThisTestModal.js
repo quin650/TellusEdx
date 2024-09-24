@@ -5,14 +5,18 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import classes from "../../../components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const ResetThisTestModal = ({ testNum, exitResetResults }) => {
+	const dispatch = useDispatch();
 	const resetThisTestModalRef = useRef();
 
 	//! Reset Button
 	const resetTest = () => {
 		console.log("reset test");
+		exitResetResults();
+		dispatch(userReducerActions.deleteTestResults(testNum));
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
 	};
 	const ResetButton = (
-		<button onClick={resetTest} className={classes.actionButton} type="submit">
+		<button onClick={resetTest} className={classes.button_formatSubmit} type="submit">
 			Reset Test
 		</button>
 	);
@@ -37,7 +41,7 @@ const ResetThisTestModal = ({ testNum, exitResetResults }) => {
 				{exitButton}
 				<div className={classes.modalContentContainer}>
 					<div className={classes.modalForm}>
-						<p>Are you sure that you want to reset test {testNum}</p>
+						<h2>Are you sure that you want to reset test {testNum}?</h2>
 						{ResetButton}
 					</div>
 				</div>
