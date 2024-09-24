@@ -796,6 +796,9 @@ strong {
 	border: 0.2vh solid #80808040;
 	background: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
+.testButtonsContainer .paginationButtonR.isInactive:focus {
+	border: 0.2vh solid #80808040 !important;
+}
 .testButtonsContainer .paginationButtonR .arrowIconR {
 	height: 5vh;
 	position: absolute;

@@ -76,7 +76,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
 	const test2 = () => {
-		if (test2Status === "Done") {
+		if (test2Status === "n/a yet" || !test2Status) {
+			return;
+		} else if (test2Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test2Status === "Start" || test2Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
@@ -86,7 +88,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
 	};
 	const test3 = () => {
-		if (test3Status === "Done") {
+		if (test3Status === "n/a yet" || !test3Status) {
+			return;
+		} else if (test3Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test3Status === "Start" || test3Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
@@ -96,7 +100,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
 	};
 	const test4 = () => {
-		if (test4Status === "Done") {
+		if (test4Status === "n/a yet" || !test4Status) {
+			return;
+		} else if (test4Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test4Status === "Start" || test4Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
@@ -106,7 +112,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
 	};
 	const test5 = () => {
-		if (test5Status === "Done") {
+		if (test5Status === "n/a yet" || !test5Status) {
+			return;
+		} else if (test5Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test5Status === "Start" || test5Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
