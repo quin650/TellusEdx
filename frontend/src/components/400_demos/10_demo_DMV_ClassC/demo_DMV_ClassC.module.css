@@ -399,7 +399,7 @@ strong {
 	flex-direction: column;
 	justify-content: flex-start;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack) !important;
-	border: 1px solid var(--borderColor_menu_offWhite_to_offBlack) !important;
+	border: none;
 }
 .bottom h2 {
 	margin-top: 0;
@@ -407,11 +407,26 @@ strong {
 .tocInnerContainer {
 	display: flex;
 	flex-direction: row;
+	border-top: 1px solid var(--BackgroundColor);
 }
 .tocInnerContainer ul {
 	width: 50%;
 	margin-bottom: 1rem;
 }
+
+/* 2 is for the test restuls */
+.tocInnerContainer2 {
+	display: flex;
+	flex-direction: row;
+	box-shadow: inset 0 0 0 1px var(--BackgroundColor);
+}
+
+.tocInnerContainer2 ul {
+	width: 33%;
+	margin-bottom: 1rem;
+	margin-left: 0;
+}
+
 /* toc Title ------------------------------------------------------*/
 .tocTitleLabel {
 	padding: 6px 8px 6px 12px !important;
@@ -527,6 +542,9 @@ strong {
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	transition: transform 0.5s ease;
 	transform: translateX(100%);
+	overflow-y: scroll;
+	/* this blue line compensates for the resizer not filling the full height of the window in the "TestResults" component */
+	box-shadow: inset 3px 0 0 var(--Blue);
 }
 .sideBar_R_outerContainer.open {
 	width: 40%;
@@ -1085,7 +1103,7 @@ strong {
 .button_formatCancel {
 	font-size: 15px;
 	font-weight: 500;
-	color: black;
+	color: var(--BlackToGray);
 	background-color: transparent;
 	width: 80.4px;
 	height: 36.8px;
@@ -1104,7 +1122,7 @@ strong {
 .button_formatBack {
 	font-size: 15px;
 	font-weight: 500;
-	color: black;
+	color: var(--BlackToGray);
 	background-color: transparent;
 	width: 80.4px;
 	height: 36.8px;
@@ -1181,7 +1199,7 @@ strong {
 	padding-left: 2vw;
 	padding-right: 2vw;
 	margin: 0 auto auto 0;
-	height: 30vh;
+	/* height: 30vh; */
 	margin: 0 12px auto 12px;
 	display: flex;
 	flex-direction: column;

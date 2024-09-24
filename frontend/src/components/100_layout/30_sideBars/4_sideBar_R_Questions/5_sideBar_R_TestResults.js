@@ -72,7 +72,7 @@ const SideBar_R_TestResults = () => {
 							<div className={classes.tocTitleLabel}>
 								<h2>List of Questions</h2>
 							</div>
-							<div className={classes.tocInnerContainer}>
+							<div className={classes.tocInnerContainer2}>
 								<ul>
 									<li className={classes.contentContainer}>
 										<div className={classes.parentLabelOuterContainer}>
