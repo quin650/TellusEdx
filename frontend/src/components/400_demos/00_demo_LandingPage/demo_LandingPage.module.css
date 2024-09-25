@@ -464,25 +464,7 @@
 		width: 39%;
 	}
 }
-.overlay {
-	display: flex;
-	position: absolute;
-	z-index: 4000;
-	height: 100%;
-	width: 100%;
-	top: 0px;
-	left: 0%;
-	margin: 0;
-	padding: 0;
-	justify-content: center;
-	align-items: center;
-	font-family: Roboto;
 
-	background-color: var(--BlurredBackground);
-
-	backdrop-filter: blur(2px); /* Chrome, Firefox */
-	-webkit-backdrop-filter: blur(2px); /* Safari */
-}
 .titleCard {
 	display: block;
 	position: relative;
@@ -513,4 +495,30 @@
 	top: 0;
 	width: 100%;
 	height: 100;
+}
+.overlay {
+	display: flex;
+	position: absolute;
+	z-index: 4000;
+	height: 100%;
+	width: 100%;
+	top: 0px;
+	left: 0%;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto;
+
+	background-color: var(--BlurredBackground);
+
+	backdrop-filter: blur(2px); /* Chrome, Firefox */
+	-webkit-backdrop-filter: blur(2px); /* Safari */
+}
+.overlay p {
+	font-size: 16px;
+	color: black;
+	background-color: var(--Blue);
+	border-radius: 5px;
+	padding: 0 2px;
 }
