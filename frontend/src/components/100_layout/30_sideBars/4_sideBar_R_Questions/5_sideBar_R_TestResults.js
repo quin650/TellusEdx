@@ -32,7 +32,8 @@ const SideBar_R_TestResults = () => {
 	};
 
 	const gotoNexTest = () => {
-		console.log("Are you sure you want to reset this test?");
+		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx + 1));
 	};
 	const [ul1, setUl1] = useState([]);
 	const [ul2, setUl2] = useState([]);
