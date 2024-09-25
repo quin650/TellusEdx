@@ -133,6 +133,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 				<div className={classes.questionsLandingPageBody}>
 					<div className={classes.quadrant_OuterContainer}>
 						<div className={classes.quadrant_InnerContainer}>
+							<div className={classes.overlay}>
+								<p>Coming Soon</p>
+							</div>
 							<h2>Questions On This Page</h2>
 							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
 								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
@@ -185,6 +188,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 					</div>
 					<div className={classes.quadrant_OuterContainer}>
 						<div className={classes.quadrant_InnerContainer}>
+							<div className={classes.overlay}>
+								<p>Coming Soon</p>
+							</div>
 							<h2>Retake failed questions</h2>
 							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
 								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
@@ -195,6 +201,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 					</div>
 					<div className={classes.quadrant_OuterContainer}>
 						<div className={classes.quadrant_InnerContainer}>
+							<div className={classes.overlay}>
+								<p>Coming Soon</p>
+							</div>
 							<h2>Probability of Passing</h2>
 						</div>
 					</div>

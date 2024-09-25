@@ -1266,7 +1266,25 @@ strong {
 	backdrop-filter: blur(6px); /* Chrome, Firefox */
 	-webkit-backdrop-filter: blur(6px); /* Safari */
 }
+.overlay {
+	display: flex;
+	position: absolute;
+	z-index: 4000;
+	height: 100%;
+	width: 100%;
+	top: 0px;
+	left: 0%;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto;
 
+	background-color: var(--BlurredBackground);
+
+	backdrop-filter: blur(2px); /* Chrome, Firefox */
+	-webkit-backdrop-filter: blur(2px); /* Safari */
+}
 /* ****************************************************** Modal */
 .modal {
 	display: flex;

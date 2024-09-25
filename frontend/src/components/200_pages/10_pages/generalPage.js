@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./3_aboutUs.module.css";
+import classes from "./generalPage.module.css";
 
-const AboutUs = () => {
+const GeneralPage = ({ text }) => {
 	return (
 		<div className={classes.outer_container} id="About_Us">
 			<div className={classes.inner_container}>
-				<p>About Us</p>
+				<p>{text}</p>
 			</div>
 		</div>
 	);
 };
 
-export default AboutUs;
+export default GeneralPage;

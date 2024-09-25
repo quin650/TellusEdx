@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../../../static/images/Logo_arrows.png";
 import classes from "./footer.module.css";
 
@@ -6,7 +7,13 @@ const Footer = () => {
 	const handleClickScroll = () => {
 		document.querySelector("main").scrollTo(0, 0);
 	};
-
+	const CloseNavBarMenu_and_ScrollQuickly = () => {
+		dispatch(userReducerActions.sideBar_R_Close_Main());
+		document.querySelector("main").scrollTo({
+			top: 0,
+			behavior: "instant",
+		});
+	};
 	return (
 		<div className={classes.footer} id="Footer">
 			<div className={classes.outerContainer_Top}>
@@ -30,16 +37,24 @@ const Footer = () => {
 							<h4>About Us</h4>
 							<ul>
 								<li>
-									<a href="1aboutus.html">Company</a>
+									<Link to="/company" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Company
+									</Link>
 								</li>
 								<li>
-									<a href="2ourteam.html">Our Team</a>
+									<Link to="/ourteam" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Our Team
+									</Link>
 								</li>
 								<li>
-									<a href="3careers.html">Careers</a>
+									<Link to="/careers" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Careers
+									</Link>
 								</li>
 								<li>
-									<a href="4merch.html">Merch</a>
+									<Link to="/merch" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Merch
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -47,16 +62,24 @@ const Footer = () => {
 							<h4>Support Center</h4>
 							<ul>
 								<li>
-									<a href="5docs.html">Docs</a>
+									<Link to="/docs" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Docs
+									</Link>
 								</li>
 								<li>
-									<a href="6guides.html">Guides</a>
+									<Link to="/guides" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Guides
+									</Link>
 								</li>
 								<li>
-									<a href="7reference.html">API Reference</a>
+									<Link to="/apireference" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										API Reference
+									</Link>
 								</li>
 								<li>
-									<a href="8integrations.html">Integrations</a>
+									<Link to="/integrations" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Integrations
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -64,13 +87,19 @@ const Footer = () => {
 							<h4>Help</h4>
 							<ul>
 								<li>
-									<a href="9FAQ.html">FAQ</a>
+									<Link to="/faq" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										FAQ
+									</Link>
 								</li>
 								<li>
-									<a href="10tutorials.html">Tutorials</a>
+									<Link to="/tutorials" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Tutorials
+									</Link>
 								</li>
 								<li>
-									<a href="10fcontactUs.html">Contact Us</a>
+									<Link to="/contactus" onClick={CloseNavBarMenu_and_ScrollQuickly}>
+										Contact Us
+									</Link>
 								</li>
 							</ul>
 						</div>

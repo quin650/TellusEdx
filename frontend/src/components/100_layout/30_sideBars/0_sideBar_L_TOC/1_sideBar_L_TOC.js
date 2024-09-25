@@ -11,12 +11,12 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 				<span className={classes.sideBar_L_tab_Name_onThisPage}>
 					<p>On this page</p>
 				</span>
-				<span className={classes.sideBar_L_tab_Name_all}>
+				{/* <span className={classes.sideBar_L_tab_Name_all}>
 					<p>All</p>
 				</span>
 				<span className={classes.sideBar_L_tab_Name_pinned}>
 					<p>Pinned</p>
-				</span>
+				</span> */}
 			</div>
 			<div className={classes.sideBar_L_tabs_underline}></div>
 		</div>

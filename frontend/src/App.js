@@ -10,9 +10,7 @@ import Demo_LandingPage from "./components/400_demos/00_demo_LandingPage/demo_La
 import DemoDMVClassC from "./components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
 import PDFViewer from "./components/400_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
 
-import AboutUs from "./components/200_pages/10_pages/3_aboutUs";
-import SupportCenter from "./components/200_pages/10_pages/4_supportCenter";
-import Help from "./components/200_pages/10_pages/5_help";
+import GeneralPage from "./components/200_pages/10_pages/generalPage";
 import OnThisPageQuickView from "./components/100_layout/20_features/1_onThisPageQuickView";
 
 const App = () => {
@@ -118,9 +116,24 @@ const App = () => {
 				<Route path="/demos" element={<Demo_LandingPage />} />
 				<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 				<Route path="/PDFViewer" element={<PDFViewer />} />
-				<Route path="/aboutus" element={<AboutUs />} />
-				<Route path="/supportcenter" element={<SupportCenter />} />
-				<Route path="/help" element={<Help />} />
+				{/* General Pages */}
+				{/* About Us */}
+				<Route path="/aboutus" element={<GeneralPage text={"About Us"} />} />
+				<Route path="/company" element={<GeneralPage text={"company"} />} />
+				<Route path="/ourteam" element={<GeneralPage text={"Our Team"} />} />
+				<Route path="/careers" element={<GeneralPage text={"Careers"} />} />
+				<Route path="/merch" element={<GeneralPage text={"Merch"} />} />
+				{/* Support Center */}
+				<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} />} />
+				<Route path="/docs" element={<GeneralPage text={"Docs"} />} />
+				<Route path="/guides" element={<GeneralPage text={"Guides"} />} />
+				<Route path="/apireference" element={<GeneralPage text={"API Reference"} />} />
+				<Route path="/integrations" element={<GeneralPage text={"Integrations"} />} />
+				{/* Help */}
+				<Route path="/help" element={<GeneralPage text={"Help"} />} />
+				<Route path="/faq" element={<GeneralPage text={"FAQ"} />} />
+				<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} />} />
+				<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} />} />
 			</Routes>
 			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && location.pathname !== "/PDFViewer" && (
 				<footer>

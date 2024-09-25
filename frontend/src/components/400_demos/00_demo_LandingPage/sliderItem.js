@@ -7,6 +7,9 @@ const SliderItem = ({ imgLink }) => {
 			<div className={classes.titleCard}>
 				<a href="/xyz" className={classes.sliderRefocus}>
 					<div className={classes.boxartContainer}>
+						<div className={classes.overlay}>
+							<p>Coming Soon</p>
+						</div>
 						<img className={classes.boxartImage} src={imgLink} alt="" />
 					</div>
 				</a>
