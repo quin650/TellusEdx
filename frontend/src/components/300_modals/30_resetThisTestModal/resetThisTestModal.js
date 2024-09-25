@@ -4,24 +4,27 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 
 import classes from "../../../components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const ResetThisTestModal = ({ testNum, exitResetResults }) => {
+const ResetThisTestModal = () => {
 	const dispatch = useDispatch();
 	const resetThisTestModalRef = useRef();
-
+	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	//! Reset Button
 	const resetTest = () => {
 		console.log("reset test");
-		exitResetResults();
-		dispatch(userReducerActions.deleteTestResults(testNum));
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
+		dispatch(userReducerActions.resetThisTestModalClose());
+		// dispatch(userReducerActions.deleteTestResults(testNum));
+		// dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
 	};
 	const ResetButton = (
 		<button onClick={resetTest} className={classes.button_formatSubmit} type="submit">
-			Reset Test
+			Reset Test {sideBar_R_Questions_CurrentTestNumber_rdx}
 		</button>
 	);
 
 	//! Exit Button
+	const exitResetResults = () => {
+		dispatch(userReducerActions.resetThisTestModalClose());
+	};
 	let exitButton = (
 		<button onClick={exitResetResults} className={classes.exitButton}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
@@ -41,7 +44,7 @@ const ResetThisTestModal = ({ testNum, exitResetResults }) => {
 				{exitButton}
 				<div className={classes.modalContentContainer}>
 					<div className={classes.modalForm}>
-						<h2>Are you sure that you want to reset test {testNum}?</h2>
+						<h2>Are you sure that you want to reset test {sideBar_R_Questions_CurrentTestNumber_rdx}?</h2>
 						{ResetButton}
 					</div>
 				</div>

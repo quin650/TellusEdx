@@ -38,6 +38,7 @@ const initialState = {
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
+	resetThisTest_ModalStatus_rdx: false,
 
 	//General
 	isAuthenticated_rdx: false,
@@ -423,6 +424,12 @@ const userSlice = createSlice({
 		},
 		languageSettingsHindi(state) {
 			state.languageCurrent_rdx = "Hindi";
+		},
+		resetThisTestModalOpen(state) {
+			state.resetThisTest_ModalStatus_rdx = true;
+		},
+		resetThisTestModalClose(state) {
+			state.resetThisTest_ModalStatus_rdx = false;
 		},
 		//Dark/Light Settings
 		setDarkLightMode(state, action) {

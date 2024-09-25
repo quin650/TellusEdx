@@ -170,6 +170,7 @@
 	min-height: 90vh;
 	border: 1px solid #d6dade;
 	border-radius: 8px;
+	min-width: 340px;
 }
 .handbook_header_section {
 	display: block;
@@ -545,13 +546,14 @@ strong {
 	overflow-y: scroll;
 	/* this blue line compensates for the resizer not filling the full height of the window in the "TestResults" component */
 	box-shadow: inset 3px 0 0 var(--Blue);
+	/* height: auto; */
 }
 .sideBar_R_outerContainer.open {
 	width: 40%;
 	height: 100vh;
 	flex-grow: 0;
 	transform: translateX(0);
-	margin-right: -20px;
+	/* margin-right: -20px; */
 }
 /* ref .handbook_outerContainer  */
 .handbook_outerContainer2 {
@@ -569,6 +571,21 @@ strong {
 	transition: width 1s ease;
 }
 /* exit button ----------------------------------------------------- */
+.exitButtonContainer {
+	display: flex;
+	position: absolute;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	padding-left: 12px;
+	padding-right: 24px;
+	margin: 0;
+}
+.exitButtonContainer .exitButton {
+	position: relative !important;
+}
 .exitButton {
 	z-index: 3000;
 	position: absolute;
@@ -585,6 +602,7 @@ strong {
 	cursor: pointer;
 	right: 0;
 }
+
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
@@ -1242,38 +1260,52 @@ strong {
 	justify-content: center;
 	align-items: center;
 	font-family: Roboto;
+
 	background-color: var(--BlurredBackground);
+
 	backdrop-filter: blur(6px); /* Chrome, Firefox */
 	-webkit-backdrop-filter: blur(6px); /* Safari */
 }
+
 /* ****************************************************** Modal */
 .modal {
 	display: flex;
 	z-index: 2000;
 	position: fixed;
-	height: 300px;
-	width: 400px;
+
+	height: 25vh;
+	width: 25vw;
+
+	min-height: 250px;
+	min-width: 350px;
+
+	max-height: 300px;
+	max-width: 400px;
+
 	border-top-left-radius: var(--borderRadius_modal);
 	border-top-right-radius: 0;
 	border-bottom-left-radius: var(--borderRadius_modal);
 	border-bottom-right-radius: var(--borderRadius_modal);
 	justify-content: center;
-	background-color: var(--WhiteToBlack);
 	color: var(--BlackToGray);
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
 }
 /* *********************************************** Modal Content */
 .modalContentContainer {
+	display: flex;
 	box-sizing: border-box;
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	border-radius: 27px;
-	padding: 55px 45px 26px 45px;
-	margin-top: 0;
-	margin-bottom: 0;
+	padding: 40px;
+	margin: 0;
 	overflow-y: hidden;
 	overflow-x: hidden;
-	border: 2px solid var(--WhiteToBlack);
+	/* border: 2px solid var(--WhiteToBlack); */
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 }
 .modalForm {
 	display: flex;
@@ -1284,8 +1316,8 @@ strong {
 
 .modalForm h2 {
 	color: red;
-	padding-bottom: 25px;
 	font-weight: 500;
+	margin: 0;
 }
 .modalForm button {
 	margin: auto;
