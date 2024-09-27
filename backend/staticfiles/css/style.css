@@ -1,0 +1,238 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	font-family: "Montserrat", "Roboto", "Inter", sans-serif;
+}
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 400px;
+	width: 100vw;
+	height: 100vh;
+}
+.root {
+	--OffWhite: #dcdcdc;
+	--Blue: #2755c4;
+	--BlueHover: #3e66c4;
+	--BackgroundColor: white;
+	--BackgroundColorDemoLanding: white;
+	--WhiteToBlack: #ffffff;
+	--WhiteToGray: #ffffff;
+	--WhiteToDarkGray: #ffffff;
+	--WhiteToDarkGray2: #ffffff;
+	--WhiteToDarkGray3: #ffffff;
+	--WhiteToDarkGray5: #ffffff;
+	--OffWhiteTODarkGray: #f1f1f1;
+	--OffWhiteTODarkGray2: #dddddd;
+	--OffWhiteTODarkGray3: #eeeeee;
+	--OffWhiteTODarkGray4: #dddddd;
+	--BlackToWhite: #000000;
+	--BlackToGray: #000000;
+	--BlackToDarkGray2: #000000;
+	--BlackToDarkGray3: #000000;
+	--GrayToWhite: gray;
+	--LightBlueToBlack: #9da8bb;
+	--LightGrayToDarkGray: #c2c2c2;
+	--LightGrayToDarkGray2: #c2c2c2;
+	--GrayToDarkGray: #c6c6c6;
+	--GrayToDarkGray2: #c6c6c6;
+	--IconBrightness: 1;
+	--BlurredBackground: rgba(175, 175, 175, 0.4);
+	--toggleBoxShadow: rgba(0, 0, 0, 0.163);
+	--MainNavBar_BackgroundColor1: #000000;
+	--MainNavBar_BackgroundColorText1: #f0f2f5;
+	--MainNavBar_BackgroundColorText2: #ffffff;
+	--NavBarMenu_MenuItem: #ffffff;
+	--NavBarMenu_MenuItemColor: #9e9e9e;
+	--NavBarMenu_OptionsBoxShadow1: rgba(0, 0, 0, 0.4);
+	--NavBarMenu_OptionsBoxShadow2: rgba(255, 255, 255, 0.4);
+	--BackgroundLinearGradient_Top_NavBarDemoLanding_White_to_Transparent_DarkGray_to_Transparent: linear-gradient(
+		180deg,
+		#ffffff 0%,
+		#ffffff 15%,
+		hsla(0, 0%, 100%, 0.58) 29%,
+		hsla(0, 0%, 100%, 0.35) 44%,
+		hsla(0, 0%, 100%, 0.15) 68%,
+		hsla(0, 0%, 100%, 0) 100%
+	);
+	--BackgroundLinearGradient_Bottom_DemoLanding_Transparent_to_White_Transparent_to_DarkGray: linear-gradient(
+		180deg,
+		hsla(0, 0%, 8%, 0) 0%,
+		hsla(0, 0%, 8%, 0.15) 15%,
+		hsla(0, 0%, 8%, 0.35) 29%,
+		hsla(0, 0%, 8%, 0.58) 44%,
+		#ffffff 68%,
+		#ffffff 100%
+	);
+
+	/* General */
+	--color_primary_darkGray_to_gray: #5d6c7a;
+	--backgroundColor_main_white_to_darkGray: white;
+	--backgroundColor_menu_offWhite_to_offBlack: #f8f9fb;
+	--borderRadius_modal: 27px; /* repetitive -Can be regular variable*/
+	--borderRadius_modalItem: 14px; /* repetitive -Can be regular variable*/
+	--borderColor_menu_offWhite_to_offBlack: #eeebee;
+	--hover_menuButtonOpen_gray_to_darkGray: #efefef;
+	--active_menuButtonOpen_gray_to_darkGray: #e0e0e0;
+	--hover_menuButtonClosed_gray_to_darkGray: #efefef;
+	--active_menuButtonClosed_gray_to_darkGray: #e0e0e0;
+	--hover_menuItem_gray_to_darkGray: #efefef;
+	--active_menuItem_gray_to_darkGray: #e0e0e0;
+	--hover_modalExitButton_gray_to_darkGray: #efefef;
+	--active_modalExitButton_gray_to_darkGray: #e0e0e0;
+	--borderColor_searchMenuItem_gray_to_darkGray: #efefef;
+	--backgroundColor_searchMenuItem_white_to_darkGray: white;
+	--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray: #ffffffa6;
+
+	--backgroundColor_SearchBar_offBlack_to_offWhite: #1a1c1e;
+	--hover_backgroundColor_SearchBar_offBlack_to_offWhite: #26282a;
+	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
+	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
+	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #287bba);
+	--hover_readerHeaderTitle_lightBlue_to_blue: #287bba;
+	--color_readerSecondary_darkBlue_to_offWhite: #163159;
+	--color_readerSecondary_darkBlue_to_lightBlue: #163159;
+	--color_readerSecondary_darkBlue_to_lightBlue_h4: #163159;
+	--color_readerSectionTitle_white_to_offWhite: #ffffff;
+	--color_readerHyperLink_brightBlue_to_skyBlue: #0066cc;
+	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/
+	--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite: black;
+	--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite: black;
+	--color_pageNav_menuTabs_borderBottom_offWhite_to_gray: #eeebee;
+	--backgroundColor_pageNav_white_to_gray: #ffffff;
+	--color_pageNav_arrow_white_to_gray: #e0e0e0;
+
+	--color_pageNav_InputFIll_white_to_gray: #ffffff;
+	--color_pageNav_InputBorder_offWhite_to_black: #ddd;
+	--color_pageNav_lineDividers_offWhite_to_black: #ddd;
+}
+
+[prefers-color-scheme="dark"] {
+	--BackgroundColor: #232323;
+	--BackgroundColorDemoLanding: #141414;
+	--WhiteToBlack: black;
+	--WhiteToGray: #9e9e9e;
+	--WhiteToDarkGray: #1d1d1d;
+	--WhiteToDarkGray2: #111111;
+	--WhiteToDarkGray5: #3e3e3e;
+	--OffWhiteTODarkGray: #1d1d1d;
+	--OffWhiteTODarkGray3: #3e3e3e;
+	--OffWhiteTODarkGray4: #292929;
+	--BlackToWhite: #ffffff;
+	--BlackToGray: #9e9e9e;
+	--BlackToDarkGray2: #111111;
+	--BlackToDarkGray3: #505050;
+	--GrayToWhite: #ffffff;
+	--LightBlueToBlack: #000000;
+	--LightGrayToDarkGray: #111111;
+	--LightGrayToDarkGray2: #1d1d1d;
+	--GrayToDarkGray2: #171717;
+	--IconBrightness: 0.5;
+	--BlurredBackground: rgba(35, 35, 35, 0.4);
+	--toggleBoxShadow: rgba(0, 0, 0, 0.45);
+	--BackgroundLinearGradient_Top_NavBarDemoLanding_White_to_Transparent_DarkGray_to_Transparent: linear-gradient(
+		180deg,
+		#141414 0%,
+		#141414 15%,
+		hsla(0, 0%, 8%, 0.58) 29%,
+		hsla(0, 0%, 8%, 0.35) 44%,
+		hsla(0, 0%, 8%, 0.15) 68%,
+		hsla(0, 0%, 8%, 0) 100%
+	);
+	--BackgroundLinearGradient_Bottom_DemoLanding_Transparent_to_White_Transparent_to_DarkGray: linear-gradient(
+		180deg,
+		hsla(0, 0%, 8%, 0) 0%,
+		hsla(0, 0%, 8%, 0.15) 15%,
+		hsla(0, 0%, 8%, 0.35) 29%,
+		hsla(0, 0%, 8%, 0.58) 44%,
+		#141414 68%,
+		#141414 100%
+	);
+
+	/* General */
+	--color_primary_darkGray_to_gray: #9e9e9e;
+	--backgroundColor_main_white_to_darkGray: #232323;
+	--backgroundColor_menu_offWhite_to_offBlack: #171717;
+	--borderRadius_modal: 27px; /* repetitive -Can be regular variable*/
+	--borderRadius_modalItem: 14px; /* repetitive -Can be regular variable*/
+	--borderColor_menu_offWhite_to_offBlack: #171717;
+	--hover_menuButtonOpen_gray_to_darkGray: #232323;
+	--active_menuButtonOpen_gray_to_darkGray: black;
+	--hover_menuButtonClosed_gray_to_darkGray: #171717;
+	--active_menuButtonClosed_gray_to_darkGray: black;
+	--hover_menuItem_gray_to_darkGray: #1e1d1d;
+	--active_menuItem_gray_to_darkGray: #232323;
+	--hover_modalExitButton_gray_to_darkGray: #232323;
+	--active_modalExitButton_gray_to_darkGray: #1e1d1d;
+	--borderColor_searchMenuItem_gray_to_darkGray: #252525;
+	--backgroundColor_searchMenuItem_white_to_darkGray: #1b1b1b;
+	--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray: ##232323a6;
+
+	--backgroundColor_SearchBar_offBlack_to_offWhite: #eeebee;
+	--hover_backgroundColor_SearchBar_offBlack_to_offWhite: #c0c0c0;
+	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
+	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #171717;
+	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #191919);
+	--hover_readerHeaderTitle_lightBlue_to_blue: var(--Blue);
+	--color_readerSecondary_darkBlue_to_offWhite: #dddddd;
+	--color_readerSecondary_darkBlue_to_lightBlue: #30568d;
+	--color_readerSecondary_darkBlue_to_lightBlue_h4: #556986;
+	--color_readerSectionTitle_white_to_offWhite: #dddddd;
+	--color_readerHyperLink_brightBlue_to_skyBlue: #87ceeb;
+	--color_pageNav_menuTabs_primary_gray: #9e9e9e; /* repetitive -Can be regular variable*/
+	--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite: #dddddd;
+	--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite: #dddddd;
+	--color_pageNav_menuTabs_borderBottom_offWhite_to_gray: #9e9e9e;
+	--backgroundColor_pageNav_white_to_gray: #3a3b3c;
+	--color_pageNav_arrow_white_to_gray: #2d2d2d;
+
+	--color_pageNav_InputFIll_white_to_gray: #9e9e9e;
+	--color_pageNav_InputBorder_offWhite_to_black: #4f4e4e;
+	--color_pageNav_lineDividers_offWhite_to_black: #4f4e4e;
+}
+
+main {
+	height: 100vh;
+	width: 100%;
+	/* overflow-y: scroll; */
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
+	-webkit-overflow-scrolling: touch;
+
+	overflow-x: hidden;
+	max-height: 100vh;
+	scrollbar-color: gray transparent;
+	scrollbar-width: thin;
+	background: var(--BackgroundColor);
+	color: var(--color_primary_darkGray_to_gray);
+}
+::-webkit-scrollbar {
+	width: 6px; /* Styling the scrollbar in Chrome and Safari */
+}
+::-webkit-scrollbar-thumb {
+	/* the draggable part of the scrollbar */
+	background-color: gray;
+	border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+::-webkit-scrollbar-track {
+	/* the area that the thumb moves within. */
+	background: transparent;
+}
+header {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
+}
+section {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
+	height: 100vh;
+}
+footer {
+	scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
+}

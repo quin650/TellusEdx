@@ -37,7 +37,8 @@ EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tellused.herokuapp.com', 'localhost', '127.0.0.1:8000']
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -48,8 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "accounts.apps.AccountsConfig",
-    "user_profile.apps.UserProfileConfig",
+    "backend.accounts.apps.AccountsConfig",
+    "backend.user_profile.apps.UserProfileConfig",
 ]
 
 REST_FRAMEWORK = {
@@ -93,6 +94,7 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -103,12 +105,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "aa_django_project.urls"
+ROOT_URLCONF = "backend.aa_django_project.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "../frontend/templates/frontend")],
+        "DIRS": [os.path.join(BASE_DIR, "../templates/frontend")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -122,17 +124,27 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = "aa_django_project.wsgi.application"
+WSGI_APPLICATION = "backend.aa_django_project.wsgi.application"
+
+import dj_database_url
+import django_heroku
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "tellused",
-        "USER": "postgres",
-        "PASSWORD": os.environ["pgpassword"],
-        "HOST": "localhost",
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+# Activate Django-Heroku settings
+django_heroku.settings(locals())
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "tellused",
+#         "USER": "postgres",
+#         "PASSWORD": os.environ["pgpassword"],
+#         "HOST": "localhost",
+#     }
+# }
 
 
 # Password validation
@@ -178,6 +190,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "../static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "../frontend/static")]
+import django_heroku
+django_heroku.settings(locals())
