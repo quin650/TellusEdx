@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import HomeTop from "./1_homeTop";
 import HomeMiddle from "./2_homeMiddle";
-import Dashboard from "../../../500_authenticated/Dashboard/Dashboard";
+
+import Dashboard from "../../../500_authenticated/dashboard/dashboard";
 
 const Home = () => {
 	// console.log('Home')

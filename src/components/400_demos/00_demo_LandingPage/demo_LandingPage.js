@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import SliderItem from "./sliderItem";
 import classes from "./demo_LandingPage.module.css";
 // DMV1
-import DMV2 from "./../../../../static/images/DemoOptions/CLASS_C.png";
-import DMV3 from "./../../../../static/images/DemoOptions/CLASS_m.png";
-import DMV4 from "./../../../../static/images/DemoOptions/CDL_CLASS_A.png";
-import DMV5 from "./../../../../static/images/DemoOptions/CDL_CLASS_B.png";
-import DMV6 from "./../../../../static/images/DemoOptions/CDL_CLASS_C.png";
-import DMV7 from "./../../../../static/images/DemoOptions/DMV_CLASS_C.png";
-import DMV8 from "./../../../../static/images/DemoOptions/DMV_CLASS_C.png";
+import DMV2 from "../../../../static/images/DemoOptions/CLASS_C.png";
+import DMV3 from "../../../../static/images/DemoOptions/CLASS_M.png";
+import DMV4 from "../../../../static/images/DemoOptions/CDL_CLASS_A.png";
+import DMV5 from "../../../../static/images/DemoOptions/CDL_CLASS_B.png";
+import DMV6 from "../../../../static/images/DemoOptions/CDL_CLASS_C.png";
+import DMV7 from "../../../../static/images/DemoOptions/DMV_CLASS_C.png";
+import DMV8 from "../../../../static/images/DemoOptions/DMV_CLASS_C.png";
 // Originals
 // Originals_1 [URL]
-import Originals_2 from "./../../../../static/images/DemoOptions/Contractor.png";
-import Originals_3 from "./../../../../static/images/DemoOptions/wreckingBall.png";
-import Originals_5 from "./../../../../static/images/DemoOptions/TellusBaby.png";
-import Originals_6 from "./../../../../static/images/DemoOptions/Tellus.png";
+import Originals_2 from "../../../../static/images/DemoOptions/Contractor.png";
+import Originals_3 from "../../../../static/images/DemoOptions/wreckingBall.png";
+import Originals_5 from "../../../../static/images/DemoOptions/TellusBaby.png";
+import Originals_6 from "../../../../static/images/DemoOptions/Tellus.png";
 
 const Demo_LandingPage = () => {
 	const goto_demo_dmvClassC = () => {

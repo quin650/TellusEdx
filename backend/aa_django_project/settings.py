@@ -127,13 +127,12 @@ TEMPLATES = [
 WSGI_APPLICATION = "backend.aa_django_project.wsgi.application"
 
 import dj_database_url
-import django_heroku
+
 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
-# Activate Django-Heroku settings
-django_heroku.settings(locals())
+
 
 
 # DATABASES = {
