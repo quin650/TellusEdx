@@ -1,1 +1,1 @@
-web: gunicorn backend.aa_django_project.wsgi --log-file -
+web: gunicorn aa_django_project.wsgi --log-file -

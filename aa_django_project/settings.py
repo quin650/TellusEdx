@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "backend.accounts.apps.AccountsConfig",
-    "backend.user_profile.apps.UserProfileConfig",
+    "accounts.apps.AccountsConfig",
+    "user_profile.apps.UserProfileConfig",
 ]
 
 REST_FRAMEWORK = {
@@ -105,12 +105,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "backend.aa_django_project.urls"
+ROOT_URLCONF = "aa_django_project.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "../templates/frontend")],
+        "DIRS": [os.path.join(BASE_DIR, "templates/frontend")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -124,7 +124,7 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = "backend.aa_django_project.wsgi.application"
+WSGI_APPLICATION = "aa_django_project.wsgi.application"
 
 import dj_database_url
 
@@ -191,7 +191,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = "static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "../static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 import django_heroku
