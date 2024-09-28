@@ -24,14 +24,18 @@ env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 SECRET_KEY = env.str("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", "False")
+# DEBUG = os.getenv("DEBUG", "False")
+DEBUG = env.bool("DEBUG", False)
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_FROM = os.environ["EMAIL_FROM"]
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_PASSWORD = os.environ["GmailPassword"]
+# EMAIL_FROM = os.environ["EMAIL_FROM"]
+# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+# EMAIL_HOST_PASSWORD = os.environ["GmailPassword"]
+EMAIL_FROM = env("EMAIL_FROM", default="")  
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = env("GmailPassword", default="")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
