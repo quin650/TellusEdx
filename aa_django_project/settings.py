@@ -25,7 +25,8 @@ env.read_env()
 
 SECRET_KEY = env.str("SECRET_KEY")
 # DEBUG = os.getenv("DEBUG", "False")
-DEBUG = env.bool("DEBUG", False)
+# DEBUG = env.bool("DEBUG", False)
+DEBUG = True  
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
