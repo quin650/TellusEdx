@@ -24,16 +24,12 @@ env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 SECRET_KEY = env.str("SECRET_KEY")
-# DEBUG = os.getenv("DEBUG", "False")
-# DEBUG = env.bool("DEBUG", False)
-DEBUG = True  
+
+DEBUG = env.bool('DEBUG', False) 
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_FROM = os.environ["EMAIL_FROM"]
-# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-# EMAIL_HOST_PASSWORD = os.environ["GmailPassword"]
 EMAIL_FROM = env("EMAIL_FROM", default="")  
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
@@ -42,7 +38,7 @@ EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
 
-ALLOWED_HOSTS = ['tellused.herokuapp.com', 'localhost', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['tellused-6508aa12494e.herokuapp.com', 'localhost', '127.0.0.1:8000']
 
 
 INSTALLED_APPS = [
