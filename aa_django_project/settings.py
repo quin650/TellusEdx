@@ -134,14 +134,12 @@ DATABASES_PROD = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
-
-
 DATABASES_LOCAL = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "tellused",
         "USER": "postgres",
-        "PASSWORD": os.environ["pgpassword"],
+        "PASSWORD": os.environ.get("pgpassword", ""),
         "HOST": "localhost",
     }
 }
