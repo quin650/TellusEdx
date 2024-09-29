@@ -25,7 +25,7 @@ env.read_env()
 
 SECRET_KEY = env.str("SECRET_KEY")
 
-DEBUG = env.bool('DEBUG', False) 
+DEBUG = os.getenv("DEBUG", "False")
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -38,8 +38,8 @@ EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
 
-ALLOWED_HOSTS = ['tellused-6508aa12494e.herokuapp.com', 'localhost', '127.0.0.1:8000']
-
+# ALLOWED_HOSTS = ['tellused-6508aa12494e.herokuapp.com', 'localhost', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -130,22 +130,26 @@ WSGI_APPLICATION = "aa_django_project.wsgi.application"
 import dj_database_url
 
 
-DATABASES = {
+DATABASES_PROD = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "tellused",
-#         "USER": "postgres",
-#         "PASSWORD": os.environ["pgpassword"],
-#         "HOST": "localhost",
-#     }
-# }
+DATABASES_LOCAL = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "tellused",
+        "USER": "postgres",
+        "PASSWORD": os.environ["pgpassword"],
+        "HOST": "localhost",
+    }
+}
 
+if env("local", default="no") == "yes":
+    DATABASES = DATABASES_LOCAL
+else:
+    DATABASES = DATABASES_PROD
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
