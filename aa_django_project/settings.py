@@ -37,14 +37,26 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
+# pre deployment:
+# ALLOWED_HOSTS = ['*']
+# CORS_ORIGIN_ALLOW_ALL = True
+# NO CORS_ORIGIN_ALLOW_ALL variable stated
 
+# post deployment:
 ALLOWED_HOSTS = [
     'tellused-6508aa12494e.herokuapp.com',
     'localhost',
     '127.0.0.1',
 ]
+CORS_ORIGIN_ALLOW_ALL = False 
+CORS_ALLOWED_ORIGINS = [
+    'https://tellused-6508aa12494e.herokuapp.com',  # Production URL
+    'http://localhost:3000',  # Your local React frontend
+    'http://127.0.0.1:3000',  # Alternative local React frontend if accessed with IP
+    'http://localhost:8000',  # Local Django backend URL
+    'http://127.0.0.1:8000',  # Alternative local backend URL if accessed with IP
+]
 
-# ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -191,16 +203,6 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_ALLOW_ALL = False 
-
-CORS_ALLOWED_ORIGINS = [
-    'https://tellused-6508aa12494e.herokuapp.com',  # Production URL
-    'http://localhost:3000',  # Your local React frontend
-    'http://127.0.0.1:3000',  # Alternative local React frontend if accessed with IP
-    'http://localhost:8000',  # Local Django backend URL
-    'http://127.0.0.1:8000',  # Alternative local backend URL if accessed with IP
-]
 
 
 # Static files (CSS, JavaScript, Images)
