@@ -21,7 +21,7 @@ const HomeMiddleContribute = () => {
 					<dl className={classes.line}>
 						<dt className={classes.sub_title}>GUIDED</dt>
 						<dd className={classes.sub_content}>
-							Review student metrics to pinpoint the areas lacking fluidity and where your contribution will be invaluable.
+							Review student metrics to pinpoint the areas lacking fluidity and where your contribution will make a significant impact.
 						</dd>
 					</dl>
 				</ol>
