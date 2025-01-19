@@ -25,7 +25,7 @@ const initialState = {
 	submittedQuestionsList_rdx: [],
 
 	sideBar_L_isOpen_rdx: true,
-	sideBar_L_AllowCollapse_OnWindowResize_rdx: false,
+	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
 
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
