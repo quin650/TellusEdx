@@ -19,6 +19,7 @@ const App = () => {
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView_rdx = useSelector(({ user }) => user.isDemoView_rdx);
+	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
 	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 
@@ -77,10 +78,10 @@ const App = () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
 	}, [location]);
-	// General Event listeners -- Ctrl+m (Toggle SideBar_R_Main)
+	// Hot-Key Combinations
 
-	useEffect(() => {
-		const handleKeyCombination = (e) => {
+	const handleKeyCombination = (e) => {
+		if (getStartedView_rdx !== "") {
 			if (!sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
 				if (sideBar_R_Main_isOpen_rdx) {
 					dispatch(userReducerActions.sideBar_R_Close_Main());
@@ -93,7 +94,10 @@ const App = () => {
 					dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
 				}
 			}
-		};
+		}
+	};
+
+	useEffect(() => {
 		if (location.pathname !== "/demo") {
 			document.addEventListener("keydown", handleKeyCombination);
 		}
