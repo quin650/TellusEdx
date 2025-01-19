@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: ["webpack-hot-middleware/client?reload=true", "./src/index.js"],
 	output: {
 		path: path.resolve(__dirname, "./static/frontend"),
 		filename: "[name].js",
@@ -15,11 +15,6 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			// {
-			// 	test: /\.js|.jsx$/,
-			// 	exclude: /node_modules/,
-			// 	use: "babel-loader",
-			// },
 			{
 				test: /\.jsx?$/, // This will only match .js and .jsx files
 				exclude: /node_modules/,
@@ -79,5 +74,7 @@ module.exports = {
 				NODE_ENV: JSON.stringify("development"),
 			},
 		}),
+
+		new webpack.HotModuleReplacementPlugin(),
 	],
 };

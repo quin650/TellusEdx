@@ -30,6 +30,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	const handle_SideBar_L_TOC_SearchInputBlur = () => {
 		setSideBar_L_TOC_SearchInputIsFocused(false);
 	};
+	// function to add 1 plus 1
 	const TOC_SearchBar = (
 		<div className={classes.sideBar_L_TOC_SearchInputContainer} method="get" action="#" role="search">
 			<input
