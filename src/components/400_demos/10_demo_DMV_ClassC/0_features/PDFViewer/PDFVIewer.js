@@ -138,7 +138,6 @@ const PDFViewer = () => {
 		},
 		[pdfState.scale, pageIsRendering, pdfState.pdfDocument]
 	);
-
 	//!Prev-Next Page
 	const showNextPage = () => {
 		//if page is greater than or equal to maxPages, return and do nothing
@@ -165,7 +164,6 @@ const PDFViewer = () => {
 			}));
 		}
 	};
-
 	//!Page Input Field
 	const handleInputChange = (e) => {
 		const val = e.target.value;
@@ -196,7 +194,6 @@ const PDFViewer = () => {
 			clearTimeout(identifier);
 		};
 	}, [pdfState.inputValue]);
-
 	//!Zoom Functionality
 	const zoomIn = () => {
 		setPdfState((prevState) => ({
@@ -210,7 +207,6 @@ const PDFViewer = () => {
 			scale: prevState.scale - 0.5, // Decreasing the scale by 0.5
 		}));
 	};
-
 	//!Event Listeners
 	const handleKeyDown = (e) => {
 		if (e.key == "ArrowRight") {
@@ -225,7 +221,6 @@ const PDFViewer = () => {
 			document.removeEventListener("keydown", handleKeyDown); // Ensure to remove the event listener on component unmount or before re-adding
 		};
 	}, [pdfState.pageNum, pdfState.pdfDocument]); //Include pageNum and pdfDocument to ensure the listener updates
-
 	//!FullScreen
 	useEffect(() => {
 		if (isFullScreen) {
@@ -259,10 +254,10 @@ const PDFViewer = () => {
 	return (
 		<Fragment>
 			<DemoNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen} />
-			<div className={classes.pdf_viewer}>
-				<div className={classes.canvas_container}>
+			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
+				<div id="canvas_container" className={classes.canvas_container}>
 					<canvas ref={canvasRef} id="canvas"></canvas>
-					<div ref={textLayerRef} className={classes.textLayer}></div>
+					<div id="textLayer" ref={textLayerRef} className={classes.textLayer}></div>
 					<div className={classes.navigation_container}>
 						<div className={classes.navigation_controls}>
 							<button onClick={showPrevPage} id="go_previous">

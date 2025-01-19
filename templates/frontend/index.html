@@ -8,7 +8,6 @@
 		<title>TellusEd</title>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/pdf_viewer.css' %}" />
-
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!--Google Font Montserrat (Heading)-->
@@ -22,10 +21,12 @@
 	</head>
 	<body>
 		<div class="root">
-			<script src="{% static 'frontend/main.js' %}"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-			<script>
-				pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js";
+			<script src="{% static 'frontend/main.js'%}" defer></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
+			<script defer>
+				document.addEventListener("DOMContentLoaded", () => {
+					pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
+				});
 			</script>
 		</div>
 	</body>
