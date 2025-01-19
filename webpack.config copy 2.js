@@ -1,7 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const Dotenv = require("dotenv-webpack");
-require("dotenv").config();
 
 module.exports = {
 	entry: ["webpack-hot-middleware/client?reload=true", "./src/index.js"],
@@ -71,10 +69,10 @@ module.exports = {
 		minimize: true,
 	},
 	plugins: [
-		new Dotenv(),
 		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify("development"),
-			"process.env.REACT_APP_LOCAL": JSON.stringify(process.env.REACT_APP_LOCAL),
+			"process.env": {
+				NODE_ENV: JSON.stringify("development"),
+			},
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 	],
