@@ -113,7 +113,7 @@ const App = () => {
 					<MainNavbar />
 				</header>
 			)}
-			{divIDs.length > 0 ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} /> : ""}
+			{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} /> : ""}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/home" element={<Home />} />
@@ -121,19 +121,16 @@ const App = () => {
 				<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 				<Route path="/PDFViewer" element={<PDFViewer />} />
 				{/* General Pages */}
-				{/* About Us */}
 				<Route path="/aboutus" element={<GeneralPage text={"About Us"} />} />
 				<Route path="/company" element={<GeneralPage text={"company"} />} />
 				<Route path="/ourteam" element={<GeneralPage text={"Our Team"} />} />
 				<Route path="/careers" element={<GeneralPage text={"Careers"} />} />
 				<Route path="/merch" element={<GeneralPage text={"Merch"} />} />
-				{/* Support Center */}
 				<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} />} />
 				<Route path="/docs" element={<GeneralPage text={"Docs"} />} />
 				<Route path="/guides" element={<GeneralPage text={"Guides"} />} />
 				<Route path="/apireference" element={<GeneralPage text={"API Reference"} />} />
 				<Route path="/integrations" element={<GeneralPage text={"Integrations"} />} />
-				{/* Help */}
 				<Route path="/help" element={<GeneralPage text={"Help"} />} />
 				<Route path="/faq" element={<GeneralPage text={"FAQ"} />} />
 				<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} />} />

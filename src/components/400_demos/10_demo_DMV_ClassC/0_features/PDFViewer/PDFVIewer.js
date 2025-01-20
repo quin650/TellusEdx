@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
 import DemoNavbar from "./0_features/demoNavbar";
+import PDF_paginationGUI from "../pagination/PDF_paginationGUI";
 
 const PDFViewer = () => {
 	const [pdfState, setPdfState] = useState({
@@ -9,9 +11,11 @@ const PDFViewer = () => {
 		pdfDocument: null, //The Document Object (before being set)
 		scale: null, //The size of document rendering on screen(Height-Based)
 		scaleFull: null, //The size of document rendering on screen(Width-Based)
-		pageNum: 1,
-		inputValue: 1, //Page Manual Input for *goto page functionality
 	});
+
+	const PDF_currentPageNum_rdx = useSelector(({ user }) => user.PDF_currentPageNum_rdx);
+	const PDF_inputPageNum_rdx = useSelector(({ user }) => user.PDF_inputPageNum_rdx); //Page Manual Input for *goto page functionality
+
 	const [pageIsRendering, setPageIsRendering] = useState(false); //The Rendering State
 	const [windowSizeChanges, setWindowSizeChanges] = useState(1); //
 	const [triggerRerender, setTriggerRerender] = useState(0);
@@ -27,7 +31,7 @@ const PDFViewer = () => {
 		const fetchPdf = async () => {
 			try {
 				const pdfDoc = await pdfjsLib.getDocument(pdfState.pdfUrl).promise; //pdfjsLib uses getDocument(pdf_url) method and returns the Document object
-				const page = await pdfDoc.getPage(pdfState.pageNum); //creates a pdf page object by using the pdfDoc object/pdf document
+				const page = await pdfDoc.getPage(PDF_currentPageNum_rdx); //creates a pdf page object by using the pdfDoc object/pdf document
 				const viewport = page.getViewport({ scale: 1 }); //get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
 				const windowWidth = window.innerWidth; //Make the Canvas' height = ViewPort's height
 				const windowHeight = window.innerHeight; //Make the Canvas' height = ViewPort's height
@@ -51,7 +55,7 @@ const PDFViewer = () => {
 			if (pdfState.pdfDocument) {
 				// Only fetch if pdfDocument is not already loaded
 				try {
-					const page = await pdfState.pdfDocument.getPage(pdfState.pageNum); //creates a pdf page object by using the pdfDoc object/pdf document
+					const page = await pdfState.pdfDocument.getPage(PDF_currentPageNum_rdx); //creates a pdf page object by using the pdfDoc object/pdf document
 					const viewport = page.getViewport({ scale: 1 }); //get Viewport of pdf page (i.e. Representation of the size and scale at which the PDF page should be rendered)
 					const windowWidth = window.innerWidth; //Make the Canvas' height = ViewPort's height
 					const windowHeight = window.innerHeight; //Make the Canvas' height = ViewPort's height
@@ -72,17 +76,11 @@ const PDFViewer = () => {
 		fetchPdf();
 	}, [windowSizeChanges, isFullScreen]); //The document will be set every time the document url changes
 	useEffect(() => {
-		//console.log("Attempting to render page: ", pdfState.pageNum, "with scale:", pdfState.scale);
+		//console.log("Attempting to render page: ",  "with scale:", pdfState.scale);
 		if (pdfState.pdfDocument && pdfState.scale) {
-			//if the pdf Document has been set, then:
-			setPdfState((prevState) => ({
-				//When the pdfDocument sets, the pageNum, or the scale change, the Input Value is set.
-				...prevState,
-				inputValue: pdfState.pageNum,
-			}));
-			renderPage(pdfState.pageNum); //Render the Page (pageNum is initially set to page# 1)
+			renderPage(PDF_currentPageNum_rdx); //Render the Page (pageNum is initially set to page# 1)
 		}
-	}, [pdfState.pageNum, pdfState.scale, triggerRerender]); //Removed "pdfDocument"...
+	}, [PDF_inputPageNum_rdx, PDF_currentPageNum_rdx, pdfState.scale, triggerRerender]); //Removed "pdfDocument"...
 
 	//!Render the page
 	const renderPage = useCallback(
@@ -138,62 +136,7 @@ const PDFViewer = () => {
 		},
 		[pdfState.scale, pageIsRendering, pdfState.pdfDocument]
 	);
-	//!Prev-Next Page
-	const showNextPage = () => {
-		//if page is greater than or equal to maxPages, return and do nothing
-		let newVal = pdfState.pageNum + 1;
-		if (pdfState.pdfDocument && newVal <= pdfState.pdfDocument.numPages) {
-			// setPageNum(newVal);
-			// setInputValue(newVal);
-			setPdfState((prevState) => ({
-				...prevState,
-				pageNum: prevState.pageNum + 1,
-				inputValue: prevState.pageNum + 1,
-			}));
-		}
-	};
-	const showPrevPage = () => {
-		let newVal = pdfState.pageNum - 1;
-		if (pdfState.pdfDocument && newVal >= 1) {
-			// setPageNum(newVal);
-			// setInputValue(newVal);
-			setPdfState((prevState) => ({
-				...prevState,
-				pageNum: prevState.pageNum - 1,
-				inputValue: prevState.pageNum - 1,
-			}));
-		}
-	};
-	//!Page Input Field
-	const handleInputChange = (e) => {
-		const val = e.target.value;
-		setPdfState((prevState) => ({
-			...prevState,
-			inputValue: val, // Update inputValue directly in pdfState
-		}));
-		if (val === "") {
-			setPdfState((prevState) => ({
-				...prevState,
-				pageNum: "", // Set pageNum to an empty string when the input is empty
-				inputValue: "", // It's good to keep inputValue in sync
-			}));
-			return;
-		}
-	};
-	useEffect(() => {
-		const identifier = setTimeout(() => {
-			var newPageNum = parseInt(pdfState.inputValue, 10);
-			if (pdfState.pdfDocument && newPageNum >= 1 && newPageNum <= pdfState.pdfDocument.numPages) {
-				setPdfState((prevState) => ({
-					...prevState,
-					pageNum: newPageNum, // Update pageNum within pdfState
-				}));
-			}
-		}, 700);
-		return () => {
-			clearTimeout(identifier);
-		};
-	}, [pdfState.inputValue]);
+
 	//!Zoom Functionality
 	const zoomIn = () => {
 		setPdfState((prevState) => ({
@@ -207,20 +150,6 @@ const PDFViewer = () => {
 			scale: prevState.scale - 0.5, // Decreasing the scale by 0.5
 		}));
 	};
-	//!Event Listeners
-	const handleKeyDown = (e) => {
-		if (e.key == "ArrowRight") {
-			showNextPage();
-		} else if (e.key == "ArrowLeft") {
-			showPrevPage();
-		}
-	};
-	useEffect(() => {
-		document.addEventListener("keydown", handleKeyDown);
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown); // Ensure to remove the event listener on component unmount or before re-adding
-		};
-	}, [pdfState.pageNum, pdfState.pdfDocument]); //Include pageNum and pdfDocument to ensure the listener updates
 	//!FullScreen
 	useEffect(() => {
 		if (isFullScreen) {
@@ -238,12 +167,6 @@ const PDFViewer = () => {
 			};
 		}
 	}, [isFullScreen]);
-	useEffect(() => {
-		document.addEventListener("keydown", handleKeyDown);
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown); // Ensure to remove the event listener on component unmount or before re-adding
-		};
-	}, [pdfState.pageNum, pdfState.pdfDocument]); //Include pageNum and pdfDocument to ensure the listener updates
 	const toggleFullScreen = useCallback(() => {
 		setIsFullScreen((prev) => !prev); // Toggle the full screen state
 		if (renderTask) {
@@ -258,25 +181,17 @@ const PDFViewer = () => {
 				<div id="canvas_container" className={classes.canvas_container}>
 					<canvas ref={canvasRef} id="canvas"></canvas>
 					<div id="textLayer" ref={textLayerRef} className={classes.textLayer}></div>
-					<div className={classes.navigation_container}>
-						<div className={classes.navigation_controls}>
-							<button onClick={showPrevPage} id="go_previous">
-								Previous Page
-							</button>
-							<input type="text" onChange={handleInputChange} value={pdfState.inputValue} id="current_page"></input>
-							<button onClick={showNextPage} id="go_next">
-								Next Page
-							</button>
-							<span className={classes.zoom_controls}>
-								<button onClick={zoomIn} id="zoom_in">
-									+
-								</button>
-								<button onClick={zoomOut} id="zoom_out">
-									-
-								</button>
-							</span>
-						</div>
-					</div>
+				</div>
+				<div className={classes.navigation_container}>
+					<PDF_paginationGUI />
+					<span className={classes.zoom_controls}>
+						<button onClick={zoomIn} id="zoom_in">
+							+
+						</button>
+						<button onClick={zoomOut} id="zoom_out">
+							-
+						</button>
+					</span>
 				</div>
 			</div>
 		</Fragment>

@@ -12,26 +12,22 @@ const initialState = {
 	currentPageNum_rdx: 1,
 	inputPageNum_rdx: 1,
 	pagesLength_rdx: 0,
+	PDF_currentPageNum_rdx: 1,
+	PDF_inputPageNum_rdx: 1,
+	PDF_pagesLength_rdx: 92,
 
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
-
 	sideBar_R_Questions_CurrentTestNumber_rdx: null,
-
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
 	sideBar_R_Questions_SelectedQuestionNum_rdx: 1,
 	sideBar_R_QuestionLastPageNum_rdx: 0,
-
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	submittedQuestionsList_rdx: [],
-
 	sideBar_L_isOpen_rdx: true,
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
-
 	sideBar_R_Main_isOpen_rdx: false,
 	sideBar_R_Notes_isOpen_rdx: false,
-
 	sideBar_R_Questions_isOpen_rdx: false,
-
 	sideBar_R_SearchBar_isActive_rdx: false,
 
 	//Modals
@@ -92,6 +88,7 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView_rdx = false;
 		},
+
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 			state.inputPageNum_rdx = action.payload;
@@ -102,6 +99,15 @@ const userSlice = createSlice({
 		setDemoPageLength(state, action) {
 			state.pagesLength_rdx = action.payload;
 		},
+		// PDF
+		PDF_setDemoCurrentPageNum(state, action) {
+			state.PDF_currentPageNum_rdx = action.payload;
+			state.PDF_inputPageNum_rdx = action.payload;
+		},
+		PDF_setDemoInputPageNum(state, action) {
+			state.PDF_inputPageNum_rdx = action.payload;
+		},
+
 		//General
 		setActivePanel(state, action) {
 			state.activePanel = action.payload;
