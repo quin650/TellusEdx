@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, Fragment, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
-import DemoNavbar from "./0_features/demoNavbar";
 import PDF_paginationGUI from "../pagination/PDF_paginationGUI";
 
 const PDFViewer = () => {
@@ -176,7 +175,6 @@ const PDFViewer = () => {
 	}, []);
 	return (
 		<Fragment>
-			<DemoNavbar isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen} />
 			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
 				<div id="canvas_container" className={classes.canvas_container}>
 					<canvas ref={canvasRef} id="canvas"></canvas>
