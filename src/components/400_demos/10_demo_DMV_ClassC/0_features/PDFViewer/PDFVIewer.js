@@ -182,17 +182,17 @@ const PDFViewer = () => {
 					<canvas ref={canvasRef} id="canvas"></canvas>
 					<div id="textLayer" ref={textLayerRef} className={classes.textLayer}></div>
 				</div>
-				<div className={classes.navigation_container}>
-					<PDF_paginationGUI />
-					<span className={classes.zoom_controls}>
-						<button onClick={zoomIn} id="zoom_in">
-							+
-						</button>
-						<button onClick={zoomOut} id="zoom_out">
-							-
-						</button>
-					</span>
-				</div>
+				<span className={classes.zoom_controls}>
+					<button onClick={zoomIn} id="zoom_in">
+						+
+					</button>
+					<button onClick={zoomOut} id="zoom_out">
+						-
+					</button>
+				</span>
+			</div>
+			<div className={classes.navigation_container}>
+				<PDF_paginationGUI />
 			</div>
 		</Fragment>
 	);

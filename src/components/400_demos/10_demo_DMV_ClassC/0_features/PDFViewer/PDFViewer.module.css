@@ -19,9 +19,14 @@ canvas {
 }
 .navigation_container {
 	position: absolute;
-	bottom: 2%;
 	width: 100%;
 	z-index: 3000;
+	font-family: sans-serif !important;
+	line-height: 21.6px;
+	font-size: 16px;
+
+	bottom: 0%;
+	padding-bottom: 3.5vh;
 }
 .navigation_controls {
 	display: flex;
@@ -33,6 +38,8 @@ canvas {
 	width: 50px;
 }
 .zoom_controls {
+	position: absolute;
+	z-index: 3000;
 }
 .zoom_controls button {
 	width: 20px;
