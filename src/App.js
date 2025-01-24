@@ -20,6 +20,7 @@ const App = () => {
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView_rdx = useSelector(({ user }) => user.isDemoView_rdx);
 	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
+	const getStarted_ModalStatus_rdx = useSelector(({ user }) => user.getStarted_ModalStatus_rdx);
 	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 
@@ -78,10 +79,10 @@ const App = () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
 	}, [location]);
-	// Hot-Key Combinations
 
+	// Hot-Key Combinations
 	const handleKeyCombination = (e) => {
-		if (getStartedView_rdx !== "") {
+		if (!getStarted_ModalStatus_rdx) {
 			if (!sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
 				if (sideBar_R_Main_isOpen_rdx) {
 					dispatch(userReducerActions.sideBar_R_Close_Main());
@@ -98,13 +99,13 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		if (location.pathname !== "/demo") {
+		if (location.pathname !== "/demo_dmvClassC") {
 			document.addEventListener("keydown", handleKeyCombination);
 		}
 		return () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
-	}, [location.pathname, sideBar_R_Main_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx]);
+	}, [location.pathname, sideBar_R_Main_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx, getStarted_ModalStatus_rdx]);
 
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
