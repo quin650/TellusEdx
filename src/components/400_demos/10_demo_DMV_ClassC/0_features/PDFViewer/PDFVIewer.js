@@ -185,6 +185,23 @@ const PDFViewer = () => {
 		setTriggerRerender((prevCount) => prevCount + 1); // Trigger re-render due to scale change
 	}, [isFullScreen]);
 
+	const handleKeyCombination = (e) => {
+		if (e.key === "f") {
+			setIsFullScreen((prev) => !prev);
+		} else if (e.key === "Escape") {
+			setIsFullScreen(false);
+		}
+	};
+
+	useEffect(() => {
+		if (location.pathname === "/PDFViewer") {
+			document.addEventListener("keydown", handleKeyCombination);
+		}
+		return () => {
+			document.removeEventListener("keydown", handleKeyCombination);
+		};
+	}, [location.pathname]);
+
 	return (
 		<Fragment>
 			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
