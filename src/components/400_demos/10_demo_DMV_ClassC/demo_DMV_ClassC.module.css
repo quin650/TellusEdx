@@ -628,8 +628,20 @@ strong {
 	cursor: col-resize;
 	height: 100%;
 	position: absolute;
+	background-color: var(--LightGrayToDarkGray2);
+}
+.resizer:hover {
+	width: 3px;
+	top: 0;
+	left: 0;
+	cursor: col-resize;
+	height: 100%;
+	position: absolute;
 	background-color: var(--Blue);
 }
+
+/* background-color: #42b362; */
+
 /* Questions landing page --------------------------------------------*/
 .DemoDMVClassCQuestionsLandingPage {
 	-webkit-box-flex: 1;

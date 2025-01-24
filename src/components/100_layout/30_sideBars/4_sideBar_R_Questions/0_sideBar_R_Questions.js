@@ -33,18 +33,16 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 		dispatch(userReducerActions.sideBar_R_Close_Questions());
 	};
 	let exitButton = (
-		<div className={classes.exitButtonContainer}>
-			<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
-				<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
-					<path
-						d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
-						fillRule="nonzero"
-						fillOpacity="1"
-						stroke="none"
-					></path>
-				</svg>
-			</button>
-		</div>
+		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
+			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+				<path
+					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
+					fillRule="nonzero"
+					fillOpacity="1"
+					stroke="none"
+				></path>
+			</svg>
+		</button>
 	);
 	// Resizer functionality
 	useEffect(() => {
@@ -142,12 +140,14 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	}, [sideBar_R_QuestionsStatus_rdx]);
 
 	return (
-		<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
-			{exitButton}
-			<div className={classes.resizer} ref={resizerRef}></div>
+		<Fragment>
+			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
+				{exitButton}
+				<div className={classes.resizer} ref={resizerRef}></div>
 
-			{content}
-		</menu>
+				{content}
+			</menu>
+		</Fragment>
 	);
 };
 
