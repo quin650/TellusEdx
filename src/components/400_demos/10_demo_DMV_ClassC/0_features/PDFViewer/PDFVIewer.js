@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
 import PDF_paginationGUI from "../pagination/PDF_paginationGUI";
+import ZoomGUI from "../pagination/zoomGUI";
 
 const PDFViewer = () => {
 	const [pdfState, setPdfState] = useState({
@@ -22,7 +23,7 @@ const PDFViewer = () => {
 	let pageNumIsPending = null; //While fetching other pages, this is a placeholder for the "page num" (i.e "num" variable). So that once older render is complete, the new page will be rendered
 	const canvasRef = useRef(null); //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
 	const textLayerRef = useRef(null);
-
+	const renderTaskRef = useRef(null);
 	//!Set pdfDocument, FullScreen Scale
 	useEffect(() => {
 		//!Get Document
@@ -90,6 +91,9 @@ const PDFViewer = () => {
 			setPageIsRendering(true); //Change Rendering Status to "true"/currently rendering
 			const canvas = canvasRef.current; //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
 			const context = canvas.getContext("2d"); //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
+			if (renderTaskRef.current) {
+				renderTaskRef.current.cancel();
+			}
 
 			//console.log("Page is rendering...");
 			//!Get page
@@ -108,7 +112,9 @@ const PDFViewer = () => {
 					canvasContext: context, //The object with properties and methods for rendering graphics inside the canvas
 					viewport, //Representation of the size and scale at which the PDF page should be rendered
 				};
-				const renderTask = await page.render(renderContext).promise;
+				// const renderTask = await page.render(renderContext).promise;
+				renderTaskRef.current = page.render(renderContext);
+				await renderTaskRef.current.promise;
 				//!Render the page (actual)                                  //draws the content of a specific pdf page onto the canvas  https://github.com/mozilla/pdf.js/issues/7072#issuecomment-459616711
 				setPageIsRendering(false); //Once the page is rendered, set rendering state to false
 				const textContent = await page.getTextContent(); //Once page is rendered, extract text content
@@ -129,8 +135,13 @@ const PDFViewer = () => {
 					pageNumIsPending = null; //Then sets pageNumIsPending to null
 				}
 			} catch (error) {
+				if (error.name === "RenderingCancelledException") {
+					// Gracefully handle the cancellation
+				} else {
+					// Log unexpected errors
+					console.error("Error rendering page:", error);
+				}
 				setPageIsRendering(false);
-				console.error("Error rendering page:", error);
 			}
 		},
 		[pdfState.scale, pageIsRendering, pdfState.pdfDocument]
@@ -168,11 +179,12 @@ const PDFViewer = () => {
 	}, [isFullScreen]);
 	const toggleFullScreen = useCallback(() => {
 		setIsFullScreen((prev) => !prev); // Toggle the full screen state
-		if (renderTask) {
-			renderTask.cancel();
+		if (renderTaskRef.current) {
+			renderTaskRef.current.cancel();
 		}
 		setTriggerRerender((prevCount) => prevCount + 1); // Trigger re-render due to scale change
-	}, []);
+	}, [isFullScreen]);
+
 	return (
 		<Fragment>
 			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
@@ -180,17 +192,13 @@ const PDFViewer = () => {
 					<canvas ref={canvasRef} id="canvas"></canvas>
 					<div id="textLayer" ref={textLayerRef} className={classes.textLayer}></div>
 				</div>
-				<span className={classes.zoom_controls}>
-					<button onClick={zoomIn} id="zoom_in">
-						+
-					</button>
-					<button onClick={zoomOut} id="zoom_out">
-						-
-					</button>
-				</span>
 			</div>
 			<div className={classes.navigation_container}>
 				<PDF_paginationGUI />
+
+				<div className={classes.zoomControlsContainer}>
+					<ZoomGUI toggleFullScreen={toggleFullScreen} isFullScreen={isFullScreen} zoomIn={zoomIn} zoomOut={zoomOut} />
+				</div>
 			</div>
 		</Fragment>
 	);

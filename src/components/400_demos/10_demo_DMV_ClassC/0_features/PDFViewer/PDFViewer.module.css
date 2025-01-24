@@ -24,9 +24,7 @@ canvas {
 	font-family: sans-serif !important;
 	line-height: 21.6px;
 	font-size: 16px;
-
 	bottom: 0%;
-	padding-bottom: 3.5vh;
 }
 .navigation_controls {
 	display: flex;
@@ -37,12 +35,16 @@ canvas {
 .navigation_controls input {
 	width: 50px;
 }
-.zoom_controls {
-	position: absolute;
-	z-index: 3000;
-	top: 96vh;
-	left: calc(50vw - 20px);
-}
-.zoom_controls button {
-	width: 20px;
+.zoomControlsContainer {
+	display: flex;
+	flex-direction: row;
+	box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 10%);
+	border: 1px solid rgb(0 0 0 / 10%);
+	background-color: var(--backgroundColor_pageNav_white_to_gray);
+	border-radius: 10px;
+	width: 100px;
+	align-items: center;
+	margin: 10px auto 10px auto;
+	font-size: 16px !important;
+	height: 30px;
 }
