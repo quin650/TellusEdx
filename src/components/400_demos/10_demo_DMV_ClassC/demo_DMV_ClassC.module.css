@@ -222,16 +222,16 @@
 	z-index: 10;
 }
 .quickNavWrapper {
-	height: 100%;
+	height: 30px;
 	display: flex;
 	flex-direction: column;
-	padding: 0;
-	overflow-y: visible; /* issue for scaling number on hover, being cut off by top div---------------------*/
+	padding-top: 7px;
+	overflow: hidden;
 }
 
 .quickNavWrapper:hover {
-	overflow-y: hidden; /* issue for scaling number on hover, being cut off by top div------------remove to kinda fix*/
-	overflow-x: scroll; /* issue for scaling number on hover, being cut off by top div------------remove to kinda fix*/
+	overflow-y: hidden;
+	overflow-x: scroll;
 	scrollbar-width: thin !important;
 	scrollbar-color: rgb(255, 255, 255) transparent !important;
 	transition: scrollbar-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
@@ -244,11 +244,13 @@
 	cursor: pointer;
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse);
 	min-width: 800px;
+	height: 23px;
 }
 .scrollPortion {
 	display: flex;
-	height: 1px;
+	height: 10px;
 	background-color: black;
+	min-width: 800px;
 }
 
 .quickNavButton {

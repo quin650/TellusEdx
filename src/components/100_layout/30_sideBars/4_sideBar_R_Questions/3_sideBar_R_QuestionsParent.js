@@ -40,7 +40,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		const quickNav = quickNavRef.current;
 		const handleWheel = (e) => {
 			e.preventDefault();
-			quickNav.scrollLeft += e.deltaY; // Redirect vertical scroll to horizontal
+			quickNav.scrollLeft += e.deltaY + e.deltaX;
 		};
 		quickNav.addEventListener("wheel", handleWheel);
 		return () => {
