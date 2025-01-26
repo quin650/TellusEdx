@@ -206,12 +206,13 @@ main {
 	overflow-x: hidden;
 	max-height: 100vh;
 	scrollbar-color: gray transparent;
-	scrollbar-width: thin;
+	scrollbar-width: thin !important;
 	background: var(--BackgroundColor);
 	color: var(--color_primary_darkGray_to_gray);
 }
 ::-webkit-scrollbar {
 	width: 6px; /* Styling the scrollbar in Chrome and Safari */
+	height: 6px;
 }
 ::-webkit-scrollbar-thumb {
 	/* the draggable part of the scrollbar */

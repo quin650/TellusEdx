@@ -233,8 +233,8 @@
 .quickNavWrapper:hover {
 	overflow-y: hidden;
 	overflow-x: scroll;
-	scrollbar-color: rgb(255, 255, 255) transparent !important;
-	transition: scrollbar-color 0.9s cubic-bezier(1, 0.02, 0.58, 1);
+	scrollbar-color: var(--BackgroundColor) transparent !important;
+	transition: scrollbar-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
 }
 .quickNav {
 	display: flex;
