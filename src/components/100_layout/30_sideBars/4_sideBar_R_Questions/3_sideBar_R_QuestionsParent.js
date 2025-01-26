@@ -50,7 +50,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 
 	return (
 		<Fragment>
-			<div className={classes.handbook_header_section}>
+			<div className={classes.handbook_header_section_question}>
 				<span className={classes.headerTop}>
 					<p className={classes.questionNumber}>Question {questionNumber} of 36</p>
 					<p className={classes.testNumber}>Test {testNumber}</p>

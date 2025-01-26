@@ -177,7 +177,7 @@
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	min-height: 15vh;
 	padding: 2vh 1vw 0 1vw;
-	margin: 1vh 1vw 0 1vw;
+	margin: 1vh 1vw 4vh 1vw;
 	color: white;
 	border-radius: 3px 3px 0 0;
 	overflow: hidden;
@@ -212,7 +212,20 @@
 /*! -------------------------------------------------------------------------------------------------------- */
 /*! -------------------------------------------------------------------------------------------------------- */
 /*! -------------------------------------------------------------------------------------------------------- */
+.handbook_header_section_question {
+	display: block;
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
+	min-height: 15vh;
+	padding: 2vh 1vw 0 1vw;
+	margin: 1vh 1vw 0 1vw;
+	color: white;
+	border-radius: 3px 3px 0 0;
+	overflow: hidden;
 
+	overflow: visible; /* Allow scaling to overflow */
+	position: relative; /* Ensure proper stacking context */
+	z-index: 5; /* Lower than quickNavButton */
+}
 .quickNavContainer {
 	display: flex;
 	flex-direction: column;
@@ -229,7 +242,6 @@
 	overflow: hidden;
 	scrollbar-width: thin !important;
 }
-
 .quickNavWrapper:hover {
 	overflow-y: hidden;
 	overflow-x: scroll;
@@ -246,13 +258,6 @@
 	min-width: 800px;
 	height: 23px;
 }
-.scrollPortion {
-	display: flex;
-	height: 10px;
-	background-color: black;
-	min-width: 800px;
-}
-
 .quickNavButton {
 	display: flex;
 	justify-content: center;
@@ -265,8 +270,16 @@
 	transform: scale(1.5, 1.5);
 	transform-origin: center center;
 	color: white;
-	transition: transform 0.5s cubic-bezier(1, 0.02, 0.58, 1), color 0.5s cubic-bezier(1, 0.02, 0.58, 1);
-	z-index: 100; /* Ensure it renders above all */
+	transition: transform 0.02s cubic-bezier(1, 0.02, 0.58, 1), color 0.2s cubic-bezier(1, 0.02, 0.58, 1), background-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
+	z-index: 100;
+	background-color: var(--Blue);
+	border: 1px solid black;
+}
+.scrollPortion {
+	display: flex;
+	height: 10px;
+	background-color: black;
+	min-width: 800px;
 }
 
 /*! -------------------------------------------------------------------------------------------------------- */
