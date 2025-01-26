@@ -90,6 +90,7 @@ body {
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #f8f9fb;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #287bba);
+	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse: linear-gradient(180deg, #287bba, var(--Blue));
 	--hover_readerHeaderTitle_lightBlue_to_blue: #287bba;
 	--color_readerSecondary_darkBlue_to_offWhite: #163159;
 	--color_readerSecondary_darkBlue_to_lightBlue: #163159;
@@ -174,6 +175,7 @@ body {
 	--color_SearchBarBorderTop_offWhite_to_offBlack: #eeebee;
 	--backgroundColor_SearchBarBorderTop_offWhite_to_offBlack: #171717;
 	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black: linear-gradient(180deg, var(--Blue), #191919);
+	--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse: linear-gradient(180deg, #191919, var(--Blue));
 	--hover_readerHeaderTitle_lightBlue_to_blue: var(--Blue);
 	--color_readerSecondary_darkBlue_to_offWhite: #dddddd;
 	--color_readerSecondary_darkBlue_to_lightBlue: #30568d;

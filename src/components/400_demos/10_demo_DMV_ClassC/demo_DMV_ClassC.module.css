@@ -177,10 +177,14 @@
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	min-height: 15vh;
 	padding: 2vh 1vw 0 1vw;
-	margin: 1vh 1vw 4vh 1vw;
+	margin: 1vh 1vw 0 1vw;
 	color: white;
 	border-radius: 3px 3px 0 0;
 	overflow: hidden;
+
+	overflow: visible; /* Allow scaling to overflow */
+	position: relative; /* Ensure proper stacking context */
+	z-index: 5; /* Lower than quickNavButton */
 }
 .handbook_header_section h1 {
 	font-size: 4vh;
@@ -205,6 +209,68 @@
 	margin: 0 0 0 0;
 	color: var(--color_readerSectionTitle_white_to_offWhite);
 }
+/*! -------------------------------------------------------------------------------------------------------- */
+/*! -------------------------------------------------------------------------------------------------------- */
+/*! -------------------------------------------------------------------------------------------------------- */
+
+.quickNavContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	margin: 0 1vw 4vh 1vw;
+	position: relative;
+	z-index: 10;
+}
+.quickNavWrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	overflow-y: visible; /* issue for scaling number on hover, being cut off by top div---------------------*/
+}
+
+.quickNavWrapper:hover {
+	overflow-y: hidden; /* issue for scaling number on hover, being cut off by top div------------remove to kinda fix*/
+	overflow-x: scroll; /* issue for scaling number on hover, being cut off by top div------------remove to kinda fix*/
+	scrollbar-width: thin !important;
+	scrollbar-color: rgb(255, 255, 255) transparent !important;
+	transition: scrollbar-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
+}
+.quickNav {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	font-size: 10px;
+	cursor: pointer;
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse);
+	min-width: 800px;
+}
+.scrollPortion {
+	display: flex;
+	height: 1px;
+	background-color: black;
+}
+
+.quickNavButton {
+	display: flex;
+	justify-content: center;
+	color: black;
+	min-width: 20px;
+	position: relative;
+	z-index: 20;
+}
+.quickNavButton:hover {
+	transform: scale(1.5, 1.5);
+	transform-origin: center center;
+	color: white;
+	transition: transform 0.5s cubic-bezier(1, 0.02, 0.58, 1), color 0.5s cubic-bezier(1, 0.02, 0.58, 1);
+	z-index: 100; /* Ensure it renders above all */
+}
+
+/*! -------------------------------------------------------------------------------------------------------- */
+/*! -------------------------------------------------------------------------------------------------------- */
+/*! -------------------------------------------------------------------------------------------------------- */
+
 .headerTop {
 	display: flex;
 	justify-content: space-between;

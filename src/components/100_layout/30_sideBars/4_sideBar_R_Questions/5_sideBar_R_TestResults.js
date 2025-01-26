@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_TestResultsListOfQuestions from "./6_sideBar_R_TestResultsListOfQuestions";
-
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResults = () => {
@@ -10,7 +9,7 @@ const SideBar_R_TestResults = () => {
 	const questionContentRef = useRef(null);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
-	const testData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
+	const testResultData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
 	const [isPassed, setIsPassed] = useState(null);
 	const [answeredCorrectly, setAnsweredCorrectly] = useState(null);
 	const [status, setStatus] = useState(null);
@@ -40,10 +39,10 @@ const SideBar_R_TestResults = () => {
 	const [ul3, setUl3] = useState([]);
 
 	useEffect(() => {
-		if (!testData) {
+		if (!testResultData) {
 			return;
 		}
-		const testDataEntries = Object.entries(testData);
+		const testDataEntries = Object.entries(testResultData);
 		let numberAnsweredCorrectly = 0;
 		setUl1(
 			testDataEntries
@@ -75,7 +74,7 @@ const SideBar_R_TestResults = () => {
 
 		setAnsweredCorrectly(numberAnsweredCorrectly);
 		setIsPassed(numberAnsweredCorrectly >= 30);
-	}, [testData]);
+	}, [testResultData]);
 
 	const gotoResetThisTestModal = () => {
 		dispatch(userReducerActions.resetThisTestModalOpen());

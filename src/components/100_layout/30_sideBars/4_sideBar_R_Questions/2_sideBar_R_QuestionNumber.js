@@ -55,7 +55,6 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={true}
-						testIsComplete={testIsComplete}
 					/>
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
@@ -69,7 +68,6 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={null} //-------------------diff
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={false} //---------------------diff
-						testIsComplete={testIsComplete}
 					/>
 				);
 			} else {
@@ -83,7 +81,6 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={null}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={startGradingTest}
-						testIsComplete={testIsComplete}
 					/>
 				);
 			}

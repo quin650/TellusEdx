@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
@@ -21,7 +20,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 
 	useEffect(() => {
 		if (sideBar_R_QuestionTestResults_rdx) {
-			// Check if the values are available before updating state
+			// Check if the values are available before updating state -- !!double negation returns boolean if truthy of falsy
 			const test1Started = !!sideBar_R_QuestionTestResults_rdx[1]?.[1];
 			const test2Started = !!sideBar_R_QuestionTestResults_rdx[2]?.[1];
 			const test3Started = !!sideBar_R_QuestionTestResults_rdx[3]?.[1];

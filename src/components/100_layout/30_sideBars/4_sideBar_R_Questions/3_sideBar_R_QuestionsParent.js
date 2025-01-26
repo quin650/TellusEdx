@@ -1,10 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useRef, Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, testIsComplete }) => {
+const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest }) => {
 	const dispatch = useDispatch();
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
@@ -20,6 +19,35 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
 	};
 
+	const gotoQuestion = () => {
+		console.log("going to question");
+	};
+
+	const [quickNavBar, setQuickNavBar] = useState(null);
+	useEffect(() => {
+		setQuickNavBar(
+			Array.from({ length: 36 }, (_, i) => i + 1).map((i) => (
+				<li key={i} className={classes.quickNavButton} onClick={gotoQuestion}>
+					{i}
+				</li>
+			))
+		);
+	}, []);
+
+	const quickNavRef = useRef(null);
+
+	useEffect(() => {
+		const quickNav = quickNavRef.current;
+		const handleWheel = (e) => {
+			e.preventDefault();
+			quickNav.scrollLeft += e.deltaY; // Redirect vertical scroll to horizontal
+		};
+		quickNav.addEventListener("wheel", handleWheel);
+		return () => {
+			quickNav.removeEventListener("wheel", handleWheel);
+		};
+	}, []);
+
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section}>
@@ -29,6 +57,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				</span>
 				<h2>{question}</h2>
 			</div>
+
+			<div className={classes.quickNavContainer}>
+				<div ref={quickNavRef} className={classes.quickNavWrapper}>
+					<div className={classes.quickNav}>{quickNavBar}</div>
+					<div className={classes.scrollPortion}></div>
+				</div>
+			</div>
+
 			<div className={`${classes["question_content"]} ${sideBar_L_isOpen_rdx && classes.sideBar_L_isOpen}`}>
 				<ul>
 					{answersData.map((answer) => (
