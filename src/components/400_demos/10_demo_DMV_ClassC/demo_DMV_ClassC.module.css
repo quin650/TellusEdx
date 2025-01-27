@@ -265,6 +265,7 @@
 	min-width: 20px;
 	position: relative;
 	z-index: 20;
+	background-color: gray;
 }
 .quickNavButton:hover {
 	transform: scale(1.5, 1.5);
@@ -274,6 +275,24 @@
 	z-index: 100;
 	background-color: var(--Blue);
 	border: 1px solid black;
+}
+.quickNavButton.inCorrect {
+	display: flex;
+	justify-content: center;
+	color: black;
+	min-width: 20px;
+	position: relative;
+	z-index: 20;
+	background-color: red;
+}
+.quickNavButton.correct {
+	display: flex;
+	justify-content: center;
+	color: black;
+	min-width: 20px;
+	position: relative;
+	z-index: 20;
+	background-color: green;
 }
 .scrollPortion {
 	display: flex;

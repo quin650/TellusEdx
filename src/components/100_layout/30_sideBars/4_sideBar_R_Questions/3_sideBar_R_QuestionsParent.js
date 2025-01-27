@@ -23,16 +23,47 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		console.log("going to question");
 	};
 
+	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
+	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
+	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
+
+	// useEffect(() => {
+	// 	Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
+	// 		const questionData1 = questionData_ifSubmitted?.[i];
+	// 		if (questionData1) {
+	// 			console.log("i:", i);
+	// 			const answerData1 = questionData1[2];
+	// 			console.log("answerData1", answerData1);
+	// 		}
+	// 	});
+	// }, []);
+
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	useEffect(() => {
 		setQuickNavBar(
-			Array.from({ length: 36 }, (_, i) => i + 1).map((i) => (
-				<li key={i} className={classes.quickNavButton} onClick={gotoQuestion}>
-					{i}
-				</li>
-			))
+			Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
+				const questionData1 = questionData_ifSubmitted?.[i];
+				if (questionData1) {
+					return (
+						<li
+							key={i}
+							onClick={gotoQuestion}
+							className={`${classes["quickNavButton"]} ${questionData1[2] !== null ? (questionData1[2] ? classes.inCorrect : classes.correct) : ""}`}
+						>
+							{i}
+						</li>
+					);
+				} else {
+					return (
+						<li key={i} onClick={gotoQuestion} className={classes.quickNavButton}>
+							{i}
+						</li>
+					);
+				}
+				return null; // Prevent undefined in the array
+			})
 		);
-	}, []);
+	}, [questionData_ifSubmitted, gotoQuestion, classes]);
 
 	const quickNavRef = useRef(null);
 

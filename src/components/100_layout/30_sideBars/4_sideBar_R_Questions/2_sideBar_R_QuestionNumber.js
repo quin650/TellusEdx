@@ -107,7 +107,6 @@ const SideBar_R_QuestionNumber = () => {
 	const gotoTestResults = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResults());
 	};
-	console.log("startGradingTest: ", startGradingTest);
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef} onClick={handleQuestionSideBarClick}>
 			<div className={classes.page_contentContainer}>
