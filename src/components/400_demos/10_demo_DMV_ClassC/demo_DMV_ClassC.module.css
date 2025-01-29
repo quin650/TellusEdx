@@ -233,9 +233,10 @@
 	margin: 0 1vw 4vh 1vw;
 	position: relative;
 	z-index: 10;
+	height: 30px;
 }
 .quickNavWrapper {
-	height: 30px;
+	height: 10px;
 	display: flex;
 	flex-direction: column;
 	padding-top: 7px;
@@ -243,6 +244,7 @@
 	scrollbar-width: thin !important;
 }
 .quickNavWrapper:hover {
+	height: 30px;
 	overflow-y: hidden;
 	overflow-x: scroll;
 	scrollbar-color: var(--BackgroundColor) transparent !important;
@@ -253,7 +255,6 @@
 	justify-content: space-between;
 	flex-direction: row;
 	font-size: 10px;
-	cursor: pointer;
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse);
 	min-width: 800px;
 	height: 23px;
@@ -266,15 +267,7 @@
 	position: relative;
 	z-index: 20;
 	background-color: gray;
-}
-.quickNavButton:hover {
-	transform: scale(1.5, 1.5);
-	transform-origin: center center;
-	color: white;
-	transition: transform 0.02s cubic-bezier(1, 0.02, 0.58, 1), color 0.2s cubic-bezier(1, 0.02, 0.58, 1), background-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
-	z-index: 100;
-	background-color: var(--Blue);
-	border: 1px solid black;
+	cursor: default;
 }
 .quickNavButton.inCorrect {
 	display: flex;
@@ -283,7 +276,8 @@
 	min-width: 20px;
 	position: relative;
 	z-index: 20;
-	background-color: red;
+	background-color: #ff6a6a;
+	cursor: pointer;
 }
 .quickNavButton.correct {
 	display: flex;
@@ -292,8 +286,27 @@
 	min-width: 20px;
 	position: relative;
 	z-index: 20;
-	background-color: green;
+	background-color: #00df00;
+	cursor: pointer;
 }
+.quickNavButton.inCorrect:hover,
+.quickNavButton.correct:hover {
+	transform: scale(1.5, 1.5);
+	transform-origin: center center;
+	color: white;
+	transition: transform 0.02s cubic-bezier(1, 0.02, 0.58, 1), color 0.2s cubic-bezier(1, 0.02, 0.58, 1), background-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
+	z-index: 100;
+	/* background-color: var(--Blue); */
+	border: 1px solid rgb(42, 42, 42);
+	-webkit-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+}
+.quickNavButton.inCorrect:active,
+.quickNavButton.correct:active {
+	transform: scale(1.8, 1.8);
+}
+
 .scrollPortion {
 	display: flex;
 	height: 10px;

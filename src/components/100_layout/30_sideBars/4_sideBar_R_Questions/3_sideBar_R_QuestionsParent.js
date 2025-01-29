@@ -1,4 +1,4 @@
-import React, { useState, useRef, Fragment, useEffect } from "react";
+import React, { useState, useRef, Fragment, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
@@ -19,36 +19,25 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
 	};
 
-	const gotoQuestion = () => {
-		console.log("going to question");
-	};
+	const gotoQuestion = useCallback((event) => {
+		console.log("goto question");
+	}, []);
 
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
 
-	// useEffect(() => {
-	// 	Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
-	// 		const questionData1 = questionData_ifSubmitted?.[i];
-	// 		if (questionData1) {
-	// 			console.log("i:", i);
-	// 			const answerData1 = questionData1[2];
-	// 			console.log("answerData1", answerData1);
-	// 		}
-	// 	});
-	// }, []);
-
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	useEffect(() => {
 		setQuickNavBar(
 			Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
-				const questionData1 = questionData_ifSubmitted?.[i];
-				if (questionData1) {
+				const questionAnswerData = questionData_ifSubmitted?.[i];
+				if (questionAnswerData) {
 					return (
 						<li
 							key={i}
 							onClick={gotoQuestion}
-							className={`${classes["quickNavButton"]} ${questionData1[2] !== null ? (questionData1[2] ? classes.inCorrect : classes.correct) : ""}`}
+							className={`${classes["quickNavButton"]} ${questionAnswerData[2] !== null ? (questionAnswerData[2] ? classes.inCorrect : classes.correct) : ""}`}
 						>
 							{i}
 						</li>
@@ -60,10 +49,9 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 						</li>
 					);
 				}
-				return null; // Prevent undefined in the array
 			})
 		);
-	}, [questionData_ifSubmitted, gotoQuestion, classes]);
+	}, [questionData_ifSubmitted, gotoQuestion]);
 
 	const quickNavRef = useRef(null);
 
