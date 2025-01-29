@@ -232,7 +232,7 @@
 	padding: 0;
 	margin: 0 1vw 4vh 1vw;
 	position: relative;
-	z-index: 10;
+	z-index: 1000;
 	height: 30px;
 }
 .quickNavWrapper {
@@ -243,12 +243,14 @@
 	overflow: hidden;
 	scrollbar-width: thin !important;
 }
-.quickNavWrapper:hover {
+.quickNavContainer:hover .quickNavWrapper {
 	height: 30px;
+}
+.quickNavWrapper:hover {
 	overflow-y: hidden;
 	overflow-x: scroll;
 	scrollbar-color: var(--BackgroundColor) transparent !important;
-	transition: scrollbar-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
+	transition: scrollbar-color 0.2s cubic-bezier(1, 0.02, 0.58, 1), height 0.2s cubic-bezier(1, 0.02, 0.58, 1);
 }
 .quickNav {
 	display: flex;

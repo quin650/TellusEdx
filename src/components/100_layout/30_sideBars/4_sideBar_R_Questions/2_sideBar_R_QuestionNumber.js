@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 
@@ -20,6 +20,14 @@ const SideBar_R_QuestionNumber = () => {
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
+
+	const gotoQuestion = useCallback(
+		(questionNum) => {
+			console.log("goto question", questionNum);
+			dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(questionNum));
+		},
+		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]
+	);
 
 	const get_ChosenAnswerID = (id, correctOrIncorrect) => {
 		setChosenAnswerID(id);
@@ -55,6 +63,7 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={true}
+						gotoQuestion={gotoQuestion}
 					/>
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
@@ -68,6 +77,7 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={null} //-------------------diff
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={false} //---------------------diff
+						gotoQuestion={gotoQuestion}
 					/>
 				);
 			} else {
@@ -81,6 +91,7 @@ const SideBar_R_QuestionNumber = () => {
 						previouslyCheckedID={null}
 						get_ChosenAnswerID={get_ChosenAnswerID}
 						startGradingTest={startGradingTest}
+						gotoQuestion={gotoQuestion}
 					/>
 				);
 			}
