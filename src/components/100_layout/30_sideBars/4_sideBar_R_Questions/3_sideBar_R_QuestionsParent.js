@@ -7,6 +7,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
+	const answersHint = questionData.hint;
 	const [previousAnswerID, setPreviousAnswerID] = useState(null);
 	const [answerIDToUncheck, setAnswerIDToUncheck] = useState(null);
 
@@ -92,7 +93,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				</ul>
 			</div>
 			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
-				<p>Reason for the correct answer here</p>
+				<p>{answersHint}</p>
 			</div>
 		</Fragment>
 	);

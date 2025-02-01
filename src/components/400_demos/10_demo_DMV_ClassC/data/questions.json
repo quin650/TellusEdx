@@ -21,7 +21,8 @@
 					"text": "If there are two or more one-way lanes.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": "It is never allowed to drive off the road. Don't confuse this with passing on the right shoulder of the road, which is allowed under certain conditions."
 		},
 		{
 			"id": 2,
@@ -44,7 +45,8 @@
 					"text": "25 mph.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": "It won't be the regular speed limit, but a slower speed limit. But not too slow."
 		},
 		{
 			"id": 3,
@@ -67,7 +69,8 @@
 					"text": "Stop next to the vehicle in front of the open space, and then back into the space.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": "Parallel parking is a reverse maneuver. You back into the space."
 		},
 		{
 			"id": 4,
@@ -90,7 +93,8 @@
 					"text": "Slower than the speed of traffic.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": "Going faster -> hit someone. Going slower -> someone might hit you."
 		},
 		{
 			"id": 5,
@@ -113,7 +117,8 @@
 					"text": "500 feet.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": "High beam's range is up to 700 feet, so switch to low beams "
 		},
 		{
 			"id": 6,
@@ -136,7 +141,8 @@
 					"text": "A person who will only be parked at the curb for less than 15 minutes.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": "Blue = disabled parking only."
 		},
 		{
 			"id": 7,
@@ -159,7 +165,8 @@
 					"text": "Cautiously pass the school bus on the left.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 8,
@@ -182,7 +189,8 @@
 					"text": "Never drive faster than is safe for current conditions.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 9,
@@ -205,7 +213,8 @@
 					"text": "Receive a traffic violation.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 10,
@@ -228,7 +237,8 @@
 					"text": "Using your high-beam headlights in the fog.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 11,
@@ -251,7 +261,8 @@
 					"text": "Assume right-of-way if the motorized wheelchair stops in the crosswalk.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 12,
@@ -274,7 +285,8 @@
 					"text": "They have large and powerful emergency brakes, which gives them the capability to stop quickly.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 13,
@@ -297,7 +309,8 @@
 					"text": "Driver distractions.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 14,
@@ -320,7 +333,8 @@
 					"text": "Attending an anger-management class.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 15,
@@ -343,7 +357,8 @@
 					"text": "Give the right-of-way to any approaching vehicle that is close enough to be dangerous.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 16,
@@ -366,7 +381,8 @@
 					"text": "Make sure your vehicle is in the “park” position or in gear.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 17,
@@ -389,7 +405,8 @@
 					"text": "Between 7 a.m. and 8 p.m.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 18,
@@ -412,7 +429,8 @@
 					"text": "You can turn from any lane.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 19,
@@ -435,7 +453,8 @@
 					"text": "You failed to pay your registration fees.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 20,
@@ -458,7 +477,8 @@
 					"text": "When it has been raining for a few hours.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 21,
@@ -481,7 +501,8 @@
 					"text": "White.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 22,
@@ -504,7 +525,8 @@
 					"text": "Carpool/High-Occupancy (HOV) lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 23,
@@ -527,7 +549,8 @@
 					"text": "Make the turn from your current lane and do not enter the bicycle lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 24,
@@ -550,7 +573,8 @@
 					"text": "You must drive 65 mph only if driving conditions are ideal.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 25,
@@ -573,7 +597,8 @@
 					"text": "If the area is labeled as a bicycle lane, unless otherwise posted.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 26,
@@ -596,7 +621,8 @@
 					"text": "Answer the call if you are stopped at a red light.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 27,
@@ -619,7 +645,8 @@
 					"text": "Drive around the traffic on the shoulder to help ease the congestion.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 28,
@@ -642,7 +669,8 @@
 					"text": "The lane closest to the right edge of the road.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 29,
@@ -665,7 +693,8 @@
 					"text": "Only when children are present in front of a school.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 30,
@@ -688,7 +717,8 @@
 					"text": "Using cruise control on residential streets.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 31,
@@ -711,7 +741,8 @@
 					"text": "Wait until you can completely cross the tracks before proceeding.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 32,
@@ -734,7 +765,8 @@
 					"text": "Increase your speed to match the speed of the vehicle.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 33,
@@ -757,7 +789,8 @@
 					"text": "Only if you are approaching a sharp curve in the road.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 34,
@@ -780,7 +813,8 @@
 					"text": "Headlights.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 35,
@@ -803,7 +837,8 @@
 					"text": "Stop and wait for a flashing green signal.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 36,
@@ -826,7 +861,8 @@
 					"text": "Wait until the pedestrian has crossed the street completely before proceeding.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 37,
@@ -849,7 +885,8 @@
 					"text": "If the container is in the glove compartment.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 38,
@@ -872,7 +909,8 @@
 					"text": "$20",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 39,
@@ -895,7 +933,8 @@
 					"text": "When you are in a carpool/HOV lane with a designated entrance on the left.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 40,
@@ -918,7 +957,8 @@
 					"text": "Wet.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 41,
@@ -941,7 +981,8 @@
 					"text": "On a railroad crossing.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 42,
@@ -964,7 +1005,8 @@
 					"text": "Both of the above.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 43,
@@ -987,7 +1029,8 @@
 					"text": "Solid yellow line.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 44,
@@ -1010,7 +1053,8 @@
 					"text": "No, never.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 45,
@@ -1038,7 +1082,8 @@
 					"text": "Sharp right and left turns are ahead.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 46,
@@ -1066,7 +1111,8 @@
 					"text": "None of the above.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 47,
@@ -1089,7 +1135,8 @@
 					"text": "$500",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 48,
@@ -1112,7 +1159,8 @@
 					"text": "200 feet.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 49,
@@ -1140,7 +1188,8 @@
 					"text": "A warning sign at a work zone.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 50,
@@ -1163,7 +1212,8 @@
 					"text": "Any safely open lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 51,
@@ -1186,7 +1236,8 @@
 					"text": "Be sent to jail and/or pay a hefty fine.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 52,
@@ -1209,7 +1260,8 @@
 					"text": "Right-edge lines.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 53,
@@ -1232,7 +1284,8 @@
 					"text": "Yield and then proceed with caution.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 54,
@@ -1255,7 +1308,8 @@
 					"text": "Neither of the above.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 55,
@@ -1278,7 +1332,8 @@
 					"text": "Stop and ask the pedestrians to cross quickly.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 56,
@@ -1301,7 +1356,8 @@
 					"text": "Whoever starts moving first.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 57,
@@ -1324,7 +1380,8 @@
 					"text": "A winding road.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 58,
@@ -1347,7 +1404,8 @@
 					"text": "Turn right.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 59,
@@ -1370,7 +1428,8 @@
 					"text": "A good supply of fresh air.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 60,
@@ -1393,7 +1452,8 @@
 					"text": "Blue.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 61,
@@ -1416,7 +1476,8 @@
 					"text": "Separates two lanes traveling in the same direction, but crossing the line is prohibited.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 62,
@@ -1444,7 +1505,8 @@
 					"text": "C",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 63,
@@ -1467,7 +1529,8 @@
 					"text": "Slow-moving vehicle.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 64,
@@ -1490,7 +1553,8 @@
 					"text": "Slow-moving vehicles should move as directed.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 65,
@@ -1513,7 +1577,8 @@
 					"text": "Continue through the intersection, then move to the left and stop.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 66,
@@ -1536,7 +1601,8 @@
 					"text": "Pull off the road and away from traffic.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 67,
@@ -1559,7 +1625,8 @@
 					"text": "Both vehicles.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 68,
@@ -1582,7 +1649,8 @@
 					"text": "Do both of the above.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 69,
@@ -1605,7 +1673,8 @@
 					"text": "You must stop and you cannot turn in the direction of the arrow.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 70,
@@ -1628,7 +1697,8 @@
 					"text": "Sit on the lap of an elder child, with a seat belt fastened to both.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 71,
@@ -1651,7 +1721,8 @@
 					"text": "Three-second rule.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 72,
@@ -1674,7 +1745,8 @@
 					"text": "Accelerate to merge with traffic.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 73,
@@ -1697,7 +1769,8 @@
 					"text": "Airplanes fly at low altitude in this area.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 74,
@@ -1720,7 +1793,8 @@
 					"text": "Low-beam headlights.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 75,
@@ -1743,7 +1817,8 @@
 					"text": "Diamond-shaped.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 76,
@@ -1766,7 +1841,8 @@
 					"text": "A clockwise direction.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 77,
@@ -1789,7 +1865,8 @@
 					"text": "20 minutes.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 78,
@@ -1812,7 +1889,8 @@
 					"text": "Turning the ignition to the lock position while the vehicle is still in motion.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 79,
@@ -1835,7 +1913,8 @@
 					"text": "Slow down or stop.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 80,
@@ -1858,7 +1937,8 @@
 					"text": "Passing is allowed if done safely.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 81,
@@ -1881,7 +1961,8 @@
 					"text": "Slow down gradually.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 82,
@@ -1904,7 +1985,8 @@
 					"text": "15 days.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 83,
@@ -1927,7 +2009,8 @@
 					"text": "A playground.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 84,
@@ -1950,7 +2033,8 @@
 					"text": "Allow vehicles to make U-turns.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 85,
@@ -1973,7 +2057,8 @@
 					"text": "Two-way traffic.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 86,
@@ -1996,7 +2081,8 @@
 					"text": "Any or all of the above.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 87,
@@ -2019,7 +2105,8 @@
 					"text": "Only from a one-way street onto a two-way street.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 88,
@@ -2042,7 +2129,8 @@
 					"text": "Blood.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 89,
@@ -2065,7 +2153,8 @@
 					"text": "Report the incident to the police.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 90,
@@ -2088,7 +2177,8 @@
 					"text": "200 feet.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 91,
@@ -2111,7 +2201,8 @@
 					"text": "The start of a divided highway.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 92,
@@ -2134,7 +2225,8 @@
 					"text": "Stop on the left shoulder.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 93,
@@ -2157,7 +2249,8 @@
 					"text": "Left turn.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 94,
@@ -2180,7 +2273,8 @@
 					"text": "65 mph.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 95,
@@ -2203,7 +2297,8 @@
 					"text": "Stop and yield to the traffic on the freeway.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 96,
@@ -2226,7 +2321,8 @@
 					"text": "A small van.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 97,
@@ -2249,7 +2345,8 @@
 					"text": "A double solid line between opposing lanes of traffic means that vehicles on either side can pass.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 98,
@@ -2272,7 +2369,8 @@
 					"text": "Do not allow the tailgater to pass you.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 99,
@@ -2295,7 +2393,8 @@
 					"text": "Signal before passing through the intersection.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 100,
@@ -2318,7 +2417,8 @@
 					"text": "A crew is at work; vehicles must slow down.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 101,
@@ -2341,7 +2441,8 @@
 					"text": "Merge line.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 102,
@@ -2364,7 +2465,8 @@
 					"text": "The right lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 103,
@@ -2387,7 +2489,8 @@
 					"text": "Roundabouts.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 104,
@@ -2410,7 +2513,8 @@
 					"text": "Center.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 105,
@@ -2433,7 +2537,8 @@
 					"text": "Look toward the left edge of the road.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 106,
@@ -2456,7 +2561,8 @@
 					"text": "Stop at the solid white limit line.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 107,
@@ -2479,7 +2585,8 @@
 					"text": "Leave a little room for the oncoming vehicle while overtaking the bicycle.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 108,
@@ -2502,7 +2609,8 @@
 					"text": "The far left lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 109,
@@ -2525,7 +2633,8 @@
 					"text": "In both of the above situations.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 110,
@@ -2548,7 +2657,8 @@
 					"text": "Stay inside your vehicle with the seat belt on until help arrives.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 111,
@@ -2571,7 +2681,8 @@
 					"text": "All night.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 112,
@@ -2594,7 +2705,8 @@
 					"text": "You are moving through an intersection.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 113,
@@ -2617,7 +2729,8 @@
 					"text": "Increase speed.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 114,
@@ -2640,7 +2753,8 @@
 					"text": "Passing.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 115,
@@ -2663,7 +2777,8 @@
 					"text": "A hospital ahead.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 116,
@@ -2691,7 +2806,8 @@
 					"text": "B.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 117,
@@ -2714,7 +2830,8 @@
 					"text": "Set the parking brake.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 118,
@@ -2737,7 +2854,8 @@
 					"text": "To the front.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 119,
@@ -2760,7 +2878,8 @@
 					"text": "Both of the above are true.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 120,
@@ -2783,7 +2902,8 @@
 					"text": "Low beams are used when traveling in fog, rain, or snow.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 121,
@@ -2806,7 +2926,8 @@
 					"text": "Yellow lines.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 122,
@@ -2829,7 +2950,8 @@
 					"text": "Turn left or go straight.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 123,
@@ -2852,7 +2974,8 @@
 					"text": "You can only go straight.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 124,
@@ -2875,7 +2998,8 @@
 					"text": "To stop, proceed in a certain direction, or limit your speed.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 125,
@@ -2898,7 +3022,8 @@
 					"text": "Tailgating.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 126,
@@ -2921,7 +3046,8 @@
 					"text": "Farm machinery vehicles and trucks.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 127,
@@ -2944,7 +3070,8 @@
 					"text": "Guide drivers into certain parking zones.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 128,
@@ -2967,7 +3094,8 @@
 					"text": "Move into the proper lane well before the turn.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 129,
@@ -2990,7 +3118,8 @@
 					"text": "Honk your horn and wave to the driver to get off the phone.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 130,
@@ -3013,7 +3142,8 @@
 					"text": "18.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 131,
@@ -3036,7 +3166,8 @@
 					"text": "Increase your speed.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 132,
@@ -3059,7 +3190,8 @@
 					"text": "The far right lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 133,
@@ -3082,7 +3214,8 @@
 					"text": "In construction areas.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 134,
@@ -3105,7 +3238,8 @@
 					"text": "15 mph.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 135,
@@ -3128,7 +3262,8 @@
 					"text": "Try to increase the speed of your vehicle.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 136,
@@ -3151,7 +3286,8 @@
 					"text": "Slow down, move to the left side of the road.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 137,
@@ -3174,7 +3310,8 @@
 					"text": "White.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 138,
@@ -3197,7 +3334,8 @@
 					"text": "Pass quickly.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 139,
@@ -3220,7 +3358,8 @@
 					"text": "In any of the above situations.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 140,
@@ -3243,7 +3382,8 @@
 					"text": "Slow down and proceed with caution, if you cannot stop safely.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 141,
@@ -3266,7 +3406,8 @@
 					"text": "There is a gravel road with sharp curves ahead; drivers must proceed carefully.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 142,
@@ -3289,7 +3430,8 @@
 					"text": "Hand and arm extended downward.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 143,
@@ -3312,7 +3454,8 @@
 					"text": "In both of the above situations.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 144,
@@ -3335,7 +3478,8 @@
 					"text": "You can exceed the speed limit to pass quickly.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 145,
@@ -3358,7 +3502,8 @@
 					"text": "5.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 146,
@@ -3381,7 +3526,8 @@
 					"text": "A Yield sign.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 147,
@@ -3404,7 +3550,8 @@
 					"text": "Weaving.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 148,
@@ -3427,7 +3574,8 @@
 					"text": "Longer path.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 149,
@@ -3450,7 +3598,8 @@
 					"text": "Signal a left turn and look over your right shoulder.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 150,
@@ -3473,7 +3622,8 @@
 					"text": "Yield to the pedestrian.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 151,
@@ -3496,7 +3646,8 @@
 					"text": "When you are approaching the top of a hill or are on a curve, and there is no clear view ahead.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 152,
@@ -3519,7 +3670,8 @@
 					"text": "Move to one side of your lane to give motorcyclists more room to pass.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 153,
@@ -3542,7 +3694,8 @@
 					"text": "Center lines.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 154,
@@ -3565,7 +3718,8 @@
 					"text": "The vehicle cannot travel faster than 45 mph.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 155,
@@ -3588,7 +3742,8 @@
 					"text": "A double solid yellow line is in the center.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 156,
@@ -3611,7 +3766,8 @@
 					"text": "On the shoulder.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 157,
@@ -3634,7 +3790,8 @@
 					"text": "A red cane and a trained guide dog.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 158,
@@ -3657,7 +3814,8 @@
 					"text": "Vehicles must yield to pedestrians in unmarked crosswalks.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 159,
@@ -3680,7 +3838,8 @@
 					"text": "Make a left turn.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 160,
@@ -3703,7 +3862,8 @@
 					"text": "Roads.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 161,
@@ -3726,7 +3886,8 @@
 					"text": "Proceed slowly.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 162,
@@ -3749,7 +3910,8 @@
 					"text": "Exit ramp.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 163,
@@ -3772,7 +3934,8 @@
 					"text": "Part of the roadway ahead is closed.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 164,
@@ -3795,7 +3958,8 @@
 					"text": "Keep your wheels turned toward the left.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 165,
@@ -3818,7 +3982,8 @@
 					"text": "Passing is permitted during the day.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 166,
@@ -3841,7 +4006,8 @@
 					"text": "A steep downgrade ahead.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 167,
@@ -3864,7 +4030,8 @@
 					"text": "Any available lane.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 168,
@@ -3887,7 +4054,8 @@
 					"text": "The driver is making a left turn.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 169,
@@ -3910,7 +4078,8 @@
 					"text": "Enter the roundabout to the left of the central island.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 170,
@@ -3933,7 +4102,8 @@
 					"text": "Make right turns.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 171,
@@ -3956,7 +4126,8 @@
 					"text": "Reduce your speed and yield.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 172,
@@ -3979,7 +4150,8 @@
 					"text": "He or she must increase speed.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 173,
@@ -4002,7 +4174,8 @@
 					"text": "Single solid white lines.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 174,
@@ -4025,7 +4198,8 @@
 					"text": "Pass another vehicle.",
 					"isCorrect": true
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 175,
@@ -4048,7 +4222,8 @@
 					"text": "To report accidents to the police department and insurance companies.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 176,
@@ -4071,7 +4246,8 @@
 					"text": "At all times, drivers must yield the right-of-way to pedestrians in a marked or unmarked crosswalk.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 177,
@@ -4094,7 +4270,8 @@
 					"text": "Broken white line.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 178,
@@ -4117,7 +4294,8 @@
 					"text": "Center lines.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 179,
@@ -4140,7 +4318,8 @@
 					"text": "The vehicle cannot travel faster than 45 mph.",
 					"isCorrect": false
 				}
-			]
+			],
+			"hint": ""
 		},
 		{
 			"id": 180,

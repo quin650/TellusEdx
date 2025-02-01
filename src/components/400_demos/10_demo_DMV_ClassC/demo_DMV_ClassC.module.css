@@ -168,7 +168,7 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 90vh;
-	border: 1px solid #d6dade;
+	/* border: 1px solid #d6dade; */
 	border-radius: 8px;
 	min-width: 340px;
 }
@@ -233,10 +233,10 @@
 	margin: 0 1vw 4vh 1vw;
 	position: relative;
 	z-index: 1000;
-	height: 30px;
+	height: 35px;
 }
 .quickNavWrapper {
-	height: 10px;
+	height: 8px;
 	display: flex;
 	flex-direction: column;
 	padding-top: 7px;
@@ -244,7 +244,7 @@
 	scrollbar-width: thin !important;
 }
 .quickNavContainer:hover .quickNavWrapper {
-	height: 30px;
+	height: 35px;
 	transition: height 0.2s cubic-bezier(1, 0.02, 0.58, 1);
 }
 .quickNavWrapper:hover {
@@ -1158,20 +1158,21 @@ strong {
 	pointer-events: none;
 	cursor: default;
 }
-
 /* Reason for answer correctness -----------------------------------------*/
 .reasonCorrect {
 	-webkit-box-flex: 1;
-	/* flex-grow: 1; */
 	padding-left: 5%;
 	padding-right: 5%;
-	border: 1px solid #d6dade;
+	/* border: 1px solid #d6dade; */
 	border-radius: 8px;
-	margin: 5% 5% 5% 5%;
+	margin: 5% 5% 0% 5%;
 	visibility: hidden;
 }
 .reasonCorrect.startGradingTest {
 	visibility: visible;
+}
+.reasonCorrect p {
+	min-height: 38px;
 }
 /* View Test Results -----------------------------------------*/
 .viewTestResults {

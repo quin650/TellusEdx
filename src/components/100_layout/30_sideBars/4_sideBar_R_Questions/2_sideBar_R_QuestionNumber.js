@@ -123,9 +123,9 @@ const SideBar_R_QuestionNumber = () => {
 			<div className={classes.page_contentContainer}>
 				{questionComponent}
 
-				<div className={classes.bottomSection}>
+				{/* <div className={classes.bottomSection}>
 					<div onClick={gotoTestResults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
-						<p>View Test Results </p>
+						<p>Test Score</p>
 						<svg className={classes.arrowIconR} viewBox="0 0 24 24">
 							<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 						</svg>
@@ -138,7 +138,7 @@ const SideBar_R_QuestionNumber = () => {
 							Submit
 						</button>
 					</div>
-				</div>
+				</div> */}
 				<PaginationQuestionsGUI />
 			</div>
 		</div>
