@@ -178,8 +178,8 @@ const MainNavbar = () => {
 				</button>
 			</li>
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
-			<li className={classes.bottomRightAbove}>{sideBar_R_Questions_Button}</li>
-			<li className={classes.bottomRight}>{sideBar_R_Notes_Button}</li>
+			<li className={classes.bottomRightAbove}>{sideBar_R_Notes_Button}</li>
+			<li className={classes.bottomRight}>{sideBar_R_Questions_Button}</li>
 		</Fragment>
 	);
 

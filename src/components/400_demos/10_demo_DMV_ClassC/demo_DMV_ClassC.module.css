@@ -659,7 +659,7 @@ strong {
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	transition: transform 0.5s ease;
 	transform: translateX(100%);
-	overflow-y: scroll;
+	overflow: hidden;
 	/* this blue line compensates for the resizer not filling the full height of the window in the "TestResults" component */
 	box-shadow: inset 3px 0 0 var(--Blue);
 	/* height: auto; */
@@ -702,23 +702,31 @@ strong {
 .exitButtonContainer .exitButton {
 	position: relative !important;
 }
+
 .exitButton {
 	z-index: 3000;
-	position: absolute;
-
-	width: 36px;
-	height: 40px;
+	position: fixed;
+	display: inline-grid;
+	color: #b4b4b4;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
 
+	width: 36px;
+	transition: none;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
 	border: 0px solid red;
-	border-radius: 0.5rem;
-	color: #b4b4b4;
-	cursor: pointer;
-	right: 0;
-}
 
+	right: 0; /* Not in Original */
+	margin-right: 0.76rem; /* Not in Original */
+}
 .exitButton:hover {
 	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
 }
@@ -1468,4 +1476,118 @@ strong {
 }
 .modalForm button {
 	margin: auto;
+}
+
+/* Footer TaskBar */
+.footerButton {
+	z-index: 3000;
+	position: relative;
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+
+	width: 36px;
+	transition: none;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	border: 0px solid red;
+}
+.footerButton:hover {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.footerButton:active {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+/* Questions Bottom Buttons -----------------------------------------*/
+.handbook_footer_section_Outer {
+	display: flex;
+	width: 100%;
+	height: 36px;
+	position: absolute;
+	bottom: 4px;
+	right: 0;
+}
+.handbook_footer_section_Inner {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin: 0 1px 1px auto;
+	padding: 0;
+	justify-content: end;
+}
+.handbook_footer_section_Inner li {
+	display: flex;
+	height: 100%;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	align-items: center;
+	justify-content: center;
+}
+/* svg css */
+.testResultsIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 19px;
+}
+.testResultsIconSvg path {
+	fill: #9e9e9e;
+}
+.lightBulbSVG {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	height: 19px;
+}
+.lightBulbSVG path {
+	fill: #9e9e9e;
+}
+.lightBulbSVG g path {
+	fill: #9e9e9e;
+}
+.bookMarkIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 23px;
+}
+.bookMarkIconSvg path {
+	fill: #9e9e9e;
+}
+.commentBubbleIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 18px;
+}
+.commentBubbleIconSvg path {
+	fill: #9e9e9e;
+}
+
+.thumbsUpIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 26px;
+}
+.thumbsUpIconSvg path {
+	fill: #9e9e9e;
 }
