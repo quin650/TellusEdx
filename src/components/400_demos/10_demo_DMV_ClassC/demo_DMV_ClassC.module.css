@@ -1167,7 +1167,7 @@ strong {
 	cursor: default;
 }
 /* Reason for answer correctness -----------------------------------------*/
-.reasonCorrect {
+.hint {
 	-webkit-box-flex: 1;
 	padding-left: 5%;
 	padding-right: 5%;
@@ -1176,10 +1176,10 @@ strong {
 	margin: 5% 5% 0% 5%;
 	visibility: hidden;
 }
-.reasonCorrect.startGradingTest {
+.hint.showHint {
 	visibility: visible;
 }
-.reasonCorrect p {
+.hint p {
 	min-height: 38px;
 }
 /* View Test Results -----------------------------------------*/
@@ -1506,6 +1506,7 @@ strong {
 .footerButton:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
+
 /* Questions Bottom Buttons -----------------------------------------*/
 .handbook_footer_section_Outer {
 	display: flex;
@@ -1540,8 +1541,11 @@ strong {
 	fill: none;
 	width: 19px;
 }
-.testResultsIconSvg path {
+.testResultsIconSvg g rect {
 	fill: #9e9e9e;
+}
+.testResultsIconSvg.active g rect {
+	fill: var(--Blue);
 }
 .lightBulbSVG {
 	display: inline-block;
@@ -1557,6 +1561,13 @@ strong {
 .lightBulbSVG g path {
 	fill: #9e9e9e;
 }
+.lightBulbSVG.active path {
+	fill: var(--Blue);
+}
+.lightBulbSVG.active g path {
+	fill: var(--Blue);
+}
+
 .bookMarkIconSvg {
 	display: inline-block;
 	user-select: none;
@@ -1567,6 +1578,9 @@ strong {
 }
 .bookMarkIconSvg path {
 	fill: #9e9e9e;
+}
+.bookMarkIconSvg.active path {
+	fill: var(--Blue);
 }
 .commentBubbleIconSvg {
 	display: inline-block;
@@ -1579,7 +1593,9 @@ strong {
 .commentBubbleIconSvg path {
 	fill: #9e9e9e;
 }
-
+.commentBubbleIconSvg.active path {
+	fill: var(--Blue);
+}
 .thumbsUpIconSvg {
 	display: inline-block;
 	user-select: none;
@@ -1590,4 +1606,7 @@ strong {
 }
 .thumbsUpIconSvg path {
 	fill: #9e9e9e;
+}
+.thumbsUpIconSvg.active path {
+	fill: var(--Blue);
 }

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion }) => {
+const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const question = questionData.question;
 	const answersData = questionData.answers;
@@ -59,6 +59,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		};
 	}, []);
 
+	console.log("showHint: ", showHint);
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section_question}>
@@ -92,7 +93,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					))}
 				</ul>
 			</div>
-			<div className={`${classes["reasonCorrect"]} ${startGradingTest ? classes.startGradingTest : ""}`}>
+			<div className={`${classes["hint"]} ${showHint ? classes.showHint : ""}`}>
 				<p>{answersHint}</p>
 			</div>
 		</Fragment>
