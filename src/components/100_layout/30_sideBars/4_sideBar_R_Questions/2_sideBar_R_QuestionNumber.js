@@ -26,7 +26,6 @@ const SideBar_R_QuestionNumber = () => {
 
 	const gotoQuestion = useCallback(
 		(questionNum) => {
-			console.log("goto question", questionNum);
 			dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(questionNum));
 		},
 		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]

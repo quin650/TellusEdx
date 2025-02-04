@@ -59,7 +59,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		};
 	}, []);
 
-	console.log("showHint: ", showHint);
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section_question}>
