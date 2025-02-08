@@ -7,6 +7,7 @@ import PaginationQuestionsGUI from "../../../400_demos/10_demo_DMV_ClassC/0_feat
 
 import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import clsx from "clsx";
 
 const SideBar_R_QuestionNumber = () => {
 	const [questionComponent, setQuestionComponent] = useState(null);
@@ -226,7 +227,29 @@ const SideBar_R_QuestionNumber = () => {
 			</button>
 		</li>
 	);
+	const [footerTaskBarIsOpen, setFooterTaskBarIsOpen] = useState(false);
+	const taskBarButton = (
+		<li>
+			<button onClick={lightBulbButtonActionAction} className={classes.footerButton}>
+				<svg
+					className={clsx(classes.taskBarIconSvg, {
+						[classes.open]: footerTaskBarIsOpen,
+					})}
+					viewBox="0 0 95 95"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<circle cx="10" cy="20" r="5" />
+					<rect x="24" y="16" width="70" height="8" />
 
+					<circle cx="10" cy="45" r="5" />
+					<rect x="24" y="41" width="60" height="8" />
+
+					<circle cx="10" cy="70" r="5" />
+					<rect x="24" y="66" width="70" height="8" />
+				</svg>
+			</button>
+		</li>
+	);
 	return (
 		<Fragment>
 			<div className={classes.handbook_outerContainer2} ref={questionContentRef} onClick={handleQuestionSideBarClick}>
@@ -237,6 +260,7 @@ const SideBar_R_QuestionNumber = () => {
 			</div>
 			<div className={classes.handbook_footer_section_Outer}>
 				<div className={classes.handbook_footer_section_Inner}>
+					{taskBarButton}
 					{lightBulbButton}
 					{testResultsButton}
 					{bookMarkButton}

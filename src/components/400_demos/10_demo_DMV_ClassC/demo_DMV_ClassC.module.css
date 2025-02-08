@@ -1533,6 +1533,21 @@ strong {
 	justify-content: center;
 }
 /* svg css */
+.taskBarIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 19px;
+	padding-top: 2px;
+}
+.taskBarIconSvg circle {
+	fill: #9e9e9e;
+}
+.taskBarIconSvg rect {
+	fill: #9e9e9e;
+}
 .testResultsIconSvg {
 	display: inline-block;
 	user-select: none;
