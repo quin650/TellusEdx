@@ -149,9 +149,13 @@ const SideBar_R_QuestionNumber = () => {
 			</button>
 		</li>
 	);
+	useEffect(() => {
+		setShowHint(false);
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 	const lightBulbButtonAction = () => {
 		setShowHint(!showHint);
 	};
+
 	const lightBulbButton = (
 		<li>
 			<button onClick={lightBulbButtonAction} className={classes.footerButton}>
