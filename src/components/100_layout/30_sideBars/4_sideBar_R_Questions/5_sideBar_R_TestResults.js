@@ -147,3 +147,20 @@ const SideBar_R_TestResults = () => {
 };
 
 export default SideBar_R_TestResults;
+
+/* <div className={classes.bottomSection}>
+	<div onClick={gotoTestResults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
+		<p>Test Score</p>
+		<svg className={classes.arrowIconR} viewBox="0 0 24 24">
+			<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+		</svg>
+	</div>
+	<div className={classes.buttonSection}>
+		<button className={classes.button_formatCancel} onClick={cancelButtonAction} type="submit">
+			Cancel
+		</button>
+		<button className={classes.button_formatSubmit} onClick={submitButtonAction} type="submit" disabled={!submitButtonIsActive}>
+			Submit
+		</button>
+	</div>
+</div> */

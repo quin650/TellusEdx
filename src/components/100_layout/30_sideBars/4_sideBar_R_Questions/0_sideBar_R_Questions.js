@@ -14,6 +14,7 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	const resizerRef = useRef();
 	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
+	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
 	const dispatch = useDispatch();
 
 	//! General -----------------------------------------------
@@ -23,14 +24,20 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 		return () => {
 			window.removeEventListener("keydown", onEscKey_ExitModal);
 		};
-	}, []);
+	}, [sideBar_R_QuestionsStatus_rdx]);
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
+			console.log("esc here");
 			exitAction();
 		}
 	};
+
 	let exitAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Questions());
+		if (sideBar_R_QuestionsStatus_rdx === "Questions") {
+			dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
+		} else {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		}
 	};
 	let exitButton = (
 		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
@@ -120,7 +127,6 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
 	//! Component Control---------------------------------------
 
-	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
 	const [content, setContent] = useState(<SideBar_R_QuestionsLandingPage />);
 
 	useEffect(() => {

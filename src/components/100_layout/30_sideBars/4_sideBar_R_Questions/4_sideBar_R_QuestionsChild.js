@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_QuestionsChild = ({ id, text, isCorrect, isPreviouslyChecked, get_newlyCheckedID, uncheck, startGradingTest }) => {
+const SideBar_R_QuestionsChild = ({ id, text, isCorrect, isPreviouslyChecked, get_newlyCheckedID, startGradingTest }) => {
 	const [isChecked, setIsChecked] = useState(false);
 	useEffect(() => {
 		if (isPreviouslyChecked) {
@@ -15,17 +15,8 @@ const SideBar_R_QuestionsChild = ({ id, text, isCorrect, isPreviouslyChecked, ge
 		if (event.target.checked) {
 			setIsChecked(true);
 			get_newlyCheckedID(id, isCorrect);
-		} else {
-			setIsChecked(false);
-			get_newlyCheckedID(null, false);
 		}
 	};
-
-	useEffect(() => {
-		if (uncheck) {
-			setIsChecked(false);
-		}
-	}, [uncheck]);
 
 	return (
 		<li key={id} className={`${classes["answerListItem"]} ${startGradingTest && isCorrect ? classes.isCorrect : startGradingTest ? classes.isIncorrect : ""}`}>

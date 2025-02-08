@@ -4,24 +4,18 @@ import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
-	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
-	const question = questionData.question;
-	const answersData = questionData.answers;
-	const answersHint = questionData.hint;
-	const [previousAnswerID, setPreviousAnswerID] = useState(null);
-	const [answerIDToUncheck, setAnswerIDToUncheck] = useState(null);
-
-	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
-		if (previousAnswerID && newAnswerID !== previousAnswerID) {
-			setAnswerIDToUncheck(previousAnswerID);
-		}
-		setPreviousAnswerID(newAnswerID);
-		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
-	};
-
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
+	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
+	const quickNavRef = useRef(null);
+	const question = questionData.question;
+	const answersData = questionData.answers;
+	const answersHint = questionData.hint;
+
+	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
+		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
+	};
 
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	useEffect(() => {
@@ -45,8 +39,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		);
 	}, [questionData_ifSubmitted, gotoQuestion]);
 
-	const quickNavRef = useRef(null);
-
 	useEffect(() => {
 		const quickNav = quickNavRef.current;
 		const handleWheel = (e) => {
@@ -68,14 +60,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				</span>
 				<h2>{question}</h2>
 			</div>
-
 			<div className={classes.quickNavContainer}>
 				<div ref={quickNavRef} className={classes.quickNavWrapper}>
 					<div className={classes.quickNav}>{quickNavBar}</div>
 					<div className={classes.scrollPortion}></div>
 				</div>
 			</div>
-
 			<div className={`${classes["question_content"]} ${sideBar_L_isOpen_rdx && classes.sideBar_L_isOpen}`}>
 				<ul>
 					{answersData.map((answer) => (
@@ -86,7 +76,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 							isCorrect={answer.isCorrect}
 							isPreviouslyChecked={answer.id === previouslyCheckedID}
 							get_newlyCheckedID={get_newlyCheckedID}
-							uncheck={answer.id === answerIDToUncheck}
 							startGradingTest={startGradingTest}
 						/>
 					))}
