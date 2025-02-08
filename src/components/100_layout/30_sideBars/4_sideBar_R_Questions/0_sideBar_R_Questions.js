@@ -27,7 +27,6 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	}, [sideBar_R_QuestionsStatus_rdx]);
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			console.log("esc here");
 			exitAction();
 		}
 	};
@@ -35,6 +34,8 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	let exitAction = () => {
 		if (sideBar_R_QuestionsStatus_rdx === "Questions") {
 			dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
+		} else if (sideBar_R_QuestionsStatus_rdx === "TestResults") {
+			dispatch(userReducerActions.sideBar_R_Questions_GoBackTo_Test());
 		} else {
 			dispatch(userReducerActions.sideBar_R_Close_Questions());
 		}
