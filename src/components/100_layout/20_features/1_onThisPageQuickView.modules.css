@@ -7,12 +7,98 @@
 	top: 180px;
 	left: 15px;
 	width: 14px;
-
 	margin-bottom: auto;
 	margin-right: auto;
 	border-radius: 4px;
-	background-color: var(--WhiteToGray);
 }
+.tocSectionContainer {
+	position: relative;
+	align-self: center;
+	width: 15px;
+	height: 27px;
+	border-left: 6px solid var(--BackgroundColor);
+	border-right: 6px solid var(--BackgroundColor);
+	background-color: black;
+	margin: 4px;
+}
+.theTextContainer {
+	z-index: 301;
+	display: block;
+	position: fixed;
+	border-radius: 6px;
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+	border: none;
+	padding: 4px 7px;
+	margin: 3px 3px 3px 15px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+	text-align: center;
+	transform: translateY(4px);
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.theTextContainer::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px 6px 0 6px;
+	border-color: var(--hover_menuButtonOpen_gray_to_darkGray) transparent transparent transparent;
+	left: -6px;
+	top: 50%;
+	transform: translateY(-50%) rotate(0deg);
+}
+.theText {
+	color: var(--color_primary_darkGray_to_gray);
+	background: transparent;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 4px 7px;
+	border-radius: 6px;
+}
+/*! NO - alt,option  */
+.tocSectionContainer .theTextContainer {
+	display: none;
+}
+.tocSectionContainer:hover {
+	cursor: pointer;
+	background-color: var(--Blue);
+}
+.tocSectionContainer:hover .theTextContainer {
+	display: block;
+}
+.tocSectionContainer:active {
+	border-left: 5px solid var(--BackgroundColor);
+	border-right: 5px solid var(--BackgroundColor);
+}
+.tocSectionContainer:active .theTextContainer {
+	display: none;
+}
+.tocSectionContainer:focus .theTextContainer {
+	display: none;
+}
+.tocSectionContainer.isCurrent {
+	background-color: var(--Blue);
+}
+.tocSectionContainer.isCurrent .theTextContainer {
+	display: none;
+}
+.tocSectionContainer.isCurrent:hover {
+	background-color: blue;
+}
+.tocSectionContainer.isCurrent:hover .theTextContainer {
+	display: block;
+}
+.tocSectionContainer.isCurrent:active {
+	border-left: 5px solid var(--BackgroundColor);
+	border-right: 5px solid var(--BackgroundColor);
+}
+.tocSectionContainer.isCurrent:active .theTextContainer {
+	display: none;
+}
+.tocSectionContainer.isCurrent:focus .theTextContainer {
+	display: none;
+}
+/*! YES - alt,option  */
 .tocContainer.altOptionKeyPressed {
 	z-index: 101;
 	position: absolute;
@@ -25,19 +111,6 @@
 	margin-bottom: auto;
 	margin-right: auto;
 	border-radius: 4px;
-}
-
-/* alt or option pressed */
-.tocContainer.altOptionKeyPressed .tocSectionContainer {
-	position: relative;
-	align-self: center;
-	width: 10px;
-	height: 30px;
-	margin-top: 10%;
-	margin-bottom: 10%;
-	border-radius: 4px;
-	border: 2px solid var(--WhiteToGray);
-	background-color: black;
 }
 .tocContainer.altOptionKeyPressed .tocSectionContainer .theTextContainer {
 	display: none;
@@ -67,92 +140,33 @@
 	z-index: 301;
 	display: block;
 	position: fixed;
-	border-radius: 4px;
-	background-color: rgb(242, 242, 242);
-	border: 1px solid rgb(233, 233, 233);
-	height: 20px;
+	border-radius: 6px;
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+	border: none;
+	padding: 4px 7px;
 	margin: 3px 3px 3px 15px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+	text-align: center;
+	transform: translateY(4px);
+	transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .tocContainer.altOptionKeyPressed .theText {
-	font-size: 10px;
-	padding: 3px;
-	color: black;
-	margin: 0;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	color: var(--color_primary_darkGray_to_gray);
+	background: transparent;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 4px 7px;
+	border-radius: 6px;
 }
-
-/* Not related to alt or option pressed */
-.tocSectionContainer {
-	position: relative;
-	align-self: center;
-	width: 10px;
-	height: 30px;
-	margin-top: 10%;
-	margin-bottom: 10%;
-	border-radius: 4px;
-	border: 2px solid var(--WhiteToGray);
-	background-color: black;
-}
-.tocSectionContainer .theTextContainer {
-	display: none;
-}
-.tocSectionContainer:hover {
-	outline: 3px solid black;
-	cursor: pointer;
-}
-.tocSectionContainer:hover .theTextContainer {
-	display: block;
-}
-.tocSectionContainer:active {
-	border: 3px solid black;
-}
-.tocSectionContainer:active .theTextContainer {
-	display: none;
-}
-.tocSectionContainer:focus .theTextContainer {
-	display: none;
-}
-.tocSectionContainer.isCurrent {
-	background-color: blue;
-}
-.tocSectionContainer.isCurrent .theTextContainer {
-	display: none;
-}
-.tocSectionContainer.isCurrent:hover {
-	outline: 3px solid blue;
-	cursor: pointer;
-}
-.tocSectionContainer.isCurrent:hover .theTextContainer {
-	display: block;
-}
-.tocSectionContainer.isCurrent:active {
-	border: 3px solid blue;
-}
-.tocSectionContainer.isCurrent:active .theTextContainer {
-	display: none;
-}
-.tocSectionContainer.isCurrent:focus .theTextContainer {
-	display: none;
-}
-.theTextContainer {
-	z-index: 301;
-	display: block;
-	position: fixed;
-	border-radius: 4px;
-	background-color: rgb(242, 242, 242);
-	border: 1px solid rgb(233, 233, 233);
-	height: 20px;
-	margin: 3px 3px 3px 15px;
-}
-.theText {
-	font-size: 10px;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	color: black;
-	margin: 0;
+.tocContainer.altOptionKeyPressed .theTextContainer::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px 6px 0 6px;
+	border-color: var(--hover_menuButtonOpen_gray_to_darkGray) transparent transparent transparent;
+	left: -6px;
+	top: 50%;
+	transform: translateY(-50%) rotate(0deg);
 }

@@ -4,6 +4,7 @@ import classes from "./1_onThisPageQuickView.modules.css";
 
 const OnThisPageQuickView = ({ divIDs, activeID }) => {
 	const [altOptionKeyPressed, setAltOptionKeyPressed] = useState(false);
+	// Event Listeners Alt or Option Key (Leads to Hover property)
 	useEffect(() => {
 		const altOptionPressedKeyDown = (event) => {
 			if (event.altKey || event.key === "Alt" || event.key === "Option") {
@@ -17,11 +18,12 @@ const OnThisPageQuickView = ({ divIDs, activeID }) => {
 		};
 		document.addEventListener("keydown", altOptionPressedKeyDown);
 		document.addEventListener("keyup", altOptionPressedKeyUp);
+		// Clean up the event listeners on component unmount
 		return () => {
 			document.removeEventListener("keydown", altOptionPressedKeyDown);
 			document.removeEventListener("keyup", altOptionPressedKeyUp);
 		};
-	}, [altOptionKeyPressed]);
+	}, []);
 
 	return (
 		<div className={`${classes["tocContainer"]} ${altOptionKeyPressed && classes.altOptionKeyPressed}`}>
