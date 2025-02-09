@@ -229,9 +229,9 @@ const DemoDMVClassC = () => {
 	// Hot-Key Combinations
 	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 	const handleKeyCombination = (e) => {
-		if (!sideBar_R_SearchBar_isActive_rdx) {
+		if (!sideBar_R_SearchBar_isActive_rdx && !sideBar_R_Notes_isOpen_rdx) {
 			switch (true) {
-				case e.key === "b":
+				case e.key === "b" || e.key === "B":
 					if (sideBar_L_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_L_Close());
 						if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
@@ -241,17 +241,7 @@ const DemoDMVClassC = () => {
 						dispatch(userReducerActions.sideBar_L_Open());
 					}
 					break;
-				case e.key === "n":
-					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
-					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
-					if (!sideBar_R_Notes_isOpen_rdx) {
-						dispatch(userReducerActions.sideBar_R_Open_Notes());
-					} else {
-						dispatch(userReducerActions.sideBar_R_Close_Notes());
-					}
-					break;
-				case e.key === "m":
-					if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
+				case e.key === "m" || e.key === "M":
 					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
 					if (!sideBar_R_Main_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_R_Open_Main());
@@ -259,14 +249,24 @@ const DemoDMVClassC = () => {
 						dispatch(userReducerActions.sideBar_R_Close_Main());
 					}
 					break;
-				case e.key === "q":
-					if (sideBar_R_Notes_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Notes());
+				case e.key === "q" || e.key === "Q":
 					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
 					if (!sideBar_R_Questions_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_R_Open_Questions());
 					} else {
 						dispatch(userReducerActions.sideBar_R_Close_Questions());
 					}
+					break;
+				case e.key === "n" || e.key === "N":
+					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
+					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
+					dispatch(userReducerActions.sideBar_R_Open_Notes());
+					break;
+				case e.key === "s" || e.key === "S":
+					e.preventDefault();
+					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
+					if (sideBar_R_Questions_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Questions());
+					dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
 					break;
 				default:
 					break;
