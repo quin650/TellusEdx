@@ -152,6 +152,9 @@ const SideBar_R_QuestionNumber = () => {
 	);
 	useEffect(() => {
 		setShowHint(false);
+		setThumbsUp(false);
+		setBookMark(false);
+		setCommentBubble(false);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 	const [footerTaskBarIsOpen, setFooterTaskBarIsOpen] = useState(false);
 	const footerTaskBarButtonAction = () => {
