@@ -83,16 +83,20 @@ const App = () => {
 	// Hot-Key Combinations
 	const handleKeyCombination = (e) => {
 		if (!getStarted_ModalStatus_rdx) {
-			if (!sideBar_R_SearchBar_isActive_rdx && e.key === "m") {
-				if (sideBar_R_Main_isOpen_rdx) {
-					dispatch(userReducerActions.sideBar_R_Close_Main());
-				} else {
-					dispatch(userReducerActions.sideBar_R_Open_Main());
-				}
-			} else if (!sideBar_R_SearchBar_isActive_rdx) {
-				if (e.key === "s") {
-					e.preventDefault();
-					dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
+			if (!sideBar_R_SearchBar_isActive_rdx) {
+				if (e.key === "m" || e.key === "M") {
+					if (sideBar_R_Main_isOpen_rdx) {
+						dispatch(userReducerActions.sideBar_R_Close_Main());
+					} else {
+						dispatch(userReducerActions.sideBar_R_Open_Main());
+					}
+				} else if (!sideBar_R_Main_isOpen_rdx) {
+					if (!sideBar_R_SearchBar_isActive_rdx) {
+						if (e.key === "s" || e.key === "S") {
+							e.preventDefault();
+							dispatch(userReducerActions.sideBar_R_SearchBar_isActive(true));
+						}
+					}
 				}
 			}
 		}
