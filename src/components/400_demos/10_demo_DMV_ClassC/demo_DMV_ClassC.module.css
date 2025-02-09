@@ -1511,10 +1511,20 @@ strong {
 .handbook_footer_section_Outer {
 	display: flex;
 	width: 100%;
-	height: 36px;
+	height: 70px;
 	position: absolute;
-	bottom: 4px;
+	bottom: 0;
 	right: 0;
+	padding-top: 30px;
+}
+.handbook_footer_section_Outer:hover .handbook_footer_section_Inner {
+	transform: translateX(0);
+}
+.handbook_footer_section_Outer:hover .handbook_footer_section_Inner li {
+	visibility: visible;
+}
+.handbook_footer_section_Outer:hover .handbook_footer_section_Inner li:first-child {
+	padding: 0 0 0 0;
 }
 .handbook_footer_section_Inner {
 	display: flex;
@@ -1525,6 +1535,7 @@ strong {
 	justify-content: end;
 	transition: transform 0.3s ease;
 	transform: translateX(80%);
+	height: 36px;
 }
 .handbook_footer_section_Inner li {
 	display: flex;
