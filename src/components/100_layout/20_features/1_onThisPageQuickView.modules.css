@@ -25,14 +25,15 @@
 	z-index: 301;
 	display: block;
 	position: fixed;
+	color: var(--color_primary_darkGray_to_gray) !important;
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray) !important;
+	padding: 8px 15px;
+	opacity: 1;
 	border-radius: 6px;
-	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
-	border: none;
-	padding: 4px 7px;
-	margin: 3px 3px 3px 15px;
-	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 	text-align: center;
-	transform: translateY(4px);
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+	margin: 0;
+	transform: translateX(30px);
 	transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .theTextContainer::after {
@@ -41,19 +42,20 @@
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 6px 6px 0 6px;
-	border-color: var(--hover_menuButtonOpen_gray_to_darkGray) transparent transparent transparent;
-	left: -6px;
+	border-width: 12px 8px 0 8px;
+	border-color: var(--hover_menuButtonClosed_gray_to_darkGray) transparent transparent transparent;
+	left: -12px;
 	top: 50%;
-	transform: translateY(-50%) rotate(0deg);
+	transform: translateY(-50%) rotate(90deg);
 }
 .theText {
 	color: var(--color_primary_darkGray_to_gray);
-	background: transparent;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif !important;
+	line-height: 18.9px;
 	font-size: 12px;
 	font-weight: 500;
-	padding: 4px 7px;
-	border-radius: 6px;
 }
 /*! NO - alt,option  */
 .tocSectionContainer .theTextContainer {
@@ -140,23 +142,21 @@
 	z-index: 301;
 	display: block;
 	position: fixed;
+	color: var(--color_primary_darkGray_to_gray) !important;
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray) !important;
+	padding: 8px 15px;
+	opacity: 1;
 	border-radius: 6px;
-	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
-	border: none;
-	padding: 4px 7px;
-	margin: 3px 3px 3px 15px;
-	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 	text-align: center;
-	transform: translateY(4px);
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+	margin: 0;
+	transform: translateX(30px);
 	transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .tocContainer.altOptionKeyPressed .theText {
 	color: var(--color_primary_darkGray_to_gray);
-	background: transparent;
-	font-size: 12px;
-	font-weight: 500;
-	padding: 4px 7px;
-	border-radius: 6px;
+	padding: 0;
+	margin: 0;
 }
 .tocContainer.altOptionKeyPressed .theTextContainer::after {
 	content: "";
@@ -164,9 +164,9 @@
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 6px 6px 0 6px;
-	border-color: var(--hover_menuButtonOpen_gray_to_darkGray) transparent transparent transparent;
-	left: -6px;
+	border-width: 12px 8px 0 8px;
+	border-color: var(--hover_menuButtonClosed_gray_to_darkGray) transparent transparent transparent;
+	left: -12px;
 	top: 50%;
-	transform: translateY(-50%) rotate(0deg);
+	transform: translateY(-50%) rotate(90deg);
 }
