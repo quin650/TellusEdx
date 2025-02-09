@@ -153,10 +153,29 @@ const SideBar_R_QuestionNumber = () => {
 	useEffect(() => {
 		setShowHint(false);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
+	const [footerTaskBarIsOpen, setFooterTaskBarIsOpen] = useState(false);
+	const footerTaskBarButtonAction = () => {
+		setFooterTaskBarIsOpen(!footerTaskBarIsOpen);
+	};
+	const taskBarButton = (
+		<li>
+			<button onClick={footerTaskBarButtonAction} className={classes.footerButton}>
+				<svg className={classes.taskBarIconSvg} viewBox="0 0 95 95" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="10" cy="20" r="5" />
+					<rect x="24" y="16" width="70" height="8" />
+
+					<circle cx="10" cy="45" r="5" />
+					<rect x="24" y="41" width="60" height="8" />
+
+					<circle cx="10" cy="70" r="5" />
+					<rect x="24" y="66" width="70" height="8" />
+				</svg>
+			</button>
+		</li>
+	);
 	const lightBulbButtonAction = () => {
 		setShowHint(!showHint);
 	};
-
 	const lightBulbButton = (
 		<li>
 			<button onClick={lightBulbButtonAction} className={classes.footerButton}>
@@ -215,41 +234,19 @@ const SideBar_R_QuestionNumber = () => {
 		</li>
 	);
 	const [thumbsUp, setThumbsUp] = useState(false);
-	const lightBulbButtonActionAction = () => {
+	const thumbsUpButtonAction = () => {
 		setThumbsUp(!thumbsUp);
 	};
 	const thumbsUpButton = (
 		<li>
-			<button onClick={lightBulbButtonActionAction} className={classes.footerButton}>
+			<button onClick={thumbsUpButtonAction} className={classes.footerButton}>
 				<svg className={`${classes["thumbsUpIconSvg"]} ${thumbsUp ? classes.active : ""}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 					<path d="M5,11.5 L5,18.5 C5,18.7761424 5.22385763,19 5.5,19 L7.5,19 C7.77614237,19 8,18.7761424 8,18.5 L8,11.5 C8,11.2238576 7.77614237,11 7.5,11 L5.5,11 C5.22385763,11 5,11.2238576 5,11.5 Z M8.50000665,10.3819527 L9.38196601,8.61803399 C9.78840295,7.80516012 10,6.90882062 10,6 L10,5.75 C10,4.78350169 10.7835017,4 11.75,4 C12.7164869,4 13.5257292,4.73235419 13.6218982,5.69404463 L13.9524938,9 L17.2900249,9 C18.6707368,9 19.7900249,10.1192881 19.7900249,11.5 C19.7900249,11.5830744 19.7858841,11.6660972 19.7776179,11.7487593 L19.1776179,17.7487593 C19.0498174,19.0267638 17.9744035,20 16.6900249,20 L10.5,20 C9.82744055,20 9.21691089,19.7344189 8.76756301,19.3024088 C8.50158217,19.7216998 8.03329134,20 7.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,11.5 C4,10.6715729 4.67157288,10 5.5,10 L7.5,10 C7.88418043,10 8.23462761,10.1444292 8.50000665,10.3819527 Z M9,11.618034 L9,17.5 C9,18.3284271 9.67157288,19 10.5,19 L16.6900249,19 C17.460652,19 18.1059004,18.4160583 18.1825807,17.6492556 L18.7825807,11.6492556 C18.7875404,11.5996583 18.7900249,11.5498446 18.7900249,11.5 C18.7900249,10.6715729 18.118452,10 17.2900249,10 L13.5,10 C13.2431243,10 13.0280415,9.80535276 13.0024814,9.54975186 L12.6268611,5.79354835 C12.5818122,5.34305971 12.2027355,5 11.75,5 C11.3357864,5 11,5.33578644 11,5.75 L11,6 C11,7.06406571 10.7522579,8.11351828 10.2763932,9.06524758 L9,11.618034 Z" />
 				</svg>
 			</button>
 		</li>
 	);
-	const [footerTaskBarIsOpen, setFooterTaskBarIsOpen] = useState(false);
-	const taskBarButton = (
-		<li>
-			<button onClick={lightBulbButtonActionAction} className={classes.footerButton}>
-				<svg
-					className={clsx(classes.taskBarIconSvg, {
-						[classes.open]: footerTaskBarIsOpen,
-					})}
-					viewBox="0 0 95 95"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<circle cx="10" cy="20" r="5" />
-					<rect x="24" y="16" width="70" height="8" />
 
-					<circle cx="10" cy="45" r="5" />
-					<rect x="24" y="41" width="60" height="8" />
-
-					<circle cx="10" cy="70" r="5" />
-					<rect x="24" y="66" width="70" height="8" />
-				</svg>
-			</button>
-		</li>
-	);
 	return (
 		<Fragment>
 			<div className={classes.handbook_outerContainer2} ref={questionContentRef} onClick={handleQuestionSideBarClick}>
@@ -259,7 +256,11 @@ const SideBar_R_QuestionNumber = () => {
 				</div>
 			</div>
 			<div className={classes.handbook_footer_section_Outer}>
-				<div className={classes.handbook_footer_section_Inner}>
+				<div
+					className={clsx(classes.handbook_footer_section_Inner, {
+						[classes.open]: footerTaskBarIsOpen,
+					})}
+				>
 					{taskBarButton}
 					{lightBulbButton}
 					{testResultsButton}

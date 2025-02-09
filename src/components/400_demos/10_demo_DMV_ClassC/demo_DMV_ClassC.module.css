@@ -1523,6 +1523,8 @@ strong {
 	margin: 0 1px 1px auto;
 	padding: 0;
 	justify-content: end;
+	transition: transform 0.3s ease;
+	transform: translateX(80%);
 }
 .handbook_footer_section_Inner li {
 	display: flex;
@@ -1531,7 +1533,25 @@ strong {
 	padding: 0 0 0 0;
 	align-items: center;
 	justify-content: center;
+	visibility: hidden;
 }
+.handbook_footer_section_Inner li:first-child {
+	padding: 0 12px 0 0;
+	visibility: visible;
+}
+.handbook_footer_section_Inner li:last-child {
+	padding: 0 12px 0 0;
+}
+.handbook_footer_section_Inner.open {
+	transform: translateX(0);
+}
+.handbook_footer_section_Inner.open li {
+	visibility: visible;
+}
+.handbook_footer_section_Inner.open li:first-child {
+	padding: 0 0 0 0;
+}
+
 /* svg css */
 .taskBarIconSvg {
 	display: inline-block;
@@ -1582,7 +1602,6 @@ strong {
 .lightBulbSVG.active g path {
 	fill: var(--Blue);
 }
-
 .bookMarkIconSvg {
 	display: inline-block;
 	user-select: none;
