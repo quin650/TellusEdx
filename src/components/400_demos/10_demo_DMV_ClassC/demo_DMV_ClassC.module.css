@@ -299,11 +299,10 @@
 	color: white;
 	transition: transform 0.02s cubic-bezier(1, 0.02, 0.58, 1), color 0.2s cubic-bezier(1, 0.02, 0.58, 1), background-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
 	z-index: 100;
-	/* background-color: var(--Blue); */
-	border: 1px solid rgb(42, 42, 42);
+	border: 1px solid var(--WhiteToBlack);
 	-webkit-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
 	-moz-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
-	box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 25px 20px var(--WhiteToBlack);
 }
 .quickNavButton.inCorrect:active,
 .quickNavButton.correct:active {
@@ -313,7 +312,7 @@
 .scrollPortion {
 	display: flex;
 	height: 10px;
-	background-color: black;
+	background-color: var(--WhiteToBlack);
 	min-width: 800px;
 }
 
