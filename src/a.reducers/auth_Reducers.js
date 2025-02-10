@@ -169,9 +169,9 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
-		sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
-			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
-		},
+		// sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
+		// 	state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
+		// },
 		updateQuestionResults(state, action) {
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {

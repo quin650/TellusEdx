@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 
 import classes from "./paginationGUI.module.css";
-
 const PaginationQuestionsGUI = () => {
 	const dispatch = useDispatch();
 
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
-	const sideBar_R_Questions_SelectedQuestionNum_rdx = useSelector(({ user }) => user.sideBar_R_Questions_SelectedQuestionNum_rdx);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 
@@ -27,24 +25,12 @@ const PaginationQuestionsGUI = () => {
 		const latest = getLastSubmittedQuestionNumber();
 		setLatestSubmittedQuestion(latest);
 	}, [getLastSubmittedQuestionNumber, sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_QuestionTestResults_rdx]);
-	//Local Storage -Page# sync
-	// useEffect(() => {
-	// 	let localStorageQuestionNum = localStorage.getItem("currentQuestionNumber");
-	// 	if (localStorageQuestionNum) {
-	// 		const parsedQuestionNum = parseInt(localStorageQuestionNum, 10);
-	// 		if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== parsedQuestionNum) {
-	// 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(parsedQuestionNum));
-	// 			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(parsedQuestionNum));
-	// 		}
-	// 	}
-	// }, []);
 
 	//!Prev-Next Page
 	const PrevQuestion = useCallback(() => {
 		let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx - 1;
 		if (newQuestionNum >= 1) {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
 			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]);
@@ -53,7 +39,6 @@ const PaginationQuestionsGUI = () => {
 		let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
 		if (newQuestionNum <= 36 && nextIsActive) {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-			// dispatch(userReducerActions.sideBar_R_Questions_setSelectedQuestionNumber(newQuestionNum));
 			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive]);
@@ -84,21 +69,21 @@ const PaginationQuestionsGUI = () => {
 	}, [handleKeyDown]);
 
 	useEffect(() => {
-		if (sideBar_R_Questions_SelectedQuestionNum_rdx !== 36) {
+		if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== 36) {
 			if (sideBar_R_Questions_CurrentQuestionNumber_rdx <= latestSubmittedQuestion) {
 				setNextIsActive(true);
 			} else {
 				setNextIsActive(false);
 			}
-		} else {
+		} else if (sideBar_R_Questions_CurrentQuestionNumber_rdx === 36) {
 			setNextIsActive(false);
 		}
-	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, sideBar_R_Questions_SelectedQuestionNum_rdx, latestSubmittedQuestion]);
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, latestSubmittedQuestion]);
 
 	return (
 		<div className={classes.paginationContainer}>
-			<button id="prev" onClick={PrevQuestion} className={classes.paginationButtonL} disabled={sideBar_R_Questions_SelectedQuestionNum_rdx === 1}>
-				<svg className={`${classes["arrowIconL"]} ${sideBar_R_Questions_SelectedQuestionNum_rdx === 1 && classes.isInactive}`} viewBox="0 0 24 24">
+			<button id="prev" onClick={PrevQuestion} className={classes.paginationButtonL} disabled={sideBar_R_Questions_CurrentQuestionNumber_rdx === 1}>
+				<svg className={`${classes["arrowIconL"]} ${sideBar_R_Questions_CurrentQuestionNumber_rdx === 1 && classes.isInactive}`} viewBox="0 0 24 24">
 					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
 				</svg>
 			</button>
