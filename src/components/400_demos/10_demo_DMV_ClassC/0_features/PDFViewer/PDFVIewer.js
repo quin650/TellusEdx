@@ -79,6 +79,10 @@ const PDFViewer = () => {
 		//console.log("Attempting to render page: ",  "with scale:", pdfState.scale);
 		if (pdfState.pdfDocument && pdfState.scale) {
 			renderPage(PDF_currentPageNum_rdx); //Render the Page (pageNum is initially set to page# 1)
+			document.querySelector("main").scrollTo({
+				top: 0,
+				behavior: "instant",
+			});
 		}
 	}, [PDF_inputPageNum_rdx, PDF_currentPageNum_rdx, pdfState.scale, triggerRerender]); //Removed "pdfDocument"...
 
