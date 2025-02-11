@@ -8,7 +8,7 @@ const SideBar_R_TestResultsListOfQuestions = ({ id, isCorrect }) => {
 
 	const gotoQuestion = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoBackTo_Test());
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(id));
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(Number(id)));
 	};
 
 	return (
