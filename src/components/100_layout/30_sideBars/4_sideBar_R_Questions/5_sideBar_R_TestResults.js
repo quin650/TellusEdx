@@ -20,8 +20,8 @@ const SideBar_R_TestResults = () => {
 			setStatus("Passed");
 			setStatusResponse(`Congratulations, you passed test #${sideBar_R_Questions_CurrentTestNumber_rdx}.`);
 		} else {
-			setStatus("Try Again");
-			setStatusResponse("Please attempt additional tests. You can proceed by clicking 'Next Test' below or select 'Reset this Test' to retry.");
+			setStatus("Test Not Passed");
+			setStatusResponse("You did not meet the passing score for this test. You can retake it by selecting 'Reset this Test' or proceed to the next test.");
 		}
 	}, [isPassed]);
 
@@ -98,15 +98,12 @@ const SideBar_R_TestResults = () => {
 							</div>
 						</div>
 						<div className={classes.options}>
-							<h2>Scoring</h2>
 							<div className={classes.score_content}>
 								<div>
-									<h3>Your Score</h3>
-									<p>{answeredCorrectly}/36</p>
+									<p>Your Score: {answeredCorrectly}/36</p>
 								</div>
 								<div>
-									<h3>Required to Pass</h3>
-									<p>30/36</p>
+									<p>Passing Score: 30/36</p>
 								</div>
 							</div>
 						</div>
@@ -114,7 +111,7 @@ const SideBar_R_TestResults = () => {
 
 					<nav className={classes.bottom}>
 						<div className={classes.tocTitleLabel}>
-							<h2>List of Questions</h2>
+							<h2>Results</h2>
 						</div>
 						<div className={classes.tocInnerContainer2}>
 							<ul>{ul1}</ul>
@@ -124,7 +121,7 @@ const SideBar_R_TestResults = () => {
 					</nav>
 				</div>
 				<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
-					<p>Reset this test</p>
+					<p>Retake this test</p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path className={classes.refreshButtonArrow} d="M14 15L10 19L14 23" />
 						<path

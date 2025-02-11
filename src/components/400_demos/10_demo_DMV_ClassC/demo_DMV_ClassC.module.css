@@ -557,6 +557,10 @@ strong {
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
 	cursor: pointer !important;
 }
+.tocTitleLabel h2 {
+	margin-top: 0;
+	text-align: center;
+}
 .handbookTOC_header_section h2 {
 	margin-bottom: auto;
 }
@@ -646,6 +650,22 @@ strong {
 	font-weight: 700;
 	min-width: 32px;
 }
+/* Styles for Correct (Checkmark) */
+.correctIcon {
+	content: "\2705";
+	display: inline-block;
+	font-size: 22px;
+	color: #28a745;
+}
+
+/* Styles for Incorrect (X Mark) */
+.incorrectIcon {
+	content: "\274C";
+	display: inline-block;
+	font-size: 20px;
+	color: #dc3545;
+}
+
 /*!sideBar Question  -------------------------------------------------------------*/
 .sideBar_R_outerContainer {
 	display: flex;

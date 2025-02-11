@@ -15,7 +15,8 @@ const SideBar_R_TestResultsListOfQuestions = ({ id, isCorrect }) => {
 		<li key={id} className={classes.contentContainer}>
 			<div className={classes.parentLabelOuterContainer}>
 				<a onClick={gotoQuestion} className={`${classes["parentLabel"]} ${isCorrect ? classes.isPassed : classes.failed}`}>
-					<span className={classes.sectionNUm}>Q{id}:</span> {isCorrect ? "Correct" : "Incorrect"}
+					<span className={classes.sectionNUm}>Q{id}:</span>
+					{isCorrect ? <span className={classes.correctIcon}>✔</span> : <span className={classes.incorrectIcon}>✖</span>}
 				</a>
 			</div>
 		</li>
