@@ -35,6 +35,8 @@ const SideBar_R_TestResults = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx + 1));
 	};
 	const [ul1, setUl1] = useState([]);
+	const [ul2, setUl2] = useState([]);
+	const [ul3, setUl3] = useState([]);
 
 	useEffect(() => {
 		if (!testResultData) {
@@ -43,12 +45,33 @@ const SideBar_R_TestResults = () => {
 		const testDataEntries = Object.entries(testResultData);
 		let numberAnsweredCorrectly = 0;
 		setUl1(
-			testDataEntries.map(([key, value]) => {
-				const isCorrect = value[2];
-				if (isCorrect) numberAnsweredCorrectly += 1;
-				return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
-			})
+			testDataEntries
+				.filter(([key]) => Number(key) >= 1 && Number(key) <= 12)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
 		);
+		setUl2(
+			testDataEntries
+				.filter(([key]) => Number(key) >= 13 && Number(key) <= 24)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
+		);
+		setUl3(
+			testDataEntries
+				.filter(([key]) => Number(key) >= 25 && Number(key) <= 36)
+				.map(([key, value]) => {
+					const isCorrect = value[2];
+					if (isCorrect) numberAnsweredCorrectly += 1;
+					return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
+				})
+		);
+
 		setAnsweredCorrectly(numberAnsweredCorrectly);
 		setIsPassed(numberAnsweredCorrectly >= 30);
 	}, [testResultData]);
@@ -90,7 +113,11 @@ const SideBar_R_TestResults = () => {
 						<div className={classes.tocTitleLabel}>
 							<h2>Results</h2>
 						</div>
-						<div className={classes.tocInnerContainer2}>{ul1}</div>
+						<div className={classes.tocInnerContainer2}>
+							<ul>{ul1}</ul>
+							<ul>{ul2}</ul>
+							<ul>{ul3}</ul>
+						</div>
 					</nav>
 				</div>
 				<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>

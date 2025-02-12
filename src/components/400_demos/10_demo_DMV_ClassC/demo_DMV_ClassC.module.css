@@ -168,7 +168,6 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 90vh;
-	/* border: 1px solid #d6dade; */
 	border-radius: 8px;
 	min-width: 340px;
 }
@@ -530,17 +529,21 @@ strong {
 	margin-bottom: 1rem;
 }
 
-/* 2 is for the test restuls */
 .tocInnerContainer2 {
-	display: flex;
-	flex-direction: row;
-	box-shadow: inset 0 0 0 1px var(--BackgroundColor);
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(12, auto);
+	grid-template-columns: auto;
+	justify-content: space-between;
+	margin-left: 15px;
+	margin-right: 15px;
+	overflow: hidden;
 }
-
-.tocInnerContainer2 ul {
-	width: 33.33%;
-	margin-bottom: 1rem;
-	margin-left: 0;
+.contentContainer {
+	list-style: none;
+	font-size: 14px;
+	padding-top: 0 !important;
+	width: 90px;
 }
 
 /* toc Title ------------------------------------------------------*/
@@ -555,7 +558,7 @@ strong {
 	border-radius: 0 !important;
 	height: 55px !important;
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
-	cursor: pointer !important;
+	/* cursor: pointer !important; */
 }
 .tocTitleLabel h2 {
 	margin-top: 0;
@@ -606,20 +609,12 @@ strong {
 	font-weight: 700;
 	margin-right: 0.5rem;
 }
-.contentContainer {
-	list-style: none;
-	font-size: 14px;
-	padding-top: 0 !important;
-}
+
 .parentLabelOuterContainer {
 	position: relative;
 	display: flex;
-	margin-left: 8px;
-	background: unset;
-	border: unset;
-	width: calc(100% - 16px);
-	text-align: unset;
 	line-height: 20px;
+	text-align: center;
 }
 .parentLabel {
 	flex-grow: 1;
@@ -627,8 +622,8 @@ strong {
 	color: var(--color_primary_darkGray_to_gray) !important;
 	cursor: pointer;
 	border-radius: 7px;
-	padding: 6px 8px;
 	text-decoration: none;
+	padding: 2px;
 }
 .parentLabel.isPassed {
 	color: #00df00 !important;
@@ -649,12 +644,13 @@ strong {
 	color: var(--color_primary_darkGray_to_gray) !important;
 	font-weight: 700;
 	min-width: 32px;
+	padding-right: 5px;
 }
 /* Styles for Correct (Checkmark) */
 .correctIcon {
 	content: "\2705";
 	display: inline-block;
-	font-size: 22px;
+	font-size: 17px;
 	color: #28a745;
 }
 
@@ -662,7 +658,7 @@ strong {
 .incorrectIcon {
 	content: "\274C";
 	display: inline-block;
-	font-size: 20px;
+	font-size: 17px;
 	color: #dc3545;
 }
 
