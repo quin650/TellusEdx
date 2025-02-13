@@ -15,6 +15,8 @@ const SideBar_R_TestResults = () => {
 	const [status, setStatus] = useState(null);
 	const [statusResponse, setStatusResponse] = useState(null);
 
+	// Responses
+	//
 	useEffect(() => {
 		if (isPassed) {
 			setStatus("Passed");
