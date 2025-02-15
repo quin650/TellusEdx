@@ -818,7 +818,7 @@ strong {
 }
 .resizerHandle {
 	height: 30px;
-	width: 2px;
+	width: 1px;
 	background-color: var(--WhiteToBlack);
 	margin: auto;
 }

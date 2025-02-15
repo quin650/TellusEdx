@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsLandingPage = () => {
 	const dispatch = useDispatch();
-	//! Questions Landing Page ---------------------------------
 	// Button Actions
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");
@@ -65,6 +64,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 	}, [sideBar_R_QuestionTestResults_rdx]);
 
 	const test1 = () => {
+		console.log("test1 clicked");
 		if (test1Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test1Status === "Start" || test1Status === "") {
@@ -75,6 +75,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
 	const test2 = () => {
+		console.log("test2 clicked");
 		if (test2Status === "n/a yet" || !test2Status) {
 			return;
 		} else if (test2Status === "Done") {
@@ -122,6 +123,43 @@ const SideBar_R_QuestionsLandingPage = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};
+	// Hot-Key Combinations
+	const handleKeyCombination = useCallback(
+		(e) => {
+			if (e.key) {
+				switch (e.key) {
+					case "1":
+						test1();
+						break;
+					case "2":
+						test2();
+						break;
+					case "3":
+						test3();
+						break;
+					case "4":
+						test4();
+						break;
+					case "5":
+						test5();
+						break;
+					default:
+						break;
+				}
+			}
+		},
+		[test1Status, test2Status, test3Status, test4Status, test5Status]
+	);
+
+	useEffect(() => {
+		if (location.pathname === "/demo_dmvClassC") {
+			document.addEventListener("keydown", handleKeyCombination);
+		}
+		return () => {
+			document.removeEventListener("keydown", handleKeyCombination);
+		};
+	}, [location.pathname, handleKeyCombination]);
+
 	return (
 		<div className={classes.handbook_outerContainer2}>
 			<div className={classes.page_contentContainer}>

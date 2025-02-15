@@ -117,7 +117,9 @@ const SideBar_R_NotesModal = ({ pageContentRef }) => {
 		<Fragment>
 			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Notes_isOpen_rdx ? classes.open : ""}`} ref={sideBarRNotesRef}>
 				{exitButton}
-				<div className={classes.resizer} ref={resizerRef}></div>
+				<div className={classes.resizer} ref={resizerRef}>
+					<div className={classes.resizerHandle}></div>
+				</div>
 			</menu>
 		</Fragment>
 	);
