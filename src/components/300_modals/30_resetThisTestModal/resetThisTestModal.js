@@ -10,10 +10,9 @@ const ResetThisTestModal = () => {
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	//! Reset Button
 	const resetTest = () => {
-		console.log("reset test");
 		dispatch(userReducerActions.resetThisTestModalClose());
-		// dispatch(userReducerActions.deleteTestResults(testNum));
-		// dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
+		dispatch(userReducerActions.deleteTestResults(sideBar_R_Questions_CurrentTestNumber_rdx));
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
 	};
 	const ResetButton = (
 		<button onClick={resetTest} className={classes.button_formatSubmit} type="submit">

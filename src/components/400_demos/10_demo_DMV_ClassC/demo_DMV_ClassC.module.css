@@ -1444,14 +1444,14 @@ strong {
 .presentedPrimarily {
 	margin: 0;
 	visibility: visible;
-	color: var(--color_primary_darkGray_to_gray);
+	color: var(--WhiteToGray);
 }
 .presentedSecondarily {
 	margin: 0;
 	visibility: hidden;
 	width: 0;
 	height: 0;
-	color: var(--color_primary_darkGray_to_gray);
+	color: var(--WhiteToGray);
 }
 .scoreTitleLabel {
 	padding: 6px 8px 6px 12px !important;

@@ -25,7 +25,7 @@ const SideBar_R_TestResults = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx + 1));
 	};
 	const [ul1, setUl1] = useState([]);
-	const [lastSubmittedQuestion, setLastSubmittedQuestion] = useState(null);
+	const [lastSubmittedQuestion, setLastSubmittedQuestion] = useState(0);
 	useEffect(() => {
 		if (!testResultData) {
 			return;
@@ -46,19 +46,24 @@ const SideBar_R_TestResults = () => {
 		setIsPassed(numberAnsweredCorrectly >= 30);
 	}, [testResultData]);
 
+	const [yourScore, setYourScore] = useState(0);
 	useEffect(() => {
 		if (isPassed) {
 			setStatus("Passed");
 			setStatusResponse(`Congratulations, you passed test #${sideBar_R_Questions_CurrentTestNumber_rdx}.`);
+			setYourScore(Math.round((answeredCorrectly / lastSubmittedQuestion) * 100));
 		} else if (lastSubmittedQuestion === 0 || lastSubmittedQuestion === null) {
 			setStatus("Test Not Started");
 			setStatusResponse("You have not started this test yet. Selecting 'Back' will take you back to the test.");
+			setYourScore("0");
 		} else if (lastSubmittedQuestion > 0 && lastSubmittedQuestion < 36) {
 			setStatus("Test Incomplete");
 			setStatusResponse("You have not completed this test. Selecting 'Back' will take you back to the test, or 'Reset this test' to start over.");
+			setYourScore(Math.round((answeredCorrectly / lastSubmittedQuestion) * 100));
 		} else {
 			setStatus("Test Not Passed");
 			setStatusResponse("You did not meet the passing score for this test. You can retake it by selecting 'Reset this Test' or proceed to the next test.");
+			setYourScore(Math.round((answeredCorrectly / lastSubmittedQuestion) * 100));
 		}
 	}, [isPassed, lastSubmittedQuestion, sideBar_R_Questions_CurrentTestNumber_rdx]);
 
@@ -98,7 +103,7 @@ const SideBar_R_TestResults = () => {
 
 							<div className={classes.score_content}>
 								<div className={classes.score_contentInner}>
-									<p className={classes.presentedPrimarily}>{Math.round((answeredCorrectly / lastSubmittedQuestion) * 100)}%</p>
+									<p className={classes.presentedPrimarily}>{yourScore}%</p>
 									<p className={classes.presentedSecondarily}>
 										{answeredCorrectly}/{lastSubmittedQuestion}
 									</p>
@@ -113,7 +118,7 @@ const SideBar_R_TestResults = () => {
 					</nav>
 				</div>
 				<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
-					<p>Retake this test</p>
+					<p>Reset this test</p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path className={classes.refreshButtonArrow} d="M14 15L10 19L14 23" />
 						<path
