@@ -17,7 +17,7 @@ const SideBar_R_QuestionNumber = () => {
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
-	const sideBar_R_Questions_FooterTaskBarIsOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_FooterTaskBarIsOpen_rdx);
+	const sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx);
 
 	const [questionComponent, setQuestionComponent] = useState(null);
 	const [chosenAnswerID, setChosenAnswerID] = useState(null);
@@ -112,13 +112,16 @@ const SideBar_R_QuestionNumber = () => {
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 	// Footer Actions
 	useEffect(() => {
-		if (sideBar_R_Questions_FooterTaskBarIsOpen_rdx) {
+		if (sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx) {
 			setFooterTaskBarTippyText("TaskBar - Click to unpin");
 		} else {
 			setFooterTaskBarTippyText("TaskBar - Click to pin");
 		}
-	}, [sideBar_R_Questions_FooterTaskBarIsOpen_rdx]);
+	}, [sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx]);
 	const taskBarButtonAction = () => {
+		if (sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx) {
+			setAllowFooterOnHover(!allowFooterOnHover);
+		}
 		dispatch(userReducerActions.sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose());
 	};
 	const lightBulbButtonAction = () => {
@@ -137,6 +140,8 @@ const SideBar_R_QuestionNumber = () => {
 		setThumbsUp(!thumbsUp);
 	};
 	// Footer Buttons
+	const [allowFooterOnHover, setAllowFooterOnHover] = useState(true);
+	console.log("allowFooterOnHover: ", allowFooterOnHover);
 	let taskBarButton = (
 		<li>
 			<Tippy content={footerTaskBarTippyText} placement="top" theme="custom" appendTo="parent">
@@ -278,10 +283,14 @@ const SideBar_R_QuestionNumber = () => {
 					<PaginationQuestionsGUI />
 				</div>
 			</div>
-			<div className={classes.handbook_footer_section_Outer}>
+			<div
+				className={clsx(classes.handbook_footer_section_Outer, {
+					[classes.allowHover]: allowFooterOnHover,
+				})}
+			>
 				<div
 					className={clsx(classes.handbook_footer_section_Inner, {
-						[classes.open]: sideBar_R_Questions_FooterTaskBarIsOpen_rdx,
+						[classes.open]: sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx,
 					})}
 				>
 					{taskBarButton}

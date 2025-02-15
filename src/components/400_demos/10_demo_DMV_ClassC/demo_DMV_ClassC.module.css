@@ -1569,13 +1569,13 @@ strong {
 	right: 0;
 	padding-top: 30px;
 }
-.handbook_footer_section_Outer:hover .handbook_footer_section_Inner {
+.handbook_footer_section_Outer.allowHover:hover .handbook_footer_section_Inner {
 	transform: translateX(0);
 }
-.handbook_footer_section_Outer:hover .handbook_footer_section_Inner li {
+.handbook_footer_section_Outer.allowHover:hover .handbook_footer_section_Inner li {
 	visibility: visible;
 }
-.handbook_footer_section_Outer:hover .handbook_footer_section_Inner li:first-child {
+.handbook_footer_section_Outer.allowHover:hover .handbook_footer_section_Inner li:first-child {
 	padding: 0 0 0 0;
 }
 .handbook_footer_section_Inner {
