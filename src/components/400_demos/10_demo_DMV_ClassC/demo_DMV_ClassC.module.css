@@ -805,6 +805,8 @@ strong {
 	height: 100%;
 	position: absolute;
 	background-color: var(--LightGrayToDarkGray2);
+
+	display: flex;
 }
 .resizer:hover {
 	width: 3px;
@@ -815,7 +817,12 @@ strong {
 	position: absolute;
 	background-color: var(--Blue);
 }
-
+.resizerHandle {
+	height: 30px;
+	width: 2px;
+	background-color: var(--WhiteToBlack);
+	margin: auto;
+}
 /* background-color: #42b362; */
 
 /* Questions landing page --------------------------------------------*/

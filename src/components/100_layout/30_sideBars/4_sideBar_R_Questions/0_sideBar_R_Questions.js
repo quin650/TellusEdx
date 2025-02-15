@@ -150,7 +150,9 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 		<Fragment>
 			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
 				{exitButton}
-				<div className={classes.resizer} ref={resizerRef}></div>
+				<div className={classes.resizer} ref={resizerRef}>
+					<div className={classes.resizerHandle}></div>
+				</div>
 
 				{content}
 			</menu>
