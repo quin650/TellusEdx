@@ -50,11 +50,17 @@ const SideBar_R_TestResults = () => {
 		if (isPassed) {
 			setStatus("Passed");
 			setStatusResponse(`Congratulations, you passed test #${sideBar_R_Questions_CurrentTestNumber_rdx}.`);
+		} else if (lastSubmittedQuestion === 0 || lastSubmittedQuestion === null) {
+			setStatus("Test Not Started");
+			setStatusResponse("You have not started this test yet. Selecting 'Back' will take you back to the test.");
+		} else if (lastSubmittedQuestion > 0 && lastSubmittedQuestion < 36) {
+			setStatus("Test Incomplete");
+			setStatusResponse("You have not completed this test. Selecting 'Back' will take you back to the test, or 'Reset this test' to start over.");
 		} else {
 			setStatus("Test Not Passed");
 			setStatusResponse("You did not meet the passing score for this test. You can retake it by selecting 'Reset this Test' or proceed to the next test.");
 		}
-	}, [isPassed]);
+	}, [isPassed, lastSubmittedQuestion, sideBar_R_Questions_CurrentTestNumber_rdx]);
 
 	const gotoResetThisTestModal = () => {
 		dispatch(userReducerActions.resetThisTestModalOpen());
