@@ -585,10 +585,17 @@ strong {
 .sectionContent {
 	margin-left: 0;
 }
-.sectionContent p {
+
+.sectionContent p,
+.sectionContentResults p {
 	padding: 8px 0 16px 32px;
 	margin: 0;
 }
+.sectionContentResults {
+	margin-left: 0;
+	margin-bottom: 2vh;
+}
+
 .options {
 	margin: 0;
 }
@@ -1445,13 +1452,30 @@ strong {
 	height: 0;
 	color: var(--color_primary_darkGray_to_gray);
 }
-.tocTitleLabel:hover .presentedPrimarily {
+.scoreTitleLabel {
+	padding: 6px 8px 6px 12px !important;
+	width: 100%;
+	line-height: 1.5;
+	word-break: break-word;
+	color: var(--color_readerSectionTitle_white_to_offWhite) !important;
+	font-weight: 400;
+	text-decoration: none;
+	border-radius: 0 !important;
+	height: 55px !important;
+	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black);
+	margin-bottom: 2vh;
+}
+.scoreTitleLabel h2 {
+	margin-top: 0;
+	text-align: start;
+}
+.scoreTitleLabel:hover .presentedPrimarily {
 	margin: 0;
 	visibility: hidden;
 	width: 0;
 	height: 0;
 }
-.tocTitleLabel:hover .presentedSecondarily {
+.scoreTitleLabel:hover .presentedSecondarily {
 	margin: 0;
 	visibility: visible;
 	width: auto;

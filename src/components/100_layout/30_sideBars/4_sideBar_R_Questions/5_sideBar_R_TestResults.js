@@ -80,14 +80,13 @@ const SideBar_R_TestResults = () => {
 					<div className={classes.demoIntroTopLeft}>
 						<div className={classes.welcome}>
 							<h2 className={`${classes["questionNumber"]} ${isPassed ? classes.isPassed : classes.failed}`}>{status}</h2>
-							<div className={classes.sectionContent}>
+							<div className={classes.sectionContentResults}>
 								<p>{statusResponse}</p>
 							</div>
 						</div>
 					</div>
-
 					<nav className={classes.bottom}>
-						<div className={classes.tocTitleLabel}>
+						<div className={classes.scoreTitleLabel}>
 							<div className={classes.score_content}>
 								<div className={classes.score_contentInner}>
 									<p>Your Score</p>
