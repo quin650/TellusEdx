@@ -1356,25 +1356,26 @@ strong {
 .button_formatSubmit:disabled {
 	font-size: 15px;
 	font-weight: 500;
-	color: rgb(239 236 236);
-	background-color: #d0d0d0;
+	color: var(--hover_menuButtonOpen_gray_to_darkGray);
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 	width: 150.4px;
 	height: 36.8px;
 	border-radius: 18px;
 	cursor: default;
-	border: solid 1px #e8e7e7;
+	border: solid 1px var(--borderColor_menu_offWhite_to_offBlack);
 	margin-left: 12px;
 	transition: background-color 0.6s ease, border 0.6s ease;
 }
 .button_formatSubmit:disabled:hover {
-	background-color: #d0d0d0;
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 	transition: none;
 }
 .button_formatSubmit:disabled:active {
-	background-color: #d0d0d0;
-	border: solid 1px #e8e7e7;
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+	border: solid 1px var(--borderColor_menu_offWhite_to_offBlack);
 	transition: none;
 }
+
 .button_formatSubmit {
 	font-size: 15px;
 	font-weight: 600;

@@ -141,7 +141,6 @@ const SideBar_R_QuestionNumber = () => {
 	};
 	// Footer Buttons
 	const [allowFooterOnHover, setAllowFooterOnHover] = useState(true);
-	console.log("allowFooterOnHover: ", allowFooterOnHover);
 	let taskBarButton = (
 		<li>
 			<Tippy content={footerTaskBarTippyText} placement="top" theme="custom" appendTo="parent">
