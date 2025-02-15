@@ -573,7 +573,7 @@ strong {
 }
 .tocTitleLabel h2 {
 	margin-top: 0;
-	text-align: center;
+	text-align: start;
 }
 .handbookTOC_header_section h2 {
 	margin-bottom: auto;
@@ -1422,16 +1422,20 @@ strong {
 	display: flex;
 	flex-direction: column;
 }
+.score_contentContainer {
+	display: flex;
+	flex-direction: column;
+}
 .score_content {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	padding: 8px 0 16px 0;
+	/* padding: 8px 0 16px 0; */
 }
-.score_content div {
+.score_contentInner {
 	display: block;
-	padding: 6px 0;
 	text-align: center;
+	width: 50%;
 }
 
 .score_content h3 {
@@ -1440,7 +1444,31 @@ strong {
 }
 .score_content p {
 	margin: 0;
-	padding-bottom: 8px;
+	/* padding-bottom: 8px; */
+	color: (var--whiteToBlack);
+}
+.presentedPrimarily {
+	margin: 0;
+	color: (var--whiteToBlack);
+	visibility: visible;
+}
+.presentedSecondarily {
+	margin: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.tocTitleLabel:hover .presentedPrimarily {
+	margin: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.tocTitleLabel:hover .presentedSecondarily {
+	margin: 0;
+	visibility: visible;
+	width: auto;
+	height: auto;
 }
 /* Reset Test Results Modal */
 .blurredBackgroundContainer {

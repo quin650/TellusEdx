@@ -15,18 +15,6 @@ const SideBar_R_TestResults = () => {
 	const [status, setStatus] = useState(null);
 	const [statusResponse, setStatusResponse] = useState(null);
 
-	// Responses
-	//
-	useEffect(() => {
-		if (isPassed) {
-			setStatus("Passed");
-			setStatusResponse(`Congratulations, you passed test #${sideBar_R_Questions_CurrentTestNumber_rdx}.`);
-		} else {
-			setStatus("Test Not Passed");
-			setStatusResponse("You did not meet the passing score for this test. You can retake it by selecting 'Reset this Test' or proceed to the next test.");
-		}
-	}, [isPassed]);
-
 	// Button Actions
 	const backButtonAction = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx));
@@ -37,27 +25,41 @@ const SideBar_R_TestResults = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx + 1));
 	};
 	const [ul1, setUl1] = useState([]);
-
+	const [lastSubmittedQuestion, setLastSubmittedQuestion] = useState(null);
 	useEffect(() => {
 		if (!testResultData) {
 			return;
 		}
 		const testDataEntries = Object.entries(testResultData);
+		let numberAnswered = 0;
 		let numberAnsweredCorrectly = 0;
 		setUl1(
 			testDataEntries.map(([key, value]) => {
+				numberAnswered += 1;
 				const isCorrect = value[2];
 				if (isCorrect) numberAnsweredCorrectly += 1;
 				return <SideBar_R_TestResultsListOfQuestions key={key} id={key} isCorrect={isCorrect} />;
 			})
 		);
+		setLastSubmittedQuestion(numberAnswered);
 		setAnsweredCorrectly(numberAnsweredCorrectly);
 		setIsPassed(numberAnsweredCorrectly >= 30);
 	}, [testResultData]);
 
+	useEffect(() => {
+		if (isPassed) {
+			setStatus("Passed");
+			setStatusResponse(`Congratulations, you passed test #${sideBar_R_Questions_CurrentTestNumber_rdx}.`);
+		} else {
+			setStatus("Test Not Passed");
+			setStatusResponse("You did not meet the passing score for this test. You can retake it by selecting 'Reset this Test' or proceed to the next test.");
+		}
+	}, [isPassed]);
+
 	const gotoResetThisTestModal = () => {
 		dispatch(userReducerActions.resetThisTestModalOpen());
 	};
+
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef}>
 			<div className={classes.page_contentContainer}>
@@ -76,21 +78,31 @@ const SideBar_R_TestResults = () => {
 								<p>{statusResponse}</p>
 							</div>
 						</div>
-						<div className={classes.options}>
-							<div className={classes.score_content}>
-								<div>
-									<p>Your Score: {answeredCorrectly}/36</p>
-								</div>
-								<div>
-									<p>Passing Score: 30/36</p>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<nav className={classes.bottom}>
 						<div className={classes.tocTitleLabel}>
-							<h2>Results</h2>
+							<div className={classes.score_content}>
+								<div className={classes.score_contentInner}>
+									<p>Your Score</p>
+								</div>
+								<div className={classes.score_contentInner}>
+									<p>Passing Score</p>
+								</div>
+							</div>
+
+							<div className={classes.score_content}>
+								<div className={classes.score_contentInner}>
+									<p className={classes.presentedPrimarily}>{Math.round((answeredCorrectly / lastSubmittedQuestion) * 100)}%</p>
+									<p className={classes.presentedSecondarily}>
+										{answeredCorrectly}/{lastSubmittedQuestion}
+									</p>
+								</div>
+								<div className={classes.score_contentInner}>
+									<p className={classes.presentedPrimarily}>84%</p>
+									<p className={classes.presentedSecondarily}>30/36</p>
+								</div>
+							</div>
 						</div>
 						<div className={classes.tocInnerContainerTestResults}>{ul1}</div>
 					</nav>
@@ -120,7 +132,8 @@ const SideBar_R_TestResults = () => {
 
 export default SideBar_R_TestResults;
 
-/* <div className={classes.bottomSection}>
+{
+	/* <div className={classes.bottomSection}>
 	<div onClick={gotoTestResults} className={`${classes["viewTestResults"]} ${testIsComplete ? classes.testIsComplete : ""}`}>
 		<p>Test Score</p>
 		<svg className={classes.arrowIconR} viewBox="0 0 24 24">
@@ -135,4 +148,5 @@ export default SideBar_R_TestResults;
 			Submit
 		</button>
 	</div>
-</div> */
+</div>  */
+}
