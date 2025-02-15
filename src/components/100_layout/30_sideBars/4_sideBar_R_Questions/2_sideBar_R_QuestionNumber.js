@@ -146,6 +146,12 @@ const SideBar_R_QuestionNumber = () => {
 		<li>
 			<Tippy content={footerTaskBarTippyText} placement="top" theme="custom" appendTo="parent">
 				<button onClick={taskBarButtonAction} className={classes.footerButton}>
+					<div className={`${classes["pinContainer"]} ${sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx && classes.pinned}`}>
+						<svg className={classes.pinIconSvg} viewBox="0 0 32 32" enableBackground="new 0 0 32 32" xmlSpace="preserve">
+							<polygon points="13.4,20 12,18.6 3,27.6 3,29 4.4,29 " />
+							<path d="M28,11.5L20.5,4C19.5,5.1,19,6.5,19,7.9l-4.6,4.6  c-2.3-0.6-4.9,0-6.7,1.8l9.9,9.9c2-2,2.5-4.8,1.7-7.2l4.2-4.2C25.1,13.2,26.8,12.7,28,11.5z" />
+						</svg>
+					</div>
 					<svg className={classes.taskBarIconSvg} viewBox="0 0 95 95" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="10" cy="20" r="5" />
 						<rect x="24" y="16" width="70" height="8" />

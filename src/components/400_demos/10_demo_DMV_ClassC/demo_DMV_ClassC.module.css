@@ -1631,6 +1631,48 @@ strong {
 .taskBarIconSvg rect {
 	fill: #9e9e9e;
 }
+.pinContainer {
+	display: flex;
+	position: absolute;
+	z-index: 1000;
+	top: 0px;
+	right: 0px;
+	visibility: hidden;
+}
+.pinContainer.pinned {
+	display: flex;
+	position: absolute;
+	z-index: 1000;
+	top: 4px;
+	right: 2px;
+	visibility: visible;
+	transition: all 0.3s ease;
+}
+
+.pinIconSvg {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	width: 13px;
+	padding-top: 2px;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+}
+.pinIconSvg path,
+.pinIconSvg polygon {
+	fill: none;
+	stroke: #9e9e9e;
+	stroke-width: 2;
+	stroke-miterlimit: 10;
+}
+.footerButton:hover .pinIconSvg {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.footerButton:active .pinIconSvg {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+
 .testResultsIconSvg {
 	display: inline-block;
 	user-select: none;
