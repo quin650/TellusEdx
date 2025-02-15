@@ -92,7 +92,7 @@ const SideBar_R_TestResults = () => {
 						<div className={classes.tocTitleLabel}>
 							<h2>Results</h2>
 						</div>
-						<div className={classes.tocInnerContainer2}>{ul1}</div>
+						<div className={classes.tocInnerContainerTestResults}>{ul1}</div>
 					</nav>
 				</div>
 				<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>

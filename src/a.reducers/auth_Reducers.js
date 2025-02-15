@@ -23,6 +23,7 @@ const initialState = {
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	submittedQuestionsList_rdx: [],
+	sideBar_R_Questions_FooterTaskBarIsOpen_rdx: false,
 	sideBar_L_isOpen_rdx: true,
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
 	sideBar_R_Main_isOpen_rdx: false,
@@ -159,7 +160,7 @@ const userSlice = createSlice({
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 		},
-		sideBar_R_Questions_GoTo_TestResults(state, action) {
+		sideBar_R_Questions_GoTo_TestResults(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
 		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
@@ -169,6 +170,10 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
+		sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose(state) {
+			state.sideBar_R_Questions_FooterTaskBarIsOpen_rdx = !state.sideBar_R_Questions_FooterTaskBarIsOpen_rdx;
+		},
+
 		// sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
 		// 	state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		// },
@@ -192,7 +197,6 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_SelectedQuestionNum_rdx = 1;
 			state.sideBar_R_QuestionLastPageNum_rdx = 0;
 		},
-
 		resetQuestionResults(state) {
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");

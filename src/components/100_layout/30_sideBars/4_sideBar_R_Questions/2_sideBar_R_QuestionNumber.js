@@ -17,13 +17,14 @@ const SideBar_R_QuestionNumber = () => {
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
+	const sideBar_R_Questions_FooterTaskBarIsOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_FooterTaskBarIsOpen_rdx);
+
 	const [questionComponent, setQuestionComponent] = useState(null);
 	const [chosenAnswerID, setChosenAnswerID] = useState(null);
 	const [previouslyCheckedID, setPreviouslyCheckedID] = useState(null);
 	const [startGradingTest, setStartGradingTest] = useState(false);
 	const questionContentRef = useRef(null);
 	const [showHint, setShowHint] = useState(false);
-	const [footerTaskBarIsOpen, setFooterTaskBarIsOpen] = useState(false);
 	const [footerTaskBarTippyText, setFooterTaskBarTippyText] = useState("TaskBar - Click to pin");
 	const [bookMark, setBookMark] = useState(false);
 	const [commentBubble, setCommentBubble] = useState(false);
@@ -110,13 +111,15 @@ const SideBar_R_QuestionNumber = () => {
 		setCommentBubble(false);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 	// Footer Actions
+	useEffect(() => {
+		if (sideBar_R_Questions_FooterTaskBarIsOpen_rdx) {
+			setFooterTaskBarTippyText("TaskBar - Click to unpin");
+		} else {
+			setFooterTaskBarTippyText("TaskBar - Click to pin");
+		}
+	}, [sideBar_R_Questions_FooterTaskBarIsOpen_rdx]);
 	const taskBarButtonAction = () => {
-		setFooterTaskBarIsOpen((prevState) => {
-			const newState = !prevState;
-			console.log("newState", newState);
-			newState ? setFooterTaskBarTippyText("TaskBar - Click to unpin") : setFooterTaskBarTippyText("TaskBar - Click to pin");
-			return newState;
-		});
+		dispatch(userReducerActions.sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose());
 	};
 	const lightBulbButtonAction = () => {
 		setShowHint(!showHint);
@@ -278,7 +281,7 @@ const SideBar_R_QuestionNumber = () => {
 			<div className={classes.handbook_footer_section_Outer}>
 				<div
 					className={clsx(classes.handbook_footer_section_Inner, {
-						[classes.open]: footerTaskBarIsOpen,
+						[classes.open]: sideBar_R_Questions_FooterTaskBarIsOpen_rdx,
 					})}
 				>
 					{taskBarButton}
