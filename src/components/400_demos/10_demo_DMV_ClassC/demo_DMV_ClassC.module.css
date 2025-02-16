@@ -939,7 +939,7 @@ strong {
 	transform-origin: center center;
 	transition: transform 0.3s ease-out, fill 0.3s ease-out;
 
-	fill: var(--Blue);
+	fill: var(--color_readerHyperLink_brightBlue_to_skyBlue);
 }
 .quadrant_InnerContainer .paginationButtonR:hover .arrowIconR {
 	fill: #287bba;
@@ -1024,7 +1024,7 @@ strong {
 .testButtonsContainer .paginationButtonR span {
 	font-size: 1vh;
 	margin: auto auto 2px auto;
-	color: var(--Blue);
+	color: var(--color_readerHyperLink_brightBlue_to_skyBlue);
 }
 .testButtonsContainer .paginationButtonR.isInactive span {
 	color: gray;
@@ -1724,6 +1724,7 @@ strong {
 }
 .testResultsIconSvg g rect {
 	fill: #9e9e9e;
+	stroke-width: 2;
 }
 .testResultsIconSvg.active g rect {
 	fill: var(--Blue);
@@ -1738,6 +1739,9 @@ strong {
 }
 .lightBulbSVG path {
 	fill: #9e9e9e;
+}
+.lightBulbSVG g {
+	stroke-width: 2;
 }
 .lightBulbSVG g path {
 	fill: #9e9e9e;
@@ -1758,6 +1762,7 @@ strong {
 }
 .bookMarkIconSvg path {
 	fill: #9e9e9e;
+	stroke-width: 2px;
 }
 .bookMarkIconSvg.active path {
 	fill: var(--Blue);
