@@ -168,14 +168,11 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Questions_setQuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
-			state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
+			// state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
 		sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose(state) {
 			state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx = !state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx;
 		},
-		// sideBar_R_Questions_setSelectedQuestionNumber(state, action) {
-		// 	state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
-		// },
 		updateQuestionResults(state, action) {
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {
@@ -193,7 +190,7 @@ const userSlice = createSlice({
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = null;
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = 1;
-			state.sideBar_R_Questions_SelectedQuestionNum_rdx = 1;
+			// state.sideBar_R_Questions_SelectedQuestionNum_rdx = 1;
 			state.sideBar_R_QuestionLastPageNum_rdx = 0;
 		},
 		resetQuestionResults(state) {
