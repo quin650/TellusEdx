@@ -2,6 +2,7 @@ import React, { useState, useRef, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+// import imgTest from "../../../../../static/images/question_Images/bluecurb.png";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
@@ -12,11 +13,11 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const question = questionData.question;
 	const answersData = questionData.answers;
 	const answersHint = questionData.hint;
+	const questionImage = questionData.image ? questionData.image : null;
 
 	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
 		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
 	};
-
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	useEffect(() => {
 		setQuickNavBar(
@@ -38,7 +39,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			})
 		);
 	}, [questionData_ifSubmitted, gotoQuestion]);
-
 	useEffect(() => {
 		const quickNav = quickNavRef.current;
 		const handleWheel = (e) => {
@@ -50,7 +50,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			quickNav.removeEventListener("wheel", handleWheel);
 		};
 	}, []);
-
+	const [hasQuestionImage, setHasQuestionImage] = useState(true);
+	useEffect(() => {
+		if (questionImage === "" || questionImage === null) {
+			setHasQuestionImage(false);
+		} else {
+			setHasQuestionImage(true);
+		}
+	}, [questionImage, questionData]);
 	return (
 		<Fragment>
 			<div className={classes.handbook_header_section_question}>
@@ -60,12 +67,16 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				</span>
 				<h2>{question}</h2>
 			</div>
-			<div className={classes.quickNavContainer}>
+			<div className={`${classes["quickNavContainer"]} ${hasQuestionImage && classes.hasQuestionImage}`}>
 				<div ref={quickNavRef} className={classes.quickNavWrapper}>
 					<div className={classes.quickNav}>{quickNavBar}</div>
 					<div className={classes.scrollPortion}></div>
 				</div>
 			</div>
+			<div className={`${classes["questionImage"]} ${hasQuestionImage && classes.hasQuestionImage}`}>
+				<img src={questionImage} alt="Image"></img>
+			</div>
+
 			<div className={`${classes["question_content"]} ${sideBar_L_isOpen_rdx && classes.sideBar_L_isOpen}`}>
 				<ul>
 					{answersData.map((answer) => (
