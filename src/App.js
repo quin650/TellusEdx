@@ -19,7 +19,6 @@ const App = () => {
 	const location = useLocation();
 	const isDarkMode_rdx = useSelector(({ user }) => user.isDarkMode_rdx);
 	const isDemoView_rdx = useSelector(({ user }) => user.isDemoView_rdx);
-	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
 	const getStarted_ModalStatus_rdx = useSelector(({ user }) => user.getStarted_ModalStatus_rdx);
 	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);

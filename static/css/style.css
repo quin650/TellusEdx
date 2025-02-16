@@ -244,12 +244,12 @@ footer {
 [prefers-color-scheme="dark"] {
 	:root {
 		--color_primary_darkGray_to_gray: #9e9e9e;
-		--hover_menuButtonOpen_gray_to_darkGray: #232323;
+		--hover_menuButtonClosed_gray_to_darkGray: #232323;
 	}
 }
 .tippy-box[data-theme~="custom"] {
 	color: var(--color_primary_darkGray_to_gray) !important;
-	background: var(--hover_menuButtonOpen_gray_to_darkGray) !important;
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray) !important;
 	font-size: 12px !important;
 	font-weight: 500 !important;
 	padding: 4px 7px !important;
