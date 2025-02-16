@@ -172,7 +172,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "Correlate the color to traffic lights. What do you do when a traffic light turns yellow?",
 			"image": "../../../../../static/images/question_Images/1_7.png"
 		},
 		{
@@ -198,7 +198,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Safety always trumps other laws."
 		},
 		{
 			"id": 9,
@@ -223,7 +223,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "The DMV registers vehicles/owners"
 		},
 		{
 			"id": 10,
@@ -247,7 +247,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "high beams in fog obscures visibility",
 			"image": ""
 		},
 		{
@@ -273,7 +273,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "motorized wheelchairs are considered pedestrians"
 		},
 		{
 			"id": 12,
@@ -298,7 +298,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Imagine yourself in a truck without a rearview mirror and rearview windows to see."
 		},
 		{
 			"id": 13,
@@ -323,7 +323,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "phone, eating, putting make up on, etc."
 		},
 		{
 			"id": 14,
@@ -348,7 +348,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "..."
 		},
 		{
 			"id": 15,
@@ -373,7 +373,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Which is the most detailed, and correct answer?"
 		},
 		{
 			"id": 16,
@@ -398,7 +398,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "..."
 		},
 		{
 			"id": 17,
@@ -423,7 +423,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Think: what hours do most people drive to work? "
 		},
 		{
 			"id": 18,
@@ -447,7 +447,7 @@
 					"isCorrect": true
 				}
 			],
-			"hint": "",
+			"hint": "Super Tricky. Any lane. If the light is red, you can also stop and go, as if it was a stop sign or right-turn on a red light.",
 			"image": ""
 		},
 		{
@@ -498,7 +498,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Dried up engine oil on the ground dissolves and mixes with the water, making it slippery."
 		},
 		{
 			"id": 21,
@@ -523,7 +523,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "..."
 		},
 		{
 			"id": 22,
@@ -548,7 +548,7 @@
 				}
 			],
 			"hint": "",
-			"image": ""
+			"image": "Road lines are used to mark the road in absence of other means, such as a physical wall. Two walls = barrier."
 		},
 		{
 			"id": 23,
@@ -597,7 +597,7 @@
 					"isCorrect": true
 				}
 			],
-			"hint": "",
+			"hint": "keyword is 'limit'. It is the maximum speed limit, not the minimum speed limit.",
 			"image": "../../../../../static/images/question_Images/1_24.png"
 		},
 		{
@@ -622,7 +622,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "remember, line = 'walls'",
 			"image": "../../../../../static/images/question_Images/1_25.png"
 		},
 		{
@@ -647,7 +647,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "hands free devices make it legal to talk on the phone while driving.",
 			"image": ""
 		},
 		{
@@ -672,7 +672,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "Imagine what happens if the traffic blocking the intersection stays that way and the light turns red.",
 			"image": ""
 		},
 		{
@@ -697,7 +697,7 @@
 					"isCorrect": true
 				}
 			],
-			"hint": "",
+			"hint": "Tricky - depends on the road, but we can't assume that. So, the safest answer is the right edge.",
 			"image": ""
 		},
 		{
@@ -722,7 +722,7 @@
 					"isCorrect": false
 				}
 			],
-			"hint": "",
+			"hint": "Traffic Guards don't just work near or around schools",
 			"image": "../../../../../static/images/question_Images/1_29.png"
 		},
 		{
