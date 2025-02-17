@@ -19,7 +19,7 @@ const initialState = {
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
 	sideBar_R_Questions_CurrentTestNumber_rdx: null,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
-	sideBar_R_Questions_SelectedQuestionNum_rdx: 1,
+	// sideBar_R_Questions_SelectedQuestionNum_rdx: 1,
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	submittedQuestionsList_rdx: [],

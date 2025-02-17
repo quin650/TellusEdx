@@ -833,7 +833,6 @@ strong {
 	background-color: var(--WhiteToBlack);
 	margin: auto;
 }
-/* background-color: #42b362; */
 /* Questions landing page --------------------------------------------*/
 .DemoDMVClassCQuestionsLandingPage {
 	-webkit-box-flex: 1;
@@ -882,12 +881,25 @@ strong {
 .quadrant_OuterContainer:nth-child(4) {
 	background: linear-gradient(45deg, #00008b, transparent); /* Dark Blue */
 }
+.quadrant_OuterContainer:nth-child(4):hover {
+	cursor: pointer;
+}
+.quadrant_OuterContainer:nth-child(4):active .quadrant_InnerContainer h2 {
+	transform: scale(1.05);
+	transform-origin: left center;
+}
 .quadrant_OuterContainer:hover {
 	transform: scale(1.1);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 	z-index: 2;
 	background-color: var(--backgroundColor_menu_offWhite_to_offBlack) !important;
 }
+.quadrant_OuterContainer.isInactive:hover {
+	transform: none !important;
+	box-shadow: none !important;
+	cursor: default !important;
+}
+
 .quadrant_InnerContainer {
 	display: flex;
 	position: relative;
@@ -1551,7 +1563,21 @@ strong {
 	backdrop-filter: blur(6px); /* Chrome, Firefox */
 	-webkit-backdrop-filter: blur(6px); /* Safari */
 }
-.overlay {
+.overlay,
+.overlay.isInactive {
+	display: flex;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.overlay p,
+.overlay.isInactive p {
+	visibility: hidden;
+}
+.quadrant_InnerContainer.isInactive:hover .overlay.isInactive p {
+	visibility: visible;
+}
+.quadrant_InnerContainer.isInactive:hover .overlay.isInactive {
 	display: flex;
 	position: absolute;
 	z-index: 4000;
@@ -1564,9 +1590,7 @@ strong {
 	justify-content: center;
 	align-items: center;
 	font-family: Roboto;
-
 	background-color: var(--BlurredBackground);
-
 	backdrop-filter: blur(2px); /* Chrome, Firefox */
 	-webkit-backdrop-filter: blur(2px); /* Safari */
 }

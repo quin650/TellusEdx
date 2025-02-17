@@ -5,18 +5,19 @@ import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.modul
 
 const SideBar_R_QuestionsLandingPage = () => {
 	const dispatch = useDispatch();
-	// Button Actions
-	const generalButtonClick = () => {
-		console.log("generalButtonClick");
-	};
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
+
+	const [questionsOnThisPageStatus, setQuestionsOnThisPageStatus] = useState(false);
+	const [retakeFailedQuestionsStatus, setRetakeFailedQuestionsStatus] = useState(true);
+	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(true);
+
 	const [lastQuestionSubmitted, setLastQuestionSubmitted] = useState(null);
 	const [test1Status, setTest1Status] = useState("");
 	const [test2Status, setTest2Status] = useState("");
 	const [test3Status, setTest3Status] = useState("");
 	const [test4Status, setTest4Status] = useState("");
 	const [test5Status, setTest5Status] = useState("");
-
 	useEffect(() => {
 		if (sideBar_R_QuestionTestResults_rdx) {
 			// Check if the values are available before updating state -- !!double negation returns boolean if truthy of falsy
@@ -62,9 +63,18 @@ const SideBar_R_QuestionsLandingPage = () => {
 			// console.log("test5Completed: ", test5Completed);
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
-
+	useEffect(() => {
+		if (sideBar_R_Questions_CurrentQuestionNumber_rdx > 5) {
+			setQuestionsOnThisPageStatus(true);
+		} else {
+			setQuestionsOnThisPageStatus(false);
+		}
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
+	// Button Actions
+	const generalButtonClick = () => {
+		console.log("generalButtonClick");
+	};
 	const test1 = () => {
-		console.log("test1 clicked");
 		if (test1Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test1Status === "Start" || test1Status === "") {
@@ -75,7 +85,6 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
 	const test2 = () => {
-		console.log("test2 clicked");
 		if (test2Status === "n/a yet" || !test2Status) {
 			return;
 		} else if (test2Status === "Done") {
@@ -150,7 +159,6 @@ const SideBar_R_QuestionsLandingPage = () => {
 		},
 		[test1Status, test2Status, test3Status, test4Status, test5Status]
 	);
-
 	useEffect(() => {
 		if (location.pathname === "/demo_dmvClassC") {
 			document.addEventListener("keydown", handleKeyCombination);
@@ -168,14 +176,18 @@ const SideBar_R_QuestionsLandingPage = () => {
 					<h1>Questions</h1>
 				</div>
 				<div className={classes.questionsLandingPageBody}>
-					<div className={classes.quadrant_OuterContainer}>
-						<div className={classes.quadrant_InnerContainer}>
-							<div className={classes.overlay}>
-								<p>Coming Soon</p>
+					<div className={`${classes["quadrant_OuterContainer"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
+						<div className={`${classes["quadrant_InnerContainer"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
+							<div className={`${classes["overlay"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
+								<p>Available for Section's 1-13</p>
 							</div>
 							<h2>Questions On This Page</h2>
-							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
-								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
+							<button
+								onClick={generalButtonClick}
+								className={`${classes["paginationButtonR"]} ${!questionsOnThisPageStatus && classes.isInactive}`}
+								disabled={questionsOnThisPageStatus}
+							>
+								<svg className={`${classes["arrowIconR"]} ${!questionsOnThisPageStatus && classes.isInactive}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 								</svg>
 							</button>
@@ -223,23 +235,27 @@ const SideBar_R_QuestionsLandingPage = () => {
 							</div>
 						</div>
 					</div>
-					<div className={classes.quadrant_OuterContainer}>
-						<div className={classes.quadrant_InnerContainer}>
-							<div className={classes.overlay}>
-								<p>Coming Soon</p>
+					<div className={`${classes["quadrant_OuterContainer"]} ${!retakeFailedQuestionsStatus && classes.isInactive}`}>
+						<div className={`${classes["quadrant_InnerContainer"]} ${!retakeFailedQuestionsStatus && classes.isInactive}`}>
+							<div className={`${classes["overlay"]} ${!retakeFailedQuestionsStatus && classes.isInactive}`}>
+								<p>No Failed Questions available</p>
 							</div>
 							<h2>Retake failed questions</h2>
-							<button onClick={generalButtonClick} className={`${classes["paginationButtonR"]} ${false && classes.isInactive}`} disabled={false}>
-								<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
+							<button
+								onClick={generalButtonClick}
+								className={`${classes["paginationButtonR"]} ${!retakeFailedQuestionsStatus && classes.isInactive}`}
+								disabled={retakeFailedQuestionsStatus}
+							>
+								<svg className={`${classes["arrowIconR"]} ${!retakeFailedQuestionsStatus ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 								</svg>
 							</button>
 						</div>
 					</div>
-					<div className={classes.quadrant_OuterContainer}>
-						<div className={classes.quadrant_InnerContainer}>
-							<div className={classes.overlay}>
-								<p>Coming Soon</p>
+					<div className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
+						<div className={`${classes["quadrant_InnerContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
+							<div className={`${classes["overlay"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
+								<p>Available after taking first test</p>
 							</div>
 							<h2>Probability of Passing</h2>
 						</div>
