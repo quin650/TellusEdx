@@ -41,26 +41,55 @@
 .sideBar_L_tabs_innerContainer {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 	height: 40px;
 }
+/* ---------------------------- */
 .sideBar_L_tab_Name_onThisPage {
+	font-weight: 600;
+	margin-right: 14px;
+	border-bottom: none;
+	cursor: pointer;
+	color: var(--color_pageNav_menuTabs_primary_gray);
+}
+.sideBar_L_tab_Name_onThisPage.active {
 	font-weight: 600;
 	margin-right: 14px;
 	border-bottom: 2px solid var(--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite);
 	cursor: pointer;
-	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite) !important;
+	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite);
 }
-.sideBar_L_tab_Name_all {
+.sideBar_L_tab_Name_sections {
 	font-weight: 600;
 	margin-right: 14px;
+	border-bottom: none;
 	cursor: pointer;
+	color: var(--color_pageNav_menuTabs_primary_gray);
+}
+.sideBar_L_tab_Name_sections.active {
+	font-weight: 600;
+	margin-right: 14px;
+	border-bottom: 2px solid var(--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite);
+	cursor: pointer;
+	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite);
 }
 .sideBar_L_tab_Name_pinned {
 	font-weight: 600;
 	margin-right: 14px;
+	border-bottom: none;
 	cursor: pointer;
+	color: var(--color_pageNav_menuTabs_primary_gray);
 }
+.sideBar_L_tab_Name_pinned.active {
+	font-weight: 600;
+	margin-right: 14px;
+	border-bottom: 2px solid var(--color_pageNav_menuTabs_primaryIsActive_borderBottom_black_to_offWhite);
+	cursor: pointer;
+	color: var(--color_pageNav_menuTabs_primaryIsActive_gray_black_to_offWhite);
+}
+
+
+
 .sideBar_L_tabs_underline {
 	width: 100%;
 	border: 0;
@@ -215,6 +244,12 @@
 }
 .menuArrow:active {
 	background-color: var(--active_menuItem_gray_to_darkGray);
+}
+.sectionNUm {
+	color: var(--BlackToWhite) !important;
+	font-weight: 700;
+	min-width: 32px;
+	padding-right: 5px;
 }
 /*! toc Child Items ------------------------------------------------------*/
 .childLabelOuterContainer.isVisible {

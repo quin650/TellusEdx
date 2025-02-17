@@ -65,7 +65,7 @@ const Page1A = () => {
 					</div>
 					<nav className={classes.bottom}>
 						<div className={classes.tocTitleLabel}>
-							<h2>Handbook Table of Contents</h2>
+							<h2>Handbook Sections</h2>
 						</div>
 						<div className={classes.tocInnerContainer}>
 							<ul>

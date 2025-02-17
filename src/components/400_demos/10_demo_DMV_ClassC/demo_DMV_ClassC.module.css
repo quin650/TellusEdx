@@ -691,7 +691,7 @@ strong {
 	background-color: var(--active_menuItem_gray_to_darkGray);
 }
 .sectionNUm {
-	color: var(--color_primary_darkGray_to_gray) !important;
+	color: var(--BlackToWhite) !important;
 	font-weight: 700;
 	min-width: 32px;
 	padding-right: 5px;
