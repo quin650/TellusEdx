@@ -5,6 +5,7 @@ import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsLandingPage from "./1_sideBar_R_QuestionsLandingPage";
 import SideBar_R_QuestionNumber from "./2_sideBar_R_QuestionNumber";
 import SideBar_R_TestResults from "./5_sideBar_R_TestResults";
+import SideBar_R_ProbabilityOfPassingPage from "./7_sideBar_R_probabilityOfPassingPage";
 
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
@@ -32,7 +33,7 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	};
 
 	let exitAction = () => {
-		if (sideBar_R_QuestionsStatus_rdx === "Questions") {
+		if (sideBar_R_QuestionsStatus_rdx === "Questions" || sideBar_R_QuestionsStatus_rdx === "ProbabilityOfPassingPage") {
 			dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
 		} else if (sideBar_R_QuestionsStatus_rdx === "TestResults") {
 			dispatch(userReducerActions.sideBar_R_Questions_GoBackTo_Test());
@@ -140,6 +141,9 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 				break;
 			case "TestResults":
 				setContent(<SideBar_R_TestResults />);
+				break;
+			case "ProbabilityOfPassingPage":
+				setContent(<SideBar_R_ProbabilityOfPassingPage />);
 				break;
 			default:
 				setContent(<SideBar_R_QuestionsLandingPage />);

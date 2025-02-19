@@ -48,6 +48,9 @@
 	display: flex;
 	flex-direction: column;
 }
+.demoIntroTopLeft ul {
+	margin: 0;
+}
 .topRight {
 	display: none;
 }
@@ -672,6 +675,17 @@ strong {
 	padding: 6px 8px;
 	text-decoration: none;
 }
+.parentLabel1 {
+	flex-grow: 1;
+	word-break: break-word;
+	color: var(--color_primary_darkGray_to_gray) !important;
+	cursor: pointer;
+	border-radius: 7px;
+	padding: 6px 8px;
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+}
 .parentLabel.isPassed {
 	color: #00df00 !important;
 }
@@ -695,6 +709,70 @@ strong {
 	font-weight: 700;
 	min-width: 32px;
 	padding-right: 5px;
+	margin-right: auto;
+}
+
+/* Derivative */
+.testResultsBarContainer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 20px 3px 20px 3px;
+	align-items: center;
+	text-align: left;
+}
+.testResultsLabel {
+	display: flex;
+	width: 100%;
+}
+.testResultsBarContainer .sectionNUm {
+	padding-right: 0;
+	font-weight: 500;
+	font-size: 12px;
+}
+.percentCorrect {
+	padding-right: 0;
+	font-weight: 500;
+	font-size: 12px;
+	visibility: visible;
+}
+.fractionCorrect {
+	padding-right: 0;
+	font-weight: 500;
+	font-size: 12px;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.parentLabel:hover .percentCorrect {
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.parentLabel:hover .fractionCorrect {
+	visibility: visible;
+	width: auto;
+	height: auto;
+}
+.testResultsBar {
+	display: flex;
+	width: 100%;
+	background-color: var(--color_primary_darkGray_to_gray);
+	border-radius: 3px;
+	height: 6px;
+	margin-top: 9px;
+}
+.testStatus {
+	font-weight: 500;
+	font-size: 12px;
+	margin-right: auto;
+	visibility: hidden;
+	height: 20px;
+}
+.parentLabel:hover .testStatus {
+	visibility: visible;
 }
 /* Styles for Correct (Checkmark) */
 .correctIcon {
@@ -886,7 +964,7 @@ strong {
 }
 .quadrant_OuterContainer:nth-child(4):active .quadrant_InnerContainer h2 {
 	transform: scale(1.05);
-	transform-origin: left center;
+	transform-origin: center center;
 }
 .quadrant_OuterContainer:hover {
 	transform: scale(1.1);
@@ -1473,11 +1551,8 @@ strong {
 	-webkit-box-flex: 1;
 	padding-left: 2vw;
 	padding-right: 2vw;
-	margin: 0 auto auto 0;
+	margin: 0 0 auto 0;
 	/* height: 30vh; */
-	margin: 0 12px auto 12px;
-	display: flex;
-	flex-direction: column;
 }
 .score_contentContainer {
 	display: flex;
@@ -1514,6 +1589,7 @@ strong {
 	height: 0;
 	color: var(--WhiteToGray);
 }
+
 .scoreTitleLabel {
 	padding: 6px 8px 6px 12px !important;
 	width: 100%;

@@ -163,6 +163,9 @@ const userSlice = createSlice({
 		sideBar_R_Questions_GoTo_TestResults(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
 		},
+		sideBar_R_Questions_GoTo_ProbabilityOfPassing(state) {
+			state.sideBar_R_QuestionsStatus_rdx = "ProbabilityOfPassingPage";
+		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 		},

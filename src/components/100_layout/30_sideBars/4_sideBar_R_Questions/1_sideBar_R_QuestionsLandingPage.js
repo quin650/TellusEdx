@@ -132,6 +132,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};
+	const goTo_ProbabilityOfPassingPage = () => {
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_ProbabilityOfPassing());
+	};
 	// Hot-Key Combinations
 	const handleKeyCombination = useCallback(
 		(e) => {
@@ -252,7 +255,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 							</button>
 						</div>
 					</div>
-					<div className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
+					<div onClick={goTo_ProbabilityOfPassingPage} className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
 						<div className={`${classes["quadrant_InnerContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
 							<div className={`${classes["overlay"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
 								<p>Available after taking first test</p>
