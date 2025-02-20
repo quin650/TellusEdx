@@ -13,11 +13,11 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const testResultData4 = sideBar_R_QuestionTestResults_rdx[4] ? sideBar_R_QuestionTestResults_rdx[4] : null;
 	const testResultData5 = sideBar_R_QuestionTestResults_rdx[5] ? sideBar_R_QuestionTestResults_rdx[5] : null;
 
-	const [answeredCorrectly1, setAnsweredCorrectly1] = useState(null);
-	const [answeredCorrectly2, setAnsweredCorrectly2] = useState(null);
-	const [answeredCorrectly3, setAnsweredCorrectly3] = useState(null);
-	const [answeredCorrectly4, setAnsweredCorrectly4] = useState(null);
-	const [answeredCorrectly5, setAnsweredCorrectly5] = useState(null);
+	const [answered_Correctly1, setAnswered_Correctly1] = useState(null);
+	const [answered_Correctly2, setAnswered_Correctly2] = useState(null);
+	const [answered_Correctly3, setAnswered_Correctly3] = useState(null);
+	const [answered_Correctly4, setAnswered_Correctly4] = useState(null);
+	const [answered_Correctly5, setAnswered_Correctly5] = useState(null);
 
 	const [lastSubmittedQuestion1, setLastSubmittedQuestion1] = useState(0);
 	const [lastSubmittedQuestion2, setLastSubmittedQuestion2] = useState(0);
@@ -25,8 +25,6 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const [lastSubmittedQuestion4, setLastSubmittedQuestion4] = useState(0);
 	const [lastSubmittedQuestion5, setLastSubmittedQuestion5] = useState(0);
 
-	const [yourScore1, setYourScore1] = useState(0);
-	const [yourScore2, setYourScore2] = useState(0);
 	const [yourScore3, setYourScore3] = useState(0);
 	const [yourScore4, setYourScore4] = useState(0);
 	const [yourScore5, setYourScore5] = useState(0);
@@ -43,6 +41,18 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const [status4, setStatus4] = useState(null);
 	const [status5, setStatus5] = useState(null);
 
+	const [percentAnswered_Incorrectly1, setPercentAnswered_Incorrectly1] = useState("0%");
+	const [percentAnswered_Incorrectly2, setPercentAnswered_Incorrectly2] = useState("0%");
+	const [percentAnswered_Incorrectly3, setPercentAnswered_Incorrectly3] = useState("0%");
+	const [percentAnswered_Incorrectly4, setPercentAnswered_Incorrectly4] = useState("0%");
+	const [percentAnswered_Incorrectly5, setPercentAnswered_Incorrectly5] = useState("0%");
+
+	const [percentAnswered_Correctly1, setPercentAnswered_Correctly1] = useState("0%");
+	const [percentAnswered_Correctly2, setPercentAnswered_Correctly2] = useState("0%");
+	const [percentAnswered_Correctly3, setPercentAnswered_Correctly3] = useState("0%");
+	const [percentAnswered_Correctly4, setPercentAnswered_Correctly4] = useState("0%");
+	const [percentAnswered_Correctly5, setPercentAnswered_Correctly5] = useState("0%");
+
 	useEffect(() => {
 		if (!testResultData1) {
 			setStatus1("Not Started");
@@ -50,27 +60,27 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		const testDataEntries1 = Object.entries(testResultData1);
 		let numberAnswered1 = 0;
-		let numberAnsweredCorrectly1 = 0;
+		let numberAnswered_Correctly1 = 0;
 
 		testDataEntries1.map(([key, value]) => {
 			numberAnswered1 += 1;
 			const isCorrect = value[2];
-			if (isCorrect) numberAnsweredCorrectly1 += 1;
+			if (isCorrect) numberAnswered_Correctly1 += 1;
 		});
 
 		setLastSubmittedQuestion1(numberAnswered1);
-		setAnsweredCorrectly1(numberAnsweredCorrectly1);
-		setIsPassed1(numberAnsweredCorrectly1 >= 30);
-		setYourScore1(Math.round((numberAnsweredCorrectly1 / numberAnswered1) * 100));
+		setAnswered_Correctly1(numberAnswered_Correctly1);
+		setIsPassed1(numberAnswered_Correctly1 >= 30);
+		setPercentAnswered_Correctly1(`${Math.round((numberAnswered_Correctly1 / numberAnswered1) * 100 * (numberAnswered1 / 36))}%`);
+		setPercentAnswered_Incorrectly1(`${Math.round(100 * (numberAnswered1 / 36))}%`);
 		if (numberAnswered1 < 36) {
 			setStatus1("Incomplete");
-		} else if (numberAnsweredCorrectly1 >= 30) {
+		} else if (numberAnswered_Correctly1 >= 30) {
 			setStatus1("Passed");
 		} else {
 			setStatus1("Failed");
 		}
 	}, [testResultData1]);
-
 	useEffect(() => {
 		if (!testResultData2) {
 			setStatus2("Not Started");
@@ -78,27 +88,27 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		const testDataEntries2 = Object.entries(testResultData2);
 		let numberAnswered2 = 0;
-		let numberAnsweredCorrectly2 = 0;
+		let numberAnswered_Correctly2 = 0;
 
 		testDataEntries2.map(([key, value]) => {
 			numberAnswered2 += 1;
 			const isCorrect = value[2];
-			if (isCorrect) numberAnsweredCorrectly2 += 1;
+			if (isCorrect) numberAnswered_Correctly2 += 1;
 		});
 
 		setLastSubmittedQuestion2(numberAnswered2);
-		setAnsweredCorrectly2(numberAnsweredCorrectly2);
-		setIsPassed2(numberAnsweredCorrectly2 >= 30);
-		setYourScore2(Math.round((numberAnsweredCorrectly2 / numberAnswered2) * 100));
+		setAnswered_Correctly2(numberAnswered_Correctly2);
+		setIsPassed2(numberAnswered_Correctly2 >= 30);
+		setPercentAnswered_Correctly2(`${Math.round((numberAnswered_Correctly2 / numberAnswered2) * 100 * (numberAnswered2 / 36))}%`);
+		setPercentAnswered_Incorrectly2(`${Math.round(100 * (numberAnswered2 / 36))}%`);
 		if (numberAnswered2 < 36) {
 			setStatus2("Incomplete");
-		} else if (numberAnsweredCorrectly2 >= 30) {
+		} else if (numberAnswered_Correctly2 >= 30) {
 			setStatus2("Passed");
 		} else {
 			setStatus2("Failed");
 		}
 	}, [testResultData2]);
-
 	useEffect(() => {
 		if (!testResultData3) {
 			setStatus3("Not Started");
@@ -106,26 +116,26 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		const testDataEntries3 = Object.entries(testResultData3);
 		let numberAnswered3 = 0;
-		let numberAnsweredCorrectly3 = 0;
+		let numberAnswered_Correctly3 = 0;
 		testDataEntries3.map(([key, value]) => {
 			numberAnswered3 += 1;
 			const isCorrect = value[2];
-			if (isCorrect) numberAnsweredCorrectly3 += 1;
+			if (isCorrect) numberAnswered_Correctly3 += 1;
 		});
 
 		setLastSubmittedQuestion3(numberAnswered3);
-		setAnsweredCorrectly3(numberAnsweredCorrectly3);
-		setIsPassed3(numberAnsweredCorrectly3 >= 30);
-		setYourScore3(Math.round((numberAnsweredCorrectly3 / numberAnswered3) * 100));
+		setAnswered_Correctly3(numberAnswered_Correctly3);
+		setIsPassed3(numberAnswered_Correctly3 >= 30);
+		setPercentAnswered_Correctly3(`${Math.round((numberAnswered_Correctly3 / numberAnswered3) * 100 * (numberAnswered3 / 36))}%`);
+		setPercentAnswered_Incorrectly3(`${Math.round(100 * (numberAnswered3 / 36))}%`);
 		if (numberAnswered3 < 36) {
 			setStatus3("Incomplete");
-		} else if (numberAnsweredCorrectly3 >= 30) {
+		} else if (numberAnswered_Correctly3 >= 30) {
 			setStatus3("Passed");
 		} else {
 			setStatus3("Failed");
 		}
 	}, [testResultData3]);
-
 	useEffect(() => {
 		if (!testResultData4) {
 			setStatus4("Not Started");
@@ -133,27 +143,27 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		const testDataEntries4 = Object.entries(testResultData4);
 		let numberAnswered4 = 0;
-		let numberAnsweredCorrectly4 = 0;
+		let numberAnswered_Correctly4 = 0;
 
 		testDataEntries4.map(([key, value]) => {
 			numberAnswered4 += 1;
 			const isCorrect = value[2];
-			if (isCorrect) numberAnsweredCorrectly4 += 1;
+			if (isCorrect) numberAnswered_Correctly4 += 1;
 		});
 
 		setLastSubmittedQuestion4(numberAnswered4);
-		setAnsweredCorrectly4(numberAnsweredCorrectly4);
-		setIsPassed4(numberAnsweredCorrectly4 >= 30);
-		setYourScore4(Math.round((numberAnsweredCorrectly4 / numberAnswered4) * 100));
+		setAnswered_Correctly4(numberAnswered_Correctly4);
+		setIsPassed4(numberAnswered_Correctly4 >= 30);
+		setPercentAnswered_Correctly4(`${Math.round((numberAnswered_Correctly4 / numberAnswered4) * 100 * (numberAnswered4 / 36))}%`);
+		setPercentAnswered_Incorrectly4(`${Math.round(100 * (numberAnswered4 / 36))}%`);
 		if (numberAnswered4 < 36) {
 			setStatus4("Incomplete");
-		} else if (numberAnsweredCorrectly4 >= 30) {
+		} else if (numberAnswered_Correctly4 >= 30) {
 			setStatus4("Passed");
 		} else {
 			setStatus4("Failed");
 		}
 	}, [testResultData4]);
-
 	useEffect(() => {
 		if (!testResultData5) {
 			setStatus5("Not Started");
@@ -161,21 +171,22 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		const testDataEntries5 = Object.entries(testResultData5);
 		let numberAnswered5 = 0;
-		let numberAnsweredCorrectly5 = 0;
+		let numberAnswered_Correctly5 = 0;
 
 		testDataEntries5.map(([key, value]) => {
 			numberAnswered5 += 1;
 			const isCorrect = value[2];
-			if (isCorrect) numberAnsweredCorrectly5 += 1;
+			if (isCorrect) numberAnswered_Correctly5 += 1;
 		});
 
 		setLastSubmittedQuestion5(numberAnswered5);
-		setAnsweredCorrectly5(numberAnsweredCorrectly5);
-		setIsPassed5(numberAnsweredCorrectly5 >= 30);
-		setYourScore5(Math.round((numberAnsweredCorrectly5 / numberAnswered5) * 100));
+		setAnswered_Correctly5(numberAnswered_Correctly5);
+		setIsPassed5(numberAnswered_Correctly5 >= 30);
+		setPercentAnswered_Correctly5(`${Math.round((numberAnswered_Correctly5 / numberAnswered5) * 100 * (numberAnswered5 / 36))}%`);
+		setPercentAnswered_Incorrectly5(`${Math.round(100 * (numberAnswered5 / 36))}%`);
 		if (numberAnswered5 < 36) {
 			setStatus5("Incomplete");
-		} else if (numberAnsweredCorrectly5 >= 30) {
+		} else if (numberAnswered_Correctly5 >= 30) {
 			setStatus5("Passed");
 		} else {
 			setStatus5("Failed");
@@ -189,6 +200,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const test1_ButtonAction = () => {
 		console.log("Test 1 button clicked");
 	};
+
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef}>
 			<div className={classes.page_contentContainer}>
@@ -204,12 +216,16 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #1</span>
-												<span className={classes.percentCorrect}>{yourScore1}%</span>
+												<span className={classes.percentCorrect}>{percentAnswered_Correctly1}</span>
 												<span className={classes.fractionCorrect}>
-													{answeredCorrectly1}/{lastSubmittedQuestion1}
+													{answered_Correctly1}/{lastSubmittedQuestion1}
 												</span>
 											</div>
-											<div className={classes.testResultsBar}></div>
+											<div className={classes.testResultsContainer}>
+												<div className={classes.testResultsBarTotal}></div>
+												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly1 }}></div>
+												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly1 }}></div>
+											</div>
 											<span className={classes.testStatus}>{status1}</span>
 										</div>
 									</div>
@@ -221,12 +237,16 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #2</span>
-												<span className={classes.percentCorrect}>{yourScore2}%</span>
+												<span className={classes.percentCorrect}>{percentAnswered_Correctly2}</span>
 												<span className={classes.fractionCorrect}>
-													{answeredCorrectly2}/{lastSubmittedQuestion2}
+													{answered_Correctly2}/{lastSubmittedQuestion2}
 												</span>
 											</div>
-											<div className={classes.testResultsBar}></div>
+											<div className={classes.testResultsContainer}>
+												<div className={classes.testResultsBarTotal}></div>
+												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly2 }}></div>
+												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly2 }}></div>
+											</div>
 											<span className={classes.testStatus}>{status2}</span>
 										</div>
 									</div>
@@ -237,13 +257,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #1</span>
-												<span className={classes.percentCorrect}>{yourScore3}%</span>
+												<span className={classes.sectionNUm}>Test #3</span>
+												<span className={classes.percentCorrect}>{percentAnswered_Correctly3}</span>
 												<span className={classes.fractionCorrect}>
-													{answeredCorrectly3}/{lastSubmittedQuestion3}
+													{answered_Correctly3}/{lastSubmittedQuestion3}
 												</span>
 											</div>
-											<div className={classes.testResultsBar}></div>
+											<div className={classes.testResultsContainer}>
+												<div className={classes.testResultsBarTotal}></div>
+												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly3 }}></div>
+												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly3 }}></div>
+											</div>
 											<span className={classes.testStatus}>{status3}</span>
 										</div>
 									</div>
@@ -254,13 +278,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #1</span>
-												<span className={classes.percentCorrect}>{yourScore4}%</span>
+												<span className={classes.sectionNUm}>Test #4</span>
+												<span className={classes.percentCorrect}>{percentAnswered_Correctly4}</span>
 												<span className={classes.fractionCorrect}>
-													{answeredCorrectly4}/{lastSubmittedQuestion4}
+													{answered_Correctly4}/{lastSubmittedQuestion4}
 												</span>
 											</div>
-											<div className={classes.testResultsBar}></div>
+											<div className={classes.testResultsContainer}>
+												<div className={classes.testResultsBarTotal}></div>
+												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly4 }}></div>
+												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly4 }}></div>
+											</div>
 											<span className={classes.testStatus}>{status4}</span>
 										</div>
 									</div>
@@ -271,13 +299,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #1</span>
-												<span className={classes.percentCorrect}>{yourScore5}%</span>
+												<span className={classes.sectionNUm}>Test #5</span>
+												<span className={classes.percentCorrect}>{percentAnswered_Correctly5}</span>
 												<span className={classes.fractionCorrect}>
-													{answeredCorrectly5}/{lastSubmittedQuestion5}
+													{answered_Correctly5}/{lastSubmittedQuestion5}
 												</span>
 											</div>
-											<div className={classes.testResultsBar}></div>
+											<div className={classes.testResultsContainer}>
+												<div className={classes.testResultsBarTotal}></div>
+												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly5 }}></div>
+												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly5 }}></div>
+											</div>
 											<span className={classes.testStatus}>{status5}</span>
 										</div>
 									</div>

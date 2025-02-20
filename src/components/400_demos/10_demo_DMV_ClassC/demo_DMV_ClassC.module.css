@@ -599,7 +599,6 @@ strong {
 .sectionContent {
 	margin-left: 0;
 }
-
 .sectionContent p,
 .sectionContentResults p {
 	padding: 8px 0 16px 32px;
@@ -609,7 +608,6 @@ strong {
 	margin-left: 0;
 	margin-bottom: 2vh;
 }
-
 .options {
 	margin: 0;
 }
@@ -711,7 +709,6 @@ strong {
 	padding-right: 5px;
 	margin-right: auto;
 }
-
 /* Derivative */
 .testResultsBarContainer {
 	display: flex;
@@ -764,12 +761,54 @@ strong {
 	height: 6px;
 	margin-top: 9px;
 }
+.testResultsContainer {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.testResultsBarTotal {
+	display: flex;
+	width: 100%;
+	background-color: var(--color_primary_darkGray_to_gray);
+	border-radius: 3px;
+	height: 6px;
+	margin-top: 9px;
+	z-index: 100;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.testResultsBarIncorrect {
+	display: flex;
+	background-color: #ff6a6a;
+	border-radius: 3px;
+	height: 6px;
+	margin-top: 9px;
+	z-index: 200;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.testResultsBarCorrect {
+	display: flex;
+	background-color: #28a745;
+	border-radius: 3px;
+	height: 6px;
+	margin-top: 9px;
+	z-index: 300;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 .testStatus {
 	font-weight: 500;
 	font-size: 12px;
 	margin-right: auto;
 	visibility: hidden;
 	height: 20px;
+	padding-top: 16px;
 }
 .parentLabel:hover .testStatus {
 	visibility: visible;
@@ -977,7 +1016,6 @@ strong {
 	box-shadow: none !important;
 	cursor: default !important;
 }
-
 .quadrant_InnerContainer {
 	display: flex;
 	position: relative;
