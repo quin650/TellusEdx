@@ -245,9 +245,9 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 														<Tippy
 															content={
 																<>
-																	<div>Passing Status</div>
-																	<div>Your Score</div>
-																	<div>Passing Score</div>
+																	<div>Passing Grade</div>
+																	<div>80%</div>
+																	<div>30/36</div>
 																</>
 															}
 															placement="top"
@@ -278,7 +278,25 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test2_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #2</span>
+												<span className={classes.sectionNUm}>
+													<p className={classes.testText}>Test #2</p>
+													<span className={classes.testTextInfo}>
+														<Tippy
+															content={
+																<>
+																	<div>Passing Grade</div>
+																	<div>80%</div>
+																	<div>30/36</div>
+																</>
+															}
+															placement="top"
+															theme="custom"
+															appendTo="parent"
+														>
+															{infoIcon}
+														</Tippy>
+													</span>
+												</span>
 												<span className={classes.percentCorrect}>{percentAnswered_Correctly2}</span>
 												<span className={classes.fractionCorrect}>
 													{answered_Correctly2}/{lastSubmittedQuestion2}
@@ -299,7 +317,25 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test3_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #3</span>
+												<span className={classes.sectionNUm}>
+													<p className={classes.testText}>Test #3</p>
+													<span className={classes.testTextInfo}>
+														<Tippy
+															content={
+																<>
+																	<div>Passing Grade</div>
+																	<div>80%</div>
+																	<div>30/36</div>
+																</>
+															}
+															placement="top"
+															theme="custom"
+															appendTo="parent"
+														>
+															{infoIcon}
+														</Tippy>
+													</span>
+												</span>
 												<span className={classes.percentCorrect}>{percentAnswered_Correctly3}</span>
 												<span className={classes.fractionCorrect}>
 													{answered_Correctly3}/{lastSubmittedQuestion3}
@@ -320,7 +356,25 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test4_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #4</span>
+												<span className={classes.sectionNUm}>
+													<p className={classes.testText}>Test #4</p>
+													<span className={classes.testTextInfo}>
+														<Tippy
+															content={
+																<>
+																	<div>Passing Grade</div>
+																	<div>80%</div>
+																	<div>30/36</div>
+																</>
+															}
+															placement="top"
+															theme="custom"
+															appendTo="parent"
+														>
+															{infoIcon}
+														</Tippy>
+													</span>
+												</span>
 												<span className={classes.percentCorrect}>{percentAnswered_Correctly4}</span>
 												<span className={classes.fractionCorrect}>
 													{answered_Correctly4}/{lastSubmittedQuestion4}
@@ -341,7 +395,25 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test5_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #5</span>
+												<span className={classes.sectionNUm}>
+													<p className={classes.testText}>Test #5</p>
+													<span className={classes.testTextInfo}>
+														<Tippy
+															content={
+																<>
+																	<div>Passing Grade</div>
+																	<div>80%</div>
+																	<div>30/36</div>
+																</>
+															}
+															placement="top"
+															theme="custom"
+															appendTo="parent"
+														>
+															{infoIcon}
+														</Tippy>
+													</span>
+												</span>
 												<span className={classes.percentCorrect}>{percentAnswered_Correctly5}</span>
 												<span className={classes.fractionCorrect}>
 													{answered_Correctly5}/{lastSubmittedQuestion5}
