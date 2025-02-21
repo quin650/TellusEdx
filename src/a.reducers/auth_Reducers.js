@@ -160,6 +160,10 @@ const userSlice = createSlice({
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 		},
+		sideBar_R_Questions_GoTo_TestResultsForTestNum(state, action) {
+			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
+			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
+		},
 		sideBar_R_Questions_GoTo_TestResults(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
 		},

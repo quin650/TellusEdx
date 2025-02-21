@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const SideBar_R_ProbabilityOfPassingPage = () => {
 	const dispatch = useDispatch();
@@ -199,7 +201,29 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	};
 	const test1_ButtonAction = () => {
 		console.log("Test 1 button clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(1));
 	};
+	const test2_ButtonAction = () => {
+		console.log("Test 1 button clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(2));
+	};
+	const test3_ButtonAction = () => {
+		console.log("Test 1 button clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(3));
+	};
+	const test4_ButtonAction = () => {
+		console.log("Test 1 button clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(4));
+	};
+	const test5_ButtonAction = () => {
+		console.log("Test 1 button clicked");
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(5));
+	};
+	const infoIcon = (
+		<svg className={classes.infoSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+			<path d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z" />
+		</svg>
+	);
 
 	return (
 		<div className={classes.handbook_outerContainer2} ref={questionContentRef}>
@@ -215,7 +239,25 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
-												<span className={classes.sectionNUm}>Test #1</span>
+												<span className={classes.sectionNUm}>
+													<p className={classes.testText}>Test #1</p>
+													<span className={classes.testTextInfo}>
+														<Tippy
+															content={
+																<>
+																	<div>Passing Status</div>
+																	<div>Your Score</div>
+																	<div>Passing Score</div>
+																</>
+															}
+															placement="top"
+															theme="custom"
+															appendTo="parent"
+														>
+															{infoIcon}
+														</Tippy>
+													</span>
+												</span>
 												<span className={classes.percentCorrect}>{percentAnswered_Correctly1}</span>
 												<span className={classes.fractionCorrect}>
 													{answered_Correctly1}/{lastSubmittedQuestion1}
@@ -233,7 +275,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
+									<div className={classes.parentLabel} onClick={test2_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #2</span>
@@ -254,7 +296,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
+									<div className={classes.parentLabel} onClick={test3_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #3</span>
@@ -275,7 +317,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
+									<div className={classes.parentLabel} onClick={test4_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #4</span>
@@ -296,7 +338,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
+									<div className={classes.parentLabel} onClick={test5_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>Test #5</span>

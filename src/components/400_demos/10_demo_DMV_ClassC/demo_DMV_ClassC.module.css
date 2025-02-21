@@ -728,7 +728,25 @@ strong {
 	padding-right: 0;
 	font-weight: 500;
 	font-size: 12px;
+	display: flex;
+	flex-direction: row;
 }
+.testResultsBarContainer .sectionNUm .testText {
+	margin: 0;
+	padding: 0;
+}
+.testResultsBarContainer .sectionNUm .testTextInfo {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+}
+.infoSvg {
+	width: 20px;
+	height: 20px;
+	fill: var(--BlackToWhite) !important;
+}
+
 .percentCorrect {
 	padding-right: 0;
 	font-weight: 500;
