@@ -226,7 +226,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		setAnswered_Correctly(numberAnswered_Correctly);
 		setIsPassed((numberAnswered_Correctly / numberAnswered) * 100 >= 80);
 		setPercentAnswered_Correctly(`${Math.round((numberAnswered_Correctly / numberAnswered) * 100)}%`);
-		setPercentAnswered_Incorrectly(`${Math.round(numberAnswered)}%`);
+		setPercentAnswered_Incorrectly(`${Math.round(100)}%`);
 		if ((numberAnswered_Correctly / numberAnswered) * 100 >= 80) {
 			setStatus("Over 80% - Passing Grade");
 		} else {
@@ -481,7 +481,9 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 																<>
 																	<div>Passing Grade</div>
 																	<div>80%</div>
-																	<div>30/36</div>
+																	<div>
+																		{Math.round(lastSubmittedQuestion * 0.8)}/{lastSubmittedQuestion}
+																	</div>
 																</>
 															}
 															placement="top"
