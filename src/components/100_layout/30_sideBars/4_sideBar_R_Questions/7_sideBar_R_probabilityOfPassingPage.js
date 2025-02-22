@@ -239,24 +239,19 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
 	};
 	const test1_ButtonAction = () => {
-		console.log("Test 1 button clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(1));
+		testResultData1 && dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(1));
 	};
 	const test2_ButtonAction = () => {
-		console.log("Test 1 button clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(2));
+		testResultData2 && dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(2));
 	};
 	const test3_ButtonAction = () => {
-		console.log("Test 1 button clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(3));
+		testResultData3 && dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(3));
 	};
 	const test4_ButtonAction = () => {
-		console.log("Test 1 button clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(4));
+		testResultData4 && dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(4));
 	};
 	const test5_ButtonAction = () => {
-		console.log("Test 1 button clicked");
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(5));
+		testResultData5 && dispatch(userReducerActions.sideBar_R_Questions_GoTo_TestResultsForTestNum(5));
 	};
 	const infoIcon = (
 		<svg className={classes.infoSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
