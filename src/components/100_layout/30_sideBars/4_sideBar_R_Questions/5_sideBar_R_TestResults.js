@@ -9,7 +9,6 @@ const SideBar_R_TestResults = () => {
 	const questionContentRef = useRef(null);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
-	const sideBar_R_NavigationStack = useSelector(({ user }) => user.sideBar_R_NavigationStack);
 	const testResultData = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
 	const [isPassed, setIsPassed] = useState(null);
 	const [answeredCorrectly, setAnsweredCorrectly] = useState(null);
@@ -18,7 +17,7 @@ const SideBar_R_TestResults = () => {
 
 	// Button Actions
 	const backButtonAction = () => {
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo(sideBar_R_NavigationStack.length - 2));
+		dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 	};
 
 	const gotoNexTest = () => {

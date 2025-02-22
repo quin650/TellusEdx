@@ -50,17 +50,6 @@ const SideBar_R_QuestionsLandingPage = () => {
 					setLastQuestionSubmitted(Number(lastQuestion));
 				}
 			}
-			// Log after each update to ensure the state is correctly reflected
-			// console.log("test1Started: ", test1Started);
-			// console.log("test2Started: ", test2Started);
-			// console.log("test3Started: ", test3Started);
-			// console.log("test4Started: ", test4Started);
-			// console.log("test5Started: ", test5Started);
-			// console.log("test1Completed: ", test1Completed);
-			// console.log("test2Completed: ", test2Completed);
-			// console.log("test3Completed: ", test3Completed);
-			// console.log("test4Completed: ", test4Completed);
-			// console.log("test5Completed: ", test5Completed);
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
 	useEffect(() => {

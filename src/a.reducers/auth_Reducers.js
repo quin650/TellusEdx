@@ -147,22 +147,19 @@ const userSlice = createSlice({
 		// R Questions SideBar
 		sideBar_R_Open_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = true;
+			state.sideBar_R_NavigationStack.push("QuestionsLanding");
 		},
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
+			state.sideBar_R_NavigationStack = [];
 		},
 		// NavigationStack
-		sideBar_R_NavigationStack(state, action) {
-			state.sideBar_R_NavigationStack.push(action.payload);
-			if (state.sideBar_R_NavigationStack.length > 5) {
-				state.sideBar_R_NavigationStack = state.sideBar_R_NavigationStack.slice(state.sideBar_R_NavigationStack.length - 5);
-			}
-		},
-		sideBar_R_Questions_GoTo(state, action) {
-			state.sideBar_R_NavigationStack.push(action.payload);
-			state.sideBar_R_QuestionsStatus_rdx = action.payload;
-			if (state.sideBar_R_NavigationStack.length > 5) {
-				state.sideBar_R_NavigationStack = state.sideBar_R_NavigationStack.slice(state.sideBar_R_NavigationStack.length - 5);
+		sideBar_R_Questions_GoToPrev(state) {
+			const prevIndex = state.sideBar_R_NavigationStack.length - 2;
+
+			if (prevIndex >= 0) {
+				state.sideBar_R_QuestionsStatus_rdx = state.sideBar_R_NavigationStack[prevIndex];
+				state.sideBar_R_NavigationStack.pop();
 			}
 		},
 		sideBar_R_Questions_GoTo_Landing(state) {

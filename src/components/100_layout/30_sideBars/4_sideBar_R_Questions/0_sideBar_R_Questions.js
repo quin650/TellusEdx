@@ -28,21 +28,22 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 	}, [sideBar_R_QuestionsStatus_rdx]);
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			exitAction();
+			backButtonAction();
+		}
+	};
+	const backButtonAction = () => {
+		if (sideBar_R_QuestionsStatus_rdx === "QuestionsLanding") {
+			dispatch(userReducerActions.sideBar_R_Close_Questions());
+		} else {
+			dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 		}
 	};
 
-	let exitAction = () => {
-		if (sideBar_R_QuestionsStatus_rdx === "Questions" || sideBar_R_QuestionsStatus_rdx === "ProbabilityOfPassingPage") {
-			dispatch(userReducerActions.sideBar_R_Questions_GoTo_Landing());
-		} else if (sideBar_R_QuestionsStatus_rdx === "TestResults") {
-			dispatch(userReducerActions.sideBar_R_Questions_GoBackTo_Test());
-		} else {
-			dispatch(userReducerActions.sideBar_R_Close_Questions());
-		}
+	const exitAction = () => {
+		dispatch(userReducerActions.sideBar_R_Close_Questions());
 	};
 	let exitButton = (
-		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
+		<button onClick={backButtonAction} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
