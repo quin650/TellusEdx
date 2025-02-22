@@ -228,9 +228,9 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		setPercentAnswered_Correctly(`${Math.round((numberAnswered_Correctly / numberAnswered) * 100)}%`);
 		setPercentAnswered_Incorrectly(`${Math.round(100)}%`);
 		if ((numberAnswered_Correctly / numberAnswered) * 100 >= 80) {
-			setStatus("Over 80% - Passing Grade");
+			setStatus("Passing Grade - Over 80%");
 		} else {
-			setStatus("Under 80% - Failing Grade");
+			setStatus("Failing Grade - Under 80%");
 		}
 	}, [testResultData]);
 
@@ -302,7 +302,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly1 }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly1 }}></div>
 											</div>
-											<span className={classes.testStatus}>{status1}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status1 === "Failed" || status1 === "Failing Grade - Under 80%" ? classes.red : status1 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status1}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -341,7 +347,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly2 }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly2 }}></div>
 											</div>
-											<span className={classes.testStatus}>{status2}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status2 === "Failed" || status2 === "Failing Grade - Under 80%" ? classes.red : status2 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status2}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -380,7 +392,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly3 }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly3 }}></div>
 											</div>
-											<span className={classes.testStatus}>{status3}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status3 === "Failed" || status3 === "Failing Grade - Under 80%" ? classes.red : status3 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status3}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -419,7 +437,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly4 }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly4 }}></div>
 											</div>
-											<span className={classes.testStatus}>{status4}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status4 === "Failed" || status4 === "Failing Grade - Under 80%" ? classes.red : status4 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status4}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -458,7 +482,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly5 }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly5 }}></div>
 											</div>
-											<span className={classes.testStatus}>{status5}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status5 === "Failed" || status5 === "Failing Grade - Under 80%" ? classes.red : status5 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status5}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -499,7 +529,13 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												<div className={classes.testResultsBarIncorrect} style={{ width: percentAnswered_Incorrectly }}></div>
 												<div className={classes.testResultsBarCorrect} style={{ width: percentAnswered_Correctly }}></div>
 											</div>
-											<span className={classes.testStatus}>{status}</span>
+											<span
+												className={`${classes["testStatus"]} ${
+													status4 === "Failed" || status1 === "Failing Grade - Under 80%" ? classes.red : status1 === "Passed" ? classes.green : ""
+												}`}
+											>
+												{status1}
+											</span>
 										</div>
 									</div>
 								</div>

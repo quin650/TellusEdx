@@ -829,9 +829,16 @@ strong {
 	height: 20px;
 	padding-top: 16px;
 }
+.testStatus.green {
+	color: green !important;
+}
+.testStatus.red {
+	color: red !important;
+}
 .parentLabel:hover .testStatus {
 	visibility: visible;
 }
+
 /* Styles for Correct (Checkmark) */
 .correctIcon {
 	content: "\2705";
