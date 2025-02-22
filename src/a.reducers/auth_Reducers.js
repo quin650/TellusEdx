@@ -30,6 +30,7 @@ const initialState = {
 	sideBar_R_Notes_isOpen_rdx: false,
 	sideBar_R_Questions_isOpen_rdx: false,
 	sideBar_R_SearchBar_isActive_rdx: false,
+	sideBar_R_NavigationStack: [],
 
 	//Modals
 	getStarted_ModalStatus_rdx: false,
@@ -150,25 +151,45 @@ const userSlice = createSlice({
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
 		},
+		// NavigationStack
+		sideBar_R_NavigationStack(state, action) {
+			state.sideBar_R_NavigationStack.push(action.payload);
+			if (state.sideBar_R_NavigationStack.length > 5) {
+				state.sideBar_R_NavigationStack = state.sideBar_R_NavigationStack.slice(state.sideBar_R_NavigationStack.length - 5);
+			}
+		},
+		sideBar_R_Questions_GoTo(state, action) {
+			state.sideBar_R_NavigationStack.push(action.payload);
+			state.sideBar_R_QuestionsStatus_rdx = action.payload;
+			if (state.sideBar_R_NavigationStack.length > 5) {
+				state.sideBar_R_NavigationStack = state.sideBar_R_NavigationStack.slice(state.sideBar_R_NavigationStack.length - 5);
+			}
+		},
 		sideBar_R_Questions_GoTo_Landing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsLanding";
+			state.sideBar_R_NavigationStack.push("QuestionsLanding");
 		},
 		sideBar_R_Questions_GoTo_Test(state, action) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
+			state.sideBar_R_NavigationStack.push("Questions");
 		},
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
+			state.sideBar_R_NavigationStack.push("Questions");
 		},
 		sideBar_R_Questions_GoTo_TestResultsForTestNum(state, action) {
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
+			state.sideBar_R_NavigationStack.push("TestResults");
 		},
 		sideBar_R_Questions_GoTo_TestResults(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
+			state.sideBar_R_NavigationStack.push("TestResults");
 		},
 		sideBar_R_Questions_GoTo_ProbabilityOfPassing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "ProbabilityOfPassingPage";
+			state.sideBar_R_NavigationStack.push("ProbabilityOfPassingPage");
 		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;

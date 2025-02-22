@@ -203,7 +203,6 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	}, [testResultData5]);
 	useEffect(() => {
 		if (!testResultData) {
-			setStatus("Not Data");
 			return;
 		}
 
@@ -534,7 +533,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 													status4 === "Failed" || status1 === "Failing Grade - Under 80%" ? classes.red : status1 === "Passed" ? classes.green : ""
 												}`}
 											>
-												{status1}
+												{status}
 											</span>
 										</div>
 									</div>
