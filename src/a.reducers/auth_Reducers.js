@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 const testResultsFromStorage = localStorage.getItem("testResults") ? JSON.parse(localStorage.getItem("testResults")) : {};
-
+const testResultsFailedFromStorage = localStorage.getItem("testResultsFailed") ? JSON.parse(localStorage.getItem("testResultsFailed")) : {};
 const systemColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 const localStorageColor = localStorage.getItem("prefers-color-scheme");
 const isDarkMode = localStorageColor ? localStorageColor : systemColor;
@@ -19,9 +19,11 @@ const initialState = {
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
 	sideBar_R_Questions_CurrentTestNumber_rdx: null,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
-	// sideBar_R_Questions_SelectedQuestionNum_rdx: 1,
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
+	//! new
+	sideBar_R_QuestionTestResultsFailed_rdx: testResultsFailedFromStorage,
+	dictionaryOfTestsAndWrongAnswers_rdx: {},
 	submittedQuestionsList_rdx: [],
 	sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx: false,
 	sideBar_L_isOpen_rdx: true,
@@ -31,6 +33,8 @@ const initialState = {
 	sideBar_R_Questions_isOpen_rdx: false,
 	sideBar_R_SearchBar_isActive_rdx: false,
 	sideBar_R_NavigationStack: [],
+	//! new
+	sideBar_R_QuestionsIsFailed_rdx: false,
 
 	//Modals
 	getStarted_ModalStatus_rdx: false,
@@ -90,7 +94,6 @@ const userSlice = createSlice({
 		setRegularView(state) {
 			state.isDemoView_rdx = false;
 		},
-
 		setDemoCurrentPageNum(state, action) {
 			state.currentPageNum_rdx = action.payload;
 			state.inputPageNum_rdx = action.payload;
@@ -109,7 +112,6 @@ const userSlice = createSlice({
 		PDF_setDemoInputPageNum(state, action) {
 			state.PDF_inputPageNum_rdx = action.payload;
 		},
-
 		//General
 		setActivePanel(state, action) {
 			state.activePanel = action.payload;
@@ -156,7 +158,6 @@ const userSlice = createSlice({
 		// NavigationStack
 		sideBar_R_Questions_GoToPrev(state) {
 			const prevIndex = state.sideBar_R_NavigationStack.length - 2;
-
 			if (prevIndex >= 0) {
 				state.sideBar_R_QuestionsStatus_rdx = state.sideBar_R_NavigationStack[prevIndex];
 				state.sideBar_R_NavigationStack.pop();
@@ -170,6 +171,7 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
 			state.sideBar_R_NavigationStack.push("Questions");
+			state.sideBar_R_QuestionsIsFailed_rdx = false;
 		},
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
@@ -188,16 +190,25 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionsStatus_rdx = "ProbabilityOfPassingPage";
 			state.sideBar_R_NavigationStack.push("ProbabilityOfPassingPage");
 		},
+		sideBar_R_Questions_GoTo_RetakeFailedQuestions(state, action) {
+			state.sideBar_R_QuestionsIsFailed_rdx = true;
+			const { testNumber, questionNumber } = action.payload;
+			state.sideBar_R_QuestionsStatus_rdx = "Questions";
+			state.sideBar_R_NavigationStack.push("Questions");
+
+			state.sideBar_R_Questions_CurrentTestNumber_rdx = testNumber;
+			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = questionNumber;
+		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
 		},
 		sideBar_R_Questions_setQuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
-			// state.sideBar_R_Questions_SelectedQuestionNum_rdx = action.payload;
 		},
 		sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose(state) {
 			state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx = !state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx;
 		},
+		// not failed
 		updateQuestionResults(state, action) {
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {
@@ -207,25 +218,48 @@ const userSlice = createSlice({
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 		},
 		deleteTestResults(state, action) {
-			console.log("action.payload: ", action.payload);
-
 			if (state.sideBar_R_QuestionTestResults_rdx[action.payload]) {
 				delete state.sideBar_R_QuestionTestResults_rdx[action.payload];
 			}
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = null;
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = 1;
-			// state.sideBar_R_Questions_SelectedQuestionNum_rdx = 1;
 			state.sideBar_R_QuestionLastPageNum_rdx = 0;
 		},
 		resetQuestionResults(state) {
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");
 		},
+
+		//  failed
+		updateFailedQuestionResults(state, action) {
+			const { testNumber, questionNumber, answerData } = action.payload;
+			if (!state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber]) {
+				state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber] = {};
+			}
+			state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber][questionNumber] = answerData;
+			localStorage.setItem("testResultsFailed", JSON.stringify(state.sideBar_R_QuestionTestResultsFailed_rdx));
+		},
+		deleteFailedTestResults(state, action) {
+			if (state.sideBar_R_QuestionTestResultsFailed_rdx[action.payload]) {
+				delete state.sideBar_R_QuestionTestResultsFailed_rdx[action.payload];
+			}
+			localStorage.setItem("testResultsFailed", JSON.stringify(state.sideBar_R_QuestionTestResultsFailed_rdx));
+			state.sideBar_R_Questions_CurrentTestNumber_rdx = null;
+			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = 1;
+			state.sideBar_R_QuestionLastPageNum_rdx = 0;
+		},
+		resetFailedQuestionResults(state) {
+			state.sideBar_R_QuestionTestResultsFailed_rdx = {};
+			localStorage.removeItem("testResultsFailed");
+		},
+		sideBar_R_Questions_UpdateDictionaryOfTestsAndWrongAnswers(state, action) {
+			state.dictionaryOfTestsAndWrongAnswers_rdx = action.payload;
+		},
+		// searchBar
 		sideBar_R_SearchBar_isActive(state, action) {
 			state.sideBar_R_SearchBar_isActive_rdx = action.payload;
 		},
-
 		// Get Started Modal
 		getStartedModalLogIn(state) {
 			state.getStarted_ModalStatus_rdx = true;

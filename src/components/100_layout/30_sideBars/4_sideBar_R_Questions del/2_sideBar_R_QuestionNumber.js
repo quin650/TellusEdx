@@ -33,7 +33,7 @@ const SideBar_R_QuestionNumber = () => {
 
 	const get_ChosenAnswerID = (id, correctOrIncorrect) => {
 		setChosenAnswerID(id);
-		if (!sideBar_R_QuestionsIsFailed_rdx) {
+		if (!sideBar_R_QuestionTestResultsFailed_rdx) {
 			dispatch(
 				userReducerActions.updateQuestionResults({
 					testNumber: sideBar_R_Questions_CurrentTestNumber_rdx,
@@ -60,105 +60,123 @@ const SideBar_R_QuestionNumber = () => {
 		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]
 	);
 	// Render Question Component
-	useEffect(() => {
-		const questionData = data.questions.find(
-			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
-		);
 
-		if (!sideBar_R_QuestionsIsFailed_rdx && questionData) {
+	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
+	const testDataEntries = Object.entries(testResultData);
+	for (let i = 0; i < testDataEntries.length; i++) {
+		const testData = testDataEntries[i][1];
+		const testObjectData = Object.entries(testData);
+		for (let j = 0; j < testObjectData.length; j++) {
+			const questionData = testObjectData[j];
+			const isCorrect = questionData[1][2];
+		}
+	}
+
+	useEffect(() => {
+		if (!sideBar_R_QuestionsIsFailed_rdx) {
+			const questionData = data.questions.find(
+				(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
+			);
 			const currentQuestionData_ifSubmitted =
 				sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[sideBar_R_Questions_CurrentQuestionNumber_rdx] || null;
-			if (currentQuestionData_ifSubmitted) {
-				setPreviouslyCheckedID(currentQuestionData_ifSubmitted[1]);
-				setStartGradingTest(false);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={true}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
-			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
-				setPreviouslyCheckedID(null);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={null}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={false}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
-			} else {
-				setPreviouslyCheckedID(null);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={null}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={startGradingTest}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
+			if (questionData) {
+				if (currentQuestionData_ifSubmitted) {
+					setPreviouslyCheckedID(currentQuestionData_ifSubmitted[1]);
+					setStartGradingTest(false);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={true}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
+					setPreviouslyCheckedID(null);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={null}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={false}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				} else {
+					setPreviouslyCheckedID(null);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={null}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={startGradingTest}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				}
 			}
-		} else if (sideBar_R_QuestionsIsFailed_rdx && questionData) {
-			const currentQuestionData_ifSubmitted =
+		} else {
+			const questionData = dataFailed.questions.find(
+				(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
+			);
+			const currentFailedQuestionData_ifSubmitted =
 				sideBar_R_QuestionTestResultsFailed_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[sideBar_R_Questions_CurrentQuestionNumber_rdx] || null;
 
-			if (currentQuestionData_ifSubmitted) {
-				setPreviouslyCheckedID(currentQuestionData_ifSubmitted[1]);
-				setStartGradingTest(false);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={currentQuestionData_ifSubmitted[1]}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={true}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
-			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
-				setPreviouslyCheckedID(null);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={null}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={false}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
-			} else {
-				setPreviouslyCheckedID(null);
-				setQuestionComponent(
-					<SideBar_R_QuestionsParent
-						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
-						questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
-						questionData={questionData}
-						previouslyCheckedID={null}
-						get_ChosenAnswerID={get_ChosenAnswerID}
-						startGradingTest={startGradingTest}
-						gotoQuestion={gotoQuestion}
-						showHint={showHint}
-					/>
-				);
+			if (questionData_Failed) {
+				if (currentFailedQuestionData_ifSubmitted) {
+					setPreviouslyCheckedID(currentFailedQuestionData_ifSubmitted[1]);
+					setStartGradingTest(false);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={currentFailedQuestionData_ifSubmitted[1]}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={true}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				} else if (!currentFailedQuestionData_ifSubmitted && !chosenAnswerID) {
+					setPreviouslyCheckedID(null);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={null}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={false}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				} else {
+					setPreviouslyCheckedID(null);
+					setQuestionComponent(
+						<SideBar_R_QuestionsParent
+							testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
+							questionNumber={sideBar_R_Questions_CurrentQuestionNumber_rdx}
+							questionData={questionData}
+							previouslyCheckedID={null}
+							get_ChosenAnswerID={get_ChosenAnswerID}
+							startGradingTest={startGradingTest}
+							gotoQuestion={gotoQuestion}
+							showHint={showHint}
+						/>
+					);
+				}
 			}
 		}
 	}, [sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx, startGradingTest, showHint]);

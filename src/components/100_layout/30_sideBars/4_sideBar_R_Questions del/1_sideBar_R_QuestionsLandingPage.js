@@ -7,11 +7,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 	const dispatch = useDispatch();
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
-	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
-	const dictionaryOfTestsAndWrongAnswers_rdx = useSelector(({ user }) => user.dictionaryOfTestsAndWrongAnswers_rdx);
 
 	const [questionsOnThisPageStatus, setQuestionsOnThisPageStatus] = useState(false);
-	const [retakeFailedQuestionsStatus, setRetakeFailedQuestionsStatus] = useState(false);
+	const [retakeFailedQuestionsStatus, setRetakeFailedQuestionsStatus] = useState(true);
 	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(true);
 
 	const [lastQuestionSubmitted, setLastQuestionSubmitted] = useState(null);
@@ -61,42 +59,11 @@ const SideBar_R_QuestionsLandingPage = () => {
 			setQuestionsOnThisPageStatus(false);
 		}
 	}, [currentPageNum_rdx]);
-
-	//! Failed Test/Questions Logic
-	useEffect(() => {
-		const testDataEntries = Object.entries(testResultData);
-		const dictionaryOfTestsAndWrongAnswers = {};
-		for (let i = 0; i < testDataEntries.length; i++) {
-			const testData = testDataEntries[i][1];
-			const testObjectData = Object.entries(testData);
-			for (let j = 0; j < testObjectData.length; j++) {
-				const questionData = testObjectData[j];
-				const isCorrect = questionData[1][2];
-				if (!isCorrect) {
-					if (!(i in Object.keys(dictionaryOfTestsAndWrongAnswers))) {
-						dictionaryOfTestsAndWrongAnswers[i] = [j];
-					} else {
-						dictionaryOfTestsAndWrongAnswers[i].push(j);
-					}
-				}
-			}
-		}
-
-		if (Object.keys(dictionaryOfTestsAndWrongAnswers).length > 0) {
-			setRetakeFailedQuestionsStatus(true);
-		} else {
-			setRetakeFailedQuestionsStatus(false);
-		}
-
-		dispatch(userReducerActions.sideBar_R_Questions_UpdateDictionaryOfTestsAndWrongAnswers(dictionaryOfTestsAndWrongAnswers));
-	}, [retakeFailedQuestionsStatus]);
-
-	// Button Actions
-	const goTo_RetakeFailedQuestions = () => {
-		let testNumber = Number(Object.keys(dictionaryOfTestsAndWrongAnswers_rdx)[0]) + 1;
-		let questionNumber = dictionaryOfTestsAndWrongAnswers_rdx[testNumber][0] + 1;
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions({ testNumber, questionNumber }));
+	//
+	const goto_retakeFailedQuestions = () => {
+		console.log("goto_retakeFailedQuestions Click");
 	};
+	// Button Actions
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");
 	};
@@ -159,7 +126,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};
 	const goTo_ProbabilityOfPassingPage = () => {
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_ProbabilityOfPassing());
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions());
 	};
 	// Hot-Key Combinations
 	const handleKeyCombination = useCallback(
@@ -271,9 +238,9 @@ const SideBar_R_QuestionsLandingPage = () => {
 							</div>
 							<h2>Retake failed questions</h2>
 							<button
-								onClick={goTo_RetakeFailedQuestions}
+								onClick={goto_retakeFailedQuestions}
 								className={`${classes["paginationButtonR"]} ${!retakeFailedQuestionsStatus && classes.isInactive}`}
-								disabled={!retakeFailedQuestionsStatus}
+								disabled={retakeFailedQuestionsStatus}
 							>
 								<svg className={`${classes["arrowIconR"]} ${!retakeFailedQuestionsStatus ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />

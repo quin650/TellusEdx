@@ -7,12 +7,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
-	const sideBar_R_QuestionTestResultsFailed_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResultsFailed_rdx);
-	const questionData_ifSubmitted_RetakeFailed = sideBar_R_QuestionTestResultsFailed_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
-	const dictionaryOfTestsAndWrongAnswers_rdx = useSelector(({ user }) => user.dictionaryOfTestsAndWrongAnswers_rdx);
-
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
-	const sideBar_R_QuestionsIsFailed_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsIsFailed_rdx);
 	const quickNavRef = useRef(null);
 	const question = questionData.question;
 	const answersData = questionData.answers;
@@ -24,48 +19,24 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	};
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	useEffect(() => {
-		if (!sideBar_R_QuestionsIsFailed_rdx) {
-			setQuickNavBar(
-				Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
-					const questionAnswerData = questionData_ifSubmitted?.[i];
-					if (questionAnswerData) {
-						return (
-							<li key={i} onClick={() => gotoQuestion(i)} className={`${classes["quickNavButton"]} ${questionAnswerData[2] ? classes.correct : classes.inCorrect}`}>
-								{i}
-							</li>
-						);
-					} else {
-						return (
-							<li key={i} className={classes.quickNavButton}>
-								{i}
-							</li>
-						);
-					}
-				})
-			);
-		} else {
-			setQuickNavBar(
-				Array.from({ length: dictionaryOfTestsAndWrongAnswers_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1].length }, (_, i) => i + 1).map((i) => {
-					const questionAnswerData_RetakeFailed = questionData_ifSubmitted_RetakeFailed?.[i];
-					let val = dictionaryOfTestsAndWrongAnswers_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1][i - 1] + 1;
-					if (val) {
-						if (questionAnswerData_RetakeFailed) {
-							return (
-								<li key={val} onClick={() => gotoQuestion(val)} className={`${classes["quickNavButton"]} ${questionAnswerData[2] ? classes.correct : classes.inCorrect}`}>
-									{val}
-								</li>
-							);
-						} else {
-							return (
-								<li key={val} className={classes.quickNavButton}>
-									{val}
-								</li>
-							);
-						}
-					}
-				})
-			);
-		}
+		setQuickNavBar(
+			Array.from({ length: 36 }, (_, i) => i + 1).map((i) => {
+				const questionAnswerData = questionData_ifSubmitted?.[i];
+				if (questionAnswerData) {
+					return (
+						<li key={i} onClick={() => gotoQuestion(i)} className={`${classes["quickNavButton"]} ${questionAnswerData[2] ? classes.correct : classes.inCorrect}`}>
+							{i}
+						</li>
+					);
+				} else {
+					return (
+						<li key={i} className={classes.quickNavButton}>
+							{i}
+						</li>
+					);
+				}
+			})
+		);
 	}, [questionData_ifSubmitted, gotoQuestion]);
 
 	useEffect(() => {
