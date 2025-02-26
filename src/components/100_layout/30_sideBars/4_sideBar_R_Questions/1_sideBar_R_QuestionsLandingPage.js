@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import { use } from "react";
 
 const SideBar_R_QuestionsLandingPage = () => {
 	const dispatch = useDispatch();
@@ -9,6 +10,7 @@ const SideBar_R_QuestionsLandingPage = () => {
 	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
 	const dictionaryOfTestsAndWrongAnswers_rdx = useSelector(({ user }) => user.dictionaryOfTestsAndWrongAnswers_rdx);
+	const sideBar_R_QuestionTestResultsFailed_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResultsFailed_rdx);
 
 	const [questionsOnThisPageStatus, setQuestionsOnThisPageStatus] = useState(false);
 	const [retakeFailedQuestionsStatus, setRetakeFailedQuestionsStatus] = useState(false);
@@ -93,9 +95,24 @@ const SideBar_R_QuestionsLandingPage = () => {
 
 	// Button Actions
 	const goTo_RetakeFailedQuestions = () => {
-		let testNumber = Number(Object.keys(dictionaryOfTestsAndWrongAnswers_rdx)[0]) + 1;
-		let questionNumber = dictionaryOfTestsAndWrongAnswers_rdx[testNumber][0] + 1;
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions({ testNumber, questionNumber }));
+		if (Object.keys(sideBar_R_QuestionTestResultsFailed_rdx).length === 0) {
+			let keys = Object.keys(dictionaryOfTestsAndWrongAnswers_rdx);
+			let testNumber = Number(keys[0]) + 1;
+			let questionNumber = dictionaryOfTestsAndWrongAnswers_rdx[testNumber - 1][0] + 1;
+			dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions({ testNumber, questionNumber }));
+		} else {
+			const testsRetakenArray = Object.keys(sideBar_R_QuestionTestResultsFailed_rdx);
+			const testsRetaken_last = testsRetakenArray[testsRetakenArray.length - 1];
+			const test_SubmittedQuestionForRetaken_last = testsRetaken_last[testsRetaken_last.length - 1];
+			const questionsRetakenArray = Object.keys(sideBar_R_QuestionTestResultsFailed_rdx[test_SubmittedQuestionForRetaken_last]);
+			const questionsRetaken_last = questionsRetakenArray[questionsRetakenArray.length - 1];
+			dispatch(
+				userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions({
+					testNumber: Number(test_SubmittedQuestionForRetaken_last),
+					questionNumber: Number(questionsRetaken_last),
+				})
+			);
+		}
 	};
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");

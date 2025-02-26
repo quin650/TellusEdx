@@ -19,6 +19,8 @@ const initialState = {
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
 	sideBar_R_Questions_CurrentTestNumber_rdx: null,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
+	sideBar_R_Questions_CurrentTestNumberRetake_rdx: null,
+	sideBar_R_Questions_CurrentQuestionNumberRetake_rdx: null,
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	//! new
@@ -255,6 +257,10 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Questions_UpdateDictionaryOfTestsAndWrongAnswers(state, action) {
 			state.dictionaryOfTestsAndWrongAnswers_rdx = action.payload;
+		},
+		updateFailedQuestionResults_lastQuestionSubmitted(state, action) {
+			state.sideBar_R_Questions_CurrentTestNumberRetake_rdx = action.payload.testNumber;
+			state.sideBar_R_Questions_CurrentQuestionNumberRetake_rdx = action.payload.questionNumber;
 		},
 		// searchBar
 		sideBar_R_SearchBar_isActive(state, action) {

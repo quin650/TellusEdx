@@ -49,6 +49,12 @@ const SideBar_R_QuestionNumber = () => {
 					answerData: [sideBar_R_Questions_CurrentQuestionNumber_rdx, id, correctOrIncorrect],
 				})
 			);
+			dispatch(
+				userReducerActions.updateFailedQuestionResults_lastQuestionSubmitted({
+					testNumber: sideBar_R_Questions_CurrentTestNumber_rdx,
+					questionNumber: sideBar_R_Questions_CurrentQuestionNumber_rdx,
+				})
+			);
 		}
 
 		setStartGradingTest(true);

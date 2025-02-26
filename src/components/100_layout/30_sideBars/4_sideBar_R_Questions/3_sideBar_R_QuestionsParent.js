@@ -46,12 +46,16 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		} else {
 			setQuickNavBar(
 				Array.from({ length: dictionaryOfTestsAndWrongAnswers_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1].length }, (_, i) => i + 1).map((i) => {
-					const questionAnswerData_RetakeFailed = questionData_ifSubmitted_RetakeFailed?.[i];
 					let val = dictionaryOfTestsAndWrongAnswers_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1][i - 1] + 1;
+					const questionAnswerData_RetakeFailed = questionData_ifSubmitted_RetakeFailed?.[val];
 					if (val) {
 						if (questionAnswerData_RetakeFailed) {
 							return (
-								<li key={val} onClick={() => gotoQuestion(val)} className={`${classes["quickNavButton"]} ${questionAnswerData[2] ? classes.correct : classes.inCorrect}`}>
+								<li
+									key={val}
+									onClick={() => gotoQuestion(val)}
+									className={`${classes["quickNavButton"]} ${questionAnswerData_RetakeFailed[2] ? classes.correct : classes.inCorrect}`}
+								>
 									{val}
 								</li>
 							);
@@ -66,7 +70,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				})
 			);
 		}
-	}, [questionData_ifSubmitted, gotoQuestion]);
+	}, [questionData_ifSubmitted, questionData_ifSubmitted_RetakeFailed, gotoQuestion]);
 
 	useEffect(() => {
 		const quickNav = quickNavRef.current;
