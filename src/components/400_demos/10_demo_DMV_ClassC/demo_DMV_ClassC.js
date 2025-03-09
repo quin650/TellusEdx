@@ -6,7 +6,7 @@ import SideBar_R_NotesModal from "../../100_layout/30_sideBars/2_sideBar_R_Notes
 import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_Questions from "../../100_layout/30_sideBars/4_sideBar_R_Questions/0_sideBar_R_Questions";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
-import ResetThisTestModal from "../../300_modals/30_resetThisTestModal/resetThisTestModal";
+import Modal_resetThisTest from "../../300_modals/30_modal_resetThisTest/modal_resetThisTest";
 
 import Page1 from "../../200_pages/20_demo_pages/page1";
 import Page2 from "../../200_pages/20_demo_pages/page2";
@@ -286,7 +286,7 @@ const DemoDMVClassC = () => {
 	return (
 		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
 			<div className={classes.bodyContainer}>
-				{resetThisTest_ModalStatus_rdx && <ResetThisTestModal />}
+				{resetThisTest_ModalStatus_rdx && <Modal_resetThisTest />}
 				<SideBar_L_TOC
 					sideBar_L_isOpen={sideBar_L_isOpen_rdx}
 					pageTitle={pageTitle}

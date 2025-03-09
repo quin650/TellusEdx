@@ -1,26 +1,26 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import classes from "./languageSettingsModal.module.css";
+import classes from "./modal_languageSettings.module.css";
 
-const LanguageSettingsModalOptions = (props) => {
+const Modal_languageSettingsOptions = (props) => {
 	const dispatch = useDispatch();
-	const languageCurrent_rdx = useSelector(({ user }) => user.languageCurrent_rdx);
+	const modal_languageSettings_currentLanguage_rdx = useSelector(({ user }) => user.modal_languageSettings_currentLanguage_rdx);
 	const [isChecked, setIsChecked] = useState(false);
 	useEffect(() => {
-		if (languageCurrent_rdx === props.language) {
+		if (modal_languageSettings_currentLanguage_rdx === props.language) {
 			setIsChecked(true);
-		} else if (isChecked && languageCurrent_rdx !== props.language) {
+		} else if (isChecked && modal_languageSettings_currentLanguage_rdx !== props.language) {
 			setIsChecked(false);
 		}
-	}, [languageCurrent_rdx]);
+	}, [modal_languageSettings_currentLanguage_rdx]);
 	const handleCheckboxChange = () => {
 		if (isChecked) {
 			setIsChecked(false);
-			dispatch(userReducerActions.languageSettingsChange(""));
-		} else if (!isChecked && languageCurrent_rdx !== props.language) {
+			dispatch(userReducerActions.modal_action_languageSettings_changeLanguage_rdx(""));
+		} else if (!isChecked && modal_languageSettings_currentLanguage_rdx !== props.language) {
 			setIsChecked(true);
-			dispatch(userReducerActions.languageSettingsChange(props.language));
+			dispatch(userReducerActions.modal_action_languageSettings_changeLanguage_rdx(props.language));
 		}
 	};
 	return (
@@ -35,4 +35,4 @@ const LanguageSettingsModalOptions = (props) => {
 	);
 };
 
-export default LanguageSettingsModalOptions;
+export default Modal_languageSettingsOptions;

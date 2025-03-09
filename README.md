@@ -169,6 +169,25 @@ http://localhost:8000/
   - Number the folders wherever possible
   - When folders have a theme, use: `_underscorePrefix` followed by `camelCase` i.e. django_UserAccounts
 
+### Examples:
+
+<details>
+  <summary>Click to expand</summary>
+
+- Generally: `_underscorePrefix` followed by `camelCase`
+- Numbered if helpful
+
+| Type      | Convention | Example                          |
+| --------- | ---------- | -------------------------------- |
+| Folder    | xyz        | 30_modal_resetThisTest           |
+| File      | xyz        | modal_resetThisTest              |
+| Component | xyz        | Modal_resetThisTest              |
+| Reducer   | xyz        | modal_resetThisTest              |
+| Action    | xyz        | modal_action_resetThisTest_close |
+| Ref       | xyz        | modal_ref_resetThisTest          |
+
+</details>
+
 ## ⚛️ React.js Coding Guide
 
 <details>

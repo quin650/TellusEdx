@@ -67,8 +67,8 @@ const SideBar_R_TestResults = () => {
 		}
 	}, [isPassed, lastSubmittedQuestion, sideBar_R_Questions_CurrentTestNumber_rdx]);
 
-	const gotoResetThisTestModal = () => {
-		dispatch(userReducerActions.resetThisTestModalOpen());
+	const modal_action_resetThisTest_open = () => {
+		dispatch(userReducerActions.modal_action_resetThisTest_open_rdx());
 	};
 
 	return (
@@ -116,7 +116,7 @@ const SideBar_R_TestResults = () => {
 						<div className={classes.tocInnerContainerTestResults}>{ul1}</div>
 					</nav>
 				</div>
-				<div onClick={gotoResetThisTestModal} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
+				<div onClick={modal_action_resetThisTest_open} className={`${classes["viewTestResults"]} ${true ? classes.testIsComplete : ""}`}>
 					<p>Reset this test</p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path className={classes.refreshButtonArrow} d="M14 15L10 19L14 23" />

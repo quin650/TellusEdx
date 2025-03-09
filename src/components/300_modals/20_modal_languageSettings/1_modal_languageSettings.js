@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import Modal_languageSettingsOptions from "./2_modal_languageSettingsOptions";
 import data from "./data/languageOptionsData";
-import classes from "./languageSettingsModal.module.css";
-import LanguageSettingsModalOptions from "./2_languageSettingsModalOptions";
+import classes from "./modal_languageSettings.module.css";
 
-const LanguageSettingsModal = () => {
+const Modal_languageSettings = () => {
 	const dispatch = useDispatch();
 	const languageModalRef = useRef();
+	const [headerText, setHeaderText] = useState("Select Language");
 
 	// !General Page Settings/Event listeners -- Scrolling rules + Exit Rules
 	useEffect(() => {
@@ -29,14 +30,14 @@ const LanguageSettingsModal = () => {
 			e.preventDefault();
 		}
 	};
-	const exitLanguageSettingsModalAction = () => {
+	const modal_action_languageSettings_close = () => {
 		enableScroll();
-		dispatch(userReducerActions.languageSettingsModalClose());
+		dispatch(userReducerActions.modal_reducerAction_languageSettings_close());
 		window.removeEventListener("keydown", onEscKey_ExitModal);
 		document.removeEventListener("mousedown", onClickOutsideModal_closeModal);
 	};
 	const ExitButton = (
-		<div onClick={exitLanguageSettingsModalAction} className={classes.exitButtonContainer}>
+		<div onClick={modal_action_languageSettings_close} className={classes.exitButtonContainer}>
 			<button className={classes.exitButton}>
 				<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 					<path
@@ -51,15 +52,14 @@ const LanguageSettingsModal = () => {
 	);
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			exitLanguageSettingsModalAction();
+			modal_action_languageSettings_close();
 		}
 	};
 	const onClickOutsideModal_closeModal = (e) => {
 		if (languageModalRef.current && !languageModalRef.current.contains(e.target)) {
-			exitLanguageSettingsModalAction();
+			modal_action_languageSettings_close();
 		}
 	};
-	const [headerText, setHeaderText] = useState("Select Language");
 	const languageIcon = (
 		<svg
 			className={classes.languageIcon}
@@ -91,12 +91,7 @@ const LanguageSettingsModal = () => {
 					<form className={classes.modalForm}>
 						{HeaderSection}
 						{data.map((languageOption) => (
-							<LanguageSettingsModalOptions
-								key={languageOption.id}
-								id={languageOption.id}
-								language={languageOption.language}
-								flag={languageOption.flag}
-							/>
+							<Modal_languageSettingsOptions key={languageOption.id} id={languageOption.id} language={languageOption.language} flag={languageOption.flag} />
 						))}
 					</form>
 				</div>
@@ -105,4 +100,4 @@ const LanguageSettingsModal = () => {
 	);
 };
 
-export default LanguageSettingsModal;
+export default Modal_languageSettings;

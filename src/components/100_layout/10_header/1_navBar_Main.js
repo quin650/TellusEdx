@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import GetStartedButton from "../../300_modals/10_getStartedModal/features/1_getStartedButton";
 import SideBar_R_MainModal from "../30_sideBars/3_sideBar_R_MainModal/sideBar_R_MainModal";
 import GetStartedModal from "../../300_modals/10_getStartedModal/getStartedModal";
-import LanguageSettingsModal from "../../300_modals/20_languageSettings/1_languageSettingsModal";
+import Modal_languageSettings from "../../300_modals/20_modal_languageSettings/1_modal_languageSettings";
 
 import Logo from "../../../../static/images/Logo_arrows.png";
 import classes from "./navBar.module.css";
@@ -157,12 +157,12 @@ const MainNavbar = () => {
 		<Fragment>
 			<li className={classes.topLeft}>{sideBar_L_Button}</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
-					<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
-						<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
-							<path d="M18.6875 18.4383L14.9719 14.7227" />
-						</svg>
-					</button>
+				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
+					<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
+						<path d="M18.6875 18.4383L14.9719 14.7227" />
+					</svg>
+				</button>
 				<input
 					type="text"
 					id="search"
@@ -244,12 +244,12 @@ const MainNavbar = () => {
 				<GetStartedButton />
 			</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
-					<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
-						<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
-							<path d="M18.6875 18.4383L14.9719 14.7227" />
-						</svg>
-					</button>
+				<button onClick={openSearchBar} className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}>
+					<svg className={classes.searchIconSVG} viewBox="0 0 22 21" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.1458 16.7292C13.9198 16.7292 16.9792 13.6698 16.9792 9.89583C16.9792 6.12189 13.9198 3.0625 10.1458 3.0625C6.37189 3.0625 3.3125 6.12189 3.3125 9.89583C3.3125 13.6698 6.37189 16.7292 10.1458 16.7292Z" />
+						<path d="M18.6875 18.4383L14.9719 14.7227" />
+					</svg>
+				</button>
 				<input
 					type="text"
 					id="search"
@@ -287,7 +287,7 @@ const MainNavbar = () => {
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainModal />}
 				{getStarted_ModalStatus_rdx && <GetStartedModal />}
-				{languageSettings_ModalStatus_rdx && <LanguageSettingsModal />}
+				{languageSettings_ModalStatus_rdx && <Modal_languageSettings />}
 			</div>
 		</nav>
 	);

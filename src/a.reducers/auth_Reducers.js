@@ -48,7 +48,7 @@ const initialState = {
 	isAuthenticated_rdx: false,
 	loading_rdx: false,
 	activeFlag_rdx: "../../../../static/images/countries/1UnitedStates.png",
-	languageCurrent_rdx: "English",
+	modal_languageSettings_currentLanguage_rdx: "English",
 	isDarkMode_rdx: isDarkMode,
 	isDemoView_rdx: false,
 	isDashboardFullScreen_rdx: true,
@@ -417,11 +417,11 @@ const userSlice = createSlice({
 		languageSettingsModalOpen(state) {
 			state.languageSettings_ModalStatus_rdx = true;
 		},
-		languageSettingsModalClose(state) {
+		modal_reducerAction_languageSettings_close(state) {
 			state.languageSettings_ModalStatus_rdx = false;
 		},
-		languageSettingsChange(state, action) {
-			state.languageCurrent_rdx = action.payload;
+		modal_action_languageSettings_changeLanguage_rdx(state, action) {
+			state.modal_languageSettings_currentLanguage_rdx = action.payload;
 			switch (action.payload) {
 				case "English":
 					state.activeFlag_rdx = "../../../../static/images/countries/1UnitedStates.png";
@@ -464,45 +464,45 @@ const userSlice = createSlice({
 			}
 		},
 		languageSettingsEnglish(state) {
-			state.languageCurrent_rdx = "English";
+			state.modal_languageSettings_currentLanguage_rdx = "English";
 		},
 		languageSettingsSpanish(state) {
-			state.languageCurrent_rdx = "Spanish";
+			state.modal_languageSettings_currentLanguage_rdx = "Spanish";
 		},
 		languageSettingsMandarin(state) {
-			state.languageCurrent_rdx = "Mandarin";
+			state.modal_languageSettings_currentLanguage_rdx = "Mandarin";
 		},
 		languageSettingsFrench(state) {
-			state.languageCurrent_rdx = "French";
+			state.modal_languageSettings_currentLanguage_rdx = "French";
 		},
 		languageSettingsGerman(state) {
-			state.languageCurrent_rdx = "German";
+			state.modal_languageSettings_currentLanguage_rdx = "German";
 		},
 		languageSettingsJapanese(state) {
-			state.languageCurrent_rdx = "Japanese";
+			state.modal_languageSettings_currentLanguage_rdx = "Japanese";
 		},
 		languageSettingsPortuguese(state) {
-			state.languageCurrent_rdx = "Portuguese";
+			state.modal_languageSettings_currentLanguage_rdx = "Portuguese";
 		},
 		languageSettingsRussian(state) {
-			state.languageCurrent_rdx = "Russian";
+			state.modal_languageSettings_currentLanguage_rdx = "Russian";
 		},
 		languageSettingsArabic(state) {
-			state.languageCurrent_rdx = "Arabic";
+			state.modal_languageSettings_currentLanguage_rdx = "Arabic";
 		},
 		languageSettingsItalian(state) {
-			state.languageCurrent_rdx = "Italian";
+			state.modal_languageSettings_currentLanguage_rdx = "Italian";
 		},
 		languageSettingsKorean(state) {
-			state.languageCurrent_rdx = "Korean";
+			state.modal_languageSettings_currentLanguage_rdx = "Korean";
 		},
 		languageSettingsHindi(state) {
-			state.languageCurrent_rdx = "Hindi";
+			state.modal_languageSettings_currentLanguage_rdx = "Hindi";
 		},
-		resetThisTestModalOpen(state) {
+		modal_action_resetThisTest_open_rdx(state) {
 			state.resetThisTest_ModalStatus_rdx = true;
 		},
-		resetThisTestModalClose(state) {
+		modal_action_resetThisTest_close_rdx(state) {
 			state.resetThisTest_ModalStatus_rdx = false;
 		},
 		//Dark/Light Settings
