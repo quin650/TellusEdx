@@ -90,6 +90,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus1("Failed");
 		}
 	}, [testResultData1]);
+
 	useEffect(() => {
 		if (!testResultData2) {
 			setStatus2("Not Started");

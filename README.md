@@ -21,6 +21,9 @@
 
 ## 💾 Install
 
+<details>
+  <summary>Click to expand</summary>
+
 ### Frontend
 
 ![ReactJS](https://img.shields.io/badge/react-%2320232a.svg?logo=react&style=flat&logoColor=%2361DAFB)
@@ -34,6 +37,7 @@
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?logo=postgresql&style=flat&logoColor=white)
 
 ### Authentication
+
 ![JSON Web Tokens](https://img.shields.io/badge/JSON%20Web%20Tokens-000?logo=jsonwebtokens&logoColor=fff&style=flat)
 
 ### Host
@@ -128,3 +132,204 @@ python manage.py runserver
 ```
 http://localhost:8000/
 ```
+
+## </details>
+
+## <br>
+
+# 📝💻 Coding Style Guide
+
+**Last Updated:** March 2025  
+**Author:** Joaquin Garcia-Huerta
+
+## Summary of Key Naming Conventions
+
+| Type             | Convention       | Example                           |
+| ---------------- | ---------------- | --------------------------------- |
+| Variables        | `camelCase`      | `userName`, `totalCount`          |
+| Redux Variables  | `camelCase`\_rdx | `userName_rdx`, `totalCount_rdx`  |
+| Constants        | `UPPER_CASE`     | `API_URL`, `MAX_LENGTH`           |
+| Functions        | `camelCase`      | `fetchData()`, `handleSubmit()`   |
+| Booleans         | `is/has` prefix  | `isValid`, `hasPermission`        |
+| Classes          | `PascalCase`     | `UserProfile`, `ShoppingCart`     |
+| React Components | `PascalCase`     | `<NavBar />`, `<Footer />`        |
+| Props            | `camelCase`      | `<UserProfile userName="John" />` |
+| Event Handlers   | `handleEvent`    | `handleClick()`, `handleSubmit()` |
+| CSS Classes      | `kebab-case`     | `.nav-bar`, `.button-primary`     |
+
+### Additional Naming Guidelines:
+
+- Variables, functions, Components: `camelCase`
+- Classes & components: `PascalCase`
+- Constants: `UPPER_CASE`
+- Private variables: `_underscorePrefix`
+- Interfaces & Types: `PascalCase`
+- Enums: `PascalCase`
+
+## ⚛️ React.js
+
+<details>
+  <summary>Click to expand</summary>
+
+## **1. General JavaScript & TypeScript Rules**
+
+### **1.1 Use `const` and `let`, Never `var`**
+
+```tsx
+const name = "Joaquin"; // ✅ Good
+let age = 37; // ✅ Good
+var city = "San Jose"; // ❌ Bad
+```
+
+### **1.2 Use Arrow Functions for Anonymous Functions**
+
+```tsx
+const add = (a: number, b: number): number => a + b;
+```
+
+### **1.3 Always Use Template Literals Instead of String Concatenation**
+
+```tsx
+const greeting = `Hello, ${name}!`; // ✅ Good
+const greeting2 = "Hello, " + name + "!"; // ❌ Bad
+```
+
+### **1.4 Use Destructuring for Objects and Arrays**
+
+```tsx
+const user = { name: "Joaquin", age: 37 };
+const { name, age } = user; // ✅ Good
+```
+
+### **1.5 Use Optional Chaining and Nullish Coalescing**
+
+```tsx
+const userAge = user?.age ?? "Unknown"; // ✅ Prevents undefined errors
+```
+
+### **1.6 Avoid Using `any` Type**
+
+```tsx
+const fetchData = async (): Promise<any> => {
+	// ❌ Avoid `any`
+	return fetch("https://api.example.com/data").then((res) => res.json());
+};
+```
+
+---
+
+## **2. React & JSX Best Practices**
+
+### **2.1 Functional Components Only (No Class Components)**
+
+```tsx
+const Button = ({ text }: { text: string }) => <button>{text}</button>;
+```
+
+### **2.2 Use PascalCase for Components and camelCase for Props**
+
+```tsx
+const UserProfile = ({ userName }: { userName: string }) => <h1>{userName}</h1>;
+```
+
+### **2.3 Self-Closing Tags When Possible**
+
+```tsx
+return <img src="profile.jpg" alt="Profile" />; // ✅ Good
+```
+
+### **2.4 Keep Components Small and Reusable**
+
+```tsx
+const Avatar = ({ url }: { url: string }) => <img src={url} alt="User Avatar" />;
+const UserProfile = ({ user }: { user: { name: string; avatar: string } }) => (
+	<div>
+		<h1>{user.name}</h1>
+		<Avatar url={user.avatar} />
+	</div>
+);
+```
+
+### **2.5 Use Fragments Instead of Extra `div` Elements**
+
+```tsx
+return (
+	<>
+		<h1>Title</h1>
+		<p>Content here...</p>
+	</>
+);
+```
+
+---
+
+## **3. Hooks & State Management**
+
+### **3.1 Use `useState` with Initial Type**
+
+```tsx
+const [count, setCount] = useState<number>(0);
+```
+
+### **3.2 Use `useEffect` with a Dependency Array**
+
+```tsx
+useEffect(() => {
+	console.log("Component Mounted");
+}, []); // ✅ Runs only on mount
+```
+
+### **3.3 Use Custom Hooks for Reusability**
+
+```tsx
+const useWindowWidth = () => {
+	const [width, setWidth] = useState(window.innerWidth);
+	useEffect(() => {
+		const handleResize = () => setWidth(window.innerWidth);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+	return width;
+};
+```
+
+### **3.4 Use `useCallback` for Performance Optimization**
+
+```tsx
+const handleClick = useCallback(() => console.log("Clicked!"), []);
+```
+
+---
+
+## **4. Props & State Handling**
+
+### **4.1 Define Props with TypeScript**
+
+```tsx
+type ButtonProps = {
+	text: string;
+	onClick: () => void;
+};
+
+const Button: React.FC<ButtonProps> = ({ text, onClick }) => <button onClick={onClick}>{text}</button>;
+```
+
+### **4.2 Use Default Props Instead of Undefined Values**
+
+```tsx
+const WelcomeMessage = ({ message = "Hello, User!" }: { message?: string }) => <p>{message}</p>;
+```
+
+---
+
+## </details>
+
+### **Final Notes**
+
+- 🚀 Follow **DRY** (Don’t Repeat Yourself).
+- ✅ Use TypeScript for type safety.
+- 🔍 Write **clean, readable, and maintainable** code.
+- ⚡ Optimize performance using **React.memo, useMemo, and useCallback**.
+- 🔒 Use **strict types** instead of `any`.
+
+---

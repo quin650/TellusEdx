@@ -68,13 +68,13 @@ const PaginationQuestionsGUI = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
 				localStorage.setItem("currentQuestionNumber", newQuestionNum);
 			}
-			console.log("answersGotWrong: ", answersGotWrong);
-			console.log("currentIndex:", currentIndex);
-			console.log("currentQuestion:", currentQuestion);
-			console.log("prevIndex:", prevIndex);
-			console.log("PrevQuestion:", newQuestionNum);
-			console.log("---------------------------------------------");
-			console.log("firstQuestionGotWrong:", firstQuestionGotWrong);
+			// console.log("answersGotWrong: ", answersGotWrong);
+			// console.log("currentIndex:", currentIndex);
+			// console.log("currentQuestion:", currentQuestion);
+			// console.log("prevIndex:", prevIndex);
+			// console.log("PrevQuestion:", newQuestionNum);
+			// console.log("---------------------------------------------");
+			// console.log("firstQuestionGotWrong:", firstQuestionGotWrong);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]);
 
@@ -98,13 +98,13 @@ const PaginationQuestionsGUI = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
 				localStorage.setItem("currentQuestionNumber", newQuestionNum);
 			}
-			console.log("answersGotWrong: ", answersGotWrong);
-			console.log("currentIndex:", currentIndex);
-			console.log("currentQuestion:", currentQuestion);
-			console.log("nextIndex:", nextIndex);
-			console.log("NextQuestion:", newQuestionNum);
-			console.log("---------------------------------------------");
-			console.log("lastQuestionGotWrong:", lastQuestionGotWrong);
+			// console.log("answersGotWrong: ", answersGotWrong);
+			// console.log("currentIndex:", currentIndex);
+			// console.log("currentQuestion:", currentQuestion);
+			// console.log("nextIndex:", nextIndex);
+			// console.log("NextQuestion:", newQuestionNum);
+			// console.log("---------------------------------------------");
+			// console.log("lastQuestionGotWrong:", lastQuestionGotWrong);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive]);
 
