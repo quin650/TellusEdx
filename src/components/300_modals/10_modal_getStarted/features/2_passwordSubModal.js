@@ -12,6 +12,8 @@ const PasswordSubModal = (props) => {
 	const numberPattern = /\d/;
 	const specialCharacterPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 	const minimumEightPattern = /.{8,}/;
+
+	// !useEffects
 	useEffect(() => {
 		setIsValidLower(lowerCasePattern.test(props.password));
 		setIsValidUpper(upperCasePattern.test(props.password));
@@ -20,7 +22,6 @@ const PasswordSubModal = (props) => {
 		setIsValidEight(minimumEightPattern.test(props.password));
 	}, [props.password]);
 	useEffect(() => {
-		// TODO --> this if section can be removed after testing the Reset your password modal
 		if (props.headerText === "Reset Your Password" && props.checkPasswordSubModalCommence) {
 			if (props.password.length === 0) {
 				setIsValidPassword(true);

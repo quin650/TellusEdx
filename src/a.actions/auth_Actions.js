@@ -17,13 +17,13 @@ export const login_APIAction = (username, password) => {
 			return res;
 		};
 		try {
-			dispatch(userReducerActions.loginRequest());
+			dispatch(userReducerActions.modal_action_login_request_rdx());
 			const res = await loginData();
-			dispatch(userReducerActions.loginSuccess(res.data));
+			dispatch(userReducerActions.modal_action_login_success_rdx(res.data));
 			localStorage.setItem("userInfo", JSON.stringify(res.data));
 			localStorage.setItem("token", res.data.userData.token);
 		} catch (error) {
-			dispatch(userReducerActions.loginFail(error.response.data.Error[0]));
+			dispatch(userReducerActions.modal_action_login_fail_rdx(error.response.data.Error[0]));
 		}
 	};
 };
@@ -34,10 +34,10 @@ export const logout_APIAction = () => {
 			localStorage.removeItem("token");
 			localStorage.removeItem("userInfo");
 			localStorage.removeItem("profInfo");
-			dispatch(userReducerActions.logoutSuccess());
+			dispatch(userReducerActions.modal_action_logout_success_rdx());
 		} catch (err) {
 			console.log("auth_Actions.logout");
-			dispatch(userReducerActions.logoutFail());
+			dispatch(userReducerActions.modal_action_logout_fail_rdx());
 		}
 	};
 };
@@ -58,14 +58,14 @@ export const register_APIAction = (username, password) => {
 		try {
 			const res = await registerData();
 			if (res.data.error) {
-				dispatch(userReducerActions.registerFail(res.data.error));
+				dispatch(userReducerActions.modal_action_registration_fail_rdx(res.data.error));
 			} else {
-				dispatch(userReducerActions.registerSuccess(res.data));
+				dispatch(userReducerActions.modal_action_registration_success_rdx(res.data));
 				localStorage.setItem("userInfo", JSON.stringify(res.data.userData));
 				localStorage.setItem("token", JSON.stringify(res.data.userData.token));
 			}
 		} catch (err) {
-			dispatch(userReducerActions.registerFail(err.response.data.error));
+			dispatch(userReducerActions.modal_action_registration_fail_rdx(err.response.data.error));
 		}
 	};
 };
@@ -90,12 +90,12 @@ export const verifyAccount_APIAction = (passCode) => {
 		try {
 			const res = await activateData();
 			if (res.data.error) {
-				dispatch(userReducerActions.verifyAccountPassCodeFail(res.data.error));
+				dispatch(userReducerActions.modal_action_verificationPassCode_fail_rdx(res.data.error));
 			} else {
-				dispatch(userReducerActions.verifyAccountPassCodeSuccess());
+				dispatch(userReducerActions.modal_action_verificationPassCode_success_rdx());
 			}
 		} catch (err) {
-			dispatch(userReducerActions.verifyAccountPassCodeFail(err.response.data.error));
+			dispatch(userReducerActions.modal_action_verificationPassCode_fail_rdx(err.response.data.error));
 		}
 	};
 };
@@ -120,12 +120,12 @@ export const verifyAccountResendPassCode_APIAction = () => {
 		try {
 			const res = await activateData();
 			if (res.data.error) {
-				dispatch(userReducerActions.verifyAccountPassCodeResentFailure(res.data.error));
+				dispatch(userReducerActions.modal_action_verificationPassCode_resentFail_rdx(res.data.error));
 			} else {
-				dispatch(userReducerActions.verifyAccountPassCodeResent(res.data.success));
+				dispatch(userReducerActions.modal_action_verificationPassCode_resent_rdx(res.data.success));
 			}
 		} catch (err) {
-			dispatch(userReducerActions.verifyAccountPassCodeResentFailure(err.response.data.error));
+			dispatch(userReducerActions.modal_action_verificationPassCode_resentFail_rdx(err.response.data.error));
 		}
 	};
 };
@@ -175,13 +175,13 @@ export const resetPasswordSendPassCode_APIAction = (email) => {
 		try {
 			const res = await pwResetEmailPassCodeData();
 			if (res.data.error) {
-				dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(res.data.error));
+				dispatch(userReducerActions.modal_action_passwordReset_passCodeEmail_sentFail_rdx(res.data.error));
 			} else {
-				dispatch(userReducerActions.passwordResetPassCodeEmailSentSuccess(res.data.success));
+				dispatch(userReducerActions.modal_action_passwordReset_passCodeEmail_sentSuccess_rdx(res.data.success));
 				localStorage.setItem("email", JSON.stringify(email));
 			}
 		} catch (err) {
-			dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(err.response.data.error));
+			dispatch(userReducerActions.modal_action_passwordReset_passCodeEmail_sentFail_rdx(err.response.data.error));
 		}
 	};
 };
@@ -206,18 +206,18 @@ export const resetPasswordChange_APIAction = (passCode, password, passwordConfir
 			const res = await passwordResetChangeData();
 			console.log("res.data: ", res.data);
 			if (res.data.error) {
-				dispatch(userReducerActions.passwordResetFailureIssue(res.data.error));
+				dispatch(userReducerActions.modal_action_passwordReset_fail_rdx(res.data.error));
 			} else {
-				dispatch(userReducerActions.passwordResetSuccess());
+				dispatch(userReducerActions.modal_action_passwordReset_success_rdx());
 			}
 		} catch (err) {
 			console.log("Error response data:", err.response.data);
 			if (err.response.data.PasswordError) {
-				dispatch(userReducerActions.passwordResetFailurePasswordIssue(err.response.data.PasswordError));
+				dispatch(userReducerActions.modal_action_passwordReset_fail_passwordIssue_rdx(err.response.data.PasswordError));
 			} else if (err.response.data.PassCodeError) {
-				dispatch(userReducerActions.passwordResetFailurePassCodeIssue(err.response.data.PassCodeError));
+				dispatch(userReducerActions.modal_action_passwordReset_fail_passCodeIssue_rdx(err.response.data.PassCodeError));
 			} else {
-				dispatch(userReducerActions.passwordResetFailureIssue(err.response.data.error));
+				dispatch(userReducerActions.modal_action_passwordReset_fail_rdx(err.response.data.error));
 			}
 		}
 	};
@@ -244,14 +244,14 @@ export const resetPasswordChange_APIAction = (passCode, password, passwordConfir
 
 //             if(res.data.success){
 //                 console.log('DELETE_USER_SUCCESS')
-//             dispatch(userReducerActions.deleteUserSuccess());
+//             dispatch(userReducerActions.modal_action_deleteUser_success_rdx());
 //             } else {
 //                 console.log('DELETE_USER_FAIL-1')
-//                 dispatch(userReducerActions.deleteUserFail());
+//                 dispatch(userReducerActions.modal_action_deleteUser_fail_rdx());
 //             }
 //         } catch(err) {
 //             console.log('DELETE_USER_FAIL-2');
-//             dispatch(userReducerActions.deleteUserFail());
+//             dispatch(userReducerActions.modal_action_deleteUser_fail_rdx());
 //         };
 //     };
 // };

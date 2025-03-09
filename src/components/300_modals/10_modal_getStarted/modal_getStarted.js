@@ -14,12 +14,10 @@ import TwitterXAuthButton from "./features/SocialAuthLogos/1_twitterXAuthButton"
 import DiscordAuthButton from "./features/SocialAuthLogos/2_discordAuthButton";
 import GitHubAuthButton from "./features/SocialAuthLogos/3_gitHubAuthButton";
 import PasswordSubModal from "./features/2_passwordSubModal";
-import classes from "./getStartedModal.module.css";
-const GetStartedModal = () => {
+import classes from "./modal_getStarted.module.css";
+const Modal_getStarted = () => {
 	const dispatch = useDispatch();
 	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
-
-	const [modalStatus, setModalStatus] = useState(getStartedView_rdx);
 	const registrationError_rdx = useSelector(({ user }) => user.registrationError_rdx);
 	const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
 	const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
@@ -28,6 +26,7 @@ const GetStartedModal = () => {
 	const resetPasswordChangeStatus_rdx = useSelector(({ user }) => user.resetPasswordChangeStatus_rdx);
 	const resetPasswordChangeFeedback_rdx = useSelector(({ user }) => user.resetPasswordChangeFeedback_rdx);
 
+	const [modalStatus, setModalStatus] = useState(getStartedView_rdx);
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -65,8 +64,8 @@ const GetStartedModal = () => {
 	const [buttonText, setButtonText] = useState("Create Account");
 
 	const [checkEmailCommence, setCheckEmailCommence] = useState(false);
-	const [checkPasswordCommence, setCheckPasswordCommence] = useState(false); //*Action --> Commence checking regular password UI (aka not passwordSubModal) //*set to true OnSubmit-> create account | log in | reset Your Password
-	const [checkPasswordSubModalCommence, setCheckPasswordSubModalCommence] = useState(false); //*Action --> Commence checking passwordSubModal UI (i.e. also removes regular passwordFeedback) //*set to false --> GoTo_LogInModal | //*set to true  --> GoTo_CreateAccountModal | GoTo_ResetPasswordChangeModal | ResetPasswordChangeCheckPriorToSubmission | handleOnPasswordFocus (if email meets pattern)
+	const [checkPasswordCommence, setCheckPasswordCommence] = useState(false);
+	const [checkPasswordSubModalCommence, setCheckPasswordSubModalCommence] = useState(false);
 	const [checkPasswordConfirmCommence, setCheckPasswordConfirmCommence] = useState(false);
 	const [checkPassCodeCommence, setCheckPassCodeCommence] = useState(false);
 	const [checkBackendCredentialsCommence, setCheckBackendCredentialsCommence] = useState(false);
@@ -161,7 +160,7 @@ const GetStartedModal = () => {
 		setCheckPasswordSubModalCommence(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setCheckBackendCredentialsCommence(false);
-		// dispatch(userReducerActions.registerErrorReset());
+		// dispatch(userReducerActions.modal_action_registration_errorReset_rdx());
 		setModalStatus("LogInModal");
 		setHeaderText("Login");
 		setFormOptions(
@@ -339,7 +338,7 @@ const GetStartedModal = () => {
 
 	// !Input Field Handling -- On Focus + On Blur
 	const handleOnEmailFocus = () => {
-		dispatch(userReducerActions.passwordResetPassCodeEmailResetStatus());
+		dispatch(userReducerActions.modal_action_passwordReset_passCodeEmail_resetStatus_rdx());
 	};
 	const handleOnEmailBlur = () => {
 		setCheckEmailCommence(true);
@@ -369,8 +368,8 @@ const GetStartedModal = () => {
 		setCheckPasswordConfirmCommence(true);
 	};
 	const handleOnPassCodeFocus = () => {
-		dispatch(userReducerActions.verifyAccountPassCodeReset());
-		dispatch(userReducerActions.passwordResetPasswordChangeResetStatus());
+		dispatch(userReducerActions.modal_action_verificationPassCode_reset_rdx());
+		dispatch(userReducerActions.modal_action_passwordReset_passwordChange_resetStatus_rdx());
 	};
 	const handleOnPassCodeBlur = () => {
 		setCheckPassCodeCommence(true);
@@ -379,7 +378,7 @@ const GetStartedModal = () => {
 		}
 	};
 
-	// !General Page Settings/Event listeners -- Scrolling rules + Exit Rules
+	// !General Page Settings/Event listeners -- Scrolling rules + Exit rules
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
 		document.addEventListener("mousedown", onClickOutsideModal_closeModal);
@@ -408,7 +407,7 @@ const GetStartedModal = () => {
 	};
 	const exitGetStartedModalAction = () => {
 		enableScroll();
-		dispatch(userReducerActions.getStartedModalClose());
+		dispatch(userReducerActions.modal_action_getStarted_close_rdx());
 		setModalStatus("CreateAccountModal");
 		setFormOptions(
 			<span className={classes.optionSpan}>
@@ -780,4 +779,4 @@ const GetStartedModal = () => {
 	);
 };
 
-export default GetStartedModal;
+export default Modal_getStarted;

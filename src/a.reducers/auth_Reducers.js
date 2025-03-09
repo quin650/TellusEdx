@@ -267,64 +267,64 @@ const userSlice = createSlice({
 			state.sideBar_R_SearchBar_isActive_rdx = action.payload;
 		},
 		// Get Started Modal
-		getStartedModalLogIn(state) {
+		modal_action_getStarted_logIn_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
 			state.getStartedView_rdx = "LogInModal";
 		},
-		getStartedModalCreateAccount(state) {
+		modal_action_getStarted_createAccount_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
 			state.getStartedView_rdx = "CreateAccountModal";
 		},
-		getStartedModalOpen(state) {
+		modal_action_getStarted_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
 		},
-		getStartedModalClose(state) {
+		modal_action_getStarted_close_rdx(state) {
 			state.getStarted_ModalStatus_rdx = false;
 			state.sideBar_R_Main_isOpen_rdx = false;
 		},
 		// Registration
-		registerModalClose(state) {
+		modal_action_registration_close_rdx(state) {
 			state.getStarted_ModalStatus_rdx = false;
 		},
-		registerSuccess(state, action) {
+		modal_action_registration_success_rdx(state, action) {
 			state.registered_rdx = true;
 			state.isAuthenticated_rdx = false;
 			state.loading_rdx = false;
 			state.getStartedView_rdx = "VerifyAccountModal";
 			state.userInfo_rdx = action.payload;
 		},
-		registerFail(state, action) {
+		modal_action_registration_fail_rdx(state, action) {
 			state.registered_rdx = false;
 			state.isAuthenticated_rdx = false;
 			state.loading_rdx = false;
 			state.registrationError_rdx = action.payload;
 		},
-		registerErrorReset(state) {
+		modal_action_registration_errorReset_rdx(state) {
 			state.registrationError_rdx = "";
 		},
 		// Verify Your Account
-		verifyAccountPassCodeSuccess(state) {
+		modal_action_verificationPassCode_success_rdx(state) {
 			state.getStartedView_rdx = "VerificationSuccessModal";
 			state.generalFeedback_rdx = "";
 		},
-		verifyAccountPassCodeFail(state, action) {
+		modal_action_verificationPassCode_fail_rdx(state, action) {
 			state.verifyAccountPassCodeStatus_rdx = false;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 		},
-		verifyAccountPassCodeReset(state) {
+		modal_action_verificationPassCode_reset_rdx(state) {
 			state.verifyAccountPassCodeStatus_rdx = true;
 		},
-		verifyAccountPassCodeResent(state, action) {
+		modal_action_verificationPassCode_resent_rdx(state, action) {
 			state.verifyAccountPassCodeStatus_rdx = true;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmail_rdx += 1;
 		},
-		verifyAccountPassCodeResentFailure(state) {
+		modal_action_verificationPassCode_resentFail_rdx(state) {
 			state.verifyAccountPassCodeStatus_rdx = false;
 			state.verifyAccountPassCodeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
@@ -335,27 +335,27 @@ const userSlice = createSlice({
 			state.getStartedView_rdx = "LogInModal";
 		},
 		// Log In
-		loginRequest(state) {
+		modal_action_login_request_rdx(state) {
 			state.loading_rdx = true;
 		},
-		loginSuccess(state, action) {
+		modal_action_login_success_rdx(state, action) {
 			state.isAuthenticated_rdx = true;
 			state.loading_rdx = false;
 			state.userInfo_rdx = action.payload;
 			state.getStarted_ModalStatus_rdx = false;
 		},
-		loginFail(state, action) {
+		modal_action_login_fail_rdx(state, action) {
 			state.loading_rdx = false;
 			state.loginError_rdx = action.payload;
 		},
-		loginError_rdxReset(state) {
+		modal_action_login_errorReset_rdx(state) {
 			state.loginError_rdx = "";
 		},
 		// Log Out
-		logoutSuccess(state) {
+		modal_action_logout_success_rdx(state) {
 			state.isAuthenticated_rdx = false;
 		},
-		logoutFail(state) {
+		modal_action_logout_fail_rdx(state) {
 			state;
 		},
 		// Authentication
@@ -369,48 +369,48 @@ const userSlice = createSlice({
 			state.token_rdx = action.payload;
 		},
 		// Reset Password - Email PassCode
-		passwordResetPassCodeEmailSentSuccess(state, action) {
+		modal_action_passwordReset_passCodeEmail_sentSuccess_rdx(state, action) {
 			state.passwordResetPassCodeEmail_rdx += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
 			state.getStartedView_rdx = "ResetPasswordEnterPassCodeModal";
 		},
-		passwordResetPassCodeEmailSentFailure(state, action) {
+		modal_action_passwordReset_passCodeEmail_sentFail_rdx(state, action) {
 			state.resetPasswordEmailPassCodeStatus_rdx = false;
 			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
 		},
-		passwordResetPassCodeEmailResetStatus(state) {
+		modal_action_passwordReset_passCodeEmail_resetStatus_rdx(state) {
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 		},
 		// Reset Password - Change
-		passwordResetSuccess(state) {
+		modal_action_passwordReset_success_rdx(state) {
 			state.resetPasswordChangeStatus_rdx = true;
 			state.resetPasswordChangeFeedback_rdx = "";
 			state.passCodeStatus_rdx = true;
 			state.passCodeFeedback_rdx = "";
 			state.getStartedView_rdx = "PasswordChangedSuccessfullyModal";
 		},
-		passwordResetFailurePasswordIssue(state, action) {
+		modal_action_passwordReset_fail_passwordIssue_rdx(state, action) {
 			state.resetPasswordChangeStatus_rdx = false;
 			state.resetPasswordChangeFeedback_rdx = action.payload; //gets fed into general feedback in frontend
 		},
-		passwordResetFailurePassCodeIssue(state, action) {
+		modal_action_passwordReset_fail_passCodeIssue_rdx(state, action) {
 			state.resetPasswordChangeStatus_rdx = false;
 			state.resetPasswordChangeFeedback_rdx = action.payload;
 		},
-		passwordResetFailureIssue(state, action) {
+		modal_action_passwordReset_fail_rdx(state, action) {
 			state.resetPasswordChangeStatus_rdx = false;
 			state.resetPasswordChangeFeedback_rdx = action.payload;
 			state.generalFeedback_rdx = action.payload;
 		},
-		passwordResetPasswordChangeResetStatus(state) {
+		modal_action_passwordReset_passwordChange_resetStatus_rdx(state) {
 			state.resetPasswordChangeStatus_rdx = true;
 		},
 		//Delete - User
-		deleteUserSuccess(state) {
+		modal_action_deleteUser_success_rdx(state) {
 			state.isAuthenticated_rdx = false;
 		},
-		deleteUserFail(state) {
+		modal_action_deleteUser_fail_rdx(state) {
 			state;
 		},
 		// Language Modal Settings

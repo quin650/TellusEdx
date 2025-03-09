@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logout_APIAction } from "../../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import GetStartedButton from "../../../300_modals/10_getStartedModal/features/1_getStartedButton";
+import GetStartedButton from "../../../300_modals/10_modal_getStarted/features/1_getStartedButton";
 import Logo from "../../../../../static/images/1Logo.png";
 import classes from "./sideBar_R_MainModal.module.css";
 
@@ -182,7 +182,7 @@ const SideBar_R_MainModal = () => {
 	}, [location]);
 	// Functions
 	const LogInHandler = () => {
-		dispatch(userReducerActions.getStartedModalLogIn());
+		dispatch(userReducerActions.modal_action_getStarted_logIn_open_rdx());
 	};
 	const LogOutHandler = () => {
 		dispatch(logout_APIAction());
