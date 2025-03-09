@@ -1,230 +1,226 @@
-import Cookies from 'js-cookie'
-import axios from 'axios';
-import { userReducerActions } from '../a.reducers/auth_Reducers';
+import Cookies from "js-cookie";
+import axios from "axios";
+import { userReducerActions } from "../a.reducers/auth_Reducers";
 
 export const login_APIAction = (username, password) => {
-    return async (dispatch) => {
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ username, password });
-        const loginData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/login/`, body, config);
-            return res;
-        };
-        try {
-            dispatch(userReducerActions.loginRequest());
-            const res = await loginData();
-            dispatch(userReducerActions.loginSuccess(res.data));
-            localStorage.setItem('userInfo', JSON.stringify(res.data))
-            localStorage.setItem('token', res.data.userData.token)
-
-        } catch (error) {
-            dispatch(userReducerActions.loginFail(error.response.data.Error[0]));
-        };
-    };
+	return async (dispatch) => {
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ username, password });
+		const loginData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/login/`, body, config);
+			return res;
+		};
+		try {
+			dispatch(userReducerActions.loginRequest());
+			const res = await loginData();
+			dispatch(userReducerActions.loginSuccess(res.data));
+			localStorage.setItem("userInfo", JSON.stringify(res.data));
+			localStorage.setItem("token", res.data.userData.token);
+		} catch (error) {
+			dispatch(userReducerActions.loginFail(error.response.data.Error[0]));
+		}
+	};
 };
 export const logout_APIAction = () => {
-    return async (dispatch) => {
-    try {
-        console.log('auth_Actions.logout')
-        localStorage.removeItem('token');
-        localStorage.removeItem('userInfo');
-        localStorage.removeItem('profInfo');
-        dispatch(userReducerActions.logoutSuccess());
-    } catch(err) {
-        console.log('auth_Actions.logout')
-        dispatch(userReducerActions.logoutFail());
-    };  
-    };
+	return async (dispatch) => {
+		try {
+			console.log("auth_Actions.logout");
+			localStorage.removeItem("token");
+			localStorage.removeItem("userInfo");
+			localStorage.removeItem("profInfo");
+			dispatch(userReducerActions.logoutSuccess());
+		} catch (err) {
+			console.log("auth_Actions.logout");
+			dispatch(userReducerActions.logoutFail());
+		}
+	};
 };
-export const register_APIAction = (username, password) => { 
-    return async (dispatch) => {
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ username, password });
-        const registerData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/register/`, body, config);
-            return res;
-        };
-        try {
-            const res = await registerData();
-            if (res.data.error) {
-                dispatch(userReducerActions.registerFail(res.data.error));
-                
-            } else {
-                dispatch(userReducerActions.registerSuccess(res.data));
-                localStorage.setItem('userInfo', JSON.stringify(res.data.userData))
-                localStorage.setItem('token', JSON.stringify(res.data.userData.token))
-            }
-        } catch (err) {
-            dispatch(userReducerActions.registerFail(err.response.data.error));
-        };
-    };
+export const register_APIAction = (username, password) => {
+	return async (dispatch) => {
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ username, password });
+		const registerData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/register/`, body, config);
+			return res;
+		};
+		try {
+			const res = await registerData();
+			if (res.data.error) {
+				dispatch(userReducerActions.registerFail(res.data.error));
+			} else {
+				dispatch(userReducerActions.registerSuccess(res.data));
+				localStorage.setItem("userInfo", JSON.stringify(res.data.userData));
+				localStorage.setItem("token", JSON.stringify(res.data.userData.token));
+			}
+		} catch (err) {
+			dispatch(userReducerActions.registerFail(err.response.data.error));
+		}
+	};
 };
-export const verifyAccount_APIAction = (passCode) => { 
-    return async (dispatch) => {
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const email = userInfo ? userInfo.email : null;
-        
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ email, passCode });
-        const activateData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountView/`, body, config);
-            return res;
-        };
-        try {
-            const res = await activateData();
-            if (res.data.error) {
-                dispatch(userReducerActions.verifyAccountPassCodeFail(res.data.error));
-                
-            } else {
-                dispatch(userReducerActions.verifyAccountPassCodeSuccess());
-            }
-        } catch (err) {
-            dispatch(userReducerActions.verifyAccountPassCodeFail(err.response.data.error));
-        };
-    };
+export const verifyAccount_APIAction = (passCode) => {
+	return async (dispatch) => {
+		const userInfoString = localStorage.getItem("userInfo");
+		const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+		const email = userInfo ? userInfo.email : null;
+
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ email, passCode });
+		const activateData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountView/`, body, config);
+			return res;
+		};
+		try {
+			const res = await activateData();
+			if (res.data.error) {
+				dispatch(userReducerActions.verifyAccountPassCodeFail(res.data.error));
+			} else {
+				dispatch(userReducerActions.verifyAccountPassCodeSuccess());
+			}
+		} catch (err) {
+			dispatch(userReducerActions.verifyAccountPassCodeFail(err.response.data.error));
+		}
+	};
 };
-export const verifyAccountResendPassCode_APIAction = () => { 
-    return async (dispatch) => {
-        const userInfoString = localStorage.getItem('userInfo');
-        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-        const email = userInfo ? userInfo.email : null;
-        
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ email });
-        const activateData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountResendPassCodeView/`, body, config);
-            return res;
-        };
-        try {
-            const res = await activateData();
-            if (res.data.error) {
-                dispatch(userReducerActions.verifyAccountPassCodeResentFailure(res.data.error))
-            } else {
-                dispatch(userReducerActions.verifyAccountPassCodeResent(res.data.success))
-            }
-        } catch (err) {
-            dispatch(userReducerActions.verifyAccountPassCodeResentFailure(err.response.data.error))
-        };
-    };
+export const verifyAccountResendPassCode_APIAction = () => {
+	return async (dispatch) => {
+		const userInfoString = localStorage.getItem("userInfo");
+		const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+		const email = userInfo ? userInfo.email : null;
+
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ email });
+		const activateData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/verifyAccountResendPassCodeView/`, body, config);
+			return res;
+		};
+		try {
+			const res = await activateData();
+			if (res.data.error) {
+				dispatch(userReducerActions.verifyAccountPassCodeResentFailure(res.data.error));
+			} else {
+				dispatch(userReducerActions.verifyAccountPassCodeResent(res.data.success));
+			}
+		} catch (err) {
+			dispatch(userReducerActions.verifyAccountPassCodeResentFailure(err.response.data.error));
+		}
+	};
 };
 export const checkAuthenticated = () => {
-    return async (dispatch) => {
-        const accessToken = localStorage.getItem('token');
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken'),
-                'Authorization': `Bearer ${accessToken}`,
-            }
-        };
-        const checkAuth = async () => {
-            const res = await axios.get(`http://127.0.0.1:8000/accounts/authenticated/`, config);
-            return res;
-        };
-        try {
-            const res = await checkAuth();
-            if (res.data.error || res.data.isAuthenticated === 'error') {
-                dispatch(userReducerActions.authFail());
-            } else if (res.data.isAuthenticated === 'success') {
-                dispatch(userReducerActions.authSuccess());
-            } else {
-                dispatch(userReducerActions.authFail());
-            }
-        } catch (err) {
-            dispatch(userReducerActions.authFail());
-        };
-    };
+	return async (dispatch) => {
+		const accessToken = localStorage.getItem("token");
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+				Authorization: `Bearer ${accessToken}`,
+			},
+		};
+		const checkAuth = async () => {
+			const res = await axios.get(`http://127.0.0.1:8000/accounts/authenticated/`, config);
+			return res;
+		};
+		try {
+			const res = await checkAuth();
+			if (res.data.error || res.data.isAuthenticated === "error") {
+				dispatch(userReducerActions.authFail());
+			} else if (res.data.isAuthenticated === "success") {
+				dispatch(userReducerActions.authSuccess());
+			} else {
+				dispatch(userReducerActions.authFail());
+			}
+		} catch (err) {
+			dispatch(userReducerActions.authFail());
+		}
+	};
 };
-export const resetPasswordSendPassCode_APIAction = (email) => { 
-    return async (dispatch) => {
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ email });
-        const pwResetEmailPassCodeData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordSendPassCode/`, body, config);
-            return res;
-        };
-        try {
-            const res = await pwResetEmailPassCodeData();
-            if (res.data.error) {
-                dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(res.data.error))
-            } else {
-                dispatch(userReducerActions.passwordResetPassCodeEmailSentSuccess(res.data.success))
-                localStorage.setItem('email', JSON.stringify(email))
-            }
-        } catch (err) {
-            dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(err.response.data.error))
-        };
-    };
+export const resetPasswordSendPassCode_APIAction = (email) => {
+	return async (dispatch) => {
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ email });
+		const pwResetEmailPassCodeData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordSendPassCode/`, body, config);
+			return res;
+		};
+		try {
+			const res = await pwResetEmailPassCodeData();
+			if (res.data.error) {
+				dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(res.data.error));
+			} else {
+				dispatch(userReducerActions.passwordResetPassCodeEmailSentSuccess(res.data.success));
+				localStorage.setItem("email", JSON.stringify(email));
+			}
+		} catch (err) {
+			dispatch(userReducerActions.passwordResetPassCodeEmailSentFailure(err.response.data.error));
+		}
+	};
 };
-export const resetPasswordChange_APIAction = (passCode, password, passwordConfirm) => { 
-    return async (dispatch) => {
-        let email = JSON.parse(localStorage.getItem('email'));
+export const resetPasswordChange_APIAction = (passCode, password, passwordConfirm) => {
+	return async (dispatch) => {
+		let email = JSON.parse(localStorage.getItem("email"));
 
-        const config = {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
-            }
-        };
-        const body = JSON.stringify({ email, passCode, password, passwordConfirm});
-        const passwordResetChangeData = async () => {
-            const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordChange/`, body, config);
-            return res;
-        };
+		const config = {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+				"X-CSRFToken": Cookies.get("csrftoken"),
+			},
+		};
+		const body = JSON.stringify({ email, passCode, password, passwordConfirm });
+		const passwordResetChangeData = async () => {
+			const res = await axios.post(`http://127.0.0.1:8000/accounts/resetPasswordChange/`, body, config);
+			return res;
+		};
 
-        try {
-            const res = await passwordResetChangeData();
-            console.log('res.data: ', res.data)
-            if (res.data.error) {
-                dispatch(userReducerActions.passwordResetFailureIssue(res.data.error)); 
-            }else {
-                dispatch(userReducerActions.passwordResetSuccess());
-            }
-        } catch (err) {
-            console.log('Error response data:', err.response.data); 
-            if (err.response.data.PasswordError) {
-                dispatch(userReducerActions.passwordResetFailurePasswordIssue(err.response.data.PasswordError));
-            } else if (err.response.data.PassCodeError) {
-                dispatch(userReducerActions.passwordResetFailurePassCodeIssue(err.response.data.PassCodeError));
-            }else{
-            dispatch(userReducerActions.passwordResetFailureIssue(err.response.data.error))
-            }
-        };
-
-    };
+		try {
+			const res = await passwordResetChangeData();
+			console.log("res.data: ", res.data);
+			if (res.data.error) {
+				dispatch(userReducerActions.passwordResetFailureIssue(res.data.error));
+			} else {
+				dispatch(userReducerActions.passwordResetSuccess());
+			}
+		} catch (err) {
+			console.log("Error response data:", err.response.data);
+			if (err.response.data.PasswordError) {
+				dispatch(userReducerActions.passwordResetFailurePasswordIssue(err.response.data.PasswordError));
+			} else if (err.response.data.PassCodeError) {
+				dispatch(userReducerActions.passwordResetFailurePassCodeIssue(err.response.data.PassCodeError));
+			} else {
+				dispatch(userReducerActions.passwordResetFailureIssue(err.response.data.error));
+			}
+		}
+	};
 };
 // export const delete_account = () => {
 //     return async (dispatch) => {
@@ -237,7 +233,7 @@ export const resetPasswordChange_APIAction = (passCode, password, passwordConfir
 //         };
 
 //     const body = JSON.stringify({'withCredentials': true});
-    
+
 //         const deleteAccount = async () => {
 //             const res = await axios.delete(`http://127.0.0.1:8000/accounts/delete`, config, body);
 //             return res;
@@ -256,6 +252,6 @@ export const resetPasswordChange_APIAction = (passCode, password, passwordConfir
 //         } catch(err) {
 //             console.log('DELETE_USER_FAIL-2');
 //             dispatch(userReducerActions.deleteUserFail());
-//         };  
+//         };
 //     };
 // };

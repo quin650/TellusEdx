@@ -6,7 +6,7 @@ from .views import indexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', indexView),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django_UserAccounts.urls')),
     path('profile/', include('user_profile.urls'))
 ]
 

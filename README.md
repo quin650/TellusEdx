@@ -165,15 +165,18 @@ http://localhost:8000/
 - Private variables: `_underscorePrefix`
 - Interfaces & Types: `PascalCase`
 - Enums: `PascalCase`
+- Folder Names: `camelCase`
+  - Number the folders wherever possible
+  - When folders have a theme, use: `_underscorePrefix` followed by `camelCase` i.e. django_UserAccounts
 
-## ⚛️ React.js
+## ⚛️ React.js Coding Guide
 
 <details>
   <summary>Click to expand</summary>
 
 ## **1. General JavaScript & TypeScript Rules**
 
-### **1.1 Use `const` and `let`, Never `var`**
+### **1.1 Use `const` and `letf`, Never `var`**
 
 ```tsx
 const name = "Joaquin"; // ✅ Good
