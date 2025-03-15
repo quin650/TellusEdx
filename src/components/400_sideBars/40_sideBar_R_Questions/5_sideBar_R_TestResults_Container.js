@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_TestResultsListOfQuestions from "./6_sideBar_R_TestResults_ListOfQuestions";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResults = () => {
 	const dispatch = useDispatch();

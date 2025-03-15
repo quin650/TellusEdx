@@ -135,6 +135,7 @@ http://localhost:8000/
 
 <details>
   <summary>Click to expand</summary>
+  
 ## Summary of Key Naming Conventions
 
 | Type             | Convention       | Example                           |

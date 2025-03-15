@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import PaginationGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import PaginationGUI from "../../500_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI";
 import SideBar_L_TOC_Section from "./2_sideBar_L_TOC_Section";
 import classes from "./4_sideBar_L_TOC.module.css";
 

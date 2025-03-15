@@ -6,12 +6,12 @@ import { throttle } from "lodash";
 import MainNavbar from "./components/100_layout/10_header/1_navBar_Main";
 import Footer from "./components/100_layout/40_footer/footer";
 import Home from "./components/200_pages/10_pages/0_home/0_home";
-import Demo_LandingPage from "./components/400_demos/00_demo_LandingPage/demo_LandingPage";
-import DemoDMVClassC from "./components/400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
-import PDFViewer from "./components/400_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
+import Demo_LandingPage from "./components/500_demos/00_demo_LandingPage/demo_LandingPage";
+import DemoDMVClassC from "./components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
+import PDFViewer from "./components/500_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
 
 import GeneralPage from "./components/200_pages/10_pages/generalPage";
-import OnThisPageQuickView from "./components/100_layout/20_features/1_onThisPageQuickView";
+import OnThisPageQuickView from "./components/100_layout/20_layoutFeatures/1_onThisPageQuickView";
 
 const App = () => {
 	const mainAppContainerRef = useRef();

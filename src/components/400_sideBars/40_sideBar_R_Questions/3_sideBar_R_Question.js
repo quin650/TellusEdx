@@ -1,7 +1,7 @@
 import React, { useState, useRef, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import SideBar_R_QuestionsChild from "./4_sideBar_R_MultipleChoiceOption";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
 	const quickNavRef = useRef(null);

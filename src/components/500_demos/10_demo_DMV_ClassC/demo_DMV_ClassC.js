@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
-import SideBar_R_Notes from "../../100_layout/30_sideBars/2_sideBar_R_Notes/sideBar_R_Notes";
-import SideBar_L_TOC from "../../100_layout/30_sideBars/0_sideBar_L_TOC/1_sideBar_L_TOC";
-import SideBar_R_Questions from "../../100_layout/30_sideBars/4_sideBar_R_Questions/0_sideBar_R_QuestionsContainer";
+import SideBar_R_Notes from "../../400_sideBars/20_sideBar_R_Notes/sideBar_R_Notes";
+import SideBar_L_TOC from "../../400_sideBars/10_sideBar_L_TOC/1_sideBar_L_TOC";
+import SideBar_R_Questions from "../../400_sideBars/40_sideBar_R_Questions/0_sideBar_R_QuestionsContainer";
 import PaginationGUI from "./0_features/pagination/paginationGUI";
 import Modal_resetThisTest from "../../300_modals/30_modal_resetThisTest/modal_resetThisTest";
 

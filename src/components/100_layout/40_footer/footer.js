@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../../static/images/Logo_arrows.png";
+import Logo from "../../../../static/images/logos/logo_tellusEd_arrowsOnly.png";
 import classes from "./footer.module.css";
 
 const Footer = () => {

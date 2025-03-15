@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const Page9 = () => {
 	return (

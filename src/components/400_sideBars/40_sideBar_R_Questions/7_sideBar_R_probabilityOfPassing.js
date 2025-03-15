@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Tasks from "../../300_modals/40_modal_Tasks/Tasks";
+import Tasks from "../../300_modals/40_modal_tasks/tasks";
 import classes from "./Software.module.css";
 
 const Software = () => {

@@ -1,13 +1,13 @@
 import React from "react";
-import GetStartedButton from "../../../300_modals/10_modal_getStarted/features/1_getStartedButton";
-import Logo1 from "../../../../../static/images/Logo1.png";
-import Logo2 from "../../../../../static/images/Logo2.png";
-import Logo3 from "../../../../../static/images/Logo3.png";
-import Logo4 from "../../../../../static/images/Logo4.png";
-import Logo5 from "../../../../../static/images/Logo51.png";
-import Logo6 from "../../../../../static/images/Logo6.png";
-import Logo7 from "../../../../../static/images/Logo7.png";
-import Logo8 from "../../../../../static/images/Logo8.png";
+import GetStartedButton from "../../../300_modals/10_modal_getStarted/getStartedFeatures/1_getStartedButton";
+import logo_bookPencil_orange from "../../../../../static/images/logos/homeTop_logos/logo_bookPencil_orange.png";
+import logo_column_purple from "../../../../../static/images/logos/homeTop_logos/logo_column_purple.png";
+import logo_computer_orange from "../../../../../static/images/logos/homeTop_logos/logo_computer_orange.png";
+import logo_calendar_yellow from "../../../../../static/images/logos/homeTop_logos/logo_calendar_yellow.png";
+import logo_atom_green from "../../../../../static/images/logos/homeTop_logos/logo_atom_green.png";
+import logo_math_yellow from "../../../../../static/images/logos/homeTop_logos/logo_math_yellow.png";
+import logo_money_green from "../../../../../static/images/logos/homeTop_logos/logo_money_green.png";
+import logo_lightBulb_purple from "../../../../../static/images/logos/homeTop_logos/logo_lightBulb_purple.png";
 import classes from "./1_homeTop.module.css";
 
 const HomeTop = () => {
@@ -18,14 +18,14 @@ const HomeTop = () => {
 					<h1> LEARNING NEVER EXHAUSTS THE MIND</h1>
 					<h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
 				</blockquote>
-				<img src={Logo1} alt="Logo" className={classes.Logo1} tabIndex="0"></img>
-				<img src={Logo2} alt="Logo" className={classes.Logo2} tabIndex="0"></img>
-				<img src={Logo3} alt="Logo" className={classes.Logo3} tabIndex="0"></img>
-				<img src={Logo4} alt="Logo" className={classes.Logo4} tabIndex="0"></img>
-				<img src={Logo5} alt="Logo" className={classes.Logo5} tabIndex="0"></img>
-				<img src={Logo6} alt="Logo" className={classes.Logo6} tabIndex="0"></img>
-				<img src={Logo7} alt="Logo" className={classes.Logo7} tabIndex="0"></img>
-				<img src={Logo8} alt="Logo" className={classes.Logo8} tabIndex="0"></img>
+				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0"></img>
+				<img src={logo_column_purple} alt="Logo" className={classes.logo_column_purple} tabIndex="0"></img>
+				<img src={logo_computer_orange} alt="Logo" className={classes.logo_computer_orange} tabIndex="0"></img>
+				<img src={logo_calendar_yellow} alt="Logo" className={classes.logo_calendar_yellow} tabIndex="0"></img>
+				<img src={logo_atom_green} alt="Logo" className={classes.logo_atom_green} tabIndex="0"></img>
+				<img src={logo_math_yellow} alt="Logo" className={classes.logo_math_yellow} tabIndex="0"></img>
+				<img src={logo_money_green} alt="Logo" className={classes.logo_money_green} tabIndex="0"></img>
+				<img src={logo_lightBulb_purple} alt="Logo" className={classes.logo_lightBulb_purple} tabIndex="0"></img>
 				<div className={classes.buttonSection}>
 					<GetStartedButton />
 				</div>

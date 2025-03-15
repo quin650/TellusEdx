@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResultsListOfQuestions = ({ id, isCorrect }) => {
 	const dispatch = useDispatch();

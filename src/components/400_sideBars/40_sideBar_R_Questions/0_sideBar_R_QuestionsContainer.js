@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 
 import SideBar_R_QuestionsLandingPage from "./1_sideBar_R_QuestionsOptions";
 import SideBar_R_QuestionNumber from "./2_sideBar_R_QuestionAndAnswerContainer";
 import SideBar_R_TestResults from "./5_sideBar_R_TestResults_Container";
 import SideBar_R_ProbabilityOfPassingPage from "./7_sideBar_R_probabilityOfPassing";
 
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_Questions = ({ pageContentRef }) => {
 	const dispatch = useDispatch();

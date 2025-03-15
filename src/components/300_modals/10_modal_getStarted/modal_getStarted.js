@@ -10,10 +10,10 @@ import {
 	resetPasswordChange_APIAction,
 } from "../../../a.actions/auth_Actions";
 import CSRFToken from "../../CSRFToken";
-import TwitterXAuthButton from "./features/SocialAuthLogos/1_twitterXAuthButton";
-import DiscordAuthButton from "./features/SocialAuthLogos/2_discordAuthButton";
-import GitHubAuthButton from "./features/SocialAuthLogos/3_gitHubAuthButton";
-import PasswordSubModal from "./features/2_passwordSubModal";
+import TwitterXAuthButton from "./getStartedFeatures/SocialAuthLogos/1_twitterXAuthButton";
+import DiscordAuthButton from "./getStartedFeatures/SocialAuthLogos/2_discordAuthButton";
+import GitHubAuthButton from "./getStartedFeatures/SocialAuthLogos/3_gitHubAuthButton";
+import PasswordSubModal from "./getStartedFeatures/2_passwordSubModal";
 import classes from "./modal_getStarted.module.css";
 const Modal_getStarted = () => {
 	const dispatch = useDispatch();

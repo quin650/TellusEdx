@@ -67,7 +67,7 @@
 	margin-bottom: 17vh;
 }
 
-.Logo1 {
+.logo_bookPencil_orange {
 	height: 119px;
 	width: 119px;
 	position: absolute;
@@ -79,7 +79,7 @@
 	box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo2 {
+.logo_column_purple {
 	height: 71px;
 	width: 71px;
 	position: absolute;
@@ -91,7 +91,7 @@
 	box-shadow: -6px -6px 12px #9e9ef7, 6px 6px 12px #3e41a0;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo3 {
+.logo_computer_orange {
 	height: 59px;
 	width: 59px;
 	position: absolute;
@@ -103,7 +103,7 @@
 	box-shadow: -6px -6px 12px #fad7a2, 6px 6px 12px #a1734a;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo4 {
+.logo_calendar_yellow {
 	height: 73px;
 	width: 73px;
 	position: absolute;
@@ -115,7 +115,7 @@
 	box-shadow: -6px -6px 12px #fcff99, 6px 6px 12px #737135;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo5 {
+.logo_atom_green {
 	height: 90px;
 	width: 90px;
 	position: absolute;
@@ -127,7 +127,7 @@
 	box-shadow: -8px -8px 16px #b3ff99, 8px 8px 16px #4c7c39;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo6 {
+.logo_math_yellow {
 	height: 64px;
 	width: 64px;
 	position: absolute;
@@ -139,7 +139,7 @@
 	box-shadow: -6px -6px 12px #ffff99, 6px 6px 12px #737135;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo7 {
+.logo_money_green {
 	height: 71px;
 	width: 71px;
 	position: absolute;
@@ -151,7 +151,7 @@
 	box-shadow: -6px -6px 12px #b7f99e, 6px 6px 12px #3c6d35;
 	filter: brightness(var(--IconBrightness));
 }
-.Logo8 {
+.logo_lightBulb_purple {
 	height: 40px;
 	width: 40px;
 	position: absolute;
@@ -164,49 +164,49 @@
 	filter: brightness(var(--IconBrightness));
 }
 
-.Logo1:hover,
-.Logo2:hover,
-.Logo3:hover,
-.Logo4:hover,
-.Logo5:hover,
-.Logo6:hover,
-.Logo7:hover,
-.Logo8:hover {
+.logo_bookPencil_orange:hover,
+.logo_column_purple:hover,
+.logo_computer_orange:hover,
+.logo_calendar_yellow:hover,
+.logo_atom_green:hover,
+.logo_math_yellow:hover,
+.logo_money_green:hover,
+.logo_lightBulb_purple:hover {
 	z-index: 1000;
 	cursor: pointer;
 	transform: rotate(0deg) scale(1.2);
 	transition: 500ms;
 }
 
-.Logo1:focus {
+.logo_bookPencil_orange:focus {
 	transform: rotate(342deg);
 	transition: transform 1s;
 }
-.Logo2:focus {
+.logo_column_purple:focus {
 	transform: rotate(358deg);
 	transition: transform 1s;
 }
-.Logo3:focus {
+.logo_computer_orange:focus {
 	transform: rotate(348deg);
 	transition: transform 1s;
 }
-.Logo4:focus {
+.logo_calendar_yellow:focus {
 	transform: rotate(368deg);
 	transition: transform 1s;
 }
-.Logo5:focus {
+.logo_atom_green:focus {
 	transform: rotate(384deg);
 	transition: transform 1s;
 }
-.Logo6:focus {
+.logo_math_yellow:focus {
 	transform: rotate(360deg);
 	transition: transform 1s;
 }
-.Logo7:focus {
+.logo_money_green:focus {
 	transform: rotate(380deg);
 	transition: transform 1s;
 }
-.Logo8:focus {
+.logo_lightBulb_purple:focus {
 	transform: rotate(330deg);
 	transition: transform 1s;
 }

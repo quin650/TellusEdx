@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsChild = ({ id, text, isCorrect, isPreviouslyChecked, get_newlyCheckedID, startGradingTest }) => {
 	const [isChecked, setIsChecked] = useState(false);

@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { Link } from "react-router-dom";
-import GetStartedButton from "../../300_modals/10_modal_getStarted/features/1_getStartedButton";
-import SideBar_R_MainMenu from "../30_sideBars/3_sideBar_R_MainMenu/sideBar_R_MainMenu";
+import GetStartedButton from "../../300_modals/10_modal_getStarted/getStartedFeatures/1_getStartedButton";
 import Modal_getStarted from "../../300_modals/10_modal_getStarted/modal_getStarted";
 import Modal_languageSettings from "../../300_modals/20_modal_languageSettings/1_modal_languageSettings";
-
-import Logo from "../../../../static/images/Logo_arrows.png";
+import SideBar_R_MainMenu from "../../400_sideBars/30_sideBar_R_MainMenu/sideBar_R_MainMenu";
+import Logo from "../../../../static/images/logos/logo_tellusEd_arrowsOnly.png";
 import classes from "./navBar.module.css";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";

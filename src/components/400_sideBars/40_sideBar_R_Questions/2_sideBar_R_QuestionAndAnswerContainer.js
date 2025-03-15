@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 
 import SideBar_R_QuestionsParent from "./3_sideBar_R_Question";
-import PaginationQuestionsGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
+import PaginationQuestionsGUI from "../../../components/500_demos/10_demo_DMV_ClassC/0_features/pagination/paginationQuestionsGUI";
 
-import data from "../../../400_demos/10_demo_DMV_ClassC/data/questions.json";
-import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import data from "../../../components/500_demos/10_demo_DMV_ClassC/data/questions.json";
+import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 import clsx from "clsx";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";

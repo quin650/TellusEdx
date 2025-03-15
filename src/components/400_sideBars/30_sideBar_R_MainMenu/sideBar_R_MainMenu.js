@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { logout_APIAction } from "../../../../a.actions/auth_Actions";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import GetStartedButton from "../../../300_modals/10_modal_getStarted/features/1_getStartedButton";
-import Logo from "../../../../../static/images/1Logo.png";
+import { logout_APIAction } from "../../../a.actions/auth_Actions";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import GetStartedButton from "../../300_modals/10_modal_getStarted/getStartedFeatures/1_getStartedButton";
+import Logo from "../../../../static/images/logos/logo_tellusEd_whiteCircleBackground.png";
 import classes from "./sideBar_R_MainMenu.module.css";
 
 const SideBar_R_MainMenu = () => {
