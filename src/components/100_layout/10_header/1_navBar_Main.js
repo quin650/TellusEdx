@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { Link } from "react-router-dom";
 import GetStartedButton from "../../300_modals/10_modal_getStarted/features/1_getStartedButton";
-import SideBar_R_MainModal from "../30_sideBars/3_sideBar_R_MainModal/sideBar_R_MainModal";
+import SideBar_R_MainMenu from "../30_sideBars/3_sideBar_R_MainMenu/sideBar_R_MainMenu";
 import Modal_getStarted from "../../300_modals/10_modal_getStarted/modal_getStarted";
 import Modal_languageSettings from "../../300_modals/20_modal_languageSettings/1_modal_languageSettings";
 
@@ -285,7 +285,7 @@ const MainNavbar = () => {
 				{(location.pathname !== "/demo_dmvClassC" || location.pathname === "demoLandingPage") && regularContent}
 				{location.pathname === "/demo_dmvClassC" && demoContent}
 
-				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainModal />}
+				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainMenu />}
 				{getStarted_ModalStatus_rdx && <Modal_getStarted />}
 				{languageSettings_ModalStatus_rdx && <Modal_languageSettings />}
 			</div>

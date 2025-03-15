@@ -1,49 +1,32 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-
-import SideBar_R_QuestionsLandingPage from "./1_sideBar_R_QuestionsLandingPage";
-import SideBar_R_QuestionNumber from "./2_sideBar_R_QuestionNumber";
-import SideBar_R_TestResults from "./5_sideBar_R_TestResults";
-import SideBar_R_ProbabilityOfPassingPage from "./7_sideBar_R_probabilityOfPassingPage";
-
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_Questions = ({ pageContentRef }) => {
-	const sideBarQuestionsRef = useRef();
+const SideBar_R_Notes = ({ pageContentRef }) => {
+	const sideBarRNotesRef = useRef();
 	const exitButtonRef = useRef();
 	const resizerRef = useRef();
-	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
+	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
-	const sideBar_R_QuestionsStatus_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsStatus_rdx);
 	const dispatch = useDispatch();
-
-	//! General -----------------------------------------------
 	// Exit Functionality
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
 		return () => {
 			window.removeEventListener("keydown", onEscKey_ExitModal);
 		};
-	}, [sideBar_R_QuestionsStatus_rdx]);
+	}, []);
 	const onEscKey_ExitModal = (e) => {
 		if (e.key === "Escape") {
-			backButtonAction();
+			exitAction();
 		}
 	};
-	const backButtonAction = () => {
-		if (sideBar_R_QuestionsStatus_rdx === "QuestionsLanding") {
-			dispatch(userReducerActions.sideBar_R_Close_Questions());
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
-		}
-	};
-
 	const exitAction = () => {
-		dispatch(userReducerActions.sideBar_R_Close_Questions());
+		dispatch(userReducerActions.sideBar_R_Close_Notes());
 	};
 	let exitButton = (
-		<button onClick={backButtonAction} className={classes.exitButton} ref={exitButtonRef}>
+		<button onClick={exitAction} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
@@ -54,14 +37,15 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 			</svg>
 		</button>
 	);
+
 	// Resizer functionality
 	useEffect(() => {
-		const sidebar = sideBarQuestionsRef.current;
+		const sidebar = sideBarRNotesRef.current;
 		const pageContent = pageContentRef.current;
 		const resizer = resizerRef.current;
 		if (!resizer || !sidebar || !pageContent) return;
 
-		if (!sideBar_R_Questions_isOpen_rdx) {
+		if (!sideBar_R_Notes_isOpen_rdx) {
 			sidebar.style.width = "0%";
 			return;
 		}
@@ -127,42 +111,18 @@ const SideBar_R_Questions = ({ pageContentRef }) => {
 		return () => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
-	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
-	//! Component Control---------------------------------------
-
-	const [content, setContent] = useState(<SideBar_R_QuestionsLandingPage />);
-
-	useEffect(() => {
-		switch (sideBar_R_QuestionsStatus_rdx) {
-			case "QuestionsLanding":
-				setContent(<SideBar_R_QuestionsLandingPage />);
-				break;
-			case "Questions":
-				setContent(<SideBar_R_QuestionNumber />);
-				break;
-			case "TestResults":
-				setContent(<SideBar_R_TestResults />);
-				break;
-			case "ProbabilityOfPassingPage":
-				setContent(<SideBar_R_ProbabilityOfPassingPage />);
-				break;
-			default:
-				setContent(<SideBar_R_QuestionsLandingPage />);
-		}
-	}, [sideBar_R_QuestionsStatus_rdx]);
+	}, [sideBar_R_Notes_isOpen_rdx, sideBar_L_isOpen_rdx]);
 
 	return (
 		<Fragment>
-			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`} ref={sideBarQuestionsRef}>
+			<menu className={`${classes["sideBar_R_outerContainer"]} ${sideBar_R_Notes_isOpen_rdx ? classes.open : ""}`} ref={sideBarRNotesRef}>
 				{exitButton}
 				<div className={classes.resizer} ref={resizerRef}>
 					<div className={classes.resizerHandle}></div>
 				</div>
-
-				{content}
 			</menu>
 		</Fragment>
 	);
 };
 
-export default SideBar_R_Questions;
+export default SideBar_R_Notes;

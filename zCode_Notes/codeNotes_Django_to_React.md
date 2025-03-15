@@ -23,7 +23,7 @@ TEMPLATES = [
 
 - This setting says add the beginning path so django knows where to find index.html.
 
-## index.html
+## templates/frontend/index.html
 
 ```html
 ...

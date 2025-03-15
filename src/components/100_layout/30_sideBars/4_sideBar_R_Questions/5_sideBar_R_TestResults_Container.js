@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import SideBar_R_TestResultsListOfQuestions from "./6_sideBar_R_TestResultsListOfQuestions";
+import SideBar_R_TestResultsListOfQuestions from "./6_sideBar_R_TestResults_ListOfQuestions";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResults = () => {
@@ -19,7 +19,6 @@ const SideBar_R_TestResults = () => {
 	const backButtonAction = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 	};
-
 	const gotoNexTest = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(sideBar_R_Questions_CurrentTestNumber_rdx + 1));
@@ -45,7 +44,6 @@ const SideBar_R_TestResults = () => {
 		setAnsweredCorrectly(numberAnsweredCorrectly);
 		setIsPassed(numberAnsweredCorrectly >= 30);
 	}, [testResultData]);
-
 	const [yourScore, setYourScore] = useState(0);
 	useEffect(() => {
 		if (isPassed) {
@@ -66,7 +64,6 @@ const SideBar_R_TestResults = () => {
 			setYourScore(Math.round((answeredCorrectly / lastSubmittedQuestion) * 100));
 		}
 	}, [isPassed, lastSubmittedQuestion, sideBar_R_Questions_CurrentTestNumber_rdx]);
-
 	const modal_action_resetThisTest_open = () => {
 		dispatch(userReducerActions.modal_action_resetThisTest_open_rdx());
 	};

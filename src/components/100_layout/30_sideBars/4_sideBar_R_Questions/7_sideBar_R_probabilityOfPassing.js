@@ -30,16 +30,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const [lastSubmittedQuestion5, setLastSubmittedQuestion5] = useState(0);
 	const [lastSubmittedQuestion, setLastSubmittedQuestion] = useState(0);
 
-	const [yourScore3, setYourScore3] = useState(0);
-	const [yourScore4, setYourScore4] = useState(0);
-	const [yourScore5, setYourScore5] = useState(0);
-
-	const [isPassed1, setIsPassed1] = useState(null);
-	const [isPassed2, setIsPassed2] = useState(null);
-	const [isPassed3, setIsPassed3] = useState(null);
-	const [isPassed4, setIsPassed4] = useState(null);
-	const [isPassed5, setIsPassed5] = useState(null);
-	const [isPassed, setIsPassed] = useState(null);
+	// const [isPassed1, setIsPassed1] = useState(null);
+	// const [isPassed2, setIsPassed2] = useState(null);
+	// const [isPassed3, setIsPassed3] = useState(null);
+	// const [isPassed4, setIsPassed4] = useState(null);
+	// const [isPassed5, setIsPassed5] = useState(null);
+	// const [isPassed, setIsPassed] = useState(null);
 
 	const [status1, setStatus1] = useState(null);
 	const [status2, setStatus2] = useState(null);
@@ -79,7 +75,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 
 		setLastSubmittedQuestion1(numberAnswered1);
 		setAnswered_Correctly1(numberAnswered_Correctly1);
-		setIsPassed1(numberAnswered_Correctly1 >= 30);
+		// setIsPassed1(numberAnswered_Correctly1 >= 30);
 		setPercentAnswered_Correctly1(`${Math.round((numberAnswered_Correctly1 / numberAnswered1) * 100 * (numberAnswered1 / 36))}%`);
 		setPercentAnswered_Incorrectly1(`${Math.round(100 * (numberAnswered1 / 36))}%`);
 		if (numberAnswered1 < 36) {
@@ -90,7 +86,6 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus1("Failed");
 		}
 	}, [testResultData1]);
-
 	useEffect(() => {
 		if (!testResultData2) {
 			setStatus2("Not Started");
@@ -108,7 +103,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 
 		setLastSubmittedQuestion2(numberAnswered2);
 		setAnswered_Correctly2(numberAnswered_Correctly2);
-		setIsPassed2(numberAnswered_Correctly2 >= 30);
+		// setIsPassed2(numberAnswered_Correctly2 >= 30);
 		setPercentAnswered_Correctly2(`${Math.round((numberAnswered_Correctly2 / numberAnswered2) * 100 * (numberAnswered2 / 36))}%`);
 		setPercentAnswered_Incorrectly2(`${Math.round(100 * (numberAnswered2 / 36))}%`);
 		if (numberAnswered2 < 36) {
@@ -135,7 +130,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 
 		setLastSubmittedQuestion3(numberAnswered3);
 		setAnswered_Correctly3(numberAnswered_Correctly3);
-		setIsPassed3(numberAnswered_Correctly3 >= 30);
+		// setIsPassed3(numberAnswered_Correctly3 >= 30);
 		setPercentAnswered_Correctly3(`${Math.round((numberAnswered_Correctly3 / numberAnswered3) * 100 * (numberAnswered3 / 36))}%`);
 		setPercentAnswered_Incorrectly3(`${Math.round(100 * (numberAnswered3 / 36))}%`);
 		if (numberAnswered3 < 36) {
@@ -163,7 +158,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 
 		setLastSubmittedQuestion4(numberAnswered4);
 		setAnswered_Correctly4(numberAnswered_Correctly4);
-		setIsPassed4(numberAnswered_Correctly4 >= 30);
+		// setIsPassed4(numberAnswered_Correctly4 >= 30);
 		setPercentAnswered_Correctly4(`${Math.round((numberAnswered_Correctly4 / numberAnswered4) * 100 * (numberAnswered4 / 36))}%`);
 		setPercentAnswered_Incorrectly4(`${Math.round(100 * (numberAnswered4 / 36))}%`);
 		if (numberAnswered4 < 36) {
@@ -191,7 +186,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 
 		setLastSubmittedQuestion5(numberAnswered5);
 		setAnswered_Correctly5(numberAnswered_Correctly5);
-		setIsPassed5(numberAnswered_Correctly5 >= 30);
+		// setIsPassed5(numberAnswered_Correctly5 >= 30);
 		setPercentAnswered_Correctly5(`${Math.round((numberAnswered_Correctly5 / numberAnswered5) * 100 * (numberAnswered5 / 36))}%`);
 		setPercentAnswered_Incorrectly5(`${Math.round(100 * (numberAnswered5 / 36))}%`);
 		if (numberAnswered5 < 36) {
@@ -224,7 +219,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		}
 		setLastSubmittedQuestion(numberAnswered);
 		setAnswered_Correctly(numberAnswered_Correctly);
-		setIsPassed((numberAnswered_Correctly / numberAnswered) * 100 >= 80);
+		// setIsPassed((numberAnswered_Correctly / numberAnswered) * 100 >= 80);
 		setPercentAnswered_Correctly(`${Math.round((numberAnswered_Correctly / numberAnswered) * 100)}%`);
 		setPercentAnswered_Incorrectly(`${Math.round(100)}%`);
 		if ((numberAnswered_Correctly / numberAnswered) * 100 >= 80) {

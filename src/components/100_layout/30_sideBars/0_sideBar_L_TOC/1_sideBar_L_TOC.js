@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {userReducerActions} from "../../../../a.reducers/auth_Reducers"
+import { useSelector, useDispatch } from "react-redux";
+import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import PaginationGUI from "../../../400_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI";
-import SideBar_L_TOC_Parent_Items from "./2_sideBar_L_TOC_Parent_Items";
+import SideBar_L_TOC_Section from "./2_sideBar_L_TOC_Section";
 import classes from "./4_sideBar_L_TOC.module.css";
 
 const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentPageNum, activeID, GoTo_TopOfPage }) => {
@@ -11,23 +11,23 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	const [activeTab, setActiveTab] = useState("onThisPage");
 	const onThisPageTabAction = () => {
 		setActiveTab("onThisPage");
-	}
+	};
 	const sectionsTabAction = () => {
 		setActiveTab("sections");
-	}
+	};
 	const pinnedAction = () => {
 		setActiveTab("pinned");
-	}
+	};
 	const TOC_TabOptions = (
 		<div className={classes.sideBar_L_tabs_outerContainer}>
 			<div className={classes.sideBar_L_tabs_innerContainer}>
-				<span onClick={onThisPageTabAction} className={`${classes['sideBar_L_tab_Name_onThisPage']} ${activeTab === "onThisPage" ? classes.active : ""}`}>
+				<span onClick={onThisPageTabAction} className={`${classes["sideBar_L_tab_Name_onThisPage"]} ${activeTab === "onThisPage" ? classes.active : ""}`}>
 					<p>On this page</p>
 				</span>
-				<span onClick={sectionsTabAction} className={`${classes['sideBar_L_tab_Name_sections']} ${activeTab === "sections" ? classes.active : ""}`}>
+				<span onClick={sectionsTabAction} className={`${classes["sideBar_L_tab_Name_sections"]} ${activeTab === "sections" ? classes.active : ""}`}>
 					<p>Sections</p>
 				</span>
-				<span onClick={pinnedAction} className={`${classes['sideBar_L_tab_Name_pinned']} ${activeTab === "pinned" ? classes.active : ""}`}>
+				<span onClick={pinnedAction} className={`${classes["sideBar_L_tab_Name_pinned"]} ${activeTab === "pinned" ? classes.active : ""}`}>
 					<p>Pinned</p>
 				</span>
 			</div>
@@ -67,7 +67,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 			<div className={classes.tocInnerContainer}>
 				<ul>
 					{memoizedHeadings.map((heading) => (
-						<SideBar_L_TOC_Parent_Items
+						<SideBar_L_TOC_Section
 							key={heading.idx}
 							idx={heading.idx}
 							text={heading.text}
@@ -85,194 +85,262 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
 	const sectionsTab = (
 		<nav className={classes.tocOuterContainer}>
-			<div className={classes.tocTitleLabel}  onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(1))}>
+			<div className={classes.tocTitleLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(1))}>
 				<a>Handbook Sections</a>
 			</div>
 			<div className={classes.tocInnerContainer}>
 				<ul>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(2))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(2))}
+							>
 								<span>Secretary's Message</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(3))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(3))}
+							>
 								<span>DMV Services</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(4))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(4))}
+							>
 								<span>Copyright</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(5))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(5))}
+							>
 								<span>Disclaimer</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
+							>
 								<span className={classes.sectionNUm}>Section 1:</span> The California Driver's License
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}
+							>
 								<span className={classes.sectionNUm}>Section 2:</span> Getting an Instruction Permit and Driver’s License
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}
+							>
 								<span className={classes.sectionNUm}>Section 3:</span> The Testing Process
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}
+							>
 								<span className={classes.sectionNUm}>Section 4:</span> Changing, Replacing, and Renewing Your Driver’s License
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}
+							>
 								<span className={classes.sectionNUm}>Section 5:</span> An Introduction to Driving
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(11))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(11))}
+							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}
+							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads (Continued)
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}
+							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(14))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(14))}
+							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(15))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(15))}
+							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(16))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(16))}
+							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}
+							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(18))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(18))}
+							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}
+							>
 								<span className={classes.sectionNUm}>Section 9:</span> Alcohol and Drugs
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}
+							>
 								<span className={classes.sectionNUm}>Section 10:</span> Financial Responsibility, Insurance Requirements, and Collisions
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}
+							>
 								<span className={classes.sectionNUm}>Section 11:</span> Vehicle Registration Requirements
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}
+							>
 								<span className={classes.sectionNUm}>Section 12:</span> Driver Safety
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(23))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(23))}
+							>
 								<span className={classes.sectionNUm}>Section 13:</span> Seniors and Driving
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(24))}>
+							<a
+								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(24))}
+							>
 								<span className={classes.sectionNUm}>Section 14:</span> Glossary
 							</a>
 						</div>
 					</li>
-			
 				</ul>
 			</div>
 		</nav>
 	);
 	const pinnedTab = (
 		<nav className={classes.tocOuterContainer}>
-			<div className={classes.tocTitleLabel}  onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(1))}>
+			<div className={classes.tocTitleLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(1))}>
 				<a>Handbook Sections</a>
 			</div>
 			<div className={classes.tocInnerContainer}>
 				<ul>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`}>
+							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned1</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx=== 2 ? classes.isActive : ""}`}>
+							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned2</span>
 							</a>
 						</div>
@@ -287,8 +355,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 			{TOC_TabOptions}
 			<PaginationGUI />
 			{TOC_SearchBar}
-			{activeTab === "onThisPage" ? onThisPageTab : activeTab === "sections" ? sectionsTab :  activeTab === "pinned" ? pinnedTab : null}
-
+			{activeTab === "onThisPage" ? onThisPageTab : activeTab === "sections" ? sectionsTab : activeTab === "pinned" ? pinnedTab : null}
 		</div>
 	);
 };

@@ -5,9 +5,9 @@ import { logout_APIAction } from "../../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
 import GetStartedButton from "../../../300_modals/10_modal_getStarted/features/1_getStartedButton";
 import Logo from "../../../../../static/images/1Logo.png";
-import classes from "./sideBar_R_MainModal.module.css";
+import classes from "./sideBar_R_MainMenu.module.css";
 
-const SideBar_R_MainModal = () => {
+const SideBar_R_MainMenu = () => {
 	const sideBarMainRef = useRef();
 	const exitButtonRef = useRef();
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
@@ -434,4 +434,4 @@ const SideBar_R_MainModal = () => {
 	);
 };
 
-export default SideBar_R_MainModal;
+export default SideBar_R_MainMenu;

@@ -1,19 +1,20 @@
 import React, { useState, useRef, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
-import SideBar_R_QuestionsChild from "./4_sideBar_R_QuestionsChild";
+import SideBar_R_QuestionsChild from "./4_sideBar_R_MultipleChoiceOption";
 import classes from "../../../400_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
+	const quickNavRef = useRef(null);
+
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
 	const sideBar_R_QuestionTestResultsFailed_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResultsFailed_rdx);
 	const questionData_ifSubmitted_RetakeFailed = sideBar_R_QuestionTestResultsFailed_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
 	const dictionaryOfTestsAndWrongAnswers_rdx = useSelector(({ user }) => user.dictionaryOfTestsAndWrongAnswers_rdx);
-
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const sideBar_R_QuestionsIsFailed_rdx = useSelector(({ user }) => user.sideBar_R_QuestionsIsFailed_rdx);
-	const quickNavRef = useRef(null);
+
 	const question = questionData.question;
 	const answersData = questionData.answers;
 	const answersHint = questionData.hint;

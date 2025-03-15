@@ -10,15 +10,6 @@
 - While learning and taking notes, improve how a section is taught!<br />
 - Tell us/educate us by sharing your "improved" version of "that" learning section.<br />
 
-## 📔 Project Wiki
-
-- [Design UI Desktop](https://github.com/quin650/TellusEd/wiki/Design-UI--Desktop)
-- [Design UI Mobile](https://github.com/quin650/TellusEd/wiki/Design-UI--Mobile)
-- [Features List](https://github.com/quin650/TellusEd/wiki/Features-List)
-- [User Stories](https://github.com/quin650/TellusEd/wiki/User-Stories)
-- [Database Schema](https://github.com/quin650/TellusEd/wiki/Database-Schema)
-- [Redux Store Shape](https://github.com/quin650/TellusEd/wiki/Redux-Toolkit-Store)
-
 ## 💾 Install
 
 <details>
@@ -142,6 +133,8 @@ http://localhost:8000/
 **Last Updated:** March 2025  
 **Author:** Joaquin Garcia-Huerta
 
+<details>
+  <summary>Click to expand</summary>
 ## Summary of Key Naming Conventions
 
 | Type             | Convention       | Example                           |
@@ -355,3 +348,5 @@ const WelcomeMessage = ({ message = "Hello, User!" }: { message?: string }) => <
 - 🔒 Use **strict types** instead of `any`.
 
 ---
+
+</details>

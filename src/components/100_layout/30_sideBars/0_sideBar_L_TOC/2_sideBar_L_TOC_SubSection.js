@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./4_sideBar_L_TOC.module.css";
 
-const SideBar_L_TOC_Children_Items = ({ isVisible, idx, text, id, isActiveID, activeID }) => {
+const SideBar_L_TOC_SubSection = ({ isVisible, idx, text, id, isActiveID, activeID }) => {
 	return (
 		<ul key={idx} className={`${classes["childLabelOuterContainer"]} ${isVisible ? classes.isVisible : ""}`}>
 			<li className={`${classes["childLabelInnerContainer"]} ${isActiveID ? classes.isActive : ""}`}>
@@ -13,4 +13,4 @@ const SideBar_L_TOC_Children_Items = ({ isVisible, idx, text, id, isActiveID, ac
 	);
 };
 
-export default SideBar_L_TOC_Children_Items;
+export default SideBar_L_TOC_SubSection;

@@ -1,5 +1,13 @@
 ## Local Storage Requires JSON Format
 
+- Storing data:
+
+  ```js
+  localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
+  ```
+
+  - Local Storage only stores strings, so we need `JSON.stringify()` when saving.
+
 - Retrieving data:
 
   ```js
@@ -7,12 +15,6 @@
   ```
 
   - When retrieving data, we must use `JSON.parse()` to convert it back into an object.
-
-- Storing data:
-  ```js
-  localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
-  ```
-  - Local Storage only stores strings, so we need `JSON.stringify()` when saving.
 
 ---
 
@@ -108,7 +110,6 @@ ex - state.sideBar_R_QuestionTestResults_rdx[1] = {};
 ### Add to Test Object:
 
 ```js
-
 state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber] = { attempts: [] };
 
 ex - state.sideBar_R_QuestionTestResults_rdx[1][1] = { attempts: [] };

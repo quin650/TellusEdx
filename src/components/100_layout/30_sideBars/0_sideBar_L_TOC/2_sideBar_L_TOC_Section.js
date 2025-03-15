@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SideBar_L_TOC_Children_Items from "./3_sideBar_L_TOC_Children_Items";
+import SideBar_L_TOC_SubSection from "./2_sideBar_L_TOC_SubSection";
 import classes from "./4_sideBar_L_TOC.module.css";
 
-const SideBar_L_TOC_Parent_Items = ({ idx, text, id, currentPageNum, isActiveID, activeID, children }) => {
+const SideBar_L_TOC_Section = ({ idx, text, id, currentPageNum, isActiveID, activeID, children }) => {
 	const [isVisible, setIsVisible] = useState(true);
 	const toggleMenuOpen = () => {
 		setIsVisible(!isVisible);
@@ -33,7 +33,7 @@ const SideBar_L_TOC_Parent_Items = ({ idx, text, id, currentPageNum, isActiveID,
 				)}
 			</div>
 			{children.map((child) => (
-				<SideBar_L_TOC_Children_Items
+				<SideBar_L_TOC_SubSection
 					key={child.idx}
 					isVisible={isVisible}
 					idx={child.idx}
@@ -47,4 +47,4 @@ const SideBar_L_TOC_Parent_Items = ({ idx, text, id, currentPageNum, isActiveID,
 	);
 };
 
-export default SideBar_L_TOC_Parent_Items;
+export default SideBar_L_TOC_Section;
