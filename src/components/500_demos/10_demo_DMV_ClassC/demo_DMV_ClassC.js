@@ -4,8 +4,8 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 import SideBar_R_Notes from "../../400_sideBars/20_sideBar_R_Notes/sideBar_R_Notes";
 import SideBar_L_TOC from "../../400_sideBars/10_sideBar_L_TOC/1_sideBar_L_TOC";
-import SideBar_R_Questions from "../../400_sideBars/40_sideBar_R_Questions/0_sideBar_R_QuestionsContainer";
-import PaginationGUI from "./0_features/pagination/paginationGUI";
+import SideBar_R_Questions_Container from "../../400_sideBars/40_sideBar_R_Questions/10_sideBar_R_Questions_Container";
+import Pagination_eReader_GUI from "./0_features/pagination/pagination_eReader_GUI";
 import Modal_resetThisTest from "../../300_modals/30_modal_resetThisTest/modal_resetThisTest";
 
 import Page1 from "../../200_pages/20_demo_pages/page1";
@@ -54,7 +54,7 @@ const DemoDMVClassC = () => {
 		sideBar_L_AllowCollapse_OnWindowResize_rdx,
 		sideBar_R_Notes_isOpen_rdx,
 		sideBar_R_Main_isOpen_rdx,
-		currentPageNum_rdx,
+		pageNum_current_reader_rdx,
 		sideBar_R_Questions_isOpen_rdx,
 	} = useSelector(({ user }) => user);
 	const ListOfPages = [
@@ -95,7 +95,7 @@ const DemoDMVClassC = () => {
 				header.id = id;
 			});
 		}
-	}, [currentPageNum_rdx]);
+	}, [pageNum_current_reader_rdx]);
 	//! Get Page Title | Get Range of pages
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -104,7 +104,7 @@ const DemoDMVClassC = () => {
 			const secTitle = H1_Element ? H1_Element.textContent : "";
 			setPageTitle(secTitle);
 		}
-	}, [currentPageNum_rdx]);
+	}, [pageNum_current_reader_rdx]);
 	//! Get list of all the headings h2 & their h3 children
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -134,7 +134,7 @@ const DemoDMVClassC = () => {
 			});
 			setHeadingsList(headingsArray);
 		}
-	}, [currentPageNum_rdx]);
+	}, [pageNum_current_reader_rdx]);
 	//! Get closest ID to the top
 	const debounce = (func, wait) => {
 		let timeout;
@@ -206,7 +206,7 @@ const DemoDMVClassC = () => {
 	};
 	useEffect(() => {
 		GoTo_TopOfPage();
-	}, [currentPageNum_rdx]);
+	}, [pageNum_current_reader_rdx]);
 	//! TOC Status: Open/Close
 	const width_Affects_to_SideBar_L_TOC = useCallback(
 		throttle(() => {
@@ -291,18 +291,18 @@ const DemoDMVClassC = () => {
 					sideBar_L_isOpen={sideBar_L_isOpen_rdx}
 					pageTitle={pageTitle}
 					memoizedHeadings={memoizedHeadings}
-					currentPageNum={currentPageNum_rdx}
+					currentPageNum={pageNum_current_reader_rdx}
 					activeID={activeID}
 					GoTo_TopOfPage={GoTo_TopOfPage}
 				/>
 				<div className={classes.handbook_outerContainer} ref={pageContentRef} onClick={handleMainClick}>
 					<div className={classes.page_contentContainer}>
-						{ListOfPages[currentPageNum_rdx - 1]}
-						<PaginationGUI />
+						{ListOfPages[pageNum_current_reader_rdx - 1]}
+						<Pagination_eReader_GUI />
 					</div>
 				</div>
 				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_Notes pageContentRef={pageContentRef} />}
-				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_Questions pageContentRef={pageContentRef} />}
+				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_Questions_Container pageContentRef={pageContentRef} />}
 			</div>
 		</main>
 	);

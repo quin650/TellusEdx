@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Fragment, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
-import PDF_paginationGUI from "../pagination/PDF_paginationGUI";
+import Pagination_PDF_GUI from "../pagination/pagination_PDF_GUI";
 import ZoomGUI from "../pagination/zoomGUI";
 
 const PDFViewer = () => {
@@ -215,7 +215,7 @@ const PDFViewer = () => {
 				</div>
 			</div>
 			<div className={classes.navigation_container}>
-				<PDF_paginationGUI />
+				<Pagination_PDF_GUI />
 
 				<div className={classes.zoomControlsContainer}>
 					<ZoomGUI toggleFullScreen={toggleFullScreen} isFullScreen={isFullScreen} zoomIn={zoomIn} zoomOut={zoomOut} />

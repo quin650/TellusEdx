@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import PaginationGUI from "../../500_demos/10_demo_DMV_ClassC/0_features/pagination/paginationGUI";
+import Pagination_eReader_GUI from "../../500_demos/10_demo_DMV_ClassC/0_features/pagination/pagination_eReader_GUI";
 import SideBar_L_TOC_Section from "./2_sideBar_L_TOC_Section";
 import classes from "./4_sideBar_L_TOC.module.css";
 
@@ -82,7 +82,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 			</div>
 		</nav>
 	);
-	const currentPageNum_rdx = useSelector(({ user }) => user.currentPageNum_rdx);
+	const pageNum_current_reader_rdx = useSelector(({ user }) => user.pageNum_current_reader_rdx);
 	const sectionsTab = (
 		<nav className={classes.tocOuterContainer}>
 			<div className={classes.tocTitleLabel} onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(1))}>
@@ -93,7 +93,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(2))}
 							>
 								<span>Secretary's Message</span>
@@ -103,7 +103,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(3))}
 							>
 								<span>DMV Services</span>
@@ -113,7 +113,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(4))}
 							>
 								<span>Copyright</span>
@@ -123,7 +123,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(5))}
 							>
 								<span>Disclaimer</span>
@@ -133,7 +133,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
 							>
 								<span className={classes.sectionNUm}>Section 1:</span> The California Driver's License
@@ -143,7 +143,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}
 							>
 								<span className={classes.sectionNUm}>Section 2:</span> Getting an Instruction Permit and Driver’s License
@@ -153,7 +153,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}
 							>
 								<span className={classes.sectionNUm}>Section 3:</span> The Testing Process
@@ -163,7 +163,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}
 							>
 								<span className={classes.sectionNUm}>Section 4:</span> Changing, Replacing, and Renewing Your Driver’s License
@@ -173,7 +173,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}
 							>
 								<span className={classes.sectionNUm}>Section 5:</span> An Introduction to Driving
@@ -183,7 +183,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(11))}
 							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads
@@ -193,7 +193,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}
 							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads (Continued)
@@ -203,7 +203,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road
@@ -213,7 +213,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(14))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
@@ -223,7 +223,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(15))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
@@ -233,7 +233,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(16))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving
@@ -243,7 +243,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
@@ -253,7 +253,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(18))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
@@ -263,7 +263,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}
 							>
 								<span className={classes.sectionNUm}>Section 9:</span> Alcohol and Drugs
@@ -273,7 +273,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}
 							>
 								<span className={classes.sectionNUm}>Section 10:</span> Financial Responsibility, Insurance Requirements, and Collisions
@@ -283,7 +283,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}
 							>
 								<span className={classes.sectionNUm}>Section 11:</span> Vehicle Registration Requirements
@@ -293,7 +293,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}
 							>
 								<span className={classes.sectionNUm}>Section 12:</span> Driver Safety
@@ -303,7 +303,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(23))}
 							>
 								<span className={classes.sectionNUm}>Section 13:</span> Seniors and Driving
@@ -313,7 +313,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
 							<a
-								className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}
+								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(24))}
 							>
 								<span className={classes.sectionNUm}>Section 14:</span> Glossary
@@ -333,14 +333,14 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 				<ul>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}>
+							<a className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned1</span>
 							</a>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${currentPageNum_rdx === 2 ? classes.isActive : ""}`}>
+							<a className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned2</span>
 							</a>
 						</div>
@@ -353,7 +353,7 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	return (
 		<div className={`${classes["sideBar_L_outerContainer"]} ${sideBar_L_isOpen ? classes.open : ""}`}>
 			{TOC_TabOptions}
-			<PaginationGUI />
+			<Pagination_eReader_GUI />
 			{TOC_SearchBar}
 			{activeTab === "onThisPage" ? onThisPageTab : activeTab === "sections" ? sectionsTab : activeTab === "pinned" ? pinnedTab : null}
 		</div>

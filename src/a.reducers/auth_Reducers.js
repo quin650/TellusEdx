@@ -2,30 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 const testResultsFromStorage = localStorage.getItem("testResults") ? JSON.parse(localStorage.getItem("testResults")) : {};
-const testResultsFailedFromStorage = localStorage.getItem("testResultsFailed") ? JSON.parse(localStorage.getItem("testResultsFailed")) : {};
 const systemColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 const localStorageColor = localStorage.getItem("prefers-color-scheme");
 const isDarkMode = localStorageColor ? localStorageColor : systemColor;
 
 const initialState = {
-	//SideBars
-	currentPageNum_rdx: 1,
-	inputPageNum_rdx: 1,
+	//! SideBars
+	pageNum_current_reader_rdx: 1,
+	pageNum_input_reader_rdx: 1,
 	pagesLength_rdx: 0,
 	PDF_currentPageNum_rdx: 1,
 	PDF_inputPageNum_rdx: 1,
 	PDF_pagesLength_rdx: 92,
 
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
-	sideBar_R_Questions_CurrentTestNumber_rdx: null,
+	sideBar_R_Questions_CurrentTestNumber_rdx: 1,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
-	sideBar_R_Questions_CurrentTestNumberRetake_rdx: null,
-	sideBar_R_Questions_CurrentQuestionNumberRetake_rdx: null,
+	//? here
+	sideBar_R_Questions_lastQuestionFailed_and_notReAttempted_forRetake_rdx: null,
+	sideBar_R_Questions_CurrentQuestionNumber_forRetake_rdx: null,
+	sideBar_R_Questions_NextTestNumber_idx_toReAttempt_rdx: null,
+	sideBar_R_Questions_NextTestNumber_num_toReAttempt_rdx: null,
+	sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt_rdx: null,
+	sideBar_R_Questions_NextQuestionNumber_num_toReAttempt_rdx: null,
+	sideBar_R_Questions_currentAttempt_rdx: 0,
+	//? here
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	//! new
-	sideBar_R_QuestionTestResultsFailed_rdx: testResultsFailedFromStorage,
-	dictionaryOfTestsAndWrongAnswers_rdx: {},
+
 	submittedQuestionsList_rdx: [],
 	sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx: false,
 	sideBar_L_isOpen_rdx: true,
@@ -36,15 +41,15 @@ const initialState = {
 	sideBar_R_SearchBar_isActive_rdx: false,
 	sideBar_R_NavigationStack: [],
 	//! new
-	sideBar_R_QuestionsIsFailed_rdx: false,
+	sideBar_R_Questions_retakeFailed_isOpen_rdx: false,
 
-	//Modals
+	//! Modals
 	getStarted_ModalStatus_rdx: false,
 	getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
 	resetThisTest_ModalStatus_rdx: false,
 
-	//General
+	//! General
 	isAuthenticated_rdx: false,
 	loading_rdx: false,
 	activeFlag_rdx: "../../../../static/images/countries/1UnitedStates.png",
@@ -54,7 +59,7 @@ const initialState = {
 	isDashboardFullScreen_rdx: true,
 	activePanel: "main",
 
-	//User Info
+	//! User Info
 	loginError_rdx: "",
 	profile_id_rdx: "",
 	username_rdx: "",
@@ -64,7 +69,7 @@ const initialState = {
 	token_rdx: "",
 	userInfo_rdx: userInfoFromStorage,
 
-	//Registration
+	//! Registration
 	passwordResetPassCodeEmail_rdx: 0,
 	registered_rdx: false,
 	registrationError_rdx: "",
@@ -72,15 +77,15 @@ const initialState = {
 	verificationEmailFailureStatus_rdx: "",
 	generalFeedback_rdx: "",
 
-	//Verify Account
+	//! Verify Account
 	verifyAccountPassCodeStatus_rdx: true,
 	verifyAccountPassCodeFeedback_rdx: "Verification Code sent to your email_rdx.",
 
-	//Reset Password Email PassCode
+	//! Reset Password Email PassCode
 	resetPasswordEmailPassCodeStatus_rdx: true,
 	resetPasswordEmailPassCodeFeedback_rdx: "Enter your email_rdx to receive a reset code.",
 
-	//Reset Your Password
+	//! Reset Your Password
 	resetPasswordChangeStatus_rdx: true,
 	resetPasswordChangeFeedback_rdx: "Enter Verification Code and New Password",
 };
@@ -89,7 +94,7 @@ const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
-		// NavBar
+		//! NavBar
 		setDemoView(state) {
 			state.isDemoView_rdx = true;
 		},
@@ -97,16 +102,16 @@ const userSlice = createSlice({
 			state.isDemoView_rdx = false;
 		},
 		setDemoCurrentPageNum(state, action) {
-			state.currentPageNum_rdx = action.payload;
-			state.inputPageNum_rdx = action.payload;
+			state.pageNum_current_reader_rdx = action.payload;
+			state.pageNum_input_reader_rdx = action.payload;
 		},
 		setDemoInputPageNum(state, action) {
-			state.inputPageNum_rdx = action.payload;
+			state.pageNum_input_reader_rdx = action.payload;
 		},
 		setDemoPageLength(state, action) {
 			state.pagesLength_rdx = action.payload;
 		},
-		// PDF
+		//! PDF
 		PDF_setDemoCurrentPageNum(state, action) {
 			state.PDF_currentPageNum_rdx = action.payload;
 			state.PDF_inputPageNum_rdx = action.payload;
@@ -114,11 +119,11 @@ const userSlice = createSlice({
 		PDF_setDemoInputPageNum(state, action) {
 			state.PDF_inputPageNum_rdx = action.payload;
 		},
-		//General
+		//! General
 		setActivePanel(state, action) {
 			state.activePanel = action.payload;
 		},
-		// SideBar L
+		//! SideBar L
 		sideBar_L_Toggle_Visibility(state) {
 			state.sideBar_L_isOpen_rdx = !state.sideBar_L_isOpen_rdx;
 		},
@@ -134,21 +139,21 @@ const userSlice = createSlice({
 		sideBar_L_YesAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
-		// Notes SideBar
+		//! Notes SideBar
 		sideBar_R_Open_Notes(state) {
 			state.sideBar_R_Notes_isOpen_rdx = true;
 		},
 		sideBar_R_Close_Notes(state) {
 			state.sideBar_R_Notes_isOpen_rdx = false;
 		},
-		// R Main SideBar
+		//! R Main SideBar
 		sideBar_R_Open_Main(state) {
 			state.sideBar_R_Main_isOpen_rdx = true;
 		},
 		sideBar_R_Close_Main(state) {
 			state.sideBar_R_Main_isOpen_rdx = false;
 		},
-		// R Questions SideBar
+		//! R Questions SideBar
 		sideBar_R_Open_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = true;
 			state.sideBar_R_NavigationStack.push("QuestionsLanding");
@@ -157,7 +162,7 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_isOpen_rdx = false;
 			state.sideBar_R_NavigationStack = [];
 		},
-		// NavigationStack
+		//! NavigationStack
 		sideBar_R_Questions_GoToPrev(state) {
 			const prevIndex = state.sideBar_R_NavigationStack.length - 2;
 			if (prevIndex >= 0) {
@@ -173,7 +178,7 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
 			state.sideBar_R_NavigationStack.push("Questions");
-			state.sideBar_R_QuestionsIsFailed_rdx = false;
+			state.sideBar_R_Questions_retakeFailed_isOpen_rdx = false;
 		},
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
@@ -192,14 +197,10 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionsStatus_rdx = "ProbabilityOfPassingPage";
 			state.sideBar_R_NavigationStack.push("ProbabilityOfPassingPage");
 		},
-		sideBar_R_Questions_GoTo_RetakeFailedQuestions(state, action) {
-			state.sideBar_R_QuestionsIsFailed_rdx = true;
-			const { testNumber, questionNumber } = action.payload;
+		sideBar_R_Questions_GoTo_RetakeFailedQuestions(state) {
+			state.sideBar_R_Questions_retakeFailed_isOpen_rdx = true;
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_NavigationStack.push("Questions");
-
-			state.sideBar_R_Questions_CurrentTestNumber_rdx = testNumber;
-			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = questionNumber;
 		},
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
@@ -210,13 +211,17 @@ const userSlice = createSlice({
 		sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose(state) {
 			state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx = !state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx;
 		},
-		// not failed
+		//! not failed
 		updateQuestionResults(state, action) {
 			const { testNumber, questionNumber, answerData } = action.payload;
 			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber]) {
 				state.sideBar_R_QuestionTestResults_rdx[testNumber] = {};
 			}
-			state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber] = answerData;
+			if (!state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber]) {
+				state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber] = { attempts: [] };
+			}
+
+			state.sideBar_R_QuestionTestResults_rdx[testNumber][questionNumber].attempts.unshift(answerData);
 			localStorage.setItem("testResults", JSON.stringify(state.sideBar_R_QuestionTestResults_rdx));
 		},
 		deleteTestResults(state, action) {
@@ -232,41 +237,35 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");
 		},
+		//! failed
 
-		//  failed
-		updateFailedQuestionResults(state, action) {
-			const { testNumber, questionNumber, answerData } = action.payload;
-			if (!state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber]) {
-				state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber] = {};
-			}
-			state.sideBar_R_QuestionTestResultsFailed_rdx[testNumber][questionNumber] = answerData;
-			localStorage.setItem("testResultsFailed", JSON.stringify(state.sideBar_R_QuestionTestResultsFailed_rdx));
-		},
 		deleteFailedTestResults(state, action) {
-			if (state.sideBar_R_QuestionTestResultsFailed_rdx[action.payload]) {
-				delete state.sideBar_R_QuestionTestResultsFailed_rdx[action.payload];
-			}
-			localStorage.setItem("testResultsFailed", JSON.stringify(state.sideBar_R_QuestionTestResultsFailed_rdx));
-			state.sideBar_R_Questions_CurrentTestNumber_rdx = null;
-			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = 1;
-			state.sideBar_R_QuestionLastPageNum_rdx = 0;
+			///
 		},
 		resetFailedQuestionResults(state) {
-			state.sideBar_R_QuestionTestResultsFailed_rdx = {};
-			localStorage.removeItem("testResultsFailed");
+			///
 		},
-		sideBar_R_Questions_UpdateDictionaryOfTestsAndWrongAnswers(state, action) {
-			state.dictionaryOfTestsAndWrongAnswers_rdx = action.payload;
+
+		sideBar_R_Questions_setNextTestNumber_toReAttempt(state, action) {
+			const { idx, num } = action.payload;
+			state.sideBar_R_Questions_NextTestNumber_idx_toReAttempt_rdx = idx;
+			state.sideBar_R_Questions_NextTestNumber_num_toReAttempt_rdx = num;
+			state.sideBar_R_Questions_CurrentTestNumber_rdx = num;
 		},
-		updateFailedQuestionResults_lastQuestionSubmitted(state, action) {
-			state.sideBar_R_Questions_CurrentTestNumberRetake_rdx = action.payload.testNumber;
-			state.sideBar_R_Questions_CurrentQuestionNumberRetake_rdx = action.payload.questionNumber;
+		sideBar_R_Questions_setNextQuestionNumber_toReAttempt(state, action) {
+			const { idx, num } = action.payload;
+			state.sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt_rdx = idx;
+			state.sideBar_R_Questions_NextQuestionNumber_num_toReAttempt_rdx = num;
+			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = num;
 		},
-		// searchBar
+		sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(state, action) {
+			state.setRetakeFailedQuestions_moduleIsActive_rdx = action.payload;
+		},
+		//! searchBar
 		sideBar_R_SearchBar_isActive(state, action) {
 			state.sideBar_R_SearchBar_isActive_rdx = action.payload;
 		},
-		// Get Started Modal
+		//! Get Started Modal
 		modal_action_getStarted_logIn_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
@@ -285,7 +284,7 @@ const userSlice = createSlice({
 			state.getStarted_ModalStatus_rdx = false;
 			state.sideBar_R_Main_isOpen_rdx = false;
 		},
-		// Registration
+		//! Registration
 		modal_action_registration_close_rdx(state) {
 			state.getStarted_ModalStatus_rdx = false;
 		},
@@ -305,7 +304,7 @@ const userSlice = createSlice({
 		modal_action_registration_errorReset_rdx(state) {
 			state.registrationError_rdx = "";
 		},
-		// Verify Your Account
+		//! Verify Your Account
 		modal_action_verificationPassCode_success_rdx(state) {
 			state.getStartedView_rdx = "VerificationSuccessModal";
 			state.generalFeedback_rdx = "";
@@ -330,11 +329,11 @@ const userSlice = createSlice({
 			state.generalFeedback_rdx = action.payload;
 			state.verificationEmailFailureStatus_rdx = "Failed";
 		},
-		// Verification Success
+		//! Verification Success
 		GoTo_LogInModal_rdx(state) {
 			state.getStartedView_rdx = "LogInModal";
 		},
-		// Log In
+		//! Log In
 		modal_action_login_request_rdx(state) {
 			state.loading_rdx = true;
 		},
@@ -351,14 +350,14 @@ const userSlice = createSlice({
 		modal_action_login_errorReset_rdx(state) {
 			state.loginError_rdx = "";
 		},
-		// Log Out
+		//! Log Out
 		modal_action_logout_success_rdx(state) {
 			state.isAuthenticated_rdx = false;
 		},
 		modal_action_logout_fail_rdx(state) {
 			state;
 		},
-		// Authentication
+		//! Authentication
 		authSuccess(state) {
 			state.isAuthenticated_rdx = true;
 		},
@@ -368,7 +367,7 @@ const userSlice = createSlice({
 		token_rdxSuccess(state, action) {
 			state.token_rdx = action.payload;
 		},
-		// Reset Password - Email PassCode
+		//! Reset Password - Email PassCode
 		modal_action_passwordReset_passCodeEmail_sentSuccess_rdx(state, action) {
 			state.passwordResetPassCodeEmail_rdx += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
@@ -382,7 +381,7 @@ const userSlice = createSlice({
 		modal_action_passwordReset_passCodeEmail_resetStatus_rdx(state) {
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 		},
-		// Reset Password - Change
+		//! Reset Password - Change
 		modal_action_passwordReset_success_rdx(state) {
 			state.resetPasswordChangeStatus_rdx = true;
 			state.resetPasswordChangeFeedback_rdx = "";
@@ -406,14 +405,14 @@ const userSlice = createSlice({
 		modal_action_passwordReset_passwordChange_resetStatus_rdx(state) {
 			state.resetPasswordChangeStatus_rdx = true;
 		},
-		//Delete - User
+		//! Delete - User
 		modal_action_deleteUser_success_rdx(state) {
 			state.isAuthenticated_rdx = false;
 		},
 		modal_action_deleteUser_fail_rdx(state) {
 			state;
 		},
-		// Language Modal Settings
+		//! Language Modal Settings
 		languageSettingsModalOpen(state) {
 			state.languageSettings_ModalStatus_rdx = true;
 		},
@@ -505,7 +504,7 @@ const userSlice = createSlice({
 		modal_action_resetThisTest_close_rdx(state) {
 			state.resetThisTest_ModalStatus_rdx = false;
 		},
-		//Dark/Light Settings
+		//! Dark/Light Settings
 		setDarkLightMode(state, action) {
 			state.isDarkMode_rdx = action.payload;
 			localStorage.setItem("prefers-color-scheme", action.payload);
