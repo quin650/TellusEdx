@@ -16,16 +16,13 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const answersData = questionData.answers;
 	const answersHint = questionData.hint;
 	const questionImage = questionData.image ? questionData.image : null;
-	// ! start
+	// ! new...
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
 	const testResultsData_listForm = Object.entries(testResultData);
 	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
-
-	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
-		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
-	};
-
 	const navItems = [];
+
+	//! loop through questionData to create the quickNavBar
 	useEffect(() => {
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
 			for (let i = 1; i <= 36; i++) {
@@ -81,6 +78,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		setQuickNavBar(navItems);
 	}, [questionData_ifSubmitted, gotoQuestion]);
 
+	//! set what multiple choice option is checked
+	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
+		get_ChosenAnswerID(newAnswerID, correctOrIncorrect);
+	};
+
+	//! event listener for scroll on quickNav
 	useEffect(() => {
 		const quickNav = quickNavRef.current;
 		const handleWheel = (e) => {
@@ -93,6 +96,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		};
 	}, []);
 
+	//! set Image Status - hasQuestionImage
 	useEffect(() => {
 		if (questionImage === "" || questionImage === null) {
 			setHasQuestionImage(false);

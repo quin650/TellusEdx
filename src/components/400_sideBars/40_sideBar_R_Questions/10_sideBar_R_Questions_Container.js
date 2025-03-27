@@ -52,7 +52,8 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 			</svg>
 		</button>
 	);
-	// Resizer functionality
+
+	//! Resizer functionality
 	useEffect(() => {
 		const sidebar = sideBarQuestionsRef.current;
 		const pageContent = pageContentRef.current;
@@ -126,6 +127,7 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 			resizer.removeEventListener("mousedown", rs_mousedownHandler);
 		};
 	}, [sideBar_R_Questions_isOpen_rdx, sideBar_L_isOpen_rdx]);
+
 	//! Component Control---------------------------------------
 	const [content, setContent] = useState(<SideBar_R_QuestionsOptions />);
 	useEffect(() => {

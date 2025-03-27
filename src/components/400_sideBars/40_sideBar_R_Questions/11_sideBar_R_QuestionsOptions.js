@@ -8,13 +8,12 @@ const SideBar_R_QuestionsOptions = () => {
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const pageNum_current_reader_rdx = useSelector(({ user }) => user.pageNum_current_reader_rdx);
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
-
 	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
-	const sideBar_R_Questions_NextTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_NextTestNumber_idx_toReAttempt_rdx);
-	const sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt_rdx);
+	const sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
 	const setRetakeFailedQuestions_moduleIsActive_rdx = useSelector(({ user }) => user.setRetakeFailedQuestions_moduleIsActive_rdx);
 	const [hasReAttemptedQuestion, setHasReAttemptedQuestion] = useState(false);
-	const [questionsOnThisPageStatus, setQuestionsOnThisPageStatus] = useState(false);
+	const [questionsOnThisPage_ActiveStatus, setQuestionsOnThisPage_ActiveStatus] = useState(false);
 	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(true);
 	const [lastQuestionSubmitted, setLastQuestionSubmitted] = useState(null);
 	const [test1Status, setTest1Status] = useState("");
@@ -22,6 +21,122 @@ const SideBar_R_QuestionsOptions = () => {
 	const [test3Status, setTest3Status] = useState("");
 	const [test4Status, setTest4Status] = useState("");
 	const [test5Status, setTest5Status] = useState("");
+	//! loop through testResultData, dispatch pertinent values
+	useEffect(() => {
+		const testResultsData_listForm = Object.entries(testResultData);
+		let sideBar_R_Questions_FirstTestNumber_idx_reAttempted = null;
+		let sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted = null;
+		let sideBar_R_Questions_FirstTestNumber_num_reAttempted = null;
+		let sideBar_R_Questions_FirstQuestionNumber_num_reAttempted = null;
+
+		let sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = null;
+		let sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = null;
+		let sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = null;
+		let sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = null;
+
+		let sideBar_R_Questions_LastTestNumber_idx_toReAttempt = null;
+		let sideBar_R_Questions_LastTestNumber_num_toReAttempt = null;
+		let sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt = null;
+		let sideBar_R_Questions_LastQuestionNumber_num_toReAttempt = null;
+
+		//TODO Push array of questions got wrong
+		let wrongAnswers_num = {
+			1: [],
+			2: [],
+			3: [],
+			4: [],
+			5: [],
+		};
+		for (let testNum_idx = 0; testNum_idx < testResultsData_listForm.length; testNum_idx++) {
+			const testNum = testNum_idx + 1;
+			const testData = testResultsData_listForm[testNum_idx][1];
+			const testData_object = Object.entries(testData);
+
+			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
+				const questionNum = questionNum_idx + 1;
+				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
+				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
+				if (questionData_attempts && sideBar_R_Questions_FirstTestNumber_idx_reAttempted === null && sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted === null) {
+					sideBar_R_Questions_FirstTestNumber_idx_reAttempted = testNum_idx;
+					sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted = questionNum_idx;
+					sideBar_R_Questions_FirstTestNumber_num_reAttempted = testNum;
+					sideBar_R_Questions_FirstQuestionNumber_num_reAttempted = questionNum;
+					dispatch(
+						userReducerActions.sideBar_R_Questions_setFirstTestNumber_reAttempted({
+							idx: sideBar_R_Questions_FirstTestNumber_idx_reAttempted,
+							num: sideBar_R_Questions_FirstTestNumber_num_reAttempted,
+						})
+					);
+					dispatch(
+						userReducerActions.sideBar_R_Questions_setFirstQuestionNumber_reAttempted({
+							idx: sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted,
+							num: sideBar_R_Questions_FirstQuestionNumber_num_reAttempted,
+						})
+					);
+				}
+				if (!initialAttempt_gotCorrect) {
+					wrongAnswers_num[testNum].push(questionNum);
+					if (!question_wasReAttempted) {
+						if (sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
+							sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = testNum_idx;
+							sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + 1;
+							sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
+							sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt + 1;
+						}
+
+						sideBar_R_Questions_LastTestNumber_idx_toReAttempt = testNum_idx;
+						sideBar_R_Questions_LastTestNumber_num_toReAttempt = testNum;
+						sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt = questionNum_idx;
+						sideBar_R_Questions_LastQuestionNumber_num_toReAttempt = questionNum;
+					}
+				}
+			}
+		}
+
+		if (
+			sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== null &&
+			sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== undefined &&
+			sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx === null
+		) {
+			dispatch(
+				userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
+					idx: sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt,
+					num: sideBar_R_Questions_CurrentTestNumber_num_toReAttempt,
+				})
+			);
+			dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
+		}
+		if (
+			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== null &&
+			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== undefined &&
+			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx === null
+		) {
+			dispatch(
+				userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
+					idx: sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt,
+					num: sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt,
+				})
+			);
+		}
+
+		dispatch(
+			userReducerActions.sideBar_R_Questions_setLastTestNumber_toReAttempt({
+				idx: sideBar_R_Questions_LastTestNumber_idx_toReAttempt,
+				num: sideBar_R_Questions_LastTestNumber_num_toReAttempt,
+			})
+		);
+		dispatch(
+			userReducerActions.sideBar_R_Questions_setLastQuestionNumber_toReAttempt({
+				idx: sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt,
+				num: sideBar_R_Questions_LastQuestionNumber_num_toReAttempt,
+			})
+		);
+
+		dispatch(userReducerActions.sideBar_R_Questions_setWrongAnswers(wrongAnswers_num));
+	}, []);
+
+	// ! Set test-caption/active status
 	useEffect(() => {
 		if (sideBar_R_QuestionTestResults_rdx) {
 			// Check if the values are available before updating state -- !!double negation returns boolean if truthy of falsy
@@ -56,97 +171,31 @@ const SideBar_R_QuestionsOptions = () => {
 			}
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
+
+	// ! Set Status for Questions On This Page - Active/Inactive
 	useEffect(() => {
 		if (pageNum_current_reader_rdx > 5) {
-			setQuestionsOnThisPageStatus(true);
+			setQuestionsOnThisPage_ActiveStatus(true);
 		} else {
-			setQuestionsOnThisPageStatus(false);
+			setQuestionsOnThisPage_ActiveStatus(false);
 		}
 	}, [pageNum_current_reader_rdx]);
-	useEffect(() => {
-		const testResultsData_listForm = Object.entries(testResultData);
-		let lastTest_idx_reAttempted = null;
-		let lastTest_num_reAttempted = null;
-		let lastQuestion_idx_reAttempted = null;
-		let lastQuestion_num_reAttempted = null;
 
-		let sideBar_R_Questions_NextTestNumber_idx_toReAttempt = null;
-		let sideBar_R_Questions_NextTestNumber_num_toReAttempt = null;
-		let sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt = null;
-		let sideBar_R_Questions_NextQuestionNumber_num_toReAttempt = null;
-
-		for (let testNum_idx = 0; testNum_idx < testResultsData_listForm.length; testNum_idx++) {
-			const testNum = testNum_idx + 1;
-			const testData = testResultsData_listForm[testNum_idx][1];
-			const testData_object = Object.entries(testData);
-			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
-				const questionNum = questionNum_idx + 1;
-
-				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
-				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
-
-				if (initialAttempt_gotCorrect) {
-				}
-				if (!initialAttempt_gotCorrect) {
-					if (question_wasReAttempted) {
-						lastTest_idx_reAttempted = testNum_idx;
-						lastQuestion_idx_reAttempted = questionNum_idx;
-					}
-					if (
-						!question_wasReAttempted &&
-						(sideBar_R_Questions_NextTestNumber_idx_toReAttempt === null || sideBar_R_Questions_NextTestNumber_idx_toReAttempt === undefined)
-					) {
-						sideBar_R_Questions_NextTestNumber_idx_toReAttempt = testNum_idx;
-						sideBar_R_Questions_NextTestNumber_num_toReAttempt = sideBar_R_Questions_NextTestNumber_idx_toReAttempt + 1;
-						sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt = questionNum_idx;
-						sideBar_R_Questions_NextQuestionNumber_num_toReAttempt = sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt + 1;
-					}
-				}
-			}
-		}
-
-		if (
-			sideBar_R_Questions_NextTestNumber_idx_toReAttempt !== null &&
-			sideBar_R_Questions_NextTestNumber_idx_toReAttempt !== undefined &&
-			sideBar_R_Questions_NextTestNumber_idx_toReAttempt_rdx === null
-		) {
-			dispatch(
-				userReducerActions.sideBar_R_Questions_setNextTestNumber_toReAttempt({
-					idx: sideBar_R_Questions_NextTestNumber_idx_toReAttempt,
-					num: sideBar_R_Questions_NextTestNumber_num_toReAttempt,
-				})
-			);
-
-			dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
-		}
-		if (
-			sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt !== null &&
-			sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt !== undefined &&
-			sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt_rdx === null
-		) {
-			dispatch(
-				userReducerActions.sideBar_R_Questions_setNextQuestionNumber_toReAttempt({
-					idx: sideBar_R_Questions_NextQuestionNumber_idx_toReAttempt,
-					num: sideBar_R_Questions_NextQuestionNumber_num_toReAttempt,
-				})
-			);
-		}
-	}, []);
-	const goTo_RetakeFailedQuestions = () => {
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions());
-	};
 	//! Button Actions
 	const generalButtonClick = () => {
 		console.log("generalButtonClick");
 	};
 	const test1 = () => {
 		if (test1Status === "Done") {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
 		} else if (test1Status === "Start" || test1Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			if (lastQuestionSubmitted + 1 > 36) {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			} else {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
@@ -158,7 +207,11 @@ const SideBar_R_QuestionsOptions = () => {
 		} else if (test2Status === "Start" || test2Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			if (lastQuestionSubmitted + 1 > 36) {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			} else {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
 	};
@@ -170,7 +223,11 @@ const SideBar_R_QuestionsOptions = () => {
 		} else if (test3Status === "Start" || test3Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			if (lastQuestionSubmitted + 1 > 36) {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			} else {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
 	};
@@ -182,7 +239,11 @@ const SideBar_R_QuestionsOptions = () => {
 		} else if (test4Status === "Start" || test4Status === "") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			if (lastQuestionSubmitted + 1 > 36) {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			} else {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
 	};
@@ -198,9 +259,13 @@ const SideBar_R_QuestionsOptions = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};
+	const goTo_RetakeFailedQuestions = () => {
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_RetakeFailedQuestions());
+	};
 	const goTo_ProbabilityOfPassingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_ProbabilityOfPassing());
 	};
+
 	//! Hot-Key Combinations
 	const handleKeyCombination = useCallback(
 		(e) => {
@@ -245,18 +310,18 @@ const SideBar_R_QuestionsOptions = () => {
 					<h1>Questions</h1>
 				</div>
 				<div className={classes.questionsLandingPageBody}>
-					<div className={`${classes["quadrant_OuterContainer"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
-						<div className={`${classes["quadrant_InnerContainer"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
-							<div className={`${classes["overlay"]} ${!questionsOnThisPageStatus && classes.isInactive}`}>
+					<div className={`${classes["quadrant_OuterContainer"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`}>
+						<div className={`${classes["quadrant_InnerContainer"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`}>
+							<div className={`${classes["overlay"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`}>
 								<p>Available for Section's 1-13</p>
 							</div>
 							<h2>Questions On This Page</h2>
 							<button
 								onClick={generalButtonClick}
-								className={`${classes["paginationButtonR"]} ${!questionsOnThisPageStatus && classes.isInactive}`}
-								disabled={questionsOnThisPageStatus}
+								className={`${classes["paginationButtonR"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`}
+								disabled={questionsOnThisPage_ActiveStatus}
 							>
-								<svg className={`${classes["arrowIconR"]} ${!questionsOnThisPageStatus && classes.isInactive}`} viewBox="0 0 24 24">
+								<svg className={`${classes["arrowIconR"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`} viewBox="0 0 24 24">
 									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 								</svg>
 							</button>

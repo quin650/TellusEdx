@@ -5,62 +5,93 @@ import classes from "./paginationGUI.module.css";
 
 const PaginationQuestionsGUI = () => {
 	const dispatch = useDispatch();
-	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
-	const sideBar_R_Questions_retakeFailed_isOpen_rdx = false;
+	const sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx);
+	const sideBar_R_Questions_wrongAnswers_num_rdx = useSelector(({ user }) => user.sideBar_R_Questions_wrongAnswers_num_rdx);
+	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
 	const [latestSubmittedQuestion, setLatestSubmittedQuestion] = useState(0);
+	const [latestSubmittedTest, setLatestSubmittedTest] = useState(0);
 	const [nextIsActive, setNextIsActive] = useState(false);
 	const activePanel = useSelector(({ user }) => user.activePanel);
 
-	const getLastSubmittedQuestionNumber = useCallback(() => {
-		const testResultsForCurrentTest = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
-		if (!testResultsForCurrentTest) {
-			return 0;
-		}
-		const questionNumbers = Object.keys(testResultsForCurrentTest).map(Number);
-		return questionNumbers.length > 0 ? Math.max(...questionNumbers) : 0;
-	}, [sideBar_R_QuestionTestResults_rdx, sideBar_R_Questions_CurrentTestNumber_rdx]);
-
+	//! Find and set latest submitted test/question number - for first attempted regular test (Helps find right-limit for pagination)
+	//! Find and set latest submitted test/question number - for reattempted failed questions
 	useEffect(() => {
-		const latest = getLastSubmittedQuestionNumber();
-		setLatestSubmittedQuestion(latest);
-	}, [getLastSubmittedQuestionNumber, sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_QuestionTestResults_rdx]);
+		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
+			const testResultsForCurrentTest = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
+			if (!testResultsForCurrentTest) {
+				return 0;
+			}
+			const questionNumbers = Object.keys(testResultsForCurrentTest).map(Number);
+			setLatestSubmittedQuestion(questionNumbers.length > 0 ? Math.max(...questionNumbers) : 0);
+		}
+	}, [sideBar_R_QuestionTestResults_rdx, sideBar_R_Questions_CurrentTestNumber_rdx, sideBar_R_Questions_CurrentQuestionNumber_rdx]);
 
-	//!Prev-Next Page
+	//! Prev-Next Page
 	const PrevQuestion = useCallback(() => {
-		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
-			let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx - 1;
-			if (newQuestionNum >= 1) {
-				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-				localStorage.setItem("currentQuestionNumber", newQuestionNum);
-			}
+		let newQuestionNum;
+		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx && sideBar_R_Questions_CurrentQuestionNumber_rdx - 1 >= 1) {
+			newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx - 1;
 		} else {
-			// add logic for retake failed questions
+			let numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
+			const current_idx = numOptions.indexOf(sideBar_R_Questions_CurrentQuestionNumber_rdx);
+			if (current_idx > 0) {
+				newQuestionNum = numOptions[current_idx - 1];
+			} else {
+				if (current_idx === 0 && sideBar_R_Questions_CurrentTestNumber_rdx > 1) {
+					numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1];
+					newQuestionNum = numOptions[numOptions.length - 1];
+				}
+			}
 		}
-	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]);
+		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, sideBar_R_Questions_retakeFailed_isOpen_rdx, sideBar_R_Questions_CurrentTestNumber_rdx]);
+
 	const NextQuestion = useCallback(() => {
+		let newQuestionNum;
+		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx && sideBar_R_Questions_CurrentQuestionNumber_rdx + 1 <= 36 && nextIsActive) {
+			newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
+		} else {
+			let numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
+			const current_idx = numOptions.indexOf(sideBar_R_Questions_CurrentQuestionNumber_rdx);
+			if (current_idx < 36) {
+				newQuestionNum = numOptions[current_idx + 1];
+			} else {
+				if (current_idx === 36 && sideBar_R_Questions_CurrentTestNumber_rdx < 5) {
+					numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx + 1];
+					newQuestionNum = numOptions[0];
+				}
+			}
+		}
+		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+		localStorage.setItem("currentQuestionNumber", newQuestionNum);
+	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive, sideBar_R_Questions_retakeFailed_isOpen_rdx]);
+
+	//! Update pagination right-limits
+	useEffect(() => {
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
-			let newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
-			if (newQuestionNum <= 36 && nextIsActive) {
-				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-				localStorage.setItem("currentQuestionNumber", newQuestionNum);
+			if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== 36) {
+				if (sideBar_R_Questions_CurrentQuestionNumber_rdx <= latestSubmittedQuestion) {
+					setNextIsActive(true);
+				} else {
+					setNextIsActive(false);
+				}
+			} else if (sideBar_R_Questions_CurrentQuestionNumber_rdx === 36) {
+				setNextIsActive(false);
 			}
 		} else {
-			// add logic for retake failed questions
-		}
-	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive]);
-	useEffect(() => {
-		if (sideBar_R_Questions_CurrentQuestionNumber_rdx !== 36) {
-			if (sideBar_R_Questions_CurrentQuestionNumber_rdx <= latestSubmittedQuestion) {
+			if (sideBar_R_Questions_CurrentQuestionNumber_rdx < sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx) {
 				setNextIsActive(true);
 			} else {
 				setNextIsActive(false);
 			}
-		} else if (sideBar_R_Questions_CurrentQuestionNumber_rdx === 36) {
-			setNextIsActive(false);
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, latestSubmittedQuestion]);
+
+	//! Event Listeners
 	const handleKeyDown = useCallback(
 		(e) => {
 			if (activePanel === "questions") {
@@ -69,7 +100,9 @@ const PaginationQuestionsGUI = () => {
 						PrevQuestion();
 						break;
 					case "ArrowRight":
-						NextQuestion();
+						if (nextIsActive) {
+							NextQuestion();
+						}
 						break;
 					default:
 						break;
