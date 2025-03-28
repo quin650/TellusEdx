@@ -298,7 +298,6 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Questions_setWrongAnswers(state, action) {
 			state.sideBar_R_Questions_wrongAnswers_num_rdx = action.payload;
-			console.log("sideBar_R_Questions_setWrongAnswers WAS UPDATED", action.payload);
 		},
 		// ...
 		sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(state, action) {

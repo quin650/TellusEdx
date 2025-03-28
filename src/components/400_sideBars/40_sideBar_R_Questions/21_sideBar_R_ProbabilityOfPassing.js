@@ -30,13 +30,6 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 	const [lastSubmittedQuestion5, setLastSubmittedQuestion5] = useState(0);
 	const [lastSubmittedQuestion, setLastSubmittedQuestion] = useState(0);
 
-	// const [isPassed1, setIsPassed1] = useState(null);
-	// const [isPassed2, setIsPassed2] = useState(null);
-	// const [isPassed3, setIsPassed3] = useState(null);
-	// const [isPassed4, setIsPassed4] = useState(null);
-	// const [isPassed5, setIsPassed5] = useState(null);
-	// const [isPassed, setIsPassed] = useState(null);
-
 	const [status1, setStatus1] = useState(null);
 	const [status2, setStatus2] = useState(null);
 	const [status3, setStatus3] = useState(null);
@@ -63,19 +56,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus1("Not Started");
 			return;
 		}
-		const testDataEntries1 = Object.entries(testResultData1);
+		const testResultsData_listForm = Object.entries(testResultData1);
 		let numberAnswered1 = 0;
 		let numberAnswered_Correctly1 = 0;
-
-		testDataEntries1.map(([key, value]) => {
+		testResultsData_listForm.map(([key, value]) => {
 			numberAnswered1 += 1;
-			const isCorrect = value[2];
+			const isCorrect = value.attempts[1] ? value.attempts[1].isCorrect : value.attempts[0].isCorrect;
 			if (isCorrect) numberAnswered_Correctly1 += 1;
 		});
 
 		setLastSubmittedQuestion1(numberAnswered1);
 		setAnswered_Correctly1(numberAnswered_Correctly1);
-		// setIsPassed1(numberAnswered_Correctly1 >= 30);
 		setPercentAnswered_Correctly1(`${Math.round((numberAnswered_Correctly1 / numberAnswered1) * 100 * (numberAnswered1 / 36))}%`);
 		setPercentAnswered_Incorrectly1(`${Math.round(100 * (numberAnswered1 / 36))}%`);
 		if (numberAnswered1 < 36) {
@@ -91,19 +82,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus2("Not Started");
 			return;
 		}
-		const testDataEntries2 = Object.entries(testResultData2);
+		const testResultsData_listForm = Object.entries(testResultData2);
 		let numberAnswered2 = 0;
 		let numberAnswered_Correctly2 = 0;
-
-		testDataEntries2.map(([key, value]) => {
+		testResultsData_listForm.map(([key, value]) => {
 			numberAnswered2 += 1;
-			const isCorrect = value[2];
+			const isCorrect = value.attempts[1] ? value.attempts[1].isCorrect : value.attempts[0].isCorrect;
 			if (isCorrect) numberAnswered_Correctly2 += 1;
 		});
 
 		setLastSubmittedQuestion2(numberAnswered2);
 		setAnswered_Correctly2(numberAnswered_Correctly2);
-		// setIsPassed2(numberAnswered_Correctly2 >= 30);
 		setPercentAnswered_Correctly2(`${Math.round((numberAnswered_Correctly2 / numberAnswered2) * 100 * (numberAnswered2 / 36))}%`);
 		setPercentAnswered_Incorrectly2(`${Math.round(100 * (numberAnswered2 / 36))}%`);
 		if (numberAnswered2 < 36) {
@@ -119,18 +108,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus3("Not Started");
 			return;
 		}
-		const testDataEntries3 = Object.entries(testResultData3);
+		const testResultsData_listForm = Object.entries(testResultData1);
 		let numberAnswered3 = 0;
 		let numberAnswered_Correctly3 = 0;
-		testDataEntries3.map(([key, value]) => {
+		testResultsData_listForm.map(([key, value]) => {
 			numberAnswered3 += 1;
-			const isCorrect = value[2];
+			const isCorrect = value.attempts[1] ? value.attempts[1].isCorrect : value.attempts[0].isCorrect;
 			if (isCorrect) numberAnswered_Correctly3 += 1;
 		});
 
 		setLastSubmittedQuestion3(numberAnswered3);
 		setAnswered_Correctly3(numberAnswered_Correctly3);
-		// setIsPassed3(numberAnswered_Correctly3 >= 30);
 		setPercentAnswered_Correctly3(`${Math.round((numberAnswered_Correctly3 / numberAnswered3) * 100 * (numberAnswered3 / 36))}%`);
 		setPercentAnswered_Incorrectly3(`${Math.round(100 * (numberAnswered3 / 36))}%`);
 		if (numberAnswered3 < 36) {
@@ -146,19 +134,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus4("Not Started");
 			return;
 		}
-		const testDataEntries4 = Object.entries(testResultData4);
+		const testResultsData_listForm = Object.entries(testResultData1);
 		let numberAnswered4 = 0;
 		let numberAnswered_Correctly4 = 0;
-
-		testDataEntries4.map(([key, value]) => {
+		testResultsData_listForm.map(([key, value]) => {
 			numberAnswered4 += 1;
-			const isCorrect = value[2];
+			const isCorrect = value.attempts[1] ? value.attempts[1].isCorrect : value.attempts[0].isCorrect;
 			if (isCorrect) numberAnswered_Correctly4 += 1;
 		});
 
 		setLastSubmittedQuestion4(numberAnswered4);
 		setAnswered_Correctly4(numberAnswered_Correctly4);
-		// setIsPassed4(numberAnswered_Correctly4 >= 30);
 		setPercentAnswered_Correctly4(`${Math.round((numberAnswered_Correctly4 / numberAnswered4) * 100 * (numberAnswered4 / 36))}%`);
 		setPercentAnswered_Incorrectly4(`${Math.round(100 * (numberAnswered4 / 36))}%`);
 		if (numberAnswered4 < 36) {
@@ -174,19 +160,17 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 			setStatus5("Not Started");
 			return;
 		}
-		const testDataEntries5 = Object.entries(testResultData5);
+		const testResultsData_listForm = Object.entries(testResultData1);
 		let numberAnswered5 = 0;
 		let numberAnswered_Correctly5 = 0;
-
-		testDataEntries5.map(([key, value]) => {
+		testResultsData_listForm.map(([key, value]) => {
 			numberAnswered5 += 1;
-			const isCorrect = value[2];
+			const isCorrect = value.attempts[1] ? value.attempts[1].isCorrect : value.attempts[0].isCorrect;
 			if (isCorrect) numberAnswered_Correctly5 += 1;
 		});
 
 		setLastSubmittedQuestion5(numberAnswered5);
 		setAnswered_Correctly5(numberAnswered_Correctly5);
-		// setIsPassed5(numberAnswered_Correctly5 >= 30);
 		setPercentAnswered_Correctly5(`${Math.round((numberAnswered_Correctly5 / numberAnswered5) * 100 * (numberAnswered5 / 36))}%`);
 		setPercentAnswered_Incorrectly5(`${Math.round(100 * (numberAnswered5 / 36))}%`);
 		if (numberAnswered5 < 36) {
@@ -201,25 +185,26 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 		if (!testResultData) {
 			return;
 		}
-
+		const testResultsData_listForm = Object.entries(testResultData);
 		let numberAnswered = 0;
 		let numberAnswered_Correctly = 0;
 
-		const testDataEntries = Object.entries(testResultData);
-
-		for (let i = 0; i < testDataEntries.length; i++) {
-			const testData = testDataEntries[i][1];
+		for (let i = 0; i < testResultsData_listForm.length; i++) {
+			const testData = testResultsData_listForm[i][1];
 			const testObjectData = Object.entries(testData);
 			for (let j = 0; j < testObjectData.length; j++) {
+				const questionKey = testObjectData[j][0];
+				const questionData = testObjectData[j][1];
 				numberAnswered += 1;
-				const questionData = testObjectData[j];
-				const isCorrect = questionData[1][2];
+				const attempts = questionData.attempts;
+				const lastAttempt = attempts[attempts.length - 1];
+				const isCorrect = lastAttempt?.isCorrect;
+
 				if (isCorrect) numberAnswered_Correctly += 1;
 			}
 		}
 		setLastSubmittedQuestion(numberAnswered);
 		setAnswered_Correctly(numberAnswered_Correctly);
-		// setIsPassed((numberAnswered_Correctly / numberAnswered) * 100 >= 80);
 		setPercentAnswered_Correctly(`${Math.round((numberAnswered_Correctly / numberAnswered) * 100)}%`);
 		setPercentAnswered_Incorrectly(`${Math.round(100)}%`);
 		if ((numberAnswered_Correctly / numberAnswered) * 100 >= 80) {
