@@ -47,13 +47,14 @@ const SideBar_R_QuestionsOptions = () => {
 			4: [],
 			5: [],
 		};
+
 		for (let testNum_idx = 0; testNum_idx < testResultsData_listForm.length; testNum_idx++) {
 			const testNum = testNum_idx + 1;
 			const testData = testResultsData_listForm[testNum_idx][1];
 			const testData_object = Object.entries(testData);
-
 			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 				const questionNum = questionNum_idx + 1;
+				// console.log(`testNum: ${testNum}, questionNum: ${questionNum}`);
 				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
 				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
 				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
@@ -76,6 +77,8 @@ const SideBar_R_QuestionsOptions = () => {
 					);
 				}
 				if (!initialAttempt_gotCorrect) {
+					// console.log("initialAttempt_gotCorrect: ", initialAttempt_gotCorrect);
+					// console.log("pushing to wrongAnswers_num");
 					wrongAnswers_num[testNum].push(questionNum);
 					if (!question_wasReAttempted) {
 						if (sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
@@ -84,7 +87,6 @@ const SideBar_R_QuestionsOptions = () => {
 							sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
 							sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt + 1;
 						}
-
 						sideBar_R_Questions_LastTestNumber_idx_toReAttempt = testNum_idx;
 						sideBar_R_Questions_LastTestNumber_num_toReAttempt = testNum;
 						sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt = questionNum_idx;

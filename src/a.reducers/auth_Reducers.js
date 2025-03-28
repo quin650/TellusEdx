@@ -55,6 +55,7 @@ const initialState = {
 	sideBar_R_NavigationStack: [],
 	//! new
 	sideBar_R_Questions_retakeFailed_isOpen_rdx: false,
+	setRetakeFailedQuestions_moduleIsActive_rdx: false,
 
 	//! Modals
 	getStarted_ModalStatus_rdx: false,
@@ -297,7 +298,7 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Questions_setWrongAnswers(state, action) {
 			state.sideBar_R_Questions_wrongAnswers_num_rdx = action.payload;
-			// console.log("sideBar_R_Questions_wrongAnswers_num_rdx: ", action.payload);
+			console.log("sideBar_R_Questions_setWrongAnswers WAS UPDATED", action.payload);
 		},
 		// ...
 		sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(state, action) {

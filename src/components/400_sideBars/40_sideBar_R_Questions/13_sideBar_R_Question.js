@@ -50,9 +50,13 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 					const questionNum = questionNum_idx + 1;
 					const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-					const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+
+					const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
+						? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]?.isCorrect
+						: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
 					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
-					const question_wasReAttempted_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]?.isCorrect;
+					const question_wasReAttempted_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+
 					if (!initialAttempt_gotCorrect) {
 						if (question_wasReAttempted) {
 							navItems.push(
@@ -76,7 +80,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			}
 		}
 		setQuickNavBar(navItems);
-	}, [questionData_ifSubmitted, gotoQuestion]);
+	}, [questionData_ifSubmitted, gotoQuestion, sideBar_R_QuestionTestResults_rdx]);
 
 	//! set what multiple choice option is checked
 	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {
