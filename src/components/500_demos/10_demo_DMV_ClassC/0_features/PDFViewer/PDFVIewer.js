@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef, Fragment, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
-import Pagination_PDF_GUI from "../pagination/pagination_PDF_GUI";
-import ZoomGUI from "../pagination/zoomGUI";
+import Pagination_PDF_GUI from "../../../../100_layout/20_layoutFeatures/30_pagination_PDF_GUI";
+import ZoomGUI from "../../../../100_layout/20_layoutFeatures/40_zoomGUI";
 
 const PDFViewer = () => {
 	const [pdfState, setPdfState] = useState({

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 
 import SideBar_R_QuestionsParent from "./13_sideBar_R_Question";
-import PaginationQuestionsGUI from "../../500_demos/10_demo_DMV_ClassC/0_features/pagination/pagination_Questions_GUI";
+import PaginationQuestionsGUI from "../../100_layout/20_layoutFeatures/30_pagination_Questions_GUI";
 
 import data from "../../500_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";

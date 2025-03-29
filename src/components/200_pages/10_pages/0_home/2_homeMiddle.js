@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ToggleButton from "../../../100_layout/20_layoutFeatures/2_toggleButton";
+import ToggleButton from "../../../100_layout/20_layoutFeatures/20_toggleButton";
 import HomeMiddleLearn from "./2a_homeMiddleLearn";
 import HomeMiddleContribute from "./2b_homeMiddleContribute";
 import classes from "./2c_homeMiddle.module.css";

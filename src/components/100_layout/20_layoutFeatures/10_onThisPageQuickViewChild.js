@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./1_onThisPageQuickView.modules.css";
+import classes from "./10_onThisPageQuickView.modules.css";
 
 const OnThisPageQuickViewChild = (props) => {
 	const { id, content, status } = props;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from "react";
-import classes from "./paginationGUI.module.css";
+import classes from "./30_paginationGUI.module.css";
 
 const ZoomGUI = ({ toggleFullScreen, isFullScreen, zoomIn, zoomOut }) => {
 	const [zoomLimit, setZoomLimit] = useState(0);

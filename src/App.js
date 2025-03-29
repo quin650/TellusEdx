@@ -11,7 +11,7 @@ import DemoDMVClassC from "./components/500_demos/10_demo_DMV_ClassC/demo_DMV_Cl
 import PDFViewer from "./components/500_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
 
 import GeneralPage from "./components/200_pages/10_pages/generalPage";
-import OnThisPageQuickView from "./components/100_layout/20_layoutFeatures/1_onThisPageQuickView";
+import OnThisPageQuickView from "./components/100_layout/20_layoutFeatures/10_onThisPageQuickView";
 
 const App = () => {
 	const mainAppContainerRef = useRef();

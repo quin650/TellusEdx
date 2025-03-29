@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
-import classes from "./paginationGUI.module.css";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import classes from "./30_paginationGUI.module.css";
 
 const PaginationQuestionsGUI = () => {
 	const dispatch = useDispatch();

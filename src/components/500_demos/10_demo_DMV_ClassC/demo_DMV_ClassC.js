@@ -5,7 +5,7 @@ import { throttle } from "lodash";
 import SideBar_R_Notes from "../../400_sideBars/20_sideBar_R_Notes/sideBar_R_Notes";
 import SideBar_L_TOC from "../../400_sideBars/10_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_Questions_Container from "../../400_sideBars/40_sideBar_R_Questions/10_sideBar_R_Questions_Container";
-import Pagination_eReader_GUI from "./0_features/pagination/pagination_eReader_GUI";
+import Pagination_eReader_GUI from "../../100_layout/20_layoutFeatures/30_pagination_eReader_GUI";
 import Modal_resetThisTest from "../../300_modals/30_modal_resetThisTest/modal_resetThisTest";
 
 import Page1 from "../../200_pages/20_demo_pages/page1";

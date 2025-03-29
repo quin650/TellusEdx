@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import OnThisPageQuickViewChild from "./1_onThisPageQuickViewChild";
-import classes from "./1_onThisPageQuickView.modules.css";
+import OnThisPageQuickViewChild from "./10_onThisPageQuickViewChild";
+import classes from "./10_onThisPageQuickView.modules.css";
 
 const OnThisPageQuickView = ({ divIDs, activeID }) => {
 	const [altOptionKeyPressed, setAltOptionKeyPressed] = useState(false);
