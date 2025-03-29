@@ -4,7 +4,7 @@ const Dotenv = require("dotenv-webpack");
 require("dotenv").config();
 
 module.exports = {
-	entry: ["webpack-hot-middleware/client?reload=true", "./src/index.js"],
+	entry: ["./src/index.js"],
 	output: {
 		path: path.resolve(__dirname, "./static/frontend"),
 		filename: "[name].js",
@@ -76,6 +76,5 @@ module.exports = {
 			"process.env.NODE_ENV": JSON.stringify("development"),
 			"process.env.REACT_APP_LOCAL": JSON.stringify(process.env.REACT_APP_LOCAL),
 		}),
-		new webpack.HotModuleReplacementPlugin(),
 	],
 };
