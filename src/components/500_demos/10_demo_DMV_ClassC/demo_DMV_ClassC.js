@@ -85,7 +85,6 @@ const DemoDMVClassC = () => {
 	];
 	const memoizedHeadings = useMemo(() => headingsList, [headingsList]);
 	const [activeID, setActiveID] = useState(null);
-
 	//! Inject id's based on the h1, h2, h3 text
 	useEffect(() => {
 		if (pageContentRef.current) {
@@ -234,6 +233,7 @@ const DemoDMVClassC = () => {
 				case e.key === "b" || e.key === "B":
 					if (sideBar_L_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_L_Close());
+						dispatch(userReducerActions.setActivePanel("main"));
 						if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {
 							dispatch(userReducerActions.sideBar_L_NotAllowCollapse_OnWindowResize());
 						}
@@ -247,14 +247,17 @@ const DemoDMVClassC = () => {
 						dispatch(userReducerActions.sideBar_R_Open_Main());
 					} else {
 						dispatch(userReducerActions.sideBar_R_Close_Main());
+						dispatch(userReducerActions.setActivePanel("main"));
 					}
 					break;
 				case e.key === "q" || e.key === "Q":
 					if (sideBar_R_Main_isOpen_rdx) dispatch(userReducerActions.sideBar_R_Close_Main());
 					if (!sideBar_R_Questions_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_R_Open_Questions());
+						dispatch(userReducerActions.setActivePanel("questions"));
 					} else {
 						dispatch(userReducerActions.sideBar_R_Close_Questions());
+						dispatch(userReducerActions.setActivePanel("main"));
 					}
 					break;
 				case e.key === "n" || e.key === "N":

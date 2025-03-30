@@ -33,6 +33,7 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 	const backButtonAction = () => {
 		if (sideBar_R_QuestionsStatus_rdx === "QuestionsLanding") {
 			dispatch(userReducerActions.sideBar_R_Close_Questions());
+			dispatch(userReducerActions.setActivePanel("main")); // Close the left sidebar if open
 		} else {
 			dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 		}

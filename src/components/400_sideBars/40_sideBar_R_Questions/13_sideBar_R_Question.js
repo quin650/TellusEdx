@@ -1,15 +1,24 @@
 import React, { useState, useRef, Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_MultipleChoiceOptions from "./14_sideBar_R_MultipleChoiceOption";
 import classes from "../../../components/500_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
+	const dispatch = useDispatch();
 	const quickNavRef = useRef(null);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const questionData_ifSubmitted = sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx] || null;
 	const sideBar_L_isOpen_rdx = useSelector(({ user }) => user.sideBar_L_isOpen_rdx);
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx);
+	const sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx);
+	const sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx);
+	const sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx);
+	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	const [hasQuestionImage, setHasQuestionImage] = useState(true);
 	const question = questionData.question;
@@ -22,6 +31,16 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
 	const navItems = [];
 
+	let sideBar_R_Questions_RecentTestNumber_idx_reAttempted = null;
+	let sideBar_R_Questions_RecentTestNumber_num_reAttempted = null;
+	let sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = null;
+	let sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = null;
+
+	let sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = null;
+	let sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = null;
+	let sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = null;
+	let sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = null;
+
 	//! loop through questionData to create the quickNavBar
 	useEffect(() => {
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
@@ -30,16 +49,36 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				const questionAnswerData_gotCorrect = questionAnswerData?.attempts[0]?.isCorrect;
 				if (questionAnswerData) {
 					navItems.push(
-						<li key={i} onClick={() => gotoQuestion(i)} className={`${classes["quickNavButton"]} ${questionAnswerData_gotCorrect ? classes.correct : classes.inCorrect}`}>
+						<li
+							key={i}
+							onClick={() => gotoQuestion(i)}
+							className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
+								questionAnswerData_gotCorrect ? classes.correct : classes.isCorrect
+							}`}
+						>
 							{i}
 						</li>
 					);
 				} else {
-					navItems.push(
-						<li key={i} className={classes.quickNavButton}>
-							{i}
-						</li>
-					);
+					if (i === sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx) {
+						navItems.push(
+							<li
+								key={i}
+								onClick={() => gotoQuestion(i)}
+								className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
+									classes.currentlyAttempting
+								}`}
+							>
+								{i}
+							</li>
+						);
+					} else {
+						navItems.push(
+							<li key={i} className={classes.quickNavButton}>
+								{i}
+							</li>
+						);
+					}
 				}
 			}
 		} else {
@@ -47,40 +86,134 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				const testNum = testNum_idx + 1;
 				const testData = testResultsData_listForm[testNum_idx][1];
 				const testData_object = Object.entries(testData);
+				let testNumPrev = null;
+				let questionNumPrev = null;
 				for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 					const questionNum = questionNum_idx + 1;
 					const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-
-					const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
-						? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]?.isCorrect
-						: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+					const initialAttempt = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
+						? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
+						: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx];
+					const initialAttempt_gotCorrect = initialAttempt?.isCorrect;
 					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
 					const question_wasReAttempted_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
 
 					if (!initialAttempt_gotCorrect) {
-						if (question_wasReAttempted) {
+						if (!question_wasReAttempted) {
+							if (sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
+								sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = testNum_idx;
+								sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = testNum_idx + 1;
+								sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
+								sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = questionNum_idx + 1;
+								sideBar_R_Questions_RecentTestNumber_idx_reAttempted = testNumPrev - 1;
+								sideBar_R_Questions_RecentTestNumber_num_reAttempted = testNumPrev;
+								sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = questionNumPrev - 1;
+								sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = questionNumPrev;
+							}
+
+							if (sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx === questionNum) {
+								navItems.push(
+									<li
+										key={`${testNum}-${questionNum}`}
+										onClick={() => gotoQuestion(questionNum)}
+										className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === questionNum ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
+											classes.currentlyAttempting
+										}`}
+									>
+										{questionNum}
+									</li>
+								);
+							} else {
+								navItems.push(
+									<li key={`${testNum}-${questionNum}`} className={classes.quickNavButton}>
+										{questionNum}
+									</li>
+								);
+							}
+						} else {
 							navItems.push(
 								<li
 									key={`${testNum}-${questionNum}`}
 									onClick={() => gotoQuestion(questionNum)}
-									className={`${classes["quickNavButton"]} ${question_wasReAttempted_gotCorrect ? classes.correct : classes.inCorrect}`}
+									className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === questionNum ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
+										question_wasReAttempted_gotCorrect ? classes.correct : classes.isCorrect
+									}`}
 								>
-									{questionNum}
-								</li>
-							);
-						} else {
-							navItems.push(
-								<li key={`${testNum}-${questionNum}`} className={classes.quickNavButton}>
 									{questionNum}
 								</li>
 							);
 						}
 					}
+					testNumPrev = testNum;
+					questionNumPrev = questionNum;
 				}
+			}
+			//Recent Test#
+			if (
+				sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== null &&
+				sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== undefined &&
+				sideBar_R_Questions_RecentTestNumber_idx_reAttempted + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted <
+					sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx
+			) {
+				dispatch(
+					userReducerActions.sideBar_R_Questions_setRecentTestNumber_reAttempted({
+						idx: sideBar_R_Questions_RecentTestNumber_idx_reAttempted,
+						num: sideBar_R_Questions_RecentTestNumber_num_reAttempted,
+					})
+				);
+			}
+			//Recent Question#
+			if (
+				sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== null &&
+				sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== undefined &&
+				sideBar_R_Questions_RecentTestNumber_idx_reAttempted + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted <
+					sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx
+			) {
+				dispatch(
+					userReducerActions.sideBar_R_Questions_setRecentQuestionNumber_reAttempted({
+						idx: sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted,
+						num: sideBar_R_Questions_RecentQuestionNumber_num_reAttempted,
+					})
+				);
+			}
+
+			//Current Test#
+			if (
+				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== null &&
+				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== undefined &&
+				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt <
+					sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx
+			) {
+				dispatch(
+					userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
+						idx: sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt,
+						num: sideBar_R_Questions_CurrentTestNumber_num_toReAttempt,
+					})
+				);
+			}
+			//Current Question#
+			if (
+				sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== null &&
+				sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== undefined &&
+				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt <
+					sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx
+			) {
+				dispatch(
+					userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
+						idx: sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt,
+						num: sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt,
+					})
+				);
 			}
 		}
 		setQuickNavBar(navItems);
-	}, [questionData_ifSubmitted, gotoQuestion, sideBar_R_QuestionTestResults_rdx]);
+	}, [
+		questionData_ifSubmitted,
+		gotoQuestion,
+		sideBar_R_QuestionTestResults_rdx,
+		sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx,
+		sideBar_R_Questions_CurrentQuestionNumber_rdx,
+	]);
 
 	//! set what multiple choice option is checked
 	const get_newlyCheckedID = (newAnswerID, correctOrIncorrect) => {

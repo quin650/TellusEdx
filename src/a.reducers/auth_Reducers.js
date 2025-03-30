@@ -16,19 +16,26 @@ const initialState = {
 	PDF_pagesLength_rdx: 92,
 
 	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
+	//!General
 	sideBar_R_Questions_CurrentTestNumber_rdx: 1,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
-	//? here
-	sideBar_R_Questions_lastQuestionFailed_and_notReAttempted_forRetake_rdx: null,
-	// sideBar_R_Questions_CurrentQuestionNumber_forRetake_rdx: null,
 	sideBar_R_Questions_currentAttempt_rdx: 0,
+	//! First Attempt
+	// Current
+
+	sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx: null,
+	//! ReAttempted Questions
 	// First
 	sideBar_R_Questions_FirstTestNumber_idx_reAttempted_rdx: null,
 	sideBar_R_Questions_FirstTestNumber_num_reAttempted_rdx: null,
 	sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted_rdx: null,
 	sideBar_R_Questions_FirstQuestionNumber_num_reAttempted_rdx: null,
-
-	// Next
+	// Recent
+	sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx: null,
+	sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx: null,
+	sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx: null,
+	sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx: null,
+	// Current
 	sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx: null,
 	sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx: null,
 	sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx: null,
@@ -42,7 +49,6 @@ const initialState = {
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	sideBar_R_Questions_wrongAnswers_num_rdx: {},
-	//! new
 
 	submittedQuestionsList_rdx: [],
 	sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx: false,
@@ -253,14 +259,13 @@ const userSlice = createSlice({
 			state.sideBar_R_QuestionTestResults_rdx = {};
 			localStorage.removeItem("testResults");
 		},
-		//! failed
+		// !First Attempt Questions
 
-		deleteFailedTestResults(state, action) {
-			///
+		sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(state, action) {
+			state.sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx = action.payload;
 		},
-		resetFailedQuestionResults(state) {
-			///
-		},
+
+		// !ReAttempted Questions
 		// First
 		sideBar_R_Questions_setFirstTestNumber_reAttempted(state, action) {
 			const { idx, num } = action.payload;
@@ -272,7 +277,18 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted_rdx = idx;
 			state.sideBar_R_Questions_FirstQuestionNumber_num_reAttempted_rdx = num;
 		},
-		// Next
+		//Recent
+		sideBar_R_Questions_setRecentTestNumber_reAttempted(state, action) {
+			const { idx, num } = action.payload;
+			state.sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx = idx;
+			state.sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx = num;
+		},
+		sideBar_R_Questions_setRecentQuestionNumber_reAttempted(state, action) {
+			const { idx, num } = action.payload;
+			state.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = idx;
+			state.sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx = num;
+		},
+		//Current
 		sideBar_R_Questions_setCurrentTestNumber_toReAttempt(state, action) {
 			const { idx, num } = action.payload;
 			state.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = idx;

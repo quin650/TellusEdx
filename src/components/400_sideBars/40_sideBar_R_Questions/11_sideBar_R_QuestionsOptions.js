@@ -9,9 +9,11 @@ const SideBar_R_QuestionsOptions = () => {
 	const pageNum_current_reader_rdx = useSelector(({ user }) => user.pageNum_current_reader_rdx);
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
 	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
+	const sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx);
+	const sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx);
+	const setRetakeFailedQuestions_moduleIsActive_rdx = useSelector(({ user }) => user.setRetakeFailedQuestions_moduleIsActive_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
-	const setRetakeFailedQuestions_moduleIsActive_rdx = useSelector(({ user }) => user.setRetakeFailedQuestions_moduleIsActive_rdx);
 	const [hasReAttemptedQuestion, setHasReAttemptedQuestion] = useState(false);
 	const [questionsOnThisPage_ActiveStatus, setQuestionsOnThisPage_ActiveStatus] = useState(false);
 	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(true);
@@ -28,6 +30,11 @@ const SideBar_R_QuestionsOptions = () => {
 		let sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted = null;
 		let sideBar_R_Questions_FirstTestNumber_num_reAttempted = null;
 		let sideBar_R_Questions_FirstQuestionNumber_num_reAttempted = null;
+
+		let sideBar_R_Questions_RecentTestNumber_idx_reAttempted = null;
+		let sideBar_R_Questions_RecentTestNumber_num_reAttempted = null;
+		let sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = null;
+		let sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = null;
 
 		let sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = null;
 		let sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = null;
@@ -51,13 +58,18 @@ const SideBar_R_QuestionsOptions = () => {
 		for (let testNum_idx = 0; testNum_idx < testResultsData_listForm.length; testNum_idx++) {
 			const testNum = testNum_idx + 1;
 			const testData = testResultsData_listForm[testNum_idx][1];
+			let testNumPrev = null;
+			let questionNumPrev = null;
 			const testData_object = Object.entries(testData);
 			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 				const questionNum = questionNum_idx + 1;
-				// console.log(`testNum: ${testNum}, questionNum: ${questionNum}`);
 				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+				const initialAttempt = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
+					? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
+					: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx];
+				const initialAttempt_gotCorrect = initialAttempt?.isCorrect;
 				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
+
 				if (questionData_attempts && sideBar_R_Questions_FirstTestNumber_idx_reAttempted === null && sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted === null) {
 					sideBar_R_Questions_FirstTestNumber_idx_reAttempted = testNum_idx;
 					sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted = questionNum_idx;
@@ -76,16 +88,20 @@ const SideBar_R_QuestionsOptions = () => {
 						})
 					);
 				}
+
 				if (!initialAttempt_gotCorrect) {
-					// console.log("initialAttempt_gotCorrect: ", initialAttempt_gotCorrect);
-					// console.log("pushing to wrongAnswers_num");
 					wrongAnswers_num[testNum].push(questionNum);
 					if (!question_wasReAttempted) {
-						if (sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
+						if (sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
 							sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = testNum_idx;
-							sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + 1;
+							sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = testNum_idx + 1;
 							sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
-							sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt + 1;
+							sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = questionNum_idx + 1;
+
+							sideBar_R_Questions_RecentTestNumber_idx_reAttempted = testNumPrev - 1;
+							sideBar_R_Questions_RecentTestNumber_num_reAttempted = testNumPrev;
+							sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = questionNumPrev - 1;
+							sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = questionNumPrev;
 						}
 						sideBar_R_Questions_LastTestNumber_idx_toReAttempt = testNum_idx;
 						sideBar_R_Questions_LastTestNumber_num_toReAttempt = testNum;
@@ -93,7 +109,35 @@ const SideBar_R_QuestionsOptions = () => {
 						sideBar_R_Questions_LastQuestionNumber_num_toReAttempt = questionNum;
 					}
 				}
+				testNumPrev = testNum;
+				questionNumPrev = questionNum;
 			}
+		}
+
+		if (
+			sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== null &&
+			sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== undefined &&
+			sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx === null
+		) {
+			dispatch(
+				userReducerActions.sideBar_R_Questions_setRecentTestNumber_reAttempted({
+					idx: sideBar_R_Questions_RecentTestNumber_idx_reAttempted,
+					num: sideBar_R_Questions_RecentTestNumber_num_reAttempted,
+				})
+			);
+			dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
+		}
+		if (
+			sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== null &&
+			sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== undefined &&
+			sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx === null
+		) {
+			dispatch(
+				userReducerActions.sideBar_R_Questions_setRecentQuestionNumber_reAttempted({
+					idx: sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted,
+					num: sideBar_R_Questions_RecentQuestionNumber_num_reAttempted,
+				})
+			);
 		}
 
 		if (
@@ -107,8 +151,8 @@ const SideBar_R_QuestionsOptions = () => {
 					num: sideBar_R_Questions_CurrentTestNumber_num_toReAttempt,
 				})
 			);
-			dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
 		}
+
 		if (
 			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== null &&
 			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== undefined &&
@@ -121,7 +165,6 @@ const SideBar_R_QuestionsOptions = () => {
 				})
 			);
 		}
-
 		dispatch(
 			userReducerActions.sideBar_R_Questions_setLastTestNumber_toReAttempt({
 				idx: sideBar_R_Questions_LastTestNumber_idx_toReAttempt,
@@ -197,10 +240,12 @@ const SideBar_R_QuestionsOptions = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
 			} else {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+				dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(lastQuestionSubmitted + 1));
 			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
+
 	const test2 = () => {
 		if (test2Status === "n/a yet" || !test2Status) {
 			return;
@@ -213,6 +258,7 @@ const SideBar_R_QuestionsOptions = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
 			} else {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+				dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(lastQuestionSubmitted + 1));
 			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(2));
@@ -229,6 +275,7 @@ const SideBar_R_QuestionsOptions = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
 			} else {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+				dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(lastQuestionSubmitted + 1));
 			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(3));
@@ -245,6 +292,7 @@ const SideBar_R_QuestionsOptions = () => {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
 			} else {
 				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted + 1));
+				dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(lastQuestionSubmitted + 1));
 			}
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(4));
@@ -258,6 +306,7 @@ const SideBar_R_QuestionsOptions = () => {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
 		} else {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(lastQuestionSubmitted));
+			dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(lastQuestionSubmitted + 1));
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(5));
 	};

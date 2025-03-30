@@ -284,7 +284,19 @@
 	background-color: gray;
 	cursor: default;
 }
-.quickNavButton.inCorrect {
+.quickNavButtonCurrent {
+	display: flex;
+	justify-content: center;
+	color: black;
+	min-width: 20px;
+	position: relative;
+	z-index: 20;
+	background-color: gray;
+	cursor: default;
+	border-top: 2px solid var(--Blue);
+}
+.quickNavButton.isCorrect,
+.quickNavButtonCurrent.isCorrect {
 	display: flex;
 	justify-content: center;
 	color: black;
@@ -294,7 +306,8 @@
 	background-color: #ff6a6a;
 	cursor: pointer;
 }
-.quickNavButton.correct {
+.quickNavButton.correct,
+.quickNavButtonCurrent.correct {
 	display: flex;
 	justify-content: center;
 	color: black;
@@ -304,8 +317,10 @@
 	background-color: #00df00;
 	cursor: pointer;
 }
-.quickNavButton.inCorrect:hover,
-.quickNavButton.correct:hover {
+.quickNavButton.isCorrect:hover,
+.quickNavButtonCurrent.isCorrect:hover,
+.quickNavButton.correct:hover,
+.quickNavButtonCurrent.correct:hover {
 	transform: scale(1.5, 1.5);
 	transform-origin: center center;
 	color: white;
@@ -316,10 +331,42 @@
 	-moz-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
 	box-shadow: 0px 0px 25px 20px var(--WhiteToBlack);
 }
-.quickNavButton.inCorrect:active,
-.quickNavButton.correct:active {
+.quickNavButton.isCorrect:active,
+.quickNavButtonCurrent.isCorrect:active,
+.quickNavButton.correct:active,
+.quickNavButtonCurrent.correct:active {
 	transform: scale(1.8, 1.8);
 }
+/* here ------------------ */
+
+.quickNavButton.currentlyAttempting,
+.quickNavButtonCurrent.currentlyAttempting {
+	display: flex;
+	justify-content: center;
+	color: black;
+	min-width: 20px;
+	position: relative;
+	z-index: 20;
+	background-color: rgb(247, 247, 8);
+	cursor: pointer;
+}
+.quickNavButton.currentlyAttempting:hover,
+.quickNavButtonCurrent.currentlyAttempting:hover {
+	transform: scale(1.5, 1.5);
+	transform-origin: center center;
+	color: black; /* Keep color black on hover for currentlyAttempting */
+	transition: transform 0.02s cubic-bezier(1, 0.02, 0.58, 1), color 0.2s cubic-bezier(1, 0.02, 0.58, 1), background-color 0.2s cubic-bezier(1, 0.02, 0.58, 1);
+	z-index: 100;
+	border: 1px solid var(--WhiteToBlack);
+	-webkit-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 25px 20px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 25px 20px var(--WhiteToBlack);
+}
+.quickNavButton.currentlyAttempting:active,
+.quickNavButtonCurrent.currentlyAttempting:active {
+	transform: scale(1.8, 1.8);
+}
+
 .scrollPortion {
 	display: flex;
 	height: 10px;
@@ -1030,6 +1077,7 @@ strong {
 .quadrant_OuterContainer:nth-child(4):active .quadrant_InnerContainer h2 {
 	transform: scale(1.05);
 	transform-origin: center center;
+	transition: transform 0.3s ease-out;
 }
 .quadrant_OuterContainer:hover {
 	transform: scale(1.1);
