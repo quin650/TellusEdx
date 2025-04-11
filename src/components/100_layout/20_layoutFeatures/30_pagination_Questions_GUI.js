@@ -33,27 +33,33 @@ const PaginationQuestionsGUI = () => {
 		let newQuestionNum;
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx && sideBar_R_Questions_CurrentQuestionNumber_rdx - 1 >= 1) {
 			newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx - 1;
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		} else if (sideBar_R_Questions_retakeFailed_isOpen_rdx) {
 			let numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
 			const current_idx = numOptions.indexOf(sideBar_R_Questions_CurrentQuestionNumber_rdx);
-
+			console.log("sideBar_R_Questions_CurrentQuestionNumber_rdx1", sideBar_R_Questions_CurrentQuestionNumber_rdx);
 			if (current_idx > 0) {
 				newQuestionNum = numOptions[current_idx - 1];
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+				localStorage.setItem("currentQuestionNumber", newQuestionNum);
 			} else {
 				if (current_idx === 0 && sideBar_R_Questions_CurrentTestNumber_rdx > 1) {
 					numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx - 1];
 					newQuestionNum = numOptions[numOptions.length - 1];
+					dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+					localStorage.setItem("currentQuestionNumber", newQuestionNum);
 				}
 			}
 		}
-		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-		localStorage.setItem("currentQuestionNumber", newQuestionNum);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, sideBar_R_Questions_retakeFailed_isOpen_rdx, sideBar_R_Questions_CurrentTestNumber_rdx]);
 
 	const NextQuestion = useCallback(() => {
 		let newQuestionNum;
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx && sideBar_R_Questions_CurrentQuestionNumber_rdx + 1 <= 36 && nextIsActive) {
 			newQuestionNum = sideBar_R_Questions_CurrentQuestionNumber_rdx + 1;
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		} else if (sideBar_R_Questions_retakeFailed_isOpen_rdx) {
 			let numOptions = sideBar_R_Questions_wrongAnswers_num_rdx[sideBar_R_Questions_CurrentTestNumber_rdx];
 			const current_idx = numOptions.indexOf(sideBar_R_Questions_CurrentQuestionNumber_rdx);
@@ -65,9 +71,9 @@ const PaginationQuestionsGUI = () => {
 					newQuestionNum = numOptions[0];
 				}
 			}
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
+			localStorage.setItem("currentQuestionNumber", newQuestionNum);
 		}
-		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(newQuestionNum));
-		localStorage.setItem("currentQuestionNumber", newQuestionNum);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch, nextIsActive, sideBar_R_Questions_retakeFailed_isOpen_rdx]);
 
 	//! Update pagination right-limits
