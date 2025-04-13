@@ -91,6 +91,7 @@ const SideBar_R_QuestionsOptions = () => {
 
 				if (!initialAttempt_gotCorrect) {
 					wrongAnswers_num[testNum].push(questionNum);
+					dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
 					if (!question_wasReAttempted) {
 						if (sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt === null || sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt === undefined) {
 							sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt = testNum_idx;
@@ -98,22 +99,30 @@ const SideBar_R_QuestionsOptions = () => {
 							sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
 							sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = questionNum_idx + 1;
 
-							sideBar_R_Questions_RecentTestNumber_idx_reAttempted = testNumPrev - 1;
-							sideBar_R_Questions_RecentTestNumber_num_reAttempted = testNumPrev;
-							sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = questionNumPrev - 1;
-							sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = questionNumPrev;
+							if (testNumPrev === null && questionNumPrev === null) {
+								sideBar_R_Questions_RecentTestNumber_idx_reAttempted = null;
+								sideBar_R_Questions_RecentTestNumber_num_reAttempted = null;
+								sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = null;
+								sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = null;
+							} else {
+								sideBar_R_Questions_RecentTestNumber_idx_reAttempted = testNumPrev - 1;
+								sideBar_R_Questions_RecentTestNumber_num_reAttempted = testNumPrev;
+								sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = questionNumPrev - 1;
+								sideBar_R_Questions_RecentQuestionNumber_num_reAttempted = questionNumPrev;
+							}
 						}
 						sideBar_R_Questions_LastTestNumber_idx_toReAttempt = testNum_idx;
 						sideBar_R_Questions_LastTestNumber_num_toReAttempt = testNum;
 						sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt = questionNum_idx;
 						sideBar_R_Questions_LastQuestionNumber_num_toReAttempt = questionNum;
 					}
+					testNumPrev = testNum;
+					questionNumPrev = questionNum;
 				}
-				testNumPrev = testNum;
-				questionNumPrev = questionNum;
 			}
 		}
 
+		//Recent Test to re-attempted#
 		if (
 			sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== null &&
 			sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== undefined &&
@@ -125,8 +134,8 @@ const SideBar_R_QuestionsOptions = () => {
 					num: sideBar_R_Questions_RecentTestNumber_num_reAttempted,
 				})
 			);
-			dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
 		}
+		//Recent Question to re-attempted#
 		if (
 			sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== null &&
 			sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== undefined &&
@@ -139,7 +148,7 @@ const SideBar_R_QuestionsOptions = () => {
 				})
 			);
 		}
-
+		//Current Test to re-attempt#
 		if (
 			sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== null &&
 			sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== undefined &&
@@ -152,7 +161,7 @@ const SideBar_R_QuestionsOptions = () => {
 				})
 			);
 		}
-
+		//Current Question to re-attempt#
 		if (
 			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== null &&
 			sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== undefined &&
@@ -186,6 +195,7 @@ const SideBar_R_QuestionsOptions = () => {
 		if (sideBar_R_QuestionTestResults_rdx) {
 			// Check if the values are available before updating state -- !!double negation returns boolean if truthy of falsy
 			const test1Started = !!sideBar_R_QuestionTestResults_rdx[1]?.[1];
+			setProbabilityOfPassingStatus(test1Started);
 			const test2Started = !!sideBar_R_QuestionTestResults_rdx[2]?.[1];
 			const test3Started = !!sideBar_R_QuestionTestResults_rdx[3]?.[1];
 			const test4Started = !!sideBar_R_QuestionTestResults_rdx[4]?.[1];
@@ -227,9 +237,7 @@ const SideBar_R_QuestionsOptions = () => {
 	}, [pageNum_current_reader_rdx]);
 
 	//! Button Actions
-	const generalButtonClick = () => {
-		console.log("generalButtonClick");
-	};
+	const generalButtonClick = () => {};
 	const test1 = () => {
 		if (test1Status === "Done") {
 			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));

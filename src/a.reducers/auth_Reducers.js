@@ -293,13 +293,13 @@ const userSlice = createSlice({
 			const { idx, num } = action.payload;
 			state.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = idx;
 			state.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx = num;
-			state.sideBar_R_Questions_CurrentTestNumber_rdx = num;
+			//TODO state.sideBar_R_Questions_CurrentTestNumber_rdx = num;
 		},
 		sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt(state, action) {
 			const { idx, num } = action.payload;
 			state.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = idx;
 			state.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = num;
-			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = num;
+			//TODO state.sideBar_R_Questions_CurrentQuestionNumber_rdx = num;
 		},
 		// last
 		sideBar_R_Questions_setLastTestNumber_toReAttempt(state, action) {
@@ -315,7 +315,6 @@ const userSlice = createSlice({
 		sideBar_R_Questions_setWrongAnswers(state, action) {
 			state.sideBar_R_Questions_wrongAnswers_num_rdx = action.payload;
 		},
-		// ...
 		sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(state, action) {
 			state.setRetakeFailedQuestions_moduleIsActive_rdx = action.payload;
 		},

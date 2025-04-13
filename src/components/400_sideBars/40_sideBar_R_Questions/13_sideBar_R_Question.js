@@ -19,6 +19,9 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
+	const sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx);
+	const sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx);
+	const sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx);
 	const [quickNavBar, setQuickNavBar] = useState(null);
 	const [hasQuestionImage, setHasQuestionImage] = useState(true);
 	const question = questionData.question;
@@ -43,6 +46,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 
 	//! loop through questionData to create the quickNavBar
 	useEffect(() => {
+		console.log("0");
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
 			for (let i = 1; i <= 36; i++) {
 				const questionAnswerData = questionData_ifSubmitted?.[i];
@@ -82,12 +86,13 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				}
 			}
 		} else {
+			let testNumPrev = null;
+			let questionNumPrev = null;
 			for (let testNum_idx = 0; testNum_idx < testResultsData_listForm.length; testNum_idx++) {
 				const testNum = testNum_idx + 1;
 				const testData = testResultsData_listForm[testNum_idx][1];
 				const testData_object = Object.entries(testData);
-				let testNumPrev = null;
-				let questionNumPrev = null;
+
 				for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 					const questionNum = questionNum_idx + 1;
 					const questionData_attempts = testData_object[questionNum_idx][1].attempts;
@@ -105,6 +110,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 								sideBar_R_Questions_CurrentTestNumber_num_toReAttempt = testNum_idx + 1;
 								sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt = questionNum_idx;
 								sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt = questionNum_idx + 1;
+							}
+
+							if (
+								(testNumPrev !== null && questionNumPrev !== null && sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted === null) ||
+								sideBar_R_Questions_RecentTestNumber_idx_reAttempted === undefined
+							) {
 								sideBar_R_Questions_RecentTestNumber_idx_reAttempted = testNumPrev - 1;
 								sideBar_R_Questions_RecentTestNumber_num_reAttempted = testNumPrev;
 								sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = questionNumPrev - 1;
@@ -143,17 +154,18 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 								</li>
 							);
 						}
+						testNumPrev = testNum;
+						questionNumPrev = questionNum;
 					}
-					testNumPrev = testNum;
-					questionNumPrev = questionNum;
 				}
 			}
-			//Recent Test#
+
+			//Recent Test re-attempted#
 			if (
-				sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== null &&
-				sideBar_R_Questions_RecentTestNumber_idx_reAttempted !== undefined &&
-				sideBar_R_Questions_RecentTestNumber_idx_reAttempted + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted <
-					sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx
+				sideBar_R_Questions_RecentTestNumber_num_reAttempted !== null &&
+				sideBar_R_Questions_RecentTestNumber_num_reAttempted !== undefined &&
+				sideBar_R_Questions_RecentTestNumber_num_reAttempted + sideBar_R_Questions_RecentQuestionNumber_num_reAttempted >
+					sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setRecentTestNumber_reAttempted({
@@ -162,12 +174,13 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					})
 				);
 			}
-			//Recent Question#
+
+			//Recent Question re-attempted#
 			if (
-				sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== null &&
-				sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted !== undefined &&
-				sideBar_R_Questions_RecentTestNumber_idx_reAttempted + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted <
-					sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx
+				sideBar_R_Questions_RecentQuestionNumber_num_reAttempted !== null &&
+				sideBar_R_Questions_RecentQuestionNumber_num_reAttempted !== undefined &&
+				sideBar_R_Questions_RecentTestNumber_num_reAttempted + sideBar_R_Questions_RecentQuestionNumber_num_reAttempted >
+					sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx + sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setRecentQuestionNumber_reAttempted({
@@ -177,12 +190,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				);
 			}
 
-			//Current Test#
+			//Current Test to re-attempt#
 			if (
-				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== null &&
-				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt !== undefined &&
-				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt <
-					sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt !== null &&
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt !== undefined &&
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
+					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
@@ -191,12 +204,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					})
 				);
 			}
-			//Current Question#
+			//Current Question to re-attempt#
 			if (
-				sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== null &&
-				sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt !== undefined &&
-				sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt <
-					sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx
+				sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt !== null &&
+				sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt !== undefined &&
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
+					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
