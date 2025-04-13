@@ -107,17 +107,17 @@ const MainNavbar = () => {
 		searchBarRef.current.blur();
 		setSearchText("");
 	};
-	useEffect(() => {
-		window.addEventListener("keydown", onEscKey_ExitModal);
-		return () => {
-			window.removeEventListener("keydown", onEscKey_ExitModal);
-		};
-	}, []);
-	const onEscKey_ExitModal = (e) => {
-		if (e.key === "Escape") {
-			exitSearchBarAction();
-		}
-	};
+	// useEffect(() => {
+	// 	window.addEventListener("keydown", onEscKey_ExitModal);
+	// 	return () => {
+	// 		window.removeEventListener("keydown", onEscKey_ExitModal);
+	// 	};
+	// }, []);
+	// const onEscKey_ExitModal = (e) => {
+	// 	if (e.key === "Escape") {
+	// 		exitSearchBarAction();
+	// 	}
+	// };
 	const onChange = (e) => {
 		setSearchText(e.target.value);
 		console.log("searching hits for: ", e.target.value);

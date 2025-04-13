@@ -230,6 +230,10 @@ const DemoDMVClassC = () => {
 	const handleKeyCombination = (e) => {
 		if (!sideBar_R_SearchBar_isActive_rdx && !sideBar_R_Notes_isOpen_rdx) {
 			switch (true) {
+				case e.key === "Escape":
+					console.log("Escape key pressed");
+					dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
+					break;
 				case e.key === "b" || e.key === "B":
 					if (sideBar_L_isOpen_rdx) {
 						dispatch(userReducerActions.sideBar_L_Close());

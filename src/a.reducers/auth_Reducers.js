@@ -15,7 +15,7 @@ const initialState = {
 	PDF_inputPageNum_rdx: 1,
 	PDF_pagesLength_rdx: 92,
 
-	sideBar_R_QuestionsStatus_rdx: "QuestionsLanding",
+	sideBar_R_QuestionsStatus_rdx: null,
 	//!General
 	sideBar_R_Questions_CurrentTestNumber_rdx: 1,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
@@ -58,7 +58,7 @@ const initialState = {
 	sideBar_R_Notes_isOpen_rdx: false,
 	sideBar_R_Questions_isOpen_rdx: false,
 	sideBar_R_SearchBar_isActive_rdx: false,
-	sideBar_R_NavigationStack: [],
+	sideBar_ViewStack_rdx: ["SideBar_L"],
 	//! new
 	sideBar_R_Questions_retakeFailed_isOpen_rdx: false,
 	setRetakeFailedQuestions_moduleIsActive_rdx: false,
@@ -145,13 +145,21 @@ const userSlice = createSlice({
 		},
 		//! SideBar L
 		sideBar_L_Toggle_Visibility(state) {
-			state.sideBar_L_isOpen_rdx = !state.sideBar_L_isOpen_rdx;
+			if (state.sideBar_L_isOpen_rdx) {
+				state.sideBar_L_isOpen_rdx = false;
+				state.sideBar_ViewStack_rdx.shift(); // 					remove from beginning of stack
+			} else {
+				state.sideBar_L_isOpen_rdx = true;
+				state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 		push to beginning of stack
+			}
 		},
 		sideBar_L_Open(state) {
 			state.sideBar_L_isOpen_rdx = true;
+			state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 			push to beginning of stack
 		},
 		sideBar_L_Close(state) {
 			state.sideBar_L_isOpen_rdx = false;
+			state.sideBar_ViewStack_rdx.shift(); // 						remove from beginning of stack
 		},
 		sideBar_L_NotAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
@@ -176,51 +184,68 @@ const userSlice = createSlice({
 		//! R Questions SideBar
 		sideBar_R_Open_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = true;
-			state.sideBar_R_NavigationStack.push("QuestionsLanding");
+			state.sideBar_R_QuestionsStatus_rdx = "QuestionsOptions";
+			state.sideBar_ViewStack_rdx.push("QuestionsOptions");
 		},
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
-			state.sideBar_R_NavigationStack = [];
+			// state.sideBar_ViewStack_rdx = [];
 		},
 		//! NavigationStack
 		sideBar_R_Questions_GoToPrev(state) {
-			const prevIndex = state.sideBar_R_NavigationStack.length - 2;
-			if (prevIndex >= 0) {
-				state.sideBar_R_QuestionsStatus_rdx = state.sideBar_R_NavigationStack[prevIndex];
-				state.sideBar_R_NavigationStack.pop();
+			const prevIndex = state.sideBar_ViewStack_rdx.length - 2;
+			const prevView = state.sideBar_ViewStack_rdx[prevIndex];
+			const currIndex = state.sideBar_ViewStack_rdx.length - 1;
+			const currView = state.sideBar_ViewStack_rdx[currIndex];
+			console.log("currView", currView);
+			if (currIndex >= 0) {
+				if (currView === "QuestionsOptions") {
+					console.log("1");
+					state.sideBar_R_Questions_isOpen_rdx = false;
+					state.activePanel = "main";
+				} else if (currView === "SideBar_L") {
+					console.log("2");
+					state.sideBar_L_isOpen_rdx = false;
+					state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
+				} else {
+					console.log("3");
+					state.sideBar_R_QuestionsStatus_rdx = prevView;
+				}
+				console.log("4");
+				state.sideBar_ViewStack_rdx.pop();
 			}
 		},
 		sideBar_R_Questions_GoTo_Landing(state) {
-			state.sideBar_R_QuestionsStatus_rdx = "QuestionsLanding";
-			state.sideBar_R_NavigationStack.push("QuestionsLanding");
+			state.sideBar_R_QuestionsStatus_rdx = "QuestionsOptions";
+			state.sideBar_ViewStack_rdx.push("QuestionsOptions");
 		},
 		sideBar_R_Questions_GoTo_Test(state, action) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
-			state.sideBar_R_NavigationStack.push("Questions");
+			state.sideBar_ViewStack_rdx.push("Questions");
 			state.sideBar_R_Questions_retakeFailed_isOpen_rdx = false;
 		},
 		sideBar_R_Questions_GoBackTo_Test(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
-			state.sideBar_R_NavigationStack.push("Questions");
+			state.sideBar_ViewStack_rdx.push("Questions");
 		},
 		sideBar_R_Questions_GoTo_TestResultsForTestNum(state, action) {
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = action.payload;
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
-			state.sideBar_R_NavigationStack.push("TestResults");
+			state.sideBar_ViewStack_rdx.push("TestResults");
 		},
 		sideBar_R_Questions_GoTo_TestResults(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "TestResults";
-			state.sideBar_R_NavigationStack.push("TestResults");
+			state.sideBar_ViewStack_rdx.push("TestResults");
 		},
 		sideBar_R_Questions_GoTo_ProbabilityOfPassing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "ProbabilityOfPassingPage";
-			state.sideBar_R_NavigationStack.push("ProbabilityOfPassingPage");
+			state.sideBar_ViewStack_rdx.push("ProbabilityOfPassingPage");
 		},
 		sideBar_R_Questions_GoTo_RetakeFailedQuestions(state) {
 			state.sideBar_R_Questions_retakeFailed_isOpen_rdx = true;
 			state.sideBar_R_QuestionsStatus_rdx = "Questions";
-			state.sideBar_R_NavigationStack.push("Questions");
+			state.sideBar_ViewStack_rdx.push("Questions");
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = state.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx;
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = state.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx;
 		},

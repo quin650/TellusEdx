@@ -289,18 +289,6 @@ const SideBar_R_MainMenu = () => {
 			</svg>
 		</button>
 	);
-	const open_sideBar_R_Search_Modal = () => {
-		if (sideBar_R_Notes_isOpen_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Notes());
-		}
-		if (sideBar_R_Main_isOpen_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Main());
-		}
-		if (sideBar_R_Questions_isOpen_rdx) {
-			dispatch(userReducerActions.sideBar_R_Close_Questions());
-		}
-		dispatch(userReducerActions.sideBar_R_Open_Search());
-	};
 	const open_sideBar_R_Notes_Modal = () => {
 		if (sideBar_R_Search_isOpen_rdx) {
 			dispatch(userReducerActions.sideBar_R_Close_Notes());

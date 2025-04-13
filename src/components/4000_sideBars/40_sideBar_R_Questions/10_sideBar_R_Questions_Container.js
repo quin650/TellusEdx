@@ -19,24 +19,19 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 
 	//! General -----------------------------------------------
 	// Exit Functionality
-	useEffect(() => {
-		window.addEventListener("keydown", onEscKey_ExitModal);
-		return () => {
-			window.removeEventListener("keydown", onEscKey_ExitModal);
-		};
-	}, [sideBar_R_QuestionsStatus_rdx]);
-	const onEscKey_ExitModal = (e) => {
-		if (e.key === "Escape") {
-			backButtonAction();
-		}
-	};
+	// useEffect(() => {
+	// 	window.addEventListener("keydown", onEscKey_ExitModal);
+	// 	return () => {
+	// 		window.removeEventListener("keydown", onEscKey_ExitModal);
+	// 	};
+	// }, [sideBar_R_QuestionsStatus_rdx]);
+	// const onEscKey_ExitModal = (e) => {
+	// 	if (e.key === "Escape") {
+	// 		backButtonAction();
+	// 	}
+	// };
 	const backButtonAction = () => {
-		if (sideBar_R_QuestionsStatus_rdx === "QuestionsLanding") {
-			dispatch(userReducerActions.sideBar_R_Close_Questions());
-			dispatch(userReducerActions.setActivePanel("main")); // Close the left sidebar if open
-		} else {
-			dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
-		}
+		dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 	};
 	const exitAction = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Questions());
@@ -133,7 +128,7 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 	const [content, setContent] = useState(<SideBar_R_QuestionsOptions />);
 	useEffect(() => {
 		switch (sideBar_R_QuestionsStatus_rdx) {
-			case "QuestionsLanding":
+			case "QuestionsOptions":
 				setContent(<SideBar_R_QuestionsOptions />);
 				break;
 			case "Questions":
