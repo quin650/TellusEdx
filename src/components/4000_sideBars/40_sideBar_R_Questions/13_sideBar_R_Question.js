@@ -31,7 +31,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	// ! new...
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
 	const testResultsData_listForm = Object.entries(testResultData);
-	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
+	const sideBar_R_Questions_CurrentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentAttempt_rdx);
 	const navItems = [];
 
 	let sideBar_R_Questions_RecentTestNumber_idx_reAttempted = null;
@@ -96,12 +96,12 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 					const questionNum = questionNum_idx + 1;
 					const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-					const initialAttempt = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
-						? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
-						: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx];
+					const initialAttempt = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]
+						? questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]
+						: questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx];
 					const initialAttempt_gotCorrect = initialAttempt?.isCorrect;
-					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
-					const question_wasReAttempted_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1] ? true : false;
+					const question_wasReAttempted_gotCorrect = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx]?.isCorrect;
 
 					if (!initialAttempt_gotCorrect) {
 						if (!question_wasReAttempted) {

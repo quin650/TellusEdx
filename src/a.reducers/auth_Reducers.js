@@ -19,7 +19,7 @@ const initialState = {
 	//!General
 	sideBar_R_Questions_CurrentTestNumber_rdx: 1,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
-	sideBar_R_Questions_currentAttempt_rdx: 0,
+	sideBar_R_Questions_CurrentAttempt_rdx: 0,
 	//! First Attempt
 	// Current
 

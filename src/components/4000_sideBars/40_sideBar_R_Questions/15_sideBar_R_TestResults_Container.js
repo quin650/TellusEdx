@@ -9,7 +9,7 @@ const SideBar_R_TestResults_Container = () => {
 	const questionContentRef = useRef(null);
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
-	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
+	const sideBar_R_Questions_CurrentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentAttempt_rdx);
 	const setRetakeFailedQuestions_moduleIsActive_rdx = useSelector(({ user }) => user.setRetakeFailedQuestions_moduleIsActive_rdx);
 	const sideBar_R_Questions_wrongAnswers_num_rdx = useSelector(({ user }) => user.sideBar_R_Questions_wrongAnswers_num_rdx);
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
@@ -46,7 +46,7 @@ const SideBar_R_TestResults_Container = () => {
 			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 				numberAnswered += 1;
 				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx]?.isCorrect;
+				const initialAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx]?.isCorrect;
 				if (initialAttempt_gotCorrect) numberAnsweredCorrectly += 1;
 				ul.push(<SideBar_R_TestResults_ListOfQuestions key={questionNum_idx} id={questionNum_idx} isCorrect={initialAttempt_gotCorrect} />);
 			}
@@ -59,7 +59,7 @@ const SideBar_R_TestResults_Container = () => {
 					const questionWrongNum_num = sideBar_R_Questions_wrongAnswers_num_rdx[testNum_num][questionNum_idx];
 					const questionWrongNum_idx = questionWrongNum_num - 1;
 					const questionData_attempts = testData_object[questionWrongNum_idx][1].attempts;
-					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
+					const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1] ? true : false;
 					// console.log("questionWrongNum_num", questionWrongNum_num);
 					// console.log("questionData_attempts", questionData_attempts);
 					// console.log("question_wasReAttempted", question_wasReAttempted);
@@ -67,7 +67,7 @@ const SideBar_R_TestResults_Container = () => {
 
 					if (question_wasReAttempted) {
 						numberAnswered += 1;
-						const secondaryAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]?.isCorrect;
+						const secondaryAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]?.isCorrect;
 						ul.push(<SideBar_R_TestResults_ListOfQuestions key={testNum_idx - questionNum_idx} id={questionWrongNum_num} isCorrect={secondaryAttempt_gotCorrect} />);
 					}
 				}
@@ -83,7 +83,7 @@ const SideBar_R_TestResults_Container = () => {
 		setRetakeFailedQuestions_moduleIsActive_rdx,
 		sideBar_R_Questions_wrongAnswers_num_rdx,
 		sideBar_R_Questions_CurrentTestNumber_rdx,
-		sideBar_R_Questions_currentAttempt_rdx,
+		sideBar_R_Questions_CurrentAttempt_rdx,
 		setUl1,
 		setLastSubmittedQuestion,
 		setAnsweredCorrectly,

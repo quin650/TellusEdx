@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
 import { throttle } from "lodash";
-import MainNavbar from "./components/1000_layout/10_header/1_navBar_Main";
+import MainNavbar from "./components/1000_layout/10_header/1_mainNavbar";
 import Footer from "./components/1000_layout/40_footer/footer";
 import Home from "./components/2000_pages/10_pages/0_home/0_home";
 import Demo_LandingPage from "./components/5000_demos/00_demo_LandingPage/demo_LandingPage";

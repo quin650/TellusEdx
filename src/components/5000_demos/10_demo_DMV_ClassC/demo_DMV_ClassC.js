@@ -43,6 +43,7 @@ const generateIdFromText = (text) => {
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/(^-|-$)/g, "");
 };
+
 const DemoDMVClassC = () => {
 	const dispatch = useDispatch();
 	const mainContainerRef = useRef(null);
@@ -56,6 +57,7 @@ const DemoDMVClassC = () => {
 		sideBar_R_Main_isOpen_rdx,
 		pageNum_current_reader_rdx,
 		sideBar_R_Questions_isOpen_rdx,
+		sideBar_R_SearchBar_isActive_rdx,
 	} = useSelector(({ user }) => user);
 	const ListOfPages = [
 		<Page1 />,
@@ -226,12 +228,10 @@ const DemoDMVClassC = () => {
 		};
 	}, [sideBar_L_AllowCollapse_OnWindowResize_rdx, sideBar_L_isOpen_rdx, width_Affects_to_SideBar_L_TOC]);
 	// Hot-Key Combinations
-	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
 	const handleKeyCombination = (e) => {
 		if (!sideBar_R_SearchBar_isActive_rdx && !sideBar_R_Notes_isOpen_rdx) {
 			switch (true) {
 				case e.key === "Escape":
-					console.log("Escape key pressed");
 					dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 					break;
 				case e.key === "b" || e.key === "B":
@@ -278,6 +278,14 @@ const DemoDMVClassC = () => {
 				default:
 					break;
 			}
+		} else if (sideBar_R_SearchBar_isActive_rdx) {
+			switch (true) {
+				case e.key === "Escape":
+					dispatch(userReducerActions.sideBar_R_SearchBar_isActive(false));
+					break;
+				default:
+					break;
+			}
 		}
 	};
 	useEffect(() => {
@@ -287,6 +295,7 @@ const DemoDMVClassC = () => {
 		};
 	}, [sideBar_L_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx]);
 	const handleMainClick = () => {
+		dispatch(userReducerActions.setActivePanel("main"));
 		dispatch(userReducerActions.setActivePanel("main"));
 	};
 	const resetThisTest_ModalStatus_rdx = useSelector(({ user }) => user.resetThisTest_ModalStatus_rdx);

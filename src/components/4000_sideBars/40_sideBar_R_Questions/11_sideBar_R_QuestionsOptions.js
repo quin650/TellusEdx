@@ -8,7 +8,7 @@ const SideBar_R_QuestionsOptions = () => {
 	const sideBar_R_QuestionTestResults_rdx = useSelector(({ user }) => user.sideBar_R_QuestionTestResults_rdx);
 	const pageNum_current_reader_rdx = useSelector(({ user }) => user.pageNum_current_reader_rdx);
 	const testResultData = sideBar_R_QuestionTestResults_rdx ? sideBar_R_QuestionTestResults_rdx : null;
-	const sideBar_R_Questions_currentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_currentAttempt_rdx);
+	const sideBar_R_Questions_CurrentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentAttempt_rdx);
 	const sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx);
 	const sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx);
 	const setRetakeFailedQuestions_moduleIsActive_rdx = useSelector(({ user }) => user.setRetakeFailedQuestions_moduleIsActive_rdx);
@@ -64,11 +64,11 @@ const SideBar_R_QuestionsOptions = () => {
 			for (let questionNum_idx = 0; questionNum_idx < testData_object.length; questionNum_idx++) {
 				const questionNum = questionNum_idx + 1;
 				const questionData_attempts = testData_object[questionNum_idx][1].attempts;
-				const initialAttempt = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
-					? questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1]
-					: questionData_attempts[sideBar_R_Questions_currentAttempt_rdx];
+				const initialAttempt = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]
+					? questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]
+					: questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx];
 				const initialAttempt_gotCorrect = initialAttempt?.isCorrect;
-				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_currentAttempt_rdx + 1] ? true : false;
+				const question_wasReAttempted = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1] ? true : false;
 
 				if (questionData_attempts && sideBar_R_Questions_FirstTestNumber_idx_reAttempted === null && sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted === null) {
 					sideBar_R_Questions_FirstTestNumber_idx_reAttempted = testNum_idx;

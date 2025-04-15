@@ -101,23 +101,23 @@ const MainNavbar = () => {
 	//!Search Bar
 	const [searchText, setSearchText] = useState("");
 	const exitSearchBarAction = () => {
-		dispatch(userReducerActions.sideBar_R_SearchBar_isActive(false));
+		// dispatch to exit search bar is coming from demo_DMV_ClassC event listener
 		setSearchBarIsOpened(false);
 		setSearchBarIsFocused(false);
 		searchBarRef.current.blur();
 		setSearchText("");
 	};
-	// useEffect(() => {
-	// 	window.addEventListener("keydown", onEscKey_ExitModal);
-	// 	return () => {
-	// 		window.removeEventListener("keydown", onEscKey_ExitModal);
-	// 	};
-	// }, []);
-	// const onEscKey_ExitModal = (e) => {
-	// 	if (e.key === "Escape") {
-	// 		exitSearchBarAction();
-	// 	}
-	// };
+	useEffect(() => {
+		window.addEventListener("keydown", onEscKey_ExitModal);
+		return () => {
+			window.removeEventListener("keydown", onEscKey_ExitModal);
+		};
+	}, []);
+	const onEscKey_ExitModal = (e) => {
+		if (e.key === "Escape") {
+			exitSearchBarAction();
+		}
+	};
 	const onChange = (e) => {
 		setSearchText(e.target.value);
 		console.log("searching hits for: ", e.target.value);
@@ -174,7 +174,6 @@ const MainNavbar = () => {
 					onFocus={handleSearchBarFocus}
 					onBlur={handleSearchBarBlur}
 				/>
-
 				<button onClick={exitSearchBarAction} className={`${classes["exitButton"]} ${searchText !== "" ? classes.inputHasText : ""}`}>
 					<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 						<path
