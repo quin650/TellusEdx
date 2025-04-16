@@ -195,13 +195,13 @@ const SideBar_R_QuestionsOptions = () => {
 		if (sideBar_R_QuestionTestResults_rdx) {
 			// Check if the values are available before updating state -- !!double negation returns boolean if truthy of falsy
 			const test1Started = !!sideBar_R_QuestionTestResults_rdx[1]?.[1];
-			setProbabilityOfPassingStatus(test1Started);
 			const test2Started = !!sideBar_R_QuestionTestResults_rdx[2]?.[1];
 			const test3Started = !!sideBar_R_QuestionTestResults_rdx[3]?.[1];
 			const test4Started = !!sideBar_R_QuestionTestResults_rdx[4]?.[1];
 			const test5Started = !!sideBar_R_QuestionTestResults_rdx[4]?.[1];
 
 			const test1Completed = !!sideBar_R_QuestionTestResults_rdx[1]?.[36];
+			setProbabilityOfPassingStatus(test1Completed);
 			const test2Completed = !!sideBar_R_QuestionTestResults_rdx[2]?.[36];
 			const test3Completed = !!sideBar_R_QuestionTestResults_rdx[3]?.[36];
 			const test4Completed = !!sideBar_R_QuestionTestResults_rdx[4]?.[36];
