@@ -11,9 +11,10 @@ const PaginationQuestionsGUI = () => {
 	const sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx);
 	const sideBar_R_Questions_wrongAnswers_num_rdx = useSelector(({ user }) => user.sideBar_R_Questions_wrongAnswers_num_rdx);
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
+
 	const [latestSubmittedQuestion, setLatestSubmittedQuestion] = useState(0);
 	const [nextIsActive, setNextIsActive] = useState(false);
-	const activePanel = useSelector(({ user }) => user.activePanel);
+	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
 
 	//! Find and set latest submitted test/question number - for first attempted regular test (Helps find right-limit for pagination)
 	//! Find and set latest submitted test/question number - for reattempted failed questions
@@ -94,7 +95,7 @@ const PaginationQuestionsGUI = () => {
 	//! Event Listeners
 	const handleKeyDown = useCallback(
 		(e) => {
-			if (activePanel === "questions") {
+			if (activePanel_rdx === "questions") {
 				switch (e.key) {
 					case "ArrowLeft":
 						PrevQuestion();
@@ -109,7 +110,7 @@ const PaginationQuestionsGUI = () => {
 				}
 			}
 		},
-		[PrevQuestion, NextQuestion, activePanel]
+		[PrevQuestion, NextQuestion, activePanel_rdx]
 	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
@@ -119,7 +120,7 @@ const PaginationQuestionsGUI = () => {
 	}, [handleKeyDown]);
 
 	return (
-		<div className={classes.paginationContainer}>
+		<div className={`${classes["paginationContainer"]} ${activePanel_rdx === "questions" ? classes.isActive : ""}`}>
 			<button id="prev" onClick={PrevQuestion} className={classes.paginationButtonL} disabled={sideBar_R_Questions_CurrentQuestionNumber_rdx === 1}>
 				<svg className={`${classes["arrowIconL"]} ${sideBar_R_Questions_CurrentQuestionNumber_rdx === 1 ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />

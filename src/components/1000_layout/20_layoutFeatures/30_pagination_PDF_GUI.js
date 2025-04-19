@@ -27,10 +27,10 @@ const Pagination_PDF_GUI = () => {
 		}
 	}, [PDF_currentPageNum_rdx, PDF_pagesLength_rdx, dispatch]);
 	// Event listeners -- Left(Prev)-Right(Next)
-	const activePanel = useSelector(({ user }) => user.activePanel);
+	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
 	const handleKeyDown = useCallback(
 		(e) => {
-			if (activePanel === "main") {
+			if (activePanel_rdx === "main") {
 				switch (e.key) {
 					case "ArrowLeft":
 						PrevPage();
@@ -43,7 +43,7 @@ const Pagination_PDF_GUI = () => {
 				}
 			}
 		},
-		[PrevPage, NextPage, activePanel]
+		[PrevPage, NextPage, activePanel_rdx]
 	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);

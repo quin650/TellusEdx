@@ -27,10 +27,10 @@ const Pagination_eReader_GUI = () => {
 		}
 	}, [pageNum_current_reader_rdx, pagesLength_rdx, dispatch]);
 	// Event listeners -- Left(Prev)-Right(Next)
-	const activePanel = useSelector(({ user }) => user.activePanel);
+	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
 	const handleKeyDown = useCallback(
 		(e) => {
-			if (activePanel === "main") {
+			if (activePanel_rdx === "main") {
 				switch (e.key) {
 					case "ArrowLeft":
 						PrevPage();
@@ -43,7 +43,7 @@ const Pagination_eReader_GUI = () => {
 				}
 			}
 		},
-		[PrevPage, NextPage, activePanel]
+		[PrevPage, NextPage, activePanel_rdx]
 	);
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
@@ -96,7 +96,7 @@ const Pagination_eReader_GUI = () => {
 		}
 	};
 	return (
-		<div className={classes.paginationContainer}>
+		<div className={`${classes["paginationContainer"]} ${activePanel_rdx === "main" ? classes.isActive : ""}`}>
 			<button id="prev" onClick={PrevPage} className={classes.paginationButtonL} disabled={pageNum_input_reader_rdx === 1}>
 				<svg className={`${classes["arrowIconL"]} ${pageNum_input_reader_rdx === 1 && classes.isInactive}`} viewBox="0 0 24 24">
 					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />

@@ -77,7 +77,7 @@ const initialState = {
 	isDarkMode_rdx: isDarkMode,
 	isDemoView_rdx: false,
 	isDashboardFullScreen_rdx: true,
-	activePanel: "main",
+	activePanel_rdx: "main",
 
 	//! User Info
 	loginError_rdx: "",
@@ -141,7 +141,7 @@ const userSlice = createSlice({
 		},
 		//! General
 		setActivePanel(state, action) {
-			state.activePanel = action.payload;
+			state.activePanel_rdx = action.payload;
 		},
 		//! SideBar L
 		sideBar_L_Toggle_Visibility(state) {
@@ -202,7 +202,7 @@ const userSlice = createSlice({
 				if (currView === "QuestionsOptions") {
 					console.log("1");
 					state.sideBar_R_Questions_isOpen_rdx = false;
-					state.activePanel = "main";
+					state.activePanel_rdx = "main";
 				} else if (currView === "SideBar_L") {
 					console.log("2");
 					state.sideBar_L_isOpen_rdx = false;
