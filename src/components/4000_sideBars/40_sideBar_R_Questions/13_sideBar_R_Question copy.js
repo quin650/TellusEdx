@@ -34,8 +34,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_R_Questions_CurrentAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentAttempt_rdx);
 	const navItems = [];
 
-	let sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt = null;
-
 	let sideBar_R_Questions_RecentTestNumber_idx_reAttempted = null;
 	let sideBar_R_Questions_RecentTestNumber_num_reAttempted = null;
 	let sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted = null;
@@ -52,13 +50,23 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			for (let i = 1; i <= 36; i++) {
 				const questionAnswerData = questionData_ifSubmitted?.[i];
 				const questionAnswerData_gotCorrect = questionAnswerData?.attempts[0]?.isCorrect;
-				if (!questionAnswerData) {
-					if (sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt === null) {
-						sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt = i;
-						dispatch(userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(i));
-					}
+				if (questionAnswerData) {
+					//Green or Red - attempted
+					navItems.push(
+						<li
+							key={i}
+							onClick={() => gotoQuestion(i)}
+							className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
+								questionAnswerData_gotCorrect ? classes.correct : classes.isCorrect
+							}`}
+						>
+							{i}
+						</li>
+					);
+				} else {
 					// Blue - Currently Selected
 					// Yellow - Currently Attempting
+
 					if (sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx === i) {
 						console.log("i === sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx", i, sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx);
 						navItems.push(
@@ -80,19 +88,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 							</li>
 						);
 					}
-				} else {
-					//Green or Red - attempted
-					navItems.push(
-						<li
-							key={i}
-							onClick={() => gotoQuestion(i)}
-							className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
-								questionAnswerData_gotCorrect ? classes.correct : classes.isCorrect
-							}`}
-						>
-							{i}
-						</li>
-					);
 				}
 			}
 		} else {

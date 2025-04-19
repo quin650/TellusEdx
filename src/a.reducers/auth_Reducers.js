@@ -201,21 +201,16 @@ const userSlice = createSlice({
 			const prevView = state.sideBar_ViewStack_rdx[prevIndex];
 			const currIndex = state.sideBar_ViewStack_rdx.length - 1;
 			const currView = state.sideBar_ViewStack_rdx[currIndex];
-			console.log("currView", currView);
 			if (currIndex >= 0) {
 				if (currView === "QuestionsOptions") {
-					console.log("1");
 					state.sideBar_R_Questions_isOpen_rdx = false;
 					state.activePanel_rdx = "main";
 				} else if (currView === "SideBar_L") {
-					console.log("2");
 					state.sideBar_L_isOpen_rdx = false;
 					state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
 				} else {
-					console.log("3");
 					state.sideBar_R_QuestionsStatus_rdx = prevView;
 				}
-				console.log("4");
 				state.sideBar_ViewStack_rdx.pop();
 			}
 		},
@@ -292,11 +287,9 @@ const userSlice = createSlice({
 			localStorage.removeItem("testResults");
 		},
 		// !First Attempt Questions
-
 		sideBar_R_Questions_setCurrentQuestionNumber_toAttempt(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx = action.payload;
 		},
-
 		// !ReAttempted Questions
 		// First
 		sideBar_R_Questions_setFirstTestNumber_reAttempted(state, action) {
