@@ -11,7 +11,9 @@ const PaginationQuestionsGUI = () => {
 	const sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx);
 	const sideBar_R_Questions_wrongAnswers_num_rdx = useSelector(({ user }) => user.sideBar_R_Questions_wrongAnswers_num_rdx);
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
-
+	const sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx);
+	const sideBar_R_Questions_CurrentTestNumberToComplete_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumberToComplete_rdx);
+	const userComputerType_rdx = useSelector(({ user }) => user.userComputerType_rdx);
 	const [latestSubmittedQuestion, setLatestSubmittedQuestion] = useState(0);
 	const [nextIsActive, setNextIsActive] = useState(false);
 	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
@@ -92,26 +94,61 @@ const PaginationQuestionsGUI = () => {
 		}
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx, latestSubmittedQuestion, sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx]);
 
+	const GoToStart = () => {
+		dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(1));
+	};
+
+	const GoToEnd = () => {
+		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
+			// should be dependent on current test === , if current test on, then this is fine
+			if (sideBar_R_Questions_CurrentTestNumberToComplete_rdx === sideBar_R_Questions_CurrentTestNumber_rdx) {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx));
+			} else {
+				dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(36));
+			}
+		} else {
+			// this one is fine
+			dispatch(userReducerActions.sideBar_R_Questions_setQuestionNumber(sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx));
+		}
+	};
 	//! Event Listeners
 	const handleKeyDown = useCallback(
 		(e) => {
-			if (activePanel_rdx === "questions") {
-				switch (e.key) {
-					case "ArrowLeft":
-						PrevQuestion();
-						break;
-					case "ArrowRight":
-						if (nextIsActive) {
-							NextQuestion();
-						}
-						break;
-					default:
-						break;
+			if (activePanel_rdx !== "questions") return;
+			const isMac = userComputerType_rdx === "mac";
+			if (isMac && e.metaKey) {
+				if (e.key === "ArrowLeft") {
+					e.preventDefault();
+					GoToStart();
+					return;
+				}
+				if (e.key === "ArrowRight") {
+					e.preventDefault();
+					GoToEnd();
+					return;
+				}
+			} else if (!isMac && e.ctrlKey) {
+				if (e.key === "ArrowLeft") {
+					e.preventDefault();
+					GoToStart();
+					return;
+				}
+				if (e.key === "ArrowRight") {
+					e.preventDefault();
+					GoToEnd();
+					return;
 				}
 			}
+
+			if (e.key === "ArrowLeft") {
+				PrevQuestion();
+			} else if (e.key === "ArrowRight" && nextIsActive) {
+				NextQuestion();
+			}
 		},
-		[PrevQuestion, NextQuestion, activePanel_rdx]
+		[PrevQuestion, NextQuestion, GoToStart, GoToEnd, activePanel_rdx, nextIsActive, userComputerType_rdx]
 	);
+
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
 		return () => {

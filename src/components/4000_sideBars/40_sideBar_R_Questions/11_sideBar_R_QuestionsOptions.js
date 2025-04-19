@@ -206,7 +206,17 @@ const SideBar_R_QuestionsOptions = () => {
 			const test3Completed = !!sideBar_R_QuestionTestResults_rdx[3]?.[36];
 			const test4Completed = !!sideBar_R_QuestionTestResults_rdx[4]?.[36];
 			const test5Completed = !!sideBar_R_QuestionTestResults_rdx[5]?.[36];
-
+			let control = false;
+			for (let i = 5; i >= 0; i--) {
+				const started = !!sideBar_R_QuestionTestResults_rdx[i]?.[1];
+				const completed = !!sideBar_R_QuestionTestResults_rdx[i]?.[36];
+				if (completed) {
+					continue;
+				} else if (!control && started) {
+					dispatch(userReducerActions.sideBar_R_Questions_setCurrentTestNumberToComplete_rdx(i));
+					control = true;
+				}
+			}
 			// Update each test status only if the values exist
 			setTest1Status(test1Completed ? "Done" : !test1Started ? "Start" : "Continue");
 			setTest2Status(test1Completed ? (test2Completed ? "Done" : !test2Started ? "Start" : "Continue") : "n/a yet");

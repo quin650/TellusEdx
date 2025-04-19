@@ -296,7 +296,6 @@ const DemoDMVClassC = () => {
 	}, [sideBar_L_isOpen_rdx, sideBar_R_Notes_isOpen_rdx, sideBar_R_Main_isOpen_rdx, sideBar_R_Questions_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx]);
 	const handleMainClick = () => {
 		dispatch(userReducerActions.setActivePanel("main"));
-		dispatch(userReducerActions.setActivePanel("main"));
 	};
 	const resetThisTest_ModalStatus_rdx = useSelector(({ user }) => user.resetThisTest_ModalStatus_rdx);
 	return (

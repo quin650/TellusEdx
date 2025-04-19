@@ -22,9 +22,19 @@ const App = () => {
 	const getStarted_ModalStatus_rdx = useSelector(({ user }) => user.getStarted_ModalStatus_rdx);
 	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const sideBar_R_SearchBar_isActive_rdx = useSelector(({ user }) => user.sideBar_R_SearchBar_isActive_rdx);
-
 	const [divIDs, setDivIDs] = useState([]);
 	const [activeID, setActiveID] = useState("");
+	// Find if using windows or mac
+	useEffect(() => {
+		const isMac = navigator.userAgent.toLowerCase().includes("mac");
+		// const isWindows = navigator.userAgent.toLowerCase().includes("win");
+		if (isMac) {
+			dispatch(userReducerActions.setUserComputerType("mac"));
+		} else {
+			dispatch(userReducerActions.setUserComputerType("windows"));
+		}
+	}, []);
+
 	// Set Dark/Light Mode
 	useEffect(() => {
 		document.querySelector("main").setAttribute("prefers-color-scheme", isDarkMode_rdx === "dark" ? "dark" : "light");
@@ -78,7 +88,6 @@ const App = () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
 	}, [location]);
-
 	// Hot-Key Combinations
 	const handleKeyCombination = (e) => {
 		if (!getStarted_ModalStatus_rdx) {
@@ -100,7 +109,6 @@ const App = () => {
 			}
 		}
 	};
-
 	useEffect(() => {
 		if (location.pathname !== "/demo_dmvClassC") {
 			document.addEventListener("keydown", handleKeyCombination);
@@ -109,7 +117,6 @@ const App = () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
 	}, [location.pathname, sideBar_R_Main_isOpen_rdx, sideBar_R_SearchBar_isActive_rdx, getStarted_ModalStatus_rdx]);
-
 	return (
 		<main id="main" role="main" ref={mainAppContainerRef}>
 			{location.pathname !== "/PDFViewer" && (

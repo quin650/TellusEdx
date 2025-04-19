@@ -8,7 +8,10 @@ const Pagination_eReader_GUI = () => {
 	const dispatch = useDispatch();
 	const pageNum_current_reader_rdx = useSelector(({ user }) => user.pageNum_current_reader_rdx);
 	const pageNum_input_reader_rdx = useSelector(({ user }) => user.pageNum_input_reader_rdx);
+	const userComputerType_rdx = useSelector(({ user }) => user.userComputerType_rdx);
 	const pagesLength_rdx = useSelector(({ user }) => user.pagesLength_rdx);
+	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
+
 	//!Prev-Next Page
 	const PrevPage = useCallback(() => {
 		let newPageNum = pageNum_current_reader_rdx - 1;
@@ -26,25 +29,67 @@ const Pagination_eReader_GUI = () => {
 			localStorage.setItem("page", newPageNum);
 		}
 	}, [pageNum_current_reader_rdx, pagesLength_rdx, dispatch]);
-	// Event listeners -- Left(Prev)-Right(Next)
-	const activePanel_rdx = useSelector(({ user }) => user.activePanel_rdx);
+	const GoToStart = () => {
+		dispatch(userReducerActions.setDemoCurrentPageNum(1));
+	};
+	const GoToEnd = () => {
+		dispatch(userReducerActions.setDemoCurrentPageNum(24));
+	};
+	// const handleKeyDown = useCallback(
+	// 	(e) => {
+	// 		if (activePanel_rdx === "main") {
+	// 			switch (e.key) {
+	// 				case "ArrowLeft":
+	// 					PrevPage();
+	// 					break;
+	// 				case "ArrowRight":
+	// 					NextPage();
+	// 					break;
+	// 				default:
+	// 					break;
+	// 			}
+	// 		}
+	// 	},
+	// 	[PrevPage, NextPage, activePanel_rdx]
+	// );
+	//! Event Listeners
 	const handleKeyDown = useCallback(
 		(e) => {
-			if (activePanel_rdx === "main") {
-				switch (e.key) {
-					case "ArrowLeft":
-						PrevPage();
-						break;
-					case "ArrowRight":
-						NextPage();
-						break;
-					default:
-						break;
+			if (activePanel_rdx !== "main") return;
+			const isMac = userComputerType_rdx === "mac";
+			if (isMac && e.metaKey) {
+				if (e.key === "ArrowLeft") {
+					e.preventDefault();
+					GoToStart();
+					return;
+				}
+				if (e.key === "ArrowRight") {
+					e.preventDefault();
+					GoToEnd();
+					return;
+				}
+			} else if (!isMac && e.ctrlKey) {
+				if (e.key === "ArrowLeft") {
+					e.preventDefault();
+					GoToStart();
+					return;
+				}
+				if (e.key === "ArrowRight") {
+					e.preventDefault();
+					GoToEnd();
+					return;
 				}
 			}
+
+			if (e.key === "ArrowLeft") {
+				PrevPage();
+			} else if (e.key === "ArrowRight") {
+				NextPage();
+			}
 		},
-		[PrevPage, NextPage, activePanel_rdx]
+		[PrevPage, NextPage, GoToStart, GoToEnd, activePanel_rdx]
 	);
+
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
 		return () => {

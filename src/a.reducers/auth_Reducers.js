@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { set } from "lodash";
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 const testResultsFromStorage = localStorage.getItem("testResults") ? JSON.parse(localStorage.getItem("testResults")) : {};
 const systemColor = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 const localStorageColor = localStorage.getItem("prefers-color-scheme");
 const isDarkMode = localStorageColor ? localStorageColor : systemColor;
+const userComputerTypeFromStorage = localStorage.getItem("computerType") ? JSON.parse(localStorage.getItem("computerType")) : null;
 
 const initialState = {
+	//! High Level
+	userComputerType_rdx: userComputerTypeFromStorage,
 	//! SideBars
 	pageNum_current_reader_rdx: 1,
 	pageNum_input_reader_rdx: 1,
@@ -14,17 +18,16 @@ const initialState = {
 	PDF_currentPageNum_rdx: 1,
 	PDF_inputPageNum_rdx: 1,
 	PDF_pagesLength_rdx: 92,
-
 	sideBar_R_QuestionsStatus_rdx: null,
-	//!General
+	//!Questions
 	sideBar_R_Questions_CurrentTestNumber_rdx: 1,
+	sideBar_R_Questions_CurrentTestNumberToComplete_rdx: 1,
 	sideBar_R_Questions_CurrentQuestionNumber_rdx: 1,
 	sideBar_R_Questions_CurrentAttempt_rdx: 0,
-	//! First Attempt
-	// Current
-
 	sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx: null,
 	//! ReAttempted Questions
+	sideBar_R_Questions_retakeFailed_isOpen_rdx: false,
+	setRetakeFailedQuestions_moduleIsActive_rdx: false,
 	// First
 	sideBar_R_Questions_FirstTestNumber_idx_reAttempted_rdx: null,
 	sideBar_R_Questions_FirstTestNumber_num_reAttempted_rdx: null,
@@ -45,13 +48,13 @@ const initialState = {
 	sideBar_R_Questions_LastTestNumber_num_toReAttempt_rdx: null,
 	sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt_rdx: null,
 	sideBar_R_Questions_LastQuestionNumber_num_toReAttempt_rdx: null,
-	//? here
+
 	sideBar_R_QuestionLastPageNum_rdx: 0,
 	sideBar_R_QuestionTestResults_rdx: testResultsFromStorage,
 	sideBar_R_Questions_wrongAnswers_num_rdx: {},
-
 	submittedQuestionsList_rdx: [],
 	sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx: false,
+
 	sideBar_L_isOpen_rdx: true,
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
 	sideBar_R_Main_isOpen_rdx: false,
@@ -59,9 +62,6 @@ const initialState = {
 	sideBar_R_Questions_isOpen_rdx: false,
 	sideBar_R_SearchBar_isActive_rdx: false,
 	sideBar_ViewStack_rdx: ["SideBar_L"],
-	//! new
-	sideBar_R_Questions_retakeFailed_isOpen_rdx: false,
-	setRetakeFailedQuestions_moduleIsActive_rdx: false,
 
 	//! Modals
 	getStarted_ModalStatus_rdx: false,
@@ -114,6 +114,10 @@ const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
+		setUserComputerType(state, action) {
+			state.userComputerType_rdx = action.payload;
+			localStorage.setItem("computerType", JSON.stringify(action.payload));
+		},
 		//! NavBar
 		setDemoView(state) {
 			state.isDemoView_rdx = true;
@@ -254,6 +258,9 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Questions_setQuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
+		},
+		sideBar_R_Questions_setCurrentTestNumberToComplete_rdx(state, action) {
+			state.sideBar_R_Questions_CurrentTestNumberToComplete_rdx = action.payload;
 		},
 		sideBar_R_Questions_FooterTaskBar_Toggle_OpenClose(state) {
 			state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx = !state.sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx;

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 import classes from "./PDFViewer.module.css";
 import pdf from "./pdf1.pdf";
 import Pagination_PDF_GUI from "../../../../1000_layout/20_layoutFeatures/30_pagination_PDF_GUI";
 import ZoomGUI from "../../../../1000_layout/20_layoutFeatures/40_zoomGUI";
 
 const PDFViewer = () => {
+	const dispatch = useDispatch();
 	const [pdfState, setPdfState] = useState({
 		pdfUrl: pdf, //The Document URL/File Location
 		pdfDocument: null, //The Document Object (before being set)
@@ -85,7 +87,6 @@ const PDFViewer = () => {
 			});
 		}
 	}, [PDF_inputPageNum_rdx, PDF_currentPageNum_rdx, pdfState.scale, triggerRerender]); //Removed "pdfDocument"...
-
 	//!Render the page
 	const renderPage = useCallback(
 		async (num) => {
@@ -150,7 +151,6 @@ const PDFViewer = () => {
 		},
 		[pdfState.scale, pageIsRendering, pdfState.pdfDocument]
 	);
-
 	//!Zoom Functionality
 	const zoomIn = () => {
 		setPdfState((prevState) => ({
@@ -189,32 +189,34 @@ const PDFViewer = () => {
 		setTriggerRerender((prevCount) => prevCount + 1); // Trigger re-render due to scale change
 	}, [isFullScreen]);
 
-	const handleKeyCombination = (e) => {
+	const handleKeyDown = (e) => {
 		if (e.key === "f") {
 			setIsFullScreen((prev) => !prev);
 		} else if (e.key === "Escape") {
 			setIsFullScreen(false);
 		}
 	};
-
+	const handleMainClick = () => {
+		dispatch(userReducerActions.setActivePanel("pdf"));
+	};
 	useEffect(() => {
 		if (location.pathname === "/PDFViewer") {
-			document.addEventListener("keydown", handleKeyCombination);
+			document.addEventListener("keydown", handleKeyDown);
 		}
 		return () => {
-			document.removeEventListener("keydown", handleKeyCombination);
+			document.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [location.pathname]);
 
 	return (
 		<Fragment>
-			<div id="my_pdf_viewer" className={classes.pdf_viewer}>
+			<div onClick={handleMainClick} id="my_pdf_viewer" className={classes.pdf_viewer}>
 				<div id="canvas_container" className={classes.canvas_container}>
 					<canvas ref={canvasRef} id="canvas"></canvas>
 					<div id="textLayer" ref={textLayerRef} className={classes.textLayer}></div>
 				</div>
 			</div>
-			<div className={classes.navigation_container}>
+			<div onClick={handleMainClick} className={classes.navigation_container}>
 				<Pagination_PDF_GUI />
 
 				<div className={classes.zoomControlsContainer}>
