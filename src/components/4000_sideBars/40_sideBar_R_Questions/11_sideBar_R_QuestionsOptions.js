@@ -263,7 +263,6 @@ const SideBar_R_QuestionsOptions = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_Test(1));
 	};
-
 	const test2 = () => {
 		if (test2Status === "n/a yet" || !test2Status) {
 			return;
@@ -340,6 +339,9 @@ const SideBar_R_QuestionsOptions = () => {
 		(e) => {
 			if (e.key) {
 				switch (e.key) {
+					case "f":
+						goTo_RetakeFailedQuestions();
+						break;
 					case "1":
 						test1();
 						break;
