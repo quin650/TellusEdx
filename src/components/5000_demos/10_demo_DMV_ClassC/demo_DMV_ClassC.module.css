@@ -267,7 +267,7 @@
 }
 .quickNav {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-direction: row;
 	font-size: 10px;
 	background: var(--colorGradient_readerHeaderTitle_from_blue_to_lightBlue_to_blue_to_black_inverse);
@@ -283,6 +283,7 @@
 	z-index: 20;
 	background-color: gray;
 	cursor: default;
+	margin-right: 2px;
 }
 .quickNavButtonCurrent {
 	display: flex;
