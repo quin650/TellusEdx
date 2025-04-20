@@ -11,7 +11,16 @@ const userComputerTypeFromStorage = localStorage.getItem("computerType") ? JSON.
 const initialState = {
 	//! High Level
 	userComputerType_rdx: userComputerTypeFromStorage,
+	sideBar_ViewStack_rdx: ["SideBar_L"],
 	//! SideBars
+	sideBar_L_isOpen_rdx: true,
+	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
+	sideBar_R_Main_isOpen_rdx: false,
+	sideBar_R_Notes_isOpen_rdx: false,
+	sideBar_R_Questions_isOpen_rdx: false,
+	sideBar_R_SearchBar_isActive_rdx: false,
+
+	//! Pages
 	pageNum_current_reader_rdx: 1,
 	pageNum_input_reader_rdx: 1,
 	pagesLength_rdx: 0,
@@ -54,14 +63,6 @@ const initialState = {
 	sideBar_R_Questions_wrongAnswers_num_rdx: {},
 	submittedQuestionsList_rdx: [],
 	sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx: false,
-
-	sideBar_L_isOpen_rdx: true,
-	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
-	sideBar_R_Main_isOpen_rdx: false,
-	sideBar_R_Notes_isOpen_rdx: false,
-	sideBar_R_Questions_isOpen_rdx: false,
-	sideBar_R_SearchBar_isActive_rdx: false,
-	sideBar_ViewStack_rdx: ["SideBar_L"],
 
 	//! Modals
 	getStarted_ModalStatus_rdx: false,

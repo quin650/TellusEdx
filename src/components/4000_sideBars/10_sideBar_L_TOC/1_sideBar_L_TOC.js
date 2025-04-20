@@ -6,6 +6,7 @@ import SideBar_L_TOC_Section from "./2_sideBar_L_TOC_Section";
 import classes from "./4_sideBar_L_TOC.module.css";
 
 const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentPageNum, activeID, GoTo_TopOfPage }) => {
+	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const dispatch = useDispatch();
 	//!Tab Options
 	const [activeTab, setActiveTab] = useState("onThisPage");
@@ -351,7 +352,11 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	);
 
 	return (
-		<div className={`${classes["sideBar_L_outerContainer"]} ${sideBar_L_isOpen ? classes.open : ""}`}>
+		<div
+			className={`${classes["sideBar_L_outerContainer"]} 
+		${sideBar_R_Questions_isOpen_rdx ? classes.sideBar_R_isOpen : ""} 
+		${sideBar_L_isOpen ? classes.open : ""}`}
+		>
 			{TOC_TabOptions}
 			<Pagination_eReader_GUI />
 			{TOC_SearchBar}
