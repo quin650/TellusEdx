@@ -190,6 +190,7 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_isOpen_rdx = true;
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsOptions";
 			state.sideBar_ViewStack_rdx.push("QuestionsOptions");
+			state.activePanel_rdx = "questions";
 		},
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;

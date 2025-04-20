@@ -7,7 +7,6 @@ import PaginationQuestionsGUI from "../../1000_layout/20_layoutFeatures/30_pagin
 
 import data from "../../5000_demos/10_demo_DMV_ClassC/data/questions.json";
 import classes from "../../../components/5000_demos/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
-import clsx from "clsx";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -356,16 +355,8 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 					<PaginationQuestionsGUI />
 				</div>
 			</div>
-			<div
-				className={clsx(classes.handbook_footer_section_Outer, {
-					[classes.allowHover]: allowFooterOnHover,
-				})}
-			>
-				<div
-					className={clsx(classes.handbook_footer_section_Inner, {
-						[classes.open]: sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx,
-					})}
-				>
+			<div className={`${classes["handbook_footer_section_Outer"]} ${allowFooterOnHover ? classes.allowHover : ""}`}>
+				<div className={`${classes["handbook_footer_section_Inner"]} ${sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx ? classes.open : ""}`}>
 					{taskBarButton}
 					{lightBulbButton}
 					{testResultsButton}
