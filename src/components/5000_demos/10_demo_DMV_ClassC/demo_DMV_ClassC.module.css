@@ -786,12 +786,18 @@ strong {
 	margin-left: 10px;
 }
 
-.infoSvg {
+.infoSvg,
+.infoSvg:focus,
+.infoSvg:active {
 	width: 20px;
 	height: 20px;
 	fill: var(--BlackToWhite) !important;
+	outline: none !important;
 }
 
+.infoSvg g g path {
+	fill: var(--color_primary_darkGray_to_gray);
+}
 .percentCorrect {
 	padding-right: 0;
 	font-weight: 500;

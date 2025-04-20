@@ -17,7 +17,7 @@ import PasswordSubModal from "./getStartedFeatures/2_passwordSubModal";
 import classes from "./modal_getStarted.module.css";
 const Modal_getStarted = () => {
 	const dispatch = useDispatch();
-	const getStartedView_rdx = useSelector(({ user }) => user.getStartedView_rdx);
+	const modal_getStartedView_rdx = useSelector(({ user }) => user.modal_getStartedView_rdx);
 	const registrationError_rdx = useSelector(({ user }) => user.registrationError_rdx);
 	const verifyAccountPassCodeStatus_rdx = useSelector(({ user }) => user.verifyAccountPassCodeStatus_rdx);
 	const verifyAccountPassCodeFeedback_rdx = useSelector(({ user }) => user.verifyAccountPassCodeFeedback_rdx);
@@ -26,7 +26,7 @@ const Modal_getStarted = () => {
 	const resetPasswordChangeStatus_rdx = useSelector(({ user }) => user.resetPasswordChangeStatus_rdx);
 	const resetPasswordChangeFeedback_rdx = useSelector(({ user }) => user.resetPasswordChangeFeedback_rdx);
 
-	const [modalStatus, setModalStatus] = useState(getStartedView_rdx);
+	const [modalStatus, setModalStatus] = useState(modal_getStartedView_rdx);
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -46,10 +46,10 @@ const Modal_getStarted = () => {
 	const [isValidPasswordConfirm, setIsValidPasswordConfirm] = useState(true);
 	const [isValidPassCode, setIsValidPassCode] = useState(true);
 
-	const [emailInputFieldStatus, setEmailInputFieldStatus] = useState(true);
-	const [passwordInputFieldStatus, setPasswordInputFieldStatus] = useState(true);
+	const [showEmailInputField, setShowEmailInputField] = useState(true);
+	const [showPasswordInputField, setShowPasswordInputField] = useState(true);
 	const [passwordConfirmInputFieldStatus, setPasswordConfirmInputFieldStatus] = useState(false);
-	const [passCodeInputFieldStatus, setPassCodeInputFieldStatus] = useState(false);
+	const [showPassCodeInputField, setShowPassCodeInputField] = useState(false);
 	const [resetPasswordEmailPassCodeStatus, setResetPasswordEmailPassCodeStatus] = useState(true);
 	const [resetPasswordChangeStatus, setResetPasswordChangeStatus] = useState(true);
 	const [refresh_VerifyAccountHeader, setRefresh_VerifyAccountHeader] = useState(0);
@@ -117,10 +117,10 @@ const Modal_getStarted = () => {
 
 	// !Actions
 	useEffect(() => {
-		if (getStartedView_rdx !== modalStatus) {
-			setModalStatus(getStartedView_rdx);
+		if (modal_getStartedView_rdx !== modalStatus) {
+			setModalStatus(modal_getStartedView_rdx);
 		}
-	}, [getStartedView_rdx]);
+	}, [modal_getStartedView_rdx]);
 	useEffect(() => {
 		switch (modalStatus) {
 			case "CreateAccountModal":
@@ -154,9 +154,9 @@ const Modal_getStarted = () => {
 		}
 	}, [modalStatus]);
 	const GoTo_LogInModal = () => {
-		setEmailInputFieldStatus(true);
-		setPasswordInputFieldStatus(true);
-		setPassCodeInputFieldStatus(false);
+		setShowEmailInputField(true);
+		setShowPasswordInputField(true);
+		setShowPassCodeInputField(false);
 		setCheckPasswordSubModalCommence(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setCheckBackendCredentialsCommence(false);
@@ -190,9 +190,9 @@ const Modal_getStarted = () => {
 		setIsValidEmail(true);
 	};
 	const GoTo_CreateAccountModal = () => {
-		setEmailInputFieldStatus(true);
-		setPasswordInputFieldStatus(true);
-		setPassCodeInputFieldStatus(false);
+		setShowEmailInputField(true);
+		setShowPasswordInputField(true);
+		setShowPassCodeInputField(false);
 		setCheckPasswordSubModalCommence(true);
 		setPasswordConfirmInputFieldStatus(false);
 		setCheckBackendCredentialsCommence(false);
@@ -227,9 +227,9 @@ const Modal_getStarted = () => {
 	const GoTo_VerifyAccountModal = () => {
 		setModalStatus("VerifyAccountModal");
 		setHeaderText("Account created successfully!");
-		setEmailInputFieldStatus(false);
-		setPassCodeInputFieldStatus(true);
-		setPasswordInputFieldStatus(false);
+		setShowEmailInputField(false);
+		setShowPassCodeInputField(true);
+		setShowPasswordInputField(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setButtonText("Verify");
 		setSocialMediaSection("");
@@ -249,9 +249,9 @@ const Modal_getStarted = () => {
 	const GoTo_VerificationSuccessModal = () => {
 		setModalStatus("VerificationSuccessModal");
 		setHeaderText("Verification Success!");
-		setEmailInputFieldStatus(false);
-		setPassCodeInputFieldStatus(false);
-		setPasswordInputFieldStatus(false);
+		setShowEmailInputField(false);
+		setShowPassCodeInputField(false);
+		setShowPasswordInputField(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setButtonText("Continue to Sign In");
 		setSocialMediaSection("");
@@ -260,8 +260,8 @@ const Modal_getStarted = () => {
 	const GoTo_ResetPasswordEmailPassCodeModal = () => {
 		setModalStatus("ResetPasswordEmailPassCodeModal");
 		setHeaderText("Reset Password");
-		setEmailInputFieldStatus(true);
-		setPasswordInputFieldStatus(false);
+		setShowEmailInputField(true);
+		setShowPasswordInputField(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setButtonText("Send Email");
 		setSocialMediaSection("");
@@ -281,9 +281,9 @@ const Modal_getStarted = () => {
 	const GoTo_ResetPasswordEnterPassCodeModal = () => {
 		setModalStatus("ResetPasswordEnterPassCodeModal");
 		setHeaderText("Check your email");
-		setEmailInputFieldStatus(false);
-		setPassCodeInputFieldStatus(false);
-		setPasswordInputFieldStatus(false);
+		setShowEmailInputField(false);
+		setShowPassCodeInputField(false);
+		setShowPasswordInputField(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setButtonText("I have the code");
 		setSocialMediaSection("");
@@ -297,9 +297,9 @@ const Modal_getStarted = () => {
 		setModalStatus("ResetPasswordChangeModal");
 		setHeaderText("Reset Your Password");
 		setGeneralFeedback("Enter Verification Code and New Password");
-		setEmailInputFieldStatus(false);
-		setPassCodeInputFieldStatus(true);
-		setPasswordInputFieldStatus(true);
+		setShowEmailInputField(false);
+		setShowPassCodeInputField(true);
+		setShowPasswordInputField(true);
 		setPasswordConfirmInputFieldStatus(true);
 		setButtonText("Reset Password");
 		setSocialMediaSection("");
@@ -320,9 +320,9 @@ const Modal_getStarted = () => {
 	const GoTo_PasswordChangedSuccessfullyModal = () => {
 		setModalStatus("PasswordChangedSuccessfullyModal");
 		setHeaderText("Password Changed Successfully!");
-		setEmailInputFieldStatus(false);
-		setPassCodeInputFieldStatus(false);
-		setPasswordInputFieldStatus(false);
+		setShowEmailInputField(false);
+		setShowPassCodeInputField(false);
+		setShowPasswordInputField(false);
 		setPasswordConfirmInputFieldStatus(false);
 		setButtonText("Continue to Sign In");
 		setSocialMediaSection("");
@@ -665,7 +665,7 @@ const Modal_getStarted = () => {
 					<form className={classes.modalForm} onSubmit={onSubmit}>
 						<CSRFToken />
 						{HeaderSection}
-						{passCodeInputFieldStatus && (
+						{showPassCodeInputField && (
 							<div className={classes.inputContainer}>
 								<input
 									type="number"
@@ -683,7 +683,7 @@ const Modal_getStarted = () => {
 								</div>
 							</div>
 						)}
-						{emailInputFieldStatus && (
+						{showEmailInputField && (
 							<div className={classes.inputContainer}>
 								<input
 									type="email"
@@ -704,7 +704,7 @@ const Modal_getStarted = () => {
 								</div>
 							</div>
 						)}
-						{passwordInputFieldStatus && (
+						{showPasswordInputField && (
 							<div className={classes.inputContainer}>
 								<input
 									type="password"

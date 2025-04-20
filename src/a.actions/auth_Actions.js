@@ -129,7 +129,7 @@ export const verifyAccountResendPassCode_APIAction = () => {
 		}
 	};
 };
-export const checkAuthenticated = () => {
+export const checkAuthenticated_APIAction = () => {
 	return async (dispatch) => {
 		const accessToken = localStorage.getItem("token");
 		const config = {

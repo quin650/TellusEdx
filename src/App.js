@@ -159,5 +159,5 @@ export default App;
 
 // const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx)
 // useEffect(()=>{
-//     dispatch(checkAuthenticated());
+//     dispatch(checkAuthenticated_APIAction());
 // },[])

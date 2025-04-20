@@ -66,7 +66,7 @@ const initialState = {
 
 	//! Modals
 	getStarted_ModalStatus_rdx: false,
-	getStartedView_rdx: "",
+	modal_getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
 	resetThisTest_ModalStatus_rdx: false,
 
@@ -353,12 +353,12 @@ const userSlice = createSlice({
 		modal_action_getStarted_logIn_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
-			state.getStartedView_rdx = "LogInModal";
+			state.modal_getStartedView_rdx = "LogInModal";
 		},
 		modal_action_getStarted_createAccount_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
 			state.sideBar_R_Main_isOpen_rdx = false;
-			state.getStartedView_rdx = "CreateAccountModal";
+			state.modal_getStartedView_rdx = "CreateAccountModal";
 		},
 		modal_action_getStarted_open_rdx(state) {
 			state.getStarted_ModalStatus_rdx = true;
@@ -376,7 +376,7 @@ const userSlice = createSlice({
 			state.registered_rdx = true;
 			state.isAuthenticated_rdx = false;
 			state.loading_rdx = false;
-			state.getStartedView_rdx = "VerifyAccountModal";
+			state.modal_getStartedView_rdx = "VerifyAccountModal";
 			state.userInfo_rdx = action.payload;
 		},
 		modal_action_registration_fail_rdx(state, action) {
@@ -390,7 +390,7 @@ const userSlice = createSlice({
 		},
 		//! Verify Your Account
 		modal_action_verificationPassCode_success_rdx(state) {
-			state.getStartedView_rdx = "VerificationSuccessModal";
+			state.modal_getStartedView_rdx = "VerificationSuccessModal";
 			state.generalFeedback_rdx = "";
 		},
 		modal_action_verificationPassCode_fail_rdx(state, action) {
@@ -415,7 +415,7 @@ const userSlice = createSlice({
 		},
 		//! Verification Success
 		GoTo_LogInModal_rdx(state) {
-			state.getStartedView_rdx = "LogInModal";
+			state.modal_getStartedView_rdx = "LogInModal";
 		},
 		//! Log In
 		modal_action_login_request_rdx(state) {
@@ -456,7 +456,7 @@ const userSlice = createSlice({
 			state.passwordResetPassCodeEmail_rdx += 1;
 			state.resetPasswordEmailPassCodeStatus_rdx = true;
 			state.resetPasswordEmailPassCodeFeedback_rdx = action.payload;
-			state.getStartedView_rdx = "ResetPasswordEnterPassCodeModal";
+			state.modal_getStartedView_rdx = "ResetPasswordEnterPassCodeModal";
 		},
 		modal_action_passwordReset_passCodeEmail_sentFail_rdx(state, action) {
 			state.resetPasswordEmailPassCodeStatus_rdx = false;
@@ -471,7 +471,7 @@ const userSlice = createSlice({
 			state.resetPasswordChangeFeedback_rdx = "";
 			state.passCodeStatus_rdx = true;
 			state.passCodeFeedback_rdx = "";
-			state.getStartedView_rdx = "PasswordChangedSuccessfullyModal";
+			state.modal_getStartedView_rdx = "PasswordChangedSuccessfullyModal";
 		},
 		modal_action_passwordReset_fail_passwordIssue_rdx(state, action) {
 			state.resetPasswordChangeStatus_rdx = false;

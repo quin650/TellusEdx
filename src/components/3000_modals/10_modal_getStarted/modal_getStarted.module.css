@@ -60,6 +60,9 @@
 .exitButton:active {
 	background-color: var(--active_modalExitButton_gray_to_darkGray);
 }
+.exitButton:focus {
+	border: 2px solid var(--WhiteToBlack) !important;
+}
 .svgExit {
 	display: inline-block;
 	user-select: none;
