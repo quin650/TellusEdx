@@ -375,10 +375,6 @@
 	min-width: 800px;
 }
 
-/*! -------------------------------------------------------------------------------------------------------- */
-/*! -------------------------------------------------------------------------------------------------------- */
-/*! -------------------------------------------------------------------------------------------------------- */
-
 .headerTop {
 	display: flex;
 	justify-content: space-between;
@@ -1009,7 +1005,8 @@ strong {
 
 	display: flex;
 }
-.resizer:hover {
+.resizer:hover,
+.resizer:active {
 	width: 3px;
 	top: 0;
 	left: 0;
@@ -1018,6 +1015,7 @@ strong {
 	position: absolute;
 	background-color: var(--Blue);
 }
+
 .resizerHandle {
 	height: 30px;
 	width: 1px;

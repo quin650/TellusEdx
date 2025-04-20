@@ -1,4 +1,4 @@
-import React, { useState, useRef, Fragment, useEffect } from "react";
+import React, { useState, useRef, Fragment, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_MultipleChoiceOptions from "./14_sideBar_R_MultipleChoiceOption";
@@ -60,7 +60,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					// Blue - Currently Selected
 					// Yellow - Currently Attempting
 					if (sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx === i) {
-						console.log("i === sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx", i, sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx);
 						navItems.push(
 							<li
 								key={i}
@@ -247,17 +246,44 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	};
 
 	//! event listener for scroll on quickNav
-	useEffect(() => {
-		const quickNav = quickNavRef.current;
-		const handleWheel = (e) => {
-			e.preventDefault();
-			quickNav.scrollLeft += e.deltaY + e.deltaX;
-		};
-		quickNav.addEventListener("wheel", handleWheel);
-		return () => {
-			quickNav.removeEventListener("wheel", handleWheel);
-		};
+	const [keyEventListenerSelection, setKeyEventListenerSelection] = useState(null);
+	const handleKeyCombination = useCallback((e) => {
+		setKeyEventListenerSelection(null);
+		switch (e.key) {
+			case "1":
+				console.log("keyed 1");
+			case "2":
+			case "3":
+			case "4":
+				setKeyEventListenerSelection(Number(e.key));
+				break;
+			default:
+				break;
+		}
 	}, []);
+
+	const handleWheel = (e) => {
+		e.preventDefault();
+		if (quickNavRef.current) {
+			quickNavRef.current.scrollLeft += e.deltaY + e.deltaX;
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyCombination);
+		const quickNavEl = quickNavRef.current;
+
+		if (quickNavEl) {
+			quickNavEl.addEventListener("wheel", handleWheel);
+		}
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyCombination);
+			if (quickNavEl) {
+				quickNavEl.removeEventListener("wheel", handleWheel);
+			}
+		};
+	}, [handleKeyCombination]);
 
 	//! set Image Status - hasQuestionImage
 	useEffect(() => {
@@ -297,6 +323,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 							isPreviouslyChecked={answer.id === previouslyCheckedID}
 							get_newlyCheckedID={get_newlyCheckedID}
 							startGradingTest={startGradingTest}
+							keyEventListenerSelection={keyEventListenerSelection}
 						/>
 					))}
 				</ul>

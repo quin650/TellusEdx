@@ -31,7 +31,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	const [bookMark, setBookMark] = useState(false);
 	const [commentBubble, setCommentBubble] = useState(false);
 	const [thumbsUp, setThumbsUp] = useState(false);
-
 	const get_ChosenAnswerID = (id, correctOrIncorrect) => {
 		setChosenAnswerID(id);
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx) {
@@ -60,7 +59,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 		},
 		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]
 	);
-
 	//! Render Question Component
 	useEffect(() => {
 		const questionData = data.questions.find(
@@ -175,7 +173,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 		setBookMark(false);
 		setCommentBubble(false);
 	}, [sideBar_R_Questions_CurrentQuestionNumber_rdx]);
-
 	//! Footer Actions
 	useEffect(() => {
 		if (sideBar_R_Questions_FooterTaskBarIsPinnedOpen_rdx) {
@@ -205,7 +202,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	const thumbsUpButtonAction = () => {
 		setThumbsUp(!thumbsUp);
 	};
-
 	//! Footer Buttons
 	const [allowFooterOnHover, setAllowFooterOnHover] = useState(true);
 	let taskBarButton = (
