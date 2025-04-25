@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
 import { throttle } from "lodash";
-import MainNavbar from "./components/1000_layout/10_header/1_mainNavbar";
-import Footer from "./components/1000_layout/40_footer/footer";
-import Home from "./components/2000_pages/10_pages/0_home/0_home";
-import Demo_LandingPage from "./components/5000_demos/00_demo_LandingPage/demo_LandingPage";
-import DemoDMVClassC from "./components/5000_demos/10_demo_DMV_ClassC/demo_DMV_ClassC";
-import PDFViewer from "./components/5000_demos/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
+import MainNavbar from "./components/1000_layout/100_header/1_mainNavbar";
+import Footer from "./components/1000_layout/400_footer/footer";
+import Home from "./components/2000_pages/100_pages/0_home/0_home";
+import Demo_LandingPage from "./components/5000_demos/000_demo_LandingPage/demo_LandingPage";
+import DemoDMVClassC from "./components/5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC";
+import PDFViewer from "./components/5000_demos/100_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
 
-import GeneralPage from "./components/2000_pages/10_pages/generalPage";
-import OnThisPageQuickView from "./components/1000_layout/20_layoutFeatures/10_onThisPageQuickView";
+import GeneralPage from "./components/2000_pages/100_pages/generalPage";
+import OnThisPageQuickView from "./components/1000_layout/200_layoutFeatures/10_onThisPageQuickView";
 
 const App = () => {
 	const mainAppContainerRef = useRef();

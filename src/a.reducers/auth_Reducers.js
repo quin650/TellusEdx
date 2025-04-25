@@ -68,7 +68,7 @@ const initialState = {
 	getStarted_ModalStatus_rdx: false,
 	modal_getStartedView_rdx: "",
 	languageSettings_ModalStatus_rdx: false,
-	resetThisTest_ModalStatus_rdx: false,
+	resetThisTest_Modal_isOpen_rdx: false,
 
 	//! General
 	isAuthenticated_rdx: false,
@@ -195,7 +195,6 @@ const userSlice = createSlice({
 		},
 		sideBar_R_Close_Questions(state) {
 			state.sideBar_R_Questions_isOpen_rdx = false;
-			// state.sideBar_ViewStack_rdx = [];
 		},
 		//! NavigationStack
 		sideBar_R_Questions_GoToPrev(state) {
@@ -210,12 +209,16 @@ const userSlice = createSlice({
 				} else if (currView === "SideBar_L") {
 					state.sideBar_L_isOpen_rdx = false;
 					state.sideBar_L_AllowCollapse_OnWindowResize_rdx = false;
+				} else if (currView === "TestResults" && state.resetThisTest_Modal_isOpen_rdx === true) {
+					state.resetThisTest_Modal_isOpen_rdx = false;
 				} else {
 					state.sideBar_R_QuestionsStatus_rdx = prevView;
 				}
 				state.sideBar_ViewStack_rdx.pop();
 			}
 		},
+
+		// state.resetThisTest_Modal_isOpen_rdx = false;
 		sideBar_R_Questions_GoTo_Landing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsOptions";
 			state.sideBar_ViewStack_rdx.push("QuestionsOptions");
@@ -583,10 +586,10 @@ const userSlice = createSlice({
 			state.modal_languageSettings_currentLanguage_rdx = "Hindi";
 		},
 		modal_action_resetThisTest_open_rdx(state) {
-			state.resetThisTest_ModalStatus_rdx = true;
+			state.resetThisTest_Modal_isOpen_rdx = true;
 		},
 		modal_action_resetThisTest_close_rdx(state) {
-			state.resetThisTest_ModalStatus_rdx = false;
+			state.resetThisTest_Modal_isOpen_rdx = false;
 		},
 		//! Dark/Light Settings
 		setDarkLightMode(state, action) {
