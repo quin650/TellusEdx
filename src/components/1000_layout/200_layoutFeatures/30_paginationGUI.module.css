@@ -24,7 +24,7 @@
 	margin: 10px auto 10px auto;
 	font-size: 16px !important;
 	height: 40px;
-	outline: 1px solid var(--Blue);
+	border-bottom: 2px solid var(--Blue);
 }
 /* Pagination Controls 1 of 4-------------------------------------------------*/
 .paginationButtonL:disabled {

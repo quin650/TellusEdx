@@ -5,13 +5,13 @@ import HomeMiddle from "./2_homeMiddle";
 
 import Dashboard from "../../../6000_authenticated/dashboard/dashboard";
 
-const Home = () => {
+const Home = ({ isToggleChange }) => {
 	// console.log('Home')
 	const isAuthenticated = useSelector(({ user }) => user.isAuthenticated);
 	const homepage = (
 		<Fragment>
 			<HomeTop />
-			<HomeMiddle />
+			<HomeMiddle isToggleChange={isToggleChange} />
 		</Fragment>
 	);
 	const dashboard = (

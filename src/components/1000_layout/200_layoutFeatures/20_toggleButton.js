@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./20_toggleButton.module.css";
 
-const ToggleButton = (props) => {
-	const [ToggleIsContribute, setToggleIsContribute] = useState(false);
+const ToggleButton = ({ isToggleChange, ToggleFunction }) => {
+	console.log("isToggleChange: ", isToggleChange);
 
+	const [ToggleIsContribute, setToggleIsContribute] = useState(true);
 	const handleToggle = () => {
-		setToggleIsContribute(!ToggleIsContribute);
-		props.ToggleFunction(ToggleIsContribute);
+		const newVal = !ToggleIsContribute;
+		setToggleIsContribute(newVal);
+		ToggleFunction(!newVal);
 	};
+
+	useEffect(() => {
+		handleToggle();
+	}, [isToggleChange]);
 
 	return (
 		<div className={classes.toggleSection}>
