@@ -86,7 +86,7 @@ const MainNavbar = () => {
 		button_text: sideBar_R_Questions_Button_text,
 		handleMouseEnter: sideBar_R_Questions_Button_handleMouseEnter,
 		handleMouseLeave: sideBar_R_Questions_Button_handleMouseLeave,
-	} = useHoverTooltip("Test", "Test (T)");
+	} = useHoverTooltip("Test", "Quiz (Q)");
 	const {
 		button_text: search_Button_text,
 		handleMouseEnter: search_Button_handleMouseEnter,
