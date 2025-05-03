@@ -12,17 +12,14 @@ const SideBar_R_MainMenu = () => {
 	const exitButtonRef = useRef();
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
 	const activeFlag_rdx = useSelector(({ user }) => user.activeFlag_rdx);
-
 	const sideBar_R_Search_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Search_isOpen_rdx);
 	const sideBar_R_Notes_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Notes_isOpen_rdx);
 	const sideBar_R_Main_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Main_isOpen_rdx);
 	const sideBar_R_Questions_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_isOpen_rdx);
 	const languageSettings_ModalStatus_rdx = useSelector(({ user }) => user.languageSettings_ModalStatus_rdx);
-
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const [activeIcon, setActiveIcon] = useState("/");
-
 	const languageSettingsModalStatusRef = useRef(languageSettings_ModalStatus_rdx);
 	// Icons
 	const homeIcon = (
@@ -30,7 +27,7 @@ const SideBar_R_MainMenu = () => {
 			<path d="M11.25 0.0625L0.75 7.9375H3.375V18.4375H8.625V13.1875H13.875V18.4375H19.125V7.85875L21.75 7.9375L11.25 0.0625Z" fill="currentColor" />
 		</svg>
 	);
-	const dashboardIcon = (
+	const demosIcon = (
 		<svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				fillRule="evenodd"
@@ -38,6 +35,27 @@ const SideBar_R_MainMenu = () => {
 				d="M0.75 1.14062C0.75 0.786818 1.03682 0.5 1.39062 0.5H9.55859C9.9124 0.5 10.1992 0.786818 10.1992 1.14063V12.1914C10.1992 12.5452 9.9124 12.832 9.55859 12.832H1.39062C1.03682 12.832 0.75 12.5452 0.75 12.1914V1.14062ZM2.35156 2.10156V11.2305H8.59766V2.10156H2.35156ZM11.8008 1.14062C11.8008 0.786818 12.0876 0.5 12.4414 0.5H20.6094C20.9632 0.5 21.25 0.786818 21.25 1.14063V6.42578C21.25 6.77959 20.9632 7.06641 20.6094 7.06641H12.4414C12.0876 7.06641 11.8008 6.77959 11.8008 6.42578V1.14062ZM13.4023 2.10156V5.46484H19.6484V2.10156H13.4023ZM11.8008 9.30859C11.8008 8.95479 12.0876 8.66797 12.4414 8.66797H20.6094C20.9632 8.66797 21.25 8.95479 21.25 9.30859V20.3594C21.25 20.7132 20.9632 21 20.6094 21H12.4414C12.0876 21 11.8008 20.7132 11.8008 20.3594V9.30859ZM13.4023 10.2695V19.3984H19.6484V10.2695H13.4023ZM0.75 15.0742C0.75 14.7204 1.03682 14.4336 1.39062 14.4336H9.55859C9.9124 14.4336 10.1992 14.7204 10.1992 15.0742V20.3594C10.1992 20.7132 9.9124 21 9.55859 21H1.39062C1.03682 21 0.75 20.7132 0.75 20.3594V15.0742ZM2.35156 16.0352V19.3984H8.59766V16.0352H2.35156Z"
 				fill="currentColor"
 			/>
+		</svg>
+	);
+	const steeringWheelIcon = (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="21"
+			height="21"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+		>
+			{/* Outer wheel */}
+			<circle cx="12" cy="12" r="10" />
+
+			{/* Three spokes */}
+			<line x1="12" y1="12" x2="12" y2="4" />
+			<line x1="12" y1="12" x2="18" y2="16" />
+			<line x1="12" y1="12" x2="6" y2="16" />
 		</svg>
 	);
 	const NotesIcon = (
@@ -312,8 +330,6 @@ const SideBar_R_MainMenu = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
-
-	//TODO HERE ---------------------------------------------------
 	const sideBar_R_Border_handleMouseEnter = () => {
 		dispatch(userReducerActions.sideBar_R_menuIsHover(true));
 	};
@@ -322,7 +338,6 @@ const SideBar_R_MainMenu = () => {
 			dispatch(userReducerActions.sideBar_R_menuIsNotHover(false));
 		}, 80);
 	};
-	//TODO HERE ---------------------------------------------------
 	return (
 		<Fragment>
 			<menu
@@ -353,18 +368,26 @@ const SideBar_R_MainMenu = () => {
 						<Link
 							onClick={CloseNavBarMenu_and_ScrollQuickly}
 							to="/demos"
-							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demos" && classes.isActiveDashboardIcon}`}
+							className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demos" && classes.isActiveDemosIcon}`}
 						>
-							<i>{dashboardIcon}</i>
+							<i>{demosIcon}</i>
 							<span>Demos</span>
 						</Link>
 						{location.pathname === "/demo_dmvClassC" && (
 							<>
-								<Link onClick={open_sideBar_R_Notes_Modal} className={classes.sidebarMenuOptions}>
+								<Link
+									onClick={CloseNavBarMenu_and_ScrollQuickly}
+									to="/demo_dmvClassC"
+									className={`${classes["sidebarMenuOptions"]} ${activeIcon === "/demo_dmvClassC" && classes.isActiveDmvCIcon}`}
+								>
+									<i>{steeringWheelIcon}</i>
+									<span>DMV - C</span>
+								</Link>
+								<Link onClick={open_sideBar_R_Notes_Modal} className={`${classes["sidebarMenuOptions"]} ${classes.notesIcon}`}>
 									<i>{NotesIcon}</i>
 									<span>Notes</span>
 								</Link>
-								<Link onClick={open_sideBar_R_Questions_Modal} className={classes.sidebarMenuOptions}>
+								<Link onClick={open_sideBar_R_Questions_Modal} className={`${classes["sidebarMenuOptions"]} ${classes.testIcon}`}>
 									<i>{QuestionsIcon}</i>
 									<span>Test</span>
 								</Link>

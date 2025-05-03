@@ -186,9 +186,22 @@
 .sidebarMenuOptions.isActiveHomeIcon {
 	color: var(--BlackToWhite);
 }
-/* Dashboard Formatting */
-.sidebarMenuOptions.isActiveDashboardIcon {
+/* Demos Formatting */
+.sidebarMenuOptions.isActiveDemosIcon {
 	color: var(--BlackToWhite);
+}
+.sidebarMenuOptions.isActiveDmvCIcon {
+	color: var(--BlackToWhite);
+}
+.sidebarMenuOptions.isActiveDmvCIcon i {
+	margin-left: 25px;
+}
+
+.sidebarMenuOptions.notesIcon i {
+	margin-left: 50px;
+}
+.sidebarMenuOptions.testIcon i {
+	margin-left: 50px;
 }
 /* About Us Formatting */
 .sidebarMenuOptions.isActiveAboutUsIcon {

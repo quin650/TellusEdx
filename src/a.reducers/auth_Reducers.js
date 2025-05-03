@@ -261,6 +261,7 @@ const userSlice = createSlice({
 		//! R Main SideBar
 		sideBar_R_Open_Main(state) {
 			state.sideBar_R_Main_isOpen_rdx = true;
+			state.sideBar_R_isOpenViaHover_rdx = false;
 		},
 		sideBar_R_Close_Main(state) {
 			state.sideBar_R_Main_isOpen_rdx = false;

@@ -112,7 +112,6 @@ const MainNavbar = () => {
 			buttonRef_ctx.current.removeEventListener("mouseleave", handleMouseLeave);
 		};
 	}, [buttonRef_ctx]);
-
 	//TODO HERE ---------------------------------------------------
 	const sideBar_L_Button = (
 		<Tippy content={sideBar_L_Button_text} placement="bottom" theme="custom" appendTo="parent">
