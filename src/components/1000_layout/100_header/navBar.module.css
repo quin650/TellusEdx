@@ -63,6 +63,26 @@ button:focus {
 	border: none !important;
 	outline: none !important;
 }
+/*! Left Border onHover opens SideBar L TOC-------------------------- */
+.leftBorder {
+	position: fixed;
+	width: 5px;
+	/* background-color: red; */
+	z-index: 1000;
+	left: 0;
+	height: 100vh;
+	bottom: 0px !important;
+}
+/*! Right Border onHover opens SideBar R Main-------------------------- */
+.rightBorder {
+	position: fixed;
+	width: 5px;
+	/* background-color: green; */
+	z-index: 1000;
+	right: 0;
+	height: 100vh;
+	bottom: 0px !important;
+}
 /*! SideBar L Button------------------------------------------------ */
 .topLeft {
 	display: flex;
@@ -394,7 +414,7 @@ button:focus {
 }
 /*! Questions Button-------------------------------------------------------------------*/
 .bottomRightAbove {
-	z-index: 1001;
+	z-index: 1000;
 	position: fixed;
 	right: 24px;
 	bottom: 45px !important;
@@ -457,7 +477,7 @@ button:focus {
 }
 /*! Note Button ------------------------------------------------ */
 .bottomRight {
-	z-index: 1001;
+	z-index: 1000;
 	position: fixed;
 	right: 24px;
 	bottom: 0px !important;

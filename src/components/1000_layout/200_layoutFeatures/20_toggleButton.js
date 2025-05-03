@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import classes from "./20_toggleButton.module.css";
 
 const ToggleButton = ({ isToggleChange, ToggleFunction }) => {
-	console.log("isToggleChange: ", isToggleChange);
-
 	const [ToggleIsContribute, setToggleIsContribute] = useState(true);
 	const handleToggle = () => {
 		const newVal = !ToggleIsContribute;

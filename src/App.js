@@ -107,18 +107,25 @@ const App = () => {
 		},
 		[divIDs]
 	);
-
 	const isMac = userComputerType_rdx === "mac";
 	const handleKeyDownCombination = (e) => {
 		if (location.pathname === "/demo_dmvClassC") return;
 
 		if (isMac) {
 			if (e.key === "Meta") {
-				tippyRefs.current.forEach((instance) => instance.show());
+				tippyRefs.current.forEach((instance) => {
+					if (instance && !instance.state.isDestroyed) {
+						instance.show();
+					}
+				});
 			}
 		} else {
 			if (e.key === "Alt") {
-				tippyRefs.current.forEach((instance) => instance.show());
+				tippyRefs.current.forEach((instance) => {
+					if (instance && !instance.state.isDestroyed) {
+						instance.show();
+					}
+				});
 			}
 		}
 

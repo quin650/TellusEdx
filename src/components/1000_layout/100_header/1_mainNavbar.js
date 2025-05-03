@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect, Fragment } from "react";
+import React, { useState, useRef, useEffect, Fragment, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RefContext } from "../../../index";
 import { useLocation } from "react-router-dom";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { Link } from "react-router-dom";
@@ -51,7 +52,6 @@ const MainNavbar = () => {
 		}
 		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
-
 	//! Tippy Hover Tooltip customized to each button
 	const useHoverTooltip = (defaultButtonText, textWithHotkey, delay = 1000) => {
 		const [button_text, setButton_text] = useState(defaultButtonText);
@@ -93,10 +93,32 @@ const MainNavbar = () => {
 		handleMouseLeave: search_Button_handleMouseLeave,
 	} = useHoverTooltip("Search", "Search (S)");
 	//! Buttons
+	const { buttonRef_ctx } = useContext(RefContext);
+	//TODO HERE ---------------------------------------------------
+	useEffect(() => {
+		if (!buttonRef_ctx) return;
+		const handleMouseEnter = () => {
+			// console.log("Yes - Hovering leftMenu Button!");
+			dispatch(userReducerActions.sideBar_L_buttonIsHover(true));
+		};
+		const handleMouseLeave = () => {
+			// console.log("No -  hovering leftMenu Button!");
+			dispatch(userReducerActions.sideBar_L_buttonIsNotHover(false));
+		};
+		buttonRef_ctx.current.addEventListener("mouseenter", handleMouseEnter);
+		buttonRef_ctx.current.addEventListener("mouseleave", handleMouseLeave);
+		return () => {
+			buttonRef_ctx.current.removeEventListener("mouseenter", handleMouseEnter);
+			buttonRef_ctx.current.removeEventListener("mouseleave", handleMouseLeave);
+		};
+	}, [buttonRef_ctx]);
+
+	//TODO HERE ---------------------------------------------------
 	const sideBar_L_Button = (
 		<Tippy content={sideBar_L_Button_text} placement="bottom" theme="custom" appendTo="parent">
 			<button
 				onClick={toggle_SideBar_L_Visibility}
+				ref={buttonRef_ctx}
 				className={`${classes["tocButton"]} ${sideBar_L_isOpen_rdx ? classes.open : ""}`}
 				onMouseEnter={sideBar_L_Button_handleMouseEnter}
 				onMouseLeave={sideBar_L_Button_handleMouseLeave}
@@ -179,7 +201,6 @@ const MainNavbar = () => {
 	const searchBarRef = useRef(null);
 	const [searchBarIsOpened, setSearchBarIsOpened] = useState(false);
 	const [searchBarIsFocused, setSearchBarIsFocused] = useState(false);
-
 	useEffect(() => {
 		if (sideBar_R_SearchBar_isActive_rdx) {
 			openSearchBar();
@@ -206,9 +227,60 @@ const MainNavbar = () => {
 			searchBarRef.current.focus();
 		}
 	};
+	//! Event Listener for Hover Effects
+	//? Left Border
+	//TODO HERE ---------------------------------------------------
+	const leftBorderRef = useRef(null);
+	const hoverTimer_leftBorder = useRef(null);
+	useEffect(() => {
+		if (!leftBorderRef.current) return;
+		const handleMouseEnter = () => {
+			// console.log("Yes - Hovering leftBorder!");
 
+			hoverTimer_leftBorder.current = setTimeout(() => {
+				dispatch(userReducerActions.sideBar_L_borderIsHover(true));
+			}, 360);
+		};
+		const handleMouseLeave = () => {
+			// console.log("No - hovering leftBorder!");
+			clearTimeout(hoverTimer_leftBorder.current);
+			dispatch(userReducerActions.sideBar_L_borderIsNotHover(true));
+		};
+		leftBorderRef.current.addEventListener("mouseenter", handleMouseEnter);
+		leftBorderRef.current.addEventListener("mouseleave", handleMouseLeave);
+		return () => {
+			leftBorderRef.current.removeEventListener("mouseenter", handleMouseEnter);
+			leftBorderRef.current.removeEventListener("mouseleave", handleMouseLeave);
+		};
+	}, []);
+	//? Right Border
+	//TODO HERE ---------------------------------------------------
+	const rightBorderRef = useRef(null);
+	const hoverTimer_rightBorder = useRef(null);
+	useEffect(() => {
+		if (!rightBorderRef.current) return;
+		const handleMouseEnter = () => {
+			// console.log("Yes - Hovering leftBorder!");
+			hoverTimer_rightBorder.current = setTimeout(() => {
+				dispatch(userReducerActions.sideBar_R_borderIsHover(true));
+			}, 360);
+		};
+		const handleMouseLeave = () => {
+			// console.log("No - hovering leftBorder!");
+			clearTimeout(hoverTimer_rightBorder.current);
+			dispatch(userReducerActions.sideBar_R_borderIsNotHover(true));
+		};
+		rightBorderRef.current.addEventListener("mouseenter", handleMouseEnter);
+		rightBorderRef.current.addEventListener("mouseleave", handleMouseLeave);
+		return () => {
+			rightBorderRef.current.removeEventListener("mouseenter", handleMouseEnter);
+			rightBorderRef.current.removeEventListener("mouseleave", handleMouseLeave);
+		};
+	}, []);
+	//TODO HERE ---------------------------------------------------
 	let demoContent = (
 		<Fragment>
+			<div className={classes.leftBorder} ref={leftBorderRef}></div>
 			<li className={classes.topLeft}>{sideBar_L_Button}</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
 				<Tippy content={search_Button_text} placement="bottom" theme="custom" appendTo="parent">
@@ -250,11 +322,13 @@ const MainNavbar = () => {
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
 			<li className={classes.bottomRightAbove}>{sideBar_R_Notes_Button}</li>
 			<li className={classes.bottomRight}>{sideBar_R_Questions_Button}</li>
+			<div className={classes.rightBorder} ref={rightBorderRef}></div>
 		</Fragment>
 	);
 	// regular navbar
 	const authUser = (
 		<Fragment>
+			<div className={classes.leftBorder} ref={leftBorderRef}></div>
 			<li className={classes.topLeft}>
 				<Link to="/home" onClick={goToTOp}>
 					<img src={Logo} alt="Logo" className={classes.Logo}></img>
@@ -303,10 +377,12 @@ const MainNavbar = () => {
 				</button>
 			</li>
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
+			<div className={classes.rightBorder} ref={rightBorderRef}></div>
 		</Fragment>
 	);
 	const authGuest = (
 		<Fragment>
+			<div className={classes.leftBorder} ref={leftBorderRef}></div>
 			<li className={classes.topLeft}>
 				<Link to="/home" onClick={goToTOp}>
 					<img src={Logo} alt="Logo" className={classes.Logo}></img>
@@ -353,9 +429,9 @@ const MainNavbar = () => {
 				</button>
 			</li>
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
+			<div className={classes.rightBorder} ref={rightBorderRef}></div>
 		</Fragment>
 	);
-
 	let regularContent = { authGuest };
 	!isAuthenticated_rdx ? (regularContent = authGuest) : (regularContent = authUser);
 	const onEscKey_ExitModal = (e) => {

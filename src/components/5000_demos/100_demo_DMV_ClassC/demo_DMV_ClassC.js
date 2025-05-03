@@ -210,9 +210,11 @@ const DemoDMVClassC = () => {
 		GoTo_TopOfPage();
 	}, [pageNum_current_reader_rdx]);
 	//! TOC Status: Open/Close
+	const sideBar_L_isOpenViaHover_rdx = useSelector(({ user }) => user.sideBar_L_isOpenViaHover_rdx);
 	const width_Affects_to_SideBar_L_TOC = useCallback(
 		throttle(() => {
-			if (window.innerWidth < 1400 && sideBar_L_isOpen_rdx) {
+			if (window.innerWidth < 1400 && sideBar_L_isOpen_rdx && !sideBar_L_isOpenViaHover_rdx) {
+				console.log("sideBar_L_Close called here -1");
 				dispatch(userReducerActions.sideBar_L_Close());
 			} else if (window.innerWidth >= 1400 && !sideBar_L_isOpen_rdx) {
 				dispatch(userReducerActions.sideBar_L_Open());
@@ -236,6 +238,7 @@ const DemoDMVClassC = () => {
 			switch (true) {
 				case e.key === "b" || e.key === "B":
 					if (sideBar_L_isOpen_rdx) {
+						console.log("sideBar_L_Close called here -2");
 						dispatch(userReducerActions.sideBar_L_Close());
 						dispatch(userReducerActions.setActivePanel("main"));
 						if (sideBar_L_AllowCollapse_OnWindowResize_rdx) {

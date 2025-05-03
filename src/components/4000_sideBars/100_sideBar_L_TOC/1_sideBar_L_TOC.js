@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import Pagination_eReader_GUI from "../../1000_layout/200_layoutFeatures/30_pagination_eReader_GUI";
 import SideBar_L_TOC_Section from "./2_sideBar_L_TOC_Section";
@@ -350,12 +351,26 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 			</div>
 		</nav>
 	);
-
+	//! Event Listener for Hover Effects
+	//TODO HERE ---------------------------------------------------
+	const sideBar_L_Border_handleMouseEnter = () => {
+		dispatch(userReducerActions.sideBar_L_menuIsHover(true));
+	};
+	const sideBar_L_Border_handleMouseLeave = () => {
+		setTimeout(() => {
+			dispatch(userReducerActions.sideBar_L_menuIsNotHover(false));
+		}, 80);
+	};
+	const sideBar_L_isOpenViaHover_rdx = useSelector(({ user }) => user.sideBar_L_isOpenViaHover_rdx);
+	//TODO HERE ---------------------------------------------------
 	return (
 		<div
 			className={`${classes["sideBar_L_outerContainer"]} 
 		${sideBar_R_Questions_isOpen_rdx ? classes.sideBar_R_isOpen : ""} 
+		${sideBar_L_isOpenViaHover_rdx ? classes.overLay : ""}
 		${sideBar_L_isOpen ? classes.open : ""}`}
+			onMouseEnter={sideBar_L_Border_handleMouseEnter}
+			onMouseLeave={sideBar_L_Border_handleMouseLeave}
 		>
 			{TOC_TabOptions}
 			<Pagination_eReader_GUI />

@@ -1,6 +1,6 @@
 .sidebar {
 	display: flex;
-	z-index: 1000;
+	z-index: 1001;
 	position: fixed;
 	right: 0;
 	width: 326px;
@@ -21,7 +21,7 @@
 	font-size: 14px;
 	font-family: sans-serif !important;
 }
-.sidebar.open {
+.sidebar.sideBar_R_isOpen {
 	transform: translateX(0);
 }
 .outerLogoContainer {
@@ -83,7 +83,6 @@
 .svgNotesMenuButton path {
 	fill: var(--color_primary_darkGray_to_gray);
 }
-
 .svgQuestionsButton {
 	width: 20px;
 	height: 20px;
@@ -91,24 +90,20 @@
 	margin-top: 5px;
 	margin-left: 3px;
 }
-
 .svgQuestionsButton .checkmark {
 	fill: none;
 	stroke-width: 1.3px; /* Controls the width of the checkmark line */
 	transform-origin: 4px 4px; /* Adjust based on the path coordinates */
 	transform: scale(1.4); /* Controls the size of the X mark */
 }
-
 .svgQuestionsButton .xmark {
 	stroke-width: 1.3px; /* Controls the width of the X mark lines */
 	transform-origin: 4px 16px; /* Adjust based on the line coordinates */
 	transform: scale(1.4); /* Controls the size of the X mark */
 }
-
 .svgQuestionsButton .horizontalline {
 	stroke-width: 1.6px; /* Controls the width of the horizontal lines */
 }
-
 /*! ------------------------------------------------------*/
 .top {
 	margin: 0px;
@@ -298,7 +293,6 @@
 .toggleCheckBox:checked + .darkModeToggleContainer svg.moon {
 	fill: #ffffff;
 }
-
 .sidebarMenuOptions:hover img {
 	border: 1px solid var(--BlackToWhite);
 }

@@ -167,7 +167,6 @@ const SideBar_R_MainMenu = () => {
 			<line x1="10" y1="15" x2="20" y2="15" className={classes.horizontalline} />
 		</svg>
 	);
-
 	// useEffects
 	useEffect(() => {
 		window.addEventListener("keydown", onEscKey_ExitModal);
@@ -314,9 +313,24 @@ const SideBar_R_MainMenu = () => {
 		dispatch(userReducerActions.sideBar_R_Open_Questions());
 	};
 
+	//TODO HERE ---------------------------------------------------
+	const sideBar_R_Border_handleMouseEnter = () => {
+		dispatch(userReducerActions.sideBar_R_menuIsHover(true));
+	};
+	const sideBar_R_Border_handleMouseLeave = () => {
+		setTimeout(() => {
+			dispatch(userReducerActions.sideBar_R_menuIsNotHover(false));
+		}, 80);
+	};
+	//TODO HERE ---------------------------------------------------
 	return (
 		<Fragment>
-			<menu className={`${classes["sidebar"]} ${sideBar_R_Main_isOpen_rdx ? classes.open : ""}`} ref={sideBarMainRef}>
+			<menu
+				className={`${classes["sidebar"]} ${sideBar_R_Main_isOpen_rdx ? classes.sideBar_R_isOpen : ""}`}
+				ref={sideBarMainRef}
+				onMouseEnter={sideBar_R_Border_handleMouseEnter}
+				onMouseLeave={sideBar_R_Border_handleMouseLeave}
+			>
 				{exitButton}
 				<div className={classes.outerLogoContainer}>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>

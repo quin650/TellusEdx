@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { set } from "lodash";
+import { act } from "react";
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null;
 const testResultsFromStorage = localStorage.getItem("testResults") ? JSON.parse(localStorage.getItem("testResults")) : {};
@@ -14,8 +15,22 @@ const initialState = {
 	sideBar_ViewStack_rdx: ["SideBar_L"],
 	//! SideBars
 	sideBar_L_isOpen_rdx: true,
+
+	// TODO HERE ---------------------------------------------
+	// ? Left
+	sideBar_L_borderHover_rdx: false,
+	sideBar_L_isHovering_rdx: false,
+	sideBar_L_isOpenViaHover_rdx: false,
+	sideBar_L_button_isHover_rdx: false,
+	//? Right
+	sideBar_R_borderHover_rdx: false,
+	sideBar_R_isHovering_rdx: false,
+	sideBar_R_isOpenViaHover_rdx: false,
+	sideBar_R_button_isHover_rdx: false,
+	// TODO HERE ---------------------------------------------
 	sideBar_L_AllowCollapse_OnWindowResize_rdx: true,
 	sideBar_R_Main_isOpen_rdx: false,
+
 	sideBar_R_Notes_isOpen_rdx: false,
 	sideBar_R_Questions_isOpen_rdx: false,
 	sideBar_R_SearchBar_isActive_rdx: false,
@@ -152,6 +167,7 @@ const userSlice = createSlice({
 		sideBar_L_Toggle_Visibility(state) {
 			if (state.sideBar_L_isOpen_rdx) {
 				state.sideBar_L_isOpen_rdx = false;
+				state.sideBar_L_isOpenViaHover_rdx = false;
 				state.sideBar_ViewStack_rdx.shift(); // 					remove from beginning of stack
 			} else {
 				state.sideBar_L_isOpen_rdx = true;
@@ -172,6 +188,69 @@ const userSlice = createSlice({
 		sideBar_L_YesAllowCollapse_OnWindowResize(state) {
 			state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
 		},
+		//TODO HERE ---------------------------------------------------
+		//? Left Border
+		sideBar_L_borderIsHover(state, action) {
+			if (!state.sideBar_L_isOpen_rdx) {
+				state.sideBar_L_isOpen_rdx = true;
+				state.sideBar_L_borderHover_rdx = action.payload;
+				state.sideBar_L_isOpenViaHover_rdx = true;
+				state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 			push to beginning of stack
+			}
+		},
+		sideBar_L_borderIsNotHover(state, action) {
+			state.sideBar_L_borderHover_rdx = !action.payload;
+		},
+		sideBar_L_menuIsHover(state, action) {
+			state.sideBar_L_isOpen_rdx = true;
+			state.sideBar_L_borderHover_rdx = action.payload;
+			state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 			push to beginning of stack
+		},
+		sideBar_L_menuIsNotHover(state) {
+			if (state.sideBar_L_isOpenViaHover_rdx && !state.sideBar_L_button_isHover_rdx) {
+				state.sideBar_L_isOpen_rdx = false;
+				state.sideBar_ViewStack_rdx.shift(); //
+
+				// state.sideBar_L_AllowCollapse_OnWindowResize_rdx = true;
+			}
+		},
+		sideBar_L_buttonIsHover(state, action) {
+			state.sideBar_L_button_isHover_rdx = action.payload;
+		},
+		sideBar_L_buttonIsNotHover(state, action) {
+			state.sideBar_L_button_isHover_rdx = action.payload;
+		},
+		//? Right Border
+		//TODO HERE ---------------------------------------------------
+		sideBar_R_borderIsHover(state, action) {
+			if (!state.sideBar_R_Main_isOpen_rdx) {
+				state.sideBar_R_Main_isOpen_rdx = true;
+				state.sideBar_R_borderHover_rdx = action.payload;
+				state.sideBar_R_isOpenViaHover_rdx = true;
+				state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 			push to beginning of stack
+			}
+		},
+		sideBar_R_borderIsNotHover(state, action) {
+			state.sideBar_R_borderHover_rdx = !action.payload;
+		},
+		sideBar_R_menuIsHover(state, action) {
+			state.sideBar_R_Main_isOpen_rdx = true;
+			state.sideBar_R_borderHover_rdx = action.payload;
+			state.sideBar_ViewStack_rdx.unshift("SideBar_L"); // 			push to beginning of stack
+		},
+		sideBar_R_menuIsNotHover(state) {
+			if (state.sideBar_R_isOpenViaHover_rdx && !state.sideBar_R_button_isHover_rdx) {
+				state.sideBar_R_Main_isOpen_rdx = false;
+				state.sideBar_ViewStack_rdx.shift(); //
+			}
+		},
+		sideBar_R_buttonIsHover(state, action) {
+			state.sideBar_R_button_isHover_rdx = action.payload;
+		},
+		sideBar_R_buttonIsNotHover(state, action) {
+			state.sideBar_R_button_isHover_rdx = action.payload;
+		},
+		//TODO HERE ---------------------------------------------------
 		//! Notes SideBar
 		sideBar_R_Open_Notes(state) {
 			state.sideBar_R_Notes_isOpen_rdx = true;
@@ -217,7 +296,6 @@ const userSlice = createSlice({
 				state.sideBar_ViewStack_rdx.pop();
 			}
 		},
-
 		// state.resetThisTest_Modal_isOpen_rdx = false;
 		sideBar_R_Questions_GoTo_Landing(state) {
 			state.sideBar_R_QuestionsStatus_rdx = "QuestionsOptions";
