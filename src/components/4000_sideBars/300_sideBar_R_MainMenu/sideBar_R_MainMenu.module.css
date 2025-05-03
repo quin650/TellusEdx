@@ -194,14 +194,14 @@
 	color: var(--BlackToWhite);
 }
 .sidebarMenuOptions.isActiveDmvCIcon i {
-	margin-left: 25px;
+	margin-left: 15px;
 }
 
 .sidebarMenuOptions.notesIcon i {
-	margin-left: 50px;
+	margin-left: 20px;
 }
 .sidebarMenuOptions.testIcon i {
-	margin-left: 50px;
+	margin-left: 20px;
 }
 /* About Us Formatting */
 .sidebarMenuOptions.isActiveAboutUsIcon {
