@@ -96,7 +96,7 @@ const MainNavbar = () => {
 	const { buttonRef_ctx } = useContext(RefContext);
 	//TODO HERE ---------------------------------------------------
 	useEffect(() => {
-		if (!buttonRef_ctx) return;
+		if (!buttonRef_ctx?.current) return;
 		const handleMouseEnter = () => {
 			// console.log("Yes - Hovering leftMenu Button!");
 			dispatch(userReducerActions.sideBar_L_buttonIsHover(true));
@@ -233,10 +233,12 @@ const MainNavbar = () => {
 	const leftBorderRef = useRef(null);
 	const hoverTimer_leftBorder = useRef(null);
 	useEffect(() => {
-		if (!leftBorderRef.current) return;
+		const elL = leftBorderRef.current;
+		if (!elL) return;
+
+		if (!leftBorderRef?.current) return;
 		const handleMouseEnter = () => {
 			// console.log("Yes - Hovering leftBorder!");
-
 			hoverTimer_leftBorder.current = setTimeout(() => {
 				dispatch(userReducerActions.sideBar_L_borderIsHover(true));
 			}, 360);
@@ -246,37 +248,42 @@ const MainNavbar = () => {
 			clearTimeout(hoverTimer_leftBorder.current);
 			dispatch(userReducerActions.sideBar_L_borderIsNotHover(true));
 		};
-		leftBorderRef.current.addEventListener("mouseenter", handleMouseEnter);
-		leftBorderRef.current.addEventListener("mouseleave", handleMouseLeave);
+		elL.addEventListener("mouseenter", handleMouseEnter);
+		elL.addEventListener("mouseleave", handleMouseLeave);
 		return () => {
-			leftBorderRef.current.removeEventListener("mouseenter", handleMouseEnter);
-			leftBorderRef.current.removeEventListener("mouseleave", handleMouseLeave);
+			elL.removeEventListener("mouseenter", handleMouseEnter);
+			elL.removeEventListener("mouseleave", handleMouseLeave);
 		};
-	}, []);
+	}, [isAuthenticated_rdx]);
 	//? Right Border
 	//TODO HERE ---------------------------------------------------
 	const rightBorderRef = useRef(null);
 	const hoverTimer_rightBorder = useRef(null);
 	useEffect(() => {
-		if (!rightBorderRef.current) return;
+		const elR = rightBorderRef.current;
+		if (!elR) return;
+
 		const handleMouseEnter = () => {
-			// console.log("Yes - Hovering leftBorder!");
+			// console.log("Yes - Hovering rightBorder!");
 			hoverTimer_rightBorder.current = setTimeout(() => {
 				dispatch(userReducerActions.sideBar_R_borderIsHover(true));
 			}, 360);
 		};
 		const handleMouseLeave = () => {
-			// console.log("No - hovering leftBorder!");
+			// console.log("No - hovering rightBorder!");
 			clearTimeout(hoverTimer_rightBorder.current);
 			dispatch(userReducerActions.sideBar_R_borderIsNotHover(true));
 		};
-		rightBorderRef.current.addEventListener("mouseenter", handleMouseEnter);
-		rightBorderRef.current.addEventListener("mouseleave", handleMouseLeave);
+		elR.addEventListener("mouseenter", handleMouseEnter);
+		elR.addEventListener("mouseleave", handleMouseLeave);
+
 		return () => {
-			rightBorderRef.current.removeEventListener("mouseenter", handleMouseEnter);
-			rightBorderRef.current.removeEventListener("mouseleave", handleMouseLeave);
+			if (elR) {
+				elR.removeEventListener("mouseenter", handleMouseEnter);
+				elR.removeEventListener("mouseleave", handleMouseLeave);
+			}
 		};
-	}, []);
+	}, [location.pathname]);
 	//TODO HERE ---------------------------------------------------
 	let demoContent = (
 		<Fragment>
@@ -442,8 +449,7 @@ const MainNavbar = () => {
 	return (
 		<nav className={classes.navContainer}>
 			<div className={classes.inner_container_nav}>
-				{(location.pathname !== "/demo_dmvClassC" || location.pathname === "demoLandingPage") && regularContent}
-				{location.pathname === "/demo_dmvClassC" && demoContent}
+				{location.pathname === "/demo_dmvClassC" ? demoContent : regularContent}
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainMenu />}
 				{getStarted_ModalStatus_rdx && <Modal_getStarted />}

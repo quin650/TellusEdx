@@ -67,22 +67,24 @@ button:focus {
 .leftBorder {
 	position: fixed;
 	width: 5px;
-	/* background-color: red; */
+	background-color: red;
 	z-index: 1000;
 	left: 0;
 	height: 100vh;
 	bottom: 0px !important;
 }
+
 /*! Right Border onHover opens SideBar R Main-------------------------- */
 .rightBorder {
 	position: fixed;
 	width: 5px;
-	/* background-color: green; */
+	background-color: green;
 	z-index: 1000;
 	right: 0;
 	height: 100vh;
 	bottom: 0px !important;
 }
+
 /*! SideBar L Button------------------------------------------------ */
 .topLeft {
 	display: flex;
@@ -150,7 +152,6 @@ button:focus {
 .tocButton.open:active {
 	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
 }
-
 .svgMenuButton {
 	stroke-width: 2;
 	flex-shrink: 0;
@@ -197,7 +198,6 @@ button:focus {
 	margin-right: 40px;
 	z-index: 1000;
 }
-
 .searchContainer.open {
 	width: 300px;
 	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
@@ -401,7 +401,6 @@ button:focus {
 .hamburgerButton:active {
 	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
 }
-
 .svgHamburger {
 	display: inline-block;
 	user-select: none;
