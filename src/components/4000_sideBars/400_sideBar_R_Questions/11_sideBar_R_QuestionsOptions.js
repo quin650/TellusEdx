@@ -46,7 +46,7 @@ const SideBar_R_QuestionsOptions = () => {
 		let sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt = null;
 		let sideBar_R_Questions_LastQuestionNumber_num_toReAttempt = null;
 
-		let setRetakeFailedQuestions_moduleIsActive = false;
+		let setRetakeFailedQuestions_moduleIsActive = null;
 
 		//TODO Push array of questions got wrong
 		let wrongAnswers_num = {
@@ -94,6 +94,7 @@ const SideBar_R_QuestionsOptions = () => {
 				if (!initialAttempt_gotCorrect) {
 					wrongAnswers_num[testNum].push(questionNum);
 					//so doesn't fire off a million times, has a condition to only send action once
+
 					if (setRetakeFailedQuestions_moduleIsActive === null) {
 						setRetakeFailedQuestions_moduleIsActive = true;
 						dispatch(userReducerActions.sideBar_R_Questions_setRetakeFailedQuestions_moduleIsActive(true));
@@ -196,7 +197,6 @@ const SideBar_R_QuestionsOptions = () => {
 
 		dispatch(userReducerActions.sideBar_R_Questions_setWrongAnswers(wrongAnswers_num));
 	}, []);
-
 	// ! Set test-caption/active status
 	useEffect(() => {
 		if (sideBar_R_QuestionTestResults_rdx) {
@@ -243,7 +243,6 @@ const SideBar_R_QuestionsOptions = () => {
 			}
 		}
 	}, [sideBar_R_QuestionTestResults_rdx]);
-
 	// ! Set Status for Questions On This Page - Active/Inactive
 	useEffect(() => {
 		if (pageNum_current_reader_rdx > 5) {
@@ -252,7 +251,6 @@ const SideBar_R_QuestionsOptions = () => {
 			setQuestionsOnThisPage_ActiveStatus(false);
 		}
 	}, [pageNum_current_reader_rdx]);
-
 	//! Button Actions
 	const generalButtonClick = () => {};
 	const test1 = () => {
@@ -340,7 +338,6 @@ const SideBar_R_QuestionsOptions = () => {
 	const goTo_ProbabilityOfPassingPage = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoTo_ProbabilityOfPassing());
 	};
-
 	//! Hot-Key Combinations
 	const handleKeyCombination = useCallback(
 		(e) => {
@@ -379,7 +376,6 @@ const SideBar_R_QuestionsOptions = () => {
 			document.removeEventListener("keydown", handleKeyCombination);
 		};
 	}, [location.pathname, handleKeyCombination]);
-
 	return (
 		<div className={classes.handbook_outerContainer2}>
 			<div className={classes.page_contentContainer}>
