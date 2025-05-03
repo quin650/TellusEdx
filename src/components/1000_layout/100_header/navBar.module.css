@@ -67,7 +67,7 @@ button:focus {
 .leftBorder {
 	position: fixed;
 	width: 5px;
-	background-color: red;
+	/* background-color: red; */
 	z-index: 1000;
 	left: 0;
 	height: 100vh;
@@ -78,7 +78,7 @@ button:focus {
 .rightBorder {
 	position: fixed;
 	width: 5px;
-	background-color: green;
+	/* background-color: green; */
 	z-index: 1000;
 	right: 0;
 	height: 100vh;
