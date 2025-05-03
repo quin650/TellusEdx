@@ -13,7 +13,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	const sideBar_R_Questions_CurrentTestNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_rdx);
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
-
 	const [questionComponent, setQuestionComponent] = useState(null);
 	const [chosenAnswerID, setChosenAnswerID] = useState(null);
 	const [previouslyCheckedID, setPreviouslyCheckedID] = useState(null);

@@ -15,10 +15,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx);
 	const sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx);
-	const sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_idx_reAttempted_rdx);
-	const sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted_rdx);
-	const sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt_rdx);
-	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
 	const sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentTestNumber_num_reAttempted_rdx);
 	const sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx = useSelector(({ user }) => user.sideBar_R_Questions_RecentQuestionNumber_num_reAttempted_rdx);
 	const sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx);
@@ -297,8 +293,18 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 		<Fragment>
 			<div className={classes.handbook_header_section_question}>
 				<span className={classes.headerTop}>
-					<p className={classes.questionNumber}>Question {questionNumber} of 36</p>
-					<p className={classes.testNumber}>Test {testNumber}</p>
+					{!sideBar_R_Questions_retakeFailed_isOpen_rdx ? (
+						<>
+							<p className={classes.questionNumber}>Question {questionNumber} of 36</p>
+							<p className={classes.testNumber}>Test {testNumber}</p>
+						</>
+					) : (
+						<>
+							<p className={classes.questionNumber}>Question {questionNumber}</p>
+							<p className={classes.testNumber}>Retake Test {testNumber}</p>
+							<p className={classes.previouslyFailed}>Previously Failed</p>
+						</>
+					)}
 				</span>
 				<h2>{question}</h2>
 			</div>
@@ -311,7 +317,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 			<div className={`${classes["questionImage"]} ${hasQuestionImage && classes.hasQuestionImage}`}>
 				<img src={questionImage} alt="Image"></img>
 			</div>
-
 			<div className={`${classes["question_content"]} ${sideBar_L_isOpen_rdx && classes.sideBar_L_isOpen}`}>
 				<ul>
 					{answersData.map((answer) => (

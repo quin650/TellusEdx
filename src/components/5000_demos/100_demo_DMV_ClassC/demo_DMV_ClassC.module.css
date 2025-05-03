@@ -397,8 +397,19 @@
 	text-transform: uppercase;
 	line-height: 1;
 	margin: 0 0 0 0;
-	color: black !important;
+	color: #00000052 !important;
 }
+.previouslyFailed {
+	font-size: 1.5vh !important;
+	text-transform: uppercase;
+	line-height: 1;
+	margin: 0 0 0 0;
+	color: #dc090961 !important;
+	position: absolute;
+	bottom: 1vh;
+	right: 1vw;
+}
+
 .page_content {
 	display: flex;
 	flex-direction: column;

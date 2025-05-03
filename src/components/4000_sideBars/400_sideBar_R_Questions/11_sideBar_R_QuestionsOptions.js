@@ -16,7 +16,7 @@ const SideBar_R_QuestionsOptions = () => {
 	const sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx = useSelector(({ user }) => user.sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt_rdx);
 	const [hasReAttemptedQuestion, setHasReAttemptedQuestion] = useState(false);
 	const [questionsOnThisPage_ActiveStatus, setQuestionsOnThisPage_ActiveStatus] = useState(false);
-	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(true);
+	const [probabilityOfPassingStatus, setProbabilityOfPassingStatus] = useState(false);
 	const [lastQuestionSubmitted, setLastQuestionSubmitted] = useState(null);
 	const [test1Status, setTest1Status] = useState("");
 	const [test2Status, setTest2Status] = useState("");
@@ -460,7 +460,11 @@ const SideBar_R_QuestionsOptions = () => {
 							</button>
 						</div>
 					</div>
-					<div onClick={goTo_ProbabilityOfPassingPage} className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
+					<div
+						onClick={goTo_ProbabilityOfPassingPage}
+						disabled={!probabilityOfPassingStatus}
+						className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}
+					>
 						<div className={`${classes["quadrant_InnerContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
 							<div className={`${classes["overlay"]} ${!probabilityOfPassingStatus && classes.isInactive}`}>
 								<p>Available after taking first test</p>
