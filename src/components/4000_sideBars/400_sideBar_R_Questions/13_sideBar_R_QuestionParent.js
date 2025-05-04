@@ -59,7 +59,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 						navItems.push(
 							<li
 								key={i}
-								onClick={() => gotoQuestion(i)}
+								onClick={() => gotoQuestion(null, i)}
 								className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
 									classes.currentlyAttempting
 								}`}
@@ -80,7 +80,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					navItems.push(
 						<li
 							key={i}
-							onClick={() => gotoQuestion(i)}
+							onClick={() => gotoQuestion(null, i)}
 							className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === i ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
 								questionAnswerData_gotCorrect ? classes.correct : classes.isCorrect
 							}`}
@@ -127,11 +127,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 							}
 							// Blue - Currently Selected
 							// Yellow - Currently Attempting
-							if (sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx === questionNum) {
+							if (
+								sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx === questionNum &&
+								sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx === testNum
+							) {
 								navItems.push(
 									<li
 										key={`${testNum}-${questionNum}`}
-										onClick={() => gotoQuestion(questionNum)}
+										onClick={() => gotoQuestion(testNum, questionNum)}
 										className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === questionNum ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
 											classes.currentlyAttempting
 										}`}
@@ -150,9 +153,11 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 						} else {
 							//Green or Red - re-attempted
 							navItems.push(
+								// console.log("testNum", testNum),
+								// console.log("questionNum", questionNum),
 								<li
 									key={`${testNum}-${questionNum}`}
-									onClick={() => gotoQuestion(questionNum)}
+									onClick={() => gotoQuestion(testNum, questionNum)}
 									className={`${sideBar_R_Questions_CurrentQuestionNumber_rdx === questionNum ? classes["quickNavButtonCurrent"] : classes["quickNavButton"]} ${
 										question_wasReAttempted_gotCorrect ? classes.correct : classes.isCorrect
 									}`}
@@ -166,7 +171,6 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					}
 				}
 			}
-
 			//Recent Test re-attempted#
 			if (
 				sideBar_R_Questions_RecentTestNumber_num_reAttempted !== null &&
@@ -301,7 +305,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					) : (
 						<>
 							<p className={classes.questionNumber}>Question {questionNumber}</p>
-							<p className={classes.testNumber}>Retake Test {testNumber}</p>
+							<p className={classes.testNumber}>Reattempting Test {testNumber}</p>
 							<p className={classes.previouslyFailed}>Previously Failed</p>
 						</>
 					)}

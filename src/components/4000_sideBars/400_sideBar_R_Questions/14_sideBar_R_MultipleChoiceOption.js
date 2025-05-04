@@ -3,6 +3,10 @@ import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module
 
 const SideBar_R_MultipleChoiceOptions = ({ id, text, isCorrect, isPreviouslyChecked, get_newlyCheckedID, startGradingTest, keyEventListenerSelection }) => {
 	const [isChecked, setIsChecked] = useState(false);
+	// console.log("id:", id);
+	// console.log("isPreviouslyChecked:", isPreviouslyChecked);
+	// console.log("isChecked:", isChecked);
+	// console.log("keyEventListenerSelection:", keyEventListenerSelection);
 	useEffect(() => {
 		if (isPreviouslyChecked) {
 			setIsChecked(true);

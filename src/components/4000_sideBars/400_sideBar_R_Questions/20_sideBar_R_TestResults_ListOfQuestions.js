@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
-const SideBar_R_TestResults_ListOfQuestions = ({ id, isCorrect }) => {
+const SideBar_R_TestResults_ListOfQuestions = ({ id, isCorrect, testNum }) => {
 	const dispatch = useDispatch();
 
 	const gotoQuestion = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoBackTo_Test());
-		dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(Number(id)));
+		dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber(Number(testNum), Number(id)));
 	};
 
 	return (

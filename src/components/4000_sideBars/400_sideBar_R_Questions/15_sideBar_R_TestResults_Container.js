@@ -68,7 +68,14 @@ const SideBar_R_TestResults_Container = () => {
 					if (question_wasReAttempted) {
 						numberAnswered += 1;
 						const secondaryAttempt_gotCorrect = questionData_attempts[sideBar_R_Questions_CurrentAttempt_rdx + 1]?.isCorrect;
-						ul.push(<SideBar_R_TestResults_ListOfQuestions key={testNum_idx - questionNum_idx} id={questionWrongNum_num} isCorrect={secondaryAttempt_gotCorrect} />);
+						ul.push(
+							<SideBar_R_TestResults_ListOfQuestions
+								key={testNum_idx - questionNum_idx}
+								id={questionWrongNum_num}
+								testNum={testNum_idx}
+								isCorrect={secondaryAttempt_gotCorrect}
+							/>
+						);
 					}
 				}
 			}
