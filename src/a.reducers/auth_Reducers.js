@@ -332,9 +332,6 @@ const userSlice = createSlice({
 			state.sideBar_R_Questions_CurrentTestNumber_rdx = state.sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx;
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = state.sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx;
 		},
-		// sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
-		// 	state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload;
-		// },
 		sideBar_R_Questions_GoTo_QuestionNumber(state, action) {
 			state.sideBar_R_Questions_CurrentQuestionNumber_rdx = action.payload.questionNum;
 			if (action.payload.testNum !== null) {

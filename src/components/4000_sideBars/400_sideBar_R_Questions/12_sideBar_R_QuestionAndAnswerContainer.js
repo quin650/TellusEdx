@@ -15,7 +15,6 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	const sideBar_R_Questions_retakeFailed_isOpen_rdx = useSelector(({ user }) => user.sideBar_R_Questions_retakeFailed_isOpen_rdx);
 	const [questionComponent, setQuestionComponent] = useState(null);
 	const [chosenAnswerID, setChosenAnswerID] = useState(null);
-	// const [previouslyCheckedID, setPreviouslyCheckedID] = useState(null);
 	const [startGradingTest, setStartGradingTest] = useState(false);
 	const questionContentRef = useRef(null);
 	const get_ChosenAnswerID = (id, correctOrIncorrect) => {
@@ -95,9 +94,9 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 			// changed to attempt = 1
 			const currentQuestionData_ifSubmitted =
 				sideBar_R_QuestionTestResults_rdx[sideBar_R_Questions_CurrentTestNumber_rdx]?.[sideBar_R_Questions_CurrentQuestionNumber_rdx]?.attempts?.[1]?.selectedId || null;
-
-			console.log("selectedID: ", currentQuestionData_ifSubmitted);
+			console.log("rerendered component");
 			if (currentQuestionData_ifSubmitted) {
+				console.log("1");
 				setStartGradingTest(false);
 				setQuestionComponent(
 					<SideBar_R_QuestionsParent
@@ -114,6 +113,9 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 					/>
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
+				console.log("2");
+				console.log("sideBar_R_Questions_CurrentTestNumber_rdx:", sideBar_R_Questions_CurrentTestNumber_rdx);
+				console.log("sideBar_R_Questions_CurrentQuestionNumber_rdx:", sideBar_R_Questions_CurrentQuestionNumber_rdx);
 				setQuestionComponent(
 					<SideBar_R_QuestionsParent
 						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
@@ -127,6 +129,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 					/>
 				);
 			} else {
+				console.log("3");
 				setQuestionComponent(
 					<SideBar_R_QuestionsParent
 						testNumber={sideBar_R_Questions_CurrentTestNumber_rdx}
@@ -149,6 +152,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 		sideBar_R_Questions_retakeFailed_isOpen_rdx,
 		sideBar_R_QuestionTestResults_rdx,
 	]);
+
 	const handleQuestionSideBarClick = () => {
 		dispatch(userReducerActions.setActivePanel("questions"));
 	};

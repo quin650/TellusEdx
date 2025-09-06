@@ -200,13 +200,15 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					})
 				);
 			}
-
 			//Current Test to re-attempt#
+			//? If the values are already set once, they won’t get updated again unless:
+			//? The sum of the test/question numbers increases.
+			//? Or you reset the values to null beforehand.
 			if (
 				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt !== null &&
 				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt !== undefined &&
-				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
-					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt * 100 + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
+					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx * 100 + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
@@ -216,11 +218,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 				);
 			}
 			//Current Question to re-attempt#
+			//? If the values are already set once, they won’t get updated again unless:
+			//? The sum of the test/question numbers increases.
+			//? Or you reset the values to null beforehand.
 			if (
 				sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt !== null &&
 				sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt !== undefined &&
-				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
-					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
+				sideBar_R_Questions_CurrentTestNumber_num_toReAttempt * 100 + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt >
+					sideBar_R_Questions_CurrentTestNumber_num_toReAttempt_rdx * 100 + sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx
 			) {
 				dispatch(
 					userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
@@ -234,6 +239,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 	}, [
 		questionData_ifSubmitted,
 		sideBar_R_QuestionTestResults_rdx,
+		sideBar_R_Questions_CurrentTestNumber_rdx,
 		sideBar_R_Questions_CurrentQuestionNumber_rdx,
 		sideBar_R_Questions_CurrentQuestionNumber_num_toAttempt_rdx,
 		sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt_rdx,
