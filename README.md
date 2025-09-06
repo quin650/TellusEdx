@@ -33,7 +33,11 @@
 
 ### Host
 
-![Render](https://img.shields.io/badge/render-%4351e8.svg?logo=sqlite&style=flat&logoColor=white)
+![Heroku](https://img.shields.io/badge/Heroku-430098.svg?logo=heroku&style=flat&logoColor=white)
+
+### Domain
+
+![Squarespace](https://img.shields.io/badge/Squarespace-000000.svg?logo=squarespace&style=flat&logoColor=white)
 
 ## ⚒️ Getting Started
 
