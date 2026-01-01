@@ -1,16 +1,18 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { userReducerActions } from "./a.reducers/auth_Reducers";
-import { set, throttle } from "lodash";
+import { throttle } from "lodash";
+
 import MainNavbar from "./components/1000_layout/100_header/1_mainNavbar";
 import Footer from "./components/1000_layout/400_footer/footer";
-import Home from "./components/2000_pages/100_pages/0_home/0_home";
-import Demo_LandingPage from "./components/5000_demos/000_demo_LandingPage/demo_LandingPage";
-import DemoDMVClassC from "./components/5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC";
-import PDFViewer from "./components/5000_demos/100_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer";
-import GeneralPage from "./components/2000_pages/100_pages/generalPage";
 import OnThisPageQuickView from "./components/1000_layout/200_layoutFeatures/10_onThisPageQuickView";
+
+const Home = lazy(() => import("./components/2000_pages/100_pages/0_home/0_home"));
+const Demo_LandingPage = lazy(() => import("./components/5000_demos/000_demo_LandingPage/demo_LandingPage"));
+const DemoDMVClassC = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC"));
+const PDFViewer = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer"));
+const GeneralPage = lazy(() => import("./components/2000_pages/100_pages/generalPage"));
 
 const App = () => {
 	const mainAppContainerRef = useRef();
@@ -185,29 +187,31 @@ const App = () => {
 				</header>
 			)}
 			{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : ""}
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
+			<Suspense fallback={<div style={{ padding: "16px" }}>Loading…</div>}>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
 
-				<Route path="/demos" element={<Demo_LandingPage />} />
-				<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
-				<Route path="/PDFViewer" element={<PDFViewer />} />
-				{/* General Pages */}
-				<Route path="/aboutus" element={<GeneralPage text={"About Us"} />} />
-				<Route path="/company" element={<GeneralPage text={"company"} />} />
-				<Route path="/ourteam" element={<GeneralPage text={"Our Team"} />} />
-				<Route path="/careers" element={<GeneralPage text={"Careers"} />} />
-				<Route path="/merch" element={<GeneralPage text={"Merch"} />} />
-				<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} />} />
-				<Route path="/docs" element={<GeneralPage text={"Docs"} />} />
-				<Route path="/guides" element={<GeneralPage text={"Guides"} />} />
-				<Route path="/apireference" element={<GeneralPage text={"API Reference"} />} />
-				<Route path="/integrations" element={<GeneralPage text={"Integrations"} />} />
-				<Route path="/help" element={<GeneralPage text={"Help"} />} />
-				<Route path="/faq" element={<GeneralPage text={"FAQ"} />} />
-				<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} />} />
-				<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} />} />
-			</Routes>
+					<Route path="/demos" element={<Demo_LandingPage />} />
+					<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
+					<Route path="/PDFViewer" element={<PDFViewer />} />
+					{/* General Pages */}
+					<Route path="/aboutus" element={<GeneralPage text={"About Us"} />} />
+					<Route path="/company" element={<GeneralPage text={"company"} />} />
+					<Route path="/ourteam" element={<GeneralPage text={"Our Team"} />} />
+					<Route path="/careers" element={<GeneralPage text={"Careers"} />} />
+					<Route path="/merch" element={<GeneralPage text={"Merch"} />} />
+					<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} />} />
+					<Route path="/docs" element={<GeneralPage text={"Docs"} />} />
+					<Route path="/guides" element={<GeneralPage text={"Guides"} />} />
+					<Route path="/apireference" element={<GeneralPage text={"API Reference"} />} />
+					<Route path="/integrations" element={<GeneralPage text={"Integrations"} />} />
+					<Route path="/help" element={<GeneralPage text={"Help"} />} />
+					<Route path="/faq" element={<GeneralPage text={"FAQ"} />} />
+					<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} />} />
+					<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} />} />
+				</Routes>
+			</Suspense>
 			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && location.pathname !== "/PDFViewer" && (
 				<footer>
 					<Footer />
