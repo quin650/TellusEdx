@@ -2,14 +2,16 @@ import React, { useState, useEffect, useRef, Fragment, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 import classes from "./PDFViewer.module.css";
-import pdf from "./pdf1.pdf";
+// import pdf from "./pdf1.pdf";
+const PDF_URL = "/static/docs/pdf1.pdf";
+
 import Pagination_PDF_GUI from "../../../../1000_layout/200_layoutFeatures/30_pagination_PDF_GUI";
 import ZoomGUI from "../../../../1000_layout/200_layoutFeatures/40_zoomGUI";
 
 const PDFViewer = () => {
 	const dispatch = useDispatch();
 	const [pdfState, setPdfState] = useState({
-		pdfUrl: pdf, //The Document URL/File Location
+		pdfUrl: PDF_URL, //The Document URL/File Location
 		pdfDocument: null, //The Document Object (before being set)
 		scale: null, //The size of document rendering on screen(Height-Based)
 		scaleFull: null, //The size of document rendering on screen(Width-Based)

@@ -236,6 +236,7 @@ const Page1A = () => {
 						</div>
 					</nav>
 				</div>
+				{/* change */}
 
 				<div className={`${classes["rightSide"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}>
 					<div className={classes.imageDiv}>
