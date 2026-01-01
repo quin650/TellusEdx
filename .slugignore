@@ -1,4 +1,15 @@
+# Build/dependency artifacts
 node_modules/
+dist/
+
+# Dev-only source and notes
+src/
+tests/
+zCode_Notes/
+
+# Repo noise
 *.log
 *.md
-tests/
+
+# Prevent duplicate static sources in the slug
+static/
