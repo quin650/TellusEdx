@@ -4,7 +4,7 @@
 	"main": "webpack.config.js",
 	"scripts": {
 		"dev": "webpack --mode development --watch",
-		"build": "webpack --mode development"
+		"build": "webpack --mode production"
 	},
 	"keywords": [],
 	"author": "",

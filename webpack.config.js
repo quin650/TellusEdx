@@ -73,7 +73,6 @@ module.exports = {
 	plugins: [
 		new Dotenv(),
 		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify("development"),
 			"process.env.REACT_APP_LOCAL": JSON.stringify(process.env.REACT_APP_LOCAL),
 		}),
 	],
