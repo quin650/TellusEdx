@@ -88,7 +88,7 @@ const initialState = {
 	//! General
 	isAuthenticated_rdx: false,
 	loading_rdx: false,
-	activeFlag_rdx: "../../../../static/images/countries/1UnitedStates.png",
+	activeFlag_rdx: "../../../../static/images/countries_webp/1UnitedStates.webp",
 	modal_languageSettings_currentLanguage_rdx: "English",
 	isDarkMode_rdx: isDarkMode,
 	isDemoView_rdx: false,
@@ -592,45 +592,46 @@ const userSlice = createSlice({
 			state.modal_languageSettings_currentLanguage_rdx = action.payload;
 			switch (action.payload) {
 				case "English":
-					state.activeFlag_rdx = "../../../../static/images/countries/1UnitedStates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/1UnitedStates.webp";
 					break;
 				case "Spanish":
-					state.activeFlag_rdx = "../../../../static/images/countries/2Mexico.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/2Mexico.webp";
 					break;
 				case "Chinese":
-					state.activeFlag_rdx = "../../../../static/images/countries/3China.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/3China.webp";
 					break;
 				case "French":
-					state.activeFlag_rdx = "../../../../static/images/countries/4France.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/4France.webp";
 					break;
 				case "German":
-					state.activeFlag_rdx = "../../../../static/images/countries/5Germany.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/5Germany.webp";
 					break;
 				case "Japanese":
-					state.activeFlag_rdx = "../../../../static/images/countries/6Japan.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/6Japan.webp";
 					break;
 				case "Portuguese":
-					state.activeFlag_rdx = "../../../../static/images/countries/7Portugal.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/7Portugal.webp";
 					break;
 				case "Russian":
-					state.activeFlag_rdx = "../../../../static/images/countries/8Russia.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/8Russia.webp";
 					break;
 				case "Arabic":
-					state.activeFlag_rdx = "../../../../static/images/countries/9UnitedArabEmirates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/9UnitedArabEmirates.webp";
 					break;
 				case "Italian":
-					state.activeFlag_rdx = "../../../../static/images/countries/10Italy.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/10Italy.webp";
 					break;
 				case "Korean":
-					state.activeFlag_rdx = "../../../../static/images/countries/11Korea.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/11Korea.webp";
 					break;
 				case "Hindu":
-					state.activeFlag_rdx = "../../../../static/images/countries/12India.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/12India.webp";
 					break;
 				default:
-					state.activeFlag_rdx = "../../../../static/images/countries/1UnitedStates.png";
+					state.activeFlag_rdx = "../../../../static/images/countries_webp/1UnitedStates.webp";
 			}
 		},
+
 		languageSettingsEnglish(state) {
 			state.modal_languageSettings_currentLanguage_rdx = "English";
 		},
