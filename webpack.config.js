@@ -57,14 +57,6 @@ module.exports = {
 					},
 				],
 			},
-			{
-				test: /\.(pdf)$/i,
-				use: [
-					{
-						loader: "file-loader",
-					},
-				],
-			},
 		],
 	},
 	optimization: {
