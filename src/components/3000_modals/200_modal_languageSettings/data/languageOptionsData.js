@@ -1,15 +1,15 @@
-import USAFlagImg from "../../../../../static/images/countries/1UnitedStates.png";
-import mexicoFlagImg from "../../../../../static/images/countries/2Mexico.png";
-import chinaFlagImg from "../../../../../static/images/countries/3China.png";
-import franceFlagImg from "../../../../../static/images/countries/4France.png";
-import germanyFlagImg from "../../../../../static/images/countries/5Germany.png";
-import japanFlagImg from "../../../../../static/images/countries/6Japan.png";
-import portugalFlagImg from "../../../../../static/images/countries/7Portugal.png";
-import russiaFlagImg from "../../../../../static/images/countries/8Russia.png";
-import UAEFlagImg from "../../../../../static/images/countries/9UnitedArabEmirates.png";
-import italyFlagImg from "../../../../../static/images/countries/10Italy.png";
-import koreaFlagImg from "../../../../../static/images/countries/11Korea.png";
-import indiaFlagImg from "../../../../../static/images/countries/12India.png";
+const USAFlagImg = "/static/images/countries_webp/1UnitedStates.webp";
+const mexicoFlagImg = "/static/images/countries_webp/2Mexico.webp";
+const chinaFlagImg = "/static/images/countries_webp/3China.webp";
+const franceFlagImg = "/static/images/countries_webp/4France.webp";
+const germanyFlagImg = "/static/images/countries_webp/5Germany.webp";
+const japanFlagImg = "/static/images/countries_webp/6Japan.webp";
+const portugalFlagImg = "/static/images/countries_webp/7Portugal.webp";
+const russiaFlagImg = "/static/images/countries_webp/8Russia.webp";
+const UAEFlagImg = "/static/images/countries_webp/9UnitedArabEmirates.webp";
+const italyFlagImg = "/static/images/countries_webp/10Italy.webp";
+const koreaFlagImg = "/static/images/countries_webp/11Korea.webp";
+const indiaFlagImg = "/static/images/countries_webp/12India.webp";
 
 const data = [
 	{

@@ -1,13 +1,14 @@
 import React from "react";
 import GetStartedButton from "../../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
-import logo_bookPencil_orange from "../../../../../static/images/logos/homeTop_logos/logo_bookPencil_orange.png";
-import logo_column_purple from "../../../../../static/images/logos/homeTop_logos/logo_column_purple.png";
-import logo_computer_orange from "../../../../../static/images/logos/homeTop_logos/logo_computer_orange.png";
-import logo_calendar_yellow from "../../../../../static/images/logos/homeTop_logos/logo_calendar_yellow.png";
-import logo_atom_green from "../../../../../static/images/logos/homeTop_logos/logo_atom_green.png";
-import logo_math_yellow from "../../../../../static/images/logos/homeTop_logos/logo_math_yellow.png";
-import logo_money_green from "../../../../../static/images/logos/homeTop_logos/logo_money_green.png";
-import logo_lightBulb_purple from "../../../../../static/images/logos/homeTop_logos/logo_lightBulb_purple.png";
+const logo_bookPencil_orange = "/static/images/logos_webp/logo_bookPencil_orange.webp";
+const logo_column_purple = "/static/images/logos_webp/logo_column_purple.webp";
+const logo_computer_orange = "/static/images/logos_webp/logo_computer_orange.webp";
+const logo_calendar_yellow = "/static/images/logos_webp/logo_calendar_yellow.webp";
+const logo_atom_green = "/static/images/logos_webp/logo_atom_green.webp";
+const logo_math_yellow = "/static/images/logos_webp/logo_math_yellow.webp";
+const logo_money_green = "/static/images/logos_webp/logo_money_green.webp";
+const logo_lightBulb_purple = "/static/images/logos_webp/logo_lightBulb_purple.webp";
+
 import classes from "./1_homeTop.module.css";
 
 const HomeTop = () => {

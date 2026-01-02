@@ -8,7 +8,8 @@ import GetStartedButton from "../../3000_modals/100_modal_getStarted/getStartedF
 import Modal_getStarted from "../../3000_modals/100_modal_getStarted/modal_getStarted";
 import Modal_languageSettings from "../../3000_modals/200_modal_languageSettings/1_modal_languageSettings";
 import SideBar_R_MainMenu from "../../4000_sideBars/300_sideBar_R_MainMenu/sideBar_R_MainMenu";
-import Logo from "../../../../static/images/logos/logo_tellusEd_arrowsOnly.png";
+const Logo = "/static/images/logos_webp/logo_tellusEd_arrowsOnly.webp";
+
 import classes from "./navBar.module.css";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";

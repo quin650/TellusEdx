@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import GetStartedButton from "../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
-import Logo from "../../../../static/images/logos/logo_tellusEd_whiteCircleBackground.png";
+const Logo = "/static/images/logos_webp/logo_tellusEd_whiteCircleBackground.webp";
+
 import classes from "./sideBar_R_MainMenu.module.css";
 
 const SideBar_R_MainMenu = () => {
