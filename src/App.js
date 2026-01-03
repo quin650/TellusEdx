@@ -186,8 +186,8 @@ const App = () => {
 					<MainNavbar />
 				</header>
 			)}
-			{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : ""}
 			<Suspense fallback={<div style={{ padding: "16px" }}>Loading…</div>}>
+				{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : null}
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
