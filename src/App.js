@@ -5,14 +5,14 @@ import { userReducerActions } from "./a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 
 import MainNavbar from "./components/1000_layout/100_header/1_mainNavbar";
+import Home from "./components/2000_pages/100_pages/0_home/0_home";
+import GeneralPage from "./components/2000_pages/100_pages/generalPage";
 import Footer from "./components/1000_layout/400_footer/footer";
 import OnThisPageQuickView from "./components/1000_layout/200_layoutFeatures/10_onThisPageQuickView";
 
-import Home from "./components/2000_pages/100_pages/0_home/0_home";
 const Demo_LandingPage = lazy(() => import("./components/5000_demos/000_demo_LandingPage/demo_LandingPage"));
 const DemoDMVClassC = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC"));
 const PDFViewer = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer"));
-const GeneralPage = lazy(() => import("./components/2000_pages/100_pages/generalPage"));
 
 const App = () => {
 	const mainAppContainerRef = useRef();
@@ -64,9 +64,8 @@ const App = () => {
 			}
 			setDivIDs(listOfDivIDs);
 		}, 50);
-
 		return () => clearTimeout(timer);
-	}, [location]);
+	}, [location.pathname]);
 	//! Find active ID (i.e. currently scrolled to)
 	useEffect(() => {
 		const handleScroll = throttle(() => {
@@ -81,14 +80,14 @@ const App = () => {
 			});
 			setActiveID(currentActiveID);
 			divElements = [];
-		}, 350);
+		}, 50);
 		const scrollContainer = document.querySelector("main");
 		scrollContainer.addEventListener("scroll", handleScroll);
 		handleScroll();
 		return () => {
 			scrollContainer.removeEventListener("scroll", handleScroll);
 		};
-	}, [location]);
+	}, [location.pathname]);
 	// HotKey - Toggle Learn/Contribute
 	const [isToggleChange, setIsToggleChange] = useState(1);
 	// For alt key on tippy show QuickView Page Items
@@ -186,30 +185,32 @@ const App = () => {
 					<MainNavbar />
 				</header>
 			)}
-			<Suspense fallback={<div style={{ padding: "16px" }}>Loading…</div>}>
-				{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : null}
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
+			{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : ""}
+			<Routes>
+				{/* General Pages */}
+				<Route path="/" element={<Home />} />
+				<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
+				<Route path="/aboutus" element={<GeneralPage text={"About Us"} DivID={"About Us"} />} />
+				<Route path="/company" element={<GeneralPage text={"company"} DivID={"company"} />} />
+				<Route path="/ourteam" element={<GeneralPage text={"Our Team"} DivID={"Our Team"} />} />
+				<Route path="/careers" element={<GeneralPage text={"Careers"} DivID={"Careers"} />} />
+				<Route path="/merch" element={<GeneralPage text={"Merch"} DivID={"Merch"} />} />
+				<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} DivID={"Support Center"} />} />
+				<Route path="/docs" element={<GeneralPage text={"Docs"} DivID={"Docs"} />} />
+				<Route path="/guides" element={<GeneralPage text={"Guides"} DivID={"Guides"} />} />
+				<Route path="/apireference" element={<GeneralPage text={"API Reference"} DivID={"API Reference"} />} />
+				<Route path="/integrations" element={<GeneralPage text={"Integrations"} DivID={"Integrations"} />} />
+				<Route path="/help" element={<GeneralPage text={"Help"} DivID={"Help"} />} />
+				<Route path="/faq" element={<GeneralPage text={"FAQ"} DivID={"FAQ"} />} />
+				<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} DivID={"Tutorials"} />} />
+				<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} DivID={"Contacts Us"} />} />
+			</Routes>
 
+			<Suspense fallback={<div style={{ padding: "16px" }}>Loading…</div>}>
+				<Routes>
 					<Route path="/demos" element={<Demo_LandingPage />} />
 					<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 					<Route path="/PDFViewer" element={<PDFViewer />} />
-					{/* General Pages */}
-					<Route path="/aboutus" element={<GeneralPage text={"About Us"} />} />
-					<Route path="/company" element={<GeneralPage text={"company"} />} />
-					<Route path="/ourteam" element={<GeneralPage text={"Our Team"} />} />
-					<Route path="/careers" element={<GeneralPage text={"Careers"} />} />
-					<Route path="/merch" element={<GeneralPage text={"Merch"} />} />
-					<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} />} />
-					<Route path="/docs" element={<GeneralPage text={"Docs"} />} />
-					<Route path="/guides" element={<GeneralPage text={"Guides"} />} />
-					<Route path="/apireference" element={<GeneralPage text={"API Reference"} />} />
-					<Route path="/integrations" element={<GeneralPage text={"Integrations"} />} />
-					<Route path="/help" element={<GeneralPage text={"Help"} />} />
-					<Route path="/faq" element={<GeneralPage text={"FAQ"} />} />
-					<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} />} />
-					<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} />} />
 				</Routes>
 			</Suspense>
 			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && location.pathname !== "/PDFViewer" && (
