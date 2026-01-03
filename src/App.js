@@ -185,7 +185,11 @@ const App = () => {
 					<MainNavbar />
 				</header>
 			)}
-			{divIDs.length > 0 && location.pathname !== "/PDFViewer" ? <OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} /> : ""}
+			{location.pathname !== "/PDFViewer" || location.pathname !== "/demos" ? (
+				<OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} />
+			) : (
+				""
+			)}
 			<Routes>
 				{/* General Pages */}
 				<Route path="/" element={<Home />} />
