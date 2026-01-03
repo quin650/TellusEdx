@@ -127,7 +127,7 @@ const PDFViewer = () => {
 				const textContent = await page.getTextContent(); //Once page is rendered, extract text content
 				//!Create the textLayer                                      //Text layer (allows text selection/accessibility features)
 				const textLayerDiv = textLayerRef.current; //??? is this needed? Select HTML div element with ID 'textLayer.' This will serve as the container for the rendered text layer
-				textLayerDiv.className = "textLayer"; //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
+				// textLayerDiv.className = "textLayer"; //?? is this needed?  Set class for styling (The styling comes from the pdf_viewer.css file --> https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.css)
 				const textLayer = pdfjsLib.renderTextLayer({
 					//Create text layer
 					textContent: textContent, //
@@ -168,21 +168,23 @@ const PDFViewer = () => {
 	};
 	//!FullScreen
 	useEffect(() => {
-		if (isFullScreen) {
-			let resizeTimer;
-			const handleResize = () => {
-				clearTimeout(resizeTimer);
-				resizeTimer = setTimeout(() => {
-					setWindowSizeChanges((prevCount) => prevCount + 1);
-				}, 300);
-			};
-			window.addEventListener("resize", handleResize); // Adding the resize event listener to the window
-			return () => {
-				window.removeEventListener("resize", handleResize);
-				clearTimeout(resizeTimer); // Clear the timeout to prevent delayed execution
-			};
-		}
-	}, [isFullScreen]);
+		let resizeTimer;
+
+		const handleResize = () => {
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => {
+				setWindowSizeChanges((c) => c + 1);
+			}, 200);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+			clearTimeout(resizeTimer);
+		};
+	}, []);
+
 	const toggleFullScreen = useCallback(() => {
 		setIsFullScreen((prev) => !prev); // Toggle the full screen state
 		if (renderTaskRef.current) {
