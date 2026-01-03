@@ -148,7 +148,7 @@
 				}
 			],
 			"hint": "Blue = disabled parking only.",
-			"image": "../../../../../static/images/question_Images/1_6.png"
+			"image": "../../../../../static/images/question_webp/1_6.webp"
 		},
 		{
 			"id": 7,
@@ -173,7 +173,7 @@
 				}
 			],
 			"hint": "Correlate the color to traffic lights. What do you do when a traffic light turns yellow?",
-			"image": "../../../../../static/images/question_Images/1_7.png"
+			"image": "../../../../../static/images/question_webp/1_7.webp"
 		},
 		{
 			"id": 8,
@@ -598,7 +598,7 @@
 				}
 			],
 			"hint": "keyword is 'limit'. It is the maximum speed limit, not the minimum speed limit.",
-			"image": "../../../../../static/images/question_Images/1_24.png"
+			"image": "../../../../../static/images/question_webp/1_24.webp"
 		},
 		{
 			"id": 25,
@@ -623,7 +623,7 @@
 				}
 			],
 			"hint": "remember, line = 'walls'",
-			"image": "../../../../../static/images/question_Images/1_25.png"
+			"image": "../../../../../static/images/question_webp/1_25.webp"
 		},
 		{
 			"id": 26,
@@ -723,7 +723,7 @@
 				}
 			],
 			"hint": "Traffic Guards don't just work near or around schools",
-			"image": "../../../../../static/images/question_Images/1_29.png"
+			"image": "../../../../../static/images/question_webp/1_29.webp"
 		},
 		{
 			"id": 30,
@@ -873,7 +873,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/1_35.png"
+			"image": "../../../../../static/images/question_webp/1_35.webp"
 		},
 		{
 			"id": 36,
@@ -1128,7 +1128,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_9.png"
+			"image": "../../../../../static/images/question_webp/2_9.webp"
 		},
 		{
 			"id": 46,
@@ -1158,7 +1158,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_10.png"
+			"image": "../../../../../static/images/question_webp/2_10.webp"
 		},
 		{
 			"id": 47,
@@ -1238,7 +1238,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_13.png"
+			"image": "../../../../../static/images/question_webp/2_13.webp"
 		},
 		{
 			"id": 50,
@@ -1438,7 +1438,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_9.png"
+			"image": "../../../../../static/images/question_webp/2_9.webp"
 		},
 		{
 			"id": 58,
@@ -1538,7 +1538,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_25.png"
+			"image": "../../../../../static/images/question_webp/2_25.webp"
 		},
 		{
 			"id": 62,
@@ -1593,7 +1593,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_27.png"
+			"image": "../../../../../static/images/question_webp/2_27.webp"
 		},
 		{
 			"id": 64,
@@ -1618,7 +1618,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/2_28.png"
+			"image": "../../../../../static/images/question_webp/2_28.webp"
 		},
 		{
 			"id": 65,
@@ -1843,7 +1843,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/3_1.png"
+			"image": "../../../../../static/images/question_webp/3_1.webp"
 		},
 		{
 			"id": 74,
@@ -2018,7 +2018,7 @@
 				}
 			],
 			"hint": "",
-			"image": "../../../../../static/images/question_Images/3_8.png"
+			"image": "../../../../../static/images/question_webp/3_8.webp"
 		},
 		{
 			"id": 81,
