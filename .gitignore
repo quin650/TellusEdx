@@ -31,7 +31,7 @@ media/
 
 # DO NOT ignore static/ (source assets live here)
 # static/
-
+static/frontend/
 
 ########################################
 # Frontend (React)
