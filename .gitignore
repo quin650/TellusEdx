@@ -23,9 +23,15 @@ db.sqlite3
 ########################################
 # Django static & media (generated)
 ########################################
-static/
+# Ignore generated collectstatic output
 staticfiles/
+
+# Media is user uploads (usually not committed)
 media/
+
+# DO NOT ignore static/ (source assets live here)
+# static/
+
 
 ########################################
 # Frontend (React)
