@@ -14,7 +14,14 @@
 		<!--Google Font Inter (Other)-->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Inter:wght@700&display=swap" />
+
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Inter:wght@700&display=swap"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+
 		<!--Font Awesome .....where the icons are coming from-->
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -23,7 +30,7 @@
 		<div class="root">
 			<script src="{% static 'frontend/main.js'%}" defer></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
-			<script defer>
+			<script>
 				document.addEventListener("DOMContentLoaded", () => {
 					pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
 				});
