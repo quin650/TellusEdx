@@ -29,9 +29,11 @@ staticfiles/
 # Media is user uploads (usually not committed)
 media/
 
-# DO NOT ignore static/ (source assets live here)
-# static/
-static/frontend/
+# Ignore static by default, but allow deployed webpack bundle
+static/*
+!static/frontend/
+!static/frontend/**
+
 
 ########################################
 # Frontend (React)
