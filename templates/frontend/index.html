@@ -25,12 +25,13 @@
 		<!--Font Awesome .....where the icons are coming from-->
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		{{ RUNTIME_CONFIG|json_script:"runtime-config" }}
 	</head>
 	<body>
 		<div class="root">
 			<script src="{% static 'frontend/main.js'%}" defer></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
-			<script>
+			<script defer>
 				document.addEventListener("DOMContentLoaded", () => {
 					pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
 				});

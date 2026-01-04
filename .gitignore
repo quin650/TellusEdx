@@ -4,47 +4,54 @@
 .env
 .env.*
 *.env
-*.venv
+
+# Virtual environments
 venv/
 .venv/
+*.venv
+
 
 ########################################
 # Python / Django
 ########################################
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
 *.sqlite3
 db.sqlite3
+
+# Test / type-check caches
 .pytest_cache/
 .mypy_cache/
+
 
 ########################################
 # Django static & media (generated)
 ########################################
-# Ignore generated collectstatic output
+# collectstatic output (never commit)
 staticfiles/
 
-# Media is user uploads (usually not committed)
+# User uploads (environment-specific)
 media/
 
-# Ignore static by default, but allow deployed webpack bundle
+# Ignore static by default,
+# but allow committed frontend bundle (webpack output)
 static/*
 !static/frontend/
 !static/frontend/**
 
 
 ########################################
-# Frontend (React)
+# Frontend (React / Node — local build only)
 ########################################
 node_modules/
 build/
 dist/
 
+# Package manager logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
 
 ########################################
 # OS / Editor
@@ -53,10 +60,12 @@ yarn-error.log*
 .vscode/
 .idea/
 
+
 ########################################
-# Notes / local junk
+# Local notes / artifacts
 ########################################
 zCode_Notes/
 
-tellused/
+# Deployment artifacts (local only)
 slug.tar.gz
+tellused/

@@ -1,7 +1,30 @@
+########################################
+
+# Frontend build inputs (NOT needed at runtime)
+
+########################################
+
+# Node dependencies (Node buildpack removed)
+
 node_modules/
-*.log
-*.md
+
+# Local frontend build artifacts (React built before deploy)
+
+build/
+dist/
+
+########################################
+
+# Development / test artifacts
+
+########################################
 tests/
 zCode_Notes/
-dist/
-build/
+
+########################################
+
+# Logs & documentation (non-runtime)
+
+########################################
+_.log
+_.md

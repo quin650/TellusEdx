@@ -62,10 +62,5 @@ module.exports = {
 	optimization: {
 		minimize: true,
 	},
-	plugins: [
-		new Dotenv(),
-		new webpack.DefinePlugin({
-			"process.env.REACT_APP_LOCAL": JSON.stringify(process.env.REACT_APP_LOCAL),
-		}),
-	],
+	plugins: [],
 };
