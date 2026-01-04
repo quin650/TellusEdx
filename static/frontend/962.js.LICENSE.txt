@@ -1,0 +1,45 @@
+//! Button Actions
+
+//! Component Control---------------------------------------
+
+//! Every time the page changes, this resets the menu so that if it was open previously, is closed in new page
+
+//! Find and set latest submitted test/question number - for first attempted regular test (Helps find right-limit for pagination)
+
+//! Find and set latest submitted test/question number - for reattempted failed questions
+
+//! Footer Actions
+
+//! Get Page Title | Get Range of pages
+
+//! Get closest ID to the top
+
+//! Get list of all the headings h2 & their h3 children
+
+//! GoTo_TopOfPage
+
+//! Inject id's based on the h1, h2, h3 text
+
+//! Prev-Next Page
+
+//! Render Question Component
+
+//! Resizer functionality
+
+//! TOC Status: Open/Close
+
+//! Update pagination left-limits
+
+//! Update pagination right-limits
+
+//! event listener for scroll on quickNav
+
+//! loop through questionData to create the quickNavBar
+
+//! loop through testResultData, dispatch pertinent values
+
+//! set Image Status - hasQuestionImage
+
+//! set what multiple choice option is checked
+
+//!Page Input Number
