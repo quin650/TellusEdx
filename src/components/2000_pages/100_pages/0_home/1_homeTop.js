@@ -19,16 +19,14 @@ const HomeTop = () => {
 					<h1> LEARNING NEVER EXHAUSTS THE MIND</h1>
 					<h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
 				</blockquote>
-
-				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0" loading="eager" fetchpriority="high" decoding="async"></img>
-				<img src={logo_column_purple} alt="Logo" className={classes.logo_column_purple} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-				<img src={logo_computer_orange} alt="Logo" className={classes.logo_computer_orange} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-				<img src={logo_calendar_yellow} alt="Logo" className={classes.logo_calendar_yellow} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-				<img src={logo_atom_green} alt="Logo" className={classes.logo_atom_green} tabIndex="0" loading="eager" fetchpriority="high" decoding="async"></img>
-				<img src={logo_math_yellow} alt="Logo" className={classes.logo_math_yellow} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-				<img src={logo_money_green} alt="Logo" className={classes.logo_money_green} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-				<img src={logo_lightBulb_purple} alt="Logo" className={classes.logo_lightBulb_purple} tabIndex="0" loading="eager" fetchpriority="low" decoding="async"></img>
-
+				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0"></img>
+				<img src={logo_column_purple} alt="Logo" className={classes.logo_column_purple} tabIndex="0"></img>
+				<img src={logo_computer_orange} alt="Logo" className={classes.logo_computer_orange} tabIndex="0"></img>
+				<img src={logo_calendar_yellow} alt="Logo" className={classes.logo_calendar_yellow} tabIndex="0"></img>
+				<img src={logo_atom_green} alt="Logo" className={classes.logo_atom_green} tabIndex="0"></img>
+				<img src={logo_math_yellow} alt="Logo" className={classes.logo_math_yellow} tabIndex="0"></img>
+				<img src={logo_money_green} alt="Logo" className={classes.logo_money_green} tabIndex="0"></img>
+				<img src={logo_lightBulb_purple} alt="Logo" className={classes.logo_lightBulb_purple} tabIndex="0"></img>
 				<div className={classes.buttonSection}>
 					<GetStartedButton />
 				</div>
