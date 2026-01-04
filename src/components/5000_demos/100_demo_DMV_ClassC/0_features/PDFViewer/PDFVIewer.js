@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
 import classes from "./PDFViewer.module.css";
 // import pdf from "./pdf1.pdf";
-const PDF_URL = "/static/docs/pdf1.pdf";
+// const PDF_URL = "/static/docs/pdf1.pdf";
+
+const PDF_URL = "https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_1997375/File/2-6-23-LINKS-ADDED-2-Passed-Accessibility-DL-600-R1-2023.pdf";
 
 import Pagination_PDF_GUI from "../../../../1000_layout/200_layoutFeatures/30_pagination_PDF_GUI";
 import ZoomGUI from "../../../../1000_layout/200_layoutFeatures/40_zoomGUI";
@@ -97,7 +99,7 @@ const PDFViewer = () => {
 			if (pageIsRendering || pdfState.scale == null) return; //Ensure that you do not attempt another rendering operation until the current one is finished.
 			setPageIsRendering(true); //Change Rendering Status to "true"/currently rendering
 			const canvas = canvasRef.current; //The <canvas> element is a container for graphics -- to draw graphics on a web page through scripting (usually JavaScript)
-			const context = canvas.getContext("2d"); //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
+			const context = canvas.getContext("2d", { willReadFrequently: true }) || canvas.getContext("2d"); //The object with properties and methods for rendering graphics inside the canvas (shapes, text, images, scaling, rotating, translating objects, and more)
 			if (renderTaskRef.current) {
 				renderTaskRef.current.cancel();
 			}
