@@ -9,6 +9,7 @@ export const store = configureStore({
 		prof: profSlice.reducer,
 		task: taskSlice.reducer,
 	},
+	devTools: process.env.NODE_ENV !== "production",
 });
 
 export default store;
