@@ -190,31 +190,28 @@ const App = () => {
 			) : (
 				""
 			)}
-			<Routes>
-				{/* General Pages */}
-				<Route path="/" element={<Home />} />
-				<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
-				<Route path="/aboutus" element={<GeneralPage text={"About Us"} DivID={"About Us"} />} />
-				<Route path="/company" element={<GeneralPage text={"company"} DivID={"company"} />} />
-				<Route path="/ourteam" element={<GeneralPage text={"Our Team"} DivID={"Our Team"} />} />
-				<Route path="/careers" element={<GeneralPage text={"Careers"} DivID={"Careers"} />} />
-				<Route path="/merch" element={<GeneralPage text={"Merch"} DivID={"Merch"} />} />
-				<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} DivID={"Support Center"} />} />
-				<Route path="/docs" element={<GeneralPage text={"Docs"} DivID={"Docs"} />} />
-				<Route path="/guides" element={<GeneralPage text={"Guides"} DivID={"Guides"} />} />
-				<Route path="/apireference" element={<GeneralPage text={"API Reference"} DivID={"API Reference"} />} />
-				<Route path="/integrations" element={<GeneralPage text={"Integrations"} DivID={"Integrations"} />} />
-				<Route path="/help" element={<GeneralPage text={"Help"} DivID={"Help"} />} />
-				<Route path="/faq" element={<GeneralPage text={"FAQ"} DivID={"FAQ"} />} />
-				<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} DivID={"Tutorials"} />} />
-				<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} DivID={"Contacts Us"} />} />
-			</Routes>
-
 			<Suspense fallback={<div style={{ padding: "16px" }}>Loading…</div>}>
 				<Routes>
 					<Route path="/demos" element={<Demo_LandingPage />} />
 					<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 					<Route path="/PDFViewer" element={<PDFViewer />} />
+					{/* General Pages */}
+					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
+					<Route path="/aboutus" element={<GeneralPage text={"About Us"} DivID={"About Us"} />} />
+					<Route path="/company" element={<GeneralPage text={"company"} DivID={"company"} />} />
+					<Route path="/ourteam" element={<GeneralPage text={"Our Team"} DivID={"Our Team"} />} />
+					<Route path="/careers" element={<GeneralPage text={"Careers"} DivID={"Careers"} />} />
+					<Route path="/merch" element={<GeneralPage text={"Merch"} DivID={"Merch"} />} />
+					<Route path="/supportcenter" element={<GeneralPage text={"Support Center"} DivID={"Support Center"} />} />
+					<Route path="/docs" element={<GeneralPage text={"Docs"} DivID={"Docs"} />} />
+					<Route path="/guides" element={<GeneralPage text={"Guides"} DivID={"Guides"} />} />
+					<Route path="/apireference" element={<GeneralPage text={"API Reference"} DivID={"API Reference"} />} />
+					<Route path="/integrations" element={<GeneralPage text={"Integrations"} DivID={"Integrations"} />} />
+					<Route path="/help" element={<GeneralPage text={"Help"} DivID={"Help"} />} />
+					<Route path="/faq" element={<GeneralPage text={"FAQ"} DivID={"FAQ"} />} />
+					<Route path="/tutorials" element={<GeneralPage text={"Tutorials"} DivID={"Tutorials"} />} />
+					<Route path="/contactus" element={<GeneralPage text={"Contacts Us"} DivID={"Contacts Us"} />} />
 				</Routes>
 			</Suspense>
 			{location.pathname !== "/demo" && location.pathname !== "/demos" && location.pathname !== "/demo_dmvClassC" && location.pathname !== "/PDFViewer" && (
