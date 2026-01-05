@@ -112,6 +112,7 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+    'django_Main.middleware.WwwRedirectMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
