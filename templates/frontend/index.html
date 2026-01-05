@@ -29,12 +29,15 @@
 	<body>
 		<div class="root">
 			<script src="{% static 'frontend/main.js'%}" defer></script>
+
+			{% if request.path == "/PDFViewer" %}
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
 			<script defer>
 				document.addEventListener("DOMContentLoaded", () => {
 					pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
 				});
 			</script>
+			{% endif %}
 		</div>
 	</body>
 </html>
