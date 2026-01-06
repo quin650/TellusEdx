@@ -7,24 +7,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TellusEd</title>
 
-		<!-- Critical CSS (keep blocking) -->
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<!--Google Font Montserrat (Heading)-->
-		<!--Google Font Roboto (SubHeading)-->
-		<!--Google Font Inter (Other)-->
+		<!-- Preconnect -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-		<link
-			rel="preload"
-			as="style"
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Inter:wght@700&display=swap"
-			onload="this.onload=null;this.rel='stylesheet'"
-		/>
-
-		<!--Font Awesome .....where the icons are coming from-->
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+		<!-- Preload only the font you actually use first -->
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" />
+
+		<!-- Request only Montserrat (since Roboto/Inter are only fallbacks in your CSS) -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" />
+
+		<!-- Your site CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 	</head>
 	<body>
 		<div class="root">
