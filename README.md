@@ -35,6 +35,10 @@
 
 ![Heroku](https://img.shields.io/badge/Heroku-430098.svg?logo=heroku&style=flat&logoColor=white)
 
+### Edge / CDN
+
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020.svg?logo=cloudflare&style=flat&logoColor=white)
+
 ### Domain
 
 ![Squarespace](https://img.shields.io/badge/Squarespace-000000.svg?logo=squarespace&style=flat&logoColor=white)
