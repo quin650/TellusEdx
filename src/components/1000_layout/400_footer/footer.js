@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const Logo = "/static/images/logos_webp/logo_tellusEd_arrowsOnly.webp";
+import { FaXTwitter, FaGithub, FaDiscord, FaFacebook } from "react-icons/fa6";
 import classes from "./footer.module.css";
 
 const Footer = () => {
@@ -107,17 +108,17 @@ const Footer = () => {
 				</div>
 				<div className={classes.socialRow}>
 					<span className={classes.social_links}>
-						<a href="www.tellused.com">
-							<i className={["fa-brands fa-x-twitter"]}></i>
+						<a href="https://www.tellused.com" aria-label="X / Twitter">
+							<FaXTwitter />
 						</a>
-						<a href="www.tellused.com">
-							<i className={["fab fa-github"]}></i>
+						<a href="https://www.tellused.com" aria-label="GitHub">
+							<FaGithub />
 						</a>
-						<a href="www.tellused.com">
-							<i className={["fab fa-discord"]}></i>
+						<a href="https://www.tellused.com" aria-label="Discord">
+							<FaDiscord />
 						</a>
-						<a href="www.tellused.com">
-							<i className={["fab fa-facebook"]}></i>
+						<a href="https://www.tellused.com" aria-label="Facebook">
+							<FaFacebook />
 						</a>
 					</span>
 					<span className={classes.copyright}>Copyright © 2023 TellusEd. All Rights Reserved</span>

@@ -87,6 +87,7 @@
 	flex-wrap: wrap;
 }
 .footer_col {
+	font-family: Montserrat;
 	display: block;
 	min-width: 147px;
 	text-align: left;
