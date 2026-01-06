@@ -38,7 +38,8 @@ media/
 static/*
 !static/frontend/
 !static/frontend/**
-
+!static/css/
+!static/css/font-display.css
 
 ########################################
 # Frontend (React / Node — local build only)
