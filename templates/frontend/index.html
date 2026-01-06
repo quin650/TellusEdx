@@ -15,14 +15,19 @@
 		<!-- Preload only the font you actually use first -->
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" />
 
-		<!-- Request only Montserrat (since Roboto/Inter are only fallbacks in your CSS) -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" />
+		<!-- Request only Montserrat -->
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
 
 		<!-- Your site CSS -->
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
 		<!-- Font Awesome -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+		<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" />
 	</head>
 	<body>
 		<div class="root">
