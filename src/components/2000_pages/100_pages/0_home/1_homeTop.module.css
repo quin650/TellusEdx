@@ -41,7 +41,7 @@
 	height: 80vh;
 	pointer-events: none; /* Text ignores pointer events, allows for the icons to still be selected even-though they are set behind the text */
 }
-.caption h1 {
+/* .caption h1 {
 	font-size: 6rem;
 	letter-spacing: -0.3rem;
 	margin: 0px;
@@ -55,7 +55,7 @@
 	font-weight: 400;
 	margin-left: 0px;
 	margin-right: auto;
-}
+} */
 .buttonSection {
 	position: relative;
 	display: flex;

@@ -16,8 +16,28 @@ const HomeTop = () => {
 		<div className={classes.outer_container_top} id="Landing_Page">
 			<div className={classes.inner_container_top}>
 				<blockquote className={classes.caption}>
-					<h1> LEARNING NEVER EXHAUSTS THE MIND</h1>
-					<h3> TellusEd is adding a Montessori-flair to online-learning. Learn your way.</h3>
+					<h1
+						style={{
+							fontSize: "6rem",
+							letterSpacing: "-0.3rem",
+							margin: "0px",
+							textShadow: "0rem 0.2rem 0.2rem black",
+							marginLeft: "0px",
+							marginRight: "auto",
+						}}
+					>
+						LEARNING NEVER EXHAUSTS THE MIND
+					</h1>
+					<h3
+						style={{
+							fontSize: "1.6rem",
+							fontWeight: 400,
+							marginLeft: "0px",
+							marginRight: "auto",
+						}}
+					>
+						TellusEd is adding a Montessori-flair to online-learning. Learn your way.
+					</h3>
 				</blockquote>
 				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0"></img>
 				<img src={logo_column_purple} alt="Logo" className={classes.logo_column_purple} tabIndex="0"></img>
