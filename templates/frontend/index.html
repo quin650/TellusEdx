@@ -23,11 +23,9 @@
 			onload="this.onload=null;this.rel='stylesheet'"
 		/>
 
-		<!-- Your site CSS -->
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-
-		<!-- NEW: force font-display for icon fonts -->
-		<link rel="stylesheet" href="{% static 'css/font-display.css' %}" />
+		<!-- style.css: non-blocking -->
+		<link rel="preload" href="{% static 'css/style.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript><link rel="stylesheet" href="{% static 'css/style.css' %}" /></noscript>
 	</head>
 	<body>
 		<div class="root">
