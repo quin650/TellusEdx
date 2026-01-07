@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	entry: ["./src/index.js"],
@@ -59,5 +60,9 @@ module.exports = {
 	optimization: {
 		minimize: true,
 	},
-	plugins: [],
+	plugins: [
+		new webpack.DefinePlugin({
+			"process.env.REACT_APP_LOCAL": JSON.stringify(process.env.NODE_ENV !== "production"),
+		}),
+	],
 };
