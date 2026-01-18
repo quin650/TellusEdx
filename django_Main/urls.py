@@ -16,7 +16,7 @@ def robots_txt(request):
     content = "\n".join([
         "User-agent: *",
         "Disallow:",
-        "Sitemap: https://tellsed.com/sitemap.xml",
+        "Sitemap: https://tellused.com/sitemap.xml",
     ])
     return HttpResponse(content, content_type="text/plain")
 
