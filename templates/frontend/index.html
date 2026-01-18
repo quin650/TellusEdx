@@ -1,12 +1,19 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<title>TellusEd</title>
 
+		<meta
+			name="description"
+			content="Learn your way with TellusEd — guided, self-paced courses, progress tracking, and top-rated resources for the topics you’re struggling with."
+		/>
+		<link rel="canonical" href="https://tellused.com{{ request.path }}" />
+		<meta name="robots" content="index,follow" />
 		<!-- Preconnect -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,11 +27,22 @@
 			rel="preload"
 			as="style"
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap"
-			onload="this.onload=null;this.rel='stylesheet'"
+			onload="
+				this.onload = null;
+				this.rel = 'stylesheet';
+			"
 		/>
 
 		<!-- style.css: non-blocking -->
-		<link rel="preload" href="{% static 'css/style.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<link
+			rel="preload"
+			href="{% static 'css/style.css' %}"
+			as="style"
+			onload="
+				this.onload = null;
+				this.rel = 'stylesheet';
+			"
+		/>
 		<noscript><link rel="stylesheet" href="{% static 'css/style.css' %}" /></noscript>
 	</head>
 	<body>
