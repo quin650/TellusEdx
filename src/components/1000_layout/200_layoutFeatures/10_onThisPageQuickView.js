@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import OnThisPageQuickViewChild from "./10_onThisPageQuickViewChild";
 import classes from "./10_onThisPageQuickView.modules.css";
 

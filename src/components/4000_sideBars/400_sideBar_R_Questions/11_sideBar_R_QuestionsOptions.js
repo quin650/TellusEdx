@@ -391,6 +391,7 @@ const SideBar_R_QuestionsOptions = () => {
 							</div>
 							<h2>Questions On This Page</h2>
 							<button
+								aria-label="Go To Questions On This Page"
 								onClick={generalButtonClick}
 								className={`${classes["paginationButtonR"]} ${!questionsOnThisPage_ActiveStatus && classes.isInactive}`}
 								disabled={questionsOnThisPage_ActiveStatus}
@@ -405,35 +406,55 @@ const SideBar_R_QuestionsOptions = () => {
 						<div className={classes.quadrant_InnerContainer}>
 							<h2>Sample Driver's License Tests</h2>
 							<div className={classes.testButtonsContainer}>
-								<button onClick={test1} className={`${classes["paginationButtonR"]} ${false ? classes.isInactive : ""}`} disabled={false}>
+								<button aria-label="Test 1" onClick={test1} className={`${classes["paginationButtonR"]} ${false ? classes.isInactive : ""}`} disabled={false}>
 									<p>#1 </p>
 									<svg className={`${classes["arrowIconR"]} ${false ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 									<span>{test1Status}</span>
 								</button>
-								<button onClick={test2} className={`${classes["paginationButtonR"]} ${test2Status === "n/a yet" && classes.isInactive}`} disabled={!test2Status}>
+								<button
+									aria-label="Test 2"
+									onClick={test2}
+									className={`${classes["paginationButtonR"]} ${test2Status === "n/a yet" && classes.isInactive}`}
+									disabled={!test2Status}
+								>
 									<p>#2 </p>
 									<svg className={`${classes["arrowIconR"]} ${test2Status === "n/a yet" && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 									<span>{test2Status}</span>
 								</button>
-								<button onClick={test3} className={`${classes["paginationButtonR"]} ${test3Status === "n/a yet" && classes.isInactive}`} disabled={!test3Status}>
+								<button
+									aria-label="Test 3"
+									onClick={test3}
+									className={`${classes["paginationButtonR"]} ${test3Status === "n/a yet" && classes.isInactive}`}
+									disabled={!test3Status}
+								>
 									<p>#3 </p>
 									<svg className={`${classes["arrowIconR"]} ${test3Status === "n/a yet" && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 									<span>{test3Status}</span>
 								</button>
-								<button onClick={test4} className={`${classes["paginationButtonR"]} ${test4Status === "n/a yet" && classes.isInactive}`} disabled={!test4Status}>
+								<button
+									aria-label="Test 4"
+									onClick={test4}
+									className={`${classes["paginationButtonR"]} ${test4Status === "n/a yet" && classes.isInactive}`}
+									disabled={!test4Status}
+								>
 									<p>#4 </p>
 									<svg className={`${classes["arrowIconR"]} ${test4Status === "n/a yet" && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 									</svg>
 									<span>{test4Status}</span>
 								</button>
-								<button onClick={test5} className={`${classes["paginationButtonR"]} ${test5Status === "n/a yet" && classes.isInactive}`} disabled={test5Status}>
+								<button
+									aria-label="Test 5"
+									onClick={test5}
+									className={`${classes["paginationButtonR"]} ${test5Status === "n/a yet" && classes.isInactive}`}
+									disabled={test5Status}
+								>
 									<p>#5 </p>
 									<svg className={`${classes["arrowIconR"]} ${test5Status === "n/a yet" && classes.isInactive}`} viewBox="0 0 24 24">
 										<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
@@ -450,6 +471,7 @@ const SideBar_R_QuestionsOptions = () => {
 							</div>
 							<h2>Retake failed questions</h2>
 							<button
+								aria-label="Go To Retake Failed Questions"
 								onClick={goTo_RetakeFailedQuestions}
 								className={`${classes["paginationButtonR"]} ${!setRetakeFailedQuestions_moduleIsActive_rdx && classes.isInactive}`}
 								disabled={!setRetakeFailedQuestions_moduleIsActive_rdx}
@@ -460,7 +482,8 @@ const SideBar_R_QuestionsOptions = () => {
 							</button>
 						</div>
 					</div>
-					<div
+					<button
+						aria-label="Go To Probability of Passing"
 						onClick={goTo_ProbabilityOfPassingPage}
 						disabled={!probabilityOfPassingStatus}
 						className={`${classes["quadrant_OuterContainer"]} ${!probabilityOfPassingStatus && classes.isInactive}`}
@@ -471,7 +494,7 @@ const SideBar_R_QuestionsOptions = () => {
 							</div>
 							<h2>Probability of Passing</h2>
 						</div>
-					</div>
+					</button>
 				</div>
 			</div>
 		</div>

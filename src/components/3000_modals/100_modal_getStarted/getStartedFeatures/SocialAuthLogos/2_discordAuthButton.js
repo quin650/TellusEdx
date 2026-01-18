@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./socialAuthButton.module.css";
 const DiscordAuthButton = () => {
 	return (
-		<button className={classes.authButton}>
+		<button aria-label="Authenticate with Discord" className={classes.authButton}>
 			<svg className={classes.discordIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
 				<path
 					fill="#5865f2"

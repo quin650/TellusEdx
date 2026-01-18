@@ -167,9 +167,9 @@ const Modal_getStarted = () => {
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
 					No Account?{" "}
-					<a onClick={GoTo_CreateAccountModal} className={classes.PageLink}>
+					<button onClick={GoTo_CreateAccountModal} className={classes.PageLink}>
 						Register Here{" "}
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -202,9 +202,9 @@ const Modal_getStarted = () => {
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
 					Have an account?{" "}
-					<a onClick={GoTo_LogInModal} className={classes.PageLink}>
+					<button type="button" onClick={GoTo_LogInModal} className={classes.PageLink}>
 						Sign In Here{" "}
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -238,10 +238,10 @@ const Modal_getStarted = () => {
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
 					Didn't get code?
-					<a onClick={Send_PassCodeLink} className={classes.PageLink}>
+					<button onClick={Send_PassCodeLink} className={classes.PageLink}>
 						{" "}
 						Resend{" "}
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -269,9 +269,9 @@ const Modal_getStarted = () => {
 		setFormOptions(
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
-					<a className={classes.PageLink} onClick={GoTo_LogInModal}>
+					<button className={classes.PageLink} onClick={GoTo_LogInModal}>
 						Cancel
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -307,10 +307,10 @@ const Modal_getStarted = () => {
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
 					Didn't get code?
-					<a onClick={Send_PassCodeLink} className={classes.PageLink}>
+					<button onClick={Send_PassCodeLink} className={classes.PageLink}>
 						{" "}
 						Resend{" "}
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -413,9 +413,9 @@ const Modal_getStarted = () => {
 			<span className={classes.optionSpan}>
 				<p className={classes.optionsText}>
 					Have an account?{" "}
-					<a onClick={GoTo_LogInModal} className={classes.PageLink}>
+					<button onClick={GoTo_LogInModal} className={classes.PageLink}>
 						Sign In Here{" "}
-					</a>
+					</button>
 				</p>
 			</span>
 		);
@@ -491,9 +491,9 @@ const Modal_getStarted = () => {
 		<span className={classes.optionSpan}>
 			<p className={classes.optionsText}>
 				Have an account?{" "}
-				<a onClick={GoTo_LogInModal} className={classes.PageLink}>
+				<button onClick={GoTo_LogInModal} className={classes.PageLink}>
 					Sign In Here
-				</a>
+				</button>
 			</p>
 		</span>
 	);
@@ -590,7 +590,7 @@ const Modal_getStarted = () => {
 
 	// !Submit Calls
 	const ActionButton = (
-		<button className={classes.actionButton} type="submit">
+		<button aria-label="submit" className={classes.actionButton} type="submit">
 			{buttonText}
 		</button>
 	);
@@ -742,9 +742,9 @@ const Modal_getStarted = () => {
 											modalStatus === "LogInModal" ? (!isValidPassword ? classes.LogInModal_isValidPassword : classes.LogInModal) : ""
 										}`}
 									>
-										<a onClick={GoTo_ResetPasswordEmailPassCodeModal} className={classes.PageLink}>
+										<button onClick={GoTo_ResetPasswordEmailPassCodeModal} className={classes.PageLink}>
 											Forgot Password?
-										</a>
+										</button>
 									</p>
 								</div>
 							</div>

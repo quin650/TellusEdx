@@ -20,14 +20,14 @@ const Footer = () => {
 			<div className={classes.outerContainer_Top}>
 				<ul className={classes.innerContainer_Top}>
 					<li>
-						<div onClick={handleClickScroll} className={classes.LogoContainer}>
-							<img src={Logo} alt="Logo" className={classes.Logo}></img>
-						</div>
+						<Link to="/" onClick={handleClickScroll} aria-label="Go to home page" className={classes.LogoContainer}>
+							<img src={Logo} alt="" className={classes.Logo} />
+						</Link>
 					</li>
 					<li>
-						<div onClick={handleClickScroll} className={classes.companyName}>
+						<Link to="/" onClick={handleClickScroll} className={classes.companyName}>
 							TellusEd
-						</div>
+						</Link>
 					</li>
 				</ul>
 			</div>

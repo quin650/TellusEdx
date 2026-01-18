@@ -16,7 +16,7 @@ import "tippy.js/dist/tippy.css";
 const MainNavbar = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-	const goToTOp = () => {
+	const goToTop = () => {
 		document.querySelector("main").scrollTo(0, 0);
 	};
 	const isAuthenticated_rdx = useSelector(({ user }) => user.isAuthenticated_rdx);
@@ -99,11 +99,9 @@ const MainNavbar = () => {
 	useEffect(() => {
 		if (!buttonRef_ctx?.current) return;
 		const handleMouseEnter = () => {
-			// console.log("Yes - Hovering leftMenu Button!");
 			dispatch(userReducerActions.sideBar_L_buttonIsHover(true));
 		};
 		const handleMouseLeave = () => {
-			// console.log("No -  hovering leftMenu Button!");
 			dispatch(userReducerActions.sideBar_L_buttonIsNotHover(false));
 		};
 		buttonRef_ctx.current.addEventListener("mouseenter", handleMouseEnter);
@@ -117,6 +115,7 @@ const MainNavbar = () => {
 	const sideBar_L_Button = (
 		<Tippy content={sideBar_L_Button_text} placement="bottom" theme="custom" appendTo="parent">
 			<button
+				aria-label={sideBar_L_isOpen_rdx ? "Close left sidebar" : "Open left sidebar"}
 				onClick={toggle_SideBar_L_Visibility}
 				ref={buttonRef_ctx}
 				className={`${classes["tocButton"]} ${sideBar_L_isOpen_rdx ? classes.open : ""}`}
@@ -136,6 +135,7 @@ const MainNavbar = () => {
 	const sideBar_R_Notes_Button = (
 		<Tippy content={<span style={{ whiteSpace: "nowrap" }}>{sideBar_R_Notes_Button_text}</span>} placement="left" theme="custom" appendTo="parent">
 			<button
+				aria-label={sideBar_R_Notes_isOpen_rdx ? "Close Notes" : "Open Notes"}
 				onClick={open_sideBar_R_Notes_Modal}
 				className={`${classes["notesButton"]} ${sideBar_R_Notes_isOpen_rdx ? classes.open : ""}`}
 				onMouseEnter={sideBar_R_Notes_Button_handleMouseEnter}
@@ -150,6 +150,7 @@ const MainNavbar = () => {
 	const sideBar_R_Main_Button = (
 		<Tippy content={<span style={{ whiteSpace: "nowrap" }}>{sideBar_R_Main_Button_text}</span>} placement="bottom" theme="custom" appendTo="parent">
 			<button
+				aria-label={sideBar_R_Notes_isOpen_rdx ? "Close Main Menu" : "Open Main Menu"}
 				onClick={open_sideBar_R_Main_Modal}
 				className={`${classes["hamburgerButton"]} ${(sideBar_R_Notes_isOpen_rdx || sideBar_R_Main_isOpen_rdx) && classes.open}`}
 				onMouseEnter={sideBar_R_Main_Button_handleMouseEnter}
@@ -164,6 +165,7 @@ const MainNavbar = () => {
 	const sideBar_R_Questions_Button = (
 		<Tippy content={<span style={{ whiteSpace: "nowrap" }}>{sideBar_R_Questions_Button_text}</span>} placement="left" theme="custom" appendTo="parent">
 			<button
+				aria-label={sideBar_R_Questions_isOpen_rdx ? "Close Questions Menu" : "Open Questions Menu"}
 				onClick={open_sideBar_R_Questions_Modal}
 				className={`${classes["questionsButton"]} ${sideBar_R_Questions_isOpen_rdx ? classes.open : ""}`}
 				onMouseEnter={sideBar_R_Questions_Button_handleMouseEnter}
@@ -292,6 +294,7 @@ const MainNavbar = () => {
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
 				<Tippy content={search_Button_text} placement="bottom" theme="custom" appendTo="parent">
 					<button
+						aria-label="Open Search Box"
 						onClick={openSearchBar}
 						className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}
 						onMouseEnter={search_Button_handleMouseEnter}
@@ -315,7 +318,7 @@ const MainNavbar = () => {
 					onFocus={handleSearchBarFocus}
 					onBlur={handleSearchBarBlur}
 				/>
-				<button onClick={exitSearchBarAction} className={`${classes["exitButton"]} ${searchText !== "" ? classes.inputHasText : ""}`}>
+				<button aria-label="Close Search Box" onClick={exitSearchBarAction} className={`${classes["exitButton"]} ${searchText !== "" ? classes.inputHasText : ""}`}>
 					<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 						<path
 							d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
@@ -337,13 +340,14 @@ const MainNavbar = () => {
 		<Fragment>
 			<div className={classes.leftBorder} ref={leftBorderRef}></div>
 			<li className={classes.topLeft}>
-				<Link to="/home" onClick={goToTOp}>
-					<img src={Logo} alt="Logo" className={classes.Logo}></img>
+				<Link to="/home" onClick={goToTop}>
+					<img alt="Go to home page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
 				<Tippy content={search_Button_text} placement="bottom" theme="custom" appendTo="parent">
 					<button
+						aria-label={searchBarIsOpened ? "Close Search Box" : "Open Search Box"}
 						onClick={openSearchBar}
 						className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}
 						onMouseEnter={search_Button_handleMouseEnter}
@@ -373,7 +377,7 @@ const MainNavbar = () => {
 					onMouseEnter={search_Button_handleMouseEnter}
 					onMouseLeave={search_Button_handleMouseLeave}
 				>
-					<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+					<svg aria-label="Close Search Box" className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 						<path
 							d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
 							fillRule="nonzero"
@@ -391,8 +395,8 @@ const MainNavbar = () => {
 		<Fragment>
 			<div className={classes.leftBorder} ref={leftBorderRef}></div>
 			<li className={classes.topLeft}>
-				<Link to="/home" onClick={goToTOp}>
-					<img src={Logo} alt="Logo" className={classes.Logo}></img>
+				<Link to="/home" onClick={goToTop}>
+					<img alt="Go to home page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
 			<li className={classes.getStartedButtonContainer}>
@@ -401,6 +405,7 @@ const MainNavbar = () => {
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
 				<Tippy content={search_Button_text} placement="bottom" theme="custom" appendTo="parent">
 					<button
+						aria-label={searchBarIsOpened ? "Close Search Box" : "Open Search Box"}
 						onClick={openSearchBar}
 						className={`${classes["searchButton"]} ${searchBarIsOpened ? classes.open : ""}`}
 						onMouseEnter={search_Button_handleMouseEnter}
@@ -413,6 +418,7 @@ const MainNavbar = () => {
 					</button>
 				</Tippy>
 				<input
+					aria-label="Search site"
 					type="text"
 					id="search"
 					placeholder="Search"
@@ -424,7 +430,7 @@ const MainNavbar = () => {
 					onFocus={handleSearchBarFocus}
 					onBlur={handleSearchBarBlur}
 				/>
-				<button onClick={exitSearchBarAction} className={`${classes["exitButton"]} ${searchText !== "" ? classes.inputHasText : ""}`}>
+				<button aria-label="Close Search Box" onClick={exitSearchBarAction} className={`${classes["exitButton"]} ${searchText !== "" ? classes.inputHasText : ""}`}>
 					<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 						<path
 							d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"

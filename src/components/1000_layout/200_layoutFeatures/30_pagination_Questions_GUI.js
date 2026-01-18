@@ -191,7 +191,7 @@ const PaginationQuestionsGUI = () => {
 	}, [handleKeyDown]);
 	return (
 		<div className={`${classes["paginationContainer"]} ${activePanel_rdx === "questions" ? classes.isActive : ""}`}>
-			<button id="prev" onClick={PrevQuestion} className={classes.paginationButtonL} disabled={!prevIsActive}>
+			<button aria-label="Go To Previous Page" id="prev" onClick={PrevQuestion} className={classes.paginationButtonL} disabled={!prevIsActive}>
 				<svg className={`${classes["arrowIconL"]} ${!prevIsActive ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 					<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
 				</svg>
@@ -204,7 +204,7 @@ const PaginationQuestionsGUI = () => {
 			<svg className={classes.lineSVG_L} viewBox="0 0 2 40" xmlns="http://www.w3.org/2000/svg">
 				<line x1="1" y1="0" x2="1" y2="40" />
 			</svg>
-			<button id="next" onClick={NextQuestion} className={classes.paginationButtonR} disabled={!nextIsActive}>
+			<button aria-label="Go To Next Page" id="next" onClick={NextQuestion} className={classes.paginationButtonR} disabled={!nextIsActive}>
 				<svg className={`${classes["arrowIconR"]} ${!nextIsActive ? classes.isInactive : ""}`} viewBox="0 0 24 24">
 					<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
 				</svg>

@@ -254,7 +254,7 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 						<ul>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test1_ButtonAction}>
+									<button aria-label="Test#1" type="button" className={classes.parentLabel} onClick={test1_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -294,12 +294,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status1}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test2_ButtonAction}>
+									<button aria-label="Test#2" type="button" className={classes.parentLabel} onClick={test2_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -339,12 +339,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status2}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test3_ButtonAction}>
+									<button aria-label="Test#3" type="button" className={classes.parentLabel} onClick={test3_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -384,12 +384,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status3}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test4_ButtonAction}>
+									<button aria-label="Test#4" type="button" className={classes.parentLabel} onClick={test4_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -429,12 +429,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status4}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel} onClick={test5_ButtonAction}>
+									<button aria-label="Test#5" type="button" className={classes.parentLabel} onClick={test5_ButtonAction}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -474,12 +474,12 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status5}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 							<li className={classes.contentContainer}>
 								<div className={classes.parentLabelOuterContainer}>
-									<div className={classes.parentLabel}>
+									<button aria-label="Average" type="button" className={classes.parentLabel}>
 										<div className={classes.testResultsBarContainer}>
 											<div className={classes.testResultsLabel}>
 												<span className={classes.sectionNUm}>
@@ -521,14 +521,14 @@ const SideBar_R_ProbabilityOfPassingPage = () => {
 												{status}
 											</span>
 										</div>
-									</div>
+									</button>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div className={classes.buttonCancelSection}>
-					<button className={classes.button_formatBack} onClick={backButtonAction} type="submit">
+					<button aria-label="Go back" type="button" className={classes.button_formatBack} onClick={backButtonAction}>
 						Back
 					</button>
 				</div>

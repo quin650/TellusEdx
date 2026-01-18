@@ -37,7 +37,7 @@ const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 		dispatch(userReducerActions.sideBar_R_Close_Questions());
 	};
 	let exitButton = (
-		<button onClick={backButtonAction} className={classes.exitButton} ref={exitButtonRef}>
+		<button aria-label="Exit Questions" onClick={backButtonAction} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"

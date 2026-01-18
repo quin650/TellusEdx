@@ -48,13 +48,13 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 	const TOC_SearchBar = (
 		<div className={classes.sideBar_L_TOC_SearchInputContainer} method="get" action="#" role="search">
 			<input
+				htmlFor="Search Content"
 				className={`${classes["sideBar_L_TOC_SearchInput"]} ${sideBar_L_TOC_SearchInputIsFocused ? classes.isFocused : ""}`}
 				ref={TOC_SearchBarRef}
 				onFocus={handle_SideBar_L_TOC_SearchInputFocus}
 				onBlur={handle_SideBar_L_TOC_SearchInputBlur}
 				placeholder="Search Index"
 				name="q"
-				aria-label="Search"
 			/>
 			<input type="hidden" name="check_keywords" value="yes" />
 			<input type="hidden" name="area" value="default" />
@@ -94,232 +94,255 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 				<ul>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(2))}
 							>
-								<span>Secretary's Message</span>
-							</a>
+								<span>Secretary's Message-test</span>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(3))}
 							>
 								<span>DMV Services</span>
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(4))}
 							>
 								<span>Copyright</span>
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(5))}
 							>
 								<span>Disclaimer</span>
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(6))}
 							>
 								<span className={classes.sectionNUm}>Section 1:</span> The California Driver's License
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(7))}
 							>
 								<span className={classes.sectionNUm}>Section 2:</span> Getting an Instruction Permit and Driver’s License
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(8))}
 							>
 								<span className={classes.sectionNUm}>Section 3:</span> The Testing Process
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(9))}
 							>
 								<span className={classes.sectionNUm}>Section 4:</span> Changing, Replacing, and Renewing Your Driver’s License
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(10))}
 							>
 								<span className={classes.sectionNUm}>Section 5:</span> An Introduction to Driving
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(11))}
 							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(12))}
 							>
 								<span className={classes.sectionNUm}>Section 6:</span> Navigating the Roads (Continued)
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(13))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(14))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(15))}
 							>
 								<span className={classes.sectionNUm}>Section 7:</span> Laws and Rules of the Road (Continued)
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(16))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(17))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(18))}
 							>
 								<span className={classes.sectionNUm}>Section 8:</span> Safe Driving (Continued)
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(19))}
 							>
 								<span className={classes.sectionNUm}>Section 9:</span> Alcohol and Drugs
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(20))}
 							>
 								<span className={classes.sectionNUm}>Section 10:</span> Financial Responsibility, Insurance Requirements, and Collisions
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(21))}
 							>
 								<span className={classes.sectionNUm}>Section 11:</span> Vehicle Registration Requirements
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(22))}
 							>
 								<span className={classes.sectionNUm}>Section 12:</span> Driver Safety
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(23))}
 							>
 								<span className={classes.sectionNUm}>Section 13:</span> Seniors and Driving
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a
+							<button
+								type="button"
 								className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}
 								onClick={() => dispatch(userReducerActions.setDemoCurrentPageNum(24))}
 							>
 								<span className={classes.sectionNUm}>Section 14:</span> Glossary
-							</a>
+							</button>
 						</div>
 					</li>
 				</ul>
@@ -335,16 +358,16 @@ const SideBar_L_TOC = ({ sideBar_L_isOpen, pageTitle, memoizedHeadings, currentP
 				<ul>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
+							<button type="button" className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned1</span>
-							</a>
+							</button>
 						</div>
 					</li>
 					<li className={classes.contentContainer}>
 						<div className={classes.parentLabelOuterContainer}>
-							<a className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
+							<button type="button" className={`${classes["parentLabel"]} ${pageNum_current_reader_rdx === 2 ? classes.isActive : ""}`}>
 								<span>Pinned2</span>
-							</a>
+							</button>
 						</div>
 					</li>
 				</ul>

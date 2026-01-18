@@ -27,7 +27,7 @@ const Modal_languageSettingsOptions = (props) => {
 		<Fragment>
 			<div onClick={handleCheckboxChange} className={`${classes["languageOption"]} ${isChecked && classes.isChecked}`}>
 				<span>{props.language}</span>
-				<img src={props.flag} alt="Logo" className={classes.flag}></img>
+				<img src={props.flag} alt="Flag" className={classes.flag}></img>
 				<input className={classes.optionInputBox} type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
 			</div>
 			<hr className={classes.break}></hr>

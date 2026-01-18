@@ -10,7 +10,7 @@ const GetStartedButton = () => {
 	};
 
 	return (
-		<button className={classes.button_format} onClick={modalButtonAction} type="submit">
+		<button aria-label="Get Started and create an account" className={classes.button_format} onClick={modalButtonAction} type="submit">
 			Get Started
 		</button>
 	);

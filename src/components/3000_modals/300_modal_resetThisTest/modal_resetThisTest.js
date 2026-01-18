@@ -15,7 +15,7 @@ const Modal_resetThisTest = () => {
 	};
 
 	const modal_button_resetThisTest = (
-		<button onClick={modal_button_action_resetThisTest} className={classes.button_formatSubmit} type="submit">
+		<button aria-label="Rest This Test" onClick={modal_button_action_resetThisTest} className={classes.button_formatSubmit} type="submit">
 			Reset Test {sideBar_R_Questions_CurrentTestNumber_rdx}
 		</button>
 	);
@@ -23,7 +23,7 @@ const Modal_resetThisTest = () => {
 		dispatch(userReducerActions.sideBar_R_Questions_GoToPrev());
 	};
 	let exitButton = (
-		<button onClick={backButtonAction} className={classes.exitButton}>
+		<button aria-label="Exit Reset" onClick={backButtonAction} className={classes.exitButton}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"

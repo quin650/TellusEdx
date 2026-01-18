@@ -256,29 +256,29 @@ const SideBar_R_MainMenu = () => {
 	};
 	// Other JSX
 	let option = (
-		<a href="#" onClick={LogInHandler} className={classes.menuItem}>
+		<button type="button" onClick={LogInHandler} className={classes.menuItem}>
 			<i className={classes.icon} onClick={LogInHandler}>
 				{logInIcon}
 			</i>
 			<span>Log in</span>
-		</a>
+		</button>
 	);
 	isAuthenticated_rdx
 		? (option = (
-				<a href="#" onClick={LogOutHandler} className={classes.menuItem}>
+				<button type="button" onClick={LogOutHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogOutHandler}>
 						{logOutIcon}
 					</i>
 					<span>Log in</span>
-				</a>
+				</button>
 		  ))
 		: (option = (
-				<a href="#" onClick={LogInHandler} className={classes.menuItem}>
+				<button type="button" onClick={LogInHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogInHandler}>
 						{logInIcon}
 					</i>
 					<span>Log in</span>
-				</a>
+				</button>
 		  ));
 	let content = (
 		<div className={classes.buttonPadding}>
@@ -296,7 +296,7 @@ const SideBar_R_MainMenu = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
 	let exitButton = (
-		<button onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
+		<button aria-label="Exit Main Menu" onClick={toggleMenu} className={classes.exitButton} ref={exitButtonRef}>
 			<svg className={classes.svgExit} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
 				<path
 					d="M6 5.293l4.789-4.79.707.708-4.79 4.79 4.79 4.789-.707.707-4.79-4.79-4.789 4.79-.707-.707L5.293 6 .502 1.211 1.21.504 6 5.294z"
@@ -428,16 +428,17 @@ const SideBar_R_MainMenu = () => {
 					<div className={classes.break}></div>
 					<div className={classes.subgroup}>
 						<div className={classes.sidebarMenu}>
-							<Link onClick={OpenLanguageSettingsModal} to="#" className={classes.sidebarMenuOptions}>
+							<button type="button" onClick={OpenLanguageSettingsModal} className={classes.sidebarMenuOptions}>
 								<i className={classes.languageIcon}>{languageIcon}</i>
 								<span>Language</span>
-								<img src={activeFlag_rdx} alt="Logo" className={classes.flag} tabIndex="0"></img>
-							</Link>
-							<label className={classes.darkModeMenuItem} htmlFor="theme-toggle">
+								<img alt="Flag Logo" src={activeFlag_rdx} className={classes.flag} tabIndex="0"></img>
+							</button>
+
+							<label htmlFor="theme-toggle" className={classes.darkModeMenuItem}>
 								<i className={classes.icon}>{darkModeIcon}</i>
 								<span>Dark Mode</span>
 								<div className={classes.darkModeToggleAndInputContainer}>
-									<input className={classes.toggleCheckBox} type="checkbox" id="theme-toggle" checked={isChecked} onChange={toggleTheme} />
+									<input type="checkbox" className={classes.toggleCheckBox} id="theme-toggle" checked={isChecked} onChange={toggleTheme} />
 									<div className={classes.darkModeToggleContainer}>
 										<div className={classes.darkModeToggleButton}></div>
 										{sunIcon}
