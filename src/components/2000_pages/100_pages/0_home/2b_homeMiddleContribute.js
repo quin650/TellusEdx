@@ -13,12 +13,12 @@ const HomeMiddleContribute = () => {
 						<h3 className={classes.sub_title}>CLARITY</h3>
 						<p className={classes.sub_content}>Add an explanation to an online resource by creating an insertion point.</p>
 					</li>
-					<div className={classes.break}></div>
+					<li className={classes.break} aria-hidden="true" role="presentation"></li>
 					<li className={classes.line}>
 						<h3 className={classes.sub_title}>TANGENT</h3>
 						<p className={classes.sub_content}>When a section deserves both clarity and an expanded direction, create a tangent point.</p>
 					</li>
-					<div className={classes.break}></div>
+					<li className={classes.break} aria-hidden="true" role="presentation"></li>
 					<li className={classes.line}>
 						<h3 className={classes.sub_title}>GUIDED</h3>
 						<p className={classes.sub_content}>
