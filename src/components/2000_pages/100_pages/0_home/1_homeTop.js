@@ -28,7 +28,7 @@ const HomeTop = () => {
 					>
 						LEARNING NEVER EXHAUSTS THE MIND
 					</h1>
-					<h3
+					<h2
 						style={{
 							fontSize: "1.6rem",
 							fontWeight: 400,
@@ -37,7 +37,7 @@ const HomeTop = () => {
 						}}
 					>
 						TellusEd is adding a Montessori-flair to online-learning. Learn your way.
-					</h3>
+					</h2>
 				</blockquote>
 				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0"></img>
 				<img src={logo_column_purple} alt="Logo" className={classes.logo_column_purple} tabIndex="0"></img>

@@ -338,10 +338,10 @@ const MainNavbar = () => {
 	// regular navbar
 	const authUser = (
 		<Fragment>
-			<div className={classes.leftBorder} ref={leftBorderRef}></div>
+			<li aria-hidden="true" role="presentation" className={classes.leftBorder} ref={leftBorderRef}></li>
 			<li className={classes.topLeft}>
 				<Link to="/home" onClick={goToTop}>
-					<img alt="Go to home page" src={Logo} className={classes.Logo}></img>
+					<img alt="Go To Home Page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
@@ -393,10 +393,10 @@ const MainNavbar = () => {
 	);
 	const authGuest = (
 		<Fragment>
-			<div className={classes.leftBorder} ref={leftBorderRef}></div>
+			<li aria-hidden="true" role="presentation" className={classes.leftBorder} ref={leftBorderRef}></li>
 			<li className={classes.topLeft}>
 				<Link to="/home" onClick={goToTop}>
-					<img alt="Go to home page" src={Logo} className={classes.Logo}></img>
+					<img alt="Go To Home Page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
 			<li className={classes.getStartedButtonContainer}>
@@ -454,13 +454,13 @@ const MainNavbar = () => {
 	};
 	return (
 		<nav className={classes.navContainer}>
-			<div className={classes.inner_container_nav}>
+			<ul className={classes.inner_container_nav}>
 				{location.pathname === "/demo_dmvClassC" ? demoContent : regularContent}
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainMenu />}
 				{getStarted_ModalStatus_rdx && <Modal_getStarted />}
 				{languageSettings_ModalStatus_rdx && <Modal_languageSettings />}
-			</div>
+			</ul>
 		</nav>
 	);
 };
