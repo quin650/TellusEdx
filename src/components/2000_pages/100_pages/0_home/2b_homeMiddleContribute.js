@@ -7,23 +7,24 @@ const HomeMiddleContribute = () => {
 			<div className={classes.left}></div>
 			<article className={classes.right}>
 				<h2 className={classes.title}>Contribute</h2>
+
 				<ol className={classes.content}>
-					<dl className={classes.line}>
-						<dt className={classes.sub_title}>CLARITY</dt>
-						<dd className={classes.sub_content}>Add an explanation to an online resource by creating an insertion point.</dd>
-					</dl>
+					<li className={classes.line}>
+						<h3 className={classes.sub_title}>CLARITY</h3>
+						<p className={classes.sub_content}>Add an explanation to an online resource by creating an insertion point.</p>
+					</li>
 					<div className={classes.break}></div>
-					<dl className={classes.line}>
-						<dt className={classes.sub_title}>TANGENT</dt>
-						<dd className={classes.sub_content}>When a section deserves both clarity and an expanded direction, create a tangent point.</dd>
-					</dl>
+					<li className={classes.line}>
+						<h3 className={classes.sub_title}>TANGENT</h3>
+						<p className={classes.sub_content}>When a section deserves both clarity and an expanded direction, create a tangent point.</p>
+					</li>
 					<div className={classes.break}></div>
-					<dl className={classes.line}>
-						<dt className={classes.sub_title}>GUIDED</dt>
-						<dd className={classes.sub_content}>
+					<li className={classes.line}>
+						<h3 className={classes.sub_title}>GUIDED</h3>
+						<p className={classes.sub_content}>
 							Review student metrics to pinpoint the areas lacking fluidity and where your contribution will make a significant impact.
-						</dd>
-					</dl>
+						</p>
+					</li>
 				</ol>
 			</article>
 		</div>
