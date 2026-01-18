@@ -388,7 +388,7 @@ const MainNavbar = () => {
 				</button>
 			</li>
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
-			<div className={classes.rightBorder} ref={rightBorderRef}></div>
+			<li aria-hidden="true" role="presentation" className={classes.rightBorder} ref={rightBorderRef}></li>
 		</Fragment>
 	);
 	const authGuest = (
@@ -442,7 +442,7 @@ const MainNavbar = () => {
 				</button>
 			</li>
 			<li className={classes.topRight}>{sideBar_R_Main_Button}</li>
-			<div className={classes.rightBorder} ref={rightBorderRef}></div>
+			<li aria-hidden="true" role="presentation" className={classes.rightBorder} ref={rightBorderRef}></li>
 		</Fragment>
 	);
 	let regularContent = { authGuest };
