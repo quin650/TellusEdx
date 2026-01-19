@@ -104,7 +104,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-    "TOKEN_OBTAIN_SERIALIZER": "django_UserAccounts.views.MyTokenObtainPairSerializer",
+    "TOKEN_OBTAIN_SERIALIZER": "backend.django_UserAccounts.views.MyTokenObtainPairSerializer",
     "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
     "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
@@ -113,7 +113,7 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
-    'django_Main.middleware.WwwRedirectMiddleware',
+    'backend.django_Main.middleware.WwwRedirectMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -125,7 +125,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "django_Main.urls"
+ROOT_URLCONF = "backend.django_Main.urls"
 
 TEMPLATES = [
     {
@@ -144,7 +144,7 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = "django_Main.wsgi.application"
+WSGI_APPLICATION = "backend.django_Main.wsgi.application"
 
 import dj_database_url
 
