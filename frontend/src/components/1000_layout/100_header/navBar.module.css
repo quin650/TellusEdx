@@ -1,0 +1,539 @@
+.navContainer {
+	z-index: 1000;
+	display: flex !important;
+	position: fixed;
+	top: 0 !important;
+	background-color: white;
+	width: 100%;
+}
+.inner_container_nav {
+	display: flex;
+	position: absolute;
+	flex-direction: row;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	padding-left: 12px;
+	padding-right: 24px;
+	margin: 0;
+}
+.inner_container_nav li:not(:first-child) {
+	padding-top: 0px;
+}
+@media (max-width: 1200px) {
+	.inner_container_nav .SearchItem {
+		display: none;
+	}
+	.inner_container_nav .SearchItem {
+		/* sideBar_Right_Notes_Button */
+		display: none;
+	}
+}
+@media (max-width: 475px) {
+	.outer_container_nav {
+		width: 100%;
+		min-width: 375px;
+	}
+}
+.Logo {
+	display: flex;
+	height: 3rem;
+	width: 3rem;
+}
+.Logo:hover {
+	cursor: pointer;
+	transform: rotate(180deg);
+	animation: around 0.18s ease-in forwards;
+}
+@keyframes around {
+	/*========== Animation ==========*/
+	0% {
+		transform: rotate(45deg);
+	}
+	33% {
+		transform: rotate(90deg);
+	}
+	66% {
+		transform: rotate(135deg);
+	}
+	100% {
+		transform: rotate(180deg);
+	}
+}
+button:focus {
+	/* border: 1px solid yellow !important; */
+	border: none !important;
+	outline: none !important;
+}
+/*! Left Border onHover opens SideBar L TOC-------------------------- */
+.leftBorder {
+	position: fixed;
+	width: 5px;
+	z-index: 1000;
+	left: 0;
+	height: 100vh;
+	bottom: 0px !important;
+	list-style: none;
+}
+
+/*! Right Border onHover opens SideBar R Main-------------------------- */
+.rightBorder {
+	position: fixed;
+	width: 5px;
+	/* background-color: green; */
+	z-index: 1000;
+	right: 0;
+	height: 100vh;
+	bottom: 0px !important;
+	list-style: none;
+}
+
+/*! SideBar L Button------------------------------------------------ */
+.topLeft {
+	display: flex;
+	margin-right: auto;
+	justify-content: flex-start;
+	list-style: none;
+}
+.tocButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.tocButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.tocButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.tocButton.open {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+	background-color: var(--backgroundColor_menu_offWhite_to_offBlack);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.tocButton.open:hover {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.tocButton.open:active {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.svgMenuButton {
+	stroke-width: 2;
+	flex-shrink: 0;
+	display: block;
+	height: 24px;
+	fill: none;
+}
+.svgMenuButton path {
+	fill: #9e9e9e;
+}
+/*! Get Started  ----------------------------------------------------*/
+.getStartedButtonContainer {
+	display: flex;
+	margin-left: 0.75rem;
+	justify-content: flex-end;
+	list-style: none;
+	/* margin-right: 90px; */
+	z-index: 1;
+	position: absolute;
+	right: 105px;
+}
+@media (max-width: 800px) {
+	.getStartedButtonContainer {
+		width: 0;
+		visibility: hidden;
+	}
+}
+/*! Search  ---------------------------------------------------------*/
+/* Search Container--------------------------------------------------*/
+.searchContainer {
+	display: flex;
+	margin-left: auto;
+	list-style: none;
+	background-color: transparent;
+	border: none !important;
+	outline: none !important;
+	/* position: absolute; */
+	align-items: center;
+	justify-content: flex-start;
+	transition:
+		width 0s,
+		background-color 0s;
+	width: 36px;
+	overflow: hidden;
+	right: 64px;
+	margin-right: 40px;
+	z-index: 1000;
+}
+.searchContainer.open {
+	width: 300px;
+	background-color: var(--backgroundColor_SearchBar_offBlack_to_offWhite) !important;
+	border: none !important;
+	border-radius: 4px;
+	margin-top: 2px;
+	transition:
+		width 0.5s ease,
+		background-color 0.5s ease;
+	outline: none !important;
+	overflow: hidden;
+}
+.searchContainer.open:hover {
+	background-color: var(--hover_backgroundColor_SearchBar_offBlack_to_offWhite) !important;
+}
+/* Search Button------------------------------------------------------*/
+.searchButton {
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	width: 36px;
+	border: none !important;
+	transition: transform 0.5s ease;
+	z-index: 2;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.searchButton.open {
+	pointer-events: none;
+	background-color: transparent;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
+.searchButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.searchButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.searchButton.open:hover {
+	background-color: transparent;
+}
+.searchButton.open:active {
+	background-color: transparent;
+}
+.searchIconSVG {
+	width: 22px;
+	height: 21px;
+	fill: none;
+	margin-bottom: 3px;
+}
+.searchIconSVG path {
+	stroke: #9e9e9e;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+/* Search Input------------------------------------------------------*/
+.searchInput {
+	width: 0;
+	padding: 0;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: transparent;
+	color: #000000;
+	opacity: 0 !important;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	transition:
+		width 0.5s ease,
+		opacity 0.5s ease;
+}
+.searchContainer.open .searchInput::placeholder {
+	opacity: 1 !important;
+	color: #81868d !important;
+}
+.searchInput::placeholder {
+	opacity: 0 !important;
+}
+.searchContainer.open .searchInput {
+	padding-left: 35px !important;
+	width: 300px;
+	position: absolute;
+
+	outline: none !important;
+	box-shadow: none !important;
+	color: var(--WhiteToBlack) !important;
+	padding: 10px 10px 10px 5px;
+	background-color: transparent;
+	border: none !important;
+	outline: none !important;
+	opacity: 1 !important;
+}
+.searchInput.isFocused {
+	border: none !important;
+	opacity: 1;
+	outline: none !important;
+}
+.searchInput.isFocused:hover,
+.searchInput.isFocused:-webkit-autofill:hover,
+.searchInput.isFocused:focus,
+.searchInput.isFocused:-webkit-autofill:focus,
+.searchInput.isFocused {
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+/* exit button ------------------------------------------- */
+.searchContainer .exitButton {
+	z-index: 10;
+	position: absolute;
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 38px;
+	min-width: unset;
+	font-size: 14px;
+
+	width: 36px;
+	transition: none;
+	background-color: transparent;
+	border: 0px solid red;
+
+	right: 0px;
+	top: 50%;
+	transform: translateY(-50%);
+	opacity: 0;
+	pointer-events: none;
+}
+.searchContainer.open .exitButton.inputHasText {
+	opacity: 1;
+	right: 66px;
+	pointer-events: auto;
+}
+.searchContainer.open .exitButton.inputHasText:hover {
+	background-color: rgb(50, 50, 50);
+}
+.searchContainer.open .exitButton.inputHasText:active {
+	background-color: rgb(65, 65, 65);
+}
+.svgExit {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	fill: none;
+	height: 21px;
+}
+.svgExit path {
+	fill: #9e9e9e;
+}
+/*! Main Button ------------------------------------------------ */
+.topRight {
+	display: flex;
+	margin-left: 7px;
+	justify-content: flex-end;
+	list-style: none;
+	position: absolute;
+	right: 24px;
+}
+.hamburgerButton {
+	display: inline-grid;
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	-webkit-appearance: button;
+	margin: 0;
+	place-content: center;
+	height: 40px;
+	min-width: unset;
+	font-size: 14px;
+	width: 36px;
+	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.hamburgerButton.open {
+	display: none;
+	visibility: hidden;
+}
+.hamburgerButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.hamburgerButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.svgHamburger {
+	display: inline-block;
+	user-select: none;
+	vertical-align: text-bottom;
+	overflow: visible;
+	height: 21px;
+}
+.svgHamburger path {
+	fill: #9e9e9e;
+}
+/*! Questions Button-------------------------------------------------------------------*/
+.bottomRightAbove {
+	z-index: 1000;
+	position: fixed;
+	right: 24px;
+	bottom: 45px !important;
+	list-style: none;
+}
+.questionsButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-image: none;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.questionsButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.questionsButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.questionsButton.open:hover {
+	background-color: var(--hover_menuButtonOpen_gray_to_darkGray);
+}
+.questionsButton.open:active {
+	background-color: var(--active_menuButtonOpen_gray_to_darkGray);
+}
+.svgQuestionsButton {
+	width: 20px;
+	height: 20px;
+	stroke: #9e9e9e;
+}
+.svgQuestionsButton .checkMark {
+	fill: none;
+	stroke-width: 1.3px; /* Controls the width of the checkmark line */
+	transform-origin: 4px 4px; /* Adjust based on the path coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
+}
+.svgQuestionsButton .xMark {
+	stroke-width: 1.3px; /* Controls the width of the X mark lines */
+	transform-origin: 4px 16px; /* Adjust based on the line coordinates */
+	transform: scale(1.4); /* Controls the size of the X mark */
+}
+.svgQuestionsButton .horizontalLine {
+	stroke-width: 1.6px; /* Controls the width of the horizontal lines */
+}
+/*! Note Button ------------------------------------------------ */
+.bottomRight {
+	z-index: 1000;
+	position: fixed;
+	right: 24px;
+	bottom: 0px !important;
+	list-style: none;
+}
+.notesButton {
+	color: #b4b4b4;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	border-radius: 0.5rem;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	-webkit-appearance: button;
+	background-color: transparent;
+	text-transform: none;
+	font-feature-settings: inherit;
+	font-family: inherit;
+	font-size: 100%;
+	font-variation-settings: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	margin: 0;
+	border: none !important;
+	background-color: var(--backgroundColor_NavBarButton_transparentWhite_to_transparentDarkGray);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+.notesButton:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton.open:hover {
+	background-color: var(--hover_menuButtonClosed_gray_to_darkGray);
+}
+.notesButton.open:active {
+	background-color: var(--active_menuButtonClosed_gray_to_darkGray);
+}
+.svgNotesButton {
+	stroke-width: 2;
+	flex-shrink: 0;
+	display: block;
+	height: 24px;
+	fill: none;
+}
+.svgNotesButton path {
+	fill: #9e9e9e;
+}

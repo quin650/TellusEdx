@@ -213,7 +213,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MAX_AGE = 31536000  # 1 year
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [REPO_ROOT / "static"]
+STATICFILES_DIRS = [BACKEND_DIR / "static"]
 STATIC_ROOT = BACKEND_DIR / "staticfiles"
 
 import django_heroku

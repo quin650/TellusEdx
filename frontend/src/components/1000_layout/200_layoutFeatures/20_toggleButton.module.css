@@ -1,0 +1,152 @@
+.toggleSection {
+	display: flex;
+	position: relative;
+	height: 10vh;
+	width: 100vw;
+	min-width: 400px;
+	justify-content: center;
+	align-items: flex-end;
+	margin-top: auto;
+	bottom: 10vh;
+}
+
+/* The switch - the box around the slider */
+.switch {
+	position: relative;
+	display: inline-block;
+	height: 60px;
+	min-height: 60px;
+	width: 330px;
+	min-width: 330px;
+}
+.switch:hover {
+	cursor: pointer;
+}
+/* Hide default HTML checkbox */
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	box-shadow: 0px 4px 8px var(--toggleBoxShadow) inset;
+	border-radius: 4px;
+}
+
+/* Allows for the slider css element to be animated. as described, it gets animated at the point the "input" is checked*/
+.slider:before {
+	position: absolute;
+	cursor: pointer;
+	content: "";
+	height: 52px;
+	width: 150px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--Blue);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 4px;
+}
+
+/* This turns the original slider into the "slider:before" element and by doing so, moving the element to the right 172px*/
+input:checked + .slider:before {
+	-webkit-transform: translateX(172px);
+	-ms-transform: translateX(172px);
+	transform: translateX(172px);
+}
+/*
+    In summary, when the <input> element is checked and it has an adjacent sibling 
+    with the class "slider," the pseudo-element ::before of that sibling element will 
+    be transformed by moving it 172 pixels to the right.
+*/
+
+.sliderText {
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	height: 60px;
+	width: 330px;
+}
+
+.leftSideWhenToggleOnLeft {
+	display: flex;
+	text-align: center;
+	align-items: baseline;
+	justify-content: center;
+	width: 50%;
+	margin: auto;
+	color: var(--Blue);
+}
+
+.rightSideWhenToggleOnLeft {
+	display: flex;
+	text-align: center;
+	align-items: baseline;
+	justify-content: center;
+	width: 50%;
+	margin: auto;
+	/* color: var(--Text1); */
+	color: var(--WhiteToGray);
+}
+
+.leftSideWhenToggleOnLeft.toggleMovedRight {
+	display: flex;
+	text-align: center;
+	align-items: baseline;
+	justify-content: center;
+	width: 50%;
+	margin: auto;
+	/* color: var(--Text1); */
+	color: var(--WhiteToGray);
+}
+
+.rightSideWhenToggleOnLeft.toggleMovedRight {
+	display: flex;
+	text-align: center;
+	align-items: baseline;
+	justify-content: center;
+	width: 50%;
+	margin: auto;
+	color: var(--Blue);
+}
+
+@media (max-width: 1011px) {
+	/* Width under 1011px */
+	.toggleSection {
+		height: 8vh;
+	}
+	.switch {
+		height: 48px;
+		min-height: 48px;
+		width: 264px;
+		min-width: 264px;
+	}
+	.slider:before {
+		height: 42px;
+		width: 130px;
+		left: 3.2px;
+		bottom: 3.2px;
+		border-radius: 3.2px;
+	}
+	.sliderText {
+		height: 42px;
+		width: 264px;
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(130px);
+		-ms-transform: translateX(130px);
+		transform: translateX(130px);
+	}
+}

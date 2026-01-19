@@ -1,0 +1,4527 @@
+{
+	"questions": [
+		{
+			"id": 1,
+			"testNumber": 1,
+			"questionNumber": 1,
+			"question": "When it is legal to drive off the road to pass another vehicle?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "If the vehicle ahead is turning left.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "It is not legal under any conditions.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "If there are two or more one-way lanes.",
+					"isCorrect": false
+				}
+			],
+			"hint": "It is never allowed to drive off the road. Don't confuse this with passing on the right shoulder of the road, which is allowed under certain conditions.",
+			"image": ""
+		},
+		{
+			"id": 2,
+			"testNumber": 1,
+			"questionNumber": 2,
+			"question": "When a railroad crossing is not controlled, what is the speed limit when you are within 100 feet and cannot see for 400 feet in both directions?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "15 mph.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "10 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "25 mph.",
+					"isCorrect": false
+				}
+			],
+			"hint": "It won't be the regular speed limit, but a slower speed limit. But not too slow.",
+			"image": ""
+		},
+		{
+			"id": 3,
+			"testNumber": 1,
+			"questionNumber": 3,
+			"question": "Which of the following is the proper procedure for parallel parking?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Drive forward into the space without stopping.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Stop next to the vehicle behind the open space, and then drive forward into the space.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Stop next to the vehicle in front of the open space, and then back into the space.",
+					"isCorrect": true
+				}
+			],
+			"hint": "Parallel parking is a reverse maneuver. You back into the space.",
+			"image": ""
+		},
+		{
+			"id": 4,
+			"testNumber": 1,
+			"questionNumber": 4,
+			"question": "What speed should you be driving when entering onto a highway?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At or near the speed of traffic.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Faster than the speed of traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Slower than the speed of traffic.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Going faster -> hit someone. Going slower -> someone might hit you.",
+			"image": ""
+		},
+		{
+			"id": 5,
+			"testNumber": 1,
+			"questionNumber": 5,
+			"question": "How many feet away should you switch from high beam to low beam headlights when approaching a vehicle coming towards you?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "900 feet.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "700 feet.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "500 feet.",
+					"isCorrect": false
+				}
+			],
+			"hint": "High beam's range is up to 700 feet, so switch to low beams ",
+			"image": ""
+		},
+		{
+			"id": 6,
+			"testNumber": 1,
+			"questionNumber": 6,
+			"question": "Who can legally park next to curb painted blue?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Someone who is either picking up or dropping off passengers at this location.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A person who is disabled and has a special placard or vehicle license plate for disabled persons.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A person who will only be parked at the curb for less than 15 minutes.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Blue = disabled parking only.",
+			"image": "../../../../../static/images/question_webp/1_6.webp"
+		},
+		{
+			"id": 7,
+			"testNumber": 1,
+			"questionNumber": 7,
+			"question": "What should you do when there is a school bus ahead that starts flashing yellow warning lights?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Slow down and prepare to stop.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Stop immediately and remain stopped.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Cautiously pass the school bus on the left.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Correlate the color to traffic lights. What do you do when a traffic light turns yellow?",
+			"image": "../../../../../static/images/question_webp/1_7.webp"
+		},
+		{
+			"id": 8,
+			"testNumber": 1,
+			"questionNumber": 8,
+			"question": "Which of the following is a requirement of California's Basic Speed Law?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Always drive the speed limit, regardless of conditions.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Match your speed to that of your surrounding traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Never drive faster than is safe for current conditions.",
+					"isCorrect": true
+				}
+			],
+			"hint": "Safety always trumps other laws.",
+			"image": ""
+		},
+		{
+			"id": 9,
+			"testNumber": 1,
+			"questionNumber": 9,
+			"question": "You must notify the DMV within 5 days, if you:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Paint your vehicle a different color.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Sell or transfer ownership of your vehicle.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Receive a traffic violation.",
+					"isCorrect": false
+				}
+			],
+			"hint": "The DMV registers vehicles/owners",
+			"image": ""
+		},
+		{
+			"id": 10,
+			"testNumber": 1,
+			"questionNumber": 10,
+			"question": "Which of the following is an example of a safe driving practice?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Staring only at the middle of the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Always keep your eyes moving to scan the surroundings.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Using your high-beam headlights in the fog.",
+					"isCorrect": false
+				}
+			],
+			"hint": "high beams in fog obscures visibility",
+			"image": ""
+		},
+		{
+			"id": 11,
+			"testNumber": 1,
+			"questionNumber": 11,
+			"question": "What should you do when reaching an intersection where a person operating a motorized wheelchair has entered the crosswalk?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Remain stopped behind the crosswalk line until the motorized wheelchair has safely finished crossing.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Remain stopped behind the nearest crosswalk line until the motorized wheelchair is beyond the range of your vehicle.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Assume right-of-way if the motorized wheelchair stops in the crosswalk.",
+					"isCorrect": false
+				}
+			],
+			"hint": "motorized wheelchairs are considered pedestrians",
+			"image": ""
+		},
+		{
+			"id": 12,
+			"testNumber": 1,
+			"questionNumber": 12,
+			"question": "Which of the following is true about large trucks?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "They are made of many trailers, which make them more maneuverable than passenger vehicles.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "They have large blind spots, which makes it difficult for the truck driver to see other vehicles.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "They have large and powerful emergency brakes, which gives them the capability to stop quickly.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Imagine yourself in a truck without a rearview mirror and rearview windows to see.",
+			"image": ""
+		},
+		{
+			"id": 13,
+			"testNumber": 1,
+			"questionNumber": 13,
+			"question": "What is one of the most common causes of traffic collisions?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Paying attention to your surroundings.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Better traffic flow.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Driver distractions.",
+					"isCorrect": true
+				}
+			],
+			"hint": "phone, eating, putting make up on, etc.",
+			"image": ""
+		},
+		{
+			"id": 14,
+			"testNumber": 1,
+			"questionNumber": 14,
+			"question": "Any driver who willfully flees or attempts to evade law enforcement, during which a person is seriously injured, is subject to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Imprisonment in a state prison for up to seven years.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A fine of less than $1,000.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Attending an anger-management class.",
+					"isCorrect": false
+				}
+			],
+			"hint": "...",
+			"image": ""
+		},
+		{
+			"id": 15,
+			"testNumber": 1,
+			"questionNumber": 15,
+			"question": "What should a driver do who is stopped at an intersection and wants to make a left turn?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Turn immediately if there are no pedestrians.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Take the right-of-way turn before oncoming traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Give the right-of-way to any approaching vehicle that is close enough to be dangerous.",
+					"isCorrect": true
+				}
+			],
+			"hint": "Which is the most detailed, and correct answer?",
+			"image": ""
+		},
+		{
+			"id": 16,
+			"testNumber": 1,
+			"questionNumber": 16,
+			"question": "In addition to setting your parking brake, what should you do when parking on a hill?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Make sure the front vehicle wheels are parallel to the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Make sure your vehicle is left in the “neutral” position.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Make sure your vehicle is in the “park” position or in gear.",
+					"isCorrect": true
+				}
+			],
+			"hint": "...",
+			"image": ""
+		},
+		{
+			"id": 17,
+			"testNumber": 1,
+			"questionNumber": 17,
+			"question": "You are under 18 years of age and have had your license for eight months. You may drive:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At any time.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Between 5 a.m. and 11 p.m.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Between 7 a.m. and 8 p.m.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Think: what hours do most people drive to work? ",
+			"image": ""
+		},
+		{
+			"id": 18,
+			"testNumber": 1,
+			"questionNumber": 18,
+			"question": "Where should you begin a left turn from a one-way street onto a one-way street?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The lane closest to the center of the street.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The far-left lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You can turn from any lane.",
+					"isCorrect": true
+				}
+			],
+			"hint": "Super Tricky. Any lane. If the light is red, you can also stop and go, as if it was a stop sign or right-turn on a red light.",
+			"image": ""
+		},
+		{
+			"id": 19,
+			"testNumber": 1,
+			"questionNumber": 19,
+			"question": "You are required to notify DMV by filing a Report of Traffic Accident Occurring in California (SR-1) form if:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "You allowed a licensed driver from another state to drive your vehicle.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "You were involved in a collision with more than $1,000 in damages.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "You failed to pay your registration fees.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 20,
+			"testNumber": 1,
+			"questionNumber": 20,
+			"question": "At what point during a rainfall are roads slippery on a hot day?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Immediately after it has stopped raining.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "For the first several minutes.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "When it has been raining for a few hours.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Dried up engine oil on the ground dissolves and mixes with the water, making it slippery.",
+			"image": ""
+		},
+		{
+			"id": 21,
+			"testNumber": 1,
+			"questionNumber": 21,
+			"question": "What color curb does not allow vehicles to stop or park?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Yellow.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Red.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "White.",
+					"isCorrect": false
+				}
+			],
+			"hint": "...",
+			"image": ""
+		},
+		{
+			"id": 22,
+			"testNumber": 1,
+			"questionNumber": 22,
+			"question": "What is indicated by two sets of double yellow lines spaced 2 feet or more apart?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Lanes of traffic moving in the same direction.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Barrier.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Carpool/High-Occupancy (HOV) lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Road lines are used to mark the road in absence of other means, such as a physical wall. Two walls = barrier.",
+			"image": ""
+		},
+		{
+			"id": 23,
+			"testNumber": 1,
+			"questionNumber": 23,
+			"question": "What should you do to make a right turn at an upcoming intersection?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Merge into the bicycle lane before making the turn.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Wait until the bicycle lane ends, then make the turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Make the turn from your current lane and do not enter the bicycle lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 24,
+			"testNumber": 1,
+			"questionNumber": 24,
+			"question": "A highway has a posted speed limit of 65 mph. What does this mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "You must always drive 65 mph on that highway.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "You may drive faster only if there are no other vehicles.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You must drive 65 mph only if driving conditions are ideal.",
+					"isCorrect": true
+				}
+			],
+			"hint": "keyword is 'limit'. It is the maximum speed limit, not the minimum speed limit.",
+			"image": "../../../../../static/images/question_webp/1_24.webp"
+		},
+		{
+			"id": 25,
+			"testNumber": 1,
+			"questionNumber": 25,
+			"question": "When is parking in a crosshatched (diagonal lines) area allowed?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "It is never allowed to park in a crosshatched (diagonal lines) area.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "If the area is at least twenty feet away from a railroad track.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "If the area is labeled as a bicycle lane, unless otherwise posted.",
+					"isCorrect": false
+				}
+			],
+			"hint": "remember, line = 'walls'",
+			"image": "../../../../../static/images/question_webp/1_25.webp"
+		},
+		{
+			"id": 26,
+			"testNumber": 1,
+			"questionNumber": 26,
+			"question": "What should you do if your cell phone rings and you do not have a hands-free device?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Answer the call and keep the conversation short.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Do not answer the phone and let it go to voice mail.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Answer the call if you are stopped at a red light.",
+					"isCorrect": false
+				}
+			],
+			"hint": "hands free devices make it legal to talk on the phone while driving.",
+			"image": ""
+		},
+		{
+			"id": 27,
+			"testNumber": 1,
+			"questionNumber": 27,
+			"question": "If a traffic signal is green, but traffic is blocking the intersection, what should you do?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Partially enter the intersection, as allowed by traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Wait and do not enter the intersection until your vehicle can get completely across.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Drive around the traffic on the shoulder to help ease the congestion.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Imagine what happens if the traffic blocking the intersection stays that way and the light turns red.",
+			"image": ""
+		},
+		{
+			"id": 28,
+			"testNumber": 1,
+			"questionNumber": 28,
+			"question": "In which lane should you end your turn when making a right turn?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Any lane free of traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The lane closest to the left edge of the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The lane closest to the right edge of the road.",
+					"isCorrect": true
+				}
+			],
+			"hint": "Tricky - depends on the road, but we can't assume that. So, the safest answer is the right edge.",
+			"image": ""
+		},
+		{
+			"id": 29,
+			"testNumber": 1,
+			"questionNumber": 29,
+			"question": "When is it required for you to obey directions from a crossing guard?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At all times.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "During school hours only.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Only when children are present in front of a school.",
+					"isCorrect": false
+				}
+			],
+			"hint": "Traffic Guards don't just work near or around schools",
+			"image": "../../../../../static/images/question_webp/1_29.webp"
+		},
+		{
+			"id": 30,
+			"testNumber": 1,
+			"questionNumber": 30,
+			"question": "Which of the following is illegal while driving?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Wearing a headset or ear plugs that covers both ears.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Wearing a headset or ear plugs that covers one ear.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Using cruise control on residential streets.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 31,
+			"testNumber": 1,
+			"questionNumber": 31,
+			"question": "What should you do when traffic is slow and heavy, and you must cross railroad tracks before reaching the upcoming intersection?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Begin crossing when the vehicle in front of you is crossing the tracks.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Wait on the tracks until the stoplight at the intersection turns green.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Wait until you can completely cross the tracks before proceeding.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 32,
+			"testNumber": 1,
+			"questionNumber": 32,
+			"question": "Which of the following should you do if you are being followed by a tailgater?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Change lanes and allow the tailgater to pass.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Tap the brakes to signal you are moving at a slower pace.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Increase your speed to match the speed of the vehicle.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 33,
+			"testNumber": 1,
+			"questionNumber": 33,
+			"question": "When you are driving the speed limit, you can be given a speeding ticket:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "If road or weather conditions require a slower speed.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Under no circumstances because it is always legal.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Only if you are approaching a sharp curve in the road.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 34,
+			"testNumber": 1,
+			"questionNumber": 34,
+			"question": "Which lights should be used if a driver is having trouble seeing other vehicles because of dust or smoke blowing across the roadway?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Parking lights.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Emergency lights.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Headlights.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 35,
+			"testNumber": 1,
+			"questionNumber": 35,
+			"question": "What does a flashing yellow traffic signal light direct a driver to do?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop and proceed when the traffic allows you to proceed safely.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Slow down and proceed with caution.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Stop and wait for a flashing green signal.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/1_35.webp"
+		},
+		{
+			"id": 36,
+			"testNumber": 1,
+			"questionNumber": 36,
+			"question": "What should you do if a pedestrian is still in the crosswalk after the 'DON'T WALK' sign begins to flash and your light has turned green?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Wait until the pedestrian is out of your path before proceeding.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Wait until the pedestrian signals that it is okay for you to proceed.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Wait until the pedestrian has crossed the street completely before proceeding.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 37,
+			"testNumber": 2,
+			"questionNumber": 1,
+			"question": "When is it legal for a person to drive with an alcoholic beverage container that has been opened?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "If the container is under the front seat.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "If the container is in the trunk of the vehicle.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "If the container is in the glove compartment.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 38,
+			"testNumber": 2,
+			"questionNumber": 2,
+			"question": "If you are found guilty of driving without wearing a seat belt, you will be fined up to _____ if this was your first offense.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "$50",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "$100",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "$20",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 39,
+			"testNumber": 2,
+			"questionNumber": 3,
+			"question": "In California, when are you allowed to drive to the left of two solid yellow lines?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "When you are passing another vehicle.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Never.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "When you are in a carpool/HOV lane with a designated entrance on the left.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 40,
+			"testNumber": 2,
+			"questionNumber": 4,
+			"question": "You should cut your speed in half when the road is:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Icy.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Packed with snow.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Wet.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 41,
+			"testNumber": 2,
+			"questionNumber": 5,
+			"question": "In which of the following places is a U-turn permitted?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Across a double yellow line.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "On a one-way street.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "On a railroad crossing.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 42,
+			"testNumber": 2,
+			"questionNumber": 6,
+			"question": "If a CA driver is convicted of fleeing a law enforcement officer on duty without causing any bodily injuries, he or she may face which of the following penalties?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Up to one year in jail.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A fine of up to $1,000.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Both of the above.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 43,
+			"testNumber": 2,
+			"questionNumber": 7,
+			"question": "A _________ indicates the outer edge of a roadway, and it may be crossed only by traffic moving to or from the shoulder.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Broken white line.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Solid white line.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Solid yellow line.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 44,
+			"testNumber": 2,
+			"questionNumber": 8,
+			"question": "Can you pass another vehicle when approaching a curve or a hill?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Yes, but you may only pass on the right.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Yes, but only if there is enough space.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "No, never.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 45,
+			"testNumber": 2,
+			"questionNumber": 9,
+			"question": "This warning sign means:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The road ahead curves to the right and then to the left.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A winding road.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The road ahead curves to the right.",
+					"isCorrect": false
+				},
+				{
+					"id": 4,
+					"text": "Sharp right and left turns are ahead.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_9.webp"
+		},
+		{
+			"id": 46,
+			"testNumber": 2,
+			"questionNumber": 10,
+			"question": "Which of these pavement markings separates two lanes traveling in the same direction?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "B",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "C",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A",
+					"isCorrect": false
+				},
+				{
+					"id": 4,
+					"text": "None of the above.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_10.webp"
+		},
+		{
+			"id": 47,
+			"testNumber": 2,
+			"questionNumber": 11,
+			"question": "You will be fined up to ___ if convicted of assaulting a highway worker.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "$1,000",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "$2,000",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "$500",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 48,
+			"testNumber": 2,
+			"questionNumber": 12,
+			"question": "You must not follow within _______ of any emergency vehicle with a siren or flashing lights.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "300 feet.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "100 feet.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "200 feet.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 49,
+			"testNumber": 2,
+			"questionNumber": 13,
+			"question": "This sign is:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A guide sign on an interstate highway.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A barricade at a work zone.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "An object marker on a roadway.",
+					"isCorrect": false
+				},
+				{
+					"id": 4,
+					"text": "A warning sign at a work zone.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_13.webp"
+		},
+		{
+			"id": 50,
+			"testNumber": 2,
+			"questionNumber": 14,
+			"question": "When you turn left from a one-way street onto another one-way street, you should turn into:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The far right lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The far left lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Any safely open lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 51,
+			"testNumber": 2,
+			"questionNumber": 15,
+			"question": "If you are convicted of reckless driving that resulted in injury to someone, you may:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Lose your license for life.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Attend an interview at the DMV.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Be sent to jail and/or pay a hefty fine.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 52,
+			"testNumber": 2,
+			"questionNumber": 16,
+			"question": "On one-way roads, yellow lines are used as:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Center lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Left-edge lines.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Right-edge lines.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 53,
+			"testNumber": 2,
+			"questionNumber": 17,
+			"question": "A traffic signal with a flashing yellow arrow means that you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop and be prepared to obey the next signal.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Proceed with caution but turns are not permitted in the direction of the arrow.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Yield and then proceed with caution.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 54,
+			"testNumber": 2,
+			"questionNumber": 18,
+			"question": "Any person who willfully flees or attempts to evade law enforcement performing their duties is guilty of a misdemeanor punishable by:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Up to 1 year of imprisonment in a county jail.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A maximum fine of up to $1,000.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Neither of the above.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 55,
+			"testNumber": 2,
+			"questionNumber": 19,
+			"question": "At an unmarked crosswalk, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Yield the right-of-way to the pedestrians.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Increase your speed and cross before the pedestrians.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Stop and ask the pedestrians to cross quickly.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 56,
+			"testNumber": 2,
+			"questionNumber": 20,
+			"question": "If you are ready to turn right at an intersection, and if there is a bicycle next to you on your right, who has the right-of-way when the light turns green?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "You.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The bicycle.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Whoever starts moving first.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 57,
+			"testNumber": 2,
+			"questionNumber": 21,
+			"question": "This sign warns you about:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A two-way road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A slippery road.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A winding road.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_9.webp"
+		},
+		{
+			"id": 58,
+			"testNumber": 2,
+			"questionNumber": 22,
+			"question": "A driver in front of you is signaling with his or her hand and arm pointing upward. This driver wants to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Turn left.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Turn right.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 59,
+			"testNumber": 2,
+			"questionNumber": 23,
+			"question": "The only cure for carbon monoxide poisoning is:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A few glasses of water.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Cold application.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A good supply of fresh air.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 60,
+			"testNumber": 2,
+			"questionNumber": 24,
+			"question": "A ___ painted curb is designated for disabled persons who display their placards.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Green.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "White.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Blue.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 61,
+			"testNumber": 2,
+			"questionNumber": 25,
+			"question": "A double solid white line:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Separates two lanes traveling in the same direction, and crossing the line is permitted.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Separates opposing lanes, and crossing the line is prohibited.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Separates two lanes traveling in the same direction, but crossing the line is prohibited.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_25.webp"
+		},
+		{
+			"id": 62,
+			"testNumber": 2,
+			"questionNumber": 26,
+			"question": "Which of the following signs represents two-way traffic?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "B",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "D",
+					"isCorrect": false
+				},
+				{
+					"id": 4,
+					"text": "C",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 63,
+			"testNumber": 2,
+			"questionNumber": 27,
+			"question": "What type of sign is this?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Yield.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Stop.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Slow-moving vehicle.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_27.webp"
+		},
+		{
+			"id": 64,
+			"testNumber": 2,
+			"questionNumber": 28,
+			"question": "What does this warning sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Slow-moving vehicles should not move as directed.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "There is a stop sign ahead.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Slow-moving vehicles should move as directed.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/2_28.webp"
+		},
+		{
+			"id": 65,
+			"testNumber": 2,
+			"questionNumber": 29,
+			"question": "If you are in an intersection when you hear the siren of an emergency vehicle, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Move to the right and stop in the intersection.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Continue through the intersection, then move to the right and stop.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Continue through the intersection, then move to the left and stop.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 66,
+			"testNumber": 2,
+			"questionNumber": 30,
+			"question": "If you are having vehicle trouble and you need to stop, what is the first thing you should do?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop your vehicle over a hill or just around a curve for visibility.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Lift the hood to signal an emergency.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Pull off the road and away from traffic.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 67,
+			"testNumber": 2,
+			"questionNumber": 31,
+			"question": "When two vehicles meet on a steep mountain road where neither can pass, which vehicle has the right-of-way?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The vehicle traveling downhill.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The vehicle traveling uphill.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Both vehicles.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 68,
+			"testNumber": 2,
+			"questionNumber": 32,
+			"question": "To help manage sun glare you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Make sure your car visor works and is free of anything that would restrict use.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Keep the inside and outside of your windshield clean; wear polarized sunglasses.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Do both of the above.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 69,
+			"testNumber": 2,
+			"questionNumber": 33,
+			"question": "A steady red arrow signal means:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "You should prepare to stop and yield to oncoming traffic before turning.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "You must stop and then proceed when it is safe to do so.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You must stop and you cannot turn in the direction of the arrow.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 70,
+			"testNumber": 2,
+			"questionNumber": 34,
+			"question": "If all the rear seats are already occupied by children under 7 years of age, a child under 8 years of age may:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Ride in the front seat if properly secured in a federally approved child passenger restraint system.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Ride in the front seat without a seat belt.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Sit on the lap of an elder child, with a seat belt fastened to both.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 71,
+			"testNumber": 2,
+			"questionNumber": 35,
+			"question": "To avoid tailgating, one should follow the:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Four-second rule.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Two-second rule.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Three-second rule.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 72,
+			"testNumber": 2,
+			"questionNumber": 36,
+			"question": "When you approach an intersection with a through road but without stop signs or yield signs, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Make a sharp turn to match the speed of the traffic on the through road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Yield to traffic and pedestrians on the through road.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Accelerate to merge with traffic.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 73,
+			"testNumber": 3,
+			"questionNumber": 1,
+			"question": "What does this sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Airplanes fly in this direction.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "You are approaching an airport.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Airplanes fly at low altitude in this area.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/3_1.webp"
+		},
+		{
+			"id": 74,
+			"testNumber": 3,
+			"questionNumber": 2,
+			"question": "While driving in fog, you should use your:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "High-beam headlights.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Emergency flashers.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Low-beam headlights.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 75,
+			"testNumber": 3,
+			"questionNumber": 3,
+			"question": "A(n) __________ sign on a truck means that the truck's load is potentially dangerous.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Rectangular white.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Octagonal.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Diamond-shaped.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 76,
+			"testNumber": 3,
+			"questionNumber": 4,
+			"question": "In a roundabout, you must drive in:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A counterclockwise direction.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "The direction of the oncoming vehicles.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A clockwise direction.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 77,
+			"testNumber": 3,
+			"questionNumber": 5,
+			"question": "You must turn on your headlights __________ after sunset.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "30 minutes.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Immediately.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "20 minutes.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 78,
+			"testNumber": 3,
+			"questionNumber": 6,
+			"question": "Locked wheel skids are usually caused by:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Pressing the gas and brake pedals at the same time.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Braking too hard at a high speed.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Turning the ignition to the lock position while the vehicle is still in motion.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 79,
+			"testNumber": 3,
+			"questionNumber": 7,
+			"question": "When you see livestock near the roadway, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Blow your horn continuously until the animals cross the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Turn safely away from these animals.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Slow down or stop.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 80,
+			"testNumber": 3,
+			"questionNumber": 8,
+			"question": "The broken white lines on the pavement mean that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Traffic moves in opposite directions.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "No passing is allowed.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Passing is allowed if done safely.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": "../../../../../static/images/question_webp/3_8.webp"
+		},
+		{
+			"id": 81,
+			"testNumber": 3,
+			"questionNumber": 9,
+			"question": "If your vehicle starts to hydroplane, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Apply the brakes.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Press your gas pedal.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Slow down gradually.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 82,
+			"testNumber": 3,
+			"questionNumber": 10,
+			"question": "A driver who is involved in a significant collision must report it to the DMV within:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "20 days.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "10 days.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "15 days.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 83,
+			"testNumber": 3,
+			"questionNumber": 11,
+			"question": "This sign represents:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A school zone.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A pedestrian crosswalk.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A playground.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 84,
+			"testNumber": 3,
+			"questionNumber": 12,
+			"question": "Special 'turnout' areas marked on a two-lane road:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Allow vehicles to pass.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Allow vehicles to make left turns.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Allow vehicles to make U-turns.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 85,
+			"testNumber": 3,
+			"questionNumber": 13,
+			"question": "Two sets of solid double yellow lines spaced two or more feet apart indicate:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A barrier.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A parking lot.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Two-way traffic.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 86,
+			"testNumber": 3,
+			"questionNumber": 14,
+			"question": "What are the early symptoms of carbon monoxide poisoning?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Headache and dizziness.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Sudden fatigue.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Any or all of the above.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 87,
+			"testNumber": 3,
+			"questionNumber": 15,
+			"question": "You can make a left turn on a red light:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Only from a two-way street onto another two-way street.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Only from a one-way street onto another one-way street.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Only from a one-way street onto a two-way street.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 88,
+			"testNumber": 3,
+			"questionNumber": 16,
+			"question": "If a California driver is stopped by a police officer for suspected drugged driving, they may have to undergo a ____ test to determine if they are driving under the influence of drugs.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Agility.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Cognitive.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Blood.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 89,
+			"testNumber": 3,
+			"questionNumber": 17,
+			"question": "If your parked car rolls away and hits another unattended vehicle, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Sound your horn to attract attention.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Remove your car and go on your way.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Report the incident to the police.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 90,
+			"testNumber": 3,
+			"questionNumber": 18,
+			"question": "At 55 mph, under good conditions, a passenger vehicle can stop within:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "400 feet.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "300 feet.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "200 feet.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 91,
+			"testNumber": 3,
+			"questionNumber": 19,
+			"question": "This warning sign represents:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The start of a two-way road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The end of a divided highway.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "The start of a divided highway.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 92,
+			"testNumber": 3,
+			"questionNumber": 20,
+			"question": "What is the first thing you should do during an enforcement stop?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop on the center median.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Turn on your right turn signal.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Stop on the left shoulder.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 93,
+			"testNumber": 3,
+			"questionNumber": 21,
+			"question": "What does this regulatory sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Road ends.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "No U-turn.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Left turn.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 94,
+			"testNumber": 3,
+			"questionNumber": 22,
+			"question": "On a two-lane undivided highway, the maximum speed limit for vehicles towing trailers is ______ unless otherwise posted.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "60 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "55 mph.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "65 mph.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 95,
+			"testNumber": 3,
+			"questionNumber": 23,
+			"question": "When you want to enter a freeway, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop before merging into freeway traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Enter the freeway at or near the speed of freeway traffic.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Stop and yield to the traffic on the freeway.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 96,
+			"testNumber": 3,
+			"questionNumber": 24,
+			"question": "If all vehicles are traveling at 55 mph and have to make a sudden stop, which vehicle will take the longest to come to a stop?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A passenger car.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A truck.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A small van.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 97,
+			"testNumber": 3,
+			"questionNumber": 25,
+			"question": "Which of the following statements about lane markings is true?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A broken yellow line between opposing lanes of traffic means that you may not cross the line.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A solid white line between lanes of traffic means that you should stay in your lane unless a special situation requires you to change lanes.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A double solid line between opposing lanes of traffic means that vehicles on either side can pass.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 98,
+			"testNumber": 3,
+			"questionNumber": 26,
+			"question": "What should you do if another driver tailgates your vehicle?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Increase your speed to get away from the tailgater.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Change lanes to allow the tailgater to pass.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Do not allow the tailgater to pass you.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 99,
+			"testNumber": 3,
+			"questionNumber": 27,
+			"question": "If you plan to turn beyond an intersection, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Start signaling when you are in the intersection.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Signal just before making the turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Signal before passing through the intersection.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 100,
+			"testNumber": 3,
+			"questionNumber": 28,
+			"question": "What does this sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A flag person is ahead; vehicles must go slow.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A pedestrian crosswalk is ahead; vehicles must yield.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A crew is at work; vehicles must slow down.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 101,
+			"testNumber": 3,
+			"questionNumber": 29,
+			"question": "The wide white line painted across a traffic lane before an intersection is known as a:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Limit line.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Crosswalk line.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Merge line.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 102,
+			"testNumber": 3,
+			"questionNumber": 30,
+			"question": "On a highway with three or more lanes going in one direction, vehicles passing others or turning left should use:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The left lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "The middle lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The right lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 103,
+			"testNumber": 3,
+			"questionNumber": 31,
+			"question": "_________ are the most likely places for car and motorcycle collisions to occur.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Expressways.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Intersections.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Roundabouts.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 104,
+			"testNumber": 3,
+			"questionNumber": 32,
+			"question": "When you approach a roundabout, you must enter to the _______ of the central island.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Right.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Left.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Center.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 105,
+			"testNumber": 3,
+			"questionNumber": 33,
+			"question": "If a car approaches you with its high-beam headlights on, you must __________ to keep yourself from being temporarily blinded.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Look at the center of the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Look toward the right edge of the road.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Look toward the left edge of the road.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 106,
+			"testNumber": 3,
+			"questionNumber": 34,
+			"question": "If you are approaching a stop sign, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop at the broken white limit line.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Stop at the broken yellow limit line.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Stop at the solid white limit line.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 107,
+			"testNumber": 3,
+			"questionNumber": 35,
+			"question": "What should you do if you are overtaking a bicycle and an oncoming vehicle is approaching at the same time?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Slow down and let the oncoming vehicle pass first to leave extra room for the bicycle.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Overtake the bicycle first to leave extra room for the oncoming vehicle.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Leave a little room for the oncoming vehicle while overtaking the bicycle.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 108,
+			"testNumber": 3,
+			"questionNumber": 36,
+			"question": "When you turn left from a one-way street onto another one-way street, you should turn into:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Any safely open lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "The far right lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The far left lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 109,
+			"testNumber": 4,
+			"questionNumber": 1,
+			"question": "At an intersection, you should yield to another vehicle:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "If the vehicle is to your right and arrived at the same time as you.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "If the vehicle is just starting to enter the intersection.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "In both of the above situations.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 110,
+			"testNumber": 4,
+			"questionNumber": 2,
+			"question": "Your vehicle breaks down on a freeway. You are not able to move the vehicle off the road completely as the road shoulder is too narrow. What is the best thing to do?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Leave the vehicle immediately and wave at drivers to let them know you are blocking the lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Exit on the right side of your vehicle and proceed to a safe place.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Stay inside your vehicle with the seat belt on until help arrives.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 111,
+			"testNumber": 4,
+			"questionNumber": 3,
+			"question": "When should you switch on your high-beam headlights?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At night when it rains.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "When driving in open country at night or on dark city streets.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "All night.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 112,
+			"testNumber": 4,
+			"questionNumber": 4,
+			"question": "It is unsafe for you to pass when:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The vehicle ahead is traveling slower than the safe speed.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The pavement markings are broken yellow lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You are moving through an intersection.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 113,
+			"testNumber": 4,
+			"questionNumber": 5,
+			"question": "A yield sign indicates that a driver must slow down and be prepared to _________ if a vehicle or pedestrian with the right-of-way is approaching from another direction.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Make a turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Stop.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Increase speed.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 114,
+			"testNumber": 4,
+			"questionNumber": 6,
+			"question": "A center lane between lanes of traffic traveling in opposite directions may be designated for:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Left turns only.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Right turns only.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Passing.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 115,
+			"testNumber": 4,
+			"questionNumber": 7,
+			"question": "What does this sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A place reserved for persons with disabilities.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Wheelchair availability.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A hospital ahead.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 116,
+			"testNumber": 4,
+			"questionNumber": 8,
+			"question": "Which of these signs indicates a hospital ahead?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "D.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "C.",
+					"isCorrect": false
+				},
+				{
+					"id": 4,
+					"text": "B.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 117,
+			"testNumber": 4,
+			"questionNumber": 9,
+			"question": "When you park and leave your vehicle on a highway or street, you should NOT:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop the engine.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Lower the windows.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Set the parking brake.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 118,
+			"testNumber": 4,
+			"questionNumber": 10,
+			"question": "Before backing up your vehicle, you should look to the front, sides, and rear, and continue to look _________ while backing.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "To the rear.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "In the side mirrors.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "To the front.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 119,
+			"testNumber": 4,
+			"questionNumber": 11,
+			"question": "Which of the following statements about passing other vehicles is true?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Always signal before passing.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Do not pull out to pass unless you know you will have enough space to pull back into your lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Both of the above are true.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 120,
+			"testNumber": 4,
+			"questionNumber": 12,
+			"question": "Which of the following statements about using headlights is FALSE?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Low beams are used in city driving and driving in traffic on roadways.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "High beams are used when traveling behind other vehicles.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Low beams are used when traveling in fog, rain, or snow.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 121,
+			"testNumber": 4,
+			"questionNumber": 13,
+			"question": "Lanes of traffic going in opposite directions are divided by:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "White lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Black lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Yellow lines.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 122,
+			"testNumber": 4,
+			"questionNumber": 14,
+			"question": "What does this sign mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Merge left.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Go straight.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Turn left or go straight.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 123,
+			"testNumber": 4,
+			"questionNumber": 15,
+			"question": "What does this sign indicate?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Look straight while driving.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "There is a one-way street ahead.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You can only go straight.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 124,
+			"testNumber": 4,
+			"questionNumber": 16,
+			"question": "All regulatory devices on the road tell you:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "About hazardous conditions or the possibility of hazardous conditions.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "How to find your way safely or provide information to make your trip more comfortable.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "To stop, proceed in a certain direction, or limit your speed.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 125,
+			"testNumber": 4,
+			"questionNumber": 17,
+			"question": "Following too closely behind another vehicle is called:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Defensive driving.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Aggressive driving.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Tailgating.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 126,
+			"testNumber": 4,
+			"questionNumber": 18,
+			"question": "High-Occupancy Vehicle (HOV) lanes are reserved for:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Car pools and vehicles with more than one person.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Tractor-trailers with less than three persons.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Farm machinery vehicles and trucks.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 127,
+			"testNumber": 4,
+			"questionNumber": 19,
+			"question": "Large electronic flashing arrow panels may be used in work zones day and night to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Guide drivers into certain traffic lanes.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Divert drivers into work zones.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Guide drivers into certain parking zones.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 128,
+			"testNumber": 4,
+			"questionNumber": 20,
+			"question": "What is the first rule of a safe and legal turn?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Increase speed.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Reduce speed.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Move into the proper lane well before the turn.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 129,
+			"testNumber": 4,
+			"questionNumber": 21,
+			"question": "You are driving on the freeway and notice another driver using a handheld cell phone. What is the best thing to do?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Increase your following distance.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Alert the police immediately.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Honk your horn and wave to the driver to get off the phone.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 130,
+			"testNumber": 4,
+			"questionNumber": 22,
+			"question": "When parking on a public road, you must park parallel to and within ____ inches of the curb or edge of the roadway.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "20.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "21.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "18.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 131,
+			"testNumber": 4,
+			"questionNumber": 23,
+			"question": "If a tire suddenly goes flat while you're driving, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Hold the steering wheel tightly and keep the vehicle straight.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Move to the left side of the road.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Increase your speed.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 132,
+			"testNumber": 4,
+			"questionNumber": 24,
+			"question": "When turning left from a multi-lane one-way road onto another one-way road, start your turn from:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The far left lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Any lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The far right lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 133,
+			"testNumber": 4,
+			"questionNumber": 25,
+			"question": "You must use your high-beam headlights in all of the following situations, except:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "On unfamiliar roads.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "In fog, snow, or heavy rain.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "In construction areas.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 134,
+			"testNumber": 4,
+			"questionNumber": 26,
+			"question": "In California, the speed limit for a blind intersection is:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "25 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "20 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "15 mph.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 135,
+			"testNumber": 4,
+			"questionNumber": 27,
+			"question": "When you turn off a high-speed, two-lane roadway, _______ if you have traffic following you.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Try not to slow down your vehicle too quickly.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Try to slow down your vehicle quickly.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Try to increase the speed of your vehicle.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 136,
+			"testNumber": 4,
+			"questionNumber": 28,
+			"question": "Before reaching the crest of a hill or entering a curve, you must _________, and watch for oncoming vehicles.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Speed up, turn on the headlights.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Slow down, move to the right side of the road.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Slow down, move to the left side of the road.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 137,
+			"testNumber": 4,
+			"questionNumber": 29,
+			"question": "Blind pedestrians may carry _________ canes or use guide dogs.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Red.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Black.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "White.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 138,
+			"testNumber": 4,
+			"questionNumber": 30,
+			"question": "Flashing yellow lights on a school bus require other drivers to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Slow their vehicles and pass with caution.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Slow their vehicles and prepare to stop.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Pass quickly.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 139,
+			"testNumber": 4,
+			"questionNumber": 31,
+			"question": "Do not use your horn:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "When you want the driver in front of you to move out of the way.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "To honk at a blind person.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "In any of the above situations.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 140,
+			"testNumber": 4,
+			"questionNumber": 32,
+			"question": "If you approach an intersection with a steady yellow light, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop and wait for the red light.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Stop, look for pedestrians, and proceed with caution.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Slow down and proceed with caution, if you cannot stop safely.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 141,
+			"testNumber": 4,
+			"questionNumber": 33,
+			"question": "This sign warns that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The road is slippery when wet; drivers must go slow.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "A winding road is ahead; drivers should follow the directions.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "There is a gravel road with sharp curves ahead; drivers must proceed carefully.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 142,
+			"testNumber": 4,
+			"questionNumber": 34,
+			"question": "What is the correct hand signal for indicating a right turn?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Hand and arm extended outward.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Hand and arm extended upward.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Hand and arm extended downward.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 143,
+			"testNumber": 4,
+			"questionNumber": 35,
+			"question": "You may pass a stopped light-rail vehicle on the left side:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "If the tracks are so close to the right side that you cannot pass on the right.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "On one-way streets.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "In both of the above situations.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 144,
+			"testNumber": 4,
+			"questionNumber": 36,
+			"question": "Which of the following statements about passing a vehicle is FALSE?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Do not follow another vehicle that is passing a car in front of you.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Do not pass more than one vehicle at a time.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "You can exceed the speed limit to pass quickly.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 145,
+			"testNumber": 5,
+			"questionNumber": 1,
+			"question": "You are driving slowly on a two-lane road. If there are at least ____ vehicles behind you that are unable to pass you, you must pull over and allow them to pass.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "3.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "4.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "5.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 146,
+			"testNumber": 5,
+			"questionNumber": 2,
+			"question": "The octagonal shape in the figure is:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A Do Not Enter sign.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A Stop sign.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A Yield sign.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 147,
+			"testNumber": 5,
+			"questionNumber": 3,
+			"question": "_________ occurs on wet roads when your front tires start to ride on water instead of on the road.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Hydroplaning.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Tailgating.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Weaving.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 148,
+			"testNumber": 5,
+			"questionNumber": 4,
+			"question": "With any turning vehicle, the rear wheels follow a _________ than the front wheels.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Shorter path.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Slower path.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Longer path.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 149,
+			"testNumber": 5,
+			"questionNumber": 5,
+			"question": "If you are parallel parked on the right-hand side of the street, you should _________ before pulling out into traffic.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Signal a right turn and look over your right shoulder.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Signal a left turn and look over your left shoulder.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Signal a left turn and look over your right shoulder.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 150,
+			"testNumber": 5,
+			"questionNumber": 6,
+			"question": "If a pedestrian is in a marked or unmarked crosswalk, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Reduce your speed and proceed with caution.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Increase your speed and cross the crosswalk quickly.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Yield to the pedestrian.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 151,
+			"testNumber": 5,
+			"questionNumber": 7,
+			"question": "On two-lane highways, you are allowed to pass:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "While crossing or within 100 feet of a railroad crossing.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "When there is a broken yellow line on your side of the center dividing line.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "When you are approaching the top of a hill or are on a curve, and there is no clear view ahead.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 152,
+			"testNumber": 5,
+			"questionNumber": 8,
+			"question": "Car drivers should NEVER:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Give a motorcycle the full lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Pass a motorcycle in the same lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Move to one side of your lane to give motorcyclists more room to pass.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 153,
+			"testNumber": 5,
+			"questionNumber": 9,
+			"question": "On one-way roads, yellow lines are used as:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Right-edge lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Left-edge lines.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Center lines.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 154,
+			"testNumber": 5,
+			"questionNumber": 10,
+			"question": "A triangular orange sign on the rear of a vehicle indicates that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The vehicle can travel faster than 25 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The vehicle cannot travel faster than 25 mph.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "The vehicle cannot travel faster than 45 mph.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 155,
+			"testNumber": 5,
+			"questionNumber": 11,
+			"question": "On two-lane roads where traffic moves in opposite directions, you may pass on the left only when:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A solid yellow line is in your lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A broken yellow line is in your lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A double solid yellow line is in the center.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 156,
+			"testNumber": 5,
+			"questionNumber": 12,
+			"question": "When approaching an intersection to make a right turn, you must stay _________ and make the turn close to the right curb.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "As close to the left as possible.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "As close to the right as possible.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "On the shoulder.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 157,
+			"testNumber": 5,
+			"questionNumber": 13,
+			"question": "The primary traveling aids for a blind person include:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A white cane and a wheelchair.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A white cane and a trained guide dog.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A red cane and a trained guide dog.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 158,
+			"testNumber": 5,
+			"questionNumber": 14,
+			"question": "Which of the following statements about the right-of-way is FALSE?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At a T-intersection without signs or signals, a vehicle on the through road must yield to vehicles on the terminating road.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Vehicles entering or crossing a roadway from a private driveway must yield to all approaching vehicles.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Vehicles must yield to pedestrians in unmarked crosswalks.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 159,
+			"testNumber": 5,
+			"questionNumber": 15,
+			"question": "If a driver extends his or her left arm out horizontally, it indicates that the driver is going to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Make a right turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Stop the vehicle.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Make a left turn.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 160,
+			"testNumber": 5,
+			"questionNumber": 16,
+			"question": "If temperatures are near freezing, which freezes first?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Bridges.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Both roads and bridges at the same time.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Roads.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 161,
+			"testNumber": 5,
+			"questionNumber": 17,
+			"question": "When you see an emergency vehicle with its lights flashing on the wrong side of the road, giving instructions through the loudspeaker, you should:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Stop immediately on the spot.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Obey the instructions.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Proceed slowly.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 162,
+			"testNumber": 5,
+			"questionNumber": 18,
+			"question": "An __________ is the connection of a freeway to a road or another freeway by a series of ramps.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Interchange.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Acceleration lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Exit ramp.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 163,
+			"testNumber": 5,
+			"questionNumber": 19,
+			"question": "What does this flashing arrow panel mean?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The roadway ahead is open to traffic.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The roadway ahead curves to the left.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Part of the roadway ahead is closed.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 164,
+			"testNumber": 5,
+			"questionNumber": 20,
+			"question": "When waiting to make a left turn at an intersection:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Shift gears.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Keep your wheels straight.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Keep your wheels turned toward the left.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 165,
+			"testNumber": 5,
+			"questionNumber": 21,
+			"question": "If you see two solid yellow lines on a roadway, it means that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Passing is permitted at any time.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "No passing is permitted.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Passing is permitted during the day.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 166,
+			"testNumber": 5,
+			"questionNumber": 22,
+			"question": "What does this road sign indicate?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Trucks turning ahead.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A slippery road ahead.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "A steep downgrade ahead.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 167,
+			"testNumber": 5,
+			"questionNumber": 23,
+			"question": "When turning right into a two-way street, start in the right-hand lane and enter into:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The far left lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The lane nearest to the right edge of the road.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Any available lane.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 168,
+			"testNumber": 5,
+			"questionNumber": 24,
+			"question": "This hand signal indicates that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The driver is slowing or stopping.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "The driver is making a right turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "The driver is making a left turn.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 169,
+			"testNumber": 5,
+			"questionNumber": 25,
+			"question": "Vehicles approaching a roundabout must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Yield to the traffic in the roundabout.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Come to a complete stop and wait for traffic in the roundabout to clear.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Enter the roundabout to the left of the central island.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 170,
+			"testNumber": 5,
+			"questionNumber": 26,
+			"question": "On a two-way roadway with a center lane, drivers from either direction can _________ from the center lane.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Park.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Make left turns and U-turns.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Make right turns.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 171,
+			"testNumber": 5,
+			"questionNumber": 27,
+			"question": "While driving, when you see a triangular road sign, you must:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Come to a complete stop.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Increase your speed.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Reduce your speed and yield.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 172,
+			"testNumber": 5,
+			"questionNumber": 28,
+			"question": "At an intersection, a steady yellow arrow signal pointing left indicates to the driver that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Oncoming traffic is stopped and he or she may turn left.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The signal is about to change to a green or red light or a red arrow.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "He or she must increase speed.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 173,
+			"testNumber": 5,
+			"questionNumber": 29,
+			"question": "Which of the following are used as left-edge lines on divided highways?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Single solid yellow lines.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Double solid white lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Single solid white lines.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 174,
+			"testNumber": 5,
+			"questionNumber": 30,
+			"question": "You may not cross a double solid yellow line on your left to:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Turn left into a driveway.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Make a U-turn.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Pass another vehicle.",
+					"isCorrect": true
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 175,
+			"testNumber": 5,
+			"questionNumber": 31,
+			"question": "Flag persons are often located on highways and in work zones:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "To slow vehicles to a lower speed limit posted ahead.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "To stop, slow, or guide the traffic in work zones.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "To report accidents to the police department and insurance companies.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 176,
+			"testNumber": 5,
+			"questionNumber": 32,
+			"question": "Which of the following right-of-way rules is FALSE?",
+			"answers": [
+				{
+					"id": 1,
+					"text": "At an intersection where there is no stop sign, yield sign, or traffic signal, drivers must yield to vehicles coming from the left.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "You must obey signals given by a law enforcement officer, even if the officer's signals contradict the traffic signals.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "At all times, drivers must yield the right-of-way to pedestrians in a marked or unmarked crosswalk.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 177,
+			"testNumber": 5,
+			"questionNumber": 33,
+			"question": "A _________ indicates the outer edge of a roadway, and it may be crossed only by traffic moving to or from the shoulder.",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Solid white line.",
+					"isCorrect": true
+				},
+				{
+					"id": 2,
+					"text": "Solid yellow line.",
+					"isCorrect": false
+				},
+				{
+					"id": 3,
+					"text": "Broken white line.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 178,
+			"testNumber": 5,
+			"questionNumber": 34,
+			"question": "On one-way roads, yellow lines are used as:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "Right-edge lines.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "Left-edge lines.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "Center lines.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 179,
+			"testNumber": 5,
+			"questionNumber": 35,
+			"question": "A triangular orange sign on the rear of a vehicle indicates that:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "The vehicle can travel faster than 25 mph.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "The vehicle cannot travel faster than 25 mph.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "The vehicle cannot travel faster than 45 mph.",
+					"isCorrect": false
+				}
+			],
+			"hint": "",
+			"image": ""
+		},
+		{
+			"id": 180,
+			"testNumber": 5,
+			"questionNumber": 36,
+			"question": "On two-lane roads where traffic moves in opposite directions, you may pass on the left only when:",
+			"answers": [
+				{
+					"id": 1,
+					"text": "A solid yellow line is in your lane.",
+					"isCorrect": false
+				},
+				{
+					"id": 2,
+					"text": "A broken yellow line is in your lane.",
+					"isCorrect": true
+				},
+				{
+					"id": 3,
+					"text": "A double solid yellow line is in the center.",
+					"isCorrect": false
+				}
+			]
+		}
+	]
+}

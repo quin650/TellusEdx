@@ -1,0 +1,30 @@
+.button_format button {
+    color: white;
+    background-color: #550155;
+    padding: .2rem .3rem;
+    width: 6rem;
+    cursor: pointer;
+    border: solid 1px #550155;
+    margin-right: .5rem;
+}
+
+.button_format button:hover {
+    color: white;
+    background-color: purple;
+    border: solid 1px white;
+}
+
+.button_format button:active {
+    font-weight: bold;
+    color: white;
+    background-color: #550155;
+    box-shadow: 2px 4px 1px 0px rgba(0, 0, 0, 0.26);
+    border: solid 1px white;
+    border-radius: 4px;
+}
+
+@media (max-width: 550px) {
+    .button_format button {
+        width: 95%;
+    }
+}

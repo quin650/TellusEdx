@@ -1,0 +1,32 @@
+.outer_container {
+	z-index: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 48px 0 0 0;
+	padding: 0;
+	height: Calc(100vh - 48px);
+	width: 100%;
+	min-width: 400px;
+	overflow: hidden;
+	color: var(--BlackToGray);
+}
+
+.inner_container {
+	z-index: 100;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	max-width: 1728px;
+	height: 100%;
+	width: 80%;
+	overflow: visible;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	font-size: 8rem;
+	scroll-snap-align: start;
+}

@@ -1,0 +1,56 @@
+.inputForm_container {
+    padding: .5rem 0rem .5rem 0rem;
+}
+
+.input_section label {
+    font-weight: bold;
+    margin-left: 3%;
+    padding: 0;
+}
+
+/* ****************************************** Invalid properties -- */
+.input_section.invalid label {
+    font-weight: bold;
+    margin-left: 3%;
+    color: red;
+}
+
+/* ----------------------------------------------------------------- */
+
+.input_section input {
+    border-radius: 0%;
+    width: 93%;
+    margin: .12rem 0rem .5rem 3%;
+    outline: solid 2px white;
+    border: solid 2px black;
+}
+
+
+/* ****************************************** Invalid properties -- */
+.input_section.invalid input {
+    border-radius: 0%;
+    width: 93%;
+    margin: .12rem 0rem .5rem 3%;
+    outline: solid 2px red;
+    border: solid 2px red;
+    background-color: rgb(252, 229, 233);
+}
+
+/* ----------------------------------------------------------------- */
+
+.input_section input:focus {
+    background: #e0d1e2;
+    border: 2px solid #550155;
+    outline: 2px solid #550155;
+}
+
+.input_section input:hover {
+    border: 2px solid #550155;
+    outline: 2px solid #550155;
+}
+
+.input_button__section {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
+}

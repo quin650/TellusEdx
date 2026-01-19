@@ -1,0 +1,26 @@
+.tasks_container {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+}
+
+.tasks_container div{
+    display: flex;
+    flex-wrap: wrap;
+}
+.task_name__section {
+    display: flex;
+    width: auto;
+}
+
+.task_name__header {
+    font-size: .7rem;
+    color: #b6b6b6;
+    padding-top: .3rem;
+}
+
+.task_name {
+    font-size: 1rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}

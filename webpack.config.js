@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
 	return {
 		mode: isProd ? "production" : "development",
 
-		entry: ["./src/index.js"],
+		entry: ["./frontend/src/index.js"],
 
 		output: {
 			path: path.resolve(__dirname, "./backend/static/frontend"),
