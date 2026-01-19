@@ -68,8 +68,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "django_UserAccounts.apps.AccountsConfig",
-    "user_profile.apps.UserProfileConfig",
+    "backend.django_UserAccounts.apps.AccountsConfig",
+    "backend.user_profile.apps.UserProfileConfig",
 ]
 
 REST_FRAMEWORK = {
