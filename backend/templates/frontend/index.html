@@ -1,0 +1,62 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>TellusEd</title>
+
+		<meta
+			name="description"
+			content="Learn your way with TellusEd — guided, self-paced courses, progress tracking, and top-rated resources for the topics you’re struggling with."
+		/>
+		<link rel="canonical" href="https://tellused.com{{ request.path }}" />
+		<meta name="robots" content="index,follow" />
+		<!-- Preconnect -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+		<!-- Preload only the font you actually use first -->
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" />
+
+		<!-- Request only Montserrat -->
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap"
+			onload="
+				this.onload = null;
+				this.rel = 'stylesheet';
+			"
+		/>
+
+		<!-- style.css: non-blocking -->
+		<link
+			rel="preload"
+			href="{% static 'css/style.css' %}"
+			as="style"
+			onload="
+				this.onload = null;
+				this.rel = 'stylesheet';
+			"
+		/>
+		<noscript><link rel="stylesheet" href="{% static 'css/style.css' %}" /></noscript>
+	</head>
+	<body>
+		<div class="root">
+			<script src="{% static 'frontend/main.js'%}" defer></script>
+
+			{% if request.path == "/PDFViewer" %}
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
+			<script defer>
+				document.addEventListener("DOMContentLoaded", () => {
+					pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
+				});
+			</script>
+			{% endif %}
+		</div>
+	</body>
+</html>
