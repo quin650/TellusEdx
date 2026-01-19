@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
 		entry: ["./src/index.js"],
 
 		output: {
-			path: path.resolve(__dirname, "./static/frontend"),
+			path: path.resolve(__dirname, "./backend/static/frontend"),
 			filename: "[name].js",
 			// optional but good practice for long-term caching if you ever change filename strategy
 			clean: false,
@@ -80,7 +80,7 @@ module.exports = (env, argv) => {
 							extractComments: false,
 							terserOptions: { format: { comments: false } },
 						}),
-				  ]
+					]
 				: [],
 			splitChunks: false,
 		},

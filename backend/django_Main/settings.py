@@ -12,9 +12,10 @@ import os
 from environs import Env
 from datetime import timedelta
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# Build paths inside the project like this: BACKEND_DIR / 'subdir'.
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+REPO_ROOT  = BACKEND_DIR.parent    
+BASE_DIR = str(BACKEND_DIR) 
 # Deployment_Delta
 
 env = Env()
@@ -129,7 +130,7 @@ ROOT_URLCONF = "django_Main.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates/frontend")],
+        "DIRS": [os.path.join(BACKEND_DIR, "templates/frontend")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -211,9 +212,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MAX_AGE = 31536000  # 1 year
-STATIC_URL = "static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [REPO_ROOT / "static"]
+STATIC_ROOT = BACKEND_DIR / "staticfiles"
 
 import django_heroku
 django_heroku.settings(locals())
