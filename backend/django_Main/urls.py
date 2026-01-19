@@ -23,8 +23,8 @@ def robots_txt(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', indexView),
-    path('accounts/', include('django_UserAccounts.urls')),
-    path('profile/', include('user_profile.urls')),
+    path('accounts/', include('backend.django_UserAccounts.urls')),
+    path('profile/', include('backend.user_profile.urls')),
     path("robots.txt", robots_txt),
 ]
 
