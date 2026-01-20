@@ -5,7 +5,11 @@
 .env.*
 *.env
 
+
+########################################
 # Virtual environments
+########################################
+backend/.venv/
 venv/
 .venv/
 *.venv
@@ -28,25 +32,24 @@ db.sqlite3
 # Django static & media (generated)
 ########################################
 # collectstatic output (never commit)
-staticfiles/
+backend/staticfiles/
 
 # User uploads (environment-specific)
-media/
+backend/media/
 
-# Ignore static by default,
-# but allow committed frontend bundle (webpack output)
-static/*
-!static/frontend/
-!static/frontend/**
-!static/css/
-!static/css/font-display.css
+# Ignore all backend static by default,
+# but allow committed frontend bundle
+backend/static/*
+!backend/static/frontend/
+!backend/static/frontend/**
+
 
 ########################################
-# Frontend (React / Node — local build only)
+# Frontend (React / Node)
 ########################################
-node_modules/
-build/
-dist/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
 
 # Package manager logs
 npm-debug.log*
@@ -58,7 +61,11 @@ yarn-error.log*
 # OS / Editor
 ########################################
 .DS_Store
-.vscode/
+
+# Keep workspace settings, ignore rest
+.vscode/*
+!.vscode/settings.json
+
 .idea/
 
 
@@ -67,6 +74,9 @@ yarn-error.log*
 ########################################
 .code_Notes/
 
+
+########################################
 # Deployment artifacts (local only)
+########################################
 slug.tar.gz
 tellused/
