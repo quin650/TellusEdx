@@ -49,6 +49,17 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
 ]
+ALLOWED_HOSTS = [
+    "tellused-6508aa12494e.herokuapp.com",
+    "tellused.com",
+    "www.tellused.com",
+    "telluslearn.com",
+    "www.telluslearn.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+
 CORS_ORIGIN_ALLOW_ALL = False 
 CORS_ALLOWED_ORIGINS = [
     'https://tellused-6508aa12494e.herokuapp.com',  # Production URL
