@@ -229,3 +229,7 @@ STATIC_ROOT = BACKEND_DIR / "staticfiles"
 
 import django_heroku
 django_heroku.settings(locals())
+
+# --- Heroku ACM compatibility: do not force HTTPS for HTTP-01 validation ---
+SECURE_SSL_REDIRECT = False
+SECURE_REDIRECT_EXEMPT = [r"^\.well-known/acme-challenge/"]
