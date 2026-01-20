@@ -65,7 +65,7 @@ yarn-error.log*
 ########################################
 # Local notes / artifacts
 ########################################
-zCode_Notes/
+.code_Notes/
 
 # Deployment artifacts (local only)
 slug.tar.gz

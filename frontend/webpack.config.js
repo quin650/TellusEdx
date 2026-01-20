@@ -8,10 +8,10 @@ module.exports = (env, argv) => {
 	return {
 		mode: isProd ? "production" : "development",
 
-		entry: ["./frontend/src/index.js"],
+		entry: ["./src/index.js"],
 
 		output: {
-			path: path.resolve(__dirname, "./backend/static/frontend"),
+			path: path.resolve(__dirname, "../backend/static/frontend"),
 			filename: "[name].js",
 			// optional but good practice for long-term caching if you ever change filename strategy
 			clean: false,
