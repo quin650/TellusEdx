@@ -16,15 +16,21 @@ def robots_txt(request):
     content = "\n".join([
         "User-agent: *",
         "Disallow:",
-        "Sitemap: https://tellused.com/sitemap.xml",
+        "Sitemap: https://telluslearn.com/sitemap.xml",
     ])
     return HttpResponse(content, content_type="text/plain")
+def acme_challenge(request, token):
+    # Heroku ACM HTTP-01 validation hits this path.
+    # Return a plain response without redirect.
+    return HttpResponse("", status=404, content_type="text/plain")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', indexView),
     path('accounts/', include('django_UserAccounts.urls')),
     path('profile/', include('user_profile.urls')),
+    path(".well-known/acme-challenge/<str:token>", acme_challenge),
     path("robots.txt", robots_txt),
 ]
 
