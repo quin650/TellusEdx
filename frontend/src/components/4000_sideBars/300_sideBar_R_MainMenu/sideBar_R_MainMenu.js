@@ -271,7 +271,7 @@ const SideBar_R_MainMenu = () => {
 					</i>
 					<span>Log in</span>
 				</button>
-		  ))
+			))
 		: (option = (
 				<button type="button" onClick={LogInHandler} className={classes.menuItem}>
 					<i className={classes.icon} onClick={LogInHandler}>
@@ -279,7 +279,7 @@ const SideBar_R_MainMenu = () => {
 					</i>
 					<span>Log in</span>
 				</button>
-		  ));
+			));
 	let content = (
 		<div className={classes.buttonPadding}>
 			<GetStartedButton />
@@ -291,7 +291,7 @@ const SideBar_R_MainMenu = () => {
 				<div className={classes.buttonPadding}>
 					<GetStartedButton />
 				</div>
-		  ));
+			));
 	const toggleMenu = () => {
 		dispatch(userReducerActions.sideBar_R_Close_Main());
 	};
@@ -353,7 +353,7 @@ const SideBar_R_MainMenu = () => {
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
 					</Link>
 					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.companyName}>
-						TellusEd
+						TellusLearn
 					</Link>
 				</div>
 				<div className={classes.top}>

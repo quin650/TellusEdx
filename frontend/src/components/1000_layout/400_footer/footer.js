@@ -26,7 +26,7 @@ const Footer = () => {
 					</li>
 					<li>
 						<Link to="/home" onClick={handleClickScroll} className={classes.companyName}>
-							TellusEd
+							TellusLearn
 						</Link>
 					</li>
 				</ul>

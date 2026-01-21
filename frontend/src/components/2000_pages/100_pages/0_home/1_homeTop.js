@@ -36,7 +36,7 @@ const HomeTop = () => {
 							marginRight: "auto",
 						}}
 					>
-						TellusEd is adding a Montessori-flair to online-learning. Learn your way.
+						TellusLearn is adding a Montessori-flair to online-learning. Learn your way.
 					</h2>
 				</blockquote>
 				<img src={logo_bookPencil_orange} alt="Logo" className={classes.logo_bookPencil_orange} tabIndex="0"></img>
