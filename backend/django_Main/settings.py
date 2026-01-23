@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_UserAccounts.apps.AccountsConfig",
     "user_profile.apps.UserProfileConfig",
+    'django.contrib.sitemaps',
 ]
 
 REST_FRAMEWORK = {
