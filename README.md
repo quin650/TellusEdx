@@ -1,10 +1,10 @@
-# [TellusEd](https://tellused.com/)
+# [TellusLearn](https://telluslearn.com/)
 
 <br>
 
 ## 📚 Overview
 
-[TellusEd](https://tellused.com/) - a note taking app + more! <br />
+[TellusLearn](https://telluslearn.com/) - a note taking app + more! <br />
 
 - You can also teach!<br />
 - While learning and taking notes, improve how a section is taught!<br />
