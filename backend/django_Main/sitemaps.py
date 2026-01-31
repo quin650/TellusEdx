@@ -12,7 +12,6 @@ class StaticReactRoutesSitemap(Sitemap):
         # Add your real, indexable routes here
         return [
             "/",
-            "/home",
             "/demos",
             "/demo_dmvClassC",          # add course landing pages you want indexed
         ]

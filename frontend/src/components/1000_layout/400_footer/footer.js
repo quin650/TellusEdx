@@ -20,12 +20,12 @@ const Footer = () => {
 			<div className={classes.outerContainer_Top}>
 				<ul className={classes.innerContainer_Top}>
 					<li>
-						<Link to="/home" onClick={handleClickScroll} className={classes.LogoContainer}>
+						<Link to="/" onClick={handleClickScroll} className={classes.LogoContainer}>
 							<img alt="Go To Home Page" src={Logo} className={classes.Logo} />
 						</Link>
 					</li>
 					<li>
-						<Link to="/home" onClick={handleClickScroll} className={classes.companyName}>
+						<Link to="/" onClick={handleClickScroll} className={classes.companyName}>
 							TellusLearn
 						</Link>
 					</li>

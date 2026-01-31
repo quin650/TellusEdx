@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import SliderItem from "./sliderItem";
 import classes from "./demo_LandingPage.module.css";
 
@@ -39,13 +40,18 @@ const Demo_LandingPage = () => {
 
 	return (
 		<main className={classes.container}>
+			<Helmet>
+				<title>DMV Practice Demos | TellusLearn</title>
+				<meta name="description" content="Try DMV practice demos with exam-style questions and guided feedback. Start with the California Driver’s Handbook demo." />
+				<link rel="canonical" href="https://telluslearn.com/demos" />
+			</Helmet>
 			<div className={classes.billboardContainer}>
 				<div className={classes.billboardRow}>
 					<div className={classes.billboardPane}>
 						<div className={classes.billboardMotion}>
 							<div className={classes.motionBackgroundComponent}>
 								<div className={classes.heroImageWrapper}>
-									<img src="https://www.dmv.ca.gov/portal/uploads/2023/10/Teen-Microsite_The-Exciting-Journey-Ahead_360x180.jpg" alt="" />
+									<img src="https://www.dmv.ca.gov/portal/uploads/2023/10/Teen-Microsite_The-Exciting-Journey-Ahead_360x180.jpg" alt="California DMV Driver’s Handbook" />
 									<div className={classes.trailerVignette}></div>\<div className={classes.vignetteLayerTop}></div>
 									<div className={classes.vignetteLayerBottom}></div>
 								</div>

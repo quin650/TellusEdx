@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { throttle } from "lodash";
+import { Helmet } from "react-helmet-async";
 import SideBar_R_Notes from "../../4000_sideBars/200_sideBar_R_Notes/sideBar_R_Notes";
 import SideBar_L_TOC from "../../4000_sideBars/100_sideBar_L_TOC/1_sideBar_L_TOC";
 import SideBar_R_Questions_Container from "../../4000_sideBars/400_sideBar_R_Questions/10_sideBar_R_Questions_Container";
@@ -219,7 +220,7 @@ const DemoDMVClassC = () => {
 				dispatch(userReducerActions.sideBar_L_Open());
 			}
 		}, 50),
-		[sideBar_L_isOpen_rdx]
+		[sideBar_L_isOpen_rdx],
 	);
 	useEffect(() => {
 		if (!sideBar_L_AllowCollapse_OnWindowResize_rdx) return;
@@ -299,7 +300,16 @@ const DemoDMVClassC = () => {
 	};
 
 	return (
-		<main className={classes.mainContainer} id="demo_main" role="demo_main" ref={mainContainerRef}>
+		<div className={classes.mainContainer} id="demo_main" role="main" ref={mainContainerRef}>
+			<Helmet>
+				<title>TellusLearn | DMV Practice & Guided Learning</title>
+				<meta
+					name="description"
+					content="Practice California DMV Class C permit questions with quizzes, review failed answers, track progress, and study by handbook section."
+				/>
+				<link rel="canonical" href="https://telluslearn.com/demo_dmvClassC" />
+			</Helmet>
+
 			<div className={classes.bodyContainer}>
 				{resetThisTest_Modal_isOpen_rdx && <Modal_resetThisTest />}
 				<SideBar_L_TOC
@@ -319,7 +329,7 @@ const DemoDMVClassC = () => {
 				{sideBar_R_Notes_isOpen_rdx && <SideBar_R_Notes pageContentRef={pageContentRef} />}
 				{sideBar_R_Questions_isOpen_rdx && <SideBar_R_Questions_Container pageContentRef={pageContentRef} />}
 			</div>
-		</main>
+		</div>
 	);
 };
 

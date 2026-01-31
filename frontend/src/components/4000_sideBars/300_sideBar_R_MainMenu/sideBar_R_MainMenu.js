@@ -352,10 +352,10 @@ const SideBar_R_MainMenu = () => {
 			>
 				{exitButton}
 				<div className={classes.outerLogoContainer}>
-					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
+					<Link to="/" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.Logo}>
 						<img src={Logo} alt="Logo" className={classes.Logo}></img>
 					</Link>
-					<Link to="/home" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.companyName}>
+					<Link to="/" onClick={CloseNavBarMenu_and_ScrollSmoothly} className={classes.companyName}>
 						TellusLearn
 					</Link>
 				</div>
@@ -363,8 +363,8 @@ const SideBar_R_MainMenu = () => {
 					<div className={classes.sidebarMenu}>
 						<Link
 							onClick={CloseNavBarMenu_and_ScrollSmoothly}
-							to="/home"
-							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/home" || activeIcon === "/") && classes.isActiveHomeIcon}`}
+							to="/"
+							className={`${classes["sidebarMenuOptions"]} ${(activeIcon === "/" || activeIcon === "/") && classes.isActiveHomeIcon}`}
 						>
 							<i>{homeIcon}</i>
 							<span>Home</span>

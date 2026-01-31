@@ -342,7 +342,7 @@ const MainNavbar = () => {
 		<Fragment>
 			<li aria-hidden="true" role="presentation" className={classes.leftBorder} ref={leftBorderRef}></li>
 			<li className={classes.topLeft}>
-				<Link to="/home" onClick={goToTop}>
+				<Link to="/" onClick={goToTop}>
 					<img alt="Go To Home Page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
@@ -397,7 +397,7 @@ const MainNavbar = () => {
 		<Fragment>
 			<li aria-hidden="true" role="presentation" className={classes.leftBorder} ref={leftBorderRef}></li>
 			<li className={classes.topLeft}>
-				<Link to="/home" onClick={goToTop}>
+				<Link to="/" onClick={goToTop}>
 					<img alt="Go To Home Page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>

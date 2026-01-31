@@ -106,7 +106,7 @@ const App = () => {
 				document.getElementById(divIDs[i - 1]).scrollIntoView({ behavior: "smooth" });
 			}
 		},
-		[divIDs]
+		[divIDs],
 	);
 	const isMac = userComputerType_rdx === "mac";
 	const handleKeyDownCombination = (e) => {
@@ -196,8 +196,7 @@ const App = () => {
 					<Route path="/demo_dmvClassC" element={<DemoDMVClassC />} />
 					<Route path="/PDFViewer" element={<PDFViewer />} />
 					{/* General Pages */}
-					<Route path="/" element={<Home />} />
-					<Route path="/home" element={<Home isToggleChange={isToggleChange} />} />
+					<Route path="/" element={<Home isToggleChange={isToggleChange} />} />
 					<Route path="/aboutus" element={<GeneralPage text={"About Us"} DivID={"About Us"} />} />
 					<Route path="/company" element={<GeneralPage text={"company"} DivID={"company"} />} />
 					<Route path="/ourteam" element={<GeneralPage text={"Our Team"} DivID={"Our Team"} />} />

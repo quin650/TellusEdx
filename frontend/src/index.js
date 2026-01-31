@@ -1,5 +1,6 @@
 import React, { createContext, useRef } from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import store from "./store";
@@ -15,11 +16,13 @@ const RefProvider = ({ children }) => {
 };
 
 root.render(
-	<Provider store={store}>
-		<RefProvider>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</RefProvider>
-	</Provider>
+	<HelmetProvider>
+		<Provider store={store}>
+			<RefProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</RefProvider>
+		</Provider>
+	</HelmetProvider>,
 );
