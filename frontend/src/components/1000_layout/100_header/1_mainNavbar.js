@@ -4,7 +4,9 @@ import { RefContext } from "../../../index";
 import { useLocation } from "react-router-dom";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import { Link } from "react-router-dom";
-import GetStartedButton from "../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
+
+import TestDemoButton from "../../1000_layout/200_layoutFeatures/60_testDemoButton";
+
 import Modal_getStarted from "../../3000_modals/100_modal_getStarted/modal_getStarted";
 import Modal_languageSettings from "../../3000_modals/200_modal_languageSettings/1_modal_languageSettings";
 import SideBar_R_MainMenu from "../../4000_sideBars/300_sideBar_R_MainMenu/sideBar_R_MainMenu";
@@ -399,8 +401,8 @@ const MainNavbar = () => {
 					<img alt="Go To Home Page" src={Logo} className={classes.Logo}></img>
 				</Link>
 			</li>
-			<li className={classes.getStartedButtonContainer}>
-				<GetStartedButton />
+			<li className={classes.TestDemoButtonContainer}>
+				<TestDemoButton />
 			</li>
 			<li className={`${classes["searchContainer"]} ${searchBarIsOpened ? classes.open : ""}`}>
 				<Tippy content={search_Button_text} placement="bottom" theme="custom" appendTo="parent">
@@ -455,7 +457,7 @@ const MainNavbar = () => {
 	return (
 		<nav className={classes.navContainer}>
 			<ul className={classes.inner_container_nav}>
-				{location.pathname === "/demo_dmvClassC" ? demoContent : regularContent}
+				{location.pathname === "/demo_dmvClassC" ? demoContent : location.pathname === "/demos" ? authUser : regularContent}
 
 				{sideBar_R_Main_isOpen_rdx && <SideBar_R_MainMenu />}
 				{getStarted_ModalStatus_rdx && <Modal_getStarted />}

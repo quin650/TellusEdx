@@ -1,5 +1,7 @@
 import React from "react";
-import GetStartedButton from "../../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
+
+import TestDemoButton from "../../../1000_layout/200_layoutFeatures/60_testDemoButton";
+
 const logo_bookPencil_orange = "/static/images/logos_webp/logo_bookPencil_orange.webp";
 const logo_column_purple = "/static/images/logos_webp/logo_column_purple.webp";
 const logo_computer_orange = "/static/images/logos_webp/logo_computer_orange.webp";
@@ -48,7 +50,7 @@ const HomeTop = () => {
 				<img src={logo_money_green} alt="Logo" className={classes.logo_money_green} tabIndex="0"></img>
 				<img src={logo_lightBulb_purple} alt="Logo" className={classes.logo_lightBulb_purple} tabIndex="0"></img>
 				<div className={classes.buttonSection}>
-					<GetStartedButton />
+					<TestDemoButton />
 				</div>
 			</div>
 		</div>

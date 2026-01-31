@@ -166,7 +166,7 @@ button:focus {
 	fill: #9e9e9e;
 }
 /*! Get Started  ----------------------------------------------------*/
-.getStartedButtonContainer {
+.TestDemoButtonContainer {
 	display: flex;
 	margin-left: 0.75rem;
 	justify-content: flex-end;
@@ -177,7 +177,7 @@ button:focus {
 	right: 105px;
 }
 @media (max-width: 800px) {
-	.getStartedButtonContainer {
+	.TestDemoButtonContainer {
 		width: 0;
 		visibility: hidden;
 	}

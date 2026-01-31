@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logout_APIAction } from "../../../a.actions/auth_Actions";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import GetStartedButton from "../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
+// import GetStartedButton from "../../3000_modals/100_modal_getStarted/getStartedFeatures/1_getStartedButton";
+
+import GetStartedButton from "../../1000_layout/200_layoutFeatures/50_getStartedButton";
+
 const Logo = "/static/images/logos_webp/logo_tellusEd_whiteCircleBackground.webp";
 
 import classes from "./sideBar_R_MainMenu.module.css";

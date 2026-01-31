@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { userReducerActions } from "../../../../a.reducers/auth_Reducers";
-import classes from "./1_getStartedButton.module.css";
+import { userReducerActions } from "../../../a.reducers/auth_Reducers";
+import classes from "./50_getStartedButton.module.css";
 
 const GetStartedButton = () => {
 	const dispatch = useDispatch();
