@@ -1,10 +1,10 @@
-# [TellusEd](https://tellused.com/)
+# [TellusLearn](https://tellusLearn.com/)
 
 <br>
 
 ## 📚 Overview
 
-[TellusEd](https://tellused.com/) - a note taking app + more! <br />
+[TellusLearn](https://tellusLearn.com/) - a note taking app + more! <br />
 
 - You can also teach!<br />
 - While learning and taking notes, improve how a section is taught!<br />
@@ -94,7 +94,7 @@ DATABASE_URL=sqlite:///dev.db
 ```
 open terminal & run commands:
    % psql postgres
-   postgres=# CREATE DATABASE tellused OWNER postgres;
+   postgres=# CREATE DATABASE tellusLearn OWNER postgres;
 
 set password (required in django settings setup)
    postgres=#\password
