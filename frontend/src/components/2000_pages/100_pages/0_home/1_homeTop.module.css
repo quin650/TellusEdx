@@ -41,21 +41,6 @@
 	height: 80vh;
 	pointer-events: none; /* Text ignores pointer events, allows for the icons to still be selected even-though they are set behind the text */
 }
-/* .caption h1 {
-	font-size: 6rem;
-	letter-spacing: -0.3rem;
-	margin: 0px;
-	text-shadow: 0rem 0.2rem 0.2rem black;
-	margin-left: 0px;
-	margin-right: auto;
-}
-.caption h3 {
-	font-size: 1.6rem;
-	font-family: roboto;
-	font-weight: 400;
-	margin-left: 0px;
-	margin-right: auto;
-} */
 .buttonSection {
 	position: relative;
 	display: flex;
@@ -76,7 +61,9 @@
 	left: -3px;
 	transform: rotate(-18deg);
 	border-radius: 2px;
-	box-shadow: -8px -8px 16px #ffd699, 8px 8px 16px #a1734a;
+	box-shadow:
+		-8px -8px 16px #ffd699,
+		8px 8px 16px #a1734a;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_column_purple {
@@ -88,7 +75,9 @@
 	left: 103px;
 	transform: rotate(-2deg);
 	border-radius: 2px;
-	box-shadow: -6px -6px 12px #9e9ef7, 6px 6px 12px #3e41a0;
+	box-shadow:
+		-6px -6px 12px #9e9ef7,
+		6px 6px 12px #3e41a0;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_computer_orange {
@@ -100,7 +89,9 @@
 	left: 154px;
 	transform: rotate(-12deg);
 	border-radius: 2px;
-	box-shadow: -6px -6px 12px #fad7a2, 6px 6px 12px #a1734a;
+	box-shadow:
+		-6px -6px 12px #fad7a2,
+		6px 6px 12px #a1734a;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_calendar_yellow {
@@ -112,7 +103,9 @@
 	left: 65px;
 	transform: rotate(8deg);
 	border-radius: 2px;
-	box-shadow: -6px -6px 12px #fcff99, 6px 6px 12px #737135;
+	box-shadow:
+		-6px -6px 12px #fcff99,
+		6px 6px 12px #737135;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_atom_green {
@@ -124,7 +117,9 @@
 	left: 280px;
 	transform: rotate(24deg);
 	border-radius: 2px;
-	box-shadow: -8px -8px 16px #b3ff99, 8px 8px 16px #4c7c39;
+	box-shadow:
+		-8px -8px 16px #b3ff99,
+		8px 8px 16px #4c7c39;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_math_yellow {
@@ -136,7 +131,9 @@
 	left: 175px;
 	transform: rotate(0deg);
 	border-radius: 2px;
-	box-shadow: -6px -6px 12px #ffff99, 6px 6px 12px #737135;
+	box-shadow:
+		-6px -6px 12px #ffff99,
+		6px 6px 12px #737135;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_money_green {
@@ -148,7 +145,9 @@
 	left: 317px;
 	transform: rotate(20deg);
 	border-radius: 2px;
-	box-shadow: -6px -6px 12px #b7f99e, 6px 6px 12px #3c6d35;
+	box-shadow:
+		-6px -6px 12px #b7f99e,
+		6px 6px 12px #3c6d35;
 	filter: brightness(var(--IconBrightness));
 }
 .logo_lightBulb_purple {
@@ -160,7 +159,9 @@
 	left: 275px;
 	transform: rotate(-30deg);
 	border-radius: 2px;
-	box-shadow: -4px -4px 8px #ce99ff, 4px 4px 8px #784aa1;
+	box-shadow:
+		-4px -4px 8px #ce99ff,
+		4px 4px 8px #784aa1;
 	filter: brightness(var(--IconBrightness));
 }
 
