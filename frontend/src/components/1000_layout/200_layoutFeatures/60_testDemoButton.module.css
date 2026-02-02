@@ -1,20 +1,41 @@
 .button_format {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
 	font-size: 17.6px;
 	font-weight: 600;
 	color: var(--WhiteToGray);
 	background-color: var(--Blue);
+
 	width: 150.4px;
 	height: 36.8px;
+
 	border-radius: 9px;
 	cursor: pointer;
 	border: solid 1px var(--Blue);
+
+	text-decoration: none; /* removes underline */
 }
+
+.button_format:visited {
+	color: var(--WhiteToGray); /* prevent purple visited */
+}
+
 .button_format:hover {
 	background-color: var(--BlueHover);
+	text-decoration: none;
 }
+
 .button_format:active {
 	background-color: var(--Blue);
 	border: solid 2px var(--Blue);
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.26);
 	border-radius: 7px;
+}
+
+/* Optional but recommended: accessible focus style */
+.button_format:focus-visible {
+	outline: 2px solid var(--WhiteToGray);
+	outline-offset: 2px;
 }

@@ -1,4 +1,3 @@
-/*! Main Container ------------------------------------------------------*/
 .container {
 	display: flex;
 	flex-direction: column;
@@ -7,43 +6,28 @@
 	height: 100%;
 	width: 100%;
 }
-/*! Feature ------------------------------------------------------*/
+/* Page 1 ------------------------------------------------------*/
 .billboardContainer {
 	display: flex;
 	position: relative;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
+	height: 100vh;
 	width: 100%;
+	overflow: hidden;
+	min-height: 100vh;
 }
 .billboardContainer img {
 	display: block;
 	width: 100%;
 	height: 100%;
-	position: relative;
 	filter: blur(5px);
+	object-fit: cover;
+	object-position: left center;
+	opacity: 0.9;
 }
-/* @media (max-width: 1300px) {
-	.billboardContainer img {
-		background-position: 50%;
-		background-size: cover;
-	}
-} */
-.trailerVignette {
-	background: linear-gradient(77deg, rgba(0, 0, 0, 0.6), transparent 85%);
-	bottom: 0;
-	left: 0;
-	opacity: 1;
-	position: absolute;
-	right: 26.09%;
-	top: 0;
-	transition: opacity 0.5s;
-	z-index: 8;
-	filter: blur(5px);
-}
-.vignetteLayerTop {
+.topShadow {
 	background-color: transparent;
-
 	background-image: var(--BackgroundLinearGradient_Top_NavBarDemoLanding_White_to_Transparent_DarkGray_to_Transparent);
 	background-position: 0 top;
 	background-repeat: repeat-x;
@@ -55,93 +39,75 @@
 	position: absolute;
 	z-index: 10;
 }
-.fillContainer {
+.leftShadow {
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), transparent 85%);
 	bottom: 0;
 	left: 0;
+	opacity: 1;
 	position: absolute;
-	right: 0;
+	right: 26.09%;
 	top: 0;
-	height: 100%;
-	width: 100%;
+	transition: opacity 0.5s;
+	z-index: 8;
+	filter: blur(5px);
 }
-.infoMetaLayer {
-	bottom: 30%;
+.infoContainer {
+	bottom: 20%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	left: 4%;
 	position: absolute;
-	top: 0;
-	width: 36%;
+	width: 34%;
 	z-index: 10;
 	max-height: 1097px;
 }
-@media (max-width: 1400px) {
-	.infoMetaLayer {
-		left: 52px;
-	}
-}
-.logoAndText {
-	transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-	width: 100%;
-}
-.titleWrapper {
-	transform-origin: left bottom;
-	transform: scale(1) translate3d(0px, 0px, 0px);
-	transition-duration: 1300ms;
-	transition-delay: 0ms;
-}
-.billboardTitle {
+.featureTitle {
 	margin-bottom: 1.2vw;
-	min-height: 13.2vw;
-	position: relative;
 }
-.billboardTitleText {
-	font-size: 5vw;
+.featureTitle h1 {
+	font-size: clamp(2.5rem, 10cqw, 5.5rem);
+	font-style: italic;
 	color: #163159;
 	margin: 0;
-	font-family: Montserrat;
-	font-style: italic;
 	font-weight: 800;
 	line-height: 0.95;
+
 	text-transform: uppercase;
 }
-.titleLogo {
-	transform-origin: bottom left;
-	width: 100%;
+.featureDescription {
+	margin: 0;
 }
-.infoWrapper {
-	transform: translate3d(0px, 0px, 0px);
-	transition-duration: 1300ms;
-	transition-delay: 0ms;
-	opacity: 1;
-}
-.infoWrapperFade {
-	opacity: 1;
-	transition-duration: 600ms;
-	transition-delay: 200ms;
-}
-.synopsisFadeContainer {
-	margin: 0.5vw 0 0;
-}
-.synopsis {
-	margin: 0.5vw 0 0;
+.featureDescription p {
+	font-size: clamp(1rem, 3cqw, 1.7rem);
+	font-style: normal;
 	color: #fff;
-	font-size: 1.2vw;
+	margin: 0.5vw 0 0 0;
 	font-weight: 400;
 	line-height: normal;
+
 	margin-top: 0.1vw;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
-	width: 100%;
-	font-family:
-		Netflix Sans,
-		Helvetica Neue,
-		Segoe UI,
-		Roboto,
-		Ubuntu,
-		sans-serif;
 }
-.billboardLinks {
+@media (max-width: 1950px) {
+	/* for smaller than 1250px */
+	.infoContainer {
+		width: 44%;
+	}
+}
+@media (max-width: 1250px) {
+	/* for smaller than 1250px */
+	.infoContainer {
+		width: 64%;
+	}
+}
+@media (max-width: 800px) {
+	/* for smaller than 1250px */
+	.infoContainer {
+		left: 8%;
+	}
+}
+.buttonsContainer {
 	display: flex;
 	line-height: 88%;
 	margin-top: 1.5vw;
@@ -154,139 +120,70 @@
 	position: relative;
 	justify-content: center;
 	align-items: center;
-
-	background-color: white;
-	color: black;
-	font-size: 2vw;
-	line-height: 88%;
-
-	padding-left: 2vw !important;
-	padding-right: 2.4vw !important;
-	margin-left: 0 !important;
-	margin-bottom: 1vw !important;
-	margin-right: 1vw !important;
-
 	border: 0;
 	border-radius: 4px;
 	cursor: pointer;
+	font-size: 2vw;
 	text-decoration: none;
-}
-.playButtonIconOuterContainer {
-	line-height: 0;
-}
-.playButtonIconInnerContainer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 2.4vw;
-	width: 2.4vw;
-	line-height: 0;
-}
-.playButtonIconInnerContainer svg {
-	height: 100%;
-	width: 100%;
-	fill: none;
-}
-.playButtonSpacer {
-	width: 1vw;
-}
-.playText {
-	-webkit-font-smoothing: antialiased;
-	display: block;
-	font-size: 1.6vw;
-	font-weight: 600;
-	line-height: 2.4vw;
-	color: black;
-}
-@media (min-width: 1250px) {
-	.startButton {
-		padding-left: 25px !important;
-		padding-right: 30px !important;
-		margin-bottom: 12px !important;
-		margin-right: 12px !important;
-		height: 50px;
-		width: 142px;
-	}
-	.playButtonIconInnerContainer {
-		height: 30px;
-		width: 30px;
-	}
-	.playButtonSpacer {
-		width: 1rem;
-	}
-	.playText {
-		font-size: 20px;
-	}
+	height: 50px;
+	width: 180px;
+
+	margin-top: 0 !important;
+	margin-right: 12px !important;
+	margin-bottom: 12px !important;
+	margin-left: 0 !important;
+
+	padding-top: 7px !important;
+	padding-left: 25px !important;
+	padding-right: 30px !important;
+	padding-bottom: 7px !important;
+
+	color: var(--BlackToWhite);
+	background-color: var(--WhiteToBlack);
 }
 .moreInfoButton {
 	display: flex;
 	position: relative;
 	justify-content: center;
 	align-items: center;
-	padding: 0.8vw;
-	padding-left: 2vw !important;
-	padding-right: 2.4vw !important;
-	background-color: rgba(109, 109, 110, 0.7);
-	margin: 0;
-	margin-bottom: 1vw !important;
-	margin-right: 1vw !important;
-	color: white;
-	border: 0px;
+	border: 0;
 	border-radius: 4px;
 	cursor: pointer;
-	opacity: 1;
+	font-size: 2vw;
+	text-decoration: none;
+	height: 50px;
+	width: 180px;
+
+	margin-top: 0 !important;
+	margin-right: 12px !important;
+	margin-bottom: 12px !important;
+	margin-left: 0 !important;
+
+	padding-top: 7px !important;
+	padding-left: 25px !important;
+	padding-right: 30px !important;
+	padding-bottom: 7px !important;
+
+	color: white;
+	background-color: rgba(109, 109, 110, 0.7);
+	opacity: 0.9;
 }
-.moreInfoButtonIconOuterContainer {
-	line-height: 0;
-	display: block;
-}
-.moreInfoButtonIconInnerContainer {
+.buttonsContainer svg {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 2.4vw;
-	width: 2.4vw;
+	height: 90%;
 	line-height: 0;
 }
-.moreInfoButtonIconInnerContainer svg {
-	height: 100%;
-	width: 100%;
-}
-.moreInfoButtonSpacer {
-	display: flex;
-	position: relative;
-	box-sizing: border-box;
-	width: 1vw;
-	height: 100%;
-}
-.moreInfoButtonText {
+.buttonsContainer span {
 	display: block;
-	font-size: 1.6vw;
+	font-size: clamp(16px, 1.6vw, 20px);
 	font-weight: 500;
-	line-height: 2.4vw;
+	line-height: 1.4;
 	cursor: pointer;
+	margin-left: 12px;
 }
-@media (min-width: 1250px) {
-	.moreInfoButton {
-		padding-left: 25px !important;
-		padding-right: 30px !important;
-		margin-bottom: 12px !important;
-		margin-right: 12px !important;
-		height: 50px;
-		width: 180px;
-	}
-	.moreInfoButtonIconInnerContainer {
-		height: 30px;
-		width: 30px;
-	}
-	.moreInfoButtonSpacer {
-		width: 1rem;
-	}
-	.moreInfoButtonText {
-		font-size: 20px;
-	}
-}
-/*! Row of Contents ------------------------------------------------------*/
+/* Page 2 ------------------------------------------------------*/
 .seoContent_outer {
 	display: flex;
 	position: relative;
@@ -309,6 +206,7 @@
 	overflow: visible;
 }
 
+/* Page 3 ------------------------------------------------------*/
 .courseSelections {
 	display: flex;
 	position: relative;
@@ -382,7 +280,6 @@
 .rowHeaderTitle:hover {
 	color: var(--Blue);
 }
-
 .rowContainer {
 	box-sizing: border-box;
 	background-color: var(--Black);
@@ -391,7 +288,6 @@
 	margin: auto;
 	padding: 0 2%;
 }
-
 .handlePrev {
 	background: hsla(0, 0%, 8%, 0.5);
 	border-bottom-right-radius: 4px;
@@ -427,7 +323,6 @@
 	text-transform: none;
 	transform: translateZ(0);
 }
-
 .sliderItem {
 	width: 16.66%;
 	box-sizing: border-box;
@@ -459,11 +354,7 @@
 	.sliderItem {
 		width: 50%;
 	}
-	.infoMetaLayer {
-		width: 39%;
-	}
 }
-
 .titleCard {
 	display: block;
 	position: relative;

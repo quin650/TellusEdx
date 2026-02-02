@@ -58,6 +58,7 @@
 	cursor: pointer;
 	margin-top: 5px;
 	color: var(--WhiteToGray);
+	text-decoration: none;
 }
 .companyName:hover {
 	color: var(--Blue);

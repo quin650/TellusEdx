@@ -1,13 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./60_testDemoButton.module.css";
 
 const TestDemoButton = () => {
-	const navigate = useNavigate();
 	return (
-		<button aria-label="Test Demo" className={classes.button_format} type="button" onClick={() => navigate("/demos")}>
+		<Link to="/demos" className={classes.button_format}>
 			Demo
-		</button>
+		</Link>
 	);
 };
 
