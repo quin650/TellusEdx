@@ -185,7 +185,7 @@ const App = () => {
 					<MainNavbar />
 				</header>
 			)}
-			{location.pathname !== "/PDFViewer" && location.pathname !== "/demos" ? (
+			{location.pathname !== "/PDFViewer" && location.pathname !== "/demo_dmvClassC" ? (
 				<OnThisPageQuickView divIDs={divIDs} activeID={activeID} registerTippy={registerTippy} />
 			) : (
 				""

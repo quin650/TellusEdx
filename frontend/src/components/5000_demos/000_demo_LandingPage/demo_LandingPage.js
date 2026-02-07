@@ -13,8 +13,8 @@ const DMV6 = "/static/images/DemoOptions_webp/CDL_CLASS_C.webp";
 
 const Demo_LandingPage = () => {
 	const DMV_Demo_Feature = (
-		<Fragment>
-			<section className={classes.billboardContainer} id="DMV_Demo">
+		<section>
+			<div className={classes.billboardContainer} id="DMV_Demo">
 				<img src="https://www.dmv.ca.gov/portal/uploads/2023/10/Teen-Microsite_The-Exciting-Journey-Ahead_360x180.jpg" alt="California DMV Driver’s Handbook" />
 				<div className={classes.topShadow}></div>
 				<div className={classes.leftShadow}></div>
@@ -48,45 +48,130 @@ const Demo_LandingPage = () => {
 						</button>
 					</div>
 				</div>
-			</section>
-		</Fragment>
+			</div>
+		</section>
 	);
 	const DMV_Demo_Feature_Info = (
-		<section className={classes.seoContent_outer} id="Dmv_Courses">
-			<div className={classes.seoContent_inner}>
-				<h1>California DMV Practice Tests for Class C Permit</h1>
-				<p>
-					Prepare for your California DMV permit test with interactive practice tests and guided learning demos. Review official handbook material, answer real exam-style
-					questions, and get instant feedback to build confidence before test day.
-				</p>
-				<p>Questions are based on the official California DMV Driver Handbook and are updated regularly to reflect current testing standards.</p>
-				<ul>
-					<li>Practice real California DMV Class C questions</li>
-					<li>Study by handbook section</li>
-					<li>Review missed answers with explanations</li>
-					<li>Build confidence before your permit test</li>
-				</ul>
-				<h2>California DMV Class C Permit Practice Test</h2>
-				<p>
-					The California DMV Class C permit test covers traffic laws, road signs, and safe driving principles. This Class C practice test lets you study by handbook
-					section, practice realistic DMV questions, and review missed answers so you’re fully prepared for the real exam.
-				</p>
-				<p>
-					Whether you’re taking the permit test for the first time or reviewing after a failed attempt, structured practice helps reinforce key concepts and identify weak
-					areas before test day.
-				</p>
-				<h2>Frequently Asked Questions</h2>
-				<h3>Is this based on the official California DMV handbook?</h3>
-				<p>
-					Yes. All practice questions are derived from the official California DMV Driver Handbook and follow the same topics covered on the real Class C permit test.
-				</p>
-				<h3>Is this a real California DMV practice test?</h3>
-				<p>This is an unofficial practice test designed to closely match the format and difficulty of the real California DMV Class C permit exam.</p>
-				<h3>Can I study by section?</h3>
-				<p>Yes. You can practice questions by handbook section and review missed answers to focus on the topics where you need the most improvement.</p>
-				<p>
-					<small>Updated to reflect current California DMV testing guidelines.</small>
-				</p>
+		<section>
+			<div className={classes.mainContainer} id="DMV_Demo_Info">
+				<div className={classes.bodyContainer}>
+					<div className={classes.handbook_outerContainer}>
+						<div className={classes.handbook_header_section}>
+							<p>Class C</p>
+							<h1>California DMV Practice Tests</h1>
+						</div>
+						<div className={classes.page_content}>
+							<h2>Why get ready with us?</h2>
+							<p>
+								Prepare for your California DMV permit test using free interactive practice tests. Review handbook material, answer real exam questions, and get instant
+								feedback to build confidence before test day. Questions are based on the official California DMV test.
+							</p>
+
+							<ul>
+								<li>
+									<strong>Read a page </strong>of the official handbook
+								</li>
+								<li>
+									<strong>Reinforce your learning</strong> - test yourself on that page as soon as reading it
+								</li>
+								<li>
+									Practice <strong>real </strong>DMV questions
+								</li>
+								<li>
+									<strong>Repeat failed questions</strong>
+								</li>
+								<li>
+									Get <strong>feedback</strong> on questions
+								</li>
+							</ul>
+
+							<h2>Under 18 years old</h2>
+
+							<h3>Apply for an instruction permit</h3>
+							<ol>
+								Be at least 15.5 years old
+								<br />
+								Complete a <a href="dmv.ca.gov/dlservices">Driver’s License & ID Card Application</a>
+								<br />
+								Have a parent or guardian sign to approve the application and accept financial responsibility. If your parents or guardians share joint custody of you,
+								both must sign. <br />
+								Provide Documents:
+								<li>Proof of identify</li>
+								<li>Two proofs of residency</li>
+								<li>Legal full name document</li>
+								<li>Social security number</li>
+								Pay a non-refundable application fee. <br />
+								Pass your knowledge test(s). <br />
+								Pass a vision test. <br />
+								Complete permit driving school <a href="http://dmv.ca.gov/driver-ed">http://dmv.ca.gov/driver-ed</a> <br />
+								Wait to use your instruction permit until you start behind-the-wheel driver training with an instructor who will validate the permit. <br />
+								Practice driving with a California-licensed driver who is at least 18 years old (25 for minors). This person must sit close enough to take control of the
+								vehicle if needed. <br />
+							</ol>
+							<h3>Apply for license</h3>
+							<ol>
+								Be at least 16 years old <br />
+								Have an instruction permit from California or another state for at least 6 months (or turn 18 years old) before scheduling your behind-the-wheel drive
+								test.
+								<br />
+								Prove that you completed both driver education and driver training.
+								<br />
+								Practice driving for at least 50 hours with a California-licensed driver who is at least 25 years old. Ten hours must be at night.
+								<br />
+								See the Driver’s Licenses page at <a href="dmv.ca.gov/dlservices">dmv.ca.gov/dlservices</a> for the complete list of application steps, requirements, the
+								Parent Teen Driving Contract, and Driving Performance Evaluation (DPE) Score Sheet. <br />
+								Pass a behind-the-wheel drive test.
+							</ol>
+							<div>
+								<h2>18 years old or older</h2>
+								<h3>Apply for license</h3>
+							</div>
+							<ol>
+								Complete a <a href="dmv.ca.gov/dlservices">Driver’s License & ID Card Application</a>
+								<br />
+								Provide Documents:
+								<li>Proof of identify</li>
+								<li>Two proofs of residency</li>
+								<li>Legal full name document</li>
+								<li>Social security number</li>
+								Pay a non-refundable application fee. <br />
+								Pass your knowledge test(s). <br />
+								Pass a vision test. <br />
+								Practice driving with a California-licensed driver who is at least 18 years old (25 for minors). This person must sit close enough to take control of the
+								vehicle if needed. <br />
+								Pass a behind-the-wheel drive test.
+							</ol>
+							<h2>Frequently Asked Questions</h2>
+
+							<h3>Is this based on the official California DMV handbook?</h3>
+							<p>
+								Yes. All practice questions are derived from the official California DMV Driver Handbook and follow the same topics covered on the real Class C permit
+								test.
+							</p>
+
+							<h3>Is this a real California DMV practice test?</h3>
+							<p>This is an unofficial practice test designed to closely match the format and difficulty of the real California DMV Class C permit exam.</p>
+
+							<h3>Can I study by section?</h3>
+							<p>Yes. You can practice questions by handbook section and review missed answers to focus on the topics where you need the most improvement.</p>
+							<h3>Is this based on the official California DMV handbook?</h3>
+							<p>
+								Yes. All practice questions are derived from the official California DMV Driver Handbook and follow the same topics covered on the real Class C permit
+								test.
+							</p>
+
+							<h3>Is this a real California DMV practice test?</h3>
+							<p>This is an unofficial practice test designed to closely match the format and difficulty of the real California DMV Class C permit exam.</p>
+
+							<h3>Can I study by section?</h3>
+							<p>Yes. You can practice questions by handbook section and review missed answers to focus on the topics where you need the most improvement.</p>
+
+							<p>
+								<small>Updated to reflect current California DMV testing guidelines.</small>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	);
@@ -102,46 +187,47 @@ const Demo_LandingPage = () => {
 		</svg>
 	);
 	const DMV_TestPrep_Options = (
-		<section className={classes.courseSelections} id="Dmv_Courses">
-			<div className={classes.outerContainer_Top}>
-				<ul className={classes.innerContainer_Top}>
-					<li>
-						<h2 className={classes.rowHeaderTitle}>DMV</h2>
-					</li>
-					<li>
-						<a className={classes.LogoContainer}>
-							<span className={classes.Logo}>{carIcon}</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div className={classes.rowContainer}>
-				<SliderItem imgLink={DMV2} />
-				<SliderItem imgLink={DMV3} />
-				<SliderItem imgLink={DMV31} />
-				<SliderItem imgLink={DMV4} />
-				<SliderItem imgLink={DMV5} />
-				<SliderItem imgLink={DMV6} />
+		<section>
+			<div className={classes.courseSelections} id="Dmv_Course_Options">
+				<div className={classes.outerContainer_Top}>
+					<ul className={classes.innerContainer_Top}>
+						<li>
+							<h2 className={classes.rowHeaderTitle}>DMV</h2>
+						</li>
+						<li>
+							<a className={classes.LogoContainer}>
+								<span className={classes.Logo}>{carIcon}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div className={classes.rowContainer}>
+					<SliderItem imgLink={DMV2} />
+					<SliderItem imgLink={DMV3} />
+					<SliderItem imgLink={DMV31} />
+					<SliderItem imgLink={DMV4} />
+					<SliderItem imgLink={DMV5} />
+					<SliderItem imgLink={DMV6} />
+				</div>
 			</div>
 		</section>
 	);
 	return (
-		<div className={classes.container}>
-			<Helmet>
-				<title>California DMV Practice Test – Class C Permit | TellusLearn</title>
-
-				<meta
-					name="description"
-					content="Practice for the California DMV Class C permit test with real exam-style questions, handbook-based learning, and instant feedback."
-				/>
-
-				<link rel="canonical" href="https://telluslearn.com/demos" />
-			</Helmet>
-
-			{DMV_Demo_Feature}
-			{DMV_Demo_Feature_Info}
-			{DMV_TestPrep_Options}
-		</div>
+		<Fragment>
+			<div className={classes.container}>
+				<Helmet>
+					<title>California DMV Practice Test – Class C Permit | TellusLearn</title>
+					<meta
+						name="description"
+						content="Practice for the California DMV Class C permit test with real exam-style questions, handbook-based learning, and instant feedback."
+					/>
+					<link rel="canonical" href="https://telluslearn.com/demos" />
+				</Helmet>
+				{DMV_Demo_Feature}
+				{DMV_Demo_Feature_Info}
+				{DMV_TestPrep_Options}
+			</div>
+		</Fragment>
 	);
 };
 
