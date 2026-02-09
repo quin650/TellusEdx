@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
-import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsOptions = () => {
 	const dispatch = useDispatch();
@@ -81,13 +81,13 @@ const SideBar_R_QuestionsOptions = () => {
 						userReducerActions.sideBar_R_Questions_setFirstTestNumber_reAttempted({
 							idx: sideBar_R_Questions_FirstTestNumber_idx_reAttempted,
 							num: sideBar_R_Questions_FirstTestNumber_num_reAttempted,
-						})
+						}),
 					);
 					dispatch(
 						userReducerActions.sideBar_R_Questions_setFirstQuestionNumber_reAttempted({
 							idx: sideBar_R_Questions_FirstQuestionNumber_idx_reAttempted,
 							num: sideBar_R_Questions_FirstQuestionNumber_num_reAttempted,
-						})
+						}),
 					);
 				}
 
@@ -140,7 +140,7 @@ const SideBar_R_QuestionsOptions = () => {
 				userReducerActions.sideBar_R_Questions_setRecentTestNumber_reAttempted({
 					idx: sideBar_R_Questions_RecentTestNumber_idx_reAttempted,
 					num: sideBar_R_Questions_RecentTestNumber_num_reAttempted,
-				})
+				}),
 			);
 		}
 		//Recent Question to re-attempted#
@@ -153,7 +153,7 @@ const SideBar_R_QuestionsOptions = () => {
 				userReducerActions.sideBar_R_Questions_setRecentQuestionNumber_reAttempted({
 					idx: sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted,
 					num: sideBar_R_Questions_RecentQuestionNumber_num_reAttempted,
-				})
+				}),
 			);
 		}
 		//Current Test to re-attempt#
@@ -166,7 +166,7 @@ const SideBar_R_QuestionsOptions = () => {
 				userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
 					idx: sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt,
 					num: sideBar_R_Questions_CurrentTestNumber_num_toReAttempt,
-				})
+				}),
 			);
 		}
 		//Current Question to re-attempt#
@@ -179,20 +179,20 @@ const SideBar_R_QuestionsOptions = () => {
 				userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
 					idx: sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt,
 					num: sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt,
-				})
+				}),
 			);
 		}
 		dispatch(
 			userReducerActions.sideBar_R_Questions_setLastTestNumber_toReAttempt({
 				idx: sideBar_R_Questions_LastTestNumber_idx_toReAttempt,
 				num: sideBar_R_Questions_LastTestNumber_num_toReAttempt,
-			})
+			}),
 		);
 		dispatch(
 			userReducerActions.sideBar_R_Questions_setLastQuestionNumber_toReAttempt({
 				idx: sideBar_R_Questions_LastQuestionNumber_idx_toReAttempt,
 				num: sideBar_R_Questions_LastQuestionNumber_num_toReAttempt,
-			})
+			}),
 		);
 
 		dispatch(userReducerActions.sideBar_R_Questions_setWrongAnswers(wrongAnswers_num));
@@ -366,7 +366,7 @@ const SideBar_R_QuestionsOptions = () => {
 				}
 			}
 		},
-		[test1Status, test2Status, test3Status, test4Status, test5Status]
+		[test1Status, test2Status, test3Status, test4Status, test5Status],
 	);
 	useEffect(() => {
 		if (location.pathname === "/demo_dmvClassC") {

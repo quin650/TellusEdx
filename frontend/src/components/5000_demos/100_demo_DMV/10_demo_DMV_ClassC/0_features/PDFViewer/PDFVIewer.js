@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userReducerActions } from "../../../../../a.reducers/auth_Reducers";
+import { userReducerActions } from "../../../../../../a.reducers/auth_Reducers";
 import classes from "./PDFViewer.module.css";
 
 const PDF_URL = "https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_1997375/File/2-6-23-LINKS-ADDED-2-Passed-Accessibility-DL-600-R1-2023.pdf";
 
-import Pagination_PDF_GUI from "../../../../1000_layout/200_layoutFeatures/30_pagination_PDF_GUI";
-import ZoomGUI from "../../../../1000_layout/200_layoutFeatures/40_zoomGUI";
+import Pagination_PDF_GUI from "../../../../../../components/1000_layout/200_layoutFeatures/30_pagination_PDF_GUI";
+import ZoomGUI from "../../../../../1000_layout/200_layoutFeatures/40_zoomGUI";
 
 const PDFViewer = () => {
 	const dispatch = useDispatch();
@@ -151,7 +151,7 @@ const PDFViewer = () => {
 				setPageIsRendering(false);
 			}
 		},
-		[pdfState.scale, pageIsRendering, pdfState.pdfDocument]
+		[pdfState.scale, pageIsRendering, pdfState.pdfDocument],
 	);
 	//!Zoom Functionality
 	const zoomIn = () => {

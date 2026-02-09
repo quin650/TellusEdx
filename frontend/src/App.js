@@ -5,14 +5,14 @@ import { userReducerActions } from "./a.reducers/auth_Reducers";
 import { throttle } from "lodash";
 
 import MainNavbar from "./components/1000_layout/100_header/1_mainNavbar";
-import Home from "./components/2000_pages/100_pages/0_home/0_home";
+import Home from "./components/2000_pages/100_pages/10_home_LandingPage/0_home";
 import GeneralPage from "./components/2000_pages/100_pages/generalPage";
 import Footer from "./components/1000_layout/400_footer/footer";
 import OnThisPageQuickView from "./components/1000_layout/200_layoutFeatures/10_onThisPageQuickView";
 
-const Demo_LandingPage = lazy(() => import("./components/5000_demos/000_demo_LandingPage/demo_LandingPage"));
-const DemoDMVClassC = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC"));
-const PDFViewer = lazy(() => import("./components/5000_demos/100_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer"));
+const Demo_LandingPage = lazy(() => import("./components/2000_pages/100_pages/20_demo_LandingPage/demo_LandingPage"));
+const DemoDMVClassC = lazy(() => import("./components/5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC"));
+const PDFViewer = lazy(() => import("./components/5000_demos/100_demo_DMV/10_demo_DMV_ClassC/0_features/PDFViewer/PDFVIewer"));
 
 const App = () => {
 	const mainAppContainerRef = useRef();

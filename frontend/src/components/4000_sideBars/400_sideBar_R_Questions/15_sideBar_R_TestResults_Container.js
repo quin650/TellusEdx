@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_TestResults_ListOfQuestions from "./20_sideBar_R_TestResults_ListOfQuestions";
-import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_TestResults_Container = () => {
 	const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const SideBar_R_TestResults_Container = () => {
 								id={questionWrongNum_num}
 								testNum={testNum_idx}
 								isCorrect={secondaryAttempt_gotCorrect}
-							/>
+							/>,
 						);
 					}
 				}

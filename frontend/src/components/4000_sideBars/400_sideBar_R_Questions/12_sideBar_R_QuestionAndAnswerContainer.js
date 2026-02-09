@@ -4,8 +4,8 @@ import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_QuestionsParent from "./13_sideBar_R_QuestionParent";
 import SideBar_R_Questions_layoutFeatures from "./00_sideBar_R_Questions_layoutFeatures";
 import PaginationQuestionsGUI from "../../1000_layout/200_layoutFeatures/30_pagination_Questions_GUI";
-import data from "../../5000_demos/100_demo_DMV_ClassC/data/questions.json";
-import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import data from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/data/questions.json";
+import classes from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 				testNumber: sideBar_R_Questions_CurrentTestNumber_rdx,
 				questionNumber: sideBar_R_Questions_CurrentQuestionNumber_rdx,
 				answerData: { attemptId: attemptIdx, isCorrect: correctOrIncorrect, selectedId: id },
-			})
+			}),
 		);
 		setStartGradingTest(true);
 	};
@@ -34,7 +34,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 		(testNum, questionNum) => {
 			dispatch(userReducerActions.sideBar_R_Questions_GoTo_QuestionNumber({ testNum: testNum, questionNum: questionNum }));
 		},
-		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch]
+		[sideBar_R_Questions_CurrentQuestionNumber_rdx, dispatch],
 	);
 	const [showHint, setShowHint] = useState(false);
 	const getHint = (x) => {
@@ -43,7 +43,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 	//! Render Question Component
 	useEffect(() => {
 		const questionData = data.questions.find(
-			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx
+			(question) => question.testNumber === sideBar_R_Questions_CurrentTestNumber_rdx && question.questionNumber === sideBar_R_Questions_CurrentQuestionNumber_rdx,
 		);
 		if (!sideBar_R_Questions_retakeFailed_isOpen_rdx && questionData) {
 			const currentQuestionData_ifSubmitted =
@@ -61,7 +61,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={true}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
 				setQuestionComponent(
@@ -74,7 +74,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={false}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			} else {
 				setQuestionComponent(
@@ -87,7 +87,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={startGradingTest}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			}
 		} else if (sideBar_R_Questions_retakeFailed_isOpen_rdx && questionData) {
@@ -110,7 +110,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={true}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			} else if (!currentQuestionData_ifSubmitted && !chosenAnswerID) {
 				console.log("2");
@@ -126,7 +126,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={false}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			} else {
 				console.log("3");
@@ -140,7 +140,7 @@ const SideBar_R_QuestionAndMultipleChoiceContainer = () => {
 						startGradingTest={startGradingTest}
 						gotoQuestion={gotoQuestion}
 						showHint={showHint}
-					/>
+					/>,
 				);
 			}
 		}

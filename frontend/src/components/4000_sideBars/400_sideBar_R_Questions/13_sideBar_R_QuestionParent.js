@@ -2,7 +2,7 @@ import React, { useState, useRef, Fragment, useEffect, useCallback } from "react
 import { useDispatch, useSelector } from "react-redux";
 import { userReducerActions } from "../../../a.reducers/auth_Reducers";
 import SideBar_R_MultipleChoiceOptions from "./14_sideBar_R_MultipleChoiceOption";
-import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, previouslyCheckedID, get_ChosenAnswerID, startGradingTest, gotoQuestion, showHint }) => {
 	const dispatch = useDispatch();
@@ -65,14 +65,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 								}`}
 							>
 								{i}
-							</li>
+							</li>,
 						);
 					} else {
 						//Gray - not attempted
 						navItems.push(
 							<li key={i} className={classes.quickNavButton}>
 								{i}
-							</li>
+							</li>,
 						);
 					}
 				} else {
@@ -86,7 +86,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 							}`}
 						>
 							{i}
-						</li>
+						</li>,
 					);
 				}
 			}
@@ -140,14 +140,14 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 										}`}
 									>
 										{questionNum}
-									</li>
+									</li>,
 								);
 							} else {
 								//Gray - not re-attempted
 								navItems.push(
 									<li key={`${testNum}-${questionNum}`} className={classes.quickNavButton}>
 										{questionNum}
-									</li>
+									</li>,
 								);
 							}
 						} else {
@@ -163,7 +163,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 									}`}
 								>
 									{questionNum}
-								</li>
+								</li>,
 							);
 						}
 						testNumPrev = testNum;
@@ -182,7 +182,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					userReducerActions.sideBar_R_Questions_setRecentTestNumber_reAttempted({
 						idx: sideBar_R_Questions_RecentTestNumber_idx_reAttempted,
 						num: sideBar_R_Questions_RecentTestNumber_num_reAttempted,
-					})
+					}),
 				);
 			}
 
@@ -197,7 +197,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					userReducerActions.sideBar_R_Questions_setRecentQuestionNumber_reAttempted({
 						idx: sideBar_R_Questions_RecentQuestionNumber_idx_reAttempted,
 						num: sideBar_R_Questions_RecentQuestionNumber_num_reAttempted,
-					})
+					}),
 				);
 			}
 			//Current Test to re-attempt#
@@ -214,7 +214,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					userReducerActions.sideBar_R_Questions_setCurrentTestNumber_toReAttempt({
 						idx: sideBar_R_Questions_CurrentTestNumber_idx_toReAttempt,
 						num: sideBar_R_Questions_CurrentTestNumber_num_toReAttempt,
-					})
+					}),
 				);
 			}
 			//Current Question to re-attempt#
@@ -231,7 +231,7 @@ const SideBar_R_QuestionsParent = ({ testNumber, questionNumber, questionData, p
 					userReducerActions.sideBar_R_Questions_setCurrentQuestionNumber_toReAttempt({
 						idx: sideBar_R_Questions_CurrentQuestionNumber_idx_toReAttempt,
 						num: sideBar_R_Questions_CurrentQuestionNumber_num_toReAttempt,
-					})
+					}),
 				);
 			}
 		}

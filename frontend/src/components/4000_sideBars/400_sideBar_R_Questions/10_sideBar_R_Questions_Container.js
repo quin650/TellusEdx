@@ -6,7 +6,7 @@ import SideBar_R_QuestionsOptions from "./11_sideBar_R_QuestionsOptions";
 import SideBar_R_QuestionAndMultipleChoiceContainer from "./12_sideBar_R_QuestionAndAnswerContainer";
 import SideBar_R_TestResults_Container from "./15_sideBar_R_TestResults_Container";
 import SideBar_R_ProbabilityOfPassingPage from "./21_sideBar_R_ProbabilityOfPassing";
-import classes from "../../5000_demos/100_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
+import classes from "../../5000_demos/100_demo_DMV/10_demo_DMV_ClassC/demo_DMV_ClassC.module.css";
 
 const SideBar_R_Questions_Container = ({ pageContentRef }) => {
 	const dispatch = useDispatch();
